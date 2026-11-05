@@ -1,3 +1,11 @@
 # cache do Python
 __pycache__/
 *.pyc
+
+# artefatos do empacotamento (PyInstaller / Inno)
+staged/
+dist/
+build_tmp/
+instalador/
+*.spec
+build_log.txt

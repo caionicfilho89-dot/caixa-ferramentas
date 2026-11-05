@@ -19,6 +19,7 @@ from PyQt6.QtWidgets import (QApplication, QFileDialog, QFrame, QGridLayout, QHB
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
+FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
 ACCENT = "#7c5cff"
 
 CFG_DIR = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")), "CaixaFerramentas")
@@ -119,7 +120,7 @@ class Card(QFrame):
         self.key = folder
         self.caixa = caixa
         self.path = os.path.join(BASE, folder, script)
-        self.exists = os.path.exists(self.path)
+        self.exists = True if FROZEN else os.path.exists(self.path)
         self.setFixedSize(230, 120)
         self.setCursor(Qt.CursorShape.PointingHandCursor)
         self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
@@ -270,7 +271,11 @@ class Caixa(QWidget):
             QMessageBox.warning(self, "Ops", f"Não achei:\n{card.path}")
             return
         try:
-            subprocess.Popen([pythonw(), card.path], cwd=os.path.dirname(card.path))
+            if FROZEN:
+                # no instalador: o próprio exe abre a ferramenta (Caixa.exe --tool <chave>)
+                subprocess.Popen([sys.executable, "--tool", card.key])
+            else:
+                subprocess.Popen([pythonw(), card.path], cwd=os.path.dirname(card.path))
             self.status.setText("Abrindo " + card.tool[1] + "…")
         except Exception as e:  # noqa: BLE001
             QMessageBox.critical(self, "Erro", str(e))
@@ -341,8 +346,12 @@ class Caixa(QWidget):
                                     "Atalho criado! Procure por “Caixa de Ferramentas” no Menu Iniciar.")
 
     def _make_lnk(self, lnk):
-        target = pythonw()
-        arg = os.path.abspath(__file__)
+        if FROZEN:
+            target = sys.executable
+            arg = ""
+        else:
+            target = pythonw()
+            arg = os.path.abspath(__file__)
         ps = (
             "$w = New-Object -ComObject WScript.Shell; "
             f"$s = $w.CreateShortcut('{lnk}'); "
