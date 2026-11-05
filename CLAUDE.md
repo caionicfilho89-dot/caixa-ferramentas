@@ -16,7 +16,7 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   (v1.3.0 nunca virou instalador — pulou direto pra 1.4.0.)
 - Rodada 1 ✅ integrada: kit-hacker (20) · ferramentas-dev (16) · calculadora-clt (7) ·
   conversor-unidades (15 categorias) · pix-boleto (3 abas).
-- Próxima: Rodada 2 do BACKLOG.md.
+- Rodada 2 ⏳ lançada (agentes sonnet): financas (fin_), tempo (tm_), notas-md (nm_), tarefas (tf_), calendario-br (cal_).
 
 ## Estrutura
 - Cada ferramenta = pasta irmã em `C:\Users\caion\<pasta>` (BASE = pai desta pasta).
