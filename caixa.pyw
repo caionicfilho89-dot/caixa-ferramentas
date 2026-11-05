@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import (QApplication, QFileDialog, QFrame, QGridLayout, QHB
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
-APP_VERSION = "1.3.0"
+APP_VERSION = "1.4.0"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
@@ -52,6 +52,11 @@ BUILTIN = [
     ("⏱️", "Rastreador de Tempo", "Quanto tempo você passa em cada app", "rastreador-tempo", "rastreador_tempo.pyw"),
     ("🛰️", "GPS Falso", "Simula um GPS (NMEA) por TCP/UDP pra apps de navegação", "gps-falso", "gps_falso.pyw"),
     ("🇧🇷", "Ferramentas BR", "74 ferramentas: gerar/validar CPF, CNPJ, texto, matemática…", "ferramentas-br", "ferramentas_br.pyw"),
+    ("🛡️", "Kit do Hacker", "Codificar/decodificar, hash, JWT, timestamp, caracteres ocultos", "kit-hacker", "kit_hacker.pyw"),
+    ("💻", "Ferramentas Dev", "JSON/XML/SQL, regex ao vivo, comparar textos, cron, UUID", "ferramentas-dev", "ferramentas_dev.pyw"),
+    ("💰", "Calculadora CLT", "Salário líquido, férias, 13º, rescisão, horas extras (2026)", "calculadora-clt", "calculadora_clt.pyw"),
+    ("📏", "Conversor de Unidades", "14 tipos de medida + moedas com cotação", "conversor-unidades", "conversor_unidades.pyw"),
+    ("💸", "Pix & Boleto", "Gera Pix pra receber, lê Pix e confere boleto", "pix-boleto", "pix_boleto.pyw"),
 ]
 
 QSS = """

@@ -38,6 +38,11 @@ TOOLS = {
     "rastreador-tempo": "rastreador_tempo.pyw",
     "gps-falso": "gps_falso.pyw",
     "ferramentas-br": "ferramentas_br.pyw",
+    "kit-hacker": "kit_hacker.pyw",
+    "ferramentas-dev": "ferramentas_dev.pyw",
+    "calculadora-clt": "calculadora_clt.pyw",
+    "conversor-unidades": "conversor_unidades.pyw",
+    "pix-boleto": "pix_boleto.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
