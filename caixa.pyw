@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import (QApplication, QFileDialog, QFrame, QGridLayout, QHB
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
-APP_VERSION = "1.2.0"
+APP_VERSION = "1.3.0"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
@@ -51,6 +51,7 @@ BUILTIN = [
     ("📋", "Área de Transferência", "Histórico do que você copiou (Ctrl+Shift+V)", "area-transferencia", "area_transferencia.pyw"),
     ("⏱️", "Rastreador de Tempo", "Quanto tempo você passa em cada app", "rastreador-tempo", "rastreador_tempo.pyw"),
     ("🛰️", "GPS Falso", "Simula um GPS (NMEA) por TCP/UDP pra apps de navegação", "gps-falso", "gps_falso.pyw"),
+    ("🇧🇷", "Ferramentas BR", "74 ferramentas: gerar/validar CPF, CNPJ, texto, matemática…", "ferramentas-br", "ferramentas_br.pyw"),
 ]
 
 QSS = """

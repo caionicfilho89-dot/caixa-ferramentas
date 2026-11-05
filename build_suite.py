@@ -37,11 +37,12 @@ TOOLS = {
     "area-transferencia": "area_transferencia.pyw",
     "rastreador-tempo": "rastreador_tempo.pyw",
     "gps-falso": "gps_falso.pyw",
+    "ferramentas-br": "ferramentas_br.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
 COLLECT_ALL = ["soundcard", "winrt", "winocr", "pillow_heif", "pikepdf", "segno",
-               "send2trash", "piexif"]
+               "send2trash", "piexif", "spellchecker"]
 
 
 def stage():
