@@ -46,6 +46,7 @@ BUILTIN = [
     ("✎", "Renomeador em Lote", "Renomeia vários arquivos com prévia", "renomeador", "renomeador.pyw"),
     ("📋", "Área de Transferência", "Histórico do que você copiou (Ctrl+Shift+V)", "area-transferencia", "area_transferencia.pyw"),
     ("⏱️", "Rastreador de Tempo", "Quanto tempo você passa em cada app", "rastreador-tempo", "rastreador_tempo.pyw"),
+    ("🛰️", "GPS Falso", "Simula um GPS (NMEA) por TCP/UDP pra apps de navegação", "gps-falso", "gps_falso.pyw"),
 ]
 
 QSS = """

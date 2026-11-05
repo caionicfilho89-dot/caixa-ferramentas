@@ -36,6 +36,7 @@ TOOLS = {
     "renomeador": "renomeador.pyw",
     "area-transferencia": "area_transferencia.pyw",
     "rastreador-tempo": "rastreador_tempo.pyw",
+    "gps-falso": "gps_falso.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
