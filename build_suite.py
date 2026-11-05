@@ -81,7 +81,13 @@ def stage():
 
 def _write_entry(modmap):
     app = '''"""Entry point empacotado da Caixa de Ferramentas."""
+import os
 import sys
+
+# no exe: deixa o ffmpeg empacotado visível pras ferramentas (gravador, conversor A/V)
+if getattr(sys, "frozen", False):
+    base = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
+    os.environ["PATH"] = base + os.pathsep + os.path.dirname(sys.executable) + os.pathsep + os.environ.get("PATH", "")
 
 MODMAP = %r
 
@@ -127,6 +133,13 @@ def build(modmap, modules):
            "--distpath", os.path.join(HERE, "dist"),
            "--workpath", os.path.join(HERE, "build_tmp"),
            "--specpath", HERE]
+    ico = os.path.join(HERE, "caixa.ico")
+    if os.path.exists(ico):
+        cmd += ["--icon", ico]
+    # empacota o ffmpeg (se estiver em vendor/) pras ferramentas de mídia funcionarem sozinhas
+    ff = os.path.join(HERE, "vendor", "ffmpeg.exe")
+    if os.path.exists(ff):
+        cmd += ["--add-binary", ff + os.pathsep + "."]
     for mod in modules:
         cmd += ["--hidden-import", mod]
     for pkg in COLLECT_ALL:

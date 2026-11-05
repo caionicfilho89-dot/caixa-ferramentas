@@ -10,8 +10,10 @@ import json
 import os
 import subprocess
 import sys
+import urllib.request
+import webbrowser
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QThread, pyqtSignal
 from PyQt6.QtGui import QColor, QIcon, QPainter, QPixmap
 from PyQt6.QtWidgets import (QApplication, QFileDialog, QFrame, QGridLayout, QHBoxLayout,
                              QInputDialog, QLabel, QLineEdit, QMenu, QMessageBox, QPushButton,
@@ -20,6 +22,8 @@ from PyQt6.QtWidgets import (QApplication, QFileDialog, QFrame, QGridLayout, QHB
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
+APP_VERSION = "1.2.0"
+REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
 CFG_DIR = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")), "CaixaFerramentas")
@@ -69,6 +73,8 @@ QPushButton:hover { background:#2d3550; }
 QPushButton:checked { background:#2a2740; color:#c9b8ff; }
 #add { background:#1d2b22; }
 #add:hover { background:#28402f; }
+#update { background:#3a2f12; color:#ffd166; font-weight:600; }
+#update:hover { background:#4a3c18; }
 """
 
 
@@ -94,6 +100,40 @@ def pythonw():
     d = os.path.dirname(exe)
     cand = os.path.join(d, "pythonw.exe")
     return cand if os.path.exists(cand) else exe
+
+
+def window_icon():
+    ico = os.path.join(HERE, "caixa.ico")
+    if os.path.exists(ico):
+        return QIcon(ico)
+    return app_icon()
+
+
+def _ver_tuple(s):
+    out = []
+    for p in str(s).lstrip("vV").split("."):
+        try:
+            out.append(int(p))
+        except ValueError:
+            out.append(0)
+    return tuple(out)
+
+
+class UpdateThread(QThread):
+    """Checa (no GitHub) se saiu versão nova. Silencioso se falhar/sem internet."""
+    found = pyqtSignal(str, str)  # tag, url
+
+    def run(self):
+        try:
+            req = urllib.request.Request(
+                f"https://api.github.com/repos/{REPO}/releases/latest",
+                headers={"User-Agent": "CaixaDeFerramentas"})
+            data = json.load(urllib.request.urlopen(req, timeout=8))
+            tag = data.get("tag_name", "")
+            if tag and _ver_tuple(tag) > _ver_tuple(APP_VERSION):
+                self.found.emit(tag, data.get("html_url", ""))
+        except Exception:
+            pass
 
 
 def load_cfg():
@@ -172,11 +212,12 @@ class Caixa(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Caixa de Ferramentas do Caio")
-        self.setWindowIcon(app_icon())
+        self.setWindowIcon(window_icon())
         self.resize(800, 660)
         self.cfg = load_cfg()
         self.cfg.setdefault("favorites", [])
         self.cfg.setdefault("extra_tools", [])
+        self.cfg.setdefault("uses", {})
         self.extra_tools = [tuple(t) for t in self.cfg["extra_tools"]]
 
         root = QVBoxLayout(self)
@@ -191,12 +232,17 @@ class Caixa(QWidget):
         tt.addWidget(self.sub)
         head.addLayout(tt)
         head.addStretch(1)
+        self.update_btn = QPushButton("🔔  Atualizar")
+        self.update_btn.setObjectName("update")
+        self.update_btn.hide()
+        self.update_btn.clicked.connect(self._open_update)
         self.boot_btn = QPushButton("🔌  Abrir no boot")
         self.boot_btn.setCheckable(True)
         self.boot_btn.setChecked(os.path.exists(BOOT_LNK))
         self.boot_btn.clicked.connect(self.toggle_boot)
         self.sc_btn = QPushButton("📌  Menu Iniciar")
         self.sc_btn.clicked.connect(self.make_shortcut)
+        head.addWidget(self.update_btn, 0, Qt.AlignmentFlag.AlignTop)
         head.addWidget(self.boot_btn, 0, Qt.AlignmentFlag.AlignTop)
         head.addWidget(self.sc_btn, 0, Qt.AlignmentFlag.AlignTop)
         root.addLayout(head)
@@ -227,8 +273,29 @@ class Caixa(QWidget):
         self.search.setFocus()
         self.rebuild()
 
+        # checa atualização em segundo plano (silencioso se falhar)
+        self._upd = UpdateThread()
+        self._upd.found.connect(self._on_update)
+        self._upd.start()
+
     def all_tools(self):
         return BUILTIN + self.extra_tools
+
+    def _lay_section(self, title, tools, row):
+        cols = 3
+        if title:
+            self.grid.addWidget(QLabel(title, objectName="section"), row, 0, 1, cols)
+            row += 1
+        col = 0
+        for t in tools:
+            self.grid.addWidget(Card(t, self, t[3] in self.cfg["favorites"]), row, col)
+            col += 1
+            if col >= cols:
+                col = 0
+                row += 1
+        if col != 0:
+            row += 1
+        return row
 
     def rebuild(self):
         q = self.search.text().lower().strip()
@@ -238,32 +305,23 @@ class Caixa(QWidget):
                 it.widget().deleteLater()
         tools = [t for t in self.all_tools()
                  if not q or q in t[1].lower() or q in t[2].lower()]
-        favs = self.cfg["favorites"]
-        # favoritos primeiro, mantendo a ordem original dentro de cada grupo
-        tools.sort(key=lambda t: (t[3] not in favs,))
-        cols = 3
-        row = 0
-        col = 0
-        # cabeçalho "Favoritos" se houver algum visível
-        has_fav = any(t[3] in favs for t in tools)
-        if has_fav and not q:
-            lbl = QLabel("★ Favoritos", objectName="section")
-            self.grid.addWidget(lbl, row, 0, 1, cols)
-            row += 1
-        inserted_all_header = False
-        for t in tools:
-            if has_fav and not q and t[3] not in favs and not inserted_all_header:
-                if col != 0:
-                    row += 1
-                    col = 0
-                self.grid.addWidget(QLabel("Todas", objectName="section"), row, 0, 1, cols)
-                row += 1
-                inserted_all_header = True
-            self.grid.addWidget(Card(t, self, t[3] in favs), row, col)
-            col += 1
-            if col >= cols:
-                col = 0
-                row += 1
+        if q:
+            self._lay_section(None, tools, 0)
+        else:
+            favs = self.cfg["favorites"]
+            uses = self.cfg["uses"]
+            fav_tools = [t for t in tools if t[3] in favs]
+            rest = [t for t in tools if t[3] not in favs]
+            used = sorted([t for t in rest if uses.get(t[3], 0) > 0],
+                          key=lambda t: -uses.get(t[3], 0))[:4]
+            used_keys = {t[3] for t in used}
+            todas = [t for t in rest if t[3] not in used_keys]
+            row = 0
+            if fav_tools:
+                row = self._lay_section("★ Favoritos", fav_tools, row)
+            if used:
+                row = self._lay_section("🔥 Mais usadas", used, row)
+            row = self._lay_section("Todas" if (fav_tools or used) else None, todas, row)
         self.sub.setText(f"{len(self.all_tools())} ferramentas, tudo offline. Clique pra abrir.")
 
     # ---- abrir ----
@@ -278,8 +336,21 @@ class Caixa(QWidget):
             else:
                 subprocess.Popen([pythonw(), card.path], cwd=os.path.dirname(card.path))
             self.status.setText("Abrindo " + card.tool[1] + "…")
+            self.cfg["uses"][card.key] = self.cfg["uses"].get(card.key, 0) + 1
+            save_cfg(self.cfg)
+            self.rebuild()
         except Exception as e:  # noqa: BLE001
             QMessageBox.critical(self, "Erro", str(e))
+
+    # ---- atualização ----
+    def _on_update(self, tag, url):
+        self._update_url = url or f"https://github.com/{REPO}/releases/latest"
+        self.update_btn.setText(f"🔔  Atualizar ({tag})")
+        self.update_btn.show()
+        self.status.setText(f"Saiu uma versão nova: {tag}. Clique em Atualizar.")
+
+    def _open_update(self):
+        webbrowser.open(getattr(self, "_update_url", f"https://github.com/{REPO}/releases/latest"))
 
     # ---- favoritos ----
     def toggle_fav(self, key):

@@ -3,7 +3,7 @@
 ; Compilar com:  ISCC.exe instalador.iss   (depois de rodar build_suite.py)
 
 #define AppName "Caixa de Ferramentas"
-#define AppVer "1.1.0"
+#define AppVer "1.2.0"
 #define AppPublisher "caionicfilho89-dot"
 #define MainExe "Caixa.exe"
 
@@ -21,7 +21,7 @@ OutputBaseFilename=CaixaDeFerramentas-Setup-{#AppVer}
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
-SetupIconFile=
+SetupIconFile=caixa.ico
 UninstallDisplayName={#AppName}
 UninstallDisplayIcon={app}\{#MainExe}
 
