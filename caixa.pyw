@@ -92,6 +92,11 @@ BUILTIN = [
     ("🎹", "Metrônomo e Afinador", "Metrônomo preciso + afinador pelo microfone", "metronomo", "metronomo.pyw"),
     ("🌍", "Relógio Mundial", "Fusos, conversor de horário e planejar reunião", "relogio-mundial", "relogio_mundial.pyw"),
     ("🗺️", "Quiz de Geografia", "Capitais, bandeiras, continentes e estados do Brasil", "quiz-geografia", "quiz_geografia.pyw"),
+    ("🪟", "Janelas", "Sempre no topo, transparência, metades/quadrantes e layouts", "janelas", "janelas.pyw"),
+    ("🔊", "Volume por App", "Volume separado pra cada programa + perfis", "volume-apps", "volume_apps.pyw"),
+    ("📁", "Comparar Pastas", "Diferenças entre duas pastas e cópia com prévia", "comparar-pastas", "comparar_pastas.pyw"),
+    ("🌱", "Variáveis de Ambiente", "Editor do PATH e variáveis do usuário com backup", "variaveis-ambiente", "variaveis_ambiente.pyw"),
+    ("🖼️", "Galeria de Fotos", "Miniaturas, slideshow, EXIF e girar JPG sem perda", "galeria-fotos", "galeria_fotos.pyw"),
 ]
 
 QSS = """

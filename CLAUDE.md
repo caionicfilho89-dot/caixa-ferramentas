@@ -32,9 +32,10 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   certificado-ssl (ssl_), caderno-python (cp_). Repos da rodada 7 a criar.
 - Rodada 8 ✅ integrada (58 ferramentas): treino-digitacao (td_), sudoku (sdk_), metronomo (mt_),
   relogio-mundial (rm_), quiz-geografia (qg_). Repos da rodada 8 a criar.
-- Rodada 9 ⏳ lançada: janelas (jn_), volume-apps (va_), comparar-pastas (cpz_), variaveis-ambiente (ve_), galeria-fotos (gf_).
-  ⚠️ 2026-11-06 ~madrugada: limite de 5h estourou no meio da rodada 9 (reset 4:30). Retomar cada agente via
-  SendMessage se for a mesma sessão; se for sessão nova, conferir o que existe em cada pasta e relançar só o que falta.
+- Rodada 9 ✅ integrada (63 ferramentas): janelas (jn_), volume-apps (va_), comparar-pastas (cpz_),
+  variaveis-ambiente (ve_), galeria-fotos (gf_). Repos das rodadas 2–9 a criar (comando único com `git remote | grep -q origin ||`).
+- Rodada 10 ⏳ lançada: curriculo-pdf (cv_), etiquetas (et_), analisador-texto (at_), texto-fala (tts_), player-musica (pm_).
+  Depois dela o BACKLOG acaba → escrever rodadas 11+ antes de seguir.
 - Se o classificador do auto mode cair ("no verdict"), Bash trava: auditar só com Read/Grep e usar /loop pra retomar.
 
 ## Estrutura

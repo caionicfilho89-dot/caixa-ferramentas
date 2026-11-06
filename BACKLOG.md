@@ -8,7 +8,7 @@ módulos auxiliares com prefixo único, testada (py_compile + lógica + GUI offs
 nada que sirva pra golpe/ataque a terceiros.
 
 ## ✅ Na Caixa
-1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 · 44–48 Rodada 6 · 49–53 Rodada 7 · 54–58 Rodada 8 (no código, sem build)
+1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 · 44–48 Rodada 6 · 49–53 Rodada 7 · 54–58 Rodada 8 · 59–63 Rodada 9 (no código, sem build)
 
 ## ✅ Rodada 1 (integrada na v1.4.0)
 - 🛡️ Kit do Hacker — codificar/decodificar, hash, JWT, timestamp
@@ -67,14 +67,14 @@ nada que sirva pra golpe/ataque a terceiros.
 - 🌍 Relógio mundial — fusos, conversor de horário, "melhor horário pra reunião"
 - 🗺️ Quiz de geografia — bandeiras (desenhadas), capitais, estados do Brasil
 
-### 🔨 Rodada 9 — Windows turbinado (em construção)
+### ✅ Rodada 9 — Windows turbinado (integrada)
 - 🪟 Janelas — deixar qualquer janela sempre no topo, transparência, centralizar, layouts lado a lado
 - 🔊 Volume por App — controlar o volume de cada programa separado, perfis
 - 📁 Comparar Pastas — diferenças entre duas pastas (novos/alterados/faltando), copiar com prévia
 - 🌱 Variáveis de Ambiente — ver/editar PATH e variáveis do usuário com backup
 - 🖼️ Galeria de Fotos — visualizador rápido de pasta, slideshow, EXIF, girar sem perda
 
-### Rodada 10 — criadores e escrita
+### 🔨 Rodada 10 — criadores e escrita (em construção)
 - 📄 Currículo em PDF — modelos bonitos, preenche e exporta
 - 🏷️ Etiquetas em lote — etiquetas/QR/códigos de barras pra imprimir em folha A4
 - ✍️ Analisador de Texto — legibilidade, palavras repetidas, tempo de leitura, frases longas
