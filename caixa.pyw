@@ -87,6 +87,11 @@ BUILTIN = [
     ("🛡️", "Boas Práticas do Site", "Nota A–F dos cabeçalhos de segurança do seu site", "cabecalhos-seguranca", "cabecalhos_seguranca.pyw"),
     ("🔏", "Certificado SSL", "Validade e detalhes do certificado + monitor de vencimento", "certificado-ssl", "certificado_ssl.pyw"),
     ("🐍", "Caderno Python", "Células de código estilo Jupyter, exporta .ipynb", "caderno-python", "caderno_python.pyw"),
+    ("⌨️", "Treino de Digitação", "Textos em pt-BR, lições ABNT2, PPM e precisão", "treino-digitacao", "treino_digitacao.pyw"),
+    ("🧩", "Sudoku", "Sudoku com 4 níveis, notas, dicas e estatísticas", "sudoku", "sudoku.pyw"),
+    ("🎹", "Metrônomo e Afinador", "Metrônomo preciso + afinador pelo microfone", "metronomo", "metronomo.pyw"),
+    ("🌍", "Relógio Mundial", "Fusos, conversor de horário e planejar reunião", "relogio-mundial", "relogio_mundial.pyw"),
+    ("🗺️", "Quiz de Geografia", "Capitais, bandeiras, continentes e estados do Brasil", "quiz-geografia", "quiz_geografia.pyw"),
 ]
 
 QSS = """

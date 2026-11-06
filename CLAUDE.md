@@ -30,7 +30,9 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   leitor-ebooks (eb_), organizador-downloads (od_). Repos da rodada 6 a criar.
 - Rodada 7 ✅ integrada (53 ferramentas): cliente-api (api_), visualizador-sqlite (sq_), cabecalhos-seguranca (hs_),
   certificado-ssl (ssl_), caderno-python (cp_). Repos da rodada 7 a criar.
-- Rodada 8 ⏳ lançada: treino-digitacao (td_), sudoku (sdk_), metronomo (mt_), relogio-mundial (rm_), quiz-geografia (qg_).
+- Rodada 8 ✅ integrada (58 ferramentas): treino-digitacao (td_), sudoku (sdk_), metronomo (mt_),
+  relogio-mundial (rm_), quiz-geografia (qg_). Repos da rodada 8 a criar.
+- Rodada 9 ⏳ lançada: janelas (jn_), volume-apps (va_), comparar-pastas (cpz_), variaveis-ambiente (ve_), galeria-fotos (gf_).
 - Se o classificador do auto mode cair ("no verdict"), Bash trava: auditar só com Read/Grep e usar /loop pra retomar.
 
 ## Estrutura
