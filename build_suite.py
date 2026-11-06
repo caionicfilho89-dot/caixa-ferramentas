@@ -58,6 +58,11 @@ TOOLS = {
     "paletas": "paletas_cores.pyw",
     "webcam": "webcam_foto.pyw",
     "fontes": "visualizador_fontes.pyw",
+    "rede": "ferramentas_rede.pyw",
+    "sorteios": "sorteios.pyw",
+    "saude": "saude.pyw",
+    "calculadora-cientifica": "calculadora_cientifica.pyw",
+    "flashcards": "flashcards.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

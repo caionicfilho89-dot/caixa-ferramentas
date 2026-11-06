@@ -72,6 +72,11 @@ BUILTIN = [
     ("🌈", "Paletas de Cores", "Harmonias, cores de uma foto, contraste WCAG, gradiente", "paletas", "paletas_cores.pyw"),
     ("📷", "Webcam", "Espelho, foto e vídeo curto com filtros", "webcam", "webcam_foto.pyw"),
     ("🔤", "Visualizador de Fontes", "Todas as fontes do PC, comparar e ver .ttf sem instalar", "fontes", "visualizador_fontes.pyw"),
+    ("🌐", "Rede", "Minha conexão, IP público, ping, DNS e teste de velocidade", "rede", "ferramentas_rede.pyw"),
+    ("🎲", "Sorteios", "Amigo secreto, dividir times, roleta, moeda e dados", "sorteios", "sorteios.pyw"),
+    ("🏋️", "Saúde", "IMC, água, calorias, sono, FC e diário de peso", "saude", "saude.pyw"),
+    ("🧮", "Calculadora Científica", "Calculadora, gráficos de funções e equações", "calculadora-cientifica", "calculadora_cientifica.pyw"),
+    ("📚", "Flashcards", "Cartões de estudo com repetição espaçada", "flashcards", "flashcards.pyw"),
 ]
 
 QSS = """
