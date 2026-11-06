@@ -33,6 +33,8 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
 - Rodada 8 ✅ integrada (58 ferramentas): treino-digitacao (td_), sudoku (sdk_), metronomo (mt_),
   relogio-mundial (rm_), quiz-geografia (qg_). Repos da rodada 8 a criar.
 - Rodada 9 ⏳ lançada: janelas (jn_), volume-apps (va_), comparar-pastas (cpz_), variaveis-ambiente (ve_), galeria-fotos (gf_).
+  ⚠️ 2026-11-06 ~madrugada: limite de 5h estourou no meio da rodada 9 (reset 4:30). Retomar cada agente via
+  SendMessage se for a mesma sessão; se for sessão nova, conferir o que existe em cada pasta e relançar só o que falta.
 - Se o classificador do auto mode cair ("no verdict"), Bash trava: auditar só com Read/Grep e usar /loop pra retomar.
 
 ## Estrutura
