@@ -43,5 +43,5 @@ nada que sirva pra golpe/ataque a terceiros.
 - 🌐 Rede — meu IP, ping, DNS, traceroute, Wi-Fi conectado, teste de velocidade
 - 🎲 Sorteios — amigo secreto, dividir times, roleta, cara ou coroa, dados
 - 🏋️ Saúde — IMC, água por dia, calorias, sono
-- ⌨️ Expansor de texto — atalhos que viram textos (ex.: ;email)
+- 📚 Flashcards — estudo com repetição espaçada (SM-2) [substituiu o expansor de texto]
 - 🧮 Calculadora científica + gráfico de funções

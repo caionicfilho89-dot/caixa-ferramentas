@@ -24,7 +24,7 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   compactador (cz_), cripto-arquivos (ca_). Repos das rodadas 2 e 3 a criar.
 - Rodada 4 ✅ integrada (38 ferramentas): editor-imagem (ei_), gravador-voz (gv_), paletas (pl_), webcam (wc_),
   fontes (fn_). Repos da rodada 4 a criar.
-- Rodada 5 ⏳ lançada: rede (rd_), sorteios (st_), saude (sd_), expansor-texto (et_), calculadora-cientifica (cc_).
+- Rodada 5 ⏳ lançada: rede (rd_), sorteios (st_), saude (sd_), calculadora-cientifica (cc_), flashcards (fc_). (Expansor de texto saiu da rodada: exigiria hook global de teclado.)
   Depois dela o BACKLOG acaba → capitão escreve as rodadas 6+ no BACKLOG antes de seguir.
 
 ## Estrutura
