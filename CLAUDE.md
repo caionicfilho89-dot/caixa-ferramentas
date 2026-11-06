@@ -13,7 +13,9 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
 
 ## Estado atual (ATUALIZE ao fim de cada rodada)
 - Caixa v1.4.0 = 23 ferramentas (selftest OK: 23), instalador `instalador\CaixaDeFerramentas-Setup-1.4.0.exe`.
-  (v1.3.0 nunca virou instalador — pulou direto pra 1.4.0.)
+  (v1.3.0 nunca virou instalador — pulou direto pra 1.4.0.) Release v1.4.0 PUBLICADA e os 6 repos
+  (ferramentas-br, kit-hacker, ferramentas-dev, calculadora-clt, conversor-unidades, pix-boleto) criados.
+- Limite de 5h de uso: se agentes caírem com 429, retomar cada um via SendMessage após o reset.
 - Rodada 1 ✅ integrada: kit-hacker (20) · ferramentas-dev (16) · calculadora-clt (7) ·
   conversor-unidades (15 categorias) · pix-boleto (3 abas).
 - Rodada 2 ⏳ lançada (agentes sonnet): financas (fin_), tempo (tm_), notas-md (nm_), tarefas (tf_), calendario-br (cal_).
