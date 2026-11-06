@@ -82,6 +82,11 @@ BUILTIN = [
     ("📇", "Contatos", "Agenda offline com vCard, WhatsApp e aniversários", "contatos", "contatos.pyw"),
     ("📖", "Leitor de E-books", "Lê EPUB/TXT com sumário, marcadores e modo noturno", "leitor-ebooks", "leitor_ebooks.pyw"),
     ("🗂️", "Organizador de Downloads", "Organiza a pasta por tipo (só move, com desfazer)", "organizador-downloads", "organizador.pyw"),
+    ("🧪", "Cliente de API", "Requisições HTTP estilo Postman, coleções e cURL", "cliente-api", "cliente_api.pyw"),
+    ("🗄️", "Visualizador SQLite", "Abre bancos .db, navega tabelas e roda SQL", "visualizador-sqlite", "visualizador_sqlite.pyw"),
+    ("🛡️", "Boas Práticas do Site", "Nota A–F dos cabeçalhos de segurança do seu site", "cabecalhos-seguranca", "cabecalhos_seguranca.pyw"),
+    ("🔏", "Certificado SSL", "Validade e detalhes do certificado + monitor de vencimento", "certificado-ssl", "certificado_ssl.pyw"),
+    ("🐍", "Caderno Python", "Células de código estilo Jupyter, exporta .ipynb", "caderno-python", "caderno_python.pyw"),
 ]
 
 QSS = """

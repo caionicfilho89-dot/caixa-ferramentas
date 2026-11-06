@@ -8,7 +8,7 @@ módulos auxiliares com prefixo único, testada (py_compile + lógica + GUI offs
 nada que sirva pra golpe/ataque a terceiros.
 
 ## ✅ Na Caixa
-1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 · 44–48 Rodada 6 (no código, sem build)
+1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 · 44–48 Rodada 6 · 49–53 Rodada 7 (no código, sem build)
 
 ## ✅ Rodada 1 (integrada na v1.4.0)
 - 🛡️ Kit do Hacker — codificar/decodificar, hash, JWT, timestamp
@@ -53,14 +53,14 @@ nada que sirva pra golpe/ataque a terceiros.
 - 📖 Leitor de E-books — EPUB/TXT, marcadores, tamanho de fonte, modo noturno
 - 🗂️ Organizador de Downloads — regras por tipo/data, MOVE (nunca apaga), desfazer
 
-### 🔨 Rodada 7 — dev e segurança defensiva (em construção)
+### ✅ Rodada 7 — dev e segurança defensiva (integrada)
 - 🧪 Cliente de API — requisições HTTP estilo Postman (coleções, histórico, JSON bonito)
 - 🗄️ Visualizador SQLite — abre .db, navega tabelas, roda SELECT, exporta CSV
 - 🛡️ Checar cabeçalhos de segurança do SEU site — HSTS/CSP/X-Frame etc. com explicação
 - 🔏 Certificado SSL — ver validade/emissor/cadeia de um domínio, avisar vencimento
 - 🐍 Caderno Python — rodar snippets locais com saída, salvar trechos
 
-### Rodada 8 — aprender e se divertir
+### 🔨 Rodada 8 — aprender e se divertir (em construção)
 - ⌨️ Treino de digitação — PPM, precisão, textos em pt-BR
 - 🧩 Sudoku — gerador com níveis, dicas, notas
 - 🎹 Metrônomo e afinador — BPM com batida; afinador pelo microfone

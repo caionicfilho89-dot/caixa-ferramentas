@@ -68,11 +68,16 @@ TOOLS = {
     "contatos": "contatos.pyw",
     "leitor-ebooks": "leitor_ebooks.pyw",
     "organizador-downloads": "organizador.pyw",
+    "cliente-api": "cliente_api.pyw",
+    "visualizador-sqlite": "visualizador_sqlite.pyw",
+    "cabecalhos-seguranca": "cabecalhos_seguranca.pyw",
+    "certificado-ssl": "certificado_ssl.pyw",
+    "caderno-python": "caderno_python.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
 COLLECT_ALL = ["soundcard", "winrt", "winocr", "pillow_heif", "pikepdf", "segno",
-               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl"]
+               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi"]
 
 
 def stage():
