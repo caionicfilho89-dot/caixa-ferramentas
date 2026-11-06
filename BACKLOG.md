@@ -8,7 +8,7 @@ módulos auxiliares com prefixo único, testada (py_compile + lógica + GUI offs
 nada que sirva pra golpe/ataque a terceiros.
 
 ## ✅ Na Caixa
-1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0)
+1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 (no código, sem build)
 
 ## ✅ Rodada 1 (integrada na v1.4.0)
 - 🛡️ Kit do Hacker — codificar/decodificar, hash, JWT, timestamp
@@ -18,14 +18,14 @@ nada que sirva pra golpe/ataque a terceiros.
 - 💸 Pix & Boleto — gerar Pix pra receber, ler Pix, conferir boleto
 
 ## 📋 Próximas rodadas (ordem de prioridade)
-### Rodada 2 — dia a dia
+### ✅ Rodada 2 — dia a dia (integrada)
 - 💵 Finanças pessoais — juros compostos, financiamento SAC/Price, CDB x poupança x Tesouro, dividir conta
 - ⏱️ Tempo — pomodoro, cronômetro, timer, alarme, desligar o PC agendado
 - 📝 Notas Markdown — editor com prévia, pastas, busca
 - ✅ Tarefas e lembretes — to-do com prazo + aviso na bandeja
 - 📅 Calendário BR — feriados nacionais, dias úteis entre datas, contagem regressiva
 
-### Rodada 3 — PC
+### 🔨 Rodada 3 — PC (em construção)
 - 📊 Monitor do sistema — CPU/RAM/disco/rede ao vivo, processos, temperatura se der
 - 🖥️ Info do PC — hardware, Windows, bateria (saúde), drivers
 - 🚀 Inicialização — ver/desativar programas que abrem com o Windows

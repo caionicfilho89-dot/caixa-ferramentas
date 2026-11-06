@@ -18,7 +18,9 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
 - Limite de 5h de uso: se agentes caírem com 429, retomar cada um via SendMessage após o reset.
 - Rodada 1 ✅ integrada: kit-hacker (20) · ferramentas-dev (16) · calculadora-clt (7) ·
   conversor-unidades (15 categorias) · pix-boleto (3 abas).
-- Rodada 2 ⏳ lançada (agentes sonnet): financas (fin_), tempo (tm_), notas-md (nm_), tarefas (tf_), calendario-br (cal_).
+- Rodada 2 ✅ integrada no código (SEM build, 28 ferramentas no caixa.pyw): financas (fin_), tempo (tm_),
+  notas-md (nm_), tarefas (tf_), calendario-br (cal_). Repos dessas 5 ainda não criados.
+- Rodada 3 ⏳ lançada: monitor-sistema (ms_), info-pc (ip_), inicializacao (ini_), compactador (cz_), cripto-arquivos (ca_).
 
 ## Estrutura
 - Cada ferramenta = pasta irmã em `C:\Users\caion\<pasta>` (BASE = pai desta pasta).

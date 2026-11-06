@@ -57,6 +57,11 @@ BUILTIN = [
     ("💰", "Calculadora CLT", "Salário líquido, férias, 13º, rescisão, horas extras (2026)", "calculadora-clt", "calculadora_clt.pyw"),
     ("📏", "Conversor de Unidades", "14 tipos de medida + moedas com cotação", "conversor-unidades", "conversor_unidades.pyw"),
     ("💸", "Pix & Boleto", "Gera Pix pra receber, lê Pix e confere boleto", "pix-boleto", "pix_boleto.pyw"),
+    ("💵", "Finanças", "Juros, financiamento SAC/Price, CDB x poupança, dividir conta", "financas", "financas.pyw"),
+    ("⏲️", "Tempo", "Pomodoro, cronômetro, timers, alarmes, desligar o PC agendado", "tempo", "tempo.pyw"),
+    ("🗒️", "Notas", "Notas em Markdown com prévia, busca e exportar PDF", "notas-md", "notas.pyw"),
+    ("✅", "Tarefas", "Tarefas e lembretes; entende \"pagar luz amanhã 18h\"", "tarefas", "tarefas.pyw"),
+    ("📅", "Calendário BR", "Feriados, dias úteis, contagem regressiva", "calendario-br", "calendario_br.pyw"),
 ]
 
 QSS = """

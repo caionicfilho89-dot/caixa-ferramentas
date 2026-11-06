@@ -43,6 +43,11 @@ TOOLS = {
     "calculadora-clt": "calculadora_clt.pyw",
     "conversor-unidades": "conversor_unidades.pyw",
     "pix-boleto": "pix_boleto.pyw",
+    "financas": "financas.pyw",
+    "tempo": "tempo.pyw",
+    "notas-md": "notas.pyw",
+    "tarefas": "tarefas.pyw",
+    "calendario-br": "calendario_br.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
