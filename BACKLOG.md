@@ -8,7 +8,7 @@ módulos auxiliares com prefixo único, testada (py_compile + lógica + GUI offs
 nada que sirva pra golpe/ataque a terceiros.
 
 ## ✅ Na Caixa
-1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 · 44–48 Rodada 6 · 49–53 Rodada 7 · 54–58 Rodada 8 · 59–63 Rodada 9 (no código, sem build)
+1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 · 44–48 Rodada 6 · 49–53 Rodada 7 · 54–58 Rodada 8 · 59–63 Rodada 9 · 64–68 Rodada 10 (no código, sem build)
 
 ## ✅ Rodada 1 (integrada na v1.4.0)
 - 🛡️ Kit do Hacker — codificar/decodificar, hash, JWT, timestamp
@@ -74,10 +74,24 @@ nada que sirva pra golpe/ataque a terceiros.
 - 🌱 Variáveis de Ambiente — ver/editar PATH e variáveis do usuário com backup
 - 🖼️ Galeria de Fotos — visualizador rápido de pasta, slideshow, EXIF, girar sem perda
 
-### 🔨 Rodada 10 — criadores e escrita (em construção)
+### ✅ Rodada 10 — criadores e escrita (integrada)
 - 📄 Currículo em PDF — modelos bonitos, preenche e exporta
 - 🏷️ Etiquetas em lote — etiquetas/QR/códigos de barras pra imprimir em folha A4
 - ✍️ Analisador de Texto — legibilidade, palavras repetidas, tempo de leitura, frases longas
 - 🗣️ Texto para Fala — lê texto em voz alta com as vozes do Windows, salva WAV
 - 🎵 Player de Música — toca a pasta de músicas, playlists, equalizador simples
+
+### 🔨 Rodada 11 — vida organizada (em construção)
+- 🔐 Autenticador 2FA — códigos TOTP das SUAS contas, guardados criptografados, importa QR
+- 💳 Controle de Gastos — lançamentos, categorias, orçamento do mês, gráficos, importa CSV do banco
+- 🍳 Receitas — caderno de receitas, ajustar porções, lista de compras
+- 🚗 Controle do Carro — abastecimentos, consumo km/l, manutenções e lembretes
+- 🎯 Hábitos — checklist diário, sequências, calendário de progresso
+
+### Rodada 12 — criar e compartilhar
+- 📸 Scanner de Documentos — foto de documento → recorte/endireitar (OpenCV) → PDF
+- 🖍️ Quadro Branco — desenho livre, formas, texto, exportar PNG/PDF
+- 📊 Gerador de Gráficos — cola dados → gráfico bonito → PNG/SVG
+- 📡 Compartilhar na Rede — compartilhar uma pasta na rede de casa com senha + QR pro celular
+- 📓 Diário — diário pessoal criptografado com busca e humor do dia
 

@@ -97,6 +97,11 @@ BUILTIN = [
     ("📁", "Comparar Pastas", "Diferenças entre duas pastas e cópia com prévia", "comparar-pastas", "comparar_pastas.pyw"),
     ("🌱", "Variáveis de Ambiente", "Editor do PATH e variáveis do usuário com backup", "variaveis-ambiente", "variaveis_ambiente.pyw"),
     ("🖼️", "Galeria de Fotos", "Miniaturas, slideshow, EXIF e girar JPG sem perda", "galeria-fotos", "galeria_fotos.pyw"),
+    ("📄", "Currículo em PDF", "Monte seu currículo com 4 modelos e exporte PDF", "curriculo-pdf", "curriculo_pdf.pyw"),
+    ("🏷️", "Etiquetas", "Etiquetas A4 com QR/código de barras e mala direta", "etiquetas", "etiquetas.pyw"),
+    ("✍️", "Analisador de Texto", "Legibilidade, frases longas, repetições e ortografia", "analisador-texto", "analisador_texto.pyw"),
+    ("🗣️", "Texto para Fala", "Lê textos com as vozes do Windows e salva WAV/MP3", "texto-fala", "texto_fala.pyw"),
+    ("🎵", "Player de Música", "Toca suas músicas: biblioteca, capas e playlists", "player-musica", "player_musica.pyw"),
 ]
 
 QSS = """

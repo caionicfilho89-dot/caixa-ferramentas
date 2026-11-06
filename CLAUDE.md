@@ -34,8 +34,9 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   relogio-mundial (rm_), quiz-geografia (qg_). Repos da rodada 8 a criar.
 - Rodada 9 ✅ integrada (63 ferramentas): janelas (jn_), volume-apps (va_), comparar-pastas (cpz_),
   variaveis-ambiente (ve_), galeria-fotos (gf_). Repos das rodadas 2–9 a criar (comando único com `git remote | grep -q origin ||`).
-- Rodada 10 ⏳ lançada: curriculo-pdf (cv_), etiquetas (et_), analisador-texto (at_), texto-fala (tts_), player-musica (pm_).
-  Depois dela o BACKLOG acaba → escrever rodadas 11+ antes de seguir.
+- Rodada 10 ✅ integrada (68 ferramentas): curriculo-pdf (cv_), etiquetas (et_), analisador-texto (at_),
+  texto-fala (tts_), player-musica (pm_). Repos rodada 9 criados; rodadas 2–8 e 10 a criar.
+- Rodada 11 ⏳ lançada: autenticador-2fa (fa_), controle-gastos (cg_), receitas (rc_), controle-carro (car_), habitos (hb_).
 - Se o classificador do auto mode cair ("no verdict"), Bash trava: auditar só com Read/Grep e usar /loop pra retomar.
 
 ## Estrutura

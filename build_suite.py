@@ -83,11 +83,16 @@ TOOLS = {
     "comparar-pastas": "comparar_pastas.pyw",
     "variaveis-ambiente": "variaveis_ambiente.pyw",
     "galeria-fotos": "galeria_fotos.pyw",
+    "curriculo-pdf": "curriculo_pdf.pyw",
+    "etiquetas": "etiquetas.pyw",
+    "analisador-texto": "analisador_texto.pyw",
+    "texto-fala": "texto_fala.pyw",
+    "player-musica": "player_musica.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
 COLLECT_ALL = ["soundcard", "winrt", "winocr", "pillow_heif", "pikepdf", "segno",
-               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes"]
+               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes", "mutagen"]
 
 
 def stage():
