@@ -62,6 +62,11 @@ BUILTIN = [
     ("🗒️", "Notas", "Notas em Markdown com prévia, busca e exportar PDF", "notas-md", "notas.pyw"),
     ("✅", "Tarefas", "Tarefas e lembretes; entende \"pagar luz amanhã 18h\"", "tarefas", "tarefas.pyw"),
     ("📅", "Calendário BR", "Feriados, dias úteis, contagem regressiva", "calendario-br", "calendario_br.pyw"),
+    ("📊", "Monitor do Sistema", "CPU, memória, disco e rede ao vivo + processos", "monitor-sistema", "monitor_sistema.pyw"),
+    ("🖥️", "Info do PC", "Hardware, Windows, discos, vídeo, bateria — relatório", "info-pc", "info_pc.pyw"),
+    ("🚀", "Inicialização", "Liga/desliga o que abre com o Windows (com backup)", "inicializacao", "inicializacao.pyw"),
+    ("🗜️", "Compactador", "ZIP, ZIP com senha AES e TAR.GZ: criar, abrir, extrair", "compactador", "compactador.pyw"),
+    ("🔒", "Trancar Arquivos", "Tranca arquivos com senha (AES-256)", "cripto-arquivos", "cripto_arquivos.pyw"),
 ]
 
 QSS = """

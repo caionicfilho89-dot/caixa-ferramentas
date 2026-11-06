@@ -48,11 +48,16 @@ TOOLS = {
     "notas-md": "notas.pyw",
     "tarefas": "tarefas.pyw",
     "calendario-br": "calendario_br.pyw",
+    "monitor-sistema": "monitor_sistema.pyw",
+    "info-pc": "info_pc.pyw",
+    "inicializacao": "inicializacao.pyw",
+    "compactador": "compactador.pyw",
+    "cripto-arquivos": "cripto_arquivos.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
 COLLECT_ALL = ["soundcard", "winrt", "winocr", "pillow_heif", "pikepdf", "segno",
-               "send2trash", "piexif", "spellchecker"]
+               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil"]
 
 
 def stage():

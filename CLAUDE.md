@@ -20,7 +20,9 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   conversor-unidades (15 categorias) · pix-boleto (3 abas).
 - Rodada 2 ✅ integrada no código (SEM build, 28 ferramentas no caixa.pyw): financas (fin_), tempo (tm_),
   notas-md (nm_), tarefas (tf_), calendario-br (cal_). Repos dessas 5 ainda não criados.
-- Rodada 3 ⏳ lançada: monitor-sistema (ms_), info-pc (ip_), inicializacao (ini_), compactador (cz_), cripto-arquivos (ca_).
+- Rodada 3 ✅ integrada (33 ferramentas): monitor-sistema (ms_), info-pc (ip_), inicializacao (ini_),
+  compactador (cz_), cripto-arquivos (ca_). Repos das rodadas 2 e 3 a criar.
+- Rodada 4 ⏳ lançada: editor-imagem (ei_), gravador-voz (gv_), paletas (pl_), webcam (wc_), fontes (fn_).
 
 ## Estrutura
 - Cada ferramenta = pasta irmã em `C:\Users\caion\<pasta>` (BASE = pai desta pasta).
@@ -43,7 +45,7 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
 7. Testes: py_compile, teste de lógica com valores conhecidos, smoke test GUI
    (`QT_QPA_PLATFORM=offscreen`, `PYTHONIOENCODING=utf-8`). Manter `test_<px>.py`.
 8. README.md pt-BR, requirements.txt, .gitignore, LICENSE MIT (Caio, 2026), `git init` + commit
-   terminando com `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. Sem push.
+   terminando com a linha Co-Authored-By do SEU lembrete de atribuição (o modelo que você é). Sem push.
 9. Relatório final: pasta, script, funções + contagem, testes, deps pip.
 
 ## Checklist do capitão ao fim da rodada
