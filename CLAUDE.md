@@ -22,7 +22,10 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   notas-md (nm_), tarefas (tf_), calendario-br (cal_). Repos dessas 5 ainda não criados.
 - Rodada 3 ✅ integrada (33 ferramentas): monitor-sistema (ms_), info-pc (ip_), inicializacao (ini_),
   compactador (cz_), cripto-arquivos (ca_). Repos das rodadas 2 e 3 a criar.
-- Rodada 4 ⏳ lançada: editor-imagem (ei_), gravador-voz (gv_), paletas (pl_), webcam (wc_), fontes (fn_).
+- Rodada 4 ✅ integrada (38 ferramentas): editor-imagem (ei_), gravador-voz (gv_), paletas (pl_), webcam (wc_),
+  fontes (fn_). Repos da rodada 4 a criar.
+- Rodada 5 ⏳ lançada: rede (rd_), sorteios (st_), saude (sd_), expansor-texto (et_), calculadora-cientifica (cc_).
+  Depois dela o BACKLOG acaba → capitão escreve as rodadas 6+ no BACKLOG antes de seguir.
 
 ## Estrutura
 - Cada ferramenta = pasta irmã em `C:\Users\caion\<pasta>` (BASE = pai desta pasta).

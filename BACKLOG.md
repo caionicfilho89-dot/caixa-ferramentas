@@ -8,7 +8,7 @@ módulos auxiliares com prefixo único, testada (py_compile + lógica + GUI offs
 nada que sirva pra golpe/ataque a terceiros.
 
 ## ✅ Na Caixa
-1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 (no código, sem build)
+1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 (no código, sem build)
 
 ## ✅ Rodada 1 (integrada na v1.4.0)
 - 🛡️ Kit do Hacker — codificar/decodificar, hash, JWT, timestamp
@@ -32,14 +32,14 @@ nada que sirva pra golpe/ataque a terceiros.
 - 🗜️ Compactador — ZIP criar/extrair (com senha), ver conteúdo
 - 🔐 Criptografar arquivos — trancar/destrancar arquivo com senha (AES)
 
-### 🔨 Rodada 4 — mídia (em construção)
+### ✅ Rodada 4 — mídia (integrada)
 - 🖼️ Editor de imagem rápido — cortar, redimensionar, girar, marca d'água, filtros
 - 🎙️ Gravador de voz — microfone → MP3/WAV
 - 🎨 Paletas de cores — gerar paleta harmônica, extrair cores de uma foto
 - 📷 Webcam — espelho, foto, gravação curta
 - 🔤 Visualizador de fontes — ver todas as fontes instaladas com texto de exemplo
 
-### Rodada 5 — rede e diversão
+### 🔨 Rodada 5 — rede e diversão (em construção)
 - 🌐 Rede — meu IP, ping, DNS, traceroute, Wi-Fi conectado, teste de velocidade
 - 🎲 Sorteios — amigo secreto, dividir times, roleta, cara ou coroa, dados
 - 🏋️ Saúde — IMC, água por dia, calorias, sono

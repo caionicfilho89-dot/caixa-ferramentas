@@ -53,6 +53,11 @@ TOOLS = {
     "inicializacao": "inicializacao.pyw",
     "compactador": "compactador.pyw",
     "cripto-arquivos": "cripto_arquivos.pyw",
+    "editor-imagem": "editor_imagem.pyw",
+    "gravador-voz": "gravador_voz.pyw",
+    "paletas": "paletas_cores.pyw",
+    "webcam": "webcam_foto.pyw",
+    "fontes": "visualizador_fontes.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

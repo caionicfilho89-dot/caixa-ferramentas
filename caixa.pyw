@@ -67,6 +67,11 @@ BUILTIN = [
     ("🚀", "Inicialização", "Liga/desliga o que abre com o Windows (com backup)", "inicializacao", "inicializacao.pyw"),
     ("🗜️", "Compactador", "ZIP, ZIP com senha AES e TAR.GZ: criar, abrir, extrair", "compactador", "compactador.pyw"),
     ("🔒", "Trancar Arquivos", "Tranca arquivos com senha (AES-256)", "cripto-arquivos", "cripto_arquivos.pyw"),
+    ("🖌️", "Editor de Imagem", "Cortar, redimensionar, filtros, marca d'água, borrar área", "editor-imagem", "editor_imagem.pyw"),
+    ("🎙️", "Gravador de Voz", "Grava o microfone em WAV/MP3 com medidor de volume", "gravador-voz", "gravador_voz.pyw"),
+    ("🌈", "Paletas de Cores", "Harmonias, cores de uma foto, contraste WCAG, gradiente", "paletas", "paletas_cores.pyw"),
+    ("📷", "Webcam", "Espelho, foto e vídeo curto com filtros", "webcam", "webcam_foto.pyw"),
+    ("🔤", "Visualizador de Fontes", "Todas as fontes do PC, comparar e ver .ttf sem instalar", "fontes", "visualizador_fontes.pyw"),
 ]
 
 QSS = """
