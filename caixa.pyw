@@ -77,6 +77,11 @@ BUILTIN = [
     ("🏋️", "Saúde", "IMC, água, calorias, sono, FC e diário de peso", "saude", "saude.pyw"),
     ("🧮", "Calculadora Científica", "Calculadora, gráficos de funções e equações", "calculadora-cientifica", "calculadora_cientifica.pyw"),
     ("📚", "Flashcards", "Cartões de estudo com repetição espaçada", "flashcards", "flashcards.pyw"),
+    ("📈", "Visualizador de Planilhas", "Abre CSV/Excel, filtra, soma, gráficos e exporta", "visualizador-planilhas", "visualizador_planilhas.pyw"),
+    ("🧾", "Orçamentos e Recibos", "Orçamentos e recibos em PDF pra MEI/autônomo", "orcamentos", "orcamentos.pyw"),
+    ("📇", "Contatos", "Agenda offline com vCard, WhatsApp e aniversários", "contatos", "contatos.pyw"),
+    ("📖", "Leitor de E-books", "Lê EPUB/TXT com sumário, marcadores e modo noturno", "leitor-ebooks", "leitor_ebooks.pyw"),
+    ("🗂️", "Organizador de Downloads", "Organiza a pasta por tipo (só move, com desfazer)", "organizador-downloads", "organizador.pyw"),
 ]
 
 QSS = """

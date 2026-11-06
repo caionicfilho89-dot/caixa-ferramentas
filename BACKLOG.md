@@ -8,7 +8,7 @@ módulos auxiliares com prefixo único, testada (py_compile + lógica + GUI offs
 nada que sirva pra golpe/ataque a terceiros.
 
 ## ✅ Na Caixa
-1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 (no código, sem build)
+1–17 (kit-pdf … gps-falso) · 18 Ferramentas BR (74 funções) · 19–23 Rodada 1 (v1.4.0) · 24–28 Rodada 2 · 29–33 Rodada 3 · 34–38 Rodada 4 · 39–43 Rodada 5 · 44–48 Rodada 6 (no código, sem build)
 
 ## ✅ Rodada 1 (integrada na v1.4.0)
 - 🛡️ Kit do Hacker — codificar/decodificar, hash, JWT, timestamp
@@ -46,14 +46,14 @@ nada que sirva pra golpe/ataque a terceiros.
 - 📚 Flashcards — estudo com repetição espaçada (SM-2) [substituiu o expansor de texto]
 - 🧮 Calculadora científica + gráfico de funções
 
-### 🔨 Rodada 6 — escritório (em construção)
+### ✅ Rodada 6 — escritório (integrada)
 - 📈 Visualizador de Planilhas — abre CSV/XLSX, filtra, ordena, soma, gráfico, exporta
 - 🧾 Orçamentos e Recibos — pra MEI/autônomo: cadastro de clientes/itens, gera PDF com numeração
 - 📇 Contatos — agenda offline, importa/exporta vCard e CSV, busca, aniversários
 - 📖 Leitor de E-books — EPUB/TXT, marcadores, tamanho de fonte, modo noturno
 - 🗂️ Organizador de Downloads — regras por tipo/data, MOVE (nunca apaga), desfazer
 
-### Rodada 7 — dev e segurança defensiva
+### 🔨 Rodada 7 — dev e segurança defensiva (em construção)
 - 🧪 Cliente de API — requisições HTTP estilo Postman (coleções, histórico, JSON bonito)
 - 🗄️ Visualizador SQLite — abre .db, navega tabelas, roda SELECT, exporta CSV
 - 🛡️ Checar cabeçalhos de segurança do SEU site — HSTS/CSP/X-Frame etc. com explicação

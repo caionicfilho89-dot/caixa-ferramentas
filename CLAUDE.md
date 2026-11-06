@@ -26,8 +26,10 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   fontes (fn_). Repos da rodada 4 a criar.
 - Rodada 5 ✅ integrada (43 ferramentas): rede (rd_), sorteios (st_), saude (sd_), calculadora-cientifica (cc_),
   flashcards (fc_). Repos da rodada 5 a criar.
-- Rodada 6 ⏳ lançada: visualizador-planilhas (vp_), orcamentos (orc_), contatos (ct_), leitor-ebooks (eb_),
-  organizador-downloads (od_).
+- Rodada 6 ✅ integrada (48 ferramentas): visualizador-planilhas (vp_), orcamentos (orc_), contatos (ct_),
+  leitor-ebooks (eb_), organizador-downloads (od_). Repos da rodada 6 a criar.
+- Rodada 7 ⏳ lançada: cliente-api (api_), visualizador-sqlite (sq_), cabecalhos-seguranca (hs_),
+  certificado-ssl (ssl_), caderno-python (py_).
 
 ## Estrutura
 - Cada ferramenta = pasta irmã em `C:\Users\caion\<pasta>` (BASE = pai desta pasta).
