@@ -102,6 +102,11 @@ nada que sirva pra golpe/ataque a terceiros.
 - 🍽️ Gorjeta e Divisão — calcule gorjeta e divida a conta
 - 🖌️ Quadro Branco — desenho livre, formas, texto, exportar PNG/PDF
 
+## ✅ Rodada 29 — nichos do dia a dia (integrada — ~208 ferramentas com paralelas)
+- 🐾 Dose de Ração & Pet (`pet_`) — RER/MER de cão/gato, gramas/dia, água, idade humana
+- 💇 Cronograma Capilar & Oxidante (`cab_`) — agenda H/N/R + volumes↔% e diluição de oxigenada
+- 🧳 Divisor de Despesas em Grupo (`rct_`) — racha conta: saldos + menor nº de transferências
+
 ## ✅ Rodada 28 — jogos, mar e maternidade (integrada — 185 ferramentas no código)
 - 🎲 Laboratório de Dados RPG (`rpg_`) — distribuição exata NdM+K, P(≥alvo), vantagem/desvantagem, histograma
 - 🧭 Navegação & Rumo (`nav_`) — ortodrômica/loxodrômica, rumo, ponto de chegada, ETA em nós

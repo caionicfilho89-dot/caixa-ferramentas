@@ -177,7 +177,7 @@ BUILTIN = [
     ("\u23F1\ufe0f", "Cronômetro & Relógio Xadrez", "Cronometragem esportiva com voltas e relógio de xadrez com incremento", "estudio-cronometro", "crn_gui.pyw"),
     ("\U0001F333", "Árvore de Decisão & ID3", "Algoritmo ID3, cálculo de Entropia de Shannon e Ganho de Informação", "arvore-decisao", "tre_gui.pyw"),
     ("\U0001F50D", "Inspetor de Regex", "Testador de expressões regulares ao vivo com grupos e medição em milissegundos", "inspetor-regex", "rgx_gui.pyw"),
-        ("\U0001F578\ufe0f", "Estúdio de Grafos & Dijkstra", "Modelagem de topologias de rede, algoritmo de Dijkstra e menor caminho", "estudio-grafos", "grf_gui.pyw"),
+    ("\U0001F578\ufe0f", "Estúdio de Grafos & Dijkstra", "Modelagem de topologias de rede, algoritmo de Dijkstra e menor caminho", "estudio-grafos", "grf_gui.pyw"),
     ("\U0001F50C", "Simulador de Portas Lógicas", "Álgebra booleana, portas lógicas, tabelas-verdade e mapa de Karnaugh", "simulador-logica", "lgc_gui.pyw"),
     ("\U0001F3B5", "Analisador de Áudio & FFT", "Espectrograma FFT, detecção de notas e harmônicos, tom puro e medidor dBFS", "analisador-audio-fft", "fft_gui.pyw"),
     ("\U0001F6E1\ufe0f", "Validador de JSON Schema", "Validação Draft-07 de dados JSON, inferência automática e detecção de erros", "validador-json-schema", "jsc_gui.pyw"),
@@ -219,6 +219,16 @@ BUILTIN = [
     ("🎲", "Laboratório de Dados RPG", "Distribuição exata de NdM+K, chance de alvo, vantagem/desvantagem e histograma", "dados-rpg", "rpg_gui.pyw"),
     ("🧭", "Navegação & Rumo", "Distância e rumo entre pontos (ortodrômica/loxodrômica), ponto de chegada e ETA", "navegacao", "nav_gui.pyw"),
     ("🤰", "Calculadora Gestacional", "DPP (Naegele), semanas de gestação, trimestre e concepção pela DUM ou ultrassom", "gestacional", "gst_gui.pyw"),
+    ("🌸", "Filtro de Bloom", "Dimensiona m/k, constrói filtro e consulta com taxa de falso positivo", "filtro-bloom", "blm_gui.pyw"),
+    ("📈", "Estúdio de Splines", "Spline cúbico natural, Catmull–Rom e avaliação S(x) com gráfico", "estudio-splines", "spl_gui.pyw"),
+    ("🌡️", "Índice de Conforto Térmico", "Heat Index NWS, Wind Chill, Humidex e ponto de orvalho", "calculadora-indice-conforto", "wci_gui.pyw"),
+    ("🎒", "Otimizador da Mochila", "Mochila 0/1 por programação dinâmica e cota fracionária gulosa", "otimizador-mochila", "knp_gui.pyw"),
+    ("⚙️", "Calculadora de Motores Elétricos", "Potência mecânica, escorregamento s, torque nominal, rendimento e fator de potência", "calculadora-motores-eletricos", "mot_gui.pyw"),
+    ("🏛️", "Calculadora de Acústica de Salas", "Tempo de reverberação RT60 (Sabine/Eyring), frequência de Schroeder e modos próprios", "calculadora-acustica-salas", "acu_gui.pyw"),
+    ("🔌", "Calculadora de Transformador de Potência", "Cálculo de núcleo Ae, espiras por volt, bitolas AWG e perdas do transformador", "calculadora-transformador-potencia", "trf_gui.pyw"),
+    ("🔐", "Estúdio Criptografia Curvas Elípticas", "Aritmética de Weierstrass curta, multiplicação escalar e simulação ECDH", "estudio-criptografia-curvas-elipticas", "ecc_gui.pyw"),
+    ("🧱", "Analisador de Difusão de Calor", "Condução 1D de Fourier em paredes compostas, valor U, valor R e perfil térmico", "analisador-difusao-calor", "thm_gui.pyw"),
+    ("💳", "Validador de Cartão de Crédito", "Algoritmo de Luhn Módulo 10, identificação ISO/IEC 7812, bandeiras e gerador sandbox", "validador-formato-cartao-credito", "lhn_gui.pyw"),
 ]
 
 QSS = """

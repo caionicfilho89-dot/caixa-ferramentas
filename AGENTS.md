@@ -64,6 +64,8 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
 | Rodada 27 (integrada em 2026-11-08) | `pace` (`pac_`), `rf-calculo` (`rfc_`), `juros-mora` (`jmr_`) — total **178 ferramentas**, `OK: 178` |
 | Sessão paralela (2026-11-08) | `inspetor-unicode` (`uni_`), `simulador-monte-carlo` (`mtc_`), `calculadora-quaternions` (`qtn_`), `codificador-fonetico` (`phn_`) — chegou a **182** |
 | Rodada 28 (integrada em 2026-11-08) | `dados-rpg` (`rpg_`), `navegacao` (`nav_`), `gestacional` (`gst_`) — total **185 ferramentas**, `OK: 185` |
+| Build do .exe (2026-11-08 19:43) | Rebuild completo: `OK: 185` no exe instalado; corrigiu "ferramentas que não abriam" (era exe desatualizado) |
+| Rodada 29 (integrada em 2026-11-08) | `pet` (`pet_`), `cabelo` (`cab_`), `rateio` (`rct_`) — nichos novos (pet/beleza/casa); com as paralelas, total **208 ferramentas**, `OK: 208` |
 | Próximo passo | Continuação de **ferramentas novas** (rodada seguinte) |
 
 ---
@@ -78,7 +80,7 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
   achata todos os `.py` numa pasta só (`staged/`); se dois arquivos tiverem o mesmo nome (ex.: dois
   `test_pm.py`), o stage aborta com `COLISÃO`.
   - Prefixos já usados: `kh_ fd_ clt_ cu_ pb_ fa_ cg_ rc_ car_ hb_ sb_ dd_ gd_ as_ pm_ (e test_pmon)
-    gs_ cm_ nc_ tg_ qb_ cv_ cn_ scn_ lan_ lg_ th_ mm_ kb_ aud_ dk_ gif_ snip_ rss_ svc_ wfi_ seo_ ccp_ dfx_ syn_ mcr_ prx_ ast_ bar_ chm_ crd_ lsc_ elt_ dna_ lga_ gpx_ mtx_ fwl_ dck_ stt_ med_ mid_ sch_ agr_ prc_ svg_ mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_ cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_ lgc_ fft_ jsc_ grs_ stm_ nbd_ cnc_ huf_ cll_ gip_ bys_ cpt_ bsc_ hdr_ rlc_ sqf_ seq_ bse_ apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ bnf_ pid_ qth_ crc_ uni_ mtc_ qtn_ phn_ pac_ rfc_ jmr_ rpg_ nav_ gst_` (+ os das rodadas 1–10). Sempre rode
+    gs_ cm_ nc_ tg_ qb_ cv_ cn_ scn_ lan_ lg_ th_ mm_ kb_ aud_ dk_ gif_ snip_ rss_ svc_ wfi_ seo_ ccp_ dfx_ syn_ mcr_ prx_ ast_ bar_ chm_ crd_ lsc_ elt_ dna_ lga_ gpx_ mtx_ fwl_ dck_ stt_ med_ mid_ sch_ agr_ prc_ svg_ mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_ cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_ lgc_ fft_ jsc_ grs_ stm_ nbd_ cnc_ huf_ cll_ gip_ bys_ cpt_ bsc_ hdr_ rlc_ sqf_ seq_ bse_ apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ bnf_ pid_ qth_ crc_ uni_ mtc_ qtn_ phn_ pac_ rfc_ jmr_ rpg_ nav_ gst_ blm_ spl_ wci_ knp_ trf_ ecc_ thm_ lhn_ pet_ cab_ rct_` (+ os das rodadas 1–10). Sempre rode
     `python build_suite.py --stage-only` para validar.
 - **OBRIGATÓRIO no rodapé de toda GUI `.pyw`:**
   ```python
@@ -113,6 +115,14 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
 ---
 
 ## 📝 Log de atualizações (mais recente no topo)
+
+- **2026-11-08 (Rodada 29 — nichos novos; total ~208 com paralelas):**
+  - Criadas, testadas e integradas **3 ferramentas novas inéditas** (stdlib puro, offline), mirando nichos pouco cobertos da caixa (pet/beleza/casa):
+    1. **🐾 Dose de Ração & Pet** (`pet` / `pet_gui.pyw`): necessidade energética de cães e gatos (RER = 70·peso^0.75, MER por fase de vida/castração), gramas de ração por dia pela densidade calórica do pacote, divisão por refeições, água diária e conversão de idade pet → "anos humanos" (fórmula epigenética p/ cães, 15/+9/+4 p/ gatos).
+    2. **💇 Cronograma Capilar & Oxidante** (`cabelo` / `cab_gui.pyw`): monta cronograma capilar (hidratação/nutrição/reconstrução) por semanas segundo o perfil do cabelo com datas, converte água oxigenada volumes↔% (10vol=3%…40vol=12%) e calcula diluição de oxigenada (C1·Q1=C2·Q2) com ml de oxigenada + água.
+    3. **🧳 Divisor de Despesas em Grupo** (`rateio` / `rct_gui.pyw`): racha conta estilo viagem/república — várias pessoas e despesas (quem pagou, entre quem divide), calcula o saldo de cada um e gera o **menor número de transferências** pra todos acertarem (algoritmo guloso credor×devedor).
+  - Também foi feito o **rebuild do `.exe`** (19:43) após um diagnóstico: várias ferramentas "não abriam" porque o exe instalado estava desatualizado; agora `OK` no exe instalado.
+  - Sessões paralelas somaram outras ferramentas no intervalo (`blm_ spl_ wci_ knp_ trf_ ecc_ thm_ lhn_` etc.), levando o total a **208**. Todas passaram em `build_suite.py --stage-only` e `staged\app.py --selftest` (`OK: 208`).
 
 - **2026-11-08 (Rodada 28 — 185 ferramentas):**
   - Criadas, testadas e integradas **3 ferramentas novas inéditas** (stdlib puro, offline):
