@@ -12,3 +12,5 @@ build_log.txt
 
 # binários grandes empacotados (ffmpeg) — baixados à parte, não versionar
 vendor/
+
+_quarentena/

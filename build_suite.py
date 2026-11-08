@@ -88,6 +88,87 @@ TOOLS = {
     "analisador-texto": "analisador_texto.pyw",
     "texto-fala": "texto_fala.pyw",
     "player-musica": "player_musica.pyw",
+    "autenticador-2fa": "fa_gui.pyw",
+    "controle-gastos": "cg_gui.pyw",
+    "receitas": "rc_gui.pyw",
+    "controle-carro": "car_gui.pyw",
+    "habitos": "hb_gui.pyw",
+    "site-blocker": "sb_gui.pyw",
+    "duplicate-detector": "dd_gui.pyw",
+    "dummy-data-generator": "gd_gui.pyw",
+    "disk-analyzer": "as_gui.pyw",
+    "price-monitor": "pm_gui.pyw",
+    "gerador-senhas": "gs_gui.pyw",
+    "conversor-moedas": "cm_gui.pyw",
+    "notas-criptografadas": "nc_gui.pyw",
+    "calculadora-gorjeta": "tg_gui.pyw",
+    "quadro-branco": "qb_gui.pyw",
+    "canivete": "canivete.pyw",
+    "scanner-documentos": "scn_gui.pyw",
+    "compartilhar-rede": "lan_gui.pyw",
+    "editor-legendas": "lg_gui.pyw",
+    "teste-hardware": "th_gui.pyw",
+    "mapa-mental": "mm_gui.pyw",
+    "quadro-kanban": "kb_gui.pyw",
+    "auditoria-pc": "aud_gui.pyw",
+    "inspetor-executavel": "dk_gui.pyw",
+    "estudios-gif": "gif_gui.pyw",
+    "cofre-snippets": "snip_gui.pyw",
+    "leitor-rss": "rss_gui.pyw",
+    "gerenciador-servicos": "svc_gui.pyw",
+    "analisador-wifi": "wfi_gui.pyw",
+    "auditor-seo": "seo_gui.pyw",
+    "corte-chapas": "ccp_gui.pyw",
+    "comparador-dados": "dfx_gui.pyw",
+    "laboratorio-audio": "syn_gui.pyw",
+    "gravador-macros": "mcr_gui.pyw",
+    "inspetor-http": "prx_gui.pyw",
+    "planetario": "ast_gui.pyw",
+    "codigo-barras": "bar_gui.pyw",
+    "laboratorio-quimica": "chm_gui.pyw",
+    "comparador-credito": "crd_gui.pyw",
+    "scanner-rede": "lsc_gui.pyw",
+    "simulador-circuitos": "elt_gui.pyw",
+    "laboratorio-dna": "dna_gui.pyw",
+    "analisador-logs": "lga_gui.pyw",
+    "estudio-rotas": "gpx_gui.pyw",
+    "calculadora-matrizes": "mtx_gui.pyw",
+    "gerenciador-firewall": "fwl_gui.pyw",
+    "painel-docker": "dck_gui.pyw",
+    "laboratorio-estatistica": "stt_gui.pyw",
+    "ficha-medica": "med_gui.pyw",
+    "estudio-midi": "mid_gui.pyw",
+    "agendador-tarefas": "sch_gui.pyw",
+    "horta-jardim": "agr_gui.pyw",
+    "inspetor-processos": "prc_gui.pyw",
+    "estudio-svg": "svg_gui.pyw",
+    "radio-morse": "mrs_gui.pyw",
+    "cubagem-cargas": "cub_gui.pyw",
+    "gerador-ssh": "ssk_gui.pyw",
+    "leitor-nfe": "nfe_gui.pyw",
+    "estudio-xadrez": "chz_gui.pyw",
+    "calculadora-subrede": "ipm_gui.pyw",
+    "simulador-fisica": "fsc_gui.pyw",
+    "estudio-markdown": "mdx_gui.pyw",
+    "gerador-ofx": "ofx_gui.pyw",
+    "gerador-ssl": "gsl_gui.pyw",
+    "estudio-som": "som_gui.pyw",
+    "simulador-optica": "opt_gui.pyw",
+    "conversor-coordenadas": "geo_gui.pyw",
+    "benchmark-pc": "bmk_gui.pyw",
+    "calculadora-combinatoria": "cmb_gui.pyw",
+    "estudio-cifras": "cfr_gui.pyw",
+    "estudio-tipografia": "tip_gui.pyw",
+    "inspetor-pcap": "pcp_gui.pyw",
+    "estudio-cronometro": "crn_gui.pyw",
+    "arvore-decisao": "tre_gui.pyw",
+    "inspetor-regex": "rgx_gui.pyw",
+    "estudio-grafos": "grf_gui.pyw",
+    "simulador-logica": "lgc_gui.pyw",
+    "analisador-audio-fft": "fft_gui.pyw",
+    "validador-json-schema": "jsc_gui.pyw",
+    "calculadora-engrenagens": "grs_gui.pyw",
+    "gerador-sitemap": "stm_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
@@ -139,6 +220,9 @@ import sys
 if getattr(sys, "frozen", False):
     base = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
     os.environ["PATH"] = base + os.pathsep + os.path.dirname(sys.executable) + os.pathsep + os.environ.get("PATH", "")
+    _umods = os.path.join(os.path.dirname(sys.executable), "user_mods")
+    if os.path.isdir(_umods) and _umods not in sys.path:
+        sys.path.insert(0, _umods)
 
 MODMAP = %r
 
@@ -160,7 +244,7 @@ def main():
         bad = []
         for k, mod in MODMAP.items():
             try:
-                __import__(mod)
+                m = __import__(mod); assert callable(getattr(m, "main", None)), f"{mod} sem def main()"
                 ok.append(mod)
             except Exception as e:  # noqa: BLE001
                 bad.append((mod, repr(e)))

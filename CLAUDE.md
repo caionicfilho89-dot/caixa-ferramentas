@@ -1,3 +1,5 @@
+> 🧭 **Leia primeiro [AGENTS.md](AGENTS.md)** — arquivo mestre com objetivo, regras e estado atual. Em conflito, vale o AGENTS.md.
+
 # 🧰 Caixa de Ferramentas — protocolo da "fábrica"
 
 Meta do Caio: **a maior caixa de ferramentas offline do mundo**. Ele não pede ferramenta por
@@ -12,31 +14,29 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   se o uso estiver apertado, rodadas menores (2–3) ou pausar e avisar o Caio.
 
 ## Estado atual (ATUALIZE ao fim de cada rodada)
-- Caixa v1.4.0 = 23 ferramentas (selftest OK: 23), instalador `instalador\CaixaDeFerramentas-Setup-1.4.0.exe`.
-  (v1.3.0 nunca virou instalador — pulou direto pra 1.4.0.) Release v1.4.0 PUBLICADA e os 6 repos
-  (ferramentas-br, kit-hacker, ferramentas-dev, calculadora-clt, conversor-unidades, pix-boleto) criados.
+- Caixa v1.4.0 = 83 ferramentas no código (caixa.pyw + build_suite.py), sem build de exe recente.
+  Release v1.4.0 PUBLICADA e os 6 repos (ferramentas-br, kit-hacker, ferramentas-dev, calculadora-clt,
+  conversor-unidades, pix-boleto) criados.
 - Limite de 5h de uso: se agentes caírem com 429, retomar cada um via SendMessage após o reset.
 - Rodada 1 ✅ integrada: kit-hacker (20) · ferramentas-dev (16) · calculadora-clt (7) ·
   conversor-unidades (15 categorias) · pix-boleto (3 abas).
-- Rodada 2 ✅ integrada no código (SEM build, 28 ferramentas no caixa.pyw): financas (fin_), tempo (tm_),
-  notas-md (nm_), tarefas (tf_), calendario-br (cal_). Repos dessas 5 ainda não criados.
-- Rodada 3 ✅ integrada (33 ferramentas): monitor-sistema (ms_), info-pc (ip_), inicializacao (ini_),
-  compactador (cz_), cripto-arquivos (ca_). Repos das rodadas 2 e 3 a criar.
-- Rodada 4 ✅ integrada (38 ferramentas): editor-imagem (ei_), gravador-voz (gv_), paletas (pl_), webcam (wc_),
-  fontes (fn_). Repos da rodada 4 a criar.
-- Rodada 5 ✅ integrada (43 ferramentas): rede (rd_), sorteios (st_), saude (sd_), calculadora-cientifica (cc_),
-  flashcards (fc_). Repos da rodada 5 a criar.
-- Rodada 6 ✅ integrada (48 ferramentas): visualizador-planilhas (vp_), orcamentos (orc_), contatos (ct_),
-  leitor-ebooks (eb_), organizador-downloads (od_). Repos da rodada 6 a criar.
-- Rodada 7 ✅ integrada (53 ferramentas): cliente-api (api_), visualizador-sqlite (sq_), cabecalhos-seguranca (hs_),
-  certificado-ssl (ssl_), caderno-python (cp_). Repos da rodada 7 a criar.
-- Rodada 8 ✅ integrada (58 ferramentas): treino-digitacao (td_), sudoku (sdk_), metronomo (mt_),
-  relogio-mundial (rm_), quiz-geografia (qg_). Repos da rodada 8 a criar.
-- Rodada 9 ✅ integrada (63 ferramentas): janelas (jn_), volume-apps (va_), comparar-pastas (cpz_),
-  variaveis-ambiente (ve_), galeria-fotos (gf_). Repos das rodadas 2–9 a criar (comando único com `git remote | grep -q origin ||`).
-- Rodada 10 ✅ integrada (68 ferramentas): curriculo-pdf (cv_), etiquetas (et_), analisador-texto (at_),
-  texto-fala (tts_), player-musica (pm_). Repos rodada 9 criados; rodadas 2–8 e 10 a criar.
-- Rodada 11 ⏳ lançada: autenticador-2fa (fa_), controle-gastos (cg_), receitas (rc_), controle-carro (car_), habitos (hb_).
+- Rodada 2 ✅ integrada: financas, tempo, notas-md, tarefas, calendario-br.
+- Rodada 3 ✅ integrada: monitor-sistema, info-pc, inicializacao, compactador, cripto-arquivos.
+- Rodada 4 ✅ integrada: editor-imagem, gravador-voz, paletas, webcam, fontes.
+- Rodada 5 ✅ integrada: rede, sorteios, saude, calculadora-cientifica, flashcards.
+- Rodada 6 ✅ integrada: visualizador-planilhas, orcamentos, contatos, leitor-ebooks, organizador-downloads.
+- Rodada 7 ✅ integrada: cliente-api, visualizador-sqlite, cabecalhos-seguranca, certificado-ssl, caderno-python.
+- Rodada 8 ✅ integrada: treino-digitacao, sudoku, metronomo, relogio-mundial, quiz-geografia.
+- Rodada 9 ✅ integrada: janelas, volume-apps, comparar-pastas, variaveis-ambiente, galeria-fotos.
+- Rodada 10 ✅ integrada: curriculo-pdf, etiquetas, analisador-texto, texto-fala, player-musica.
+- Rodada 11 ✅ integrada: autenticador-2fa (fa_), controle-gastos (cg_), receitas (rc_), controle-carro (car_),
+  habitos (hb_).
+- Rodada 12 ✅ integrada (5/5): site-blocker (sb_), duplicate-detector (dd_), dummy-data-generator (gd_),
+  disk-analyzer (as_), price-monitor (pm_).
+- Rodada 13 ✅ integrada (5/5): gerador-senhas (gs_), conversor-moedas (cm_), notas-criptografadas (nc_),
+  calculadora-gorjeta (tg_), quadro-branco (qb_).
+- Próxima: Rodada 14 (planejada): scanner-documentos, gerador-graficos, compartilhar-rede, diario-criptografado,
+  quadro-branco-colaborativo.
 - Se o classificador do auto mode cair ("no verdict"), Bash trava: auditar só com Read/Grep e usar /loop pra retomar.
 
 ## Estrutura
