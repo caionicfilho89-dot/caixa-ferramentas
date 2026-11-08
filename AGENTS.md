@@ -229,3 +229,12 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
 - **147. Validador de JSON Schema (`validador-json-schema`, `jsc_`)**: Validador Draft-07 sem dependências externas, verificação de tipos, required, pattern regex, enum, min/max, e gerador automático de esquema (inferência).
 - **148. Calculadora de Engrenagens (`calculadora-engrenagens`, `grs_`)**: Engrenagens cilíndricas de dentes retos (módulo, diâmetro primitivo, distância entre centros, adendo/dedendo), cálculo de torque, RPM e trens redutores compostos multi-estágios.
 - **149. Gerador de Sitemap & Robots (`gerador-sitemap`, `stm_`)**: Protocolo sitemaps.org XML, analisador/validador de integridade de tags de indexação e gerador de robots.txt com diretivas Allow/Disallow/Crawl-delay.
+
+
+## Rodada 25 Concluída (155 Ferramentas Totais)
+- **150. Simulador Gravitacional N-Corpos (`simulador-gravitacional-n-corpos`, `nbd_`)**: Mecânica celeste newtoniana com integrador simplético Velocity-Verlet, softening de Plummer, conservação de energia e órbitas periódicas clássicas.
+- **151. Calculadora de Concreto Armado (`calculadora-concreto-armado`, `cnc_`)**: Dimensionamento à flexão simples de vigas retangulares segundo a NBR 6118 / Eurocode 2, cálculo de linha neutra x/d, armadura longitudinal As, estribos de cisalhamento e quantitativos.
+- **152. Compressão de Huffman & Entropia (`estudio-compressao-huffman`, `huf_`)**: Codificador de árvores binárias de Huffman com min-heap, empacotamento em bytes reais, verificação de integridade sem perdas e cálculo de Entropia de Shannon H(X).
+- **153. Laboratório de Autômatos Celulares (`simulador-automato-celular`, `cll_`)**: Conway's Game of Life 2D (B3/S23) com grade interativa e presets (Glider, Pulsar, LWSS), autômatos elementares de Stephen Wolfram 1D (Regras 0-255) e Formiga de Langton.
+- **154. Analisador de Geo IP & Rede (`analisador-geo-ip`, `gip_`)**: Geolocalização de IP e ASN, DNS reverso (PTR), cálculo de distância geodésica pela fórmula de Haversine e estimativa de latência óptica mínima (RTT) em fibra de vidro.
+- **155. Estatística & Inferência Bayesiana (`calculadora-estatistica-bayesiana`, `bys_`)**: Teorema de Bayes, paradoxo do falso positivo em testes de triagem médica / spam, cálculo de PPV, NPV, razões de verossimilhança e modelo conjugado Beta-Binomial.

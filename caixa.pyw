@@ -183,6 +183,12 @@ BUILTIN = [
     ("\U0001F6E1\ufe0f", "Validador de JSON Schema", "Validação Draft-07 de dados JSON, inferência automática e detecção de erros", "validador-json-schema", "jsc_gui.pyw"),
     ("\u2699\ufe0f", "Calculadora de Engrenagens", "Engrenagens cilíndricas de dentes retos, relação de redução, RPM e torque", "calculadora-engrenagens", "grs_gui.pyw"),
     ("\U0001F5FA\ufe0f", "Gerador de Sitemap & Robots", "Protocolo sitemaps.org XML, gerador de robots.txt e validação de indexação", "gerador-sitemap", "stm_gui.pyw"),
+    ("🪐", "Simulador Gravitacional N-Corpos", "Mecânica celeste newtoniana, órbitas Keplerianas, 3 corpos e pontos de Lagrange", "simulador-gravitacional-n-corpos", "nbd_gui.pyw"),
+    ("🏗️", "Calculadora de Concreto Armado", "Dimensionamento de vigas NBR 6118 / Eurocode, armadura longitudinal e estribos", "calculadora-concreto-armado", "cnc_gui.pyw"),
+    ("🗜️", "Compressão de Huffman & Entropia", "Codificação de Huffman, árvore binária, entropia de Shannon e economia de espaço", "estudio-compressao-huffman", "huf_gui.pyw"),
+    ("🧬", "Laboratório de Autômatos Celulares", "Conway Game of Life 2D, autômatos de Wolfram 1D (Regra 30/90/110) e Formiga de Langton", "simulador-automato-celular", "cll_gui.pyw"),
+    ("🌍", "Analisador de Geo IP & Rede", "Geolocalização de IP, consulta ASN, distância de Haversine e latência de fibra", "analisador-geo-ip", "gip_gui.pyw"),
+    ("🎲", "Estatística & Inferência Bayesiana", "Teorema de Bayes, paradoxo do falso positivo em testes e modelo Beta-Binomial", "calculadora-estatistica-bayesiana", "bys_gui.pyw"),
 ]
 
 QSS = """

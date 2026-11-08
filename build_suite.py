@@ -169,6 +169,12 @@ TOOLS = {
     "validador-json-schema": "jsc_gui.pyw",
     "calculadora-engrenagens": "grs_gui.pyw",
     "gerador-sitemap": "stm_gui.pyw",
+    "simulador-gravitacional-n-corpos": "nbd_gui.pyw",
+    "calculadora-concreto-armado": "cnc_gui.pyw",
+    "estudio-compressao-huffman": "huf_gui.pyw",
+    "simulador-automato-celular": "cll_gui.pyw",
+    "analisador-geo-ip": "gip_gui.pyw",
+    "calculadora-estatistica-bayesiana": "bys_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
