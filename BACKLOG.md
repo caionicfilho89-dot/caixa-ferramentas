@@ -102,6 +102,11 @@ nada que sirva pra golpe/ataque a terceiros.
 - 🍽️ Gorjeta e Divisão — calcule gorjeta e divida a conta
 - 🖌️ Quadro Branco — desenho livre, formas, texto, exportar PNG/PDF
 
+## ✅ Rodada 27 — esporte, rádio e finanças (integrada — 178 ferramentas no código)
+- 🏃 Ritmo & Corrida (`pac_`) — ritmo↔velocidade, tempo de prova, splits, Riegel, VO2max, zonas de FC
+- 📡 Calculadora RF & dBm (`rfc_`) — dBm/mW/W, somar potências, freq↔λ, FSPL, link budget, VSWR
+- ⚖️ Juros de Mora & Multa (`jmr_`) — conta em atraso: dias, multa 2%, juros 1% a.m. pro rata, correção
+
 ## 🔜 Rodada 14 — próxima (planejada)
 - 📄 Scanner de Documentos — foto de documento → recorte/endireitar → PDF
 - 📊 Gerador de Gráficos — cola dados → gráfico bonito → PNG/SVG

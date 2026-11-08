@@ -195,6 +195,13 @@ TOOLS = {
     "simulador-circuitos-rc-rlc": "rlc_gui.pyw",
     "formatador-sql-ast": "sqf_gui.pyw",
     "gerador-diagramas-sequence": "seq_gui.pyw",
+    "pace": "pac_gui.pyw",
+    "rf-calculo": "rfc_gui.pyw",
+    "juros-mora": "jmr_gui.pyw",
+    "inspetor-unicode": "uni_gui.pyw",
+    "simulador-monte-carlo": "mtc_gui.pyw",
+    "calculadora-quaternions": "qtn_gui.pyw",
+    "codificador-fonetico": "phn_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

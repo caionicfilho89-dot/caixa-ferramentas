@@ -61,7 +61,8 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
 | Rodada 22 (integrada em 2026-11-08) | `gerador-ssl` (`gsl_`), `estudio-som` (`som_`), `simulador-optica` (`opt_`), `conversor-coordenadas` (`geo_`), `benchmark-pc` (`bmk_`), `calculadora-combinatoria` (`cmb_`) |
 | Rodada 23 (integrada em 2026-11-08) | `estudio-cifras` (`cfr_`), `estudio-tipografia` (`tip_`), `inspetor-pcap` (`pcp_`), `estudio-cronometro` (`crn_`), `arvore-decisao` (`tre_`), `inspetor-regex` (`rgx_`) |
 | Rodada 24 (integrada em 2026-11-08) | `estudio-grafos` (`grf_`) |
-| Próximo passo | Continuação da Rodada 24 de **ferramentas novas** |
+| Rodada 27 (integrada em 2026-11-08) | `pace` (`pac_`), `rf-calculo` (`rfc_`), `juros-mora` (`jmr_`) — total **178 ferramentas**, `OK: 178` |
+| Próximo passo | Continuação de **ferramentas novas** (rodada seguinte) |
 
 ---
 
@@ -75,7 +76,7 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
   achata todos os `.py` numa pasta só (`staged/`); se dois arquivos tiverem o mesmo nome (ex.: dois
   `test_pm.py`), o stage aborta com `COLISÃO`.
   - Prefixos já usados: `kh_ fd_ clt_ cu_ pb_ fa_ cg_ rc_ car_ hb_ sb_ dd_ gd_ as_ pm_ (e test_pmon)
-    gs_ cm_ nc_ tg_ qb_ cv_ cn_ scn_ lan_ lg_ th_ mm_ kb_ aud_ dk_ gif_ snip_ rss_ svc_ wfi_ seo_ ccp_ dfx_ syn_ mcr_ prx_ ast_ bar_ chm_ crd_ lsc_ elt_ dna_ lga_ gpx_ mtx_ fwl_ dck_ stt_ med_ mid_ sch_ agr_ prc_ svg_ mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_ cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_` (+ os das rodadas 1–10). Sempre rode
+    gs_ cm_ nc_ tg_ qb_ cv_ cn_ scn_ lan_ lg_ th_ mm_ kb_ aud_ dk_ gif_ snip_ rss_ svc_ wfi_ seo_ ccp_ dfx_ syn_ mcr_ prx_ ast_ bar_ chm_ crd_ lsc_ elt_ dna_ lga_ gpx_ mtx_ fwl_ dck_ stt_ med_ mid_ sch_ agr_ prc_ svg_ mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_ cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_ lgc_ fft_ jsc_ grs_ stm_ nbd_ cnc_ huf_ cll_ gip_ bys_ cpt_ bsc_ hdr_ rlc_ sqf_ seq_ bse_ apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ bnf_ pid_ qth_ crc_ pac_ rfc_ jmr_` (+ os das rodadas 1–10). Sempre rode
     `python build_suite.py --stage-only` para validar.
 - **OBRIGATÓRIO no rodapé de toda GUI `.pyw`:**
   ```python
@@ -110,6 +111,13 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
 ---
 
 ## 📝 Log de atualizações (mais recente no topo)
+
+- **2026-11-08 (Rodada 27 — 178 ferramentas):**
+  - Criadas, testadas e integradas **3 ferramentas novas inéditas** (stdlib puro, offline):
+    1. **🏃 Ritmo & Corrida** (`pace` / `pac_gui.pyw`): converte ritmo↔velocidade, calcula tempo por prova (100 m → 100 km), gera splits, previsão de desempenho por Riegel, VO2max estimado (Daniels & Gilbert) e zonas de FC por Karvonen (FCmax de Tanaka).
+    2. **📡 Calculadora RF & dBm** (`rf-calculo` / `rfc_gui.pyw`): conversão dBm↔mW↔W↔dBW, soma incoerente de potências, ganho/perda em dB, frequência↔comprimento de onda (λ/2, λ/4), perda no espaço livre FSPL, orçamento de enlace (link budget) com margem e VSWR↔perda de retorno↔perda por descasamento.
+    3. **⚖️ Juros de Mora & Multa** (`juros-mora` / `jmr_gui.pyw`): atualiza conta/dívida em atraso com dias corridos, multa percentual (padrão CDC 2%), juros de mora pro rata die (simples ou composto, padrão 1% a.m.) e correção monetária opcional por índice mensal; formatação em R$.
+  - Todas as **178 ferramentas** passaram em `build_suite.py --stage-only` e `staged\app.py --selftest` (`OK: 178`).
 
 - **2026-11-08 (Rodada 24 — 144 ferramentas):**
   - Criada, testada e integrada:

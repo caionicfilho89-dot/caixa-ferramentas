@@ -209,6 +209,13 @@ BUILTIN = [
     ("🔄", "Simulador de Circuitos RC & RLC", "Resposta ao degrau temporal, filtros passa-baixa/alta, ressonância e amortecimento", "simulador-circuitos-rc-rlc", "rlc_gui.pyw"),
     ("🗄️", "Formatador & Analisador de SQL", "Prettifier de consultas SQL, indentação de subqueries, AST e validação de sintaxe", "formatador-sql-ast", "sqf_gui.pyw"),
     ("📊", "Gerador de Diagramas de Sequência", "Diagramas UML de sequência, mensagens síncronas/retorno, notas e exportador SVG", "gerador-diagramas-sequence", "seq_gui.pyw"),
+    ("🏃", "Ritmo & Corrida", "Ritmo↔velocidade, tempo de prova, splits, previsão Riegel, VO2max e zonas de FC", "pace", "pac_gui.pyw"),
+    ("📡", "Calculadora RF & dBm", "dBm/mW/W, somar potências, freq↔λ, FSPL, orçamento de enlace e VSWR", "rf-calculo", "rfc_gui.pyw"),
+    ("⚖️", "Juros de Mora & Multa", "Atualiza conta em atraso: dias, multa, juros de mora pro rata e correção", "juros-mora", "jmr_gui.pyw"),
+    ("🔤", "Inspetor Unicode", "Codepoints, categorias, blocos, NFC/NFD/NFKC/NFKD e busca por nome Unicode", "inspetor-unicode", "uni_gui.pyw"),
+    ("🎲", "Simulador Monte Carlo", "Estimativa de π, integração 1D por amostragem e agulha de Buffon", "simulador-monte-carlo", "mtc_gui.pyw"),
+    ("🧭", "Calculadora de Quaternions", "Álgebra de Hamilton, eixo-ângulo, rotação 3D, matriz R e SLERP", "calculadora-quaternions", "qtn_gui.pyw"),
+    ("🔊", "Codificador Fonético", "Soundex, Metaphone, Levenshtein e detecção de nomes duplicados", "codificador-fonetico", "phn_gui.pyw"),
 ]
 
 QSS = """
