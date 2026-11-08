@@ -228,6 +228,13 @@ TOOLS = {
     "pet": "pet_gui.pyw",
     "cabelo": "cab_gui.pyw",
     "rateio": "rct_gui.pyw",
+    "estudio-gray-code": "gry_gui.pyw",
+    "compressao-rle": "rle_gui.pyw",
+    "gerador-markov": "mkv_gui.pyw",
+    "fatoracao-primos": "prm_gui.pyw",
+    "croche": "trc_gui.pyw",
+    "tamanhos": "tam_gui.pyw",
+    "festa": "fst_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

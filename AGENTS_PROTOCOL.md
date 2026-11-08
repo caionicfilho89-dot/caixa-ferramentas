@@ -39,7 +39,8 @@ mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_
 cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_ lgc_ fft_ jsc_ grs_ stm_ nbd_ cnc_ huf_
 cll_ gip_ bys_ bnf_ pid_ qth_ crc_ uni_ mtc_ qtn_ phn_ cpt_ bsc_ hdr_ rlc_ sqf_ seq_ bse_
 apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ pac_ rfc_ jmr_ rpg_ nav_ gst_
-blm_ spl_ wci_ knp_ trf_ ecc_ thm_ lhn_ pet_ cab_ rct_
+blm_ spl_ wci_ knp_ trf_ ecc_ thm_ lhn_ pet_ cab_ rct_ gry_ rle_ mkv_ prm_
+pvs_  ele_  rfx_  p3d_  fot_  srt_  sir_  esc_  bat_  esm_  trc_  tam_  fst_
 ```
 
 > 💡 **Instrução para novos agentes:** Escolha um prefixo inédito de 3 ou 4 letras que não esteja na lista acima.

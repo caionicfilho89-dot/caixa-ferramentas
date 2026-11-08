@@ -229,6 +229,13 @@ BUILTIN = [
     ("🔐", "Estúdio Criptografia Curvas Elípticas", "Aritmética de Weierstrass curta, multiplicação escalar e simulação ECDH", "estudio-criptografia-curvas-elipticas", "ecc_gui.pyw"),
     ("🧱", "Analisador de Difusão de Calor", "Condução 1D de Fourier em paredes compostas, valor U, valor R e perfil térmico", "analisador-difusao-calor", "thm_gui.pyw"),
     ("💳", "Validador de Cartão de Crédito", "Algoritmo de Luhn Módulo 10, identificação ISO/IEC 7812, bandeiras e gerador sandbox", "validador-formato-cartao-credito", "lhn_gui.pyw"),
+    ("⬜", "Código de Gray", "Conversão bin↔Gray refletido, sequência n-bit e verificação de Hamming=1", "estudio-gray-code", "gry_gui.pyw"),
+    ("🗜️", "Compressão RLE", "Run-Length Encoding de texto e bytes com tabela de corridas e razão", "compressao-rle", "rle_gui.pyw"),
+    ("🔗", "Gerador Markov", "Cadeia de Markov de ordem k sobre corpus: treina e gera texto", "gerador-markov", "mkv_gui.pyw"),
+    ("➗", "Fatoração de Primos", "Fatora inteiros (trial + Pollard Rho), Miller–Rabin e próximo primo", "fatoracao-primos", "prm_gui.pyw"),
+    ("🧵", "Crochê & Tricô", "Pontos pela amostra, metragem de fio, agulhas mm/US/UK e distribuir aumentos", "croche", "trc_gui.pyw"),
+    ("👗", "Conversor de Tamanhos", "Calçado BR/EU/US/UK/cm, roupa PP–XG e aro de anel (mm↔aro)", "tamanhos", "tam_gui.pyw"),
+    ("🎂", "Calculadora de Festa", "Comida, bebida e descartáveis por convidados, duração e tipo de festa", "festa", "fst_gui.pyw"),
 ]
 
 QSS = """
