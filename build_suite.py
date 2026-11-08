@@ -266,6 +266,12 @@ TOOLS = {
     "calculadora-cerveja": "brw_gui.pyw",
     "calculadora-trelicas-2d": "trs_gui.pyw",
     "links-ntfs": "sym_gui.pyw",
+    "calculadora-aquario": "aqu_gui.pyw",
+    "calculadora-flambagem-colunas-euler": "eul_gui.pyw",
+    "calculadora-hidroponia": "hdp_gui.pyw",
+    "calculadora-marchas-bike": "bik_gui.pyw",
+    "inspetor-ads": "ads_gui.pyw",
+    "planejador-mudanca": "mdc_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

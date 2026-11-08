@@ -267,6 +267,12 @@ BUILTIN = [
     ("🍺", "Calculadora de Cerveja", "ABV, OG/FG, IBU e SRM pra receita de cerveja artesanal", "calculadora-cerveja", "brw_gui.pyw"),
     ("📐", "Calculadora de Treliças 2D", "Treliças 2D pelo método da rigidez direta: forças nas barras e reações", "calculadora-trelicas-2d", "trs_gui.pyw"),
     ("🔗", "Links NTFS & Atalhos", "Cria links simbólicos, junctions e atalhos .lnk no Windows", "links-ntfs", "sym_gui.pyw"),
+    ("🐠", "Calculadora de Aquário", "Volume real do aquário, dosagem e parâmetros da água", "calculadora-aquario", "aqu_gui.pyw"),
+    ("🏛️", "Flambagem de Colunas (Euler)", "Carga crítica de Euler, índice de esbeltez e tensão admissível", "calculadora-flambagem-colunas-euler", "eul_gui.pyw"),
+    ("🌱", "Calculadora de Hidroponia", "Solução nutritiva, EC/pH e dosagem de sais pra hidroponia", "calculadora-hidroponia", "hdp_gui.pyw"),
+    ("🚲", "Marchas de Bicicleta", "Relação de marchas, desenvolvimento (m) e cadência x velocidade", "calculadora-marchas-bike", "bik_gui.pyw"),
+    ("🔎", "Inspetor de Streams ADS", "Acha e inspeciona Alternate Data Streams (NTFS) escondidos em arquivos", "inspetor-ads", "ads_gui.pyw"),
+    ("📦", "Planejador de Mudança", "Caixas, volume, checklist e inventário pra organizar uma mudança", "planejador-mudanca", "mdc_gui.pyw"),
 ]
 
 QSS = """
