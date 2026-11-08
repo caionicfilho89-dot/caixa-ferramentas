@@ -239,6 +239,13 @@ TOOLS = {
     "token-bucket": "tok_gui.pyw",
     "conversor-temperatura-cor": "ctk_gui.pyw",
     "analisador-pareto": "prt_gui.pyw",
+    "quadro-branco-colaborativo": "qc_gui.pyw",
+    "diario-criptografado": "dc_gui.pyw",
+    "gerador-graficos": "gg_gui.pyw",
+    "calculadora-alavancagem": "alg_gui.pyw",
+    "gerador-lorem": "lor_gui.pyw",
+    "analisador-zipf": "zpf_gui.pyw",
+    "conversor-epoch": "epc_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

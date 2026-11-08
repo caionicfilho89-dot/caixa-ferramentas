@@ -240,6 +240,13 @@ BUILTIN = [
     ("🪣", "Token Bucket", "Simula rate limit com burst, recarga e fila de timestamps", "token-bucket", "tok_gui.pyw"),
     ("🕯️", "Temperatura de Cor", "Kelvin→RGB/HEX, mired, XYZ e mistura perceptualmente uniforme", "conversor-temperatura-cor", "ctk_gui.pyw"),
     ("📊", "Análise de Pareto", "Curva 80/20, classificação ABC e concentração de valor", "analisador-pareto", "prt_gui.pyw"),
+    ("🎨", "Quadro Branco Colaborativo", "Desenho compartilhado na rede local (host/porta) em tempo real", "quadro-branco-colaborativo", "qc_gui.pyw"),
+    ("📔", "Diário Criptografado", "Diário pessoal com senha (AES/Fernet), humor do dia e busca", "diario-criptografado", "dc_gui.pyw"),
+    ("📈", "Gerador de Gráficos", "Cola dados e gera gráfico (barra/linha/pizza) e exporta SVG/PNG", "gerador-graficos", "gg_gui.pyw"),
+    ("📉", "Alavancagem DOL/DFL/DCL", "Alavancagem operacional, financeira, combinada, equilíbrio e margem de segurança", "calculadora-alavancagem", "alg_gui.pyw"),
+    ("📝", "Gerador Lorem Ipsum", "Gera palavras, frases, parágrafos ou N caracteres de placeholder", "gerador-lorem", "lor_gui.pyw"),
+    ("📉", "Lei de Zipf", "Ranking de frequências, slope log-log e teste Zipf-like em textos", "analisador-zipf", "zpf_gui.pyw"),
+    ("⏱️", "Conversor Epoch", "Unix epoch s/ms/µs/ns ↔ data UTC/local com detecção automática", "conversor-epoch", "epc_gui.pyw"),
 ]
 
 QSS = """
