@@ -15,9 +15,9 @@ import webbrowser
 
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
 from PyQt6.QtGui import QColor, QIcon, QPainter, QPixmap
-from PyQt6.QtWidgets import (QApplication, QFileDialog, QFrame, QGridLayout, QHBoxLayout,
-                             QInputDialog, QLabel, QLineEdit, QMenu, QMessageBox, QPushButton,
-                             QScrollArea, QVBoxLayout, QWidget)
+from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGridLayout,
+                             QHBoxLayout, QInputDialog, QLabel, QLineEdit, QMenu, QMessageBox,
+                             QPushButton, QScrollArea, QVBoxLayout, QWidget)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
@@ -273,6 +273,11 @@ BUILTIN = [
     ("🚲", "Marchas de Bicicleta", "Relação de marchas, desenvolvimento (m) e cadência x velocidade", "calculadora-marchas-bike", "bik_gui.pyw"),
     ("🔎", "Inspetor de Streams ADS", "Acha e inspeciona Alternate Data Streams (NTFS) escondidos em arquivos", "inspetor-ads", "ads_gui.pyw"),
     ("📦", "Planejador de Mudança", "Caixas, volume, checklist e inventário pra organizar uma mudança", "planejador-mudanca", "mdc_gui.pyw"),
+    ("📻", "Circuito Ressonante LC/RLC", "Frequência de Thomson f0, fator de qualidade Q, banda passante e |Z(f)|", "analisador-circuito-ressonante-lc", "rls_gui.pyw"),
+    ("🚀", "Dinâmica Orbital & Hohmann", "Transferência orbital de Hohmann, Delta-V, semi-eixo e tempo de voo", "calculadora-dinamica-orbital-hohmann", "hmn_gui.pyw"),
+    ("💡", "Fotometria & Iluminação", "Método dos Lúmens (NBR 8995), Lux, Candelas e projeção de cone de luz", "calculadora-fotometria-lux-lumen", "lux_gui.pyw"),
+    ("📦", "Enquadramento HDLC & CRC-16", "Protocolo ISO 13239, bit-stuffing de zeros, FCS CRC-16 e teste de canal", "gerador-analisador-codigo-hdlc-crc16", "hdl_gui.pyw"),
+    ("🌡️", "Dilatação Térmica & Tensão", "Dilatação linear, superficial e volumétrica, folga de junta e tensão térmica", "calculadora-dilatacao-termica-tensao", "dlt_gui.pyw"),
 ]
 
 QSS = """
@@ -375,6 +380,75 @@ def save_cfg(cfg):
         pass
 
 
+# ---- Categorias (classificação automática por palavra-chave) ----
+# Ordem IMPORTA: a primeira categoria cujo padrão casar vence. Ferramentas novas
+# adicionadas por qualquer agente caem na categoria certa sozinhas.
+CATEGORIAS = [
+    ("💰 Finanças & Trabalho", ("financ", "finanç", "gasto", "orcament", "orçament", "pix",
+        "boleto", "moeda", "clt", "salario", "salário", "juros", "imposto", "nf-e", "nfe", "ofx",
+        "consorcio", "consórcio", "black-scholes", "opcoes", "opções", "curriculo", "currículo",
+        "preco", "preço", "aposentadoria", "gorjeta", "extrato", "credito", "crédito", "mora",
+        "banda", "resistor")),
+    ("🏠 Casa, Pet & Pessoal", ("receita", "cozinha", "cafe", "café", "cerveja", "festa",
+        "mudanca", "mudança", "pet", "racao", "ração", "cabelo", "aquario", "aquário", "hidropon",
+        "horta", "jardim", "saude", "saúde", "imc", "gestacional", "gravidez", "habito", "hábito",
+        "carro", "contato", "calendario", "calendário", "tarefa", "diario", "diário", "tamanho",
+        "croche", "crochê", "trico", "tricô", "bike", "bicicleta", "marcha", "agenda", "ebook",
+        "e-book", "receitas")),
+    ("🔬 Ciência & Engenharia", ("fisica", "física", "quim", "quím", "dna", "bioinform",
+        "estatist", "estatíst", "matriz", "combinat", "optica", "óptica", "circuito", "engrenagem",
+        "hidraulic", "hidráulic", "concreto", "trelica", "treliça", "flambagem", "dilatac",
+        "dilatação", "controle pid", "primo", "grafo", "huffman", "bayes", "benford", "quaternion",
+        "monte carlo", "euler", "fourier", "gravitacional", "automato", "autômato", "matemat",
+        "eletric", "elétric", "transformador", "snell", "engenharia", "nautic", "náutic",
+        "navegac", "navegaç", "coorden", "viga", "rigidez", "circuitos", "optico", "óptico",
+        "planetario", "planetário", "efemérides", "fisico")),
+    ("🌐 Rede & Segurança", ("rede", "ip ", "dns", "wi-fi", "wifi", "ssl", "ssh", "firewall",
+        "porta", "pcap", "siem", "seo", "cabecalho", "cabeçalho", "webhook", "hacker", "cifra",
+        "feistel", "crc", "2fa", "cripto", "jwt", "sub-rede", "subrede", "geo ip", "scanner de rede",
+        "nmap", "traceroute", "certificado", "vpn", "proxy", "morse", "pacote", "ads", "firewall")),
+    ("💻 Dev & Dados", ("json", "sql", "sqlite", "xml", "cron", "uuid", " api", "python",
+        "dados falsos", "grafico", "gráfico", "planilha", "schema", "diagrama", "sitemap", "bloom",
+        "pareto", "regex", "markdown", "base", "hexa", "identificador", "snippet", "git", "docker",
+        "huff", "spline")),
+    ("🖼️ Imagem & Design", ("imagem", "foto", " cor", "cores", "paleta", "icone", "ícone", "svg",
+        "gif", "sprite", "qr", "barras", "fonte", "tipografia", "webcam", "galeria", "desenho",
+        "quadro", "print", "scanner de doc", "etiqueta", "pdf", "contraste")),
+    ("🎵 Áudio & Vídeo", ("audio", "áudio", " som", "musica", "música", " voz", "mp3", "video",
+        "vídeo", " tela", "metronomo", "metrônomo", "afinador", "midi", " onda", "legenda",
+        "gravador")),
+    ("✍️ Texto & Estudo", ("texto", " nota", "notas", "ocr", "fonetic", "fonétic", "legibilidade",
+        "flashcard", "digitac", "digitação", "unicode", "leitura", "tradut", "idioma", "resumo")),
+    ("🎮 Jogos & Diversão", ("sudoku", "quiz", "sorteio", "xadrez", "rpg", "dado", "gps falso",
+        "cronometro", "cronômetro", " jogo", "roleta", "geografia", "palavra", "forca")),
+    ("🗂️ Arquivos & Sistema", ("arquivo", "pasta", "disco", "zip", "compact", "backup", "windows",
+        "processo", "servico", "serviço", "registro", "inicializ", "variavel", "variáve", "janela",
+        "hosts", "duplicat", "renome", "metadado", "ntfs", "link", "boot", "atalho", "clipboard",
+        "transferencia", "transferência", "sistema", "cpu", "memoria", "memória", "benchmark",
+        "monitor", "tempo", "faxina", "busca", "recupera", "espaco", "espaço")),
+]
+CAT_OUTRAS = "🧰 Outras"
+CAT_ORDEM = [c[0] for c in CATEGORIAS] + [CAT_OUTRAS]
+
+
+def categoria_de(tool):
+    """Classifica uma ferramenta (emoji, nome, desc, pasta, script) numa categoria.
+
+    Duas passadas: primeiro só o NOME + pasta (sinal forte, evita ruído da descrição);
+    se nada casar, inclui a descrição.
+    """
+    nome = tool[1].lower()
+    pasta = tool[3].lower()
+    for cat, kws in CATEGORIAS:
+        if any(k in nome or k in pasta for k in kws):
+            return cat
+    txt = nome + " " + tool[2].lower() + " " + pasta
+    for cat, kws in CATEGORIAS:
+        if any(k in txt for k in kws):
+            return cat
+    return CAT_OUTRAS
+
+
 class Card(QFrame):
     def __init__(self, tool, caixa, fav):
         super().__init__(objectName="card")
@@ -474,6 +548,10 @@ class Caixa(QWidget):
         self.search.setPlaceholderText("Buscar ferramenta…")
         self.search.textChanged.connect(self.rebuild)
         sr.addWidget(self.search, 1)
+        self.catbox = QComboBox(objectName="catbox")
+        self._popular_categorias()
+        self.catbox.currentIndexChanged.connect(self.rebuild)
+        sr.addWidget(self.catbox)
         add = QPushButton("➕  Adicionar ferramenta", objectName="add")
         add.clicked.connect(self.add_tool)
         sr.addWidget(add)
@@ -503,6 +581,21 @@ class Caixa(QWidget):
     def all_tools(self):
         return BUILTIN + self.extra_tools
 
+    def _popular_categorias(self):
+        """Preenche o seletor com 'Tudo' + categorias que têm ferramentas (com contagem)."""
+        self.catbox.blockSignals(True)
+        self.catbox.clear()
+        tools = self.all_tools()
+        contagem = {}
+        for t in tools:
+            c = categoria_de(t)
+            contagem[c] = contagem.get(c, 0) + 1
+        self.catbox.addItem(f"📂 Tudo ({len(tools)})", "__all__")
+        for cname in CAT_ORDEM:
+            if contagem.get(cname):
+                self.catbox.addItem(f"{cname} ({contagem[cname]})", cname)
+        self.catbox.blockSignals(False)
+
     def _lay_section(self, title, tools, row):
         cols = 3
         if title:
@@ -521,30 +614,51 @@ class Caixa(QWidget):
 
     def rebuild(self):
         q = self.search.text().lower().strip()
+        cat = self.catbox.currentData() if hasattr(self, "catbox") else "__all__"
         while self.grid.count():
             it = self.grid.takeAt(0)
             if it.widget():
                 it.widget().deleteLater()
+        total = len(self.all_tools())
         tools = [t for t in self.all_tools()
                  if not q or q in t[1].lower() or q in t[2].lower()]
+
+        # Busca: lista plana em todas as categorias (achar rápido é prioridade)
         if q:
             self._lay_section(None, tools, 0)
-        else:
-            favs = self.cfg["favorites"]
-            uses = self.cfg["uses"]
-            fav_tools = [t for t in tools if t[3] in favs]
-            rest = [t for t in tools if t[3] not in favs]
-            used = sorted([t for t in rest if uses.get(t[3], 0) > 0],
-                          key=lambda t: -uses.get(t[3], 0))[:4]
-            used_keys = {t[3] for t in used}
-            todas = [t for t in rest if t[3] not in used_keys]
-            row = 0
-            if fav_tools:
-                row = self._lay_section("★ Favoritos", fav_tools, row)
-            if used:
-                row = self._lay_section("🔥 Mais usadas", used, row)
-            row = self._lay_section("Todas" if (fav_tools or used) else None, todas, row)
-        self.sub.setText(f"{len(self.all_tools())} ferramentas prontas pra uso. Clique pra abrir.")
+            self.sub.setText(f"{len(tools)} resultado(s) para “{q}”.")
+            return
+
+        favs = self.cfg["favorites"]
+        uses = self.cfg["uses"]
+
+        # Categoria específica selecionada: mostra só ela
+        if cat and cat != "__all__":
+            ctools = [t for t in tools if categoria_de(t) == cat]
+            self._lay_section(f"{cat}  ·  {len(ctools)}", ctools, 0)
+            self.sub.setText(f"{len(ctools)} ferramenta(s) em {cat}.")
+            return
+
+        # "Tudo": agrupado — Favoritos, Mais usadas e cada categoria com seu título
+        fav_tools = [t for t in tools if t[3] in favs]
+        rest = [t for t in tools if t[3] not in favs]
+        used = sorted([t for t in rest if uses.get(t[3], 0) > 0],
+                      key=lambda t: -uses.get(t[3], 0))[:4]
+        used_keys = {t[3] for t in used}
+        rest = [t for t in rest if t[3] not in used_keys]
+        row = 0
+        if fav_tools:
+            row = self._lay_section("★ Favoritos", fav_tools, row)
+        if used:
+            row = self._lay_section("🔥 Mais usadas", used, row)
+        baldes = {}
+        for t in rest:
+            baldes.setdefault(categoria_de(t), []).append(t)
+        for cname in CAT_ORDEM:
+            grupo = baldes.get(cname)
+            if grupo:
+                row = self._lay_section(f"{cname}  ·  {len(grupo)}", grupo, row)
+        self.sub.setText(f"{total} ferramentas em {sum(1 for c in CAT_ORDEM if baldes.get(c))} categorias. Clique pra abrir.")
 
     # ---- abrir ----
     def open_tool(self, card):
