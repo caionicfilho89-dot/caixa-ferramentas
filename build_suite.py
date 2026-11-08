@@ -272,6 +272,11 @@ TOOLS = {
     "calculadora-marchas-bike": "bik_gui.pyw",
     "inspetor-ads": "ads_gui.pyw",
     "planejador-mudanca": "mdc_gui.pyw",
+    "analisador-circuito-ressonante-lc": "rls_gui.pyw",
+    "calculadora-dinamica-orbital-hohmann": "hmn_gui.pyw",
+    "calculadora-fotometria-lux-lumen": "lux_gui.pyw",
+    "gerador-analisador-codigo-hdlc-crc16": "hdl_gui.pyw",
+    "calculadora-dilatacao-termica-tensao": "dlt_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
