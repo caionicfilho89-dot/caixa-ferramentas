@@ -236,6 +236,10 @@ BUILTIN = [
     ("🧵", "Crochê & Tricô", "Pontos pela amostra, metragem de fio, agulhas mm/US/UK e distribuir aumentos", "croche", "trc_gui.pyw"),
     ("👗", "Conversor de Tamanhos", "Calçado BR/EU/US/UK/cm, roupa PP–XG e aro de anel (mm↔aro)", "tamanhos", "tam_gui.pyw"),
     ("🎂", "Calculadora de Festa", "Comida, bebida e descartáveis por convidados, duração e tipo de festa", "festa", "fst_gui.pyw"),
+    ("✒️", "Estúdio Bézier", "Curvas de Bézier (Casteljau), ponto B(t), tangente e comprimento aproximado", "estudio-bezier", "bzr_gui.pyw"),
+    ("🪣", "Token Bucket", "Simula rate limit com burst, recarga e fila de timestamps", "token-bucket", "tok_gui.pyw"),
+    ("🕯️", "Temperatura de Cor", "Kelvin→RGB/HEX, mired, XYZ e mistura perceptualmente uniforme", "conversor-temperatura-cor", "ctk_gui.pyw"),
+    ("📊", "Análise de Pareto", "Curva 80/20, classificação ABC e concentração de valor", "analisador-pareto", "prt_gui.pyw"),
 ]
 
 QSS = """

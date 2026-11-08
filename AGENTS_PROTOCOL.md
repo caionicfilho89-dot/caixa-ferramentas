@@ -41,6 +41,7 @@ cll_ gip_ bys_ bnf_ pid_ qth_ crc_ uni_ mtc_ qtn_ phn_ cpt_ bsc_ hdr_ rlc_ sqf_ 
 apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ pac_ rfc_ jmr_ rpg_ nav_ gst_
 blm_ spl_ wci_ knp_ trf_ ecc_ thm_ lhn_ pet_ cab_ rct_ gry_ rle_ mkv_ prm_
 pvs_  ele_  rfx_  p3d_  fot_  srt_  sir_  esc_  bat_  esm_  trc_  tam_  fst_
+bzr_ tok_ ctk_ prt_
 ```
 
 > 💡 **Instrução para novos agentes:** Escolha um prefixo inédito de 3 ou 4 letras que não esteja na lista acima.

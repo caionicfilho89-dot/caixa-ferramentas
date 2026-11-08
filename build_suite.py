@@ -235,6 +235,10 @@ TOOLS = {
     "croche": "trc_gui.pyw",
     "tamanhos": "tam_gui.pyw",
     "festa": "fst_gui.pyw",
+    "estudio-bezier": "bzr_gui.pyw",
+    "token-bucket": "tok_gui.pyw",
+    "conversor-temperatura-cor": "ctk_gui.pyw",
+    "analisador-pareto": "prt_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
