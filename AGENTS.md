@@ -5,6 +5,12 @@
 > conflito, **vale o que está aqui**. Ao fim de cada sessão, atualize a seção **📌 Estado atual** e o
 > **📝 Log de atualizações** no final.
 
+> 🍔 **DIVISÃO DE TRABALHO (4 agentes): leia [ESTACOES.md](ESTACOES.md) ANTES de começar.**
+> **Cursor** = Construtor Lane A (sistema/arquivos/dev) · **Antigravity** = Construtor Lane B
+> (ciência/engenharia/matemática) · **Grok** = Construtor Lane C (dia a dia/pessoal) · **Claude** =
+> Integrador/Expedidor. **Só o Integrador edita `caixa.pyw`, `build_suite.py` e os `AGENTS*.md`.**
+> Construtores só mexem na própria pasta e deixam um `ENTREGA.json` ao terminar.
+
 Fale com o Caio em **pt-BR informal**, respostas diretas e sem enrolação.
 
 ---
