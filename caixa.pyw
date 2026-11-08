@@ -216,6 +216,9 @@ BUILTIN = [
     ("🎲", "Simulador Monte Carlo", "Estimativa de π, integração 1D por amostragem e agulha de Buffon", "simulador-monte-carlo", "mtc_gui.pyw"),
     ("🧭", "Calculadora de Quaternions", "Álgebra de Hamilton, eixo-ângulo, rotação 3D, matriz R e SLERP", "calculadora-quaternions", "qtn_gui.pyw"),
     ("🔊", "Codificador Fonético", "Soundex, Metaphone, Levenshtein e detecção de nomes duplicados", "codificador-fonetico", "phn_gui.pyw"),
+    ("🎲", "Laboratório de Dados RPG", "Distribuição exata de NdM+K, chance de alvo, vantagem/desvantagem e histograma", "dados-rpg", "rpg_gui.pyw"),
+    ("🧭", "Navegação & Rumo", "Distância e rumo entre pontos (ortodrômica/loxodrômica), ponto de chegada e ETA", "navegacao", "nav_gui.pyw"),
+    ("🤰", "Calculadora Gestacional", "DPP (Naegele), semanas de gestação, trimestre e concepção pela DUM ou ultrassom", "gestacional", "gst_gui.pyw"),
 ]
 
 QSS = """

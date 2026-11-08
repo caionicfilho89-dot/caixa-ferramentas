@@ -202,6 +202,9 @@ TOOLS = {
     "simulador-monte-carlo": "mtc_gui.pyw",
     "calculadora-quaternions": "qtn_gui.pyw",
     "codificador-fonetico": "phn_gui.pyw",
+    "dados-rpg": "rpg_gui.pyw",
+    "navegacao": "nav_gui.pyw",
+    "gestacional": "gst_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

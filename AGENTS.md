@@ -62,6 +62,8 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
 | Rodada 23 (integrada em 2026-11-08) | `estudio-cifras` (`cfr_`), `estudio-tipografia` (`tip_`), `inspetor-pcap` (`pcp_`), `estudio-cronometro` (`crn_`), `arvore-decisao` (`tre_`), `inspetor-regex` (`rgx_`) |
 | Rodada 24 (integrada em 2026-11-08) | `estudio-grafos` (`grf_`) |
 | Rodada 27 (integrada em 2026-11-08) | `pace` (`pac_`), `rf-calculo` (`rfc_`), `juros-mora` (`jmr_`) — total **178 ferramentas**, `OK: 178` |
+| Sessão paralela (2026-11-08) | `inspetor-unicode` (`uni_`), `simulador-monte-carlo` (`mtc_`), `calculadora-quaternions` (`qtn_`), `codificador-fonetico` (`phn_`) — chegou a **182** |
+| Rodada 28 (integrada em 2026-11-08) | `dados-rpg` (`rpg_`), `navegacao` (`nav_`), `gestacional` (`gst_`) — total **185 ferramentas**, `OK: 185` |
 | Próximo passo | Continuação de **ferramentas novas** (rodada seguinte) |
 
 ---
@@ -76,7 +78,7 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
   achata todos os `.py` numa pasta só (`staged/`); se dois arquivos tiverem o mesmo nome (ex.: dois
   `test_pm.py`), o stage aborta com `COLISÃO`.
   - Prefixos já usados: `kh_ fd_ clt_ cu_ pb_ fa_ cg_ rc_ car_ hb_ sb_ dd_ gd_ as_ pm_ (e test_pmon)
-    gs_ cm_ nc_ tg_ qb_ cv_ cn_ scn_ lan_ lg_ th_ mm_ kb_ aud_ dk_ gif_ snip_ rss_ svc_ wfi_ seo_ ccp_ dfx_ syn_ mcr_ prx_ ast_ bar_ chm_ crd_ lsc_ elt_ dna_ lga_ gpx_ mtx_ fwl_ dck_ stt_ med_ mid_ sch_ agr_ prc_ svg_ mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_ cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_ lgc_ fft_ jsc_ grs_ stm_ nbd_ cnc_ huf_ cll_ gip_ bys_ cpt_ bsc_ hdr_ rlc_ sqf_ seq_ bse_ apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ bnf_ pid_ qth_ crc_ pac_ rfc_ jmr_` (+ os das rodadas 1–10). Sempre rode
+    gs_ cm_ nc_ tg_ qb_ cv_ cn_ scn_ lan_ lg_ th_ mm_ kb_ aud_ dk_ gif_ snip_ rss_ svc_ wfi_ seo_ ccp_ dfx_ syn_ mcr_ prx_ ast_ bar_ chm_ crd_ lsc_ elt_ dna_ lga_ gpx_ mtx_ fwl_ dck_ stt_ med_ mid_ sch_ agr_ prc_ svg_ mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_ cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_ lgc_ fft_ jsc_ grs_ stm_ nbd_ cnc_ huf_ cll_ gip_ bys_ cpt_ bsc_ hdr_ rlc_ sqf_ seq_ bse_ apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ bnf_ pid_ qth_ crc_ uni_ mtc_ qtn_ phn_ pac_ rfc_ jmr_ rpg_ nav_ gst_` (+ os das rodadas 1–10). Sempre rode
     `python build_suite.py --stage-only` para validar.
 - **OBRIGATÓRIO no rodapé de toda GUI `.pyw`:**
   ```python
@@ -111,6 +113,14 @@ Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio
 ---
 
 ## 📝 Log de atualizações (mais recente no topo)
+
+- **2026-11-08 (Rodada 28 — 185 ferramentas):**
+  - Criadas, testadas e integradas **3 ferramentas novas inéditas** (stdlib puro, offline):
+    1. **🎲 Laboratório de Dados RPG** (`dados-rpg` / `rpg_gui.pyw`): distribuição EXATA de probabilidade de rolagens NdM+K por convolução (`fractions`), probabilidade de atingir um alvo (P ≥ X), valor esperado, moda/desvio, vantagem/desvantagem estilo d20 (2d20 maior/menor) e histograma em texto.
+    2. **🧭 Navegação & Rumo** (`navegacao` / `nav_gui.pyw`): distância ortodrômica (great-circle/Haversine) e loxodrômica (rhumb line), rumo inicial e rumo constante, ponto de chegada dado rumo+distância, ETA por velocidade em nós e rosa dos ventos de 16 setores. Distinto do `geo_` (que só converte formatos de coordenada).
+    3. **🤰 Calculadora Gestacional** (`gestacional` / `gst_gui.pyw`): DPP pela regra de Naegele (com ajuste de ciclo), idade gestacional em semanas+dias, trimestre, data de concepção estimada e dedução da DUM a partir da IG de um ultrassom. Datas puras; aviso de estimativa educativa.
+  - Observação: entre a Rodada 27 e esta, uma sessão paralela integrou 4 ferramentas (`uni_`, `mtc_`, `qtn_`, `phn_`), levando o total de 178 → 182 → **185**.
+  - Todas as **185 ferramentas** passaram em `build_suite.py --stage-only` e `staged\app.py --selftest` (`OK: 185`).
 
 - **2026-11-08 (Rodada 27 — 178 ferramentas):**
   - Criadas, testadas e integradas **3 ferramentas novas inéditas** (stdlib puro, offline):

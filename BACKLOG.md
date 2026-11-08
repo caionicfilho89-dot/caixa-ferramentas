@@ -102,6 +102,12 @@ nada que sirva pra golpe/ataque a terceiros.
 - 🍽️ Gorjeta e Divisão — calcule gorjeta e divida a conta
 - 🖌️ Quadro Branco — desenho livre, formas, texto, exportar PNG/PDF
 
+## ✅ Rodada 28 — jogos, mar e maternidade (integrada — 185 ferramentas no código)
+- 🎲 Laboratório de Dados RPG (`rpg_`) — distribuição exata NdM+K, P(≥alvo), vantagem/desvantagem, histograma
+- 🧭 Navegação & Rumo (`nav_`) — ortodrômica/loxodrômica, rumo, ponto de chegada, ETA em nós
+- 🤰 Calculadora Gestacional (`gst_`) — DPP Naegele, semanas, trimestre, concepção; pela DUM ou ultrassom
+- (sessão paralela entre a 27 e a 28: `uni_`, `mtc_`, `qtn_`, `phn_`)
+
 ## ✅ Rodada 27 — esporte, rádio e finanças (integrada — 178 ferramentas no código)
 - 🏃 Ritmo & Corrida (`pac_`) — ritmo↔velocidade, tempo de prova, splits, Riegel, VO2max, zonas de FC
 - 📡 Calculadora RF & dBm (`rfc_`) — dBm/mW/W, somar potências, freq↔λ, FSPL, link budget, VSWR
