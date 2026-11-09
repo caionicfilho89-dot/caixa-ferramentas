@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 488,
+  "total": 494,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4393,6 +4393,60 @@
       "script": "pev_gui.pyw",
       "prefixo": "pev",
       "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧰",
+      "nome": "Gerador mise.toml",
+      "desc": "Presets mise.toml (Python/Node/Go toolchains).",
+      "chave": "gerador-mise",
+      "script": "mse_gui.pyw",
+      "prefixo": "mse",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Gerador pip.conf",
+      "desc": "Presets pip.conf / pip.ini (indice, timeout, trusted-host).",
+      "chave": "gerador-pip-conf",
+      "script": "pcf_gui.pyw",
+      "prefixo": "pcf",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🐍",
+      "nome": "Gerador .condarc",
+      "desc": "Presets .condarc (conda channels, strict, env dirs).",
+      "chave": "gerador-condarc",
+      "script": "asc_gui.pyw",
+      "prefixo": "asc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📥",
+      "nome": "Gerador script NSIS",
+      "desc": "Presets .nsi (instalador basico, com uninstaller, silent).",
+      "chave": "gerador-nsis",
+      "script": "nsi_gui.pyw",
+      "prefixo": "nsi",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "💿",
+      "nome": "Gerador script Inno Setup",
+      "desc": "Presets .iss (Basico, Tasks, Portugues).",
+      "chave": "gerador-inno-setup",
+      "script": "iss_gui.pyw",
+      "prefixo": "iss",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🏗️",
+      "nome": "Gerador Bazel MODULE/BUILD",
+      "desc": "Presets MODULE.bazel e BUILD (cc_binary, py_binary).",
+      "chave": "gerador-bazel",
+      "script": "bzl_gui.pyw",
+      "prefixo": "bzl",
+      "categoria": "🧰 Outras"
     }
   ],
   "prefixos": [
@@ -4414,6 +4468,7 @@
     "aqu",
     "area_transferencia",
     "as",
+    "asc",
     "asd",
     "ast",
     "aud",
@@ -4441,6 +4496,7 @@
     "bun",
     "busca_arquivos",
     "bys",
+    "bzl",
     "bzr",
     "cab",
     "cabecalhos_seguranca",
@@ -4621,6 +4677,7 @@
     "inv",
     "ipm",
     "iso",
+    "iss",
     "janelas",
     "jmr",
     "jsc",
@@ -4675,6 +4732,7 @@
     "mot",
     "mqb",
     "mrs",
+    "mse",
     "msn",
     "mtc",
     "mtm",
@@ -4693,6 +4751,7 @@
     "notas",
     "nox",
     "nrc",
+    "nsi",
     "ntl",
     "ntr",
     "nvm",
@@ -4711,6 +4770,7 @@
     "paletas_cores",
     "pao",
     "pcc",
+    "pcf",
     "pcp",
     "pcs",
     "pdl",

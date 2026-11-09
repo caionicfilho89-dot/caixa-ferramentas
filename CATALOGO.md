@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-08** · Total: **488 ferramentas** · **488 prefixos** usados.
+> Última geração: **2026-11-08** · Total: **494 ferramentas** · **494 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -19,13 +19,13 @@
 - 🏠 Casa, Pet & Pessoal — 83
 - 🔬 Ciência & Engenharia — 36
 - 🌐 Rede & Segurança — 43
-- 💻 Dev & Dados — 61
+- 💻 Dev & Dados — 62
 - 🖼️ Imagem & Design — 35
 - 🎵 Áudio & Vídeo — 17
 - ✍️ Texto & Estudo — 13
 - 🎮 Jogos & Diversão — 16
 - 🗂️ Arquivos & Sistema — 46
-- 🧰 Outras — 97
+- 🧰 Outras — 102
 
 ---
 
@@ -252,7 +252,7 @@
 | 🔒 | **Trancar Arquivos** | Tranca arquivos com senha (AES-256) | `cripto-arquivos` | `cripto_arquivos` |
 | 📒 | **Álbum de Figurinhas** | Controle de cromos, trocas e estimativa de pacotes para completar o álbum | `album-figurinhas` | `alb` |
 
-## 💻 Dev & Dados  ·  61
+## 💻 Dev & Dados  ·  62
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -302,6 +302,7 @@
 | 🌍 | **Gerador Earthfile** | Presets Earthfile (Go, Node, Python). | `gerador-earthfile` | `ear` |
 | 📋 | **Gerador justfile** | Presets justfile (Python, Node, Docker). | `gerador-justfile` | `jst` |
 | 🍨 | **Gerador manifesto Scoop** | Presets JSON de app Scoop (url, hash, bin, shortcuts). | `gerador-scoop` | `sco` |
+| 🧰 | **Gerador mise.toml** | Presets mise.toml (Python/Node/Go toolchains). | `gerador-mise` | `mse` |
 | 📐 | **Gerador pyrightconfig.json** | Presets pyrightconfig.json (Basico, Strict, Monorepo). | `gerador-pyrightconfig` | `pyr` |
 | 🔄 | **Gerador Renovate** | Presets renovate.json (Basico, Grouped, Automerge patch). | `gerador-renovate` | `rnv` |
 | ✅ | **Gerador Taskfile.yml** | Presets Taskfile.yml (Basico, Python, Docker). | `gerador-taskfile` | `tsk` |
@@ -470,7 +471,7 @@
 | 🌱 | **Variáveis de Ambiente** | Editor do PATH e variáveis do usuário com backup | `variaveis-ambiente` | `variaveis_ambiente` |
 | 📋 | **Área de Transferência** | Histórico do que você copiou (Ctrl+Shift+V) | `area-transferencia` | `area_transferencia` |
 
-## 🧰 Outras  ·  97
+## 🧰 Outras  ·  102
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -509,12 +510,14 @@
 | ✒️ | **Estúdio Bézier** | Curvas de Bézier (Casteljau), ponto B(t), tangente e comprimento aproximado | `estudio-bezier` | `bzr` |
 | 🧹 | **Gerador .clang-tidy** | Presets .clang-tidy (Basico, Modernize, Performance). | `gerador-clang-tidy` | `cty` |
 | 🧠 | **Gerador .clangd** | Presets .clangd (Basico, Compile flags, Query driver). | `gerador-clangd` | `cld` |
+| 🐍 | **Gerador .condarc** | Presets .condarc (conda channels, strict, env dirs). | `gerador-condarc` | `asc` |
 | 📂 | **Gerador .envrc** | Presets direnv .envrc (venv, node, asdf, nix). | `gerador-envrc` | `drc` |
 | 🐳 | **Gerador .hadolint.yaml** | Presets .hadolint.yaml (Basico, Strict, CI). | `gerador-hadolint` | `hdc` |
 | 🔄 | **Gerador .stignore** | Templates Syncthing .stignore (Basico, Dev, Media). | `gerador-syncthingignore` | `stg` |
 | 🧰 | **Gerador .tool-versions** | Presets asdf .tool-versions. | `gerador-tool-versions` | `tvs` |
 | 🧾 | **Gerador .yamllint** | Presets .yamllint (Basico, Strict, Relaxed). | `gerador-yamllint` | `ylt` |
 | 🧶 | **Gerador .yarnrc.yml** | Presets Yarn Berry (.yarnrc.yml). | `gerador-yarnrc` | `yrn` |
+| 🏗️ | **Gerador Bazel MODULE/BUILD** | Presets MODULE.bazel e BUILD (cc_binary, py_binary). | `gerador-bazel` | `bzl` |
 | 🍺 | **Gerador Brewfile** | Presets Homebrew Brewfile. | `gerador-brewfile` | `bfi` |
 | 🥟 | **Gerador bunfig.toml** | Presets Bun bunfig.toml. | `gerador-bunfig` | `bun` |
 | 📦 | **Gerador Cargo.toml** | Presets Cargo.toml Rust (bin, lib, clap). | `gerador-cargo-toml` | `cgo` |
@@ -537,8 +540,11 @@
 | 🪟 | **Gerador manifesto Winget** | Presets YAML de manifesto winget (installer + locale). | `gerador-winget` | `wgm` |
 | ⚙️ | **Gerador meson.build** | Presets Meson (C, C++, lib+exe). | `gerador-meson` | `msn` |
 | 🧪 | **Gerador noxfile.py** | Presets noxfile.py (lint, tests, docs). | `gerador-noxfile` | `nox` |
+| 📦 | **Gerador pip.conf** | Presets pip.conf / pip.ini (indice, timeout, trusted-host). | `gerador-pip-conf` | `pcf` |
 | 📜 | **Gerador Poetry** | Presets pyproject.toml Poetry (app, lib+extras, CLI) com nome do projeto. | `gerador-poetry-pyproject` | `poe` |
 | 🚀 | **Gerador Procfile** | Presets Procfile (Django, Flask, Node, worker). | `gerador-procfile` | `pfl` |
+| 💿 | **Gerador script Inno Setup** | Presets .iss (Basico, Tasks, Portugues). | `gerador-inno-setup` | `iss` |
+| 📥 | **Gerador script NSIS** | Presets .nsi (instalador basico, com uninstaller, silent). | `gerador-nsis` | `nsi` |
 | 📌 | **Gerador tasks.py (Invoke)** | Presets tasks.py do Invoke (test, build, release). | `gerador-invoke` | `inv` |
 | 🧺 | **Guia de Lavanderia** | Tira-manchas por tecido, dosagem de sabão e temperatura/centrifugação | `guia-lavanderia` | `lvd` |
 | 🍷 | **Harmonização de Vinhos e Queijos** | Sugere vinhos para queijos, quantidade e temperatura | `vinhos-queijos` | `vnh` |
@@ -574,56 +580,57 @@
 
 ---
 
-## 🔒 Prefixos reservados (488) — NÃO repetir
+## 🔒 Prefixos reservados (494) — NÃO repetir
 
 ```text
 acl  acp  acu  ads  aer  agr  alb  alg  alq  alu
-amf  analisador_texto  anv  apo  aqs  aqu  area_transferencia  as  asd  ast
-aud  b64  bar  bat  bdg  bdt  bfi  bhr  big  bik
-blk  blm  bmk  bnd  bnf  bng  bol  brg  brw  bsc
-bse  btu  bun  busca_arquivos  bys  bzr  cab  cabecalhos_seguranca  caderno_python  calculadora_cientifica
-calculadora_clt  calendario_br  can  canivete  capturador_cores  car  cas  cbv  ccp  ccs
-cer  certificado_ssl  cfe  cfm  cfr  cg  cgo  cha  chc  chg
-chi  chm  chu  chz  cic  cis  clc  cld  clf  cliente_api
-cll  cm  cmb  cmk  cmp  cnc  cnd  cof  cofre_senhas  compactador
-comparar_pastas  contatos  conversor_av  conversor_imagens  conversor_unidades  cov  coz  cpt  crc  crd
-cripto_arquivos  crn  crp  crx  cst  ctk  ctm  cty  cub  curriculo_pdf
-cyc  czc  dc  dck  dcn  dd  den  dep  dex  dfn
-dfx  dik  dk  dlt  dmn  dna  dnv  dpb  drc  drf
-dry  dsp  dts  dvc  dzm  ear  ecc  edc  editor_imagem  efn
-ele  elf  elt  emp  enc  encm  enx  eoc  eol  epc
-epi  esc  esi  esm  etiquetas  eul  ext  extrator_texto  fa  faxina
-fdt  fei  ferramentas_br  ferramentas_dev  ferramentas_rede  fft  financas  fla  flashcards  flk
-fot  frv  fsc  fsi  fst  fsz  fum  fwl  fwt  galeria_fotos
-gas  gat  gd  gdo  geo  gg  gha  gif  gig  gip
-gps_falso  gpx  gravador_tela  gravador_voz  grf  grm  grr  grs  gry  gs
-gsl  gst  gyr  ham  hb  hdc  hdl  hdp  hdr  hlk
-hmn  hsh  hst  hsz  huf  hxd  iab  icl  ico  ind
-info_pc  inicializacao  inv  ipm  iso  janelas  jmr  jsc  jst  jun
-jwt  kb  kcr  kit_hacker  kit_pdf  kmb  knp  knt  kwh  lan
-lct  lei  leitor_ebooks  lg  lga  lgc  lhn  lic  limpar_metadados  lng
-lok  lor  lsc  lux  lvd  mac  mag  mal  man  mcr
-mdc  mdl  mdx  med  met  metronomo  mhr  mid  mkf  mkt
-mkv  mlp  mm  mmt  mnt  monitor_sistema  mot  mqb  mrs  msn
-mtc  mtm  mtr  mtx  myp  nav  nbd  nc  nca  nfe
-nfn  nln  nmi  nmk  notas  nox  nrc  ntl  ntr  nvm
-obr  ofx  olo  opt  orcamentos  orf  organizador  orq  own  p3d
-pac  pal  paletas_cores  pao  pcc  pcp  pcs  pdl  pei  pem
-pes  pet  pev  pfl  phn  pid  pix_boleto  player_musica  plc  pld
-plk  plt  pm  pnu  poe  ppd  prc  print_anotador  prm  prs
-prt  prx  psc  psi  pth  pti  ptt  pvs  pyc  pyl
-pyr  pyv  pzz  qb  qc  qrcode_tool  qth  qtn  quiz_geografia  qzf
-rastreador_tempo  rc  rct  rea  rec  recupera  reg  relogio_mundial  renomeador  reo
-req  res  rev  rfc  rfm  rfx  rgx  rlc  rle  rls
-rlz  rmx  rnv  rob  rot  rpg  rss  ruf  rwx  sab
-saude  sb  sbb  scf  sch  scm  scn  sco  sek  seo
-seq  sfl  sfr  sgb  shb  sir  skn  slg  smv  snip
-snl  sno  som  sorteios  spa  spl  sqf  srt  ssc  ssk
-stg  stm  stp  stt  sudoku  svc  svg  syb  sym  syn
-tam  tarefas  tcs  tdf  tdo  tempo  texto_fala  tg  th  thm
-tip  tml  tmp  tok  tox  trc  trd  tre  treino_digitacao  trf
-trs  tru  trv  tsk  tun  tvd  tvs  uba  udi  uid
-uni  vag  variaveis_ambiente  vcp  vdc  vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite
-vnh  volume_apps  vsc  vst  wcg  wci  wdc  webcam_foto  wfi  wgm
-wsp  wup  xtr  ylt  yml  yrn  zcd  zpf
+amf  analisador_texto  anv  apo  aqs  aqu  area_transferencia  as  asc  asd
+ast  aud  b64  bar  bat  bdg  bdt  bfi  bhr  big
+bik  blk  blm  bmk  bnd  bnf  bng  bol  brg  brw
+bsc  bse  btu  bun  busca_arquivos  bys  bzl  bzr  cab  cabecalhos_seguranca
+caderno_python  calculadora_cientifica  calculadora_clt  calendario_br  can  canivete  capturador_cores  car  cas  cbv
+ccp  ccs  cer  certificado_ssl  cfe  cfm  cfr  cg  cgo  cha
+chc  chg  chi  chm  chu  chz  cic  cis  clc  cld
+clf  cliente_api  cll  cm  cmb  cmk  cmp  cnc  cnd  cof
+cofre_senhas  compactador  comparar_pastas  contatos  conversor_av  conversor_imagens  conversor_unidades  cov  coz  cpt
+crc  crd  cripto_arquivos  crn  crp  crx  cst  ctk  ctm  cty
+cub  curriculo_pdf  cyc  czc  dc  dck  dcn  dd  den  dep
+dex  dfn  dfx  dik  dk  dlt  dmn  dna  dnv  dpb
+drc  drf  dry  dsp  dts  dvc  dzm  ear  ecc  edc
+editor_imagem  efn  ele  elf  elt  emp  enc  encm  enx  eoc
+eol  epc  epi  esc  esi  esm  etiquetas  eul  ext  extrator_texto
+fa  faxina  fdt  fei  ferramentas_br  ferramentas_dev  ferramentas_rede  fft  financas  fla
+flashcards  flk  fot  frv  fsc  fsi  fst  fsz  fum  fwl
+fwt  galeria_fotos  gas  gat  gd  gdo  geo  gg  gha  gif
+gig  gip  gps_falso  gpx  gravador_tela  gravador_voz  grf  grm  grr  grs
+gry  gs  gsl  gst  gyr  ham  hb  hdc  hdl  hdp
+hdr  hlk  hmn  hsh  hst  hsz  huf  hxd  iab  icl
+ico  ind  info_pc  inicializacao  inv  ipm  iso  iss  janelas  jmr
+jsc  jst  jun  jwt  kb  kcr  kit_hacker  kit_pdf  kmb  knp
+knt  kwh  lan  lct  lei  leitor_ebooks  lg  lga  lgc  lhn
+lic  limpar_metadados  lng  lok  lor  lsc  lux  lvd  mac  mag
+mal  man  mcr  mdc  mdl  mdx  med  met  metronomo  mhr
+mid  mkf  mkt  mkv  mlp  mm  mmt  mnt  monitor_sistema  mot
+mqb  mrs  mse  msn  mtc  mtm  mtr  mtx  myp  nav
+nbd  nc  nca  nfe  nfn  nln  nmi  nmk  notas  nox
+nrc  nsi  ntl  ntr  nvm  obr  ofx  olo  opt  orcamentos
+orf  organizador  orq  own  p3d  pac  pal  paletas_cores  pao  pcc
+pcf  pcp  pcs  pdl  pei  pem  pes  pet  pev  pfl
+phn  pid  pix_boleto  player_musica  plc  pld  plk  plt  pm  pnu
+poe  ppd  prc  print_anotador  prm  prs  prt  prx  psc  psi
+pth  pti  ptt  pvs  pyc  pyl  pyr  pyv  pzz  qb
+qc  qrcode_tool  qth  qtn  quiz_geografia  qzf  rastreador_tempo  rc  rct  rea
+rec  recupera  reg  relogio_mundial  renomeador  reo  req  res  rev  rfc
+rfm  rfx  rgx  rlc  rle  rls  rlz  rmx  rnv  rob
+rot  rpg  rss  ruf  rwx  sab  saude  sb  sbb  scf
+sch  scm  scn  sco  sek  seo  seq  sfl  sfr  sgb
+shb  sir  skn  slg  smv  snip  snl  sno  som  sorteios
+spa  spl  sqf  srt  ssc  ssk  stg  stm  stp  stt
+sudoku  svc  svg  syb  sym  syn  tam  tarefas  tcs  tdf
+tdo  tempo  texto_fala  tg  th  thm  tip  tml  tmp  tok
+tox  trc  trd  tre  treino_digitacao  trf  trs  tru  trv  tsk
+tun  tvd  tvs  uba  udi  uid  uni  vag  variaveis_ambiente  vcp
+vdc  vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vnh  volume_apps  vsc  vst
+wcg  wci  wdc  webcam_foto  wfi  wgm  wsp  wup  xtr  ylt
+yml  yrn  zcd  zpf
 ```

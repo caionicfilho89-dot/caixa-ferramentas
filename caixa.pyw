@@ -522,6 +522,12 @@ BUILTIN = [
     ("🍫", "Gerador Chocolatey nuspec", "Presets .nuspec Chocolatey (Basico, Com deps, Portable).", "gerador-chocolatey-nuspec", "chc_gui.pyw"),
     ("📌", "Gerador tasks.py (Invoke)", "Presets tasks.py do Invoke (test, build, release).", "gerador-invoke", "inv_gui.pyw"),
     ("🏷️", "Inspetor PE Version Info", "Extrai FileVersion, ProductVersion e strings de VERSIONINFO.", "inspetor-pe-version", "pev_gui.pyw"),
+    ("🧰", "Gerador mise.toml", "Presets mise.toml (Python/Node/Go toolchains).", "gerador-mise", "mse_gui.pyw"),
+    ("📦", "Gerador pip.conf", "Presets pip.conf / pip.ini (indice, timeout, trusted-host).", "gerador-pip-conf", "pcf_gui.pyw"),
+    ("🐍", "Gerador .condarc", "Presets .condarc (conda channels, strict, env dirs).", "gerador-condarc", "asc_gui.pyw"),
+    ("📥", "Gerador script NSIS", "Presets .nsi (instalador basico, com uninstaller, silent).", "gerador-nsis", "nsi_gui.pyw"),
+    ("💿", "Gerador script Inno Setup", "Presets .iss (Basico, Tasks, Portugues).", "gerador-inno-setup", "iss_gui.pyw"),
+    ("🏗️", "Gerador Bazel MODULE/BUILD", "Presets MODULE.bazel e BUILD (cc_binary, py_binary).", "gerador-bazel", "bzl_gui.pyw"),
 ]
 
 QSS = """
