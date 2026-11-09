@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 464,
+  "total": 470,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4177,6 +4177,60 @@
       "script": "pei_gui.pyw",
       "prefixo": "pei",
       "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🌍",
+      "nome": "Gerador Earthfile",
+      "desc": "Presets Earthfile (Go, Node, Python).",
+      "chave": "gerador-earthfile",
+      "script": "ear_gui.pyw",
+      "prefixo": "ear",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧰",
+      "nome": "Gerador .tool-versions",
+      "desc": "Presets asdf .tool-versions.",
+      "chave": "gerador-tool-versions",
+      "script": "tvs_gui.pyw",
+      "prefixo": "tvs",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📂",
+      "nome": "Gerador .envrc",
+      "desc": "Presets direnv .envrc (venv, node, asdf, nix).",
+      "chave": "gerador-envrc",
+      "script": "drc_gui.pyw",
+      "prefixo": "drc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🍺",
+      "nome": "Gerador Brewfile",
+      "desc": "Presets Homebrew Brewfile.",
+      "chave": "gerador-brewfile",
+      "script": "bfi_gui.pyw",
+      "prefixo": "bfi",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧱",
+      "nome": "Gerador Makefile nmake",
+      "desc": "Presets Makefile para nmake/cl.exe Windows.",
+      "chave": "gerador-nmake",
+      "script": "nmk_gui.pyw",
+      "prefixo": "nmk",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📎",
+      "nome": "Listador de Dependencias PE",
+      "desc": "Lista DLLs unicas importadas por EXE/DLL (dependencias PE).",
+      "chave": "listador-deps-pe",
+      "script": "dep_gui.pyw",
+      "prefixo": "dep",
+      "categoria": "🌐 Rede & Segurança"
     }
   ],
   "prefixos": [
@@ -4206,6 +4260,7 @@
     "bat",
     "bdg",
     "bdt",
+    "bfi",
     "bhr",
     "big",
     "bik",
@@ -4294,6 +4349,7 @@
     "dcn",
     "dd",
     "den",
+    "dep",
     "dex",
     "dfn",
     "dfx",
@@ -4303,11 +4359,13 @@
     "dmn",
     "dna",
     "dnv",
+    "drc",
     "drf",
     "dry",
     "dsp",
     "dts",
     "dzm",
+    "ear",
     "ecc",
     "edc",
     "editor_imagem",
@@ -4461,6 +4519,7 @@
     "nfn",
     "nln",
     "nmi",
+    "nmk",
     "notas",
     "nrc",
     "ntl",
@@ -4617,6 +4676,7 @@
     "tsk",
     "tun",
     "tvd",
+    "tvs",
     "uba",
     "udi",
     "uid",

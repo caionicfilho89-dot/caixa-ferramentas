@@ -498,6 +498,12 @@ BUILTIN = [
     ("📦", "Gerador Vagrantfile", "Presets Vagrantfile (Ubuntu, Docker, synced).", "gerador-vagrantfile", "vag_gui.pyw"),
     ("🐍", "Gerador .python-version", "Gera .python-version para pyenv com versoes comuns.", "gerador-python-version", "pyv_gui.pyw"),
     ("📥", "Inspetor PE Imports", "Lista DLLs e funcoes importadas de EXE/DLL (tabela de importacao PE).", "inspetor-pe-imports", "pei_gui.pyw"),
+    ("🌍", "Gerador Earthfile", "Presets Earthfile (Go, Node, Python).", "gerador-earthfile", "ear_gui.pyw"),
+    ("🧰", "Gerador .tool-versions", "Presets asdf .tool-versions.", "gerador-tool-versions", "tvs_gui.pyw"),
+    ("📂", "Gerador .envrc", "Presets direnv .envrc (venv, node, asdf, nix).", "gerador-envrc", "drc_gui.pyw"),
+    ("🍺", "Gerador Brewfile", "Presets Homebrew Brewfile.", "gerador-brewfile", "bfi_gui.pyw"),
+    ("🧱", "Gerador Makefile nmake", "Presets Makefile para nmake/cl.exe Windows.", "gerador-nmake", "nmk_gui.pyw"),
+    ("📎", "Listador de Dependencias PE", "Lista DLLs unicas importadas por EXE/DLL (dependencias PE).", "listador-deps-pe", "dep_gui.pyw"),
 ]
 
 QSS = """
