@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 482,
+  "total": 488,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4339,6 +4339,60 @@
       "script": "vst_gui.pyw",
       "prefixo": "vst",
       "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Gerador noxfile.py",
+      "desc": "Presets noxfile.py (lint, tests, docs).",
+      "chave": "gerador-noxfile",
+      "script": "nox_gui.pyw",
+      "prefixo": "nox",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🪟",
+      "nome": "Gerador manifesto Winget",
+      "desc": "Presets YAML de manifesto winget (installer + locale).",
+      "chave": "gerador-winget",
+      "script": "wgm_gui.pyw",
+      "prefixo": "wgm",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🍨",
+      "nome": "Gerador manifesto Scoop",
+      "desc": "Presets JSON de app Scoop (url, hash, bin, shortcuts).",
+      "chave": "gerador-scoop",
+      "script": "sco_gui.pyw",
+      "prefixo": "sco",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🍫",
+      "nome": "Gerador Chocolatey nuspec",
+      "desc": "Presets .nuspec Chocolatey (Basico, Com deps, Portable).",
+      "chave": "gerador-chocolatey-nuspec",
+      "script": "chc_gui.pyw",
+      "prefixo": "chc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📌",
+      "nome": "Gerador tasks.py (Invoke)",
+      "desc": "Presets tasks.py do Invoke (test, build, release).",
+      "chave": "gerador-invoke",
+      "script": "inv_gui.pyw",
+      "prefixo": "inv",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🏷️",
+      "nome": "Inspetor PE Version Info",
+      "desc": "Extrai FileVersion, ProductVersion e strings de VERSIONINFO.",
+      "chave": "inspetor-pe-version",
+      "script": "pev_gui.pyw",
+      "prefixo": "pev",
+      "categoria": "🏠 Casa, Pet & Pessoal"
     }
   ],
   "prefixos": [
@@ -4410,6 +4464,7 @@
     "cg",
     "cgo",
     "cha",
+    "chc",
     "chg",
     "chi",
     "chm",
@@ -4563,6 +4618,7 @@
     "ind",
     "info_pc",
     "inicializacao",
+    "inv",
     "ipm",
     "iso",
     "janelas",
@@ -4635,6 +4691,7 @@
     "nmi",
     "nmk",
     "notas",
+    "nox",
     "nrc",
     "ntl",
     "ntr",
@@ -4661,6 +4718,7 @@
     "pem",
     "pes",
     "pet",
+    "pev",
     "pfl",
     "phn",
     "pid",
@@ -4735,6 +4793,7 @@
     "sch",
     "scm",
     "scn",
+    "sco",
     "sek",
     "seo",
     "seq",
@@ -4816,6 +4875,7 @@
     "wdc",
     "webcam_foto",
     "wfi",
+    "wgm",
     "wsp",
     "wup",
     "xtr",

@@ -516,6 +516,12 @@ BUILTIN = [
     ("🚀", "Gerador .goreleaser", "Presets .goreleaser.yaml (Binario, Multi-OS, Docker).", "gerador-goreleaser", "grr_gui.pyw"),
     ("📦", "Gerador Dev Container", "Presets .devcontainer/devcontainer.json (Python, Node, Go).", "gerador-devcontainer", "dvc_gui.pyw"),
     ("⚙️", "Gerador VS Code tasks.json", "Presets .vscode/tasks.json (Python, Node, Make, Docker).", "gerador-vscode-tasks", "vst_gui.pyw"),
+    ("🧪", "Gerador noxfile.py", "Presets noxfile.py (lint, tests, docs).", "gerador-noxfile", "nox_gui.pyw"),
+    ("🪟", "Gerador manifesto Winget", "Presets YAML de manifesto winget (installer + locale).", "gerador-winget", "wgm_gui.pyw"),
+    ("🍨", "Gerador manifesto Scoop", "Presets JSON de app Scoop (url, hash, bin, shortcuts).", "gerador-scoop", "sco_gui.pyw"),
+    ("🍫", "Gerador Chocolatey nuspec", "Presets .nuspec Chocolatey (Basico, Com deps, Portable).", "gerador-chocolatey-nuspec", "chc_gui.pyw"),
+    ("📌", "Gerador tasks.py (Invoke)", "Presets tasks.py do Invoke (test, build, release).", "gerador-invoke", "inv_gui.pyw"),
+    ("🏷️", "Inspetor PE Version Info", "Extrai FileVersion, ProductVersion e strings de VERSIONINFO.", "inspetor-pe-version", "pev_gui.pyw"),
 ]
 
 QSS = """
