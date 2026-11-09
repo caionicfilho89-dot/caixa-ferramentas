@@ -7174,5 +7174,77 @@
    "Clique em Calcular terra."
   ],
   "exemplo": "2 jardineiras de 60 x 20 x 20 cm com 3 cm de drenagem: 18 L de terra cada, 39,6 L no total com sobra = 1 saco de cada tipo (20 L)."
+ },
+ "calculadora-adicional-periculosidade": {
+  "sinopse": "Calcula o adicional de periculosidade previsto no art. 193 da CLT (em geral 30%) sobre o salário-base do empregado, com opção de proporcionalidade quando a exposição ao risco não cobre a jornada inteira.",
+  "para_que": "Para estimar o valor do adicional no holerite (eletricidade, inflamáveis, explosivos, segurança patrimonial armada etc.) antes de validar com RH, sindicato ou escritório trabalhista.",
+  "como_usar": [
+   "Informe o salário-base usado para o adicional (sem misturar com insalubridade no mesmo período).",
+   "Ajuste o percentual se ACT/CCT fixar valor diferente de 30%.",
+   "Use proporcionalidade abaixo de 100% se só parte da jornada for em atividade perigosa.",
+   "Escolha 12 ou 13 meses no cálculo anual (13 inclui estimativa do décimo terceiro).",
+   "Clique em «Calcular adicional» e leia o aviso sobre laudo técnico (NR-16)."
+  ],
+  "exemplo": "Salário-base R$ 3.500, 30%, jornada 100%: adicional R$ 1.050/mês; salário com adicional R$ 4.550/mês; adicional anual R$ 12.600 (12 meses)."
+ },
+ "calculadora-dsr-hora-extra": {
+  "sinopse": "Estima o valor do Descanso Semanal Remunerado (DSR) incidente sobre as horas extras pagas no mes, usando a proporcao classica: domingos e feriados divididos pelos dias uteis trabalhados.",
+  "para_que": "Para conferir se o reflexo de DSR nas horas extras do holerite esta coerente, planejar custo de HE com encargos ou tirar duvidas antes de falar com RH/contador.",
+  "como_usar": [
+   "Informe o valor total de horas extras recebidas (ou previstas) no mes — some 50%, 100%, noturnas etc. se ja estiverem em R$.",
+   "Digite quantos dias uteis houve no mes (dias em que voce trabalhou ou a empresa considera laborados).",
+   "Conte domingos e feriados do mes (inclua feriados nacional/municipal que caem no periodo da folha).",
+   "Clique em «Calcular DSR» e veja o DSR estimado e o total HE + DSR.",
+   "Leia o aviso: faltas, convencao e Sumula 172 do TST alteram o calculo real."
+  ],
+  "exemplo": "HE R$ 880 no mes; 22 dias uteis; 4 domingos/feriados → proporcao 4/22 ≈ 0,1818 → DSR ≈ R$ 160,00 → total HE+DSR ≈ R$ 1.040,00."
+ },
+ "checklist-primeira-semana-estagio": {
+  "sinopse": "Acompanha a adaptacao no estagio com checklist ponderado: percentual de prontidao e lista de itens criticos ainda pendentes na primeira semana.",
+  "para_que": "Para estagiarios que querem nao esquecer burocracia, acessos, alinhamento com mentor e primeira entrega.",
+  "como_usar": [
+   "Abra a ferramenta e marque cada checkbox do que ja concluiu (termo assinado, cracha, mentor, acessos, tarefa, etc.).",
+   "Ajuste peso e minutos estimados se sua empresa priorizar itens diferentes.",
+   "Clique em Atualizar para recalcular o percentual pronto e o status da semana.",
+   "Leia a secao Criticos faltando — estes bloqueiam uma semana tranquila ate resolver.",
+   "Use Marcar tudo ou Desmarcar tudo para simular cenarios ou comecar do zero em um novo estagio."
+  ],
+  "exemplo": "Se termo, mentor e acessos estao ok mas falta cracha e primeira tarefa, o % sobe parcialmente e os dois itens aparecem em criticos faltando ate voce marcar."
+ },
+ "controle-hidratacao-escritorio": {
+  "sinopse": "Calcula quantos mililitros beber até o fim do turno, quanto falta e quando tomar o próximo copo com base no seu ritmo desejado.",
+  "para_que": "Quem trabalha no computador e esquece de beber água: define meta realista por hora e vê o próximo lembrete sem app na nuvem.",
+  "como_usar": [
+   "Informe quantas horas dura seu expediente (ex.: 8 h).",
+   "Defina o tamanho do copo ou garrafa em mililitros.",
+   "Ajuste copos por hora alvo (0,5 = um copo a cada 2 h; 1 = um copo por hora).",
+   "Digite quantos copos você já bebeu hoje.",
+   "Opcional: informe o horário de início para avisar se você está abaixo do ritmo.",
+   "Clique em Calcular meta e próximo copo e siga o horário sugerido."
+  ],
+  "exemplo": "8 h, copo 250 ml, 0,5 copo/h, 0 bebidos: meta 1000 ml (4 copos), restante 1000 ml, próximo copo em 2 h. Com 2 copos já bebidos: faltam 500 ml, próximo em 2 h no ritmo alvo."
+ },
+ "indice-burnout-simplificado": {
+  "sinopse": "Autoavaliacao rapida de sinais associados a burnout ocupacional, apenas para reflexao pessoal.",
+  "para_que": "Identificar se vale ajustar rotina, buscar apoio ou conversar com saude do trabalho — sem substituir diagnostico.",
+  "como_usar": [
+   "Leia cada pergunta e escolha de 0 (nunca) a 4 (quase sempre)",
+   "Na pergunta de eficacia, marque o quanto voce se sente capaz hoje (o calculo inverte para a escala de esgotamento)",
+   "Clique em Calcular indice para ver escore 0-20, nivel baixa/moderada/alta e dicas",
+   "Em sofrimento agudo, use o CVV 188 ou procure um profissional"
+  ],
+  "exemplo": "Todas as respostas em 2 (as vezes), com eficacia em 2: escore tipico 10, nivel moderado, com sugestoes de pausas e revisao de carga."
+ },
+ "planejador-pausa-olhos-20-20-20": {
+  "sinopse": "Monta os horarios dos alertas para aplicar a regra 20-20-20 durante o seu tempo na tela e soma o descanso ocular total.",
+  "para_que": "Reduzir fadiga visual e olho seco em quem passa horas no computador, sem depender de app pago ou online.",
+  "como_usar": [
+   "Informe o horario em que voce comeca a usar a tela (HH:MM).",
+   "Defina quantas horas pretende ficar no computador ou dispositivo.",
+   "Clique em Gerar cronograma.",
+   "Use a lista de alertas como lembrete: a cada horario indicado, olhe para longe (~6 m) por 20 segundos.",
+   "Confira o total de pausas e os segundos de descanso ocular acumulados no periodo."
+  ],
+  "exemplo": "Inicio 09:00, 4 h na tela: alertas as 09:20, 09:40, ... ate 12:40 (12 pausas), 240 s (4 min) de descanso ocular, fim da sessao ~13:00."
  }
 }

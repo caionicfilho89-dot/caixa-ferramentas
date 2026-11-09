@@ -714,6 +714,12 @@ TOOLS = {
     "planejador-meta-redacao": "pmr_gui.pyw",
     "simulador-hora-extra-50-100": "hex_gui.pyw",
     "terra-para-vasos": "sbv_gui.pyw",
+    "calculadora-adicional-periculosidade": "per_gui.pyw",
+    "calculadora-dsr-hora-extra": "dsr_gui.pyw",
+    "checklist-primeira-semana-estagio": "cps_gui.pyw",
+    "controle-hidratacao-escritorio": "hid_gui.pyw",
+    "indice-burnout-simplificado": "ibs_gui.pyw",
+    "planejador-pausa-olhos-20-20-20": "p20_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

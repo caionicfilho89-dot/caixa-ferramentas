@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-09",
-  "total": 691,
+  "total": 697,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -6220,6 +6220,60 @@
       "script": "sbv_gui.pyw",
       "prefixo": "sbv",
       "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⚠️",
+      "nome": "Adicional de Periculosidade CLT",
+      "desc": "30% típico sobre salário-base; proporcionalidade da jornada; mensal e anual",
+      "chave": "calculadora-adicional-periculosidade",
+      "script": "per_gui.pyw",
+      "prefixo": "per",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📅",
+      "nome": "DSR sobre Horas Extras",
+      "desc": "Reflexo do descanso semanal sobre o total de HE do mes (proporcao domingos+feriados/dias uteis)",
+      "chave": "calculadora-dsr-hora-extra",
+      "script": "dsr_gui.pyw",
+      "prefixo": "dsr",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📋",
+      "nome": "Checklist 1a Semana de Estagio",
+      "desc": "Checklist ponderado da primeira semana: termo, cracha, mentor, acessos e tarefas — marque itens e veja % pronto e criticos faltando",
+      "chave": "checklist-primeira-semana-estagio",
+      "script": "cps_gui.pyw",
+      "prefixo": "cps",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🥤",
+      "nome": "Controle de Hidratação no Escritório",
+      "desc": "Meta de água no expediente, volume restante e horário sugerido do próximo copo conforme o ritmo alvo",
+      "chave": "controle-hidratacao-escritorio",
+      "script": "hid_gui.pyw",
+      "prefixo": "hid",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔥",
+      "nome": "Indice simplificado de burnout",
+      "desc": "Questionario educativo de 5 itens Likert (exaustao, cinismo, eficacia, sono, desconexao) com escore, nivel e dicas; aviso CVV 188",
+      "chave": "indice-burnout-simplificado",
+      "script": "ibs_gui.pyw",
+      "prefixo": "ibs",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "👁️",
+      "nome": "Planejador Regra 20-20-20",
+      "desc": "Cronograma de pausas oculares: a cada 20 min de tela, olhar 20 pes (~6 m) por 20 segundos",
+      "chave": "planejador-pausa-olhos-20-20-20",
+      "script": "p20_gui.pyw",
+      "prefixo": "p20",
+      "categoria": "💻 Dev & Dados"
     }
   ],
   "prefixos": [
@@ -6363,6 +6417,7 @@
     "cpe",
     "cpj",
     "cpl",
+    "cps",
     "cpt",
     "crc",
     "crd",
@@ -6423,6 +6478,7 @@
     "dsc",
     "dsi",
     "dsp",
+    "dsr",
     "dts",
     "dvc",
     "dzm",
@@ -6530,6 +6586,7 @@
     "hdr",
     "hdt",
     "hex",
+    "hid",
     "hlk",
     "hlm",
     "hmn",
@@ -6545,6 +6602,7 @@
     "huf",
     "hxd",
     "iab",
+    "ibs",
     "icl",
     "icn",
     "ico",
@@ -6677,6 +6735,7 @@
     "organizador",
     "orq",
     "own",
+    "p20",
     "p3d",
     "pac",
     "pad",
@@ -6696,6 +6755,7 @@
     "pei",
     "pem",
     "pen",
+    "per",
     "pes",
     "pet",
     "pev",

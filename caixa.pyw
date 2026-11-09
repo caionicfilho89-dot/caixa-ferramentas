@@ -796,6 +796,12 @@ BUILTIN = [
     ("✍️", "Planejador de Meta de Redacao", "Calcula o que falta escrever, minutos necessarios, se cabe na sessao de hoje e ritmo sugerido para ENEM, escola ou blog", "planejador-meta-redacao", "pmr_gui.pyw"),
     ("⏱️", "Simulador Hora Extra 50% e 100%", "CLT tipica: valor da HE50, HE100, total de extras e salario + extras pelo divisor mensal.", "simulador-hora-extra-50-100", "hex_gui.pyw"),
     ("🪴", "Terra para Vasos", "Litros de substrato e drenagem por vaso, mistura terra/húmus/areia e quantos sacos comprar", "terra-para-vasos", "sbv_gui.pyw"),
+    ("⚠️", "Adicional de Periculosidade CLT", "30% típico sobre salário-base; proporcionalidade da jornada; mensal e anual", "calculadora-adicional-periculosidade", "per_gui.pyw"),
+    ("📅", "DSR sobre Horas Extras", "Reflexo do descanso semanal sobre o total de HE do mes (proporcao domingos+feriados/dias uteis)", "calculadora-dsr-hora-extra", "dsr_gui.pyw"),
+    ("📋", "Checklist 1a Semana de Estagio", "Checklist ponderado da primeira semana: termo, cracha, mentor, acessos e tarefas — marque itens e veja % pronto e criticos faltando", "checklist-primeira-semana-estagio", "cps_gui.pyw"),
+    ("🥤", "Controle de Hidratação no Escritório", "Meta de água no expediente, volume restante e horário sugerido do próximo copo conforme o ritmo alvo", "controle-hidratacao-escritorio", "hid_gui.pyw"),
+    ("🔥", "Indice simplificado de burnout", "Questionario educativo de 5 itens Likert (exaustao, cinismo, eficacia, sono, desconexao) com escore, nivel e dicas; aviso CVV 188", "indice-burnout-simplificado", "ibs_gui.pyw"),
+    ("👁️", "Planejador Regra 20-20-20", "Cronograma de pausas oculares: a cada 20 min de tela, olhar 20 pes (~6 m) por 20 segundos", "planejador-pausa-olhos-20-20-20", "p20_gui.pyw"),
 ]
 
 QSS = """
