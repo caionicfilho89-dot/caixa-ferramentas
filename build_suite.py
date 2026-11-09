@@ -615,8 +615,20 @@ def build(modmap, modules):
     ff = os.path.join(HERE, "vendor", "ffmpeg.exe")
     if os.path.exists(ff):
         cmd += ["--add-binary", ff + os.pathsep + "."]
-    for mod in modules:
-        cmd += ["--hidden-import", mod]
+    # muitos --hidden-import estouram o limite de linha de comando do Windows (WinError 206):
+    # a lista vai num hook do PyInstaller pra um módulo vazio que o app.py importa.
+    hooks = os.path.join(HERE, "build_hooks")
+    os.makedirs(hooks, exist_ok=True)
+    with open(os.path.join(STAGED, "_caixa_mods.py"), "w", encoding="utf-8") as f:
+        f.write("# lista de módulos das ferramentas fica em build_hooks/hook-_caixa_mods.py\n")
+    with open(os.path.join(hooks, "hook-_caixa_mods.py"), "w", encoding="utf-8") as f:
+        f.write("hiddenimports = %r\n" % (sorted(modules),))
+    app_py = os.path.join(STAGED, "app.py")
+    src = open(app_py, encoding="utf-8").read()
+    if "import _caixa_mods" not in src:
+        with open(app_py, "w", encoding="utf-8") as f:
+            f.write("import _caixa_mods  # noqa: F401 (puxa as ferramentas pro exe)\n" + src)
+    cmd += ["--additional-hooks-dir", hooks, "--hidden-import", "_caixa_mods"]
     for pkg in COLLECT_ALL:
         cmd += ["--collect-all", pkg]
     cmd.append(os.path.join(STAGED, "app.py"))
