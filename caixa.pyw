@@ -546,6 +546,12 @@ BUILTIN = [
     ("📘", "Gerador RAML", "Presets RAML 1.0 (basico, traits, types).", "gerador-raml", "rml_gui.pyw"),
     ("⚙️", "Gerador Smithy", "Presets Smithy IDL (service, structure, errors).", "gerador-smithy", "smt_gui.pyw"),
     ("🧱", "Gerador FlatBuffers", "Presets .fbs FlatBuffers (table, enum, union).", "gerador-flatbuffers", "fbs_gui.pyw"),
+    ("🦀", "Inspetor Cargo.lock", "Lista pacotes name@version de um Cargo.lock.", "inspetor-cargo-lock", "crl_gui.pyw"),
+    ("🧶", "Analisador yarn.lock", "Lista entradas versionadas de yarn.lock (v1).", "analisador-yarn-lock", "ylk_gui.pyw"),
+    ("📦", "Analisador pnpm-lock.yaml", "Extrai lockfileVersion e pacotes de pnpm-lock.yaml.", "analisador-pnpm-lock", "pnl_gui.pyw"),
+    ("🐹", "Inspetor go.sum", "Lista modulos/versoes/hashes de go.sum.", "inspetor-go-sum", "gmd_gui.pyw"),
+    ("🎯", "Gerador CUE", "Presets linguagem CUE (schema, defaults, unify).", "gerador-cue", "cue_gui.pyw"),
+    ("🔮", "Gerador Dhall", "Presets Dhall (record, union, functions).", "gerador-dhall", "dhl_gui.pyw"),
 ]
 
 QSS = """

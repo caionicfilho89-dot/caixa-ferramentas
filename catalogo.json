@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 512,
+  "total": 518,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4609,6 +4609,60 @@
       "script": "fbs_gui.pyw",
       "prefixo": "fbs",
       "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🦀",
+      "nome": "Inspetor Cargo.lock",
+      "desc": "Lista pacotes name@version de um Cargo.lock.",
+      "chave": "inspetor-cargo-lock",
+      "script": "crl_gui.pyw",
+      "prefixo": "crl",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧶",
+      "nome": "Analisador yarn.lock",
+      "desc": "Lista entradas versionadas de yarn.lock (v1).",
+      "chave": "analisador-yarn-lock",
+      "script": "ylk_gui.pyw",
+      "prefixo": "ylk",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Analisador pnpm-lock.yaml",
+      "desc": "Extrai lockfileVersion e pacotes de pnpm-lock.yaml.",
+      "chave": "analisador-pnpm-lock",
+      "script": "pnl_gui.pyw",
+      "prefixo": "pnl",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🐹",
+      "nome": "Inspetor go.sum",
+      "desc": "Lista modulos/versoes/hashes de go.sum.",
+      "chave": "inspetor-go-sum",
+      "script": "gmd_gui.pyw",
+      "prefixo": "gmd",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎯",
+      "nome": "Gerador CUE",
+      "desc": "Presets linguagem CUE (schema, defaults, unify).",
+      "chave": "gerador-cue",
+      "script": "cue_gui.pyw",
+      "prefixo": "cue",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🔮",
+      "nome": "Gerador Dhall",
+      "desc": "Presets Dhall (record, union, functions).",
+      "chave": "gerador-dhall",
+      "script": "dhl_gui.pyw",
+      "prefixo": "dhl",
+      "categoria": "🧰 Outras"
     }
   ],
   "prefixos": [
@@ -4718,6 +4772,7 @@
     "crc",
     "crd",
     "cripto_arquivos",
+    "crl",
     "crn",
     "crp",
     "crx",
@@ -4726,6 +4781,7 @@
     "ctm",
     "cty",
     "cub",
+    "cue",
     "curriculo_pdf",
     "cyc",
     "cyd",
@@ -4739,6 +4795,7 @@
     "dex",
     "dfn",
     "dfx",
+    "dhl",
     "dik",
     "dk",
     "dlt",
@@ -4812,6 +4869,7 @@
     "gif",
     "gig",
     "gip",
+    "gmd",
     "gps_falso",
     "gpx",
     "gql",
@@ -4964,6 +5022,7 @@
     "plk",
     "plt",
     "pm",
+    "pnl",
     "pnu",
     "poe",
     "ppd",
@@ -5119,6 +5178,7 @@
     "wup",
     "wxi",
     "xtr",
+    "ylk",
     "ylt",
     "yml",
     "yrn",
