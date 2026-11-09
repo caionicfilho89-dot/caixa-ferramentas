@@ -432,6 +432,9 @@ BUILTIN = [
     ("🎛️", "Laboratório de Filtros Digitais (DSP)", "Síntese de filtros IIR, resposta em frequência em dB, diagrama de polos/zeros no plano Z e estabilidade BIBO", "laboratorio-filtros-digitais", "fdt_gui.pyw"),
     ("👁️", "Lentes de Contato", "Troca diária/quinzenal/mensal por olho, dias de uso, próxima troca, estoque de caixas e custo mensal.", "lentes-contato", "lct_gui.pyw"),
     ("🪵", "Piso Vinílico e Laminado", "Réguas por cômodo com perda por paginação, caixas, manta, rodapé em barras e cantoneiras.", "piso-vinilico", "vin_gui.pyw"),
+    ("📐", "Complexidade Ciclomatica", "McCabe via AST em Python e heuristica por tokens; analisa buffer ou pasta.", "complexidade-ciclomatica", "cyc_gui.pyw"),
+    ("🏅", "Gerador de Badges", "Gera markdown de badges shields.io com presets e custom label/message/cor.", "gerador-badges", "bdg_gui.pyw"),
+    ("✂️", "Removedor de Comentarios", "Remove comentarios Python/# // /* */ HTML preservando strings (heuristico).", "removedor-comentarios", "scm_gui.pyw"),
 ]
 
 QSS = """

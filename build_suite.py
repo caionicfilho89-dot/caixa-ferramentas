@@ -418,6 +418,9 @@ TOOLS = {
     "laboratorio-filtros-digitais": "fdt_gui.pyw",
     "lentes-contato": "lct_gui.pyw",
     "piso-vinilico": "vin_gui.pyw",
+    "complexidade-ciclomatica": "cyc_gui.pyw",
+    "gerador-badges": "bdg_gui.pyw",
+    "removedor-comentarios": "scm_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
