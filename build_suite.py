@@ -576,6 +576,20 @@ TOOLS = {
     "saldo-prestacoes": "pst_gui.pyw",
     "calculadora-reserva-emergencia": "rem_gui.pyw",
     "ergonomia-pausas-trabalho": "erg_gui.pyw",
+    "calculadora-iptu": "ipt_gui.pyw",
+    "calculadora-meia-vida-cafeina": "caf_gui.pyw",
+    "comparador-atacado-varejo": "atv_gui.pyw",
+    "controle-assinaturas": "ass_gui.pyw",
+    "custo-empregado-domestico": "emd_gui.pyw",
+    "custo-total-por-km": "ckm_gui.pyw",
+    "decimo-terceiro-proporcional": "d13_gui.pyw",
+    "estimativa-frete": "fre_gui.pyw",
+    "estimativa-seguro-residencial": "sgr_gui.pyw",
+    "hospedagem-vs-aluguel": "hos_gui.pyw",
+    "planejador-ciclo-ebbinghaus": "ebb_gui.pyw",
+    "reajuste-plano-saude": "rps_gui.pyw",
+    "rendimento-pao-caseiro": "pad_gui.pyw",
+    "rendimento-sabao-caseiro": "sbo_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
@@ -614,6 +628,10 @@ def stage():
 
     # caixa
     shutil.copyfile(os.path.join(HERE, "caixa.pyw"), os.path.join(STAGED, "caixa_ui.py"))
+    # ajuda (sinopse / como usar) lida por caixa_ui ao lado dele ou do bundle
+    aj = os.path.join(HERE, "AJUDA.json")
+    if os.path.exists(aj):
+        shutil.copyfile(aj, os.path.join(STAGED, "AJUDA.json"))
     _write_entry(modmap)
     return modmap, sorted(m[:-3] for m in copied)
 
@@ -704,6 +722,10 @@ def build(modmap, modules):
     ff = os.path.join(HERE, "vendor", "ffmpeg.exe")
     if os.path.exists(ff):
         cmd += ["--add-binary", ff + os.pathsep + "."]
+    # ajuda das ferramentas (sinopse + passo a passo), lida via sys._MEIPASS no exe
+    aj = os.path.join(HERE, "AJUDA.json")
+    if os.path.exists(aj):
+        cmd += ["--add-data", aj + os.pathsep + "."]
     # muitos --hidden-import estouram o limite de linha de comando do Windows (WinError 206):
     # a lista vai num hook do PyInstaller pra um módulo vazio que o app.py importa.
     hooks = os.path.join(HERE, "build_hooks")

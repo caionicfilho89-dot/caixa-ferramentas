@@ -17,7 +17,8 @@ from PyQt6.QtCore import Qt, QThread, QTimer, pyqtSignal
 from PyQt6.QtGui import QColor, QFont, QFontMetrics, QIcon, QPainter, QPixmap
 from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGridLayout,
                              QHBoxLayout, QInputDialog, QLabel, QLineEdit, QListWidget, QListWidgetItem, QMenu, QMessageBox,
-                             QPushButton, QScrollArea, QVBoxLayout, QWidget)
+                             QPushButton, QScrollArea, QVBoxLayout, QWidget,
+                             QDialog, QTextBrowser)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
@@ -25,6 +26,76 @@ FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (insta
 APP_VERSION = "1.4.0"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
+
+
+def _carrega_ajuda():
+    """Le AJUDA.json (sinopse/para_que/como_usar/exemplo por chave).
+
+    Procura no bundle do .exe (sys._MEIPASS), ao lado deste arquivo (fonte/staged)
+    e ao lado do executavel. Se nao achar, devolve {} e os cards usam a desc curta.
+    """
+    cands = []
+    if getattr(sys, "_MEIPASS", None):
+        cands.append(sys._MEIPASS)
+    cands += [HERE, os.path.dirname(os.path.abspath(sys.executable))]
+    for d in cands:
+        p = os.path.join(d, "AJUDA.json")
+        if os.path.isfile(p):
+            try:
+                with open(p, encoding="utf-8") as f:
+                    dados = json.load(f)
+                if isinstance(dados, dict):
+                    return dados
+            except Exception:
+                pass
+    return {}
+
+
+AJUDA = _carrega_ajuda()
+
+
+def _esc(t):
+    import html
+    return html.escape(str(t or ""))
+
+
+def ajuda_html(nome, emoji, desc, chave):
+    """HTML do dialogo 'Como usar'. Sem entrada no AJUDA.json, cai pra desc curta."""
+    a = AJUDA.get(chave) or {}
+    sin = a.get("sinopse") or desc
+    h = [f"<h2 style='margin:0'>{_esc(emoji)} {_esc(nome)}</h2>",
+         f"<h3 style='color:{ACCENT}'>O que é</h3><p>{_esc(sin)}</p>"]
+    if a.get("para_que"):
+        h.append(f"<h3 style='color:{ACCENT}'>Para que serve</h3><p>{_esc(a['para_que'])}</p>")
+    passos = a.get("como_usar") or []
+    if passos:
+        h.append(f"<h3 style='color:{ACCENT}'>Passo a passo</h3><ol>"
+                 + "".join(f"<li style='margin-bottom:4px'>{_esc(p)}</li>" for p in passos) + "</ol>")
+    if a.get("exemplo"):
+        h.append(f"<h3 style='color:{ACCENT}'>Exemplo</h3><p><i>{_esc(a['exemplo'])}</i></p>")
+    if not a:
+        h.append("<p style='color:#8a93a8'><i>Instruções detalhadas ainda não disponíveis para esta ferramenta.</i></p>")
+    return "".join(h)
+
+
+class AjudaDialog(QDialog):
+    def __init__(self, nome, emoji, desc, chave, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle(f"Como usar — {nome}")
+        self.resize(560, 520)
+        lay = QVBoxLayout(self)
+        tb = QTextBrowser()
+        tb.setOpenExternalLinks(True)
+        tb.setStyleSheet("QTextBrowser{background:#161a24;color:#e6e9f2;border:1px solid #2a3042;"
+                         "border-radius:8px;padding:10px;font-size:14px;}")
+        tb.setHtml(ajuda_html(nome, emoji, desc, chave))
+        lay.addWidget(tb, 1)
+        row = QHBoxLayout()
+        row.addStretch(1)
+        ok = QPushButton("Fechar")
+        ok.clicked.connect(self.accept)
+        row.addWidget(ok)
+        lay.addLayout(row)
 
 CFG_DIR = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")), "CaixaFerramentas")
 CFG = os.path.join(CFG_DIR, "config.json")
@@ -587,6 +658,20 @@ BUILTIN = [
     ("📅", "Saldo de Prestacoes", "Quanto falta pagar em um parcelamento, com multa opcional.", "saldo-prestacoes", "pst_gui.pyw"),
     ("🛡️", "Calculadora & Planejador da Reserva de Emergência", "Meses ideais por estabilidade profissional, custo essencial de vida, simulação de aportes com CDI e IR regressivo", "calculadora-reserva-emergencia", "rem_gui.pyw"),
     ("🪑", "Calculadora de Ergonomia e Protocolo de Pausas (NR-17)", "Alturas ideais de cadeira, mesa e monitor pela estatura, temporizador 20-20-20 e rotina guiada de alongamentos", "ergonomia-pausas-trabalho", "erg_gui.pyw"),
+    ("🏛️", "Estimativa de IPTU", "IPTU pelo valor venal, aliquota, desconto e parcelas.", "calculadora-iptu", "ipt_gui.pyw"),
+    ("☕", "Calculadora de Meia-Vida da Cafeína & Sono", "Curva farmacocinética de cafeína no sangue, horário de corte para sono REM e alerta de limite seguro diário", "calculadora-meia-vida-cafeina", "caf_gui.pyw"),
+    ("📦", "Atacado × Varejo", "Compara preço unitário com desperdício estimado.", "comparador-atacado-varejo", "atv_gui.pyw"),
+    ("📺", "Controle de Assinaturas", "Soma mensal/anual de streaming, apps e assinaturas.", "controle-assinaturas", "ass_gui.pyw"),
+    ("🧹", "Custo Empregado Doméstico", "Salário + VT + encargos eSocial (estimativa).", "custo-empregado-domestico", "emd_gui.pyw"),
+    ("🛣️", "Custo Total por km", "Combustível + fixos diluídos em R$/km.", "custo-total-por-km", "ckm_gui.pyw"),
+    ("💼", "13º Proporcional", "13º salário proporcional CLT menos adiantamento.", "decimo-terceiro-proporcional", "d13_gui.pyw"),
+    ("📬", "Estimativa de Frete", "Heurística de frete por peso, distância e modalidade.", "estimativa-frete", "fre_gui.pyw"),
+    ("🏡", "Seguro Residencial", "Estima prêmio anual sobre imóvel + conteúdo.", "estimativa-seguro-residencial", "sgr_gui.pyw"),
+    ("🏨", "Hospedagem × Aluguel", "Compara mês em hospedagem com aluguel + custos.", "hospedagem-vs-aluguel", "hos_gui.pyw"),
+    ("🧠", "Planejador da Curva de Ebbinghaus & Revisões", "Cronograma de repetição espaçada (24h, 7d, 15d, 30d, 60d), modelo de retenção exponencial e gráfico comparativo", "planejador-ciclo-ebbinghaus", "ebb_gui.pyw"),
+    ("🏥", "Reajuste Plano de Saúde", "Projeção composta da mensalidade ano a ano.", "reajuste-plano-saude", "rps_gui.pyw"),
+    ("🍞", "Rendimento Pão Caseiro", "Quantos pães saem da fornada e custo unitário.", "rendimento-pao-caseiro", "pad_gui.pyw"),
+    ("🧼", "Sabão Caseiro", "Rendimento, custo por uso e economia vs comercial.", "rendimento-sabao-caseiro", "sbo_gui.pyw"),
 ]
 
 QSS = """
@@ -812,7 +897,9 @@ class Card(QFrame):
         self.customContextMenuRequested.connect(self._menu)
         cat = categoria_de(tool)
         cor = CAT_CORES.get(cat, "#8a93a8")
-        self.setToolTip(f"<b>{name}</b><br>{desc}<br><i>{cat}</i>")
+        sin = (AJUDA.get(folder) or {}).get("sinopse") or desc
+        self.setToolTip(f"<b>{_esc(name)}</b><br>{_esc(sin)}<br><i>{cat}</i>"
+                        "<br><span style='color:#8a93a8'>Clique no ? para ver como usar</span>")
 
         lay = QHBoxLayout(self)
         lay.setContentsMargins(12, 12, 12, 10)
@@ -826,13 +913,22 @@ class Card(QFrame):
 
         col = QVBoxLayout()
         col.setSpacing(3)
-        larg = CARD_W - 46 - 12 - 24 - (16 if fav else 0)
+        larg = CARD_W - 46 - 12 - 24 - (16 if fav else 0) - 22
         top = QHBoxLayout()
         top.setSpacing(4)
         nm = QLabel(QFontMetrics(F_NOME).elidedText(name, Qt.TextElideMode.ElideRight, larg), objectName="name")
         top.addWidget(nm, 1)
         if fav:
             top.addWidget(QLabel("★", objectName="star"), 0, Qt.AlignmentFlag.AlignTop)
+        bh = QPushButton("?", objectName="helpbtn")
+        bh.setFixedSize(20, 20)
+        bh.setCursor(Qt.CursorShape.WhatsThisCursor)
+        bh.setToolTip("Como usar")
+        bh.setStyleSheet("QPushButton#helpbtn{border-radius:10px;padding:0;font-weight:bold;font-size:12px;"
+                         "background:rgba(124,92,255,60);color:#e6e9f2;border:none;}"
+                         "QPushButton#helpbtn:hover{background:#7c5cff;}")
+        bh.clicked.connect(self.show_help)
+        top.addWidget(bh, 0, Qt.AlignmentFlag.AlignTop)
         col.addLayout(top)
         d = QLabel(elide_linhas(desc, F_DESC, CARD_W - 46 - 12 - 24, 3), objectName="desc")
         d.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
@@ -848,8 +944,13 @@ class Card(QFrame):
         if e.button() == Qt.MouseButton.LeftButton:
             self.caixa.open_tool(self)
 
+    def show_help(self):
+        emoji, name, desc, folder, _ = self.tool
+        AjudaDialog(name, emoji, desc, folder, self.window()).exec()
+
     def _menu(self, pos):
         m = QMenu(self)
+        a_help = m.addAction("❓ Como usar")
         is_fav = self.key in self.caixa.cfg["favorites"]
         a_fav = m.addAction("☆ Tirar dos favoritos" if is_fav else "⭐ Favoritar")
         a_folder = m.addAction("Abrir pasta")
@@ -857,7 +958,9 @@ class Card(QFrame):
         if any(self.key == t[3] for t in self.caixa.extra_tools):
             a_rm = m.addAction("Remover da Caixa")
         act = m.exec(self.mapToGlobal(pos))
-        if act is a_fav:
+        if act is a_help:
+            self.show_help()
+        elif act is a_fav:
             self.caixa.toggle_fav(self.key)
         elif act is a_folder:
             folder = os.path.dirname(self.path)

@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-09",
-  "total": 553,
+  "total": 567,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4978,6 +4978,132 @@
       "script": "erg_gui.pyw",
       "prefixo": "erg",
       "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🏛️",
+      "nome": "Estimativa de IPTU",
+      "desc": "IPTU pelo valor venal, aliquota, desconto e parcelas.",
+      "chave": "calculadora-iptu",
+      "script": "ipt_gui.pyw",
+      "prefixo": "ipt",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "☕",
+      "nome": "Calculadora de Meia-Vida da Cafeína & Sono",
+      "desc": "Curva farmacocinética de cafeína no sangue, horário de corte para sono REM e alerta de limite seguro diário",
+      "chave": "calculadora-meia-vida-cafeina",
+      "script": "caf_gui.pyw",
+      "prefixo": "caf",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Atacado × Varejo",
+      "desc": "Compara preço unitário com desperdício estimado.",
+      "chave": "comparador-atacado-varejo",
+      "script": "atv_gui.pyw",
+      "prefixo": "atv",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📺",
+      "nome": "Controle de Assinaturas",
+      "desc": "Soma mensal/anual de streaming, apps e assinaturas.",
+      "chave": "controle-assinaturas",
+      "script": "ass_gui.pyw",
+      "prefixo": "ass",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Custo Empregado Doméstico",
+      "desc": "Salário + VT + encargos eSocial (estimativa).",
+      "chave": "custo-empregado-domestico",
+      "script": "emd_gui.pyw",
+      "prefixo": "emd",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🛣️",
+      "nome": "Custo Total por km",
+      "desc": "Combustível + fixos diluídos em R$/km.",
+      "chave": "custo-total-por-km",
+      "script": "ckm_gui.pyw",
+      "prefixo": "ckm",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "💼",
+      "nome": "13º Proporcional",
+      "desc": "13º salário proporcional CLT menos adiantamento.",
+      "chave": "decimo-terceiro-proporcional",
+      "script": "d13_gui.pyw",
+      "prefixo": "d13",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📬",
+      "nome": "Estimativa de Frete",
+      "desc": "Heurística de frete por peso, distância e modalidade.",
+      "chave": "estimativa-frete",
+      "script": "fre_gui.pyw",
+      "prefixo": "fre",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🏡",
+      "nome": "Seguro Residencial",
+      "desc": "Estima prêmio anual sobre imóvel + conteúdo.",
+      "chave": "estimativa-seguro-residencial",
+      "script": "sgr_gui.pyw",
+      "prefixo": "sgr",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🏨",
+      "nome": "Hospedagem × Aluguel",
+      "desc": "Compara mês em hospedagem com aluguel + custos.",
+      "chave": "hospedagem-vs-aluguel",
+      "script": "hos_gui.pyw",
+      "prefixo": "hos",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧠",
+      "nome": "Planejador da Curva de Ebbinghaus & Revisões",
+      "desc": "Cronograma de repetição espaçada (24h, 7d, 15d, 30d, 60d), modelo de retenção exponencial e gráfico comparativo",
+      "chave": "planejador-ciclo-ebbinghaus",
+      "script": "ebb_gui.pyw",
+      "prefixo": "ebb",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🏥",
+      "nome": "Reajuste Plano de Saúde",
+      "desc": "Projeção composta da mensalidade ano a ano.",
+      "chave": "reajuste-plano-saude",
+      "script": "rps_gui.pyw",
+      "prefixo": "rps",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🍞",
+      "nome": "Rendimento Pão Caseiro",
+      "desc": "Quantos pães saem da fornada e custo unitário.",
+      "chave": "rendimento-pao-caseiro",
+      "script": "pad_gui.pyw",
+      "prefixo": "pad",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧼",
+      "nome": "Sabão Caseiro",
+      "desc": "Rendimento, custo por uso e economia vs comercial.",
+      "chave": "rendimento-sabao-caseiro",
+      "script": "sbo_gui.pyw",
+      "prefixo": "sbo",
+      "categoria": "🧰 Outras"
     }
   ],
   "prefixos": [
@@ -5004,8 +5130,10 @@
     "as",
     "asc",
     "asd",
+    "ass",
     "ast",
     "asy",
+    "atv",
     "aud",
     "avr",
     "b64",
@@ -5038,6 +5166,7 @@
     "cab",
     "cabecalhos_seguranca",
     "caderno_python",
+    "caf",
     "calculadora_cientifica",
     "calculadora_clt",
     "calendario_br",
@@ -5067,6 +5196,7 @@
     "chz",
     "cic",
     "cis",
+    "ckm",
     "clc",
     "cld",
     "clf",
@@ -5108,6 +5238,7 @@
     "cyc",
     "cyd",
     "czc",
+    "d13",
     "dav",
     "dc",
     "dck",
@@ -5137,6 +5268,7 @@
     "dvc",
     "dzm",
     "ear",
+    "ebb",
     "ecc",
     "edc",
     "editor_imagem",
@@ -5145,6 +5277,7 @@
     "ele",
     "elf",
     "elt",
+    "emd",
     "emp",
     "enc",
     "encm",
@@ -5176,6 +5309,7 @@
     "flashcards",
     "flk",
     "fot",
+    "fre",
     "frv",
     "fsc",
     "fsi",
@@ -5226,6 +5360,7 @@
     "hlk",
     "hlm",
     "hmn",
+    "hos",
     "hsh",
     "hst",
     "hsz",
@@ -5239,6 +5374,7 @@
     "inicializacao",
     "inv",
     "ipm",
+    "ipt",
     "ipv",
     "iso",
     "iss",
@@ -5335,6 +5471,7 @@
     "own",
     "p3d",
     "pac",
+    "pad",
     "pal",
     "paletas_cores",
     "pao",
@@ -5420,6 +5557,7 @@
     "rob",
     "rot",
     "rpg",
+    "rps",
     "rss",
     "rsv",
     "ruf",
@@ -5428,6 +5566,7 @@
     "saude",
     "sb",
     "sbb",
+    "sbo",
     "scf",
     "sch",
     "scm",
@@ -5440,6 +5579,7 @@
     "sfl",
     "sfr",
     "sgb",
+    "sgr",
     "shb",
     "sir",
     "skn",
