@@ -697,6 +697,23 @@ TOOLS = {
     "planejador-leituras-semanais": "pls_gui.pyw",
     "planejador-revisao-flash-rapida": "frp_gui.pyw",
     "plano-nuvem-backup": "nuv_gui.pyw",
+    "calculadora-adicional-insalubridade": "ins_gui.pyw",
+    "calendario-da-horta": "cpl_gui.pyw",
+    "checklist-onboarding-emprego": "cob_gui.pyw",
+    "checklist-saida-emprego": "cse_gui.pyw",
+    "comparador-proposta-estagio": "cpe_gui.pyw",
+    "controle-cafeina-doses-dia": "cfd_gui.pyw",
+    "controle-postura-timer": "ptr_gui.pyw",
+    "cronograma-do-evento": "cre_gui.pyw",
+    "descongelar-com-seguranca": "dsc_gui.pyw",
+    "hora-de-sair": "hsa_gui.pyw",
+    "indice-satisfacao-trabalho": "ist_gui.pyw",
+    "medidas-de-cozinha": "mcl_gui.pyw",
+    "meta-vocabulario-idioma": "mvi_gui.pyw",
+    "planejador-intervalo-almoco": "pia_gui.pyw",
+    "planejador-meta-redacao": "pmr_gui.pyw",
+    "simulador-hora-extra-50-100": "hex_gui.pyw",
+    "terra-para-vasos": "sbv_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

@@ -6971,5 +6971,208 @@
    "Clique em Ver plano ideal."
   ],
   "exemplo": "13 GB usados, 300 fotos e 30 min de vídeo por mês (~3 GB/mês): em 24 meses precisa de ~86 GB. O plano de 100 GB a R$ 7,99 aguenta ~29 meses."
+ },
+ "calculadora-adicional-insalubridade": {
+  "sinopse": "Calcula o adicional de insalubridade previsto no art. 192 da CLT (10%, 20% ou 40%) sobre o salário mínimo nacional ou uma base alternativa informada por você.",
+  "para_que": "Para estimar quanto entra a mais no holerite quando há exposição a agentes insalubres (antes de fechar com RH, sindicato ou contador).",
+  "como_usar": [
+   "Escolha o grau: mínimo (10%), médio (20%) ou máximo (40%).",
+   "Informe o salário mínimo vigente (atualize quando o governo publicar novo valor).",
+   "Opcional: marque «Usar base de cálculo diferente» se ACT/CCT usar outra referência.",
+   "Defina 12 ou 13 meses no impacto anual (13 inclui estimativa do 13º).",
+   "Clique em «Calcular adicional» e leia o aviso sobre laudo técnico (NR-15)."
+  ],
+  "exemplo": "SM R$ 1.518, grau médio (20%): adicional R$ 303,60/mês; impacto anual R$ 3.643,20 (12 meses)."
+ },
+ "calendario-da-horta": {
+  "sinopse": "Mostra quando você vai colher cada hortaliça (alface, rúcula, tomate cereja, temperos...) e monta um plantio escalonado, avisando se vai ficar algum período sem nada pra colher.",
+  "para_que": "Pra quem tem horta em casa, vaso ou canteiro e quer colher sempre, sem sobrar tudo de uma vez.",
+  "como_usar": [
+   "Escolha a Cultura.",
+   "Escolha a Data do 1º plantio e marque se vai plantar muda.",
+   "Diga Quantos plantios e Replantar a cada quantos dias.",
+   "Clique em Montar calendário e veja as datas e os buracos."
+  ],
+  "exemplo": "Alface semeada em 01/01/2026: colhe de 07/03 a 22/03. Replantando a cada 30 dias falta alface de 23/03 a 05/04; o ideal é a cada 15 dias."
+ },
+ "checklist-onboarding-emprego": {
+  "sinopse": "Acompanhe a integração no emprego novo com checklist ponderado: marque o que já fez e veja prontidão, bloqueios críticos e quantos dias ainda faltam.",
+  "para_que": "Para quem começou um trabalho novo e quer garantir que contrato, sistemas, apresentação, mentor e equipamentos estejam redondos antes de considerar o onboarding fechado.",
+  "como_usar": [
+   "Abra a ferramenta e percorra as cinco seções (RH, sistemas, apresentação, mentor, equipamentos).",
+   "Marque os checkboxes dos itens já concluídos.",
+   "Se quiser, ajuste o peso (importância) e os dias estimados de cada tarefa.",
+   "Clique em Atualizar prontidão para recalcular.",
+   "Leia a % no topo, a lista de críticos faltando e os dias sugeridos restantes (considera paralelismo dentro de cada área).",
+   "Use Desmarcar tudo ou Marcar tudo para simular cenários."
+  ],
+  "exemplo": "Com só contrato e e-mail marcados, a prontidão fica baixa e VPN/MFA aparecem nos críticos. Quando tudo da lista estiver marcado, você verá 100% e 0 dias restantes."
+ },
+ "checklist-saida-emprego": {
+  "sinopse": "Organiza o desligamento com checklist ponderado: percentual de prontidao, lista de itens criticos ainda pendentes, estimativa de dias de tarefas e pendencias por area.",
+  "para_que": "Para quem pediu demissao ou esta em processo de desligamento e quer nao esquecer notebook, acessos, RH, FGTS e passagem de conhecimento.",
+  "como_usar": [
+   "Abra a ferramenta e marque cada checkbox conforme concluir a tarefa (equipamentos, acessos, carta, FGTS, handover, networking).",
+   "Ajuste peso e dias estimados por item se a sua empresa exigir outra prioridade ou prazo.",
+   "O painel atualiza sozinho ao marcar; use Atualizar prontidao para recalcular apos mudar pesos.",
+   "Veja o percentual no topo: criticos pendentes aparecem em destaque laranja na lista de relatorio.",
+   "Use Marcar tudo / Desmarcar tudo para simular cenarios antes do ultimo dia.",
+   "Leia Pendencias por area para atacar primeiro Revogacao de acessos e FGTS/documentos."
+  ],
+  "exemplo": "Com notebook e carta marcados mas sem revogar Git/VPN, a % sobe pouco e varios criticos de acessos continuam listados ate voce concluir a TI."
+ },
+ "comparador-proposta-estagio": {
+  "sinopse": "Coloca lado a lado duas propostas de estagio e mostra quanto voce recebe no mes e quanto vale cada hora real (trabalho + tempo de deslocamento).",
+  "para_que": "Escolher entre estagios com bolsa parecida, VT/VR diferentes ou um trajeto muito mais longo que come seu tempo sem pagar.",
+  "como_usar": [
+   "Preencha Proposta A e B com nome da empresa ou vaga.",
+   "Informe bolsa mensal, VT e VR em reais (use 0 se nao houver).",
+   "Defina horas de estagio por semana conforme o termo de compromisso.",
+   "Informe o deslocamento em minutos por dia presencial (soma ida + volta).",
+   "Ajuste horas por dia presencial se nao for 6 h (padrao comum em estagio).",
+   "Clique em Comparar propostas e veja pacote mensal, R$/h efetiva e qual vence."
+  ],
+  "exemplo": "A: bolsa R$ 1.500 + VT R$ 220, 30 h/sem, 80 min de deslocamento. B: bolsa R$ 1.700 + VR R$ 400, 30 h/sem, 25 min. B pode ter pacote maior e ainda ganhar em R$/h efetiva se o deslocamento for curto."
+ },
+ "controle-cafeina-doses-dia": {
+  "sinopse": "Registra cada ingestão de cafeína ao longo do dia e mostra total, percentual do limite e quanto ainda cabe antes de passar do teto recomendado.",
+  "para_que": "Para quem quer controlar consumo diário em miligramas sem modelar meia-vida no sangue — só a soma das doses de hoje.",
+  "como_usar": [
+   "Ajuste o limite diário se precisar (padrão 400 mg, referência EFSA/FDA para adultos saudáveis).",
+   "Escolha uma bebida predefinida ou modo personalizado.",
+   "Em «Mg direto», informe a cafeína já conhecida ou use o valor sugerido do preset.",
+   "Em «Ml × mg/ml», informe volume e concentração (útil para energéticos e bebidas variadas).",
+   "Clique em «Adicionar dose» após cada consumo; remova entradas erradas ou «Zerar dia» para recomeçar."
+  ],
+  "exemplo": "Manhã: expresso 65 mg + café coado 90 mg = 155 mg (38,8% de 400 mg, restam 245 mg). Tarde: energético 250 ml a 0,32 mg/ml = +80 mg → 235 mg total. Se passar de 400 mg, o app alerta o excesso em mg."
+ },
+ "controle-postura-timer": {
+  "sinopse": "Monta um plano de micro-pausas para quem trabalha sentado: a cada X minutos voce recebe o horario para levantar, pausar e voltar ao posto.",
+  "para_que": "Reduzir tempo continuo sentado, aliviar coluna e circulacao e manter uma rotina ergonomica sem depender de app na nuvem.",
+  "como_usar": [
+   "Informe quantos minutos ficar sentado ate o primeiro alerta (ex.: 45 a 50)",
+   "Defina a duracao da pausa em pe ou alongamento e quantas sessoes repetir no dia",
+   "Ajuste o horario de inicio se o expediente nao comecar agora",
+   "Clique em Gerar cronograma e confira a lista de alertas em HH:MM e o resumo sentado x pausa",
+   "Use Iniciar timer ao vivo para contagem regressiva ate o proximo alerta ainda no futuro"
+  ],
+  "exemplo": "50 min sentado, 10 min de pausa, 6 sessoes comecando as 09:00: alertas 09:50, 10:50 ... ate 14:50; 6 pausas, 5 h sentado e 1 h em pausa (83% sentado / 17% em pe)."
+ },
+ "cronograma-do-evento": {
+  "sinopse": "Monta o cronograma de um evento de trás pra frente: você diz a data e quantos dias antes cada tarefa precisa estar feita, e ele mostra a data de cada uma, o dia da semana e o que já está atrasado.",
+  "para_que": "Pra quem está organizando aniversário, chá de bebê, viagem ou mudança e não quer esquecer nada.",
+  "como_usar": [
+   "Escolha a Data do evento e confira a data de Hoje.",
+   "Em Começar da lista, escolha um modelo e clique em Carregar lista do modelo.",
+   "Edite as Tarefas (uma por linha: tarefa;dias antes).",
+   "Marque Evitar fim de semana se quiser e clique em Montar cronograma."
+  ],
+  "exemplo": "Festa no sábado 19/12/2026: 'Enviar convites;30' cai em 19/11 (quinta) e 'Buscar bolo;1' em 18/12 (sexta)."
+ },
+ "descongelar-com-seguranca": {
+  "sinopse": "Calcula quanto tempo a carne, o frango ou o peixe leva para descongelar (na geladeira, na água fria ou no micro-ondas) e a que horas você precisa tirar do freezer.",
+  "para_que": "Pra quem cozinha em casa e sempre esquece de tirar a carne do freezer a tempo.",
+  "como_usar": [
+   "Escolha o Alimento e digite o Peso.",
+   "Escolha a Espessura e o Método.",
+   "Ajuste Quero começar a cozinhar com o dia e a hora.",
+   "Clique em Calcular e veja a hora de tirar do freezer."
+  ],
+  "exemplo": "2 kg de frango na geladeira para cozinhar amanhã ao meio-dia: leva 21 h, tire hoje às 15:00. Depois de descongelado, use em até 2 dias."
+ },
+ "hora-de-sair": {
+  "sinopse": "Conta de trás pra frente a partir do horário do compromisso e diz a hora do alarme, a hora de começar a se arrumar e a hora exata de sair de casa, já com margem de trânsito.",
+  "para_que": "Pra quem tem consulta, entrevista, prova ou voo e não quer se atrasar.",
+  "como_usar": [
+   "Escolha o Horário do compromisso.",
+   "Digite o Tempo de trajeto que o app de mapa mostra e a Margem para trânsito.",
+   "Ajuste Estacionar, Quero chegar antes, Tempo para me arrumar e Soneca do alarme.",
+   "Clique em Calcular horários."
+  ],
+  "exemplo": "Consulta às 9:00, trajeto de 35 min com 30% de margem, 40 min para se arrumar: alarme 7:09, sair de casa 7:59, chegar 8:50."
+ },
+ "indice-satisfacao-trabalho": {
+  "sinopse": "Ajuda a refletir sobre satisfação profissional em cinco dimensões com escala 0–4, sem substituir pesquisa de clima ou aconselhamento de RH.",
+  "para_que": "Para enxergar onde o trabalho atual agrada ou frustra (remuneração, liderança, colegas, crescimento e equilíbrio vida–trabalho) e priorizar conversas ou mudanças.",
+  "como_usar": [
+   "Avalie honestamente cada dimensão do trabalho atual",
+   "Escolha de 0 (muito insatisfeito) a 4 (muito satisfeito) em cada item",
+   "Clique em Calcular índice para ver média, classificação e o ponto mais fraco",
+   "Leia a reflexão sugerida sobre a dimensão mais fraca",
+   "Lembre-se: é ferramenta educativa, não diagnóstico nem recomendação de demissão"
+  ],
+  "exemplo": "Notas 3, 3, 4, 2, 1 → média 2,60 (moderada); dimensão mais fraca: equilíbrio (1/4)."
+ },
+ "medidas-de-cozinha": {
+  "sinopse": "Converte medidas caseiras (xícara, colher de sopa, colher de chá, copo americano) em gramas e ml e vice-versa, usando o peso certo de cada ingrediente.",
+  "para_que": "Pra quem cozinha ou faz bolo e a receita usa uma medida que você não tem em casa (balança ou xícara).",
+  "como_usar": [
+   "Digite a Quantidade e escolha a Unidade (gramas, xícara, colher...).",
+   "Escolha o Ingrediente na lista.",
+   "Se o ingrediente não estiver na lista, pese 1 xícara dele e digite em Outro ingrediente.",
+   "Clique em Converter e veja em gramas, ml, xícaras e colheres."
+  ],
+  "exemplo": "250 g de farinha de trigo = 2,08 xícaras (≈ 2 xícaras) ou 33 colheres de sopa."
+ },
+ "meta-vocabulario-idioma": {
+  "sinopse": "Planeja a meta de vocabulario da semana com base no que falta, nos dias restantes e no tempo de estudo diario.",
+  "para_que": "Para quem estuda idioma com meta semanal fixa e quer saber se ainda da tempo, quantas palavras por dia e se o ritmo atual esta atrasado ou na frente.",
+  "como_usar": [
+   "Informe a meta de palavras na semana e quantas ja aprendeu nesta semana.",
+   "Defina quantos dias ainda restam na semana (0 a 7) e quantos minutos por dia voce pode estudar.",
+   "Informe sua velocidade de assimilacao (palavras novas por minuto ou por hora de estudo ativo).",
+   "Clique em Calcular plano de vocabulario.",
+   "Veja palavras/dia necessarias, minutos/dia, se cabe na semana, folga ou deficit e o ritmo atual."
+  ],
+  "exemplo": "Meta 50, ja 10, 4 dias restantes, 30 min/dia a 2 pal/min → faltam 40, 10 pal/dia, 5 min/dia; capacidade 60 pal/dia: cabe. Ritmo atual (3 dias corridos): 3,3 pal/dia — abaixo do necessario."
+ },
+ "planejador-intervalo-almoco": {
+  "sinopse": "Monta a linha do tempo do seu intervalo: saida, deslocamento, fila, refeicao e volta ao trabalho.",
+  "para_que": "Para quem tem pouco tempo no almoco e quer saber se da para comer tranquilo ou se precisa mudar rota, horario ou pedido.",
+  "como_usar": [
+   "Informe o horario em que voce sai para almocar (ex.: 12:00).",
+   "Defina quantos minutos de intervalo voce tem no total (padrao 60).",
+   "Preencha o tempo de deslocamento ate o restaurante ou casa (ida).",
+   "Informe minutos de fila ou preparo do pedido.",
+   "Marque se a volta leva o mesmo tempo da ida ou ajuste o deslocamento de volta.",
+   "Clique em Planejar almoco e leia o alerta se sobrar menos de 15 min para comer."
+  ],
+  "exemplo": "Saida 12:00, intervalo 60 min, ida 10 min, fila 15 min, volta 10 min: volta as 12:50 com 25 min para comer (OK). Se ida+fila+volta somarem 46 min, restam 14 min (alerta apertado)."
+ },
+ "planejador-meta-redacao": {
+  "sinopse": "Cruza meta de palavras ou linhas, texto ja escrito, tempo livre hoje e sua velocidade de digitacao para dizer se voce termina no prazo e qual ritmo manter.",
+  "para_que": "Para redacoes do ENEM, trabalhos escolares ou posts longos: evitar surpresa de faltar texto na hora da prova ou do prazo.",
+  "como_usar": [
+   "Escolha um modelo rapido (ENEM, escola ou blog) ou defina meta em palavras ou em linhas",
+   "Informe quanto ja escreveu e, se usar linhas, a media de palavras por linha do seu caderno",
+   "Preencha quantos minutos voce tem hoje e sua velocidade habitual em palavras por minuto",
+   "Clique em Calcular meta de hoje e leia se cabe no tempo, minutos necessarios e ritmo sugerido",
+   "Ajuste velocidade ou tempo ate o alerta indicar que cabe, ou planeje continuar amanha"
+  ],
+  "exemplo": "ENEM 30 linhas, 8 linhas prontas, 45 min hoje, 22 pal/min: faltam 22 linhas (~726 palavras), ~33 min no ritmo atual — cabe hoje com folga para revisar."
+ },
+ "simulador-hora-extra-50-100": {
+  "sinopse": "Estima quanto valem as horas extras com adicional de 50% (dia util) e 100% (domingo/feriado habitual) a partir do salario mensal e do divisor de horas do mes.",
+  "para_que": "Para trabalhadores e RH conferirem rapidamente o impacto financeiro de horas extras no mes, antes de conferir a folha ou uma convencao coletiva.",
+  "como_usar": [
+   "Informe o salario mensal bruto (ou base usada na empresa para calcular a hora).",
+   "Ajuste as horas do mes usadas como divisor (padrao CLT: 220 h para jornada 44 h/semana).",
+   "Digite quantas horas extras 50% e 100% deseja simular no periodo.",
+   "Clique em Calcular horas extras e leia valor por hora, totais e salario + extras.",
+   "Leia o aviso educativo: nao inclui DSR, noturno, acordos ou banco de horas."
+  ],
+  "exemplo": "Salario R$ 3.500, divisor 220 h, 10 h a 50% e 4 h a 100%: hora normal ~R$ 15,91; HE50 ~R$ 238,64; HE100 ~R$ 127,27; extras ~R$ 365,91; total mes ~R$ 3.865,91."
+ },
+ "terra-para-vasos": {
+  "sinopse": "Calcula quantos litros de terra cabem nos seus vasos ou jardineiras, divide na mistura (terra, húmus, areia) e diz quantos sacos comprar, além da argila para drenagem.",
+  "para_que": "Pra quem vai plantar ou replantar em vasos e não quer comprar terra de mais nem de menos.",
+  "como_usar": [
+   "Escolha o Formato (Redondo ou Retangular).",
+   "Meça e digite Diâmetro da boca e do fundo (ou Comprimento e Largura) e a Altura.",
+   "Coloque a Quantidade de vasos e a Camada de drenagem.",
+   "Ajuste a mistura (Terra vegetal, Húmus, Areia, somando 100%) e o Tamanho do saco.",
+   "Clique em Calcular terra."
+  ],
+  "exemplo": "2 jardineiras de 60 x 20 x 20 cm com 3 cm de drenagem: 18 L de terra cada, 39,6 L no total com sobra = 1 saco de cada tipo (20 L)."
  }
 }

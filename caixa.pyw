@@ -779,6 +779,23 @@ BUILTIN = [
     ("📖", "Planejador de Leituras Semanais", "Meta operacional da semana: paginas/dia, minutos/dia, se cabe no tempo e data estimada de termino", "planejador-leituras-semanais", "pls_gui.pyw"),
     ("⚡", "Sessão Flash de Revisão", "Monta blocos de estudo para os minutos disponíveis agora, prioriza tópicos fracos (notas 1-5) e alerta se o tempo não cobre tudo", "planejador-revisao-flash-rapida", "frp_gui.pyw"),
     ("☁️", "Plano de Nuvem para Backup", "Em quantos meses cada plano de nuvem enche com suas fotos e vídeos e qual o mais barato que aguenta", "plano-nuvem-backup", "nuv_gui.pyw"),
+    ("☣️", "Adicional de Insalubridade CLT", "10/20/40% sobre salário mínimo ou base configurável; impacto mensal e anual", "calculadora-adicional-insalubridade", "ins_gui.pyw"),
+    ("🥬", "Calendário da Horta", "Data de colheita de cada hortaliça e plantio escalonado para colher sem parar", "calendario-da-horta", "cpl_gui.pyw"),
+    ("🧳", "Checklist de Onboarding no Novo Emprego", "Checklist ponderado: RH, sistemas, apresentação ao time, mentor e equipamentos — % de prontidão, críticos faltando e dias sugeridos restantes", "checklist-onboarding-emprego", "cob_gui.pyw"),
+    ("🚪", "Checklist de Saida do Emprego", "Checklist ponderado de desligamento: devolucao de notebook e equipamentos, revogacao de acessos, carta e aviso previo, FGTS/TRCT e documentos, handover e networking — % pronto e criticos faltando", "checklist-saida-emprego", "cse_gui.pyw"),
+    ("🎓", "Comparador de Propostas de Estagio", "Compara duas propostas de estagio: bolsa, VT, VR, horas por semana e deslocamento — pacote mensal, R$/hora efetiva e melhor oferta.", "comparador-proposta-estagio", "cpe_gui.pyw"),
+    ("☕", "Controle de Doses de Cafeína no Dia", "Soma doses diárias em mg (café, chá, energético), limite configurável e alerta ao estourar", "controle-cafeina-doses-dia", "cfd_gui.pyw"),
+    ("🪑", "Timer de Pausa Postural", "Cronograma de levantadas ao longo do dia, total de pausas e comparativo estimado sentado versus em pe, com timer opcional", "controle-postura-timer", "ptr_gui.pyw"),
+    ("🗓️", "Cronograma do Evento", "Datas de cada tarefa de festa, viagem ou mudança contando de trás pra frente, com atrasadas", "cronograma-do-evento", "cre_gui.pyw"),
+    ("🧊", "Descongelar com Segurança", "Tempo para descongelar carne, frango ou peixe e a hora certa de tirar do freezer", "descongelar-com-seguranca", "dsc_gui.pyw"),
+    ("🚪", "Hora de Sair", "Que horas pôr o alarme, se arrumar e sair de casa para chegar no horário", "hora-de-sair", "hsa_gui.pyw"),
+    ("😊", "Índice de Satisfação no Trabalho", "Questionário educativo Likert 0–4 em cinco dimensões (salário, chefia, colegas, crescimento, equilíbrio): média, classificação e dimensão mais fraca", "indice-satisfacao-trabalho", "ist_gui.pyw"),
+    ("🥄", "Medidas de Cozinha", "Converte xícara, colher e copo em gramas e ml (e o contrário) por ingrediente", "medidas-de-cozinha", "mcl_gui.pyw"),
+    ("🗣️", "Meta de Vocabulario por Semana", "Palavras por dia, minutos necessarios, se a meta cabe no tempo e ritmo atual vs necessario", "meta-vocabulario-idioma", "mvi_gui.pyw"),
+    ("🍽️", "Planejador de Intervalo de Almoco", "Calcula horario de volta, minutos efetivos para comer e alerta quando o almoco fica apertado", "planejador-intervalo-almoco", "pia_gui.pyw"),
+    ("✍️", "Planejador de Meta de Redacao", "Calcula o que falta escrever, minutos necessarios, se cabe na sessao de hoje e ritmo sugerido para ENEM, escola ou blog", "planejador-meta-redacao", "pmr_gui.pyw"),
+    ("⏱️", "Simulador Hora Extra 50% e 100%", "CLT tipica: valor da HE50, HE100, total de extras e salario + extras pelo divisor mensal.", "simulador-hora-extra-50-100", "hex_gui.pyw"),
+    ("🪴", "Terra para Vasos", "Litros de substrato e drenagem por vaso, mistura terra/húmus/areia e quantos sacos comprar", "terra-para-vasos", "sbv_gui.pyw"),
 ]
 
 QSS = """
