@@ -492,6 +492,12 @@ BUILTIN = [
     ("🧾", "Validador TOML", "Valida TOML via tomllib, resume chaves e exporta JSON.", "validador-toml", "tml_gui.pyw"),
     ("🔄", "Imports Circulares", "Detecta ciclos no grafo de imports Python de um projeto.", "analisador-imports-circulares", "icl_gui.pyw"),
     ("🍎", "Inspetor Mach-O", "Le magic/header Mach-O 32/64 e FAT.", "inspetor-macho", "mac_gui.pyw"),
+    ("📋", "Gerador justfile", "Presets justfile (Python, Node, Docker).", "gerador-justfile", "jst_gui.pyw"),
+    ("🚀", "Gerador Procfile", "Presets Procfile (Django, Flask, Node, worker).", "gerador-procfile", "pfl_gui.pyw"),
+    ("✅", "Gerador Taskfile.yml", "Presets Taskfile.yml (Basico, Python, Docker).", "gerador-taskfile", "tsk_gui.pyw"),
+    ("📦", "Gerador Vagrantfile", "Presets Vagrantfile (Ubuntu, Docker, synced).", "gerador-vagrantfile", "vag_gui.pyw"),
+    ("🐍", "Gerador .python-version", "Gera .python-version para pyenv com versoes comuns.", "gerador-python-version", "pyv_gui.pyw"),
+    ("📥", "Inspetor PE Imports", "Lista DLLs e funcoes importadas de EXE/DLL (tabela de importacao PE).", "inspetor-pe-imports", "pei_gui.pyw"),
 ]
 
 QSS = """

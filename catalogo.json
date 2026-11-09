@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 458,
+  "total": 464,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4123,6 +4123,60 @@
       "script": "mac_gui.pyw",
       "prefixo": "mac",
       "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📋",
+      "nome": "Gerador justfile",
+      "desc": "Presets justfile (Python, Node, Docker).",
+      "chave": "gerador-justfile",
+      "script": "jst_gui.pyw",
+      "prefixo": "jst",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🚀",
+      "nome": "Gerador Procfile",
+      "desc": "Presets Procfile (Django, Flask, Node, worker).",
+      "chave": "gerador-procfile",
+      "script": "pfl_gui.pyw",
+      "prefixo": "pfl",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "✅",
+      "nome": "Gerador Taskfile.yml",
+      "desc": "Presets Taskfile.yml (Basico, Python, Docker).",
+      "chave": "gerador-taskfile",
+      "script": "tsk_gui.pyw",
+      "prefixo": "tsk",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Gerador Vagrantfile",
+      "desc": "Presets Vagrantfile (Ubuntu, Docker, synced).",
+      "chave": "gerador-vagrantfile",
+      "script": "vag_gui.pyw",
+      "prefixo": "vag",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🐍",
+      "nome": "Gerador .python-version",
+      "desc": "Gera .python-version para pyenv com versoes comuns.",
+      "chave": "gerador-python-version",
+      "script": "pyv_gui.pyw",
+      "prefixo": "pyv",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📥",
+      "nome": "Inspetor PE Imports",
+      "desc": "Lista DLLs e funcoes importadas de EXE/DLL (tabela de importacao PE).",
+      "chave": "inspetor-pe-imports",
+      "script": "pei_gui.pyw",
+      "prefixo": "pei",
+      "categoria": "🏠 Casa, Pet & Pessoal"
     }
   ],
   "prefixos": [
@@ -4343,6 +4397,7 @@
     "janelas",
     "jmr",
     "jsc",
+    "jst",
     "jun",
     "jwt",
     "kb",
@@ -4429,9 +4484,11 @@
     "pcp",
     "pcs",
     "pdl",
+    "pei",
     "pem",
     "pes",
     "pet",
+    "pfl",
     "phn",
     "pid",
     "pix_boleto",
@@ -4458,6 +4515,7 @@
     "pvs",
     "pyc",
     "pyl",
+    "pyv",
     "pzz",
     "qb",
     "qc",
@@ -4556,12 +4614,14 @@
     "trs",
     "tru",
     "trv",
+    "tsk",
     "tun",
     "tvd",
     "uba",
     "udi",
     "uid",
     "uni",
+    "vag",
     "variaveis_ambiente",
     "vcp",
     "vdc",
