@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-09** · Total: **551 ferramentas** · **551 prefixos** usados.
+> Última geração: **2026-11-09** · Total: **553 ferramentas** · **553 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -24,8 +24,8 @@
 - 🎵 Áudio & Vídeo — 17
 - ✍️ Texto & Estudo — 13
 - 🎮 Jogos & Diversão — 16
-- 🗂️ Arquivos & Sistema — 48
-- 🧰 Outras — 127
+- 🗂️ Arquivos & Sistema — 49
+- 🧰 Outras — 128
 
 ---
 
@@ -450,7 +450,7 @@
 | 🧾 | **Validador de .env** | Valida .env, detecta duplicatas/segredos, diff com .env.example e exporta JSON. | `validador-dotenv` | `den` |
 | 🧾 | **Validador TOML** | Valida TOML via tomllib, resume chaves e exporta JSON. | `validador-toml` | `tml` |
 
-## 🗂️ Arquivos & Sistema  ·  48
+## 🗂️ Arquivos & Sistema  ·  49
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -462,6 +462,7 @@
 | 🚫 | **Bloqueador de Sites** | Bloqueia sites editando o arquivo hosts do Windows | `site-blocker` | `sb` |
 | 🔍 | **Busca de Arquivos** | Acha arquivo pelo nome na hora (Everything) | `busca-arquivos` | `busca_arquivos` |
 | 🔋 | **Calculadora de Baterias** | Autonomia (Peukert), montagem de pack, banco off-grid e tempo de recarga | `calculadora-baterias` | `bat` |
+| 🪑 | **Calculadora de Ergonomia e Protocolo de Pausas (NR-17)** | Alturas ideais de cadeira, mesa e monitor pela estatura, temporizador 20-20-20 e rotina guiada de alongamentos | `ergonomia-pausas-trabalho` | `erg` |
 | 🌸 | **Ciclo Menstrual** | Registro dos ciclos com média, regularidade, previsão da próxima menstruação, ovulação e… | `ciclo-menstrual` | `cic` |
 | 🗜️ | **Compactador** | ZIP, ZIP com senha AES e TAR.GZ: criar, abrir, extrair | `compactador` | `compactador` |
 | ⬜ | **Compactador de Whitespace** | Tabs→espacos, trim a direita e colapso de linhas em branco. | `compactador-whitespace` | `wsp` |
@@ -503,7 +504,7 @@
 | 🌱 | **Variáveis de Ambiente** | Editor do PATH e variáveis do usuário com backup | `variaveis-ambiente` | `variaveis_ambiente` |
 | 📋 | **Área de Transferência** | Histórico do que você copiou (Ctrl+Shift+V) | `area-transferencia` | `area_transferencia` |
 
-## 🧰 Outras  ·  127
+## 🧰 Outras  ·  128
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -512,6 +513,7 @@
 | 🧶 | **Analisador yarn.lock** | Lista entradas versionadas de yarn.lock (v1). | `analisador-yarn-lock` | `ylk` |
 | 🎉 | **Aniversários da Família** | datas, idade que vai fazer, contagem regressiva, próximos 30 dias e signo | `aniversarios-familia` | `anv` |
 | 💧 | **Autonomia Caixa d Agua** | Quantos dias a caixa aguenta com o consumo da casa. | `autonomia-caixa-dagua` | `cda` |
+| 🛡️ | **Calculadora & Planejador da Reserva de Emergência** | Meses ideais por estabilidade profissional, custo essencial de vida, simulação de aportes com CDI e IR regressivo | `calculadora-reserva-emergencia` | `rem` |
 | 🍖 | **Calculadora de Churrasco** | Carne por pessoa, carvão, bebidas, custos e rateio | `calculadora-churrasco` | `chu` |
 | ⚙️ | **Calculadora de Engrenagens** | Engrenagens cilíndricas de dentes retos, relação de redução, RPM e torque | `calculadora-engrenagens` | `grs` |
 | 💧 | **Calculadora de Hidratação & Reposição de Eletrólitos** | Taxa de sudorese, reposição de água e sódio pré/intra/pós-treino e índice de calor ACSM | `calculadora-hidratacao-treino` | `hdt` |
@@ -637,7 +639,7 @@
 
 ---
 
-## 🔒 Prefixos reservados (551) — NÃO repetir
+## 🔒 Prefixos reservados (553) — NÃO repetir
 
 ```text
 acl  acp  acu  ads  aer  agr  agu  alb  alg  alq
@@ -657,43 +659,43 @@ dcn  dd  den  dep  dex  dfc  dfn  dfx  dhl  dik
 dk  dlt  dlv  dmn  dna  dnv  dop  dpb  drc  drf
 dry  dsp  dts  dvc  dzm  ear  ecc  edc  editor_imagem  efn
 egg  ele  elf  elt  emp  enc  encm  enx  eoc  eol
-epc  epi  esc  esi  esm  est  etiquetas  eul  ext  extrator_texto
-fa  faxina  fbs  fdt  fei  ferramentas_br  ferramentas_dev  ferramentas_rede  fft  financas
-fla  flashcards  flk  fot  frv  fsc  fsi  fst  fsz  ftr
-fum  fwl  fwt  galeria_fotos  gar  gas  gat  gd  gdb  gdo
-gem  geo  gg  gha  gif  gig  gip  glp  gmd  gps_falso
-gpx  gql  gravador_tela  gravador_voz  grf  grm  grp  grr  grs  gry
-gs  gsl  gst  gyr  ham  hb  hdc  hdl  hdp  hdr
-hdt  hlk  hlm  hmn  hsh  hst  hsz  huf  hxd  iab
-icl  ico  ind  info_pc  inicializacao  inv  ipm  ipv  iso  iss
-janelas  jmr  jsc  jst  jun  jwt  kb  kcr  kit_hacker  kit_pdf
-kmb  knp  knt  kst  kwh  lan  lct  lei  leitor_ebooks  lg
-lga  lgc  lhn  lic  limpar_metadados  llb  lng  lok  lor  lsc
-lux  lvd  mac  mag  mal  man  mcr  mdc  mdl  mdx
-med  met  metronomo  mhr  mid  mkf  mkt  mkv  mlp  mm
-mmt  mnt  mol  monitor_sistema  mot  mqb  mrs  mse  msn  mtc
-mtm  mtr  mtx  myp  nav  nbd  nc  nca  nfe  nfn
-nix  nln  nmi  nmk  notas  nox  nrc  nsi  ntl  ntr
-nvm  oas  obr  ofx  olo  opt  orcamentos  orf  organizador  orq
-own  p3d  pac  pal  paletas_cores  pao  pbn  pcc  pcf  pcp
-pcs  pdl  pei  pem  pes  pet  pev  pfl  phn  phr
-pid  pix_boleto  player_musica  plc  pld  plk  plm  plt  pm  pnl
-pnu  poe  ppd  ppu  prc  print_anotador  prm  prs  prt  prx
-psc  psi  pst  pth  pti  ptt  pvs  pyc  pyl  pyr
-pyv  pzz  qb  qc  qrcode_tool  qth  qtn  quiz_geografia  qzf  rastreador_tempo
-rc  rct  rea  rec  recupera  reg  relogio_mundial  renomeador  reo  req
-res  rev  rfc  rfm  rfx  rgx  rlc  rle  rls  rlz
-rmd  rml  rmx  rnv  rob  rot  rpg  rss  rsv  ruf
-rwx  sab  saude  sb  sbb  scf  sch  scm  scn  sco
-sec  sek  seo  seq  sfl  sfr  sgb  shb  sir  skn
-slg  smt  smv  snip  snl  sno  snw  som  sorteios  spa
-spl  sqf  srt  ssc  ssk  stg  stm  stp  stt  sudoku
-svc  svg  syb  sym  syn  tam  tarefas  tcs  tdf  tdo
-tempo  texto_fala  tfr  tg  th  thf  thm  tip  tml  tmp
-tnt  tok  tox  trc  trd  tre  treino_digitacao  trf  tro  trs
-tru  trv  tsk  tun  tvd  tvs  uba  udi  uid  uni
-utl  vag  variaveis_ambiente  vcp  vdc  vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite
-vnh  volume_apps  vsc  vst  wcg  wci  wdc  webcam_foto  wfi  wgm
-whl  wsp  wup  wxi  xtr  ylk  ylt  yml  yrn  zcd
-zpf
+epc  epi  erg  esc  esi  esm  est  etiquetas  eul  ext
+extrator_texto  fa  faxina  fbs  fdt  fei  ferramentas_br  ferramentas_dev  ferramentas_rede  fft
+financas  fla  flashcards  flk  fot  frv  fsc  fsi  fst  fsz
+ftr  fum  fwl  fwt  galeria_fotos  gar  gas  gat  gd  gdb
+gdo  gem  geo  gg  gha  gif  gig  gip  glp  gmd
+gps_falso  gpx  gql  gravador_tela  gravador_voz  grf  grm  grp  grr  grs
+gry  gs  gsl  gst  gyr  ham  hb  hdc  hdl  hdp
+hdr  hdt  hlk  hlm  hmn  hsh  hst  hsz  huf  hxd
+iab  icl  ico  ind  info_pc  inicializacao  inv  ipm  ipv  iso
+iss  janelas  jmr  jsc  jst  jun  jwt  kb  kcr  kit_hacker
+kit_pdf  kmb  knp  knt  kst  kwh  lan  lct  lei  leitor_ebooks
+lg  lga  lgc  lhn  lic  limpar_metadados  llb  lng  lok  lor
+lsc  lux  lvd  mac  mag  mal  man  mcr  mdc  mdl
+mdx  med  met  metronomo  mhr  mid  mkf  mkt  mkv  mlp
+mm  mmt  mnt  mol  monitor_sistema  mot  mqb  mrs  mse  msn
+mtc  mtm  mtr  mtx  myp  nav  nbd  nc  nca  nfe
+nfn  nix  nln  nmi  nmk  notas  nox  nrc  nsi  ntl
+ntr  nvm  oas  obr  ofx  olo  opt  orcamentos  orf  organizador
+orq  own  p3d  pac  pal  paletas_cores  pao  pbn  pcc  pcf
+pcp  pcs  pdl  pei  pem  pes  pet  pev  pfl  phn
+phr  pid  pix_boleto  player_musica  plc  pld  plk  plm  plt  pm
+pnl  pnu  poe  ppd  ppu  prc  print_anotador  prm  prs  prt
+prx  psc  psi  pst  pth  pti  ptt  pvs  pyc  pyl
+pyr  pyv  pzz  qb  qc  qrcode_tool  qth  qtn  quiz_geografia  qzf
+rastreador_tempo  rc  rct  rea  rec  recupera  reg  relogio_mundial  rem  renomeador
+reo  req  res  rev  rfc  rfm  rfx  rgx  rlc  rle
+rls  rlz  rmd  rml  rmx  rnv  rob  rot  rpg  rss
+rsv  ruf  rwx  sab  saude  sb  sbb  scf  sch  scm
+scn  sco  sec  sek  seo  seq  sfl  sfr  sgb  shb
+sir  skn  slg  smt  smv  snip  snl  sno  snw  som
+sorteios  spa  spl  sqf  srt  ssc  ssk  stg  stm  stp
+stt  sudoku  svc  svg  syb  sym  syn  tam  tarefas  tcs
+tdf  tdo  tempo  texto_fala  tfr  tg  th  thf  thm  tip
+tml  tmp  tnt  tok  tox  trc  trd  tre  treino_digitacao  trf
+tro  trs  tru  trv  tsk  tun  tvd  tvs  uba  udi
+uid  uni  utl  vag  variaveis_ambiente  vcp  vdc  vdw  vin  visualizador_fontes
+visualizador_planilhas  visualizador_sqlite  vnh  volume_apps  vsc  vst  wcg  wci  wdc  webcam_foto
+wfi  wgm  whl  wsp  wup  wxi  xtr  ylk  ylt  yml
+yrn  zcd  zpf
 ```

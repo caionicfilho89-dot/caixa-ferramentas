@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-09",
-  "total": 551,
+  "total": 553,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4960,6 +4960,24 @@
       "script": "pst_gui.pyw",
       "prefixo": "pst",
       "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Calculadora & Planejador da Reserva de Emergência",
+      "desc": "Meses ideais por estabilidade profissional, custo essencial de vida, simulação de aportes com CDI e IR regressivo",
+      "chave": "calculadora-reserva-emergencia",
+      "script": "rem_gui.pyw",
+      "prefixo": "rem",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🪑",
+      "nome": "Calculadora de Ergonomia e Protocolo de Pausas (NR-17)",
+      "desc": "Alturas ideais de cadeira, mesa e monitor pela estatura, temporizador 20-20-20 e rotina guiada de alongamentos",
+      "chave": "ergonomia-pausas-trabalho",
+      "script": "erg_gui.pyw",
+      "prefixo": "erg",
+      "categoria": "🗂️ Arquivos & Sistema"
     }
   ],
   "prefixos": [
@@ -5135,6 +5153,7 @@
     "eol",
     "epc",
     "epi",
+    "erg",
     "esc",
     "esi",
     "esm",
@@ -5380,6 +5399,7 @@
     "recupera",
     "reg",
     "relogio_mundial",
+    "rem",
     "renomeador",
     "reo",
     "req",

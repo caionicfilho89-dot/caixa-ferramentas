@@ -585,6 +585,8 @@ BUILTIN = [
     ("🏢", "Rateio Condominio por m2", "Divide despesa comum pela area de cada unidade.", "rateio-condominio-m2", "cdn_gui.pyw"),
     ("🏦", "Reserva de Emergencia", "Meta em meses de gasto e aporte mensal para completar.", "reserva-emergencia", "rsv_gui.pyw"),
     ("📅", "Saldo de Prestacoes", "Quanto falta pagar em um parcelamento, com multa opcional.", "saldo-prestacoes", "pst_gui.pyw"),
+    ("🛡️", "Calculadora & Planejador da Reserva de Emergência", "Meses ideais por estabilidade profissional, custo essencial de vida, simulação de aportes com CDI e IR regressivo", "calculadora-reserva-emergencia", "rem_gui.pyw"),
+    ("🪑", "Calculadora de Ergonomia e Protocolo de Pausas (NR-17)", "Alturas ideais de cadeira, mesa e monitor pela estatura, temporizador 20-20-20 e rotina guiada de alongamentos", "ergonomia-pausas-trabalho", "erg_gui.pyw"),
 ]
 
 QSS = """
