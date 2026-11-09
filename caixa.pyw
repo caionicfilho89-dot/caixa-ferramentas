@@ -724,6 +724,23 @@ BUILTIN = [
     ("🧾", "Taxa da Maquininha", "Líquido após taxa débito/crédito/parcelado.", "taxa-maquininha", "maq_gui.pyw"),
     ("🚌", "Uber × Ônibus", "App vs transporte público no mês.", "uber-vs-onibus", "ubr_gui.pyw"),
     ("🧽", "Validade Limpeza", "PAO após abertura de produtos de limpeza.", "validade-produtos-limpeza", "vlm_gui.pyw"),
+    ("🦉", "Analisador de Cronotipo e Rotina Circadiana", "Questionário científico de Horne & Östberg (MEQ), classificação Cotovia vs Coruja e mapa de janelas de foco, treino e sono", "analisador-cronotipo-sono-rotina", "cts_gui.pyw"),
+    ("👔", "Calculadora de Custo de Funcionário CLT para Empresa", "Custo real da contratação CLT para MEI, Simples Nacional e Lucro Presumido: encargos, FGTS, provisões e benefícios", "calculadora-custo-contratacao-funcionario", "cdf_gui.pyw"),
+    ("📑", "Calculadora de Rescisão Trabalhista CLT", "Cálculo completo de rescisão contratual: demissão sem justa causa, pedido, acordo mútuo, aviso proporcional, FGTS e férias", "calculadora-rescisao-trabalhista", "rst_gui.pyw"),
+    ("🛡️", "Calculadora de Seguro-Desemprego", "Cálculo oficial pela Lei 13.134/2015, carência por solicitação (1ª, 2ª ou 3ª vez), faixas do MTE e parcelas", "calculadora-seguro-desemprego", "csd_gui.pyw"),
+    ("🩺", "Controle de Pressão Arterial", "Classifica PAS/PAD (mmHg) pelas faixas AHA/ESC simplificadas; medição única ou média de N leituras; aviso educativo", "controle-pressao-arterial", "pas_gui.pyw"),
+    ("🏡", "Custo Home Office vs Escritorio", "Compara extras do home office com o custo mensal de deslocamento ao escritorio, diferenca e break-even.", "custo-home-office", "hof_gui.pyw"),
+    ("🌱", "Custo Jardineiro", "Jardineiro vs você mesmo (horas+insumos).", "custo-jardineiro", "jrd_gui.pyw"),
+    ("🏋️", "Índice de Carga de Treino (sRPE)", "Carga session-RPE (RPE×min), soma semanal, média diária e classificação leve/moderada/alta/muito alta", "indice-carga-treino", "ict_gui.pyw"),
+    ("🍿", "Cinema 2D × 3D", "Compara custo 2D vs 3D com pipoca.", "ingresso-cinema-3d", "icn_gui.pyw"),
+    ("🎤", "Ingresso Show", "Ingresso + taxa + transporte + consumo.", "ingresso-show", "shw_gui.pyw"),
+    ("🪵", "Madeira p/ Reforma", "Quantidade com perda, frete e mão de obra.", "madeira-reforma", "mad_gui.pyw"),
+    ("💍", "Orçamento Lua de Mel", "Passagem, hotel, passeios, comida e seguro.", "orcamento-lua-de-mel", "ldm_gui.pyw"),
+    ("📝", "Planejador de Revisão para Provas", "Cronograma diário de páginas/tópicos e horas de estudo até a prova, com alerta de carga impossível", "planejador-revisao-provas", "rvp_gui.pyw"),
+    ("🎯", "Planejador de Sessão de Foco", "Monta blocos de deep work com pausas, agenda HH:MM e aproveitamento % do tempo disponível", "planejador-sessao-foco", "fcs_gui.pyw"),
+    ("🎓", "Simulador do Novo FIES & Amortização", "Financiamento estudantil FIES, coparticipação no curso, retenção percentual em folha pelo eSocial e prazo de quitação", "simulador-financiamento-estudantil-fies", "fie_gui.pyw"),
+    ("🎁", "Simulador de PLR", "Participação nos Lucros: bruto, IR e líquido por meta e múltiplo de salários.", "simulador-plr", "plr_gui.pyw"),
+    ("💠", "Taxa Pix Recebimento", "Líquido após taxa % e fixa no Pix.", "taxa-pix-recebimento", "txp_gui.pyw"),
 ]
 
 QSS = """

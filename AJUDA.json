@@ -6328,5 +6328,195 @@
    "“Calcular”"
   ],
   "exemplo": "Água sanitária aberta em março com PAO de 6 meses: vale até setembro."
+ },
+ "analisador-cronotipo-sono-rotina": {
+  "sinopse": "Determina o cronotipo biológico do usuário (Matutino, Intermediário ou Vespertino) através do questionário psicométrico MEQ e mapeia os melhores horários para estudo profundo, exercícios e sono.",
+  "para_que": "Para quem quer parar de lutar contra o relógio biológico e sincronizar estudos pesados, treinos físicos e corte de cafeína com o ritmo circadiano natural.",
+  "como_usar": [
+   "Responda às 5 perguntas sobre seus hábitos espontâneos de sono e disposição natural",
+   "Selecione sua percepção sobre facilidade de acordar cedo e pico de produtividade",
+   "Confira a 'PONTUACAO MEQ TOTAL' e o 'SEU CRONOTIPO BIOLOGICO' resultante",
+   "Analise a barra visual circadiana de 24 horas",
+   "Siga os horários recomendados de 'FOCO COGNITIVO', 'PICO DE FORCA' e 'CORTE DE CAFEINA'"
+  ],
+  "exemplo": "Pontuação MEQ de 19 pontos -> Matutino Moderado: Janela de foco das 08:30 às 12:30, treino às 16:00, corte de cafeína até 13:30 e sono ideal das 22:30 às 06:30."
+ },
+ "calculadora-custo-contratacao-funcionario": {
+  "sinopse": "Calcula o custo total real mensal e anual de contratar um funcionário CLT, discriminando FGTS, INSS patronal, provisões de férias/13º e benefícios por regime tributário.",
+  "para_que": "Para MEIs, microempresários e gestores que precisam planejar o orçamento antes de admitir novos colaboradores ou comparar regimes fiscais.",
+  "como_usar": [
+   "Informe o 'Salario Bruto Nominal (R$)' acordado com o empregado",
+   "Selecione o 'Regime Tributario da Empresa' (MEI, Simples Nacional ou Lucro Presumido)",
+   "Preencha os valores de Vale Transporte, Alimentação (VR/VA) e Plano de Saúde",
+   "Analise o 'CUSTO TOTAL MENSAL PARA A EMPRESA' e o 'MULTIPLICADOR REAL SOBRE O SALARIO'",
+   "Consulte a tabela detalhada com cada provisão trabalhista e encargo patronal"
+  ],
+  "exemplo": "Salário de R$ 3.000,00 no Simples Nacional com R$ 600 de VR, R$ 350 de saúde e R$ 260 de VT (desconto de 6% = R$ 180) -> Custo total mensal de R$ 5.250,00 (1.75x do salário bruto)."
+ },
+ "calculadora-rescisao-trabalhista": {
+  "sinopse": "Calcula todas as verbas rescisórias de um contrato CLT: saldo de salário, aviso prévio proporcional (Lei 12.506), 13º, férias vencidas/proporcionais, multa do FGTS e retenções de INSS/IRPF.",
+  "para_que": "Para trabalhadores CLT que foram demitidos ou pediram demissão e para empregadores que precisam conferir o termo de rescisão (TRCT).",
+  "como_usar": [
+   "Informe o 'Ultimo Salario Bruto (R$)' e selecione o 'Tipo de Desligamento'",
+   "Ajuste os 'Anos Completos de Empresa' para calcular os dias de aviso prévio proporcional",
+   "Defina os dias trabalhados no mês e os meses proporcionais de 13º e férias",
+   "Marque as opções de férias vencidas e aviso prévio indenizado se aplicável",
+   "Insira o 'Saldo Atual da Conta FGTS (R$)' para ver a multa rescisória e o valor total liberado"
+  ],
+  "exemplo": "Salário de R$ 5.000,00 com 2 anos de casa (36 dias de aviso indenizado), demissão sem justa causa e saldo FGTS de R$ 15.000,00 -> Total líquido no bolso de R$ 34.200,00 (TRCT + R$ 21.000,00 de FGTS e multa)."
+ },
+ "calculadora-seguro-desemprego": {
+  "sinopse": "Calcula a quantidade de parcelas (3 a 5) e o valor de cada parcela do seguro-desemprego conforme as regras da Lei 13.134/2015 e a tabela em 3 faixas do MTE.",
+  "para_que": "Para trabalhadores demitidos sem justa causa que precisam saber quantas parcelas têm direito e quanto receberão antes de dar entrada no benefício.",
+  "como_usar": [
+   "Selecione o 'Numero da Solicitacao' (1a, 2a ou 3a vez em diante)",
+   "Ajuste os 'Meses Trabalhados de Carteira Assinada' para verificar a carência mínima",
+   "Informe os 'Ultimos 3 Salarios Brutos' (ou clique em 'Replicar Ultimo Salario nos 3 Meses')",
+   "Verifique o 'Status da Elegibilidade' (aprovado ou ineligível com justificativa)",
+   "Confira o 'VALOR DE CADA PARCELA' e o cronograma visual de liberação nos blocos"
+  ],
+  "exemplo": "Trabalhador na 1ª solicitação com 16 meses de carteira e média salarial de R$ 3.200,00 -> Aprovado com 4 parcelas de R$ 2.212,42 cada, totalizando R$ 8.849,68."
+ },
+ "controle-pressao-arterial": {
+  "sinopse": "Classifica pressão arterial (sistólica/diastólica) em Normal, Elevada, Hipertensão estágio 1/2 ou Crise, com média opcional de várias medições.",
+  "para_que": "Para quem acompanha a pressão em casa e quer entender a faixa da leitura (conteúdo educativo, não é diagnóstico).",
+  "como_usar": [
+   "Na aba Medição única, informe Pressão sistólica (PAS) e Pressão diastólica (PAD).",
+   "Clique em Classificar pressão para ver a categoria e a recomendação.",
+   "Na aba Média, use Incluir na lista para várias leituras e Calcular média e classificar.",
+   "Em crise (PAS ≥ 180 ou PAD ≥ 120), procure atendimento imediato."
+  ],
+  "exemplo": "120/80 → Normal; 145/95 → Hipertensão estágio 2; 185/110 → Crise hipertensiva."
+ },
+ "custo-home-office": {
+  "sinopse": "Soma energia, internet, cafe e mobiliario do HO e contrasta com o gasto de ir ao escritorio.",
+  "para_que": "Para quem negocia hibrido ou 100% remoto e quer numeros em reais antes de decidir.",
+  "como_usar": [
+   "Informe os extras mensais reais do home office (energia, internet, cafe, mobiliario amortizado).",
+   "Preencha o custo de uma ida ao escritorio (uber, onibus, combustivel, estacionamento).",
+   "Digite quantos dias por semana voce vai presencialmente e quantas semanas entram no mes.",
+   "Clique em Calcular comparacao para ver totais, diferenca e break-even em dias/semana.",
+   "Ajuste os dias presenciais e recalcule para simular outros regimes (2x2, 3x2, 5x2)."
+  ],
+  "exemplo": "HO R$ 290/mes (80+50+40+120) vs 3 idas/sem x R$ 12 ida (~R$ 312 presencial) → HO ~R$ 22 mais barato; break-even ~2,8 dias/sem."
+ },
+ "custo-jardineiro": {
+  "sinopse": "Compara jardineiro mensal com voce mesmo (horas + insumos).",
+  "para_que": "Para donos de quintal/jardim decidirem contratar ou fazer.",
+  "como_usar": [
+   "Informe Visitas/mes e Preco/visita.",
+   "Preencha Suas horas, Valor da hora e Insumos.",
+   "Clique em Comparar."
+  ],
+  "exemplo": "2 visitas x R$ 100 vs 3 h x R$ 20 + R$ 10 insumos → voce mais barato."
+ },
+ "indice-carga-treino": {
+  "sinopse": "Calcula a carga de treino sRPE (RPE × minutos), soma a semana, mostra média diária e classifica em leve/moderada/alta/muito alta.",
+  "para_que": "Para quem treina e quer controlar volume semanal sem planilha (atletas amadores, personal e fisiologia do esporte).",
+  "como_usar": [
+   "Informe RPE (1-10) e Duracao da sessao.",
+   "Clique em Adicionar sessao para incluir na lista da semana.",
+   "Repita para as demais sessoes (ou use a aba de totais).",
+   "Clique em Calcular carga semanal para ver total, media diaria e classificacao."
+  ],
+  "exemplo": "3 sessões de RPE 7 × 60 min = 1260 AU → classificação semanal Leve (< 1500)."
+ },
+ "ingresso-cinema-3d": {
+  "sinopse": "Compara o custo de sessoes 2D vs 3D com pipoca e pessoas.",
+  "para_que": "Para decidir se o 3D vale o extra no mes.",
+  "como_usar": [
+   "Informe Ingresso 2D, Ingresso 3D, Pessoas, Pipoca e Sessoes/mes.",
+   "Clique em Comparar.",
+   "Confira o resultado na area de saida."
+  ],
+  "exemplo": "2D R$ 30 vs 3D R$ 40, 2 pessoas → extra do 3D R$ 20 na sessao."
+ },
+ "ingresso-show": {
+  "sinopse": "Soma ingresso, taxa de servico, transporte, consumo e estacionamento.",
+  "para_que": "Para shows e festivais sem surpresa no total.",
+  "como_usar": [
+   "Informe Ingresso, Pessoas e Taxa servico %.",
+   "Preencha Transporte, Consumo e Estacionamento.",
+   "Clique em Calcular."
+  ],
+  "exemplo": "2 ingressos R$ 100 + 10% taxa + R$ 100 extras → R$ 320."
+ },
+ "madeira-reforma": {
+  "sinopse": "Estima madeira para reforma com perda, frete e mao de obra.",
+  "para_que": "Para obras e marcenaria residencial.",
+  "como_usar": [
+   "Informe Quantidade liquida e Preco/unidade.",
+   "Ajuste Perda %, Frete e Mao de obra.",
+   "Clique em Calcular."
+  ],
+  "exemplo": "9 un necessarias com 10% perda → comprar 10 un."
+ },
+ "orcamento-lua-de-mel": {
+  "sinopse": "Orca lua de mel: passagem, hotel, passeios, comida e seguro.",
+  "para_que": "Para casais planejando a viagem pos-casamento.",
+  "como_usar": [
+   "Preencha Passagens, Hotel/noite e Noites.",
+   "Informe Passeios, Comida/pessoa/dia, Seguro e Pessoas.",
+   "Clique em Calcular."
+  ],
+  "exemplo": "Passagens R$ 4.000 + 7 noites + comida/passeios → total e por pessoa/dia."
+ },
+ "planejador-revisao-provas": {
+  "sinopse": "Distribui automaticamente páginas ou tópicos nos dias até a prova conforme suas horas livres e a dificuldade do material, avisando se o plano não cabe no tempo disponível.",
+  "para_que": "Para quem tem prova marcada e precisa organizar revisão sem chute: quanto ler por dia e quantas horas dedicar sem estourar a rotina.",
+  "como_usar": [
+   "Escolha o prazo em \"Dias restantes\" ou marque \"Data da prova\" e preencha o campo correspondente",
+   "Informe o \"Total de páginas ou tópicos\" que falta revisar",
+   "Defina \"Horas disponíveis por dia\" com o tempo real que você consegue estudar",
+   "Ajuste \"Dificuldade do material (1 a 5)\" (1 = fácil, 5 = muito denso)",
+   "Clique em \"Montar cronograma\" e leia o resumo e o alerta se o plano for apertado ou impossível"
+  ],
+  "exemplo": "Prova em 10 dias, 120 páginas, 3 h/dia, dificuldade 3: cerca de 15 h totais de estudo, ~12 páginas e ~1,5 h por dia — viável com folga."
+ },
+ "planejador-sessao-foco": {
+  "sinopse": "Planeja uma sessão de deep work: divide o tempo em blocos de foco e pausas, aloca tarefas e gera agenda em HH:MM com percentual de aproveitamento.",
+  "para_que": "Para quem quer estruturar manhãs ou tardes de trabalho profundo com blocos longos (não é pomodoro rígido de 25 min).",
+  "como_usar": [
+   "Informe Tempo disponível (minutos da janela).",
+   "Defina Bloco de foco e Pausa entre blocos.",
+   "Preencha Início (HH:MM) para a agenda textual.",
+   "Liste Tarefas (uma por linha; minutos no fim se souber, ex.: Relatório 45).",
+   "Clique em Montar plano de foco e veja blocos, pausas, aproveitamento % e agenda."
+  ],
+  "exemplo": "180 min, blocos de 50, pausa 10, início 09:00 → 3 blocos, 150 min de foco, ~88% de aproveitamento."
+ },
+ "simulador-financiamento-estudantil-fies": {
+  "sinopse": "Simula o saldo devedor acumulado durante a graduação pelo FIES, a coparticipação mensal paga pelo estudante e o desconto em folha via eSocial pós-formatura para quitação.",
+  "para_que": "Para estudantes universitários e famílias planejando ingressar no ensino superior privado com financiamento do governo federal (Novo FIES).",
+  "como_usar": [
+   "Informe a 'Mensalidade Integral da Faculdade (R$)' e o 'Percentual Financiado pelo FIES (%)'",
+   "Defina a 'Duracao do Curso (meses)' e a 'Taxa de Juros Anual' (0% no FIES Público)",
+   "Insira o 'Salario Bruto Esperado Pos-Formado (R$)'",
+   "Ajuste a 'Retencao Direta em Folha (% do Salario)' (geralmente entre 10% e 15%)",
+   "Analise o 'SALDO DEVEDOR TOTAL NA FORMATURA' e a curva gráfica de amortização"
+  ],
+  "exemplo": "Mensalidade de R$ 1.800,00 com 80% financiado em 48 meses (Juros Zero) -> Saldo devedor de R$ 69.120,00 na formatura. Ganhando R$ 4.500,00 com retenção de 12% (R$ 540,00/mês), a dívida é quitada em 10.7 anos."
+ },
+ "simulador-plr": {
+  "sinopse": "Estima quanto você recebe de PLR no bolso antes do pagamento sair na folha extra.",
+  "para_que": "Para planejar o ano financeiro, comparar cenários de meta e entender o impacto do IR exclusivo de PLR.",
+  "como_usar": [
+   "Informe seu salário base mensal de referência.",
+   "Defina o múltiplo em salários previsto no acordo (ex.: 1,5).",
+   "Ajuste o percentual da meta atingida pela empresa.",
+   "Escolha o mês de pagamento e o modo de IR (tabela PLR ou alíquota efetiva).",
+   "Clique em Simular PLR e veja bruto, IR, líquido e equivalência em salários."
+  ],
+  "exemplo": "Salário R$ 5.000, múltiplo 1,5, meta 100% → bruto R$ 7.500; com tabela PLR o IR depende da faixa e o líquido aparece em salários equivalentes."
+ },
+ "taxa-pix-recebimento": {
+  "sinopse": "Mostra o liquido ao receber Pix com taxa % e taxa fixa.",
+  "para_que": "Para MEI/lojista que recebe Pix via gateway/maquininha.",
+  "como_usar": [
+   "Informe Valor bruto, Taxa % e Taxa fixa.",
+   "Clique em Calcular.",
+   "Confira o resultado na area de saida."
+  ],
+  "exemplo": "R$ 100 com 1% + R$ 0,50 → liquido R$ 98,50."
  }
 }

@@ -642,6 +642,23 @@ TOOLS = {
     "taxa-maquininha": "maq_gui.pyw",
     "uber-vs-onibus": "ubr_gui.pyw",
     "validade-produtos-limpeza": "vlm_gui.pyw",
+    "analisador-cronotipo-sono-rotina": "cts_gui.pyw",
+    "calculadora-custo-contratacao-funcionario": "cdf_gui.pyw",
+    "calculadora-rescisao-trabalhista": "rst_gui.pyw",
+    "calculadora-seguro-desemprego": "csd_gui.pyw",
+    "controle-pressao-arterial": "pas_gui.pyw",
+    "custo-home-office": "hof_gui.pyw",
+    "custo-jardineiro": "jrd_gui.pyw",
+    "indice-carga-treino": "ict_gui.pyw",
+    "ingresso-cinema-3d": "icn_gui.pyw",
+    "ingresso-show": "shw_gui.pyw",
+    "madeira-reforma": "mad_gui.pyw",
+    "orcamento-lua-de-mel": "ldm_gui.pyw",
+    "planejador-revisao-provas": "rvp_gui.pyw",
+    "planejador-sessao-foco": "fcs_gui.pyw",
+    "simulador-financiamento-estudantil-fies": "fie_gui.pyw",
+    "simulador-plr": "plr_gui.pyw",
+    "taxa-pix-recebimento": "txp_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
