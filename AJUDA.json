@@ -5660,5 +5660,148 @@
    "Inicie o temporizador e siga o “Cronograma de Alongamentos”"
   ],
   "exemplo": "1,75 m: cadeira ~45 cm, mesa ~72 cm; pausa de 5 min a cada 50 min."
+ },
+ "calculadora-iptu": {
+  "sinopse": "Estima o IPTU do imóvel: valor venal × alíquota da prefeitura, menos desconto (ex.: cota única), dividido em parcelas.",
+  "para_que": "Pra prever o IPTU do ano e ver se vale pagar à vista.",
+  "como_usar": [
+   "Informe o valor venal (está no carnê) e a Alíquota",
+   "Informe o Desconto e o número de Parcelas",
+   "“Calcular”"
+  ],
+  "exemplo": "Venal R$ 300 mil a 1% com 5% de desconto: R$ 2.850 à vista."
+ },
+ "calculadora-meia-vida-cafeina": {
+  "sinopse": "Mostra quanta cafeína ainda tem no seu sangue ao longo do dia (meia-vida), quanto sobra na hora de dormir, o horário-limite pro último café e alerta se passar do limite seguro diário.",
+  "para_que": "Pra quem toma café/energético e dorme mal.",
+  "como_usar": [
+   "Informe o Horário Previsto para Dormir e a Velocidade de Metabolização",
+   "Escolha a Bebida/Fonte e o Horário da Ingestão e clique “+ Adicionar Dose”",
+   "Leia a CAFEÍNA RESIDUAL AO DEITAR e o HORÁRIO DE CORTE SUGERIDO",
+   "“Limpar Todas as Doses” pra recomeçar"
+  ],
+  "exemplo": "Café às 17h: ainda ~50 mg no sangue às 23h; corte sugerido até 15:30."
+ },
+ "comparador-atacado-varejo": {
+  "sinopse": "Compara o preço por unidade no atacado e no varejo do mesmo produto, descontando o desperdício estimado (o que estraga ou sobra).",
+  "para_que": "Pra saber se compensa comprar a caixa fechada no atacarejo.",
+  "como_usar": [
+   "Informe Preço e Qtd. do varejo",
+   "Informe Preço e Qtd. do atacado",
+   "Informe o Desperdício estimado (%)",
+   "“Comparar”"
+  ],
+  "exemplo": "Fardo de 12 leites compensa; caixa de 5 kg de tomate com 30% de perda não."
+ },
+ "controle-assinaturas": {
+  "sinopse": "Soma quanto você gasta por mês e por ano com assinaturas (streaming, apps, academia…).",
+  "para_que": "Pra enxergar o total e decidir o que cancelar.",
+  "como_usar": [
+   "Digite uma assinatura por linha: nome;valor;ciclo (mensal/anual)",
+   "Clique “Somar”",
+   "Leia o total mensal e anual"
+  ],
+  "exemplo": "Netflix, Spotify, iCloud e academia: R$ 210/mês = R$ 2.520/ano."
+ },
+ "custo-empregado-domestico": {
+  "sinopse": "Estima o custo mensal de ter empregado(a) doméstico(a): salário, vale-transporte, benefícios e encargos do eSocial (INSS patronal, FGTS etc.). Estimativa simplificada.",
+  "para_que": "Pra quem vai contratar diarista fixa/empregada e quer saber o custo real.",
+  "como_usar": [
+   "Informe o salário",
+   "Informe Vale-transporte e Outros benefícios",
+   "“Calcular” e veja o custo total"
+  ],
+  "exemplo": "Salário de R$ 1.600: custo total ~R$ 2.000/mês."
+ },
+ "custo-total-por-km": {
+  "sinopse": "Calcula quanto o carro custa por km rodado, somando combustível com IPVA, seguro, manutenção e estacionamento diluídos.",
+  "para_que": "Pra comparar carro próprio com app/transporte ou cobrar reembolso justo.",
+  "como_usar": [
+   "Informe preço do combustível, Consumo e Km no mês",
+   "Informe IPVA (ano), Seguro (ano), Manutenção/mês e Estacionamento/mês",
+   "“Calcular”"
+  ],
+  "exemplo": "1.000 km/mês: R$ 1,30/km somando tudo (só gasolina seria R$ 0,55)."
+ },
+ "decimo-terceiro-proporcional": {
+  "sinopse": "Calcula o 13º salário proporcional (CLT): salário × meses trabalhados ÷ 12, menos o adiantamento já pago.",
+  "para_que": "Pra conferir o 13º ou a parte proporcional na demissão/admissão.",
+  "como_usar": [
+   "Informe o salário e os Meses trabalhados (15 dias ou mais contam como mês)",
+   "Informe o Adiantamento já pago",
+   "“Calcular”"
+  ],
+  "exemplo": "R$ 3.000 com 7 meses: R$ 1.750 bruto."
+ },
+ "estimativa-frete": {
+  "sinopse": "Estima o frete de uma encomenda pelo peso, distância e modalidade (econômico, expresso, mesmo dia), com seguro. É uma estimativa aproximada, não a tabela de uma transportadora.",
+  "para_que": "Pra ter uma ideia do frete antes de vender ou enviar algo.",
+  "como_usar": [
+   "Informe peso e Distância",
+   "Escolha a Modalidade",
+   "Informe Valor declarado e Taxa de seguro",
+   "“Estimar”"
+  ],
+  "exemplo": "2 kg a 400 km expresso: ~R$ 45."
+ },
+ "estimativa-seguro-residencial": {
+  "sinopse": "Estima o preço anual (prêmio) do seguro residencial aplicando uma taxa sobre o valor do imóvel + conteúdo, com franquia e desconto.",
+  "para_que": "Pra ter uma noção antes de cotar com corretora.",
+  "como_usar": [
+   "Informe o valor do imóvel e do Conteúdo (móveis etc.)",
+   "Informe Taxa anual, Franquia e Desconto",
+   "“Estimar”"
+  ],
+  "exemplo": "Imóvel R$ 400 mil + R$ 50 mil de conteúdo a 0,1%: ~R$ 450/ano."
+ },
+ "hospedagem-vs-aluguel": {
+  "sinopse": "Compara ficar um mês em hospedagem (Airbnb/hotel) com alugar: diária × dias + taxas contra aluguel + condomínio + contas.",
+  "para_que": "Pra quem vai passar uma temporada numa cidade.",
+  "como_usar": [
+   "Informe a diária, Dias no mês e Taxas/limpeza",
+   "Informe Aluguel mensal, Condomínio e Contas",
+   "“Comparar”"
+  ],
+  "exemplo": "Diária R$ 150 × 30 = R$ 4.500 contra aluguel total de R$ 3.200."
+ },
+ "planejador-ciclo-ebbinghaus": {
+  "sinopse": "Monta um cronograma de revisões espaçadas (24h, 7, 15, 30 e 60 dias) pra não esquecer o que estudou, com a curva do esquecimento de Ebbinghaus.",
+  "para_que": "Pra estudantes e concurseiros que querem memorizar de verdade.",
+  "como_usar": [
+   "Informe o Nome do Tópico, a Data da Primeira Sessão e o Tempo do Estudo Inicial",
+   "Escolha o Nível de Dificuldade",
+   "Veja a PRÓXIMA REVISÃO, a DURAÇÃO RECOMENDADA e o cronograma das 5 etapas"
+  ],
+  "exemplo": "Estudou Crase hoje: revisar amanhã (15 min), daqui 7, 15, 30 e 60 dias."
+ },
+ "reajuste-plano-saude": {
+  "sinopse": "Projeta a mensalidade do plano de saúde ano a ano com o reajuste anual composto, para todos os beneficiários.",
+  "para_que": "Pra planejar o orçamento dos próximos anos.",
+  "como_usar": [
+   "Informe a mensalidade atual e o Reajuste anual (%)",
+   "Informe Anos à frente e Beneficiários",
+   "“Projetar”"
+  ],
+  "exemplo": "R$ 800 com 12%/ano: R$ 1.410 em 5 anos."
+ },
+ "rendimento-pao-caseiro": {
+  "sinopse": "Calcula quantos pães saem de uma fornada (pelo peso alvo e perda no forno) e o custo de cada um.",
+  "para_que": "Pra quem faz pão em casa ou pra vender.",
+  "como_usar": [
+   "Informe a farinha e o Custo da farinha e Outros custos",
+   "Informe o Peso alvo do pão e a Perda no forno",
+   "“Calcular”"
+  ],
+  "exemplo": "1 kg de farinha rende 9 pães de 180 g a R$ 0,80 cada."
+ },
+ "rendimento-sabao-caseiro": {
+  "sinopse": "Calcula o rendimento do sabão/detergente caseiro, o custo por uso e a economia em relação ao produto comercial.",
+  "para_que": "Pra quem faz sabão em casa e quer saber se compensa.",
+  "como_usar": [
+   "Informe o Custo dos insumos e o volume feito",
+   "Informe ml por uso e o Preço comercial",
+   "“Calcular”"
+  ],
+  "exemplo": "5 L por R$ 15: R$ 0,15 por lavagem contra R$ 0,60 do comercial."
  }
 }
