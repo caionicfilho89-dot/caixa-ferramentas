@@ -353,6 +353,16 @@ TOOLS = {
     "normalizador-nomes": "nfn_gui.pyw",
     "reologia-fluidos": "reo_gui.pyw",
     "tunelamento-quantico": "tun_gui.pyw",
+    "aquecedor-solar": "aqs_gui.pyw",
+    "calendario-safra": "sfr_gui.pyw",
+    "calorias-receita": "kcr_gui.pyw",
+    "casa-segura-bebe": "sgb_gui.pyw",
+    "chas-presentes": "cha_gui.pyw",
+    "cuidados-orquideas": "orq_gui.pyw",
+    "festa-junina": "jun_gui.pyw",
+    "orcamento-reforma": "rfm_gui.pyw",
+    "placar-domino": "dmn_gui.pyw",
+    "quiz-familia": "qzf_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

@@ -367,6 +367,16 @@ BUILTIN = [
     ("🧹", "Normalizador de Nomes de Arquivo", "Remove acentos, gera nomes ASCII seguros e renomeia em lote com prévia", "normalizador-nomes", "nfn_gui.pyw"),
     ("🧪", "Reologia de Fluidos Não Newtonianos", "Modelos Ostwald-de Waele, Bingham e Casson, reogramas e escoamento em duto com núcleo rígido…", "reologia-fluidos", "reo_gui.pyw"),
     ("⚛️", "Simulador de Tunelamento Quântico 1D", "Equação de Schrödinger 1D, coeficientes de transmissão/reflexão e densidade de probabilidade", "tunelamento-quantico", "tun_gui.pyw"),
+    ("☀️", "Aquecedor Solar de Água", "Dimensiona boiler e coletores, estima economia frente ao chuveiro elétrico e payback", "aquecedor-solar", "aqs_gui.pyw"),
+    ("🍓", "Calendário de Safra", "Frutas, legumes e verduras da época no Brasil, o que está barato e lista de compras", "calendario-safra", "sfr_gui.pyw"),
+    ("🥗", "Calorias da Receita", "Tabela nutricional da receita a partir dos ingredientes, totais e por porção", "calorias-receita", "kcr_gui.pyw"),
+    ("🧸", "Casa Segura para o Bebê", "Checklist de prevenção por cômodo e fase do bebê, progresso e prioridades", "casa-segura-bebe", "sgb_gui.pyw"),
+    ("🎁", "Chá de Bebê, Panela e Casa Nova", "Sugestão de presentes, fraldas, brincadeiras e comidas para chá de bebê, panela e casa nova", "chas-presentes", "cha_gui.pyw"),
+    ("🌺", "Cuidados com Orquídeas", "Luz, rega, adubação e diagnóstico por gênero de orquídea, com registro das plantas", "cuidados-orquideas", "orq_gui.pyw"),
+    ("🌽", "Festa Junina", "Quantidades de comidas típicas, receita de quentão, fichas das barracas e sorteio da quadrilha", "festa-junina", "jun_gui.pyw"),
+    ("🛠️", "Orçamento de Reforma", "Itens por cômodo, reserva para imprevistos, comparação de orçamentos e cronograma de pagamento", "orcamento-reforma", "rfm_gui.pyw"),
+    ("🔲", "Placar de Dominó", "Placar de dominó com modos por pedras ou batidas, meta, histórico e contagem de pedras", "placar-domino", "dmn_gui.pyw"),
+    ("❓", "Quiz da Família", "Perguntas por categoria, cronômetro, pontuação com bônus de velocidade e placar", "quiz-familia", "qzf_gui.pyw"),
 ]
 
 QSS = """
