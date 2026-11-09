@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 494,
+  "total": 500,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4447,6 +4447,60 @@
       "script": "bzl_gui.pyw",
       "prefixo": "bzl",
       "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Gerador WiX",
+      "desc": "Presets .wxs WiX Toolset (Product, Fragment, Bundle).",
+      "chave": "gerador-wix",
+      "script": "wxi_gui.pyw",
+      "prefixo": "wxi",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📱",
+      "nome": "Gerador AppxManifest",
+      "desc": "Presets AppxManifest.xml (UWP/MSIX basico).",
+      "chave": "gerador-appxmanifest",
+      "script": "apx_gui.pyw",
+      "prefixo": "apx",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🐞",
+      "nome": "Gerador .lldbinit",
+      "desc": "Presets .lldbinit (basico, python, pretty printers).",
+      "chave": "gerador-lldbinit",
+      "script": "llb_gui.pyw",
+      "prefixo": "llb",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🪲",
+      "nome": "Gerador .gdbinit",
+      "desc": "Presets .gdbinit (basico, TUI, pretty printers).",
+      "chave": "gerador-gdbinit",
+      "script": "gdb_gui.pyw",
+      "prefixo": "gdb",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🎡",
+      "nome": "Inspetor de Wheel",
+      "desc": "Le METADATA/WHEEL/RECORD de pacotes .whl.",
+      "chave": "inspetor-wheel",
+      "script": "whl_gui.pyw",
+      "prefixo": "whl",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🥚",
+      "nome": "Inspetor dist-info / egg-info",
+      "desc": "Le METADATA/PKG-INFO de pastas .dist-info ou .egg-info.",
+      "chave": "inspetor-dist-info",
+      "script": "egg_gui.pyw",
+      "prefixo": "egg",
+      "categoria": "🏠 Casa, Pet & Pessoal"
     }
   ],
   "prefixos": [
@@ -4464,6 +4518,7 @@
     "analisador_texto",
     "anv",
     "apo",
+    "apx",
     "aqs",
     "aqu",
     "area_transferencia",
@@ -4592,6 +4647,7 @@
     "edc",
     "editor_imagem",
     "efn",
+    "egg",
     "ele",
     "elf",
     "elt",
@@ -4635,6 +4691,7 @@
     "gas",
     "gat",
     "gd",
+    "gdb",
     "gdo",
     "geo",
     "gg",
@@ -4702,6 +4759,7 @@
     "lhn",
     "lic",
     "limpar_metadados",
+    "llb",
     "lng",
     "lok",
     "lor",
@@ -4936,8 +4994,10 @@
     "webcam_foto",
     "wfi",
     "wgm",
+    "whl",
     "wsp",
     "wup",
+    "wxi",
     "xtr",
     "ylt",
     "yml",
