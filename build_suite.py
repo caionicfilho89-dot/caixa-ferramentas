@@ -425,7 +425,7 @@ TOOLS = {
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
 COLLECT_ALL = ["soundcard", "winrt", "winocr", "pillow_heif", "pikepdf", "segno",
-               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes", "mutagen"]
+               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes", "mutagen", "bs4"]
 
 
 def stage():
@@ -482,6 +482,28 @@ def _tool_main(key):
     mod = MODMAP.get(key)
     if not mod:
         raise SystemExit("ferramenta desconhecida: " + str(key))
+    import traceback
+    def _hook(tp, v, tb):
+        msg = "".join(traceback.format_exception(tp, v, tb))
+        try:
+            if sys.stderr:
+                sys.stderr.write(msg); sys.stderr.flush()
+        except Exception:
+            pass
+        try:
+            d = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")), "CaixaFerramentas")
+            os.makedirs(d, exist_ok=True)
+            with open(os.path.join(d, "erros.log"), "a", encoding="utf-8") as f:
+                f.write("\\n=== " + str(key) + " ===\\n" + msg)
+        except Exception:
+            pass
+        try:
+            from PyQt6.QtWidgets import QApplication, QMessageBox
+            if QApplication.instance() is not None:
+                QMessageBox.warning(None, "Erro na ferramenta", "Algo deu errado nesta ferramenta:\\n\\n" + msg[-1200:])
+        except Exception:
+            pass
+    sys.excepthook = _hook
     m = __import__(mod)
     m.main()
 

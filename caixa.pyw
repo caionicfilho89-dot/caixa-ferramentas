@@ -13,10 +13,10 @@ import sys
 import urllib.request
 import webbrowser
 
-from PyQt6.QtCore import Qt, QThread, pyqtSignal
-from PyQt6.QtGui import QColor, QIcon, QPainter, QPixmap
+from PyQt6.QtCore import Qt, QThread, QTimer, pyqtSignal
+from PyQt6.QtGui import QColor, QFont, QFontMetrics, QIcon, QPainter, QPixmap
 from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGridLayout,
-                             QHBoxLayout, QInputDialog, QLabel, QLineEdit, QMenu, QMessageBox,
+                             QHBoxLayout, QInputDialog, QLabel, QLineEdit, QListWidget, QListWidgetItem, QMenu, QMessageBox,
                              QPushButton, QScrollArea, QVBoxLayout, QWidget)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -459,6 +459,13 @@ QPushButton:checked { background:#2a2740; color:#c9b8ff; }
 #add:hover { background:#28402f; }
 #update { background:#3a2f12; color:#ffd166; font-weight:600; }
 #update:hover { background:#4a3c18; }
+#side { background:#11131a; border:1px solid #1f2533; border-radius:14px; padding:6px; font:10pt 'Segoe UI'; }
+#side::item { padding:8px 10px; border-radius:9px; color:#c7cbd8; }
+#side::item:hover { background:#1a1f2b; }
+#side::item:selected { background:#2a2740; color:#ffffff; }
+#badge { border-radius:12px; font:20pt 'Segoe UI Emoji'; }
+#catlbl { font:8pt 'Segoe UI'; }
+#hero { color:#6ee7b7; font:600 10pt 'Segoe UI'; }
 """
 
 
@@ -585,6 +592,38 @@ CATEGORIAS = [
         "monitor", "tempo", "faxina", "busca", "recupera", "espaco", "espaço")),
 ]
 CAT_OUTRAS = "🧰 Outras"
+CAT_CORES = {
+    "💰 Finanças & Trabalho": "#ffd166", "🏠 Casa, Pet & Pessoal": "#6ee7b7",
+    "🔬 Ciência & Engenharia": "#60a5fa", "🌐 Rede & Segurança": "#f87171",
+    "💻 Dev & Dados": "#7c5cff", "🖼️ Imagem & Design": "#f472b6", "🎵 Áudio & Vídeo": "#fb923c",
+    "✍️ Texto & Estudo": "#a3e635", "🎮 Jogos & Diversão": "#facc15",
+    "🗂️ Arquivos & Sistema": "#94a3b8", CAT_OUTRAS: "#8a93a8",
+}
+CARD_W, CARD_H, GAP = 272, 116, 12
+F_NOME = QFont("Segoe UI", 11, 700)
+F_DESC = QFont("Segoe UI", 9)
+
+
+def elide_linhas(texto, fonte, largura, n):
+    """Quebra o texto em até n linhas que cabem na largura, com reticências no fim."""
+    fm = QFontMetrics(fonte)
+    palavras = (texto or "").split()
+    linhas, atual = [], ""
+    for i, w in enumerate(palavras):
+        tent = (atual + " " + w).strip()
+        if fm.horizontalAdvance(tent) <= largura:
+            atual = tent
+            continue
+        if atual:
+            linhas.append(atual)
+        atual = w
+        if len(linhas) == n - 1:
+            resto = " ".join([atual] + palavras[i + 1:])
+            linhas.append(fm.elidedText(resto, Qt.TextElideMode.ElideRight, largura))
+            return "\n".join(linhas)
+    if atual:
+        linhas.append(fm.elidedText(atual, Qt.TextElideMode.ElideRight, largura))
+    return "\n".join(linhas[:n])
 CAT_ORDEM = [c[0] for c in CATEGORIAS] + [CAT_OUTRAS]
 
 
@@ -615,28 +654,43 @@ class Card(QFrame):
         self.caixa = caixa
         self.path = os.path.join(BASE, folder, script)
         self.exists = True if FROZEN else os.path.exists(self.path)
-        self.setFixedSize(230, 120)
+        self.setFixedSize(CARD_W, CARD_H)
         self.setCursor(Qt.CursorShape.PointingHandCursor)
         self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.customContextMenuRequested.connect(self._menu)
+        cat = categoria_de(tool)
+        cor = CAT_CORES.get(cat, "#8a93a8")
+        self.setToolTip(f"<b>{name}</b><br>{desc}<br><i>{cat}</i>")
 
-        lay = QVBoxLayout(self)
-        lay.setContentsMargins(14, 10, 12, 10)
-        lay.setSpacing(4)
+        lay = QHBoxLayout(self)
+        lay.setContentsMargins(12, 12, 12, 10)
+        lay.setSpacing(12)
+        badge = QLabel(emoji, objectName="badge")
+        badge.setFixedSize(46, 46)
+        badge.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        qc = QColor(cor)
+        badge.setStyleSheet(f"background: rgba({qc.red()},{qc.green()},{qc.blue()},40);")
+        lay.addWidget(badge, 0, Qt.AlignmentFlag.AlignTop)
+
+        col = QVBoxLayout()
+        col.setSpacing(3)
+        larg = CARD_W - 46 - 12 - 24 - (16 if fav else 0)
         top = QHBoxLayout()
-        top.setSpacing(8)
-        top.addWidget(QLabel(emoji, objectName="emoji"))
-        nm = QLabel(name, objectName="name")
-        nm.setWordWrap(True)
+        top.setSpacing(4)
+        nm = QLabel(QFontMetrics(F_NOME).elidedText(name, Qt.TextElideMode.ElideRight, larg), objectName="name")
         top.addWidget(nm, 1)
         if fav:
             top.addWidget(QLabel("★", objectName="star"), 0, Qt.AlignmentFlag.AlignTop)
-        lay.addLayout(top)
-        d = QLabel(desc, objectName="desc")
-        d.setWordWrap(True)
-        lay.addWidget(d, 1)
+        col.addLayout(top)
+        d = QLabel(elide_linhas(desc, F_DESC, CARD_W - 46 - 12 - 24, 3), objectName="desc")
+        d.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
+        col.addWidget(d, 1)
+        cl = QLabel(cat.split(" ", 1)[-1], objectName="catlbl")
+        cl.setStyleSheet(f"color:{cor};")
+        col.addWidget(cl)
         if not self.exists:
-            lay.addWidget(QLabel("não encontrada", objectName="missing"))
+            col.addWidget(QLabel("não encontrada", objectName="missing"))
+        lay.addLayout(col, 1)
 
     def mouseReleaseEvent(self, e):
         if e.button() == Qt.MouseButton.LeftButton:
@@ -666,7 +720,7 @@ class Caixa(QWidget):
         super().__init__()
         self.setWindowTitle("Caixa de Ferramentas do Caio")
         self.setWindowIcon(window_icon())
-        self.resize(800, 660)
+        self.resize(1280, 800)
         self.cfg = load_cfg()
         self.cfg.setdefault("favorites", [])
         self.cfg.setdefault("extra_tools", [])
@@ -705,24 +759,34 @@ class Caixa(QWidget):
         self.search.setPlaceholderText("Buscar ferramenta…")
         self.search.textChanged.connect(self.rebuild)
         sr.addWidget(self.search, 1)
-        self.catbox = QComboBox(objectName="catbox")
-        self._popular_categorias()
-        self.catbox.currentIndexChanged.connect(self.rebuild)
-        sr.addWidget(self.catbox)
         add = QPushButton("➕  Adicionar ferramenta", objectName="add")
         add.clicked.connect(self.add_tool)
         sr.addWidget(add)
         root.addLayout(sr)
+
+        corpo = QHBoxLayout()
+        corpo.setSpacing(14)
+        self.side = QListWidget(objectName="side")
+        self.side.setFixedWidth(230)
+        self.side.currentRowChanged.connect(lambda _r: self.rebuild())
+        corpo.addWidget(self.side)
+        self._popular_categorias()
 
         self.scroll = QScrollArea()
         self.scroll.setWidgetResizable(True)
         self.host = QWidget()
         self.grid = QGridLayout(self.host)
         self.grid.setContentsMargins(2, 4, 2, 4)
-        self.grid.setSpacing(12)
-        self.grid.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.grid.setSpacing(GAP)
+        self.grid.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         self.scroll.setWidget(self.host)
-        root.addWidget(self.scroll, 1)
+        corpo.addWidget(self.scroll, 1)
+        root.addLayout(corpo, 1)
+        self._cols_atual = 0
+        self._rt = QTimer(self)
+        self._rt.setSingleShot(True)
+        self._rt.setInterval(120)
+        self._rt.timeout.connect(self._talvez_reflow)
 
         self.status = QLabel("", objectName="sub")
         root.addWidget(self.status)
@@ -739,22 +803,51 @@ class Caixa(QWidget):
         return BUILTIN + self.extra_tools
 
     def _popular_categorias(self):
-        """Preenche o seletor com 'Tudo' + categorias que têm ferramentas (com contagem)."""
-        self.catbox.blockSignals(True)
-        self.catbox.clear()
+        """Lateral com Tudo, Favoritos, Novas e as categorias (com contagem)."""
+        self.side.blockSignals(True)
+        atual = self._cat() if self.side.count() else "__all__"
+        self.side.clear()
         tools = self.all_tools()
         contagem = {}
         for t in tools:
             c = categoria_de(t)
             contagem[c] = contagem.get(c, 0) + 1
-        self.catbox.addItem(f"📂 Tudo ({len(tools)})", "__all__")
+        nfav = sum(1 for t in tools if t[3] in self.cfg["favorites"])
+        itens = [(f"📂  Tudo  ({len(tools)})", "__all__"), (f"★  Favoritas  ({nfav})", "__fav__"),
+                 ("🆕  Novas", "__new__")]
         for cname in CAT_ORDEM:
             if contagem.get(cname):
-                self.catbox.addItem(f"{cname} ({contagem[cname]})", cname)
-        self.catbox.blockSignals(False)
+                itens.append((f"{cname}  ({contagem[cname]})", cname))
+        sel = 0
+        for i, (txt, data) in enumerate(itens):
+            it = QListWidgetItem(txt)
+            it.setData(Qt.ItemDataRole.UserRole, data)
+            self.side.addItem(it)
+            if data == atual:
+                sel = i
+        self.side.setCurrentRow(sel)
+        self.side.blockSignals(False)
+
+    def _cat(self):
+        it = self.side.currentItem() if hasattr(self, "side") else None
+        return it.data(Qt.ItemDataRole.UserRole) if it else "__all__"
+
+    def _cols(self):
+        w = self.scroll.viewport().width() - 8
+        return max(1, (w + GAP) // (CARD_W + GAP))
+
+    def resizeEvent(self, e):
+        super().resizeEvent(e)
+        if hasattr(self, "_rt"):
+            self._rt.start()
+
+    def _talvez_reflow(self):
+        if self._cols() != self._cols_atual:
+            self.rebuild()
 
     def _lay_section(self, title, tools, row):
-        cols = 3
+        cols = self._cols()
+        self._cols_atual = cols
         if title:
             self.grid.addWidget(QLabel(title, objectName="section"), row, 0, 1, cols)
             row += 1
@@ -771,7 +864,7 @@ class Caixa(QWidget):
 
     def rebuild(self):
         q = self.search.text().lower().strip()
-        cat = self.catbox.currentData() if hasattr(self, "catbox") else "__all__"
+        cat = self._cat()
         while self.grid.count():
             it = self.grid.takeAt(0)
             if it.widget():
@@ -789,6 +882,17 @@ class Caixa(QWidget):
         favs = self.cfg["favorites"]
         uses = self.cfg["uses"]
 
+        if cat == "__fav__":
+            ft = [t for t in tools if t[3] in favs]
+            self._lay_section(f"★ Favoritas  ·  {len(ft)}", ft, 0)
+            self.sub.setText("Clique com o botão direito num cartão pra favoritar." if not ft
+                             else f"{len(ft)} favorita(s).")
+            return
+        if cat == "__new__":
+            nt = list(reversed(tools[-40:]))
+            self._lay_section(f"🆕 Adicionadas por último  ·  {len(nt)}", nt, 0)
+            self.sub.setText(f"As {len(nt)} ferramentas mais recentes da Caixa.")
+            return
         # Categoria específica selecionada: mostra só ela
         if cat and cat != "__all__":
             ctools = [t for t in tools if categoria_de(t) == cat]
@@ -823,17 +927,40 @@ class Caixa(QWidget):
             QMessageBox.warning(self, "Ops", f"Não achei:\n{card.path}")
             return
         try:
+            os.makedirs(CFG_DIR, exist_ok=True)
+            log = os.path.join(CFG_DIR, "ultima_ferramenta.log")
+            fh = open(log, "w", encoding="utf-8")
             if FROZEN:
                 # no instalador: o próprio exe abre a ferramenta (Caixa.exe --tool <chave>)
-                subprocess.Popen([sys.executable, "--tool", card.key])
+                p = subprocess.Popen([sys.executable, "--tool", card.key], stdout=fh, stderr=fh)
             else:
-                subprocess.Popen([pythonw(), card.path], cwd=os.path.dirname(card.path))
+                p = subprocess.Popen([pythonw(), card.path], cwd=os.path.dirname(card.path),
+                                     stdout=fh, stderr=fh)
+            fh.close()
             self.status.setText("Abrindo " + card.tool[1] + "…")
             self.cfg["uses"][card.key] = self.cfg["uses"].get(card.key, 0) + 1
             save_cfg(self.cfg)
-            self.rebuild()
+            QTimer.singleShot(6000, lambda: self._checa_abriu(p, card.tool[1], log))
         except Exception as e:  # noqa: BLE001
             QMessageBox.critical(self, "Erro", str(e))
+
+    def _checa_abriu(self, p, nome, log):
+        rc = p.poll()
+        if rc is None or rc == 0:
+            return
+        try:
+            with open(log, encoding="utf-8", errors="replace") as f:
+                txt = f.read()[-1500:]
+        except OSError:
+            txt = ""
+        try:
+            with open(os.path.join(CFG_DIR, "erros.log"), "a", encoding="utf-8") as f:
+                f.write(f"\n=== {nome} (código {rc}) ===\n{txt}\n")
+        except OSError:
+            pass
+        self.status.setText(f"{nome} fechou com erro. Detalhes em erros.log.")
+        QMessageBox.warning(self, "A ferramenta fechou",
+                            f"“{nome}” fechou logo ao abrir (código {rc}).\n\n{txt or 'Sem detalhes.'}")
 
     # ---- atualização ----
     def _on_update(self, tag, url):
@@ -853,6 +980,7 @@ class Caixa(QWidget):
         else:
             favs.append(key)
         save_cfg(self.cfg)
+        self._popular_categorias()
         self.rebuild()
 
     # ---- adicionar / remover ferramenta ----
