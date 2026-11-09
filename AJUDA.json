@@ -7246,5 +7246,643 @@
    "Confira o total de pausas e os segundos de descanso ocular acumulados no periodo."
   ],
   "exemplo": "Inicio 09:00, 4 h na tela: alertas as 09:20, 09:40, ... ate 12:40 (12 pausas), 240 s (4 min) de descanso ocular, fim da sessao ~13:00."
+ },
+ "agua-mineral-vs-filtro": {
+  "sinopse": "Calcula quantos galões você gasta no mês e compara com o custo mensal do filtro (preço diluído + energia + manutenção), mostrando payback.",
+  "para_que": "Para quem está em dúvida entre continuar no galão ou comprar um purificador.",
+  "como_usar": [
+   "Informe Preço do galão, Litros do galão e Consumo mensal.",
+   "Preencha Preço do filtro e Vida útil do filtro.",
+   "Opcional: Energia/mês e Manutenção/mês.",
+   "Clique em Comparar."
+  ],
+  "exemplo": "5 galões de R$ 20 (R$ 100/mês) vs filtro R$ 600/12 meses (R$ 50/mês) → filtro com payback ~12 meses."
+ },
+ "analisador-nota-corte-sisu-enem": {
+  "sinopse": "Calcula a média ponderada real no SiSU para qualquer curso e universidade a partir dos pesos de cada área do ENEM (1 a 5), aplicando eventuais bonificações regionais e calculando a margem de segurança frente à nota de corte histórica.",
+  "para_que": "Para vestibulandos e candidatos do ENEM simularem onde têm maiores chances reais de aprovação de acordo com os pesos específicos de cada faculdade.",
+  "como_usar": [
+   "Informe suas notas nas 5 áreas do ENEM: Redação, Matemática, Natureza, Humanas e Linguagens",
+   "Ajuste os 'Pesos' de cada disciplina conforme o termo de adesão do curso desejado no SiSU",
+   "Defina a 'Nota de Corte de Referência do Curso'",
+   "Selecione se possui direito a 'Bonificação Regional (% Bônus)'",
+   "Confira na barra comparativa visual se sua nota final supera a linha de corte",
+   "Identifique a 'DISCIPLINA ALAVANCA' que mais impulsiona sua pontuação"
+  ],
+  "exemplo": "Candidato com 900 na redação, 800 em matemática e médias ~650 nas demais, concorrendo a curso de exatas com peso 4 em matemática e 3 em redação, atinge média ponderada de 742,86, garantindo aprovação em curso com corte de 740,0 pontos."
+ },
+ "analisador-ritmo-leitura-compreensao": {
+  "sinopse": "Mede a velocidade de leitura em palavras por minuto (PPM) e calcula o PPM efetivo ponderado pela taxa de retenção/compreensão, estimando o tempo em horas para concluir livros e editais de concursos.",
+  "para_que": "Para estudantes universitários, concurseiros e leitores avaliarem sua capacidade real de leitura e aprenderem a equilibrar velocidade com retenção de conceitos.",
+  "como_usar": [
+   "Informe a 'Quantidade de Palavras Lidas' (ou cole o texto no campo auxiliar e clique em 'Contar Palavras do Texto')",
+   "Insira o tempo gasto no cronômetro em 'Minutos' e 'Segundos'",
+   "Defina sua 'Taxa de Compreensão / Retenção (%)'",
+   "Preencha as 'Páginas do Livro / Material Alvo' e a média de palavras por página",
+   "Analise na escala gráfica de PPM o seu enquadramento (Lento, Médio, Rápido ou Ágil)",
+   "Verifique as métricas de 'PÁGINAS POR HORA' e o tempo total estimado para zerar a obra"
+  ],
+  "exemplo": "Leitor que lê 600 palavras em 2min30s com 80% de retenção atinge 240 PPM bruto e 192 PPM efetivo, lendo cerca de 51 páginas por hora e precisando de ~5.8 horas para concluir um livro de 300 páginas."
+ },
+ "caixa-leitner-intervalos": {
+  "sinopse": "Organiza cartoes em caixas com intervalos fixos em dias; acerto sobe de caixa, erro volta para a caixa 1.",
+  "para_que": "Para quem estuda com fichas/caixa fisica e quer prever quantas revisoes caem em cada dia — sem algoritmo SM-2 nem baralhos Anki.",
+  "como_usar": [
+   "Defina numero de caixas, intervalos (ex.: 1,2,4,8,16) e horizonte D dias",
+   "Cadastre cards ou importe CSV (frente;verso)",
+   "Na aba Revisao hoje, mostre a resposta e marque Acertei ou Errei",
+   "Veja distribuicao por caixa e a tabela de carga diaria na aba Agenda",
+   "Use Salvar baralho ou deixe salvar automatico apos cada revisao"
+  ],
+  "exemplo": "5 caixas, intervalos 1,2,4,8,16, 20 cards na caixa 1: hoje ~20 revisoes; apos acertos parte migra para caixas 2+ e a agenda dos proximos 30 dias mostra picos menores."
+ },
+ "calculadora-adicional-noturno": {
+  "sinopse": "Calcula o valor do adicional noturno sobre as horas trabalhadas entre 22h e 5h, partindo da hora diurna e aplicando o percentual legal (padrao 20%) e, se quiser, o fator da hora noturna reduzida.",
+  "para_que": "Para conferir holerite, estimar quanto vale o turno da madrugada ou simular ACT com adicional maior que o minimo legal — sem misturar com hora extra, DSR ou insalubridade.",
+  "como_usar": [
+   "Escolha se a hora diurna vem direto (R$/h) ou do salario mensal dividido pelas horas contratuais do mes.",
+   "Informe quantas horas de relogio voce trabalhou no periodo noturno no mes.",
+   "Ajuste o percentual de adicional se a convencao for maior que 20%.",
+   "Marque jornada reduzida se a empresa aplica hora noturna de 52min30s.",
+   "Clique em Calcular e leia adicional do mes, hora noturna e total pago no noturno."
+  ],
+  "exemplo": "Hora diurna R$ 25; 32h noturnas no mes; 20% adicional; sem reduzida → adicional/h R$ 5 → hora noturna R$ 30 → adicional no mes R$ 160 → total noturno R$ 960. Com reduzida, 32h reais viram ~35,05h de pagamento."
+ },
+ "calculadora-adicional-sobreaviso-prontidao": {
+  "sinopse": "Calcula com rigor na CLT e Súmula 428 do TST os adicionais devidos por plantões de sobreaviso à distância (1/3 da hora) ou prontidão presencial (2/3 da hora), convertendo chamados em horas extras.",
+  "para_que": "Para profissionais de TI em escala de plantão, médicos, engenheiros de manutenção e trabalhadores regidos pela CLT conferirem se o adicional de sobreaviso está correto.",
+  "como_usar": [
+   "Informe o 'Salário Base Mensal (R$)' contratual",
+   "Selecione a 'Jornada / Divisor' (220h para 44h semanais ou 200h para 40h)",
+   "Escolha o 'Tipo de Regime' entre Sobreaviso (1/3 do salário-hora) ou Prontidão (2/3)",
+   "Insira as 'Horas Plantão/Mês' escaladas",
+   "Defina as 'Horas Trabalhadas (Acionamento)' em que precisou atuar efetivamente durante a escala",
+   "Verifique nos cartões o 'VALOR HORA SOBREAVISO', 'TOTAL HORAS DE ESPERA' e o 'TOTAL BRUTO MENSAL'",
+   "Examine o demonstrativo completo para ver o reflexo em DSR, férias, 13º e FGTS"
+  ],
+  "exemplo": "Trabalhador com salário de R$ 4.500 (divisor 220, hora R$ 20,45) com 72 horas de escala de sobreaviso e 12 horas de acionamento em HE 50% receberá R$ 409,09 de espera pura e R$ 368,18 de horas extras, totalizando ~R$ 777,27 de adicionais no mês."
+ },
+ "calculadora-ciclos-sono-rem": {
+  "sinopse": "Calcula os momentos ideais para deitar ou despertar com base nos ciclos ultradianos de 90 minutos (NREM e REM) e latência de sono, evitando a inércia do sono ao acordar.",
+  "para_que": "Para quem tem dificuldade em acordar cedo com disposição ou quer planejar noites de sono reparadoras após rotinas intensas de estudo e trabalho.",
+  "como_usar": [
+   "Escolha o modo entre 'Quero acordar às:' ou 'Vou dormir às:'",
+   "Defina o 'Horário Alvo' no relógio",
+   "Ajuste o 'Tempo para Adormecer (latência)' caso costume demorar mais ou menos que 14 minutos para pegar no sono",
+   "Confira os 4 cartões com as sugestões de horários calculados para 3, 4, 5 e 6 ciclos de sono",
+   "Priorize a opção de 5 Ciclos (7h30) ou 6 Ciclos (9h00) para descanso cognitivo e físico completo",
+   "Leia a explicação científica no rodapé sobre como evitar acordar durante a fase N3 de sono profundo"
+  ],
+  "exemplo": "Para acordar pontualmente às 07:00 com latência de 14 minutos, o horário recomendado para ir para a cama e completar 5 ciclos de 90 minutos é às 23:16."
+ },
+ "calculadora-dosagem-medicamento-pediatrico": {
+  "sinopse": "Calcula a dosagem pediátrica recomendada (em gotas, mL de seringa dosadora e mg de princípio ativo) a partir do peso da criança e do intervalo prescrito, com alertas de dose máxima diária.",
+  "para_que": "Para pais, cuidadores, estudantes de medicina e farmacêuticos conferirem com segurança a quantidade exata de gotas ou mL de antitérmicos e analgésicos infantis.",
+  "como_usar": [
+   "Informe o 'Peso da Criança (kg)' e a 'Idade (meses)'",
+   "Selecione o 'Medicamento / Apresentação' (ex: Paracetamol Gotas 200 mg/mL, Dipirona Gotas 500 mg/mL ou Ibuprofeno)",
+   "Escolha o 'Intervalo de Tomada' (ex: a cada 6 ou 8 horas)",
+   "Ajuste a 'Intensidade / Faixa' entre dose padrão, mínima ou máxima terapêutica",
+   "Verifique os cards com a 'DOSE EM GOTAS' e a 'DOSE EM VOLUME (SERINGA)' em mL",
+   "Confira os 'Horários Sugeridos' e leia a regra clínica da Sociedade Brasileira de Pediatria no quadro explicativo"
+  ],
+  "exemplo": "Criança de 14 kg necessitando de Dipirona Gotas 500 mg/mL a cada 6 horas receberá exatamente 7 gotas (0,35 mL ou 175 mg) por tomada, com horários distribuídos às 08:00, 14:00, 20:00 e 02:00."
+ },
+ "calculadora-dosagem-suplementacao-esportiva": {
+  "sinopse": "Calcula as dosagens personalizadas por peso corporal dos 4 suplementos de maior nível de evidência científica (ISSN): creatina monohidratada (com ou sem saturação), complemento de proteína em scoops de whey, beta-alanina fracionada e cafeína anidra pré-treino.",
+  "para_que": "Para praticantes de musculação e esportistas dosarem seus suplementos com rigor científico, evitando subdosagem ou desperdício financeiro.",
+  "como_usar": [
+   "Informe o 'Peso Corporal Atual (kg)'",
+   "Selecione o 'Objetivo do Treinamento' (Hipertrofia, Cutting com preservação muscular ou Endurance)",
+   "Insira a quantidade estimada de 'Proteína Ingerida na Comida Sólida (g/dia)'",
+   "Marque se deseja fazer o protocolo de 'Saturação Rápida de Creatina (5-7 dias)'",
+   "Defina a sua 'Sensibilidade à Cafeína Pré-Treino'",
+   "Consulte no cronograma visual as doses diárias, quantidade de scoops de Whey e horários ideais de ingestão"
+  ],
+  "exemplo": "Atleta de 78 kg em hipertrofia com meta de 140g de proteína diária consumindo 90g na dieta necessita de 3,9g de creatina ao dia, 2,1 scoops de Whey para cobrir o déficit de 50g e 312 mg de cafeína pré-treino."
+ },
+ "calculadora-equiparacao-salarial-clt": {
+  "sinopse": "Calcula a liquidação financeira de pedidos de equiparação salarial e desvio de função conforme o Art. 461 da CLT, apurando o valor nominal e reflexos legais em férias, 13º, FGTS e adicionais.",
+  "para_que": "Para trabalhadores, advogados trabalhistas, peritos judiciais e profissionais de RH simularem o passivo ou crédito trabalhista com precisão jurídica.",
+  "como_usar": [
+   "Informe o 'Salário Atual Requerente (R$)' e o 'Salário do Paradigma (R$)'",
+   "Defina os 'Meses no Cargo/Função' em que ambos desempenharam a mesma atividade (respeitando o teto prescricional de 60 meses)",
+   "Indique a 'Média HE Mensais (h)' caso o funcionário tenha prestado horas extras habituais",
+   "Marque ou desmarque os requisitos legais do Art. 461 (Mesmo Empregador, Mesmo Estabelecimento, etc.)",
+   "Confira os cartões com 'DIFERENÇA SALARIAL MENSAL' e 'TOTAL LIQUIDAÇÃO ESTIMADA'",
+   "Analise a 'Memória Discriminada de Verbas Trabalhistas' para verificar linha a linha 13º, Férias + 1/3 e FGTS com 40%"
+  ],
+  "exemplo": "Trabalhador que recebia R$ 3.500 enquanto o colega paradigma recebia R$ 5.800 durante 24 meses acumula R$ 55.200 de diferenças nominais, totalizando ~R$ 74.000 após inclusão de 13º, férias + 1/3 e FGTS com multa de 40%."
+ },
+ "calculadora-taxa-metabolica-katch-mcardle": {
+  "sinopse": "Calcula a Taxa Metabólica Basal com a equação de Katch-McArdle a partir da massa magra corporal real (LBM), estimando o gasto energético total diário (TDEE) e metas calóricas personalizadas para cutting seguro e bulking limpo.",
+  "para_que": "Para praticantes de musculação e pessoas com % de gordura conhecido que buscam precisão superior às fórmulas convencionais (Harris-Benedict / Mifflin-St Jeor).",
+  "como_usar": [
+   "Informe o 'Peso Corporal Total (kg)' e o 'Percentual de Gordura Corporal (% BF)'",
+   "Selecione o seu 'Nível de Atividade Física' diário",
+   "Ajuste a intensidade do 'Déficit Calórico no Cutting (%)' e 'Superávit Calórico no Bulking (%)'",
+   "Observe o gráfico comparativo de calorias da TMB basal até as metas de ganho e perda",
+   "Confira a meta diária de ingestão de proteínas recomendada em gramas"
+  ],
+  "exemplo": "Pessoa de 78 kg com 16% de gordura possui 65,5 kg de massa magra, obtendo uma TMB de 1.785 kcal e um gasto de manutenção de ~2.766 kcal/dia se moderadamente ativa, com meta de cutting a 2.213 kcal e 151g de proteína."
+ },
+ "calculadora-tempo-recuperacao-muscular": {
+  "sinopse": "Calcula o tempo fisiológico de recuperação muscular e restauração neuromuscular com base no tipo de exercício (compostos pesados vs isoladores), volume de séries, proximidade da falha (RIR), sono e nutrição, exibindo a janela ideal de supercompensação.",
+  "para_que": "Para praticantes de musculação e atletas planejarem a divisão semanal do treino (Split) sem treinar o músculo ainda lesionado nem esperar tempo demais perdendo a supercompensação.",
+  "como_usar": [
+   "Selecione o 'Tipo de Exercício Predominante' da sessão (composto pesado, moderado, máquinas ou isoladores)",
+   "Informe a quantidade de 'Séries Realizadas no Músculo' e o 'RIR Médio' (repetições que sobraram antes da falha)",
+   "Ajuste a 'Média de Horas de Sono por Noite' e marque se a ingestão proteica está adequada",
+   "Defina a sua 'Faixa Etária'",
+   "Observe no gráfico a curva bifásica de Selye com o ponto de fadiga e a faixa destacada de supercompensação",
+   "Verifique as 'HORAS DE RECUPERAÇÃO' e a sugestão de frequência semanal para aquele grupamento"
+  ],
+  "exemplo": "Treino de peitoral com 8 séries de compostos (supino) em RIR 1.5, sono de 7.5h e boa dieta requer ~48 horas (2 dias) de intervalo, indicando que a janela de supercompensação ocorre entre 48h e 70h após o estímulo (frequência ideal de 2x na semana)."
+ },
+ "calculadora-zonas-frequencia-cardiaca-karvonen": {
+  "sinopse": "Calcula com precisão científica as 5 zonas de treinamento cardiorrespiratório (Z1 a Z5) pelo método de Karvonen (FC de Reserva), personalizando os batimentos ideais e calorias/hora.",
+  "para_que": "Para praticantes de corrida, ciclismo, musculação e atletas que querem treinar na Zona 2 (base mitocondrial e queima lipídica) sem errar a intensidade usando fórmulas genéricas.",
+  "como_usar": [
+   "Informe a sua 'Idade (anos)' e a sua 'FC Repouso (bpm)' medida pela manhã",
+   "Defina o 'Peso Corporal (kg)' para estimativa do consumo calórico",
+   "Selecione a 'Fórmula FC Máxima' desejada (Tanaka como padrão-ouro ou Fox-Haskell)",
+   "Caso tenha feito teste ergoespirométrico em laboratório, preencha a 'FC Máx Medida (opc)'",
+   "Consulte a tabela com as faixas de batimentos cardíacos para cada uma das 5 Zonas (Z1 a Z5)",
+   "Compare a coluna 'Faixa Karvonen' com o 'Comparativo Simples' para notar a diferença de precisão"
+  ],
+  "exemplo": "Adulto de 32 anos com FC repouso de 62 bpm atinge FC máxima Tanaka de 186 bpm e reserva de 124 bpm; sua Zona 2 (60-70% HRR) fica exatamente entre 136 e 149 bpm com gasto estimado de ~525 kcal/hora."
+ },
+ "carga-semanal-risco-burnout": {
+  "sinopse": "Combina métricas objetivas da semana (jornada, extras, sono curto e trabalho no fim de semana) em um índice de carga e risco educativo de burnout.",
+  "para_que": "Enxergar carga acumulada antes dos sintomas aparecerem no questionário Likert (ibs_) ou da fadiga pontual de um plantão (fad_) — útil para ajustar rotina e conversar com RH.",
+  "como_usar": [
+   "Some quantas horas você trabalhou nos últimos 7 dias (incluindo home office, se houver)",
+   "Informe as horas extras da semana, além da jornada contratual",
+   "Conte quantas noites você dormiu menos de 6 horas",
+   "Indique quantos dos dois últimos fins de semana incluíram trabalho (0, 1 ou 2)",
+   "Clique em Calcular índice de carga para ver o índice 0–100, a faixa de risco e a contribuição de cada fator",
+   "Siga a dica focada no pior componente; em risco alto, busque apoio profissional"
+  ],
+  "exemplo": "42 h na semana, 4 h extras, 2 noites curtas e 1 fim de semana trabalhado: índice típico na faixa de atenção; 58 h, 18 h extras, 5 noites curtas e 2 fins de semana → risco alto."
+ },
+ "checklist-prova-certificacao": {
+  "sinopse": "Organiza a preparação para exames de certificação (AWS, Azure, Cisco, PMP e similares) com sete eixos ponderados e simulados em N/meta com crédito parcial no percentual.",
+  "para_que": "Para quem tem voucher ou prova agendada e precisa saber se já cobriu edital, labs, simulados cronometrados, inscrição e logística — sem confundir com analisador de questões ou checklist de banca oral.",
+  "como_usar": [
+   "Ajuste \"Simulados feitos\" e \"Meta\" (ex.: 3 de 5)",
+   "Marque cada item concluído (edital, lab, inscrição, data, material, descanso)",
+   "Opcional: altere peso e minutos estimados por linha",
+   "Clique em \"Atualizar prontidão\" e leia % total, ratio de simulados e criticos faltando",
+   "Use \"Desmarcar tudo\" para reiniciar o acompanhamento"
+  ],
+  "exemplo": "5/5 simulados, edital + lab + inscricao + data marcados, material e descanso pendentes: ~82% de prontidao, nenhum critico, ratio 100% — falta só revisao leve e rotina de sono."
+ },
+ "checklist-prova-oral-banca": {
+  "sinopse": "Acompanhe a preparacao para prova oral ou banca com pesos, marque o que ja fez e veja percentual de prontidao, itens criticos pendentes e tempo estimado restante.",
+  "para_que": "Para estudantes em TCC, mestrado, doutorado ou qualquer banca oral que exige documento, apresentacao, ensaio e logistica no dia.",
+  "como_usar": [
+   "Abra o app e marque cada item que voce ja concluiu (documento, slides, ensaio, perguntas, etc.).",
+   "Ajuste peso e minutos se sua banca tiver prioridades ou tempos diferentes.",
+   "Clique em Atualizar prontidao para ver a % e o status (inclusive alerta se faltar critico).",
+   "Priorize a lista de criticos faltando antes do dia da defesa.",
+   "Use o tempo restante somado para planejar as ultimas horas de estudo e ensaio.",
+   "Simule cenarios com Marcar tudo ou Desmarcar tudo."
+  ],
+  "exemplo": "Com slides e ensaio feitos mas sem perguntas antecipadas nem backup PDF, a % sobe parcialmente e dois criticos aparecem em destaque; o tempo restante mostra cerca de 2 h 20 min de preparo."
+ },
+ "comparador-plano-odonto": {
+  "sinopse": "Soma a mensalidade anual do plano odontológico com coparticipações de consultas e procedimentos e compara com o custo particular da família.",
+  "para_que": "Para famílias decidindo se vale contratar ou manter plano odonto.",
+  "como_usar": [
+   "Informe Mensalidade do plano e Pessoas na familia.",
+   "Preencha Consultas/ano e preços particular/coparticipação.",
+   "Opcional: Procedimentos/ano com preços.",
+   "Clique em Comparar e veja quem sai mais barato e o break-even."
+  ],
+  "exemplo": "Plano R$ 100 × 3 pessoas, 2 consultas/ano a R$ 250 (copart R$ 40) → plano costuma vencer o particular."
+ },
+ "consignado-vs-credito-pessoal": {
+  "sinopse": "Simula o mesmo empréstimo no consignado e no crédito pessoal (tabela Price), mostrando prestação, total pago, juros e CET anual aproximado.",
+  "para_que": "Para quem vai pegar crédito e quer ver quanto economiza no consignado.",
+  "como_usar": [
+   "Informe Valor do emprestimo e Parcelas.",
+   "Preencha Taxa consignado e Taxa credito pessoal (% a.m.).",
+   "Clique em Comparar.",
+   "Veja prestação, total e qual sai mais barato."
+  ],
+  "exemplo": "R$ 10.000 em 24x a 1,5% a.m. (consignado) vs 4,5% a.m. (pessoal) — consignado costuma economizar milhares."
+ },
+ "custo-deslocamento-trabalho": {
+  "sinopse": "Soma o que você gasta por mês para ir ao trabalho (carro ou transporte) com quanto vale o tempo perdido no trajeto.",
+  "para_que": "Para enxergar o custo completo do presencial — não só passagem ou gasolina — antes de negociar home office, mudança ou troca de emprego.",
+  "como_usar": [
+   "Informe quantos dias por mês você vai presencialmente e o tempo porta-a-porta (ida e volta) em minutos.",
+   "Defina seu valor hora pessoal (pode ser salário ÷ 220, freelance ou quanto você avalia uma hora de lazer).",
+   "Escolha Carro ou Transporte.",
+   "Carro: distância ida+volta, R$/km de combustível e depreciação, estacionamento mensal; opcionalmente use o assistente litro/km.",
+   "Transporte: marque custo mensal fixo OU preço da passagem × passagens por dia (2 = ida e volta).",
+   "Clique em Calcular custo mensal e leia custo direto, horas, oportunidade e total econômico."
+  ],
+  "exemplo": "22 dias, 90 min/dia, R$ 35/h pessoal, carro 24 km ida+volta, R$ 0,45/km combustível, R$ 0,25/km depreciação: ~R$ 369 direto + ~R$ 1.155 de tempo ≈ R$ 1.524/mês de impacto econômico."
+ },
+ "custo-fralda-geriatrica": {
+  "sinopse": "Calcula unidades e pacotes por mês a partir das trocas diárias, soma creme e lenço e projeta o custo anual.",
+  "para_que": "Para cuidadores e famílias orçarem o gasto com fraldas geriátricas.",
+  "como_usar": [
+   "Informe Trocas por dia, Preço do pacote e Unidades no pacote.",
+   "Preencha Creme/mês e Lenço umedecido/mês.",
+   "Ajuste Pessoas se for mais de um.",
+   "Clique em Calcular."
+  ],
+  "exemplo": "4 trocas/dia, pacote R$ 80 com 24 un + R$ 30 extras → ~R$ 430/mês."
+ },
+ "custo-pedagio-tag": {
+  "sinopse": "Calcula o gasto mensal de pedágio com e sem TAG (desconto + mensalidade) e diz se a TAG compensa.",
+  "para_que": "Para quem usa pedágio no trajeto casa-trabalho ou viagem frequente.",
+  "como_usar": [
+   "Informe Pedagio (ida) e Viagens/mes.",
+   "Preencha Desconto TAG e Mensalidade TAG.",
+   "Marque Ida e volta se for o caso.",
+   "Clique em Calcular."
+  ],
+  "exemplo": "R$ 10 ida, 20 viagens ida-volta, 5% desconto → economia ~R$ 20/mês com TAG."
+ },
+ "custo-pintura-parede": {
+  "sinopse": "Calcula litros e latas de tinta com demãos e perda, soma mão de obra por m² e opcionalmente fundo/primer.",
+  "para_que": "Para orçar pintura de cômodo ou fachada antes de chamar o pintor.",
+  "como_usar": [
+   "Informe Área, Demãos, Rendimento e Perda.",
+   "Preencha Preço da lata, Litros da lata e Mão de obra.",
+   "Opcional: marque Incluir fundo/primer e os preços.",
+   "Clique em Calcular e veja total e R$/m²."
+  ],
+  "exemplo": "40 m², 2 demãos, 10 m²/L, 10% perda, lata R$ 180/18 L, mão R$ 25/m² → total R$ 1.180 (R$ 29,50/m²)."
+ },
+ "estimativa-1rm-epley": {
+  "sinopse": "Estima seu 1RM a partir de uma série submáxima com as fórmulas clássicas de Epley e Brzycki, sem precisar testar repetição máxima na barra.",
+  "para_que": "Para montar percentuais de treino (%1RM), periodizar força e saber qual peso usar quando o plano pede 6, 8 ou 10 repetições a partir do seu 1RM estimado.",
+  "como_usar": [
+   "Na aba Submáximo → 1RM, informe o peso que você levantou e quantas repetições fez com boa forma",
+   "Compare Epley, Brzycki e a média; use a tabela %1RM gerada automaticamente",
+   "Na aba %1RM, digite um 1RM conhecido (testado ou estimado) para ver cargas por intensidade",
+   "Na aba Peso para N reps, combine 1RM + repetições alvo e escolha a fórmula inversa",
+   "Leia o aviso de segurança: estimativa não substitui teste real com spotter"
+  ],
+  "exemplo": "Você faz supino 100 kg por 5 reps: Epley indica ~116,7 kg de 1RM e Brzycki ~112,5 kg. Na média (~114,6 kg), treinar a 80% sugere cerca de 91,7 kg para séries de 7–8 repetições."
+ },
+ "estimativa-hba1c-glicemias": {
+  "sinopse": "Estima a relação entre hemoglobina glicada e glicemia média sem ir ao laboratório.",
+  "para_que": "Entender o que um percentual de HbA1c significa em mg/dL ou mmol/L, ou o inverso, para acompanhamento educativo do diabetes.",
+  "como_usar": [
+   "Escolha se você tem HbA1c (%) ou glicemia média (eAG).",
+   "Informe o valor; no modo eAG, selecione mg/dL ou mmol/L.",
+   "O resultado atualiza ao mudar os campos ou ao clicar em Calcular.",
+   "Leia a faixa educativa ADA (aproximada) apenas como orientação.",
+   "Confirme sempre com exame laboratorial e seu médico."
+  ],
+  "exemplo": "Com HbA1c 7%, a eAG estimada fica em cerca de 154 mg/dL (8,6 mmol/L), faixa compatível com diabetes não confirmado sem laboratório."
+ },
+ "estimativa-vo2max-cooper": {
+  "sinopse": "Estima o VO2máx com o teste de Cooper (12 min) ou Rockport (1 milha caminhada) e classifica o resultado por idade e sexo.",
+  "para_que": "Avaliar condicionamento aeróbico de forma educativa com fórmulas clássicas de campo, sem confundir com o planejador de ritmo de corrida.",
+  "como_usar": [
+   "Na aba Cooper, informe a distância em metros percorrida em 12 minutos e calcule.",
+   "Na aba Rockport, informe peso, idade, sexo, tempo da milha e frequência cardíaca final.",
+   "Leia o VO2máx em ml/kg/min e a classificação (Excelente a Muito fraco).",
+   "Use a aba Ajuda para ver fórmulas, tabelas de referência e o aviso educativo."
+  ],
+  "exemplo": "Cooper 2400 m em 12 min → VO2máx ≈ 42,4 ml/kg/min; a classificação depende da idade e do sexo informados."
+ },
+ "frete-sedex-vs-pac": {
+  "sinopse": "Coloca Sedex e PAC lado a lado: diferença de frete, dias ganhos, custo por dia antecipado e % sobre o valor do pedido.",
+  "para_que": "Para quem compra online e quer decidir se vale pagar Sedex.",
+  "como_usar": [
+   "Informe Preço Sedex e Dias Sedex.",
+   "Informe Preço PAC e Dias PAC.",
+   "Opcional: Valor do pedido.",
+   "Clique em Comparar."
+  ],
+  "exemplo": "Sedex R$ 45 / 2 dias vs PAC R$ 22 / 8 dias → ~R$ 3,83 por dia antecipado."
+ },
+ "gas-encanado-vs-botijao": {
+  "sinopse": "Compara R$/mês do botijão (preço, kg e consumo) com o gás encanado (R$/m³ + taxa fixa), com estimativa automática de m³ a partir do GLP.",
+  "para_que": "Para quem vai instalar gás encanado ou quer saber se o botijão ainda compensa.",
+  "como_usar": [
+   "Preencha Preço do botijão, Peso do botijão e Consumo GLP.",
+   "Informe Preço GN e Taxa fixa GN.",
+   "Marque Estimar m³ a partir do consumo de GLP (ou digite Consumo GN).",
+   "Clique em Comparar e veja qual sai mais barato."
+  ],
+  "exemplo": "Botijão R$ 130/13 kg com 7,2 kg/mês vs GN R$ 5/m³ → encanado ~R$ 50/mês vs botijão R$ 72/mês."
+ },
+ "indice-equilibrio-vida-trabalho": {
+  "sinopse": "Combina horas objetivas da semana com sono e satisfação para estimar o equilíbrio vida–trabalho, sem substituir avaliação psicológica ou clima organizacional.",
+  "para_que": "Para enxergar se a rotina atual privilegia trabalho em demasia, falta de lazer/sono ou invasão noturna — e qual alavanca ajustar primeiro.",
+  "como_usar": [
+   "Informe horas de trabalho e de lazer na última semana (médias honestas)",
+   "Preencha sono médio, quantos fins de semana ficaram livres de trabalho (0 a 2) e quantos dias você trabalhou após 20h",
+   "Dê uma nota de satisfação com a rotina de 1 a 10",
+   "Clique em Calcular equilibrio para ver o índice, a classificação e a contribuição de cada fator",
+   "Leia a dica focada no componente mais fraco",
+   "Use como reflexão educativa; em sofrimento intenso, procure apoio profissional"
+  ],
+  "exemplo": "44h trabalho, 10h lazer, 7h sono, 1 fim de semana livre, 2 dias após 20h, satisfação 6 → índice ~65 (equilíbrio razoável); dica pode sugerir proteger o outro fim de semana ou reduzir noites."
+ },
+ "indice-fadiga-turno": {
+  "sinopse": "Estimativa educativa de quão fadigado você está no turno atual, com base em fatores objetivos e percepção de esforço.",
+  "para_que": "Apoiar decisões pessoais sobre pausas, trocas de plantão e autocuidado — distinto de questionários de burnout (ibs_) ou estresse percebido (iep_).",
+  "como_usar": [
+   "Informe quantas horas já trabalhou hoje no turno (0–24 h)",
+   "Digite quantas horas dormiu na última noite",
+   "Indique em quantos plantões consecutivos você está (incluindo este)",
+   "Some as pausas que já fez no turno, em minutos",
+   "Escolha o esforço percebido de 1 (leve) a 10 (máximo), estilo RPE",
+   "Clique em Calcular índice de fadiga para ver escore, nível baixo/moderado/alto, detalhe dos pesos e uma dica"
+  ],
+  "exemplo": "8 h de trabalho, 7 h de sono, 1º plantão, 30 min de pausas, RPE 5: escore típico na faixa baixa a moderada; 14 h, 4 h de sono, 3º plantão, poucas pausas e RPE 9 elevam o índice para alto."
+ },
+ "indice-qualidade-vida-semanal": {
+  "sinopse": "Questionario semanal rapido que transforma seis notas de bem-estar (0 a 4) em um indice unico de 0 a 100, mostra o nivel interpretativo e destaca onde agir primeiro.",
+  "para_que": "Para quem quer enxergar a qualidade de vida da semana de forma objetiva, comparar dimensoes e receber uma dica pratica na area mais fragil — sem depender de internet nem armazenar dados.",
+  "como_usar": [
+   "Abra a ferramenta e leia as seis dimensoes (saude fisica ate sentido/proposito).",
+   "Para cada item, escolha de 0 (muito ruim) a 4 (muito bom) refletindo os ultimos 7 dias.",
+   "Clique em Calcular indice semanal para ver o score 0-100 e o nivel (Critico a Excelente).",
+   "Observe qual dimensao ficou mais baixa e leia a dica prioritaria sugerida.",
+   "Use o detalhamento por dimensao para decidir um micro-objetivo na proxima semana."
+  ],
+  "exemplo": "Notas 3,2,2,3,1,3 somam 14/24 → indice 58,3 (Moderado). Pior dimensao: Lazer (1/4). Dica: bloquear 2h na semana so para prazer, sem multitarefa."
+ },
+ "lance-consorcio": {
+  "sinopse": "Compara o custo de esperar as parcelas restantes com o custo de dar lance (recursos próprios ou embutido) para antecipar a contemplação.",
+  "para_que": "Para consorciados avaliando um lance percentual antes da assembleia.",
+  "como_usar": [
+   "Informe Crédito da carta, Parcela atual e Meses restantes.",
+   "Defina Lance % e marque Lance embutido se for o caso.",
+   "Opcional: Taxas restantes.",
+   "Clique em Calcular e veja a sugestão (dar lance ou esperar)."
+  ],
+  "exemplo": "Carta R$ 80.000, parcela R$ 1.000, 40 meses, lance 25% com recursos próprios → lance R$ 20.000 vs esperar R$ 40.000."
+ },
+ "mapa-gap-habilidades": {
+  "sinopse": "Organiza suas competencias em uma matriz 0-5 (atual vs alvo), calcula a lacuna, multiplica pelo peso de importancia e estima horas de estudo com base em horas por nivel configuravel.",
+  "para_que": "Para quem planeja transicao de carreira, PDI ou estudo tecnico e quer saber quais habilidades atacar primeiro sem confundir com ROI de curso ou certificacao.",
+  "como_usar": [
+   "Ajuste 'Horas por nivel de gap' conforme seu ritmo medio de aprendizado",
+   "Preencha cada linha: nome da skill, nivel atual (0-5), nivel alvo (0-5) e importancia (1-5)",
+   "Use '+ Linha' para incluir competencias; remova linhas extras se precisar",
+   "Clique em 'Calcular mapa e ranking' para ver tabela ordenada e relatorio",
+   "Copie o relatorio textual para notas, 1:1 com gestor ou plano de estudos"
+  ],
+  "exemplo": "Python 3→5 com peso 5 gera gap 2, prioridade 10 e 40 h (com 20 h/nivel); lideranca 1→3 peso 4 fica abaixo no ranking com prioridade 8."
+ },
+ "media-glicemia-capilar": {
+  "sinopse": "Resume suas glicemias capilares do caderninho em números fáceis de levar ao médico.",
+  "para_que": "Ver média e variação das medições em jejum e após refeições, quantas ficaram acima da meta e uma classificação educativa simples.",
+  "como_usar": [
+   "Cole ou digite uma medida por linha (mg/dL).",
+   "Use j: ou p: no início da linha para jejum ou pós-refeição (ou escolha o tipo padrão sem prefixo).",
+   "Ajuste os limiares de jejum (padrão 100) e pós-refeição (padrão 140) se seu médico indicar outras metas.",
+   "O resultado atualiza ao editar a lista ou os limiares; use Calcular estatísticas se preferir.",
+   "Leia o aviso: não substitui HbA1c nem consulta médica."
+  ],
+  "exemplo": "j:98, j:105, p:128, p:152 → média jejum 101,5 mg/dL (50% acima de 100), média pós 140 mg/dL (50% acima de 140)."
+ },
+ "mensalidade-escola-vs-bolsa": {
+  "sinopse": "Compara o ano letivo com mensalidade integral versus com bolsa %, incluindo material, matrícula e outros.",
+  "para_que": "Para famílias negociando ou recebendo bolsa em escola particular.",
+  "como_usar": [
+   "Informe Mensalidade e Bolsa %.",
+   "Ajuste Meses no ano, Material e Taxa de matricula.",
+   "Opcional: Outros.",
+   "Clique em Calcular e veja a economia."
+  ],
+  "exemplo": "R$ 2.000 com bolsa 50% em 12 meses + R$ 600 de taxas → economia R$ 12.000/ano."
+ },
+ "meta-paginas-leitura-dia": {
+  "sinopse": "Planeja a meta diária de leitura com prazo em dias ou data fixa, ritmo em páginas/hora e tempo disponível por dia.",
+  "para_que": "Para terminar um livro inteiro com prazo longo (semanas ou meses), não só o planejamento semanal.",
+  "como_usar": [
+   "Informe páginas totais e já lidas do livro.",
+   "Defina ritmo atual (pág/h) e minutos disponíveis por dia.",
+   "Escolha prazo em dias ou data limite.",
+   "Clique em Calcular meta.",
+   "Veja páginas/dia necessárias, se cabe no prazo e a data estimada de término."
+  ],
+  "exemplo": "Livro 400 pág, 80 lidas, 25 pág/h, 45 min/dia, prazo 30 dias → 10,7 pág/dia necessárias; capacidade ~18,8 pág/dia → viável."
+ },
+ "meta-revisoes-anki-diarias": {
+  "sinopse": "Calculadora de carga diária de revisões Anki com modelo estacionário linear: combina fila jovem (novos×fator) e maduros divididos pelo intervalo médio.",
+  "para_que": "Para quem estuda com Anki e quer saber se 20, 50 ou 100 cards novos/dia cabem nos 30–60 minutos livres, sem esperar semanas de estatística real do app.",
+  "como_usar": [
+   "Informe quantos cards novos você adiciona por dia.",
+   "Digite o total de cards no baralho (ou coleção principal).",
+   "Escolha intervalo médio em dias OU retenção alvo % (o app converte em dias).",
+   "Defina minutos disponíveis por dia e segundos médios por card (revise um lote e chute ~10–15 s).",
+   "Clique em Calcular carga diária e leia se cabe na meta.",
+   "Use a sugestão de novos/dia para ajustar sem estourar o tempo."
+  ],
+  "exemplo": "20 novos/dia, 3000 cards, intervalo 12 dias, 45 min, 12 s/card → ~130 revisões/dia, ~26 min necessários; sobra folga. Com 100 novos/dia o mesmo tempo estoura — sugestão cai para ~35 novos."
+ },
+ "multa-cancelamento-academia": {
+  "sinopse": "Calcula multa percentual sobre o saldo do contrato, multa fixa e aviso prévio, e sugere se vale cancelar agora ou cumprir.",
+  "para_que": "Para quem quer sair da academia no meio do plano e precisa decidir o que custa menos.",
+  "como_usar": [
+   "Informe Mensalidade e Meses restantes.",
+   "Preencha Multa % do saldo e Multa fixa (se houver).",
+   "Ajuste Aviso previo e Dias já cumpridos do aviso.",
+   "Clique em Calcular e compare Total pra cancelar vs Total pra cumprir."
+  ],
+  "exemplo": "R$ 100 × 7 meses, multa 30% + aviso 30 dias → cancelar ~R$ 310 vs cumprir R$ 700."
+ },
+ "orcamento-manutencao-predial": {
+  "sinopse": "Monta o orçamento anual predial com elevador, limpeza, jardim, fundo de reserva e provisões de pintura e impermeabilização, dividido por unidade.",
+  "para_que": "Para síndicos e moradores estimarem a cota de manutenção do prédio ou condomínio.",
+  "como_usar": [
+   "Preencha Elevador, Limpeza e Jardim (mensal).",
+   "Informe Custo/Ciclo de pintura e impermeabilização.",
+   "Ajuste Fundo de reserva, Extras anuais e Unidades.",
+   "Clique em Calcular e veja o total e o valor por unidade/mês."
+  ],
+  "exemplo": "40 unidades com recorrentes + provisões → valor anual por unidade e equivalente mensal."
+ },
+ "orcamento-presentes-casamento": {
+  "sinopse": "Estima quantos convidados dão presente, o total gasto por eles e quanto a lista do casal rende após a taxa do site.",
+  "para_que": "Para noivos montando lista e para convidados calibrando o valor do presente.",
+  "como_usar": [
+   "Informe Convidados e Valor medio do presente.",
+   "Ajuste % que dao presente.",
+   "Preencha Valor da lista do casal e Taxa do site %.",
+   "Clique em Calcular."
+  ],
+  "exemplo": "100 convidados, 70% doam R$ 200 → R$ 14.000; lista R$ 10.000 com 5% de taxa → líquido R$ 9.500."
+ },
+ "orcamento-reforma-cozinha": {
+  "sinopse": "Monta o orçamento da reforma da cozinha por categorias e aplica uma reserva percentual para imprevistos.",
+  "para_que": "Para quem vai reformar a cozinha e precisa de um total realista.",
+  "como_usar": [
+   "Preencha Moveis, Eletrodomesticos, Bancada e Revestimento.",
+   "Informe Mao de obra e Hidraulica/eletrica.",
+   "Ajuste Reserva %.",
+   "Clique em Calcular."
+  ],
+  "exemplo": "Subtotal R$ 22.000 com reserva 10% → total R$ 24.200."
+ },
+ "planejador-recuperacao-pos-treino": {
+  "sinopse": "Após o treino, informe intensidade, duração, tipo, sono recente e estresse para saber quando retomar cargas altas e o que priorizar na recuperação.",
+  "para_que": "Atletas amadores, musculação e corrida que precisam equilibrar carga, sono e estresse sem planilha.",
+  "como_usar": [
+   "Selecione intensidade (leve/moderada/alta) e tipo (força/cardio/misto).",
+   "Informe duração em minutos, média de sono das últimas noites e estresse 1–10.",
+   "Clique em Calcular recuperação.",
+   "Use as horas sugeridas antes de treinos duros e siga o checklist nas próximas 24 h."
+  ],
+  "exemplo": "Treino moderado 60 min misto, sono 6,5 h, estresse 7 → ~22 h até treino duro, score ~48, checklist com 8 h de sono e ~2 g/kg de proteína."
+ },
+ "planejador-soneca-poder": {
+  "sinopse": "Calcula a melhor duracao e os horarios para uma soneca revigorante, considerando quanto voce dormiu ontem e a cafeina ainda no corpo.",
+  "para_que": "Evitar sonecas que deixam voce mais grogue (especialmente ~30 min) e aproveitar janelas curtas no dia sem depender de internet.",
+  "como_usar": [
+   "Confira ou ajuste o horario atual (agora).",
+   "Informe quantas horas dormiu na ultima noite.",
+   "Opcional: dose de cafeina em mg e ha quantas horas tomou.",
+   "Escolha se quer acordar em um horario fixo ou se tem um limite de minutos.",
+   "Clique em Planejar soneca e siga deitar/acordar e os avisos de inercia."
+  ],
+  "exemplo": "Agora 14:00, dormiu 5 h, cafe 80 mg ha 2 h, acordar as 14:25: recomenda 20 min (acordar 14:25), inercia baixa, ~64 mg cafeina residual."
+ },
+ "planejador-tempo-estrategia-prova": {
+  "sinopse": "Planeja o ritmo minuto a minuto para vestibulares, ENEM e concursos públicos, calculando o tempo por questão, gatilho de pular questões difíceis e marcos no relógio de sala.",
+  "para_que": "Para candidatos a concursos públicos e vestibulandos do ENEM que sofrem com falta de tempo ou se desorganizam na hora de preencher o cartão-resposta e fazer a redação.",
+  "como_usar": [
+   "Informe a 'Duração Total (min)' do exame (ex: 330 min para ENEM ou 240 min para concursos)",
+   "Insira o 'Nº de Questões' da prova",
+   "Marque 'Tem Redação Discursiva' e defina o tempo planejado de rascunho e passagem a limpo",
+   "Ajuste a 'Reserva p/ Cartão-Resposta' para garantir preenchimento calmo e sem rasuras",
+   "Defina o 'Gatilho Pular Questão' (ex: 3,5 min) para não travar em questões difíceis",
+   "Consulte os cartões com 'TEMPO LÍQUIDO POR QUESTÃO' e a tabela de 'Checkpoints Estratégicos no Relógio da Sala'"
+  ],
+  "exemplo": "No 1º dia do ENEM (330 min, 90 questões, 75 min para redação e 25 min para gabarito), o estudante dispõe de 2m 23s por questão, devendo concluir a redação aos 75 min e atingir o bloco de 45 questões aos 182 min de prova."
+ },
+ "rastreador-deep-work-semanal": {
+  "sinopse": "Fecha a semana de foco profundo: uma meta em horas e sete campos diarios viram painel com ritmo, melhor dia e onde compensar o que faltou.",
+  "para_que": "Para quem usa deep work com meta semanal fixa e quer ver de relance se esta no pace — sem planilha nem app de pomodoro.",
+  "como_usar": [
+   "Defina a Meta semanal (h) — ex.: 15 ou 20 horas de blocos sem interrupcao.",
+   "Preencha as horas de deep work de Segunda a Domingo (0 se nao trabalhou).",
+   "Leia o cabecalho: total, % da meta, status, melhor dia e deficit ou sobra.",
+   "No relatorio, confira media, pace meta/7 e barras por dia.",
+   "Use Redistribuicao: acrescimos sugeridos nos dias abaixo do pace linear.",
+   "Botoes Exemplo e Zerar dias para testar ou comecar semana nova."
+  ],
+  "exemplo": "Meta 15 h, dias 2.5+3+1.5+2+2.5+0.5+1 = 13 h (86.7%). Faltam 2 h; sugestao prioriza dias abaixo de ~2.14 h/dia."
+ },
+ "ritmo-fala-apresentacao": {
+  "sinopse": "Planeja o ritmo oral da sua palestra: quantas palavras por minuto voce precisa falar, se esta lento ou acelerado demais e quanto texto cortar ou acrescentar.",
+  "para_que": "Para pitches, aulas, keynotes e defesas: evitar passar do tempo ou terminar com metade do slot vazio.",
+  "como_usar": [
+   "Cole o roteiro ou informe so a contagem de palavras",
+   "Escolha um modelo de slot ou defina os minutos totais da apresentacao",
+   "Ajuste a margem reservada para abertura e perguntas e o WPM alvo desejado",
+   "Clique em Calcular ritmo de fala e leia WPM, faixa, margem e sugestao de ajuste",
+   "Corte ou expanda o texto ate a margem ficar confortavel no ritmo alvo"
+  ],
+  "exemplo": "1.400 palavras em slot de 10 min com 15% de margem: tempo util 8,5 min, ~165 pal/min (rapido); para 140 pal/min, corte cerca de 210 palavras ou alargue o slot."
+ },
+ "roteiro-entrevista-star": {
+  "sinopse": "Escreva cada bloco STAR, gere o roteiro de fala e veja se sua historia tem contexto, acao no eu e resultado com metrica antes da entrevista.",
+  "para_que": "Para candidatos que precisam estruturar respostas comportamentais (lideranca, conflito, prazo, falha, conquista) em entrevistas de emprego.",
+  "como_usar": [
+   "Cole a pergunta tipica da vaga no campo superior.",
+   "Preencha Situacao (quando/onde/equipe), Tarefa (objetivo), Acao (o que VOCE fez) e Resultado (numeros ou impacto).",
+   "Ajuste WPM (130-150 e comum em portugues) e escolha rotulos ou narrativa fluida.",
+   "Clique em Montar roteiro e pontuar e corrija itens [--] do checklist.",
+   "Use Copiar roteiro para treinar em voz alta dentro do tempo estimado.",
+   "Carregar exemplo mostra um caso completo com alta pontuacao."
+  ],
+  "exemplo": "Com o exemplo carregado, a pontuacao passa de 85/100, o tempo fica perto de 1,5 min a 140 WPM e o checklist marca metrica no resultado e acao no eu."
+ },
+ "rotina-mobilidade-lombar": {
+  "sinopse": "Monta uma rotina de mobilidade da região lombar com exercícios do catálogo, duração em segundos e checklist para acompanhar a sessão.",
+  "para_que": "Quem fica muito tempo sentado e quer uma sessão estruturada de mobilidade lombar sem depender de vídeo ou internet — diferente de timers genéricos de postura.",
+  "como_usar": [
+   "Informe quantos minutos você tem para a sessão (3 a 45).",
+   "Escolha o nível: iniciante (sem prancha) ou intermediário (inclui prancha curta).",
+   "Escolha a intensidade suave (tempos um pouco menores) ou normal.",
+   "Marque se deseja respiração diafragmática no início e fim.",
+   "Clique em Gerar rotina.",
+   "Siga a lista numerada; use o checklist no final do relatório para marcar cada exercício concluído."
+  ],
+  "exemplo": "10 min, iniciante, normal, com respiração: cerca de 600 s no total, com ciclos de gato/vaca, joelho ao peito e torção supina, mais abertura e fechamento respiratório."
+ },
+ "saque-aniversario-fgts": {
+  "sinopse": "Mostra quanto do saldo FGTS você libera no mês do aniversário, com alíquota e adicional da faixa, e o que resta na conta.",
+  "para_que": "Para quem pensa em aderir ao saque-aniversário e quer estimar o valor antes de decidir.",
+  "como_usar": [
+   "Informe o Saldo FGTS atual.",
+   "Clique em Calcular.",
+   "Veja faixa, alíquota, valor liberado e saldo restante."
+  ],
+  "exemplo": "Saldo R$ 8.500 → faixa 20% + R$ 650 → libera R$ 2.350; restam R$ 6.150."
+ },
+ "seguro-viagem-cobertura": {
+  "sinopse": "Coloca dois planos lado a lado: preço, dias, cobertura médica e franquia; calcula R$/dia, cobertura líquida e um score custo × cobertura.",
+  "para_que": "Para quem vai viajar e precisa escolher entre dois orçamentos de seguro.",
+  "como_usar": [
+   "Preencha Nome, Preço, Dias, Cobertura médica e Franquia do Plano A.",
+   "Faça o mesmo no Plano B.",
+   "Clique em Comparar.",
+   "Veja custo/dia, cobertura por R$ 1 e qual plano vence no score."
+  ],
+  "exemplo": "Básico R$ 120 / 10 dias / R$ 30 mil vs Plus R$ 210 / 10 dias / R$ 100 mil — o score aponta o melhor equilíbrio."
+ },
+ "simulador-negociacao-salarial": {
+  "sinopse": "Planeja a conversa salarial: quanto pedir, até onde aceitar e se a contraoferta cai na zona de acordo — com VR/VA/plano no pacote.",
+  "para_que": "Preparar reunião de mérito, promoção ou contraproposta sem confundir só o bruto com o que cai na conta.",
+  "como_usar": [
+   "Informe o salário bruto atual e os benefícios mensais que você já tem (VR, VA, plano, outros).",
+   "Defina seu pedido e o mínimo aceitável em % sobre o atual ou em bruto fixo (R$).",
+   "Preencha a contraoferta em bruto e os benefícios que a empresa propõe.",
+   "Marque líquido se quiser INSS e IR simplificados no salário; ajuste dependentes se necessário.",
+   "Clique em Simular negociação e leia a zona de acordo, diferença de pacote e ganho anual."
+  ],
+  "exemplo": "Atual R$ 7.500 + R$ 1.100 de benefícios. Pedido +12% (R$ 8.400), mínimo +6% (R$ 7.950). Contraoferta R$ 8.200 com VR maior: pacote sobe ~R$ 450/mês → ~R$ 5.400/ano a mais que hoje; status na zona entre mínimo e pedido."
+ },
+ "simulador-transicao-carreira-reserva": {
+  "sinopse": "Simula a autonomia financeira e o tempo de fôlego em meses (runway) para quem planeja mudar de carreira, estudar integralmente para concursos ou empreender, calculando a queima líquida de caixa com cortes de supérfluos e renda parcial de transição.",
+  "para_que": "Para profissionais que querem pedir demissão ou fazer transição sem correr o risco de ficar sem dinheiro antes de se consolidar na nova área.",
+  "como_usar": [
+   "Informe a 'Reserva Total Acumulada para Transição (R$)'",
+   "Defina a 'Margem Bloqueada para Imprevistos (%)' que não deve ser gasta",
+   "Preencha as 'Despesas Essenciais Fixas' e as 'Despesas Supérfluas / Lazer Atuais'",
+   "Ajuste o 'Percentual de Corte nos Supérfluos (%)' que está disposto a cortar",
+   "Insira a previsão de 'Renda Parcial / Bicos / Freelance na Transição' se houver",
+   "Analise o gráfico de decaimento de caixa e a quantidade de meses de fôlego operacional"
+  ],
+  "exemplo": "Com R$ 60.000 de reserva, 15% retido para emergências (R$ 9.000) e custo essencial de R$ 3.200 somado a R$ 240 de supérfluos e R$ 800 de renda freelance, o burn rate é de R$ 2.640/mês, garantindo mais de 19 meses de runway seguro."
+ },
+ "tempo-liquido-estudo": {
+  "sinopse": "Calculadora honesta de rendimento de estudo: voce informa quanto tempo ficou sentado, quantas vezes foi interrompido, quanto rola no celular e as pausas planejadas — e recebe o tempo liquido de aprendizado, a eficiencia e quanto precisa ficar na mesa para bater uma meta.",
+  "para_que": "Para quem estuda horas mas sente que rendeu pouco: separa o relogio (bruto) do aprendizado real (liquido) sem confundir com Pomodoro ou blocos de deep work.",
+  "como_usar": [
+   "Na aba Bruto → Liquido, informe os minutos totais que voce ficou na mesa dedicado ao estudo",
+   "Digite quantas interrupcoes houve e a media de minutos perdidos em cada uma",
+   "Informe o percentual estimado de distracao no celular/redes sobre o tempo que sobra apos interrupcoes",
+   "Some as pausas planejadas (cafe, alongamento) que nao entram como tempo liquido",
+   "Clique em Calcular e leia tempo liquido, eficiencia % e tempo perdido",
+   "Na aba Meta, defina quantos minutos liquidos quer e veja quanto bruto precisa reservar"
+  ],
+  "exemplo": "120 min na mesa, 20 min de pausa planejada, 5 interrupcoes de 4 min e 25% de distracao → potencial 100 min, liquido 60 min, eficiencia de foco 60%."
+ },
+ "troca-pneu-carro": {
+  "sinopse": "Mostra quanto da vida útil dos pneus já foi usada, quantos km/meses faltam, se deve trocar agora e quanto custa o jogo com alinhamento e montagem.",
+  "para_que": "Para motoristas planejarem a troca de pneus pelo odômetro.",
+  "como_usar": [
+   "Informe Km atual, Km na instalação e Vida útil do pneu.",
+   "Preencha Rodagem mensal e Preço por pneu.",
+   "Ajuste Quantidade, Alinhamento e Montagem.",
+   "Clique em Calcular e veja o Status."
+  ],
+  "exemplo": "Instalados aos 40 mil km, carro com 62 mil, vida 40 mil → restam ~18 mil km; acima de 80% avisa para planejar."
  }
 }
