@@ -510,6 +510,12 @@ BUILTIN = [
     ("🧠", "Gerador .clangd", "Presets .clangd (Basico, Compile flags, Query driver).", "gerador-clangd", "cld_gui.pyw"),
     ("📝", "Gerador .markdownlint", "Presets .markdownlint.json / .markdownlint.yaml.", "gerador-markdownlint", "mdl_gui.pyw"),
     ("▶️", "Gerador VS Code launch.json", "Presets .vscode/launch.json (Python, Node, C++, Chrome).", "gerador-vscode-launch", "vsc_gui.pyw"),
+    ("🧾", "Gerador .yamllint", "Presets .yamllint (Basico, Strict, Relaxed).", "gerador-yamllint", "ylt_gui.pyw"),
+    ("🐳", "Gerador .hadolint.yaml", "Presets .hadolint.yaml (Basico, Strict, CI).", "gerador-hadolint", "hdc_gui.pyw"),
+    ("🗃️", "Gerador .sqlfluff", "Presets .sqlfluff (ANSI, Postgres, BigQuery).", "gerador-sqlfluff", "sfl_gui.pyw"),
+    ("🚀", "Gerador .goreleaser", "Presets .goreleaser.yaml (Binario, Multi-OS, Docker).", "gerador-goreleaser", "grr_gui.pyw"),
+    ("📦", "Gerador Dev Container", "Presets .devcontainer/devcontainer.json (Python, Node, Go).", "gerador-devcontainer", "dvc_gui.pyw"),
+    ("⚙️", "Gerador VS Code tasks.json", "Presets .vscode/tasks.json (Python, Node, Make, Docker).", "gerador-vscode-tasks", "vst_gui.pyw"),
 ]
 
 QSS = """

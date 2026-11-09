@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 476,
+  "total": 482,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4285,6 +4285,60 @@
       "script": "vsc_gui.pyw",
       "prefixo": "vsc",
       "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧾",
+      "nome": "Gerador .yamllint",
+      "desc": "Presets .yamllint (Basico, Strict, Relaxed).",
+      "chave": "gerador-yamllint",
+      "script": "ylt_gui.pyw",
+      "prefixo": "ylt",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🐳",
+      "nome": "Gerador .hadolint.yaml",
+      "desc": "Presets .hadolint.yaml (Basico, Strict, CI).",
+      "chave": "gerador-hadolint",
+      "script": "hdc_gui.pyw",
+      "prefixo": "hdc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🗃️",
+      "nome": "Gerador .sqlfluff",
+      "desc": "Presets .sqlfluff (ANSI, Postgres, BigQuery).",
+      "chave": "gerador-sqlfluff",
+      "script": "sfl_gui.pyw",
+      "prefixo": "sfl",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🚀",
+      "nome": "Gerador .goreleaser",
+      "desc": "Presets .goreleaser.yaml (Binario, Multi-OS, Docker).",
+      "chave": "gerador-goreleaser",
+      "script": "grr_gui.pyw",
+      "prefixo": "grr",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Gerador Dev Container",
+      "desc": "Presets .devcontainer/devcontainer.json (Python, Node, Go).",
+      "chave": "gerador-devcontainer",
+      "script": "dvc_gui.pyw",
+      "prefixo": "dvc",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Gerador VS Code tasks.json",
+      "desc": "Presets .vscode/tasks.json (Python, Node, Make, Docker).",
+      "chave": "gerador-vscode-tasks",
+      "script": "vst_gui.pyw",
+      "prefixo": "vst",
+      "categoria": "💻 Dev & Dados"
     }
   ],
   "prefixos": [
@@ -4420,6 +4474,7 @@
     "dry",
     "dsp",
     "dts",
+    "dvc",
     "dzm",
     "ear",
     "ecc",
@@ -4482,6 +4537,7 @@
     "gravador_voz",
     "grf",
     "grm",
+    "grr",
     "grs",
     "gry",
     "gs",
@@ -4490,6 +4546,7 @@
     "gyr",
     "ham",
     "hb",
+    "hdc",
     "hdl",
     "hdp",
     "hdr",
@@ -4681,6 +4738,7 @@
     "sek",
     "seo",
     "seq",
+    "sfl",
     "sfr",
     "sgb",
     "shb",
@@ -4752,6 +4810,7 @@
     "vnh",
     "volume_apps",
     "vsc",
+    "vst",
     "wcg",
     "wci",
     "wdc",
@@ -4760,6 +4819,7 @@
     "wsp",
     "wup",
     "xtr",
+    "ylt",
     "yml",
     "yrn",
     "zcd",
