@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 470,
+  "total": 476,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4231,6 +4231,60 @@
       "script": "dep_gui.pyw",
       "prefixo": "dep",
       "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Gerador pyrightconfig.json",
+      "desc": "Presets pyrightconfig.json (Basico, Strict, Monorepo).",
+      "chave": "gerador-pyrightconfig",
+      "script": "pyr_gui.pyw",
+      "prefixo": "pyr",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🤖",
+      "nome": "Gerador Dependabot",
+      "desc": "Presets .github/dependabot.yml (pip, npm, github-actions, docker).",
+      "chave": "gerador-dependabot",
+      "script": "dpb_gui.pyw",
+      "prefixo": "dpb",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🔄",
+      "nome": "Gerador Renovate",
+      "desc": "Presets renovate.json (Basico, Grouped, Automerge patch).",
+      "chave": "gerador-renovate",
+      "script": "rnv_gui.pyw",
+      "prefixo": "rnv",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧠",
+      "nome": "Gerador .clangd",
+      "desc": "Presets .clangd (Basico, Compile flags, Query driver).",
+      "chave": "gerador-clangd",
+      "script": "cld_gui.pyw",
+      "prefixo": "cld",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📝",
+      "nome": "Gerador .markdownlint",
+      "desc": "Presets .markdownlint.json / .markdownlint.yaml.",
+      "chave": "gerador-markdownlint",
+      "script": "mdl_gui.pyw",
+      "prefixo": "mdl",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "▶️",
+      "nome": "Gerador VS Code launch.json",
+      "desc": "Presets .vscode/launch.json (Python, Node, C++, Chrome).",
+      "chave": "gerador-vscode-launch",
+      "script": "vsc_gui.pyw",
+      "prefixo": "vsc",
+      "categoria": "💻 Dev & Dados"
     }
   ],
   "prefixos": [
@@ -4310,6 +4364,7 @@
     "cic",
     "cis",
     "clc",
+    "cld",
     "clf",
     "cliente_api",
     "cll",
@@ -4359,6 +4414,7 @@
     "dmn",
     "dna",
     "dnv",
+    "dpb",
     "drc",
     "drf",
     "dry",
@@ -4488,6 +4544,7 @@
     "man",
     "mcr",
     "mdc",
+    "mdl",
     "mdx",
     "med",
     "met",
@@ -4574,6 +4631,7 @@
     "pvs",
     "pyc",
     "pyl",
+    "pyr",
     "pyv",
     "pzz",
     "qb",
@@ -4605,6 +4663,7 @@
     "rls",
     "rlz",
     "rmx",
+    "rnv",
     "rob",
     "rot",
     "rpg",
@@ -4692,6 +4751,7 @@
     "visualizador_sqlite",
     "vnh",
     "volume_apps",
+    "vsc",
     "wcg",
     "wci",
     "wdc",

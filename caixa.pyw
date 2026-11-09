@@ -504,6 +504,12 @@ BUILTIN = [
     ("🍺", "Gerador Brewfile", "Presets Homebrew Brewfile.", "gerador-brewfile", "bfi_gui.pyw"),
     ("🧱", "Gerador Makefile nmake", "Presets Makefile para nmake/cl.exe Windows.", "gerador-nmake", "nmk_gui.pyw"),
     ("📎", "Listador de Dependencias PE", "Lista DLLs unicas importadas por EXE/DLL (dependencias PE).", "listador-deps-pe", "dep_gui.pyw"),
+    ("📐", "Gerador pyrightconfig.json", "Presets pyrightconfig.json (Basico, Strict, Monorepo).", "gerador-pyrightconfig", "pyr_gui.pyw"),
+    ("🤖", "Gerador Dependabot", "Presets .github/dependabot.yml (pip, npm, github-actions, docker).", "gerador-dependabot", "dpb_gui.pyw"),
+    ("🔄", "Gerador Renovate", "Presets renovate.json (Basico, Grouped, Automerge patch).", "gerador-renovate", "rnv_gui.pyw"),
+    ("🧠", "Gerador .clangd", "Presets .clangd (Basico, Compile flags, Query driver).", "gerador-clangd", "cld_gui.pyw"),
+    ("📝", "Gerador .markdownlint", "Presets .markdownlint.json / .markdownlint.yaml.", "gerador-markdownlint", "mdl_gui.pyw"),
+    ("▶️", "Gerador VS Code launch.json", "Presets .vscode/launch.json (Python, Node, C++, Chrome).", "gerador-vscode-launch", "vsc_gui.pyw"),
 ]
 
 QSS = """
