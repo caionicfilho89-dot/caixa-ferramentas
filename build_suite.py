@@ -547,6 +547,11 @@ TOOLS = {
     "simulador-mecanismo-quatro-barras": "mqb_gui.pyw",
     "top-arquivos-grandes": "big_gui.pyw",
     "validador-toml": "tml_gui.pyw",
+    "calculadora-propriedades-secao-inercia": "sec_gui.pyw",
+    "conducao-termica-transiente-fourier": "ftr_gui.pyw",
+    "projeto-molas-helicoidais": "mol_gui.pyw",
+    "simulador-campo-magnetico-biot-savart": "bts_gui.pyw",
+    "simulador-efeito-doppler-mach": "dop_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

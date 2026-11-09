@@ -558,6 +558,11 @@ BUILTIN = [
     ("🏛️", "Gerador Terraform", "Presets .tf (provider AWS, modulo local, variables).", "gerador-terraform", "tfr_gui.pyw"),
     ("🟣", "Gerador Pulumi", "Presets Pulumi (Python, TypeScript, YAML).", "gerador-pulumi", "plm_gui.pyw"),
     ("📜", "Gerador Ansible", "Presets playbook/inventory/role Ansible.", "gerador-ansible", "ans_gui.pyw"),
+    ("📐", "Calculadora de Propriedades de Seção & Inércia", "Momentos de inércia Ix/Iy, produto Ixy, eixos principais de Steiner, centroide e raio de giração", "calculadora-propriedades-secao-inercia", "sec_gui.pyw"),
+    ("🔥", "Condução Térmica Transiente & Fourier", "Número de Biot, Fourier, método das capacidades térmicas globais e perfil de temperatura 1D", "conducao-termica-transiente-fourier", "ftr_gui.pyw"),
+    ("🌀", "Projeto & Dimensionamento de Molas Helicoidais", "Fator de Wahl, rigidez elastica k, altura solida, estabilidade a flambagem e fadiga Goodman", "projeto-molas-helicoidais", "mol_gui.pyw"),
+    ("🧲", "Simulador de Campo Magnético & Biot-Savart", "Lei de Biot-Savart, bobinas de Helmholtz, perfil axial Bz(z), quadrupolo e raio ciclotrônico de Lorentz", "simulador-campo-magnetico-biot-savart", "bts_gui.pyw"),
+    ("📢", "Simulador de Efeito Doppler & Cone de Mach", "Efeito Doppler clássico e relativístico, número de Mach, ângulo de cone de choque e Redshift óptico", "simulador-efeito-doppler-mach", "dop_gui.pyw"),
 ]
 
 QSS = """

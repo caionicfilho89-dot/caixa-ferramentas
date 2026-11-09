@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 524,
+  "total": 529,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4717,6 +4717,51 @@
       "script": "ans_gui.pyw",
       "prefixo": "ans",
       "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Calculadora de Propriedades de Seção & Inércia",
+      "desc": "Momentos de inércia Ix/Iy, produto Ixy, eixos principais de Steiner, centroide e raio de giração",
+      "chave": "calculadora-propriedades-secao-inercia",
+      "script": "sec_gui.pyw",
+      "prefixo": "sec",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🔥",
+      "nome": "Condução Térmica Transiente & Fourier",
+      "desc": "Número de Biot, Fourier, método das capacidades térmicas globais e perfil de temperatura 1D",
+      "chave": "conducao-termica-transiente-fourier",
+      "script": "ftr_gui.pyw",
+      "prefixo": "ftr",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🌀",
+      "nome": "Projeto & Dimensionamento de Molas Helicoidais",
+      "desc": "Fator de Wahl, rigidez elastica k, altura solida, estabilidade a flambagem e fadiga Goodman",
+      "chave": "projeto-molas-helicoidais",
+      "script": "mol_gui.pyw",
+      "prefixo": "mol",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🧲",
+      "nome": "Simulador de Campo Magnético & Biot-Savart",
+      "desc": "Lei de Biot-Savart, bobinas de Helmholtz, perfil axial Bz(z), quadrupolo e raio ciclotrônico de Lorentz",
+      "chave": "simulador-campo-magnetico-biot-savart",
+      "script": "bts_gui.pyw",
+      "prefixo": "bts",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📢",
+      "nome": "Simulador de Efeito Doppler & Cone de Mach",
+      "desc": "Efeito Doppler clássico e relativístico, número de Mach, ângulo de cone de choque e Redshift óptico",
+      "chave": "simulador-efeito-doppler-mach",
+      "script": "dop_gui.pyw",
+      "prefixo": "dop",
+      "categoria": "🔬 Ciência & Engenharia"
     }
   ],
   "prefixos": [
@@ -4766,6 +4811,7 @@
     "brw",
     "bsc",
     "bse",
+    "bts",
     "btu",
     "bun",
     "busca_arquivos",
@@ -4857,6 +4903,7 @@
     "dmn",
     "dna",
     "dnv",
+    "dop",
     "dpb",
     "drc",
     "drf",
@@ -4908,6 +4955,7 @@
     "fsi",
     "fst",
     "fsz",
+    "ftr",
     "fum",
     "fwl",
     "fwt",
@@ -5016,6 +5064,7 @@
     "mm",
     "mmt",
     "mnt",
+    "mol",
     "monitor_sistema",
     "mot",
     "mqb",
@@ -5148,6 +5197,7 @@
     "scm",
     "scn",
     "sco",
+    "sec",
     "sek",
     "seo",
     "seq",

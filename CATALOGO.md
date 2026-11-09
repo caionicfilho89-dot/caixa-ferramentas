@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-08** · Total: **524 ferramentas** · **524 prefixos** usados.
+> Última geração: **2026-11-08** · Total: **529 ferramentas** · **529 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -16,8 +16,8 @@
 ## Índice por categoria
 
 - 💰 Finanças & Trabalho — 41
-- 🏠 Casa, Pet & Pessoal — 87
-- 🔬 Ciência & Engenharia — 36
+- 🏠 Casa, Pet & Pessoal — 88
+- 🔬 Ciência & Engenharia — 39
 - 🌐 Rede & Segurança — 45
 - 💻 Dev & Dados — 70
 - 🖼️ Imagem & Design — 36
@@ -25,7 +25,7 @@
 - ✍️ Texto & Estudo — 13
 - 🎮 Jogos & Diversão — 16
 - 🗂️ Arquivos & Sistema — 48
-- 🧰 Outras — 115
+- 🧰 Outras — 116
 
 ---
 
@@ -75,7 +75,7 @@
 | 💳 | **Validador de Cartão de Crédito** | Algoritmo de Luhn Módulo 10, identificação ISO/IEC 7812, bandeiras e gerador sandbox | `validador-formato-cartao-credito` | `lhn` |
 | 🧮 | **Verificador de Hash** | MD5/SHA1/SHA256/SHA512, compara arquivos, confere SHA256SUMS e gera listas de checksum | `verificador-hash` | `hsh` |
 
-## 🏠 Casa, Pet & Pessoal  ·  87
+## 🏠 Casa, Pet & Pessoal  ·  88
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -89,6 +89,7 @@
 | 🌱 | **Calculadora de Hidroponia** | Solução nutritiva, EC/pH e dosagem de sais pra hidroponia | `calculadora-hidroponia` | `hdp` |
 | ⚙️ | **Calculadora de Motores Elétricos** | Potência mecânica, escorregamento s, torque nominal, rendimento e fator de potência | `calculadora-motores-eletricos` | `mot` |
 | 🍕 | **Calculadora de Pizza** | Massa por estilo e tamanho ou forma, fermento por tempo e temperatura, pizzas por pessoa e… | `calculadora-pizza` | `pzz` |
+| 📐 | **Calculadora de Propriedades de Seção & Inércia** | Momentos de inércia Ix/Iy, produto Ixy, eixos principais de Steiner, centroide e raio de giração | `calculadora-propriedades-secao-inercia` | `sec` |
 | 🍞 | **Calculadora de Pão** | Porcentagem de padeiro com levain, receitas base, massa pelo peso, conversão de fermentos… | `calculadora-pao` | `pao` |
 | 😴 | **Calculadora do Sono** | Ciclos de 90 min, débito de sono, jet lag social e cafeína | `calculadora-sono` | `sno` |
 | 🤰 | **Calculadora Gestacional** | DPP (Naegele), semanas de gestação, trimestre e concepção pela DUM ou ultrassom | `gestacional` | `gst` |
@@ -167,7 +168,7 @@
 | 🧹 | **Tarefas da Casa e Mesada** | Divide tarefas domésticas por pontos e idade, rodízio semanal, checklist do feito e mesada por… | `tarefas-casa` | `tcs` |
 | 🛢️ | **Troca de Óleo do Carro** | intervalo por km e tempo, litros, filtros e próxima troca | `troca-oleo` | `olo` |
 
-## 🔬 Ciência & Engenharia  ·  36
+## 🔬 Ciência & Engenharia  ·  39
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -186,6 +187,7 @@
 | 🌊 | **Canais Abertos (Manning) & Ressalto Hidráulico** | Escoamento em canais abertos pela Equação de Manning, Froude, energia específica e ressalto de Bélanger | `calculadora-canais-abertos-manning` | `can` |
 | 📻 | **Circuito Ressonante LC/RLC** | Frequência de Thomson f0, fator de qualidade Q, banda passante e \|Z(f)\| | `analisador-circuito-ressonante-lc` | `rls` |
 | 🗜️ | **Compressão de Huffman & Entropia** | Codificação de Huffman, árvore binária, entropia de Shannon e economia de espaço | `estudio-compressao-huffman` | `huf` |
+| 🔥 | **Condução Térmica Transiente & Fourier** | Número de Biot, Fourier, método das capacidades térmicas globais e perfil de temperatura 1D | `conducao-termica-transiente-fourier` | `ftr` |
 | 🧭 | **Conversor de Coordenadas** | Conversão entre Graus Decimais (DD), GMS e Projeção Plana UTM WGS84 | `conversor-coordenadas` | `geo` |
 | 🛡️ | **Código de Hamming & ECC (SEC-DED)** | Correção de erro Hamming(7,4) e SEC-DED(8,4), matriz geradora, paridade, síndrome e canal com… | `estudio-codigo-hamming-ecc` | `ham` |
 | 🌡️ | **Dilatação Térmica & Tensão** | Dilatação linear, superficial e volumétrica, folga de junta e tensão térmica | `calculadora-dilatacao-termica-tensao` | `dlt` |
@@ -200,9 +202,11 @@
 | 🧭 | **Navegação & Rumo** | Distância e rumo entre pontos (ortodrômica/loxodrômica), ponto de chegada e ETA | `navegacao` | `nav` |
 | ✈️ | **Perfis Aerodinâmicos NACA** | Aerofólios NACA 4 dígitos, camber, distribuição de espessura e coordenadas .DAT | `analisador-perfil-aerodinamico-naca` | `nca` |
 | 🔭 | **Planetário & Efemérides** | Abóbada celeste 360°, fases da Lua, nascer do Sol e planetas ao vivo | `planetario` | `ast` |
+| 🌀 | **Projeto & Dimensionamento de Molas Helicoidais** | Fator de Wahl, rigidez elastica k, altura solida, estabilidade a flambagem e fadiga Goodman | `projeto-molas-helicoidais` | `mol` |
 | ⚡ | **Simulador de Circuitos** | Malhas de resistores, divisor de tensão, filtro RC (Bode) e NE555 | `simulador-circuitos` | `elt` |
 | 🔄 | **Simulador de Circuitos RC & RLC** | Resposta ao degrau temporal, filtros passa-baixa/alta, ressonância e amortecimento | `simulador-circuitos-rc-rlc` | `rlc` |
 | 🎛️ | **Simulador de Controle PID** | Planta 1ª ordem + atraso, resposta ao degrau, overshoot, Ziegler–Nichols e Cohen–Coon | `simulador-controle-pid` | `pid` |
+| 📢 | **Simulador de Efeito Doppler & Cone de Mach** | Efeito Doppler clássico e relativístico, número de Mach, ângulo de cone de choque e Redshift óptico | `simulador-efeito-doppler-mach` | `dop` |
 | 🚀 | **Simulador de Física** | Cinemática e balística 2D com gravidade e mecânica orbital | `simulador-fisica` | `fsc` |
 | ⚗️ | **Simulador de Reatores Químicos** | Balanço molar de CSTR, PFR e Batelada, cinética de Arrhenius, gráfico de Levenspiel e perfis de concentração | `simulador-reatores-quimicos` | `rea` |
 | 🪐 | **Simulador Gravitacional N-Corpos** | Mecânica celeste newtoniana, órbitas Keplerianas, 3 corpos e pontos de Lagrange | `simulador-gravitacional-n-corpos` | `nbd` |
@@ -488,7 +492,7 @@
 | 🌱 | **Variáveis de Ambiente** | Editor do PATH e variáveis do usuário com backup | `variaveis-ambiente` | `variaveis_ambiente` |
 | 📋 | **Área de Transferência** | Histórico do que você copiou (Ctrl+Shift+V) | `area-transferencia` | `area_transferencia` |
 
-## 🧰 Outras  ·  115
+## 🧰 Outras  ·  116
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -593,6 +597,7 @@
 | 🧪 | **Reologia de Fluidos Não Newtonianos** | Modelos Ostwald-de Waele, Bingham e Casson, reogramas e escoamento em duto com núcleo rígido… | `reologia-fluidos` | `reo` |
 | 🚸 | **Rodízio de Carona** | Escala justa de motoristas, custo de combustível e saldo entre famílias | `rodizio-carona` | `crp` |
 | 🧾 | **Simples Nacional e MEI** | DAS por anexo, alíquota efetiva, Fator R e limites do MEI | `calculadora-simples-nacional` | `snl` |
+| 🧲 | **Simulador de Campo Magnético & Biot-Savart** | Lei de Biot-Savart, bobinas de Helmholtz, perfil axial Bz(z), quadrupolo e raio ciclotrônico de Lorentz | `simulador-campo-magnetico-biot-savart` | `bts` |
 | ⚙️ | **Simulador de Engrenagens Planetárias e Epicicloidais** | Cinemática de Willis, coaxialidade, alavanca de Kutzbach e divisor híbrido Prius | `engrenagens-planetarias-epicicloidais` | `epi` |
 | 🦠 | **Simulador de Epidemias** | Modelos SIR/SEIR/SEIRD com vacinação, R0, pico e imunidade de rebanho | `simulador-epidemias` | `sir` |
 | 📈 | **Simulador de Renda Fixa** | CDB, LCI/LCA, Tesouro e poupança com IR e IOF regressivos e equivalência isento | `simulador-renda-fixa` | `rfx` |
@@ -610,60 +615,60 @@
 
 ---
 
-## 🔒 Prefixos reservados (524) — NÃO repetir
+## 🔒 Prefixos reservados (529) — NÃO repetir
 
 ```text
 acl  acp  acu  ads  aer  agr  alb  alg  alq  alu
 amf  analisador_texto  ans  anv  apo  apx  aqs  aqu  area_transferencia  as
 asc  asd  ast  asy  aud  avr  b64  bar  bat  bdg
 bdt  bfi  bhr  big  bik  blk  blm  bmk  bnd  bnf
-bng  bol  brg  brw  bsc  bse  btu  bun  busca_arquivos  bys
-bzl  bzr  cab  cabecalhos_seguranca  caderno_python  calculadora_cientifica  calculadora_clt  calendario_br  can  canivete
-capturador_cores  car  cas  cbv  ccp  ccs  cer  certificado_ssl  cfe  cfm
-cfr  cg  cgo  cha  chc  chg  chi  chm  chu  chz
-cic  cis  clc  cld  clf  cliente_api  cll  cm  cmb  cmk
-cmp  cnc  cnd  cof  cofre_senhas  compactador  comparar_pastas  contatos  conversor_av  conversor_imagens
-conversor_unidades  cov  coz  cpt  crc  crd  cripto_arquivos  crl  crn  crp
-crx  cst  ctk  ctm  cty  cub  cue  curriculo_pdf  cyc  cyd
-czc  dc  dck  dcn  dd  den  dep  dex  dfn  dfx
-dhl  dik  dk  dlt  dmn  dna  dnv  dpb  drc  drf
-dry  dsp  dts  dvc  dzm  ear  ecc  edc  editor_imagem  efn
-egg  ele  elf  elt  emp  enc  encm  enx  eoc  eol
-epc  epi  esc  esi  esm  etiquetas  eul  ext  extrator_texto  fa
-faxina  fbs  fdt  fei  ferramentas_br  ferramentas_dev  ferramentas_rede  fft  financas  fla
-flashcards  flk  fot  frv  fsc  fsi  fst  fsz  fum  fwl
-fwt  galeria_fotos  gas  gat  gd  gdb  gdo  gem  geo  gg
-gha  gif  gig  gip  gmd  gps_falso  gpx  gql  gravador_tela  gravador_voz
-grf  grm  grp  grr  grs  gry  gs  gsl  gst  gyr
-ham  hb  hdc  hdl  hdp  hdr  hlk  hlm  hmn  hsh
-hst  hsz  huf  hxd  iab  icl  ico  ind  info_pc  inicializacao
-inv  ipm  iso  iss  janelas  jmr  jsc  jst  jun  jwt
-kb  kcr  kit_hacker  kit_pdf  kmb  knp  knt  kst  kwh  lan
-lct  lei  leitor_ebooks  lg  lga  lgc  lhn  lic  limpar_metadados  llb
-lng  lok  lor  lsc  lux  lvd  mac  mag  mal  man
-mcr  mdc  mdl  mdx  med  met  metronomo  mhr  mid  mkf
-mkt  mkv  mlp  mm  mmt  mnt  monitor_sistema  mot  mqb  mrs
-mse  msn  mtc  mtm  mtr  mtx  myp  nav  nbd  nc
-nca  nfe  nfn  nix  nln  nmi  nmk  notas  nox  nrc
-nsi  ntl  ntr  nvm  oas  obr  ofx  olo  opt  orcamentos
-orf  organizador  orq  own  p3d  pac  pal  paletas_cores  pao  pbn
-pcc  pcf  pcp  pcs  pdl  pei  pem  pes  pet  pev
-pfl  phn  pid  pix_boleto  player_musica  plc  pld  plk  plm  plt
-pm  pnl  pnu  poe  ppd  prc  print_anotador  prm  prs  prt
-prx  psc  psi  pth  pti  ptt  pvs  pyc  pyl  pyr
-pyv  pzz  qb  qc  qrcode_tool  qth  qtn  quiz_geografia  qzf  rastreador_tempo
-rc  rct  rea  rec  recupera  reg  relogio_mundial  renomeador  reo  req
-res  rev  rfc  rfm  rfx  rgx  rlc  rle  rls  rlz
-rml  rmx  rnv  rob  rot  rpg  rss  ruf  rwx  sab
-saude  sb  sbb  scf  sch  scm  scn  sco  sek  seo
-seq  sfl  sfr  sgb  shb  sir  skn  slg  smt  smv
-snip  snl  sno  som  sorteios  spa  spl  sqf  srt  ssc
-ssk  stg  stm  stp  stt  sudoku  svc  svg  syb  sym
-syn  tam  tarefas  tcs  tdf  tdo  tempo  texto_fala  tfr  tg
-th  thf  thm  tip  tml  tmp  tok  tox  trc  trd
-tre  treino_digitacao  trf  trs  tru  trv  tsk  tun  tvd  tvs
-uba  udi  uid  uni  vag  variaveis_ambiente  vcp  vdc  vdw  vin
-visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vnh  volume_apps  vsc  vst  wcg  wci  wdc
-webcam_foto  wfi  wgm  whl  wsp  wup  wxi  xtr  ylk  ylt
-yml  yrn  zcd  zpf
+bng  bol  brg  brw  bsc  bse  bts  btu  bun  busca_arquivos
+bys  bzl  bzr  cab  cabecalhos_seguranca  caderno_python  calculadora_cientifica  calculadora_clt  calendario_br  can
+canivete  capturador_cores  car  cas  cbv  ccp  ccs  cer  certificado_ssl  cfe
+cfm  cfr  cg  cgo  cha  chc  chg  chi  chm  chu
+chz  cic  cis  clc  cld  clf  cliente_api  cll  cm  cmb
+cmk  cmp  cnc  cnd  cof  cofre_senhas  compactador  comparar_pastas  contatos  conversor_av
+conversor_imagens  conversor_unidades  cov  coz  cpt  crc  crd  cripto_arquivos  crl  crn
+crp  crx  cst  ctk  ctm  cty  cub  cue  curriculo_pdf  cyc
+cyd  czc  dc  dck  dcn  dd  den  dep  dex  dfn
+dfx  dhl  dik  dk  dlt  dmn  dna  dnv  dop  dpb
+drc  drf  dry  dsp  dts  dvc  dzm  ear  ecc  edc
+editor_imagem  efn  egg  ele  elf  elt  emp  enc  encm  enx
+eoc  eol  epc  epi  esc  esi  esm  etiquetas  eul  ext
+extrator_texto  fa  faxina  fbs  fdt  fei  ferramentas_br  ferramentas_dev  ferramentas_rede  fft
+financas  fla  flashcards  flk  fot  frv  fsc  fsi  fst  fsz
+ftr  fum  fwl  fwt  galeria_fotos  gas  gat  gd  gdb  gdo
+gem  geo  gg  gha  gif  gig  gip  gmd  gps_falso  gpx
+gql  gravador_tela  gravador_voz  grf  grm  grp  grr  grs  gry  gs
+gsl  gst  gyr  ham  hb  hdc  hdl  hdp  hdr  hlk
+hlm  hmn  hsh  hst  hsz  huf  hxd  iab  icl  ico
+ind  info_pc  inicializacao  inv  ipm  iso  iss  janelas  jmr  jsc
+jst  jun  jwt  kb  kcr  kit_hacker  kit_pdf  kmb  knp  knt
+kst  kwh  lan  lct  lei  leitor_ebooks  lg  lga  lgc  lhn
+lic  limpar_metadados  llb  lng  lok  lor  lsc  lux  lvd  mac
+mag  mal  man  mcr  mdc  mdl  mdx  med  met  metronomo
+mhr  mid  mkf  mkt  mkv  mlp  mm  mmt  mnt  mol
+monitor_sistema  mot  mqb  mrs  mse  msn  mtc  mtm  mtr  mtx
+myp  nav  nbd  nc  nca  nfe  nfn  nix  nln  nmi
+nmk  notas  nox  nrc  nsi  ntl  ntr  nvm  oas  obr
+ofx  olo  opt  orcamentos  orf  organizador  orq  own  p3d  pac
+pal  paletas_cores  pao  pbn  pcc  pcf  pcp  pcs  pdl  pei
+pem  pes  pet  pev  pfl  phn  pid  pix_boleto  player_musica  plc
+pld  plk  plm  plt  pm  pnl  pnu  poe  ppd  prc
+print_anotador  prm  prs  prt  prx  psc  psi  pth  pti  ptt
+pvs  pyc  pyl  pyr  pyv  pzz  qb  qc  qrcode_tool  qth
+qtn  quiz_geografia  qzf  rastreador_tempo  rc  rct  rea  rec  recupera  reg
+relogio_mundial  renomeador  reo  req  res  rev  rfc  rfm  rfx  rgx
+rlc  rle  rls  rlz  rml  rmx  rnv  rob  rot  rpg
+rss  ruf  rwx  sab  saude  sb  sbb  scf  sch  scm
+scn  sco  sec  sek  seo  seq  sfl  sfr  sgb  shb
+sir  skn  slg  smt  smv  snip  snl  sno  som  sorteios
+spa  spl  sqf  srt  ssc  ssk  stg  stm  stp  stt
+sudoku  svc  svg  syb  sym  syn  tam  tarefas  tcs  tdf
+tdo  tempo  texto_fala  tfr  tg  th  thf  thm  tip  tml
+tmp  tok  tox  trc  trd  tre  treino_digitacao  trf  trs  tru
+trv  tsk  tun  tvd  tvs  uba  udi  uid  uni  vag
+variaveis_ambiente  vcp  vdc  vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vnh  volume_apps
+vsc  vst  wcg  wci  wdc  webcam_foto  wfi  wgm  whl  wsp
+wup  wxi  xtr  ylk  ylt  yml  yrn  zcd  zpf
 ```
