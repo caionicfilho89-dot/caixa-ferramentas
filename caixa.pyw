@@ -534,6 +534,12 @@ BUILTIN = [
     ("🪲", "Gerador .gdbinit", "Presets .gdbinit (basico, TUI, pretty printers).", "gerador-gdbinit", "gdb_gui.pyw"),
     ("🎡", "Inspetor de Wheel", "Le METADATA/WHEEL/RECORD de pacotes .whl.", "inspetor-wheel", "whl_gui.pyw"),
     ("🥚", "Inspetor dist-info / egg-info", "Le METADATA/PKG-INFO de pastas .dist-info ou .egg-info.", "inspetor-dist-info", "egg_gui.pyw"),
+    ("📨", "Gerador Protobuf", "Presets .proto (mensagem, servico, enums).", "gerador-protobuf", "pbn_gui.pyw"),
+    ("🔌", "Gerador gRPC service", "Presets .proto com servico gRPC (unary, stream, health).", "gerador-grpc", "grp_gui.pyw"),
+    ("📋", "Gerador CycloneDX SBOM", "Presets SBOM CycloneDX JSON (app, lib, minimal).", "gerador-cyclonedx", "cyd_gui.pyw"),
+    ("💎", "Gerador gemspec", "Presets .gemspec RubyGems (basico, com deps, executavel).", "gerador-gemspec", "gem_gui.pyw"),
+    ("🪶", "Gerador schema Avro", "Presets Avro JSON Schema (record, enum, union).", "gerador-avro", "avr_gui.pyw"),
+    ("📡", "Gerador Thrift IDL", "Presets Apache Thrift IDL (struct, service, enum).", "gerador-thrift", "thf_gui.pyw"),
 ]
 
 QSS = """

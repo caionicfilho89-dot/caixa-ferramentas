@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 500,
+  "total": 506,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4501,6 +4501,60 @@
       "script": "egg_gui.pyw",
       "prefixo": "egg",
       "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📨",
+      "nome": "Gerador Protobuf",
+      "desc": "Presets .proto (mensagem, servico, enums).",
+      "chave": "gerador-protobuf",
+      "script": "pbn_gui.pyw",
+      "prefixo": "pbn",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🔌",
+      "nome": "Gerador gRPC service",
+      "desc": "Presets .proto com servico gRPC (unary, stream, health).",
+      "chave": "gerador-grpc",
+      "script": "grp_gui.pyw",
+      "prefixo": "grp",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📋",
+      "nome": "Gerador CycloneDX SBOM",
+      "desc": "Presets SBOM CycloneDX JSON (app, lib, minimal).",
+      "chave": "gerador-cyclonedx",
+      "script": "cyd_gui.pyw",
+      "prefixo": "cyd",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "💎",
+      "nome": "Gerador gemspec",
+      "desc": "Presets .gemspec RubyGems (basico, com deps, executavel).",
+      "chave": "gerador-gemspec",
+      "script": "gem_gui.pyw",
+      "prefixo": "gem",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🪶",
+      "nome": "Gerador schema Avro",
+      "desc": "Presets Avro JSON Schema (record, enum, union).",
+      "chave": "gerador-avro",
+      "script": "avr_gui.pyw",
+      "prefixo": "avr",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📡",
+      "nome": "Gerador Thrift IDL",
+      "desc": "Presets Apache Thrift IDL (struct, service, enum).",
+      "chave": "gerador-thrift",
+      "script": "thf_gui.pyw",
+      "prefixo": "thf",
+      "categoria": "🧰 Outras"
     }
   ],
   "prefixos": [
@@ -4527,6 +4581,7 @@
     "asd",
     "ast",
     "aud",
+    "avr",
     "b64",
     "bar",
     "bat",
@@ -4618,6 +4673,7 @@
     "cub",
     "curriculo_pdf",
     "cyc",
+    "cyd",
     "czc",
     "dc",
     "dck",
@@ -4693,6 +4749,7 @@
     "gd",
     "gdb",
     "gdo",
+    "gem",
     "geo",
     "gg",
     "gha",
@@ -4705,6 +4762,7 @@
     "gravador_voz",
     "grf",
     "grm",
+    "grp",
     "grr",
     "grs",
     "gry",
@@ -4827,6 +4885,7 @@
     "pal",
     "paletas_cores",
     "pao",
+    "pbn",
     "pcc",
     "pcf",
     "pcp",
@@ -4953,6 +5012,7 @@
     "texto_fala",
     "tg",
     "th",
+    "thf",
     "thm",
     "tip",
     "tml",
