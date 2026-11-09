@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 506,
+  "total": 512,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4555,6 +4555,60 @@
       "script": "thf_gui.pyw",
       "prefixo": "thf",
       "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📜",
+      "nome": "Gerador OpenAPI",
+      "desc": "Presets OpenAPI 3.1 (CRUD, auth bearer, webhook).",
+      "chave": "gerador-openapi",
+      "script": "oas_gui.pyw",
+      "prefixo": "oas",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🟣",
+      "nome": "Gerador GraphQL SDL",
+      "desc": "Presets GraphQL schema (types, query/mutation, subscription).",
+      "chave": "gerador-graphql",
+      "script": "gql_gui.pyw",
+      "prefixo": "gql",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🌊",
+      "nome": "Gerador AsyncAPI",
+      "desc": "Presets AsyncAPI 3.0 (Kafka, MQTT, WebSocket).",
+      "chave": "gerador-asyncapi",
+      "script": "asy_gui.pyw",
+      "prefixo": "asy",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📘",
+      "nome": "Gerador RAML",
+      "desc": "Presets RAML 1.0 (basico, traits, types).",
+      "chave": "gerador-raml",
+      "script": "rml_gui.pyw",
+      "prefixo": "rml",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Gerador Smithy",
+      "desc": "Presets Smithy IDL (service, structure, errors).",
+      "chave": "gerador-smithy",
+      "script": "smt_gui.pyw",
+      "prefixo": "smt",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧱",
+      "nome": "Gerador FlatBuffers",
+      "desc": "Presets .fbs FlatBuffers (table, enum, union).",
+      "chave": "gerador-flatbuffers",
+      "script": "fbs_gui.pyw",
+      "prefixo": "fbs",
+      "categoria": "🧰 Outras"
     }
   ],
   "prefixos": [
@@ -4580,6 +4634,7 @@
     "asc",
     "asd",
     "ast",
+    "asy",
     "aud",
     "avr",
     "b64",
@@ -4724,6 +4779,7 @@
     "extrator_texto",
     "fa",
     "faxina",
+    "fbs",
     "fdt",
     "fei",
     "ferramentas_br",
@@ -4758,6 +4814,7 @@
     "gip",
     "gps_falso",
     "gpx",
+    "gql",
     "gravador_tela",
     "gravador_voz",
     "grf",
@@ -4871,6 +4928,7 @@
     "ntl",
     "ntr",
     "nvm",
+    "oas",
     "obr",
     "ofx",
     "olo",
@@ -4954,6 +5012,7 @@
     "rle",
     "rls",
     "rlz",
+    "rml",
     "rmx",
     "rnv",
     "rob",
@@ -4981,6 +5040,7 @@
     "sir",
     "skn",
     "slg",
+    "smt",
     "smv",
     "snip",
     "snl",

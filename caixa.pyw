@@ -540,6 +540,12 @@ BUILTIN = [
     ("💎", "Gerador gemspec", "Presets .gemspec RubyGems (basico, com deps, executavel).", "gerador-gemspec", "gem_gui.pyw"),
     ("🪶", "Gerador schema Avro", "Presets Avro JSON Schema (record, enum, union).", "gerador-avro", "avr_gui.pyw"),
     ("📡", "Gerador Thrift IDL", "Presets Apache Thrift IDL (struct, service, enum).", "gerador-thrift", "thf_gui.pyw"),
+    ("📜", "Gerador OpenAPI", "Presets OpenAPI 3.1 (CRUD, auth bearer, webhook).", "gerador-openapi", "oas_gui.pyw"),
+    ("🟣", "Gerador GraphQL SDL", "Presets GraphQL schema (types, query/mutation, subscription).", "gerador-graphql", "gql_gui.pyw"),
+    ("🌊", "Gerador AsyncAPI", "Presets AsyncAPI 3.0 (Kafka, MQTT, WebSocket).", "gerador-asyncapi", "asy_gui.pyw"),
+    ("📘", "Gerador RAML", "Presets RAML 1.0 (basico, traits, types).", "gerador-raml", "rml_gui.pyw"),
+    ("⚙️", "Gerador Smithy", "Presets Smithy IDL (service, structure, errors).", "gerador-smithy", "smt_gui.pyw"),
+    ("🧱", "Gerador FlatBuffers", "Presets .fbs FlatBuffers (table, enum, union).", "gerador-flatbuffers", "fbs_gui.pyw"),
 ]
 
 QSS = """
