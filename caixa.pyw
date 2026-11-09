@@ -490,6 +490,8 @@ BUILTIN = [
     ("📐", "Simulador de Mecanismo de Quatro Barras", "Criterio de Grashof, equacao de Freudenstein, angulo de transmissao e curva do acoplador", "simulador-mecanismo-quatro-barras", "mqb_gui.pyw"),
     ("🐘", "Top Arquivos Grandes", "Ranking dos N maiores arquivos da pasta.", "top-arquivos-grandes", "big_gui.pyw"),
     ("🧾", "Validador TOML", "Valida TOML via tomllib, resume chaves e exporta JSON.", "validador-toml", "tml_gui.pyw"),
+    ("🔄", "Imports Circulares", "Detecta ciclos no grafo de imports Python de um projeto.", "analisador-imports-circulares", "icl_gui.pyw"),
+    ("🍎", "Inspetor Mach-O", "Le magic/header Mach-O 32/64 e FAT.", "inspetor-macho", "mac_gui.pyw"),
 ]
 
 QSS = """

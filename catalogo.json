@@ -1,0 +1,4588 @@
+{
+  "gerado_em": "2026-11-08",
+  "total": 458,
+  "ferramentas": [
+    {
+      "emoji": "📄",
+      "nome": "Kit de PDF",
+      "desc": "Juntar, separar, girar, comprimir, imagens↔PDF",
+      "chave": "kit-pdf",
+      "script": "kit_pdf.pyw",
+      "prefixo": "kit_pdf",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Faxina de Disco",
+      "desc": "Vê o que ocupa o HD e manda pra Lixeira",
+      "chave": "faxina-disco",
+      "script": "faxina.pyw",
+      "prefixo": "faxina",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "♻️",
+      "nome": "Recupera Arquivos",
+      "desc": "Recupera arquivos apagados (carving / NTFS)",
+      "chave": "recupera-arquivos",
+      "script": "recupera.pyw",
+      "prefixo": "recupera",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🧽",
+      "nome": "Limpar Metadados",
+      "desc": "Remove GPS/autor de fotos, PDF e Office",
+      "chave": "limpa-metadados",
+      "script": "limpar_metadados.pyw",
+      "prefixo": "limpar_metadados",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🔳",
+      "nome": "QR Code",
+      "desc": "Gera e lê QR (link, wifi, contato…)",
+      "chave": "qrcode-tool",
+      "script": "qrcode_tool.pyw",
+      "prefixo": "qrcode_tool",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "✏️",
+      "nome": "Print Anotador",
+      "desc": "Captura a tela e anota (seta, tarja, texto)",
+      "chave": "print-anotador",
+      "script": "print_anotador.pyw",
+      "prefixo": "print_anotador",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🖼️",
+      "nome": "Conversor de Imagens",
+      "desc": "Converte fotos em lote (inclusive HEIC)",
+      "chave": "conversor-imagens",
+      "script": "conversor_imagens.pyw",
+      "prefixo": "conversor_imagens",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Cofre de Senhas",
+      "desc": "Gera senhas fortes + cofre criptografado",
+      "chave": "cofre-senhas",
+      "script": "cofre_senhas.pyw",
+      "prefixo": "cofre_senhas",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🎥",
+      "nome": "Gravador de Tela",
+      "desc": "Grava a tela em MP4 ou GIF com som",
+      "chave": "gravador-tela",
+      "script": "gravador_tela.pyw",
+      "prefixo": "gravador_tela",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🎵",
+      "nome": "Conversor Áudio/Vídeo",
+      "desc": "Troca formato, extrai áudio, corta trecho",
+      "chave": "conversor-av",
+      "script": "conversor_av.pyw",
+      "prefixo": "conversor_av",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🎨",
+      "nome": "Capturador de Cores",
+      "desc": "Conta-gotas da tela (HEX/RGB) + paleta",
+      "chave": "capturador-cores",
+      "script": "capturador_cores.pyw",
+      "prefixo": "capturador_cores",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📝",
+      "nome": "Extrator de Texto",
+      "desc": "OCR: copia o texto de uma área da tela",
+      "chave": "extrator-texto",
+      "script": "extrator_texto.pyw",
+      "prefixo": "extrator_texto",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🔍",
+      "nome": "Busca de Arquivos",
+      "desc": "Acha arquivo pelo nome na hora (Everything)",
+      "chave": "busca-arquivos",
+      "script": "busca_arquivos.pyw",
+      "prefixo": "busca_arquivos",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "✎",
+      "nome": "Renomeador em Lote",
+      "desc": "Renomeia vários arquivos com prévia",
+      "chave": "renomeador",
+      "script": "renomeador.pyw",
+      "prefixo": "renomeador",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📋",
+      "nome": "Área de Transferência",
+      "desc": "Histórico do que você copiou (Ctrl+Shift+V)",
+      "chave": "area-transferencia",
+      "script": "area_transferencia.pyw",
+      "prefixo": "area_transferencia",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "⏱️",
+      "nome": "Rastreador de Tempo",
+      "desc": "Quanto tempo você passa em cada app",
+      "chave": "rastreador-tempo",
+      "script": "rastreador_tempo.pyw",
+      "prefixo": "rastreador_tempo",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🛰️",
+      "nome": "GPS Falso",
+      "desc": "Simula um GPS (NMEA) por TCP/UDP pra apps de navegação",
+      "chave": "gps-falso",
+      "script": "gps_falso.pyw",
+      "prefixo": "gps_falso",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🇧🇷",
+      "nome": "Ferramentas BR",
+      "desc": "74 ferramentas: gerar/validar CPF, CNPJ, texto, matemática…",
+      "chave": "ferramentas-br",
+      "script": "ferramentas_br.pyw",
+      "prefixo": "ferramentas_br",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Kit do Hacker",
+      "desc": "Codificar/decodificar, hash, JWT, timestamp, caracteres ocultos",
+      "chave": "kit-hacker",
+      "script": "kit_hacker.pyw",
+      "prefixo": "kit_hacker",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "💻",
+      "nome": "Ferramentas Dev",
+      "desc": "JSON/XML/SQL, regex ao vivo, comparar textos, cron, UUID",
+      "chave": "ferramentas-dev",
+      "script": "ferramentas_dev.pyw",
+      "prefixo": "ferramentas_dev",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "💰",
+      "nome": "Calculadora CLT",
+      "desc": "Salário líquido, férias, 13º, rescisão, horas extras (2026)",
+      "chave": "calculadora-clt",
+      "script": "calculadora_clt.pyw",
+      "prefixo": "calculadora_clt",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📏",
+      "nome": "Conversor de Unidades",
+      "desc": "14 tipos de medida + moedas com cotação",
+      "chave": "conversor-unidades",
+      "script": "conversor_unidades.pyw",
+      "prefixo": "conversor_unidades",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "💸",
+      "nome": "Pix & Boleto",
+      "desc": "Gera Pix pra receber, lê Pix e confere boleto",
+      "chave": "pix-boleto",
+      "script": "pix_boleto.pyw",
+      "prefixo": "pix_boleto",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "💵",
+      "nome": "Finanças",
+      "desc": "Juros, financiamento SAC/Price, CDB x poupança, dividir conta",
+      "chave": "financas",
+      "script": "financas.pyw",
+      "prefixo": "financas",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "⏲️",
+      "nome": "Tempo",
+      "desc": "Pomodoro, cronômetro, timers, alarmes, desligar o PC agendado",
+      "chave": "tempo",
+      "script": "tempo.pyw",
+      "prefixo": "tempo",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🗒️",
+      "nome": "Notas",
+      "desc": "Notas em Markdown com prévia, busca e exportar PDF",
+      "chave": "notas-md",
+      "script": "notas.pyw",
+      "prefixo": "notas",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "✅",
+      "nome": "Tarefas",
+      "desc": "Tarefas e lembretes; entende \"pagar luz amanhã 18h\"",
+      "chave": "tarefas",
+      "script": "tarefas.pyw",
+      "prefixo": "tarefas",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📅",
+      "nome": "Calendário BR",
+      "desc": "Feriados, dias úteis, contagem regressiva",
+      "chave": "calendario-br",
+      "script": "calendario_br.pyw",
+      "prefixo": "calendario_br",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Monitor do Sistema",
+      "desc": "CPU, memória, disco e rede ao vivo + processos",
+      "chave": "monitor-sistema",
+      "script": "monitor_sistema.pyw",
+      "prefixo": "monitor_sistema",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🖥️",
+      "nome": "Info do PC",
+      "desc": "Hardware, Windows, discos, vídeo, bateria — relatório",
+      "chave": "info-pc",
+      "script": "info_pc.pyw",
+      "prefixo": "info_pc",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🚀",
+      "nome": "Inicialização",
+      "desc": "Liga/desliga o que abre com o Windows (com backup)",
+      "chave": "inicializacao",
+      "script": "inicializacao.pyw",
+      "prefixo": "inicializacao",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🗜️",
+      "nome": "Compactador",
+      "desc": "ZIP, ZIP com senha AES e TAR.GZ: criar, abrir, extrair",
+      "chave": "compactador",
+      "script": "compactador.pyw",
+      "prefixo": "compactador",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🔒",
+      "nome": "Trancar Arquivos",
+      "desc": "Tranca arquivos com senha (AES-256)",
+      "chave": "cripto-arquivos",
+      "script": "cripto_arquivos.pyw",
+      "prefixo": "cripto_arquivos",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🖌️",
+      "nome": "Editor de Imagem",
+      "desc": "Cortar, redimensionar, filtros, marca d'água, borrar área",
+      "chave": "editor-imagem",
+      "script": "editor_imagem.pyw",
+      "prefixo": "editor_imagem",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🎙️",
+      "nome": "Gravador de Voz",
+      "desc": "Grava o microfone em WAV/MP3 com medidor de volume",
+      "chave": "gravador-voz",
+      "script": "gravador_voz.pyw",
+      "prefixo": "gravador_voz",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🌈",
+      "nome": "Paletas de Cores",
+      "desc": "Harmonias, cores de uma foto, contraste WCAG, gradiente",
+      "chave": "paletas",
+      "script": "paletas_cores.pyw",
+      "prefixo": "paletas_cores",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📷",
+      "nome": "Webcam",
+      "desc": "Espelho, foto e vídeo curto com filtros",
+      "chave": "webcam",
+      "script": "webcam_foto.pyw",
+      "prefixo": "webcam_foto",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🔤",
+      "nome": "Visualizador de Fontes",
+      "desc": "Todas as fontes do PC, comparar e ver .ttf sem instalar",
+      "chave": "fontes",
+      "script": "visualizador_fontes.pyw",
+      "prefixo": "visualizador_fontes",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🌐",
+      "nome": "Rede",
+      "desc": "Minha conexão, IP público, ping, DNS e teste de velocidade",
+      "chave": "rede",
+      "script": "ferramentas_rede.pyw",
+      "prefixo": "ferramentas_rede",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🎲",
+      "nome": "Sorteios",
+      "desc": "Amigo secreto, dividir times, roleta, moeda e dados",
+      "chave": "sorteios",
+      "script": "sorteios.pyw",
+      "prefixo": "sorteios",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🏋️",
+      "nome": "Saúde",
+      "desc": "IMC, água, calorias, sono, FC e diário de peso",
+      "chave": "saude",
+      "script": "saude.pyw",
+      "prefixo": "saude",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧮",
+      "nome": "Calculadora Científica",
+      "desc": "Calculadora, gráficos de funções e equações",
+      "chave": "calculadora-cientifica",
+      "script": "calculadora_cientifica.pyw",
+      "prefixo": "calculadora_cientifica",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📚",
+      "nome": "Flashcards",
+      "desc": "Cartões de estudo com repetição espaçada",
+      "chave": "flashcards",
+      "script": "flashcards.pyw",
+      "prefixo": "flashcards",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Visualizador de Planilhas",
+      "desc": "Abre CSV/Excel, filtra, soma, gráficos e exporta",
+      "chave": "visualizador-planilhas",
+      "script": "visualizador_planilhas.pyw",
+      "prefixo": "visualizador_planilhas",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧾",
+      "nome": "Orçamentos e Recibos",
+      "desc": "Orçamentos e recibos em PDF pra MEI/autônomo",
+      "chave": "orcamentos",
+      "script": "orcamentos.pyw",
+      "prefixo": "orcamentos",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📇",
+      "nome": "Contatos",
+      "desc": "Agenda offline com vCard, WhatsApp e aniversários",
+      "chave": "contatos",
+      "script": "contatos.pyw",
+      "prefixo": "contatos",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📖",
+      "nome": "Leitor de E-books",
+      "desc": "Lê EPUB/TXT com sumário, marcadores e modo noturno",
+      "chave": "leitor-ebooks",
+      "script": "leitor_ebooks.pyw",
+      "prefixo": "leitor_ebooks",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🗂️",
+      "nome": "Organizador de Downloads",
+      "desc": "Organiza a pasta por tipo (só move, com desfazer)",
+      "chave": "organizador-downloads",
+      "script": "organizador.pyw",
+      "prefixo": "organizador",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Cliente de API",
+      "desc": "Requisições HTTP estilo Postman, coleções e cURL",
+      "chave": "cliente-api",
+      "script": "cliente_api.pyw",
+      "prefixo": "cliente_api",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🗄️",
+      "nome": "Visualizador SQLite",
+      "desc": "Abre bancos .db, navega tabelas e roda SQL",
+      "chave": "visualizador-sqlite",
+      "script": "visualizador_sqlite.pyw",
+      "prefixo": "visualizador_sqlite",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Boas Práticas do Site",
+      "desc": "Nota A–F dos cabeçalhos de segurança do seu site",
+      "chave": "cabecalhos-seguranca",
+      "script": "cabecalhos_seguranca.pyw",
+      "prefixo": "cabecalhos_seguranca",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🔏",
+      "nome": "Certificado SSL",
+      "desc": "Validade e detalhes do certificado + monitor de vencimento",
+      "chave": "certificado-ssl",
+      "script": "certificado_ssl.pyw",
+      "prefixo": "certificado_ssl",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🐍",
+      "nome": "Caderno Python",
+      "desc": "Células de código estilo Jupyter, exporta .ipynb",
+      "chave": "caderno-python",
+      "script": "caderno_python.pyw",
+      "prefixo": "caderno_python",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "⌨️",
+      "nome": "Treino de Digitação",
+      "desc": "Textos em pt-BR, lições ABNT2, PPM e precisão",
+      "chave": "treino-digitacao",
+      "script": "treino_digitacao.pyw",
+      "prefixo": "treino_digitacao",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧩",
+      "nome": "Sudoku",
+      "desc": "Sudoku com 4 níveis, notas, dicas e estatísticas",
+      "chave": "sudoku",
+      "script": "sudoku.pyw",
+      "prefixo": "sudoku",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🎹",
+      "nome": "Metrônomo e Afinador",
+      "desc": "Metrônomo preciso + afinador pelo microfone",
+      "chave": "metronomo",
+      "script": "metronomo.pyw",
+      "prefixo": "metronomo",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "✍️",
+      "nome": "Analisador de Texto",
+      "desc": "Legibilidade, frases longas, repetições e ortografia",
+      "chave": "analisador-texto",
+      "script": "analisador_texto.pyw",
+      "prefixo": "analisador_texto",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🌍",
+      "nome": "Relógio Mundial",
+      "desc": "Fusos, conversor de horário e planejar reunião",
+      "chave": "relogio-mundial",
+      "script": "relogio_mundial.pyw",
+      "prefixo": "relogio_mundial",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🗺️",
+      "nome": "Quiz de Geografia",
+      "desc": "Capitais, bandeiras, continentes e estados do Brasil",
+      "chave": "quiz-geografia",
+      "script": "quiz_geografia.pyw",
+      "prefixo": "quiz_geografia",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🪟",
+      "nome": "Janelas",
+      "desc": "Sempre no topo, transparência, metades/quadrantes e layouts",
+      "chave": "janelas",
+      "script": "janelas.pyw",
+      "prefixo": "janelas",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🔊",
+      "nome": "Volume por App",
+      "desc": "Volume separado pra cada programa + perfis",
+      "chave": "volume-apps",
+      "script": "volume_apps.pyw",
+      "prefixo": "volume_apps",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📁",
+      "nome": "Comparar Pastas",
+      "desc": "Diferenças entre duas pastas e cópia com prévia",
+      "chave": "comparar-pastas",
+      "script": "comparar_pastas.pyw",
+      "prefixo": "comparar_pastas",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🌱",
+      "nome": "Variáveis de Ambiente",
+      "desc": "Editor do PATH e variáveis do usuário com backup",
+      "chave": "variaveis-ambiente",
+      "script": "variaveis_ambiente.pyw",
+      "prefixo": "variaveis_ambiente",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🖼️",
+      "nome": "Galeria de Fotos",
+      "desc": "Miniaturas, slideshow, EXIF e girar JPG sem perda",
+      "chave": "galeria-fotos",
+      "script": "galeria_fotos.pyw",
+      "prefixo": "galeria_fotos",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📄",
+      "nome": "Currículo em PDF",
+      "desc": "Monte seu currículo com 4 modelos e exporte PDF",
+      "chave": "curriculo-pdf",
+      "script": "curriculo_pdf.pyw",
+      "prefixo": "curriculo_pdf",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🏷️",
+      "nome": "Etiquetas",
+      "desc": "Etiquetas A4 com QR/código de barras e mala direta",
+      "chave": "etiquetas",
+      "script": "etiquetas.pyw",
+      "prefixo": "etiquetas",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🗣️",
+      "nome": "Texto para Fala",
+      "desc": "Lê textos com as vozes do Windows e salva WAV/MP3",
+      "chave": "texto-fala",
+      "script": "texto_fala.pyw",
+      "prefixo": "texto_fala",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🎵",
+      "nome": "Player de Música",
+      "desc": "Toca suas músicas: biblioteca, capas e playlists",
+      "chave": "player-musica",
+      "script": "player_musica.pyw",
+      "prefixo": "player_musica",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Autenticador 2FA",
+      "desc": "Códigos TOTP criptografados offline e leitor de QR",
+      "chave": "autenticador-2fa",
+      "script": "fa_gui.pyw",
+      "prefixo": "fa",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "💳",
+      "nome": "Controle de Gastos",
+      "desc": "Lançamentos, categorias, orçamento e gráficos",
+      "chave": "controle-gastos",
+      "script": "cg_gui.pyw",
+      "prefixo": "cg",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🍳",
+      "nome": "Receitas",
+      "desc": "Caderno de receitas, ajuste de porções e lista de compras",
+      "chave": "receitas",
+      "script": "rc_gui.pyw",
+      "prefixo": "rc",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🚗",
+      "nome": "Controle do Carro",
+      "desc": "Abastecimentos, consumo (km/l) e manutenções",
+      "chave": "controle-carro",
+      "script": "car_gui.pyw",
+      "prefixo": "car",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎯",
+      "nome": "Hábitos",
+      "desc": "Checklist diário, sequências e calendário de progresso",
+      "chave": "habitos",
+      "script": "hb_gui.pyw",
+      "prefixo": "hb",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🚫",
+      "nome": "Bloqueador de Sites",
+      "desc": "Bloqueia sites editando o arquivo hosts do Windows",
+      "chave": "site-blocker",
+      "script": "sb_gui.pyw",
+      "prefixo": "sb",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🔍",
+      "nome": "Detector de Duplicatas",
+      "desc": "Escaneia pastas e deleta arquivos duplicados (MD5)",
+      "chave": "duplicate-detector",
+      "script": "dd_gui.pyw",
+      "prefixo": "dd",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🎲",
+      "nome": "Gerador de Dados",
+      "desc": "Gera dados falsos (nomes/emails) em CSV/JSON",
+      "chave": "dummy-data-generator",
+      "script": "gd_gui.pyw",
+      "prefixo": "gd",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Analisador de Espaço",
+      "desc": "Analisa e lista o tamanho de arquivos e pastas",
+      "chave": "disk-analyzer",
+      "script": "as_gui.pyw",
+      "prefixo": "as",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Monitor de Preços",
+      "desc": "Monitora preços em sites, histórico, alertas de meta e gráfico",
+      "chave": "price-monitor",
+      "script": "pm_gui.pyw",
+      "prefixo": "pm",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🔑",
+      "nome": "Gerador de Senhas",
+      "desc": "Senhas seguras offline com medidor de força",
+      "chave": "gerador-senhas",
+      "script": "gs_gui.pyw",
+      "prefixo": "gs",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "💱",
+      "nome": "Conversor de Moedas",
+      "desc": "Conversão offline entre BRL, USD, EUR, BTC e ETH",
+      "chave": "conversor-moedas",
+      "script": "cm_gui.pyw",
+      "prefixo": "cm",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Notas Criptografadas",
+      "desc": "Cofre de notas com AES-256-GCM",
+      "chave": "notas-criptografadas",
+      "script": "nc_gui.pyw",
+      "prefixo": "nc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🧾",
+      "nome": "Gorjeta e Divisão",
+      "desc": "Gorjeta, total da conta e divisão entre pessoas",
+      "chave": "calculadora-gorjeta",
+      "script": "tg_gui.pyw",
+      "prefixo": "tg",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🖌️",
+      "nome": "Quadro Branco",
+      "desc": "Desenho livre, formas, texto, exportar PNG/PDF",
+      "chave": "quadro-branco",
+      "script": "qb_gui.pyw",
+      "prefixo": "qb",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🔪",
+      "nome": "Canivete Suíço",
+      "desc": "800 calculadoras inéditas: obra, elétrica, solar, saúde, engenharia…",
+      "chave": "canivete",
+      "script": "canivete.pyw",
+      "prefixo": "canivete",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📄",
+      "nome": "Scanner de Documentos",
+      "desc": "Endireita perspectiva em 4 cantos, P&B sem sombra e gera PDF",
+      "chave": "scanner-documentos",
+      "script": "scn_gui.pyw",
+      "prefixo": "scn",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📡",
+      "nome": "Compartilhar na Rede",
+      "desc": "Envia e recebe arquivos PC ↔ celular via Wi-Fi com QR Code",
+      "chave": "compartilhar-rede",
+      "script": "lan_gui.pyw",
+      "prefixo": "lan",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "💬",
+      "nome": "Editor de Legendas",
+      "desc": "SRT/VTT/ASS: sincronia, FPS, auditoria de leitura (CPS) e limpeza",
+      "chave": "editor-legendas",
+      "script": "lg_gui.pyw",
+      "prefixo": "lg",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Teste de Periféricos",
+      "desc": "Teclado ABNT2 (rollover), mouse (duplo clique/Hz), dead pixel e som",
+      "chave": "teste-hardware",
+      "script": "th_gui.pyw",
+      "prefixo": "th",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🧠",
+      "nome": "Mapa Mental",
+      "desc": "Diagramas em árvore com curvas Bézier, atalhos e exportar PNG/PDF",
+      "chave": "mapa-mental",
+      "script": "mm_gui.pyw",
+      "prefixo": "mm",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📋",
+      "nome": "Quadro Kanban",
+      "desc": "Gestão ágil em colunas, limites WIP, Story Points e CSV",
+      "chave": "quadro-kanban",
+      "script": "kb_gui.pyw",
+      "prefixo": "kb",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Auditoria de Portas",
+      "desc": "Portas TCP/UDP abertas, processos donos (PID) e exposição na rede",
+      "chave": "auditoria-pc",
+      "script": "aud_gui.pyw",
+      "prefixo": "aud",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🔬",
+      "nome": "Inspetor de Executáveis",
+      "desc": "Análise PE (.exe/.dll), seções, entropia UPX, hashes e strings",
+      "chave": "inspetor-executavel",
+      "script": "dk_gui.pyw",
+      "prefixo": "dk",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎞️",
+      "nome": "Estúdio de GIF & Sprites",
+      "desc": "Cria e extrai GIFs animados, efeito Boomerang e Spritesheets",
+      "chave": "estudios-gif",
+      "script": "gif_gui.pyw",
+      "prefixo": "gif",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🧩",
+      "nome": "Cofre de Snippets",
+      "desc": "Comandos CLI, SQL e Docker com variáveis {{nome:padrao}} ao vivo",
+      "chave": "cofre-snippets",
+      "script": "snip_gui.pyw",
+      "prefixo": "snip",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📰",
+      "nome": "Leitor de Feeds RSS",
+      "desc": "Agregador online de notícias e blogs RSS/Atom com leitura limpa",
+      "chave": "leitor-rss",
+      "script": "rss_gui.pyw",
+      "prefixo": "rss",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🔧",
+      "nome": "Gerenciador de Serviços",
+      "desc": "Inspeciona, filtra serviços de terceiros e controla via sc.exe/UAC",
+      "chave": "gerenciador-servicos",
+      "script": "svc_gui.pyw",
+      "prefixo": "svc",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📶",
+      "nome": "Analisador de Wi-Fi",
+      "desc": "Espectro de canais 2.4/5 GHz, melhor canal e senhas Wi-Fi salvas",
+      "chave": "analisador-wifi",
+      "script": "wfi_gui.pyw",
+      "prefixo": "wfi",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🔎",
+      "nome": "Auditor de SEO & Links",
+      "desc": "Audita páginas web, OpenGraph, títulos H1–H6 e links quebrados",
+      "chave": "auditor-seo",
+      "script": "seo_gui.pyw",
+      "prefixo": "seo",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Corte de Chapas 2D",
+      "desc": "Plano de corte guilhotina pra MDF, vidro e metal com mapa visual",
+      "chave": "corte-chapas",
+      "script": "ccp_gui.pyw",
+      "prefixo": "ccp",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🧬",
+      "nome": "Comparador de Configs",
+      "desc": "Diff semântico e conversor entre JSON, CSV, INI e .env",
+      "chave": "comparador-dados",
+      "script": "dfx_gui.pyw",
+      "prefixo": "dfx",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🎛️",
+      "nome": "Laboratório de Áudio",
+      "desc": "Sintetizador ADSR, acordes, ondas binaurais de foco e espectro FFT",
+      "chave": "laboratorio-audio",
+      "script": "syn_gui.pyw",
+      "prefixo": "syn",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "⚡",
+      "nome": "Automação & Macros",
+      "desc": "Grava e executa macros de mouse e teclado (Win32) com captura F8",
+      "chave": "gravador-macros",
+      "script": "mcr_gui.pyw",
+      "prefixo": "mcr",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🌐",
+      "nome": "Receptor de Webhooks",
+      "desc": "Servidor Mock HTTP local, inspetor de headers/payload e gerador cURL",
+      "chave": "inspetor-http",
+      "script": "prx_gui.pyw",
+      "prefixo": "prx",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🔭",
+      "nome": "Planetário & Efemérides",
+      "desc": "Abóbada celeste 360°, fases da Lua, nascer do Sol e planetas ao vivo",
+      "chave": "planetario",
+      "script": "ast_gui.pyw",
+      "prefixo": "ast",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Código de Barras 1D",
+      "desc": "Gera e valida EAN-13, EAN-8, Code-128B e ITF-14 + lote sequencial",
+      "chave": "codigo-barras",
+      "script": "bar_gui.pyw",
+      "prefixo": "bar",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Laboratório de Química",
+      "desc": "Massa molar com hidratos, balanceador estequiométrico e elementos",
+      "chave": "laboratorio-quimica",
+      "script": "chm_gui.pyw",
+      "prefixo": "chm",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🏦",
+      "nome": "Amortização & Consórcio",
+      "desc": "Simulador de amortização extra SAC/PRICE e Consórcio vs Financiamento",
+      "chave": "comparador-credito",
+      "script": "crd_gui.pyw",
+      "prefixo": "crd",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📡",
+      "nome": "Scanner de Rede Local",
+      "desc": "Descobre dispositivos na LAN (ARP), fabricante MAC OUI e portas TCP",
+      "chave": "scanner-rede",
+      "script": "lsc_gui.pyw",
+      "prefixo": "lsc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "⚡",
+      "nome": "Simulador de Circuitos",
+      "desc": "Malhas de resistores, divisor de tensão, filtro RC (Bode) e NE555",
+      "chave": "simulador-circuitos",
+      "script": "elt_gui.pyw",
+      "prefixo": "elt",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🧬",
+      "nome": "Bioinformática & DNA",
+      "desc": "Transcrição DNA→mRNA→Proteína, enzimas de restrição e alinhamento",
+      "chave": "laboratorio-dna",
+      "script": "dna_gui.pyw",
+      "prefixo": "dna",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Analisador de Logs SIEM",
+      "desc": "Audita logs Apache/Nginx/JSONL, detecta SQLi/XSS e Eventos do Windows",
+      "chave": "analisador-logs",
+      "script": "lga_gui.pyw",
+      "prefixo": "lga",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🗺️",
+      "nome": "Estúdio de Rotas GPX",
+      "desc": "Trilhas GPX, distância geodésica Haversine e perfil altimétrico D+",
+      "chave": "estudio-rotas",
+      "script": "gpx_gui.pyw",
+      "prefixo": "gpx",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Calculadora de Matrizes",
+      "desc": "Determinante, inversa, autovalores, produto A×B e sistemas Ax=b",
+      "chave": "calculadora-matrizes",
+      "script": "mtx_gui.pyw",
+      "prefixo": "mtx",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Gerenciador de Firewall",
+      "desc": "Bloqueia internet de programas .exe e cria regras de portas TCP/UDP",
+      "chave": "gerenciador-firewall",
+      "script": "fwl_gui.pyw",
+      "prefixo": "fwl",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🐳",
+      "nome": "Estúdio Docker",
+      "desc": "Gerador de stacks docker-compose.yml, auditor CIS Dockerfile e containers",
+      "chave": "painel-docker",
+      "script": "dck_gui.pyw",
+      "prefixo": "dck",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Laboratório de Estatística",
+      "desc": "Quartis, IC 95%, outliers Tukey IQR, histograma e regressão linear",
+      "chave": "laboratorio-estatistica",
+      "script": "stt_gui.pyw",
+      "prefixo": "stt",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🩺",
+      "nome": "Prontuário & Exames",
+      "desc": "Avalia exames de sangue, controla fim de caixa de remédios e ficha SOS",
+      "chave": "ficha-medica",
+      "script": "med_gui.pyw",
+      "prefixo": "med",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🎹",
+      "nome": "Estúdio Piano Roll & MIDI",
+      "desc": "Sequenciador musical, escalas, síntese WAV e exportador binário .MID",
+      "chave": "estudio-midi",
+      "script": "mid_gui.pyw",
+      "prefixo": "mid",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🗓️",
+      "nome": "Simulador Cron & Agendador",
+      "desc": "Tradutor Cron com próximas 10 execuções e agendador Windows schtasks",
+      "chave": "agendador-tarefas",
+      "script": "sch_gui.pyw",
+      "prefixo": "sch",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🌱",
+      "nome": "Horta & Adubação NPK",
+      "desc": "Dimensiona canteiros, adubo NPK, calagem pH e plantas companheiras",
+      "chave": "horta-jardim",
+      "script": "agr_gui.pyw",
+      "prefixo": "agr",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🔍",
+      "nome": "Inspetor de Processos",
+      "desc": "Árvore Pai/Filho (PPID→PID), linha de comando CLI e congelar/retomar",
+      "chave": "inspetor-processos",
+      "script": "prc_gui.pyw",
+      "prefixo": "prc",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Estúdio Vetorial SVG",
+      "desc": "Gerador paramétrico de ícones/selos SVG, minificador XML e PNG",
+      "chave": "estudio-svg",
+      "script": "svg_gui.pyw",
+      "prefixo": "svg",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📻",
+      "nome": "Rádio Amador & Morse",
+      "desc": "Sintetizador CW Morse em WAV, fonética OTAN e antena dipolo/ROE",
+      "chave": "radio-morse",
+      "script": "mrs_gui.pyw",
+      "prefixo": "mrs",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Cubagem & Cargas 3D",
+      "desc": "Encaixe 3D em paletes/containers/baús e peso cubado aéreo/rodoviário",
+      "chave": "cubagem-cargas",
+      "script": "cub_gui.pyw",
+      "prefixo": "cub",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Chaves SSH & Config",
+      "desc": "Gera chaves Ed25519/RSA, fingerprint SHA256, RandomArt e ~/.ssh/config",
+      "chave": "gerador-ssh",
+      "script": "ssk_gui.pyw",
+      "prefixo": "ssk",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📃",
+      "nome": "Leitor de NF-e XML",
+      "desc": "Audita impostos ICMS/IPI/PIS/COFINS, itens NCM/CFOP e valida chave 44 dígitos",
+      "chave": "leitor-nfe",
+      "script": "nfe_gui.pyw",
+      "prefixo": "nfe",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "♟️",
+      "nome": "Estúdio de Xadrez",
+      "desc": "Tabuleiro interativo, lances legais, notação FEN e partidas históricas",
+      "chave": "estudio-xadrez",
+      "script": "chz_gui.pyw",
+      "prefixo": "chz",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🌐",
+      "nome": "Arquiteto de Sub-redes",
+      "desc": "Cálculo CIDR IPv4/IPv6 e alocador de sub-redes VLSM sem colisão",
+      "chave": "calculadora-subrede",
+      "script": "ipm_gui.pyw",
+      "prefixo": "ipm",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🚀",
+      "nome": "Simulador de Física",
+      "desc": "Cinemática e balística 2D com gravidade e mecânica orbital",
+      "chave": "simulador-fisica",
+      "script": "fsc_gui.pyw",
+      "prefixo": "fsc",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "📝",
+      "nome": "Estúdio Markdown & TeX",
+      "desc": "Editor Markdown ao vivo com fórmulas TeX, tabelas GFM e exportador HTML",
+      "chave": "estudio-markdown",
+      "script": "mdx_gui.pyw",
+      "prefixo": "mdx",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🏦",
+      "nome": "Gerador de Extratos OFX",
+      "desc": "Emulador de transações bancárias e gerador de arquivos OFX 1.02 para ERPs",
+      "chave": "gerador-ofx",
+      "script": "ofx_gui.pyw",
+      "prefixo": "ofx",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🔒",
+      "nome": "Gerador de Certificados SSL",
+      "desc": "Cria certificados X.509 v3 autoassinados com extensões SAN e chaves RSA",
+      "chave": "gerador-ssl",
+      "script": "gsl_gui.pyw",
+      "prefixo": "gsl",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🎵",
+      "nome": "Estúdio de Áudio & Ondas",
+      "desc": "Sintetizador de formas de onda (seno, quadrada, dente, ruído) e WAV",
+      "chave": "estudio-som",
+      "script": "som_gui.pyw",
+      "prefixo": "som",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🔬",
+      "nome": "Laboratório de Óptica",
+      "desc": "Simulador da Lei de Snell, refração da luz, reflexão total e lentes",
+      "chave": "simulador-optica",
+      "script": "opt_gui.pyw",
+      "prefixo": "opt",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🧭",
+      "nome": "Conversor de Coordenadas",
+      "desc": "Conversão entre Graus Decimais (DD), GMS e Projeção Plana UTM WGS84",
+      "chave": "conversor-coordenadas",
+      "script": "geo_gui.pyw",
+      "prefixo": "geo",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "⚡",
+      "nome": "Benchmark de Memória & SSD",
+      "desc": "Testa a taxa real de transferência da memória RAM (GB/s) e do disco com fsync",
+      "chave": "benchmark-pc",
+      "script": "bmk_gui.pyw",
+      "prefixo": "bmk",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🎲",
+      "nome": "Análise Combinatória & Loto",
+      "desc": "Combinações, arranjos, permutações e probabilidades de loterias",
+      "chave": "calculadora-combinatoria",
+      "script": "cmb_gui.pyw",
+      "prefixo": "cmb",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Estúdio de Cifras Clássicas",
+      "desc": "Criptografia histórica: César, Vigenère, Atbash, Rail Fence e frequências",
+      "chave": "estudio-cifras",
+      "script": "cfr_gui.pyw",
+      "prefixo": "cfr",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "✒️",
+      "nome": "Estúdio de Tipografia",
+      "desc": "Escalas modulares harmônicas (H1-Small), pareamento de fontes e CSS",
+      "chave": "estudio-tipografia",
+      "script": "tip_gui.pyw",
+      "prefixo": "tip",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🦈",
+      "nome": "Inspetor de Pacotes PCAP",
+      "desc": "Analisador de capturas de rede Wireshark/tcpdump Ethernet/IP/TCP/UDP",
+      "chave": "inspetor-pcap",
+      "script": "pcp_gui.pyw",
+      "prefixo": "pcp",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "⏱️",
+      "nome": "Cronômetro & Relógio Xadrez",
+      "desc": "Cronometragem esportiva com voltas e relógio de xadrez com incremento",
+      "chave": "estudio-cronometro",
+      "script": "crn_gui.pyw",
+      "prefixo": "crn",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🌳",
+      "nome": "Árvore de Decisão & ID3",
+      "desc": "Algoritmo ID3, cálculo de Entropia de Shannon e Ganho de Informação",
+      "chave": "arvore-decisao",
+      "script": "tre_gui.pyw",
+      "prefixo": "tre",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔍",
+      "nome": "Inspetor de Regex",
+      "desc": "Testador de expressões regulares ao vivo com grupos e medição em milissegundos",
+      "chave": "inspetor-regex",
+      "script": "rgx_gui.pyw",
+      "prefixo": "rgx",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🕸️",
+      "nome": "Estúdio de Grafos & Dijkstra",
+      "desc": "Modelagem de topologias de rede, algoritmo de Dijkstra e menor caminho",
+      "chave": "estudio-grafos",
+      "script": "grf_gui.pyw",
+      "prefixo": "grf",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🔌",
+      "nome": "Simulador de Portas Lógicas",
+      "desc": "Álgebra booleana, portas lógicas, tabelas-verdade e mapa de Karnaugh",
+      "chave": "simulador-logica",
+      "script": "lgc_gui.pyw",
+      "prefixo": "lgc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🎵",
+      "nome": "Analisador de Áudio & FFT",
+      "desc": "Espectrograma FFT, detecção de notas e harmônicos, tom puro e medidor dBFS",
+      "chave": "analisador-audio-fft",
+      "script": "fft_gui.pyw",
+      "prefixo": "fft",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Validador de JSON Schema",
+      "desc": "Validação Draft-07 de dados JSON, inferência automática e detecção de erros",
+      "chave": "validador-json-schema",
+      "script": "jsc_gui.pyw",
+      "prefixo": "jsc",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Calculadora de Engrenagens",
+      "desc": "Engrenagens cilíndricas de dentes retos, relação de redução, RPM e torque",
+      "chave": "calculadora-engrenagens",
+      "script": "grs_gui.pyw",
+      "prefixo": "grs",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🗺️",
+      "nome": "Gerador de Sitemap & Robots",
+      "desc": "Protocolo sitemaps.org XML, gerador de robots.txt e validação de indexação",
+      "chave": "gerador-sitemap",
+      "script": "stm_gui.pyw",
+      "prefixo": "stm",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🪐",
+      "nome": "Simulador Gravitacional N-Corpos",
+      "desc": "Mecânica celeste newtoniana, órbitas Keplerianas, 3 corpos e pontos de Lagrange",
+      "chave": "simulador-gravitacional-n-corpos",
+      "script": "nbd_gui.pyw",
+      "prefixo": "nbd",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🏗️",
+      "nome": "Calculadora de Concreto Armado",
+      "desc": "Dimensionamento de vigas NBR 6118 / Eurocode, armadura longitudinal e estribos",
+      "chave": "calculadora-concreto-armado",
+      "script": "cnc_gui.pyw",
+      "prefixo": "cnc",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🗜️",
+      "nome": "Compressão de Huffman & Entropia",
+      "desc": "Codificação de Huffman, árvore binária, entropia de Shannon e economia de espaço",
+      "chave": "estudio-compressao-huffman",
+      "script": "huf_gui.pyw",
+      "prefixo": "huf",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🧬",
+      "nome": "Laboratório de Autômatos Celulares",
+      "desc": "Conway Game of Life 2D, autômatos de Wolfram 1D (Regra 30/90/110) e Formiga de Langton",
+      "chave": "simulador-automato-celular",
+      "script": "cll_gui.pyw",
+      "prefixo": "cll",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🌍",
+      "nome": "Analisador de Geo IP & Rede",
+      "desc": "Geolocalização de IP, consulta ASN, distância de Haversine e latência de fibra",
+      "chave": "analisador-geo-ip",
+      "script": "gip_gui.pyw",
+      "prefixo": "gip",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🎲",
+      "nome": "Estatística & Inferência Bayesiana",
+      "desc": "Teorema de Bayes, paradoxo do falso positivo em testes e modelo Beta-Binomial",
+      "chave": "calculadora-estatistica-bayesiana",
+      "script": "bys_gui.pyw",
+      "prefixo": "bys",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🍖",
+      "nome": "Calculadora de Churrasco",
+      "desc": "Carne por pessoa, carvão, bebidas, custos e rateio",
+      "chave": "calculadora-churrasco",
+      "script": "chu_gui.pyw",
+      "prefixo": "chu",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⛽",
+      "nome": "Combustível e Viagem",
+      "desc": "Etanol x gasolina, custo de viagem, paradas, CO₂ e consumo médio",
+      "chave": "calculadora-combustivel-viagem",
+      "script": "cbv_gui.pyw",
+      "prefixo": "cbv",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "😴",
+      "nome": "Calculadora do Sono",
+      "desc": "Ciclos de 90 min, débito de sono, jet lag social e cafeína",
+      "chave": "calculadora-sono",
+      "script": "sno_gui.pyw",
+      "prefixo": "sno",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🥗",
+      "nome": "Calculadora de Nutrição",
+      "desc": "IMC, TMB, gasto diário, macros, % de gordura e água",
+      "chave": "calculadora-nutricao",
+      "script": "ntr_gui.pyw",
+      "prefixo": "ntr",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "❄️",
+      "nome": "Dimensionador de Ar-Condicionado",
+      "desc": "BTUs do ambiente, consumo inverter x convencional e payback",
+      "chave": "calculadora-ar-condicionado",
+      "script": "btu_gui.pyw",
+      "prefixo": "btu",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧾",
+      "nome": "Simples Nacional e MEI",
+      "desc": "DAS por anexo, alíquota efetiva, Fator R e limites do MEI",
+      "chave": "calculadora-simples-nacional",
+      "script": "snl_gui.pyw",
+      "prefixo": "snl",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧠",
+      "nome": "Flashcards com Repetição Espaçada",
+      "desc": "Estudo com algoritmo SM-2, baralhos, importação CSV e estatísticas",
+      "chave": "flashcards-repeticao",
+      "script": "fla_gui.pyw",
+      "prefixo": "fla",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🌀",
+      "nome": "Simulador de Pêndulo Duplo",
+      "desc": "Caos em tempo real com RK4, rastro, energia e pêndulo gêmeo",
+      "chave": "simulador-pendulo-duplo",
+      "script": "pdl_gui.pyw",
+      "prefixo": "pdl",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🎨",
+      "nome": "Gerador de Paletas de Cores",
+      "desc": "Harmonias, HEX/RGB/HSL/CMYK, contraste WCAG e exportação CSS",
+      "chave": "gerador-paleta-cores",
+      "script": "pal_gui.pyw",
+      "prefixo": "pal",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📆",
+      "nome": "Calculadora de Datas",
+      "desc": "Dias úteis com feriados, somar datas, idade exata e semana ISO",
+      "chave": "calculadora-datas",
+      "script": "dts_gui.pyw",
+      "prefixo": "dts",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🔢",
+      "nome": "Conversor de Bases & IEEE-754",
+      "desc": "Bases 2 a 36, complemento de 2, bits de float32/64 e operações bit a bit",
+      "chave": "conversor-bases",
+      "script": "bse_gui.pyw",
+      "prefixo": "bse",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🏖️",
+      "nome": "Simulador de Aposentadoria",
+      "desc": "Independência financeira com taxa real (Fisher), meta pela regra dos 4% e gráfico",
+      "chave": "simulador-aposentadoria",
+      "script": "apo_gui.pyw",
+      "prefixo": "apo",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🆔",
+      "nome": "Gerador de Identificadores",
+      "desc": "UUID v4/v5/v7, ULID, NanoID, decodificador de Snowflake e risco de colisão",
+      "chave": "gerador-identificadores",
+      "script": "uid_gui.pyw",
+      "prefixo": "uid",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🎨",
+      "nome": "Contraste WCAG & Daltonismo",
+      "desc": "Razão de contraste AA/AAA, cor sugerida e simulação de protanopia/deuteranopia",
+      "chave": "contraste-wcag",
+      "script": "wcg_gui.pyw",
+      "prefixo": "wcg",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🌈",
+      "nome": "Código de Cores de Resistores",
+      "desc": "Faixas 4/5/6, valor para cores, SMD/EIA-96, séries E e melhor par série/paralelo",
+      "chave": "codigo-resistores",
+      "script": "res_gui.pyw",
+      "prefixo": "res",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "✍️",
+      "nome": "Números por Extenso & Romanos",
+      "desc": "Valores para cheque e recibo, cardinais, ordinais, feminino e algarismos romanos",
+      "chave": "numero-extenso",
+      "script": "ext_gui.pyw",
+      "prefixo": "ext",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⏰",
+      "nome": "Explicador de Cron",
+      "desc": "Traduz expressões cron para português e lista as próximas 20 execuções",
+      "chave": "explicador-cron",
+      "script": "crx_gui.pyw",
+      "prefixo": "crx",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧱",
+      "nome": "Calculadora de Obra",
+      "desc": "Tinta com combinação de latas, pisos, caixas, argamassa e rejunte",
+      "chave": "calculadora-obra",
+      "script": "obr_gui.pyw",
+      "prefixo": "obr",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔑",
+      "nome": "Decodificador de JWT",
+      "desc": "Decodifica, verifica HS256/384/512, gera tokens e audita segredos fracos",
+      "chave": "decodificador-jwt",
+      "script": "jwt_gui.pyw",
+      "prefixo": "jwt",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📶",
+      "nome": "Calculadora de Banda & Armazenamento",
+      "desc": "Tempo de download, bitrate de vídeo, HD para CFTV/NVR e capacidade RAID",
+      "chave": "calculadora-banda",
+      "script": "bnd_gui.pyw",
+      "prefixo": "bnd",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Analisador de Benford",
+      "desc": "Lei de Benford no 1º dígito, χ², MAD Nigrini e auditoria de anomalias em CSV",
+      "chave": "analisador-benford",
+      "script": "bnf_gui.pyw",
+      "prefixo": "bnf",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🎛️",
+      "nome": "Simulador de Controle PID",
+      "desc": "Planta 1ª ordem + atraso, resposta ao degrau, overshoot, Ziegler–Nichols e Cohen–Coon",
+      "chave": "simulador-controle-pid",
+      "script": "pid_gui.pyw",
+      "prefixo": "pid",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "⏳",
+      "nome": "Teoria das Filas",
+      "desc": "M/M/1, M/M/c, Erlang-C, Lei de Little e dimensionamento de servidores por SLA",
+      "chave": "teoria-filas",
+      "script": "qth_gui.pyw",
+      "prefixo": "qth",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧮",
+      "nome": "Laboratório de CRC",
+      "desc": "CRC-8/16/32, Adler-32, Fletcher-16, checksum Internet RFC 1071 e verificação",
+      "chave": "laboratorio-crc",
+      "script": "crc_gui.pyw",
+      "prefixo": "crc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "⚡",
+      "nome": "Analisador de CPU & Topologia",
+      "desc": "Telemetria por núcleo lógico, frequências MHz, modos de tempo e bateria",
+      "chave": "analisador-cpu-termico",
+      "script": "cpt_gui.pyw",
+      "prefixo": "cpt",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Calculadora Black-Scholes & Gregas",
+      "desc": "Precificação de opções européias, Letras Gregas, volatilidade implícita e payoff",
+      "chave": "calculadora-financeira-black-scholes",
+      "script": "bsc_gui.pyw",
+      "prefixo": "bsc",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "💧",
+      "nome": "Calculadora Hidráulica de Tubulações",
+      "desc": "Perda de carga Darcy-Weisbach, Hazen-Williams, Reynolds e motobombas",
+      "chave": "calculadora-hidraulica-tubulacoes",
+      "script": "hdr_gui.pyw",
+      "prefixo": "hdr",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🔄",
+      "nome": "Simulador de Circuitos RC & RLC",
+      "desc": "Resposta ao degrau temporal, filtros passa-baixa/alta, ressonância e amortecimento",
+      "chave": "simulador-circuitos-rc-rlc",
+      "script": "rlc_gui.pyw",
+      "prefixo": "rlc",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🗄️",
+      "nome": "Formatador & Analisador de SQL",
+      "desc": "Prettifier de consultas SQL, indentação de subqueries, AST e validação de sintaxe",
+      "chave": "formatador-sql-ast",
+      "script": "sqf_gui.pyw",
+      "prefixo": "sqf",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Gerador de Diagramas de Sequência",
+      "desc": "Diagramas UML de sequência, mensagens síncronas/retorno, notas e exportador SVG",
+      "chave": "gerador-diagramas-sequence",
+      "script": "seq_gui.pyw",
+      "prefixo": "seq",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🏃",
+      "nome": "Ritmo & Corrida",
+      "desc": "Ritmo↔velocidade, tempo de prova, splits, previsão Riegel, VO2max e zonas de FC",
+      "chave": "pace",
+      "script": "pac_gui.pyw",
+      "prefixo": "pac",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📡",
+      "nome": "Calculadora RF & dBm",
+      "desc": "dBm/mW/W, somar potências, freq↔λ, FSPL, orçamento de enlace e VSWR",
+      "chave": "rf-calculo",
+      "script": "rfc_gui.pyw",
+      "prefixo": "rfc",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "⚖️",
+      "nome": "Juros de Mora & Multa",
+      "desc": "Atualiza conta em atraso: dias, multa, juros de mora pro rata e correção",
+      "chave": "juros-mora",
+      "script": "jmr_gui.pyw",
+      "prefixo": "jmr",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🔤",
+      "nome": "Inspetor Unicode",
+      "desc": "Codepoints, categorias, blocos, NFC/NFD/NFKC/NFKD e busca por nome Unicode",
+      "chave": "inspetor-unicode",
+      "script": "uni_gui.pyw",
+      "prefixo": "uni",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎲",
+      "nome": "Simulador Monte Carlo",
+      "desc": "Estimativa de π, integração 1D por amostragem e agulha de Buffon",
+      "chave": "simulador-monte-carlo",
+      "script": "mtc_gui.pyw",
+      "prefixo": "mtc",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🧭",
+      "nome": "Calculadora de Quaternions",
+      "desc": "Álgebra de Hamilton, eixo-ângulo, rotação 3D, matriz R e SLERP",
+      "chave": "calculadora-quaternions",
+      "script": "qtn_gui.pyw",
+      "prefixo": "qtn",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🔊",
+      "nome": "Codificador Fonético",
+      "desc": "Soundex, Metaphone, Levenshtein e detecção de nomes duplicados",
+      "chave": "codificador-fonetico",
+      "script": "phn_gui.pyw",
+      "prefixo": "phn",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🎲",
+      "nome": "Laboratório de Dados RPG",
+      "desc": "Distribuição exata de NdM+K, chance de alvo, vantagem/desvantagem e histograma",
+      "chave": "dados-rpg",
+      "script": "rpg_gui.pyw",
+      "prefixo": "rpg",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🧭",
+      "nome": "Navegação & Rumo",
+      "desc": "Distância e rumo entre pontos (ortodrômica/loxodrômica), ponto de chegada e ETA",
+      "chave": "navegacao",
+      "script": "nav_gui.pyw",
+      "prefixo": "nav",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🤰",
+      "nome": "Calculadora Gestacional",
+      "desc": "DPP (Naegele), semanas de gestação, trimestre e concepção pela DUM ou ultrassom",
+      "chave": "gestacional",
+      "script": "gst_gui.pyw",
+      "prefixo": "gst",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🌸",
+      "nome": "Filtro de Bloom",
+      "desc": "Dimensiona m/k, constrói filtro e consulta com taxa de falso positivo",
+      "chave": "filtro-bloom",
+      "script": "blm_gui.pyw",
+      "prefixo": "blm",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Estúdio de Splines",
+      "desc": "Spline cúbico natural, Catmull–Rom e avaliação S(x) com gráfico",
+      "chave": "estudio-splines",
+      "script": "spl_gui.pyw",
+      "prefixo": "spl",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🌡️",
+      "nome": "Índice de Conforto Térmico",
+      "desc": "Heat Index NWS, Wind Chill, Humidex e ponto de orvalho",
+      "chave": "calculadora-indice-conforto",
+      "script": "wci_gui.pyw",
+      "prefixo": "wci",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🎒",
+      "nome": "Otimizador da Mochila",
+      "desc": "Mochila 0/1 por programação dinâmica e cota fracionária gulosa",
+      "chave": "otimizador-mochila",
+      "script": "knp_gui.pyw",
+      "prefixo": "knp",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Calculadora de Motores Elétricos",
+      "desc": "Potência mecânica, escorregamento s, torque nominal, rendimento e fator de potência",
+      "chave": "calculadora-motores-eletricos",
+      "script": "mot_gui.pyw",
+      "prefixo": "mot",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🏛️",
+      "nome": "Calculadora de Acústica de Salas",
+      "desc": "Tempo de reverberação RT60 (Sabine/Eyring), frequência de Schroeder e modos próprios",
+      "chave": "calculadora-acustica-salas",
+      "script": "acu_gui.pyw",
+      "prefixo": "acu",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🔌",
+      "nome": "Calculadora de Transformador de Potência",
+      "desc": "Cálculo de núcleo Ae, espiras por volt, bitolas AWG e perdas do transformador",
+      "chave": "calculadora-transformador-potencia",
+      "script": "trf_gui.pyw",
+      "prefixo": "trf",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Estúdio Criptografia Curvas Elípticas",
+      "desc": "Aritmética de Weierstrass curta, multiplicação escalar e simulação ECDH",
+      "chave": "estudio-criptografia-curvas-elipticas",
+      "script": "ecc_gui.pyw",
+      "prefixo": "ecc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🧱",
+      "nome": "Analisador de Difusão de Calor",
+      "desc": "Condução 1D de Fourier em paredes compostas, valor U, valor R e perfil térmico",
+      "chave": "analisador-difusao-calor",
+      "script": "thm_gui.pyw",
+      "prefixo": "thm",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "💳",
+      "nome": "Validador de Cartão de Crédito",
+      "desc": "Algoritmo de Luhn Módulo 10, identificação ISO/IEC 7812, bandeiras e gerador sandbox",
+      "chave": "validador-formato-cartao-credito",
+      "script": "lhn_gui.pyw",
+      "prefixo": "lhn",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "⬜",
+      "nome": "Código de Gray",
+      "desc": "Conversão bin↔Gray refletido, sequência n-bit e verificação de Hamming=1",
+      "chave": "estudio-gray-code",
+      "script": "gry_gui.pyw",
+      "prefixo": "gry",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🗜️",
+      "nome": "Compressão RLE",
+      "desc": "Run-Length Encoding de texto e bytes com tabela de corridas e razão",
+      "chave": "compressao-rle",
+      "script": "rle_gui.pyw",
+      "prefixo": "rle",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🔗",
+      "nome": "Gerador Markov",
+      "desc": "Cadeia de Markov de ordem k sobre corpus: treina e gera texto",
+      "chave": "gerador-markov",
+      "script": "mkv_gui.pyw",
+      "prefixo": "mkv",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "➗",
+      "nome": "Fatoração de Primos",
+      "desc": "Fatora inteiros (trial + Pollard Rho), Miller–Rabin e próximo primo",
+      "chave": "fatoracao-primos",
+      "script": "prm_gui.pyw",
+      "prefixo": "prm",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧵",
+      "nome": "Crochê & Tricô",
+      "desc": "Pontos pela amostra, metragem de fio, agulhas mm/US/UK e distribuir aumentos",
+      "chave": "croche",
+      "script": "trc_gui.pyw",
+      "prefixo": "trc",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "👗",
+      "nome": "Conversor de Tamanhos",
+      "desc": "Calçado BR/EU/US/UK/cm, roupa PP–XG e aro de anel (mm↔aro)",
+      "chave": "tamanhos",
+      "script": "tam_gui.pyw",
+      "prefixo": "tam",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎂",
+      "nome": "Calculadora de Festa",
+      "desc": "Comida, bebida e descartáveis por convidados, duração e tipo de festa",
+      "chave": "festa",
+      "script": "fst_gui.pyw",
+      "prefixo": "fst",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "✒️",
+      "nome": "Estúdio Bézier",
+      "desc": "Curvas de Bézier (Casteljau), ponto B(t), tangente e comprimento aproximado",
+      "chave": "estudio-bezier",
+      "script": "bzr_gui.pyw",
+      "prefixo": "bzr",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🪣",
+      "nome": "Token Bucket",
+      "desc": "Simula rate limit com burst, recarga e fila de timestamps",
+      "chave": "token-bucket",
+      "script": "tok_gui.pyw",
+      "prefixo": "tok",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🕯️",
+      "nome": "Temperatura de Cor",
+      "desc": "Kelvin→RGB/HEX, mired, XYZ e mistura perceptualmente uniforme",
+      "chave": "conversor-temperatura-cor",
+      "script": "ctk_gui.pyw",
+      "prefixo": "ctk",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Análise de Pareto",
+      "desc": "Curva 80/20, classificação ABC e concentração de valor",
+      "chave": "analisador-pareto",
+      "script": "prt_gui.pyw",
+      "prefixo": "prt",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🎨",
+      "nome": "Quadro Branco Colaborativo",
+      "desc": "Desenho compartilhado na rede local (host/porta) em tempo real",
+      "chave": "quadro-branco-colaborativo",
+      "script": "qc_gui.pyw",
+      "prefixo": "qc",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📔",
+      "nome": "Diário Criptografado",
+      "desc": "Diário pessoal com senha (AES/Fernet), humor do dia e busca",
+      "chave": "diario-criptografado",
+      "script": "dc_gui.pyw",
+      "prefixo": "dc",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Gerador de Gráficos",
+      "desc": "Cola dados e gera gráfico (barra/linha/pizza) e exporta SVG/PNG",
+      "chave": "gerador-graficos",
+      "script": "gg_gui.pyw",
+      "prefixo": "gg",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📉",
+      "nome": "Alavancagem DOL/DFL/DCL",
+      "desc": "Alavancagem operacional, financeira, combinada, equilíbrio e margem de segurança",
+      "chave": "calculadora-alavancagem",
+      "script": "alg_gui.pyw",
+      "prefixo": "alg",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📝",
+      "nome": "Gerador Lorem Ipsum",
+      "desc": "Gera palavras, frases, parágrafos ou N caracteres de placeholder",
+      "chave": "gerador-lorem",
+      "script": "lor_gui.pyw",
+      "prefixo": "lor",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "📉",
+      "nome": "Lei de Zipf",
+      "desc": "Ranking de frequências, slope log-log e teste Zipf-like em textos",
+      "chave": "analisador-zipf",
+      "script": "zpf_gui.pyw",
+      "prefixo": "zpf",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "⏱️",
+      "nome": "Conversor Epoch",
+      "desc": "Unix epoch s/ms/µs/ns ↔ data UTC/local com detecção automática",
+      "chave": "conversor-epoch",
+      "script": "epc_gui.pyw",
+      "prefixo": "epc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⭕",
+      "nome": "Círculo de Mohr & Tensões 2D",
+      "desc": "Tensões principais, cisalhamento máximo, rotação de planos e von Mises",
+      "chave": "calculadora-tensao-cisalhamento-mohr",
+      "script": "mhr_gui.pyw",
+      "prefixo": "mhr",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📻",
+      "nome": "Simulador Modulação AM & FM",
+      "desc": "Modulação analógica, formas de onda temporais, índice μ/β e Regra de Carson",
+      "chave": "simulador-modulacao-am-fm",
+      "script": "amf_gui.pyw",
+      "prefixo": "amf",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🧠",
+      "nome": "Estúdio de Redes Neurais MLP",
+      "desc": "Perceptron multicamadas denso, backpropagation analítico e aprendizado SGD",
+      "chave": "calculadora-redes-neurais-mlp",
+      "script": "mlp_gui.pyw",
+      "prefixo": "mlp",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "✈️",
+      "nome": "Perfis Aerodinâmicos NACA",
+      "desc": "Aerofólios NACA 4 dígitos, camber, distribuição de espessura e coordenadas .DAT",
+      "chave": "analisador-perfil-aerodinamico-naca",
+      "script": "nca_gui.pyw",
+      "prefixo": "nca",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Calculadora de Cinética Química",
+      "desc": "Ordens de reação 0/1/2, tempos de meia-vida t½ e conversão por Arrhenius",
+      "chave": "calculadora-cinetica-quimica",
+      "script": "knt_gui.pyw",
+      "prefixo": "knt",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Rede de Feistel & Cifras de Bloco",
+      "desc": "Estrutura DES/Blowfish, S-Box/P-Box, reversibilidade e efeito avalanche",
+      "chave": "estudio-criptografia-feistel-des",
+      "script": "fei_gui.pyw",
+      "prefixo": "fei",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "☕",
+      "nome": "Calculadora de Café",
+      "desc": "Proporção café/água por método (coado, V60, prensa, AeroPress, espresso) e extração",
+      "chave": "calculadora-cafe",
+      "script": "cfe_gui.pyw",
+      "prefixo": "cfe",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🍺",
+      "nome": "Calculadora de Cerveja",
+      "desc": "ABV, OG/FG, IBU e SRM pra receita de cerveja artesanal",
+      "chave": "calculadora-cerveja",
+      "script": "brw_gui.pyw",
+      "prefixo": "brw",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Calculadora de Treliças 2D",
+      "desc": "Treliças 2D pelo método da rigidez direta: forças nas barras e reações",
+      "chave": "calculadora-trelicas-2d",
+      "script": "trs_gui.pyw",
+      "prefixo": "trs",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🔗",
+      "nome": "Links NTFS & Atalhos",
+      "desc": "Cria links simbólicos, junctions e atalhos .lnk no Windows",
+      "chave": "links-ntfs",
+      "script": "sym_gui.pyw",
+      "prefixo": "sym",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🐠",
+      "nome": "Calculadora de Aquário",
+      "desc": "Volume real do aquário, dosagem e parâmetros da água",
+      "chave": "calculadora-aquario",
+      "script": "aqu_gui.pyw",
+      "prefixo": "aqu",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🏛️",
+      "nome": "Flambagem de Colunas (Euler)",
+      "desc": "Carga crítica de Euler, índice de esbeltez e tensão admissível",
+      "chave": "calculadora-flambagem-colunas-euler",
+      "script": "eul_gui.pyw",
+      "prefixo": "eul",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🌱",
+      "nome": "Calculadora de Hidroponia",
+      "desc": "Solução nutritiva, EC/pH e dosagem de sais pra hidroponia",
+      "chave": "calculadora-hidroponia",
+      "script": "hdp_gui.pyw",
+      "prefixo": "hdp",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🚲",
+      "nome": "Marchas de Bicicleta",
+      "desc": "Relação de marchas, desenvolvimento (m) e cadência x velocidade",
+      "chave": "calculadora-marchas-bike",
+      "script": "bik_gui.pyw",
+      "prefixo": "bik",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🔎",
+      "nome": "Inspetor de Streams ADS",
+      "desc": "Acha e inspeciona Alternate Data Streams (NTFS) escondidos em arquivos",
+      "chave": "inspetor-ads",
+      "script": "ads_gui.pyw",
+      "prefixo": "ads",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Planejador de Mudança",
+      "desc": "Caixas, volume, checklist e inventário pra organizar uma mudança",
+      "chave": "planejador-mudanca",
+      "script": "mdc_gui.pyw",
+      "prefixo": "mdc",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📻",
+      "nome": "Circuito Ressonante LC/RLC",
+      "desc": "Frequência de Thomson f0, fator de qualidade Q, banda passante e |Z(f)|",
+      "chave": "analisador-circuito-ressonante-lc",
+      "script": "rls_gui.pyw",
+      "prefixo": "rls",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🚀",
+      "nome": "Dinâmica Orbital & Hohmann",
+      "desc": "Transferência orbital de Hohmann, Delta-V, semi-eixo e tempo de voo",
+      "chave": "calculadora-dinamica-orbital-hohmann",
+      "script": "hmn_gui.pyw",
+      "prefixo": "hmn",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "💡",
+      "nome": "Fotometria & Iluminação",
+      "desc": "Método dos Lúmens (NBR 8995), Lux, Candelas e projeção de cone de luz",
+      "chave": "calculadora-fotometria-lux-lumen",
+      "script": "lux_gui.pyw",
+      "prefixo": "lux",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Enquadramento HDLC & CRC-16",
+      "desc": "Protocolo ISO 13239, bit-stuffing de zeros, FCS CRC-16 e teste de canal",
+      "chave": "gerador-analisador-codigo-hdlc-crc16",
+      "script": "hdl_gui.pyw",
+      "prefixo": "hdl",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🌡️",
+      "nome": "Dilatação Térmica & Tensão",
+      "desc": "Dilatação linear, superficial e volumétrica, folga de junta e tensão térmica",
+      "chave": "calculadora-dilatacao-termica-tensao",
+      "script": "dlt_gui.pyw",
+      "prefixo": "dlt",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "💎",
+      "nome": "Difração de Raios-X (Bragg)",
+      "desc": "Lei de Bragg, índices de Miller, extinção de simetria e difratograma XRD",
+      "chave": "analisador-difracao-raios-x-bragg",
+      "script": "brg_gui.pyw",
+      "prefixo": "brg",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎱",
+      "nome": "Bingo em Família",
+      "desc": "Globo de 75/90 bolas com painel, desfazer, gerador de cartelas BINGO e conferência automática…",
+      "chave": "bingo-familia",
+      "script": "bng_gui.pyw",
+      "prefixo": "bng",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Equações de Estado & Gases Reais",
+      "desc": "Modelos Van der Waals, Redlich-Kwong e Peng-Robinson, fator Z, fugacidade e isotermas P-V",
+      "chave": "calculadora-equacoes-estado-gases",
+      "script": "vdw_gui.pyw",
+      "prefixo": "vdw",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🍞",
+      "nome": "Calculadora de Pão",
+      "desc": "Porcentagem de padeiro com levain, receitas base, massa pelo peso, conversão de fermentos…",
+      "chave": "calculadora-pao",
+      "script": "pao_gui.pyw",
+      "prefixo": "pao",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🍕",
+      "nome": "Calculadora de Pizza",
+      "desc": "Massa por estilo e tamanho ou forma, fermento por tempo e temperatura, pizzas por pessoa e…",
+      "chave": "calculadora-pizza",
+      "script": "pzz_gui.pyw",
+      "prefixo": "pzz",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🌸",
+      "nome": "Ciclo Menstrual",
+      "desc": "Registro dos ciclos com média, regularidade, previsão da próxima menstruação, ovulação e…",
+      "chave": "ciclo-menstrual",
+      "script": "cic_gui.pyw",
+      "prefixo": "cic",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🛒",
+      "nome": "Comparador de Preços do Mercado",
+      "desc": "Preço por kg, litro ou unidade com promoções leve-pague, 2ª unidade e desconto, melhor opção e…",
+      "chave": "comparador-mercado",
+      "script": "mkt_gui.pyw",
+      "prefixo": "mkt",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "💡",
+      "nome": "Consumo de Energia da Casa",
+      "desc": "kWh e custo por aparelho, conta com bandeira tarifária, maiores consumos, economia de trocas…",
+      "chave": "consumo-energia",
+      "script": "kwh_gui.pyw",
+      "prefixo": "kwh",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔤",
+      "nome": "Conversor Base64 de Arquivos",
+      "desc": "Arquivo↔Base64 (padrao/URL-safe), data URI e estimativa de expansao",
+      "chave": "conversor-base64-arquivo",
+      "script": "b64_gui.pyw",
+      "prefixo": "b64",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🪄",
+      "nome": "Detector Magic / MIME",
+      "desc": "Identifica tipo real pelo cabecalho, compara com a extensao e varre pastas por arquivos…",
+      "chave": "detector-magic",
+      "script": "mag_gui.pyw",
+      "prefixo": "mag",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🔬",
+      "nome": "Diff Hex Binario",
+      "desc": "Compara dois arquivos byte a byte com dump lado a lado, primeiro diff e similaridade",
+      "chave": "diff-hex",
+      "script": "hxd_gui.pyw",
+      "prefixo": "hxd",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🍼",
+      "nome": "Enxoval de Bebê",
+      "desc": "Fraldas por tamanho e mês com custo e comparação com pano, roupas por clima e checklist do…",
+      "chave": "enxoval-bebe",
+      "script": "enx_gui.pyw",
+      "prefixo": "enx",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🖼️",
+      "nome": "Extrator de Icones",
+      "desc": "Extrai icones de EXE/DLL/ICO, conta recursos e salva PNG ou ICO associado",
+      "chave": "extrator-icones",
+      "script": "ico_gui.pyw",
+      "prefixo": "ico",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Inspetor ACL NTFS",
+      "desc": "Le dono e permissoes NTFS, mostra icacls, concede leitura e reseta heranca",
+      "chave": "inspetor-acl",
+      "script": "acl_gui.pyw",
+      "prefixo": "acl",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🔏",
+      "nome": "Inspetor PEM / Certificados",
+      "desc": "Le PEM/DER locais: fingerprint SHA256, validade, SANs e extracao da cadeia de certificados",
+      "chave": "inspetor-pem",
+      "script": "pem_gui.pyw",
+      "prefixo": "pem",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧳",
+      "nome": "Mala de Viagem",
+      "desc": "Checklist da mala por dias, clima, tipo de viagem e lavanderia, com peso estimado e limite da…",
+      "chave": "mala-viagem",
+      "script": "mal_gui.pyw",
+      "prefixo": "mal",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🍱",
+      "nome": "Marmitas da Semana",
+      "desc": "Cardápio de marmitas em rodízio, lista de compras em peso cru, custo por marmita e divisão…",
+      "chave": "marmitas-semana",
+      "script": "mmt_gui.pyw",
+      "prefixo": "mmt",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "👀",
+      "nome": "Monitor de Pasta",
+      "desc": "Observa criacao/alteracao/exclusao em tempo real, filtra por extensao e exporta log CSV/TXT",
+      "chave": "monitor-pasta",
+      "script": "fwt_gui.pyw",
+      "prefixo": "fwt",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "♠️",
+      "nome": "Placar de Jogos de Cartas",
+      "desc": "Placar por rodadas para buraco, canastra, uno, copas, pife e tranca, com meta, vencedor…",
+      "chave": "placar-cartas",
+      "script": "plc_gui.pyw",
+      "prefixo": "plc",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🃏",
+      "nome": "Placar de Truco",
+      "desc": "Placar de truco paulista com truco/seis/nove/doze, mão de onze e de ferro, quedas, desfazer e…",
+      "chave": "placar-truco",
+      "script": "tru_gui.pyw",
+      "prefixo": "tru",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "💍",
+      "nome": "Planejador de Casamento",
+      "desc": "Orçamento por categoria, presença estimada por perfil de convidado, bebidas, salgados, mesas…",
+      "chave": "planejador-casamento",
+      "script": "cas_gui.pyw",
+      "prefixo": "cas",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🔒",
+      "nome": "Quem Trava o Arquivo",
+      "desc": "Lista processos com o arquivo aberto (Restart Manager) e testa acesso exclusivo",
+      "chave": "quem-trava-arquivo",
+      "script": "lok_gui.pyw",
+      "prefixo": "lok",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🪴",
+      "nome": "Rega de Plantas",
+      "desc": "Agenda de rega por espécie, estação, ambiente, vaso e material, com volume de água, dicas e…",
+      "chave": "rega-plantas",
+      "script": "reg_gui.pyw",
+      "prefixo": "reg",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧩",
+      "nome": "Simulador Precessao Giroscopica",
+      "desc": "",
+      "chave": "simulador-precessao-giroscopica",
+      "script": "gyr_gui.pyw",
+      "prefixo": "gyr",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Tarefas da Casa e Mesada",
+      "desc": "Divide tarefas domésticas por pontos e idade, rodízio semanal, checklist do feito e mesada por…",
+      "chave": "tarefas-casa",
+      "script": "tcs_gui.pyw",
+      "prefixo": "tcs",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧮",
+      "nome": "Verificador de Hash",
+      "desc": "MD5/SHA1/SHA256/SHA512, compara arquivos, confere SHA256SUMS e gera listas de checksum",
+      "chave": "verificador-hash",
+      "script": "hsh_gui.pyw",
+      "prefixo": "hsh",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "☀️",
+      "nome": "Calculadora Fotovoltaica",
+      "desc": "Dimensiona sistema solar on-grid por cidade (HSP), inversor, strings e retorno financeiro",
+      "chave": "calculadora-fotovoltaica",
+      "script": "pvs_gui.pyw",
+      "prefixo": "pvs",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🔌",
+      "nome": "Calculadora Elétrica Residencial",
+      "desc": "Bitola do fio, disjuntor, queda de tensão e consumo (tabelas NBR 5410)",
+      "chave": "calculadora-eletrica-residencial",
+      "script": "ele_gui.pyw",
+      "prefixo": "ele",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Simulador de Renda Fixa",
+      "desc": "CDB, LCI/LCA, Tesouro e poupança com IR e IOF regressivos e equivalência isento",
+      "chave": "simulador-renda-fixa",
+      "script": "rfx_gui.pyw",
+      "prefixo": "rfx",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🖨️",
+      "nome": "Calculadora de Impressão 3D",
+      "desc": "Custo e preço da peça, metros↔gramas de filamento e calibração de e-steps/fluxo",
+      "chave": "calculadora-impressao-3d",
+      "script": "p3d_gui.pyw",
+      "prefixo": "p3d",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📸",
+      "nome": "Calculadora de Fotografia",
+      "desc": "Profundidade de campo, hiperfocal, exposição/ND, astrofoto, FOV e timelapse",
+      "chave": "calculadora-fotografia",
+      "script": "fot_gui.pyw",
+      "prefixo": "fot",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Visualizador de Ordenação",
+      "desc": "Anima Bubble, Quick, Merge, Heap e outros algoritmos com complexidade",
+      "chave": "visualizador-ordenacao",
+      "script": "srt_gui.pyw",
+      "prefixo": "srt",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🦠",
+      "nome": "Simulador de Epidemias",
+      "desc": "Modelos SIR/SEIR/SEIRD com vacinação, R0, pico e imunidade de rebanho",
+      "chave": "simulador-epidemias",
+      "script": "sir_gui.pyw",
+      "prefixo": "sir",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🗓️",
+      "nome": "Gerador de Escalas de Trabalho",
+      "desc": "Escalas 12x36, 24x48, 6x1 e personalizadas com feriados, horas e cobertura",
+      "chave": "gerador-escalas-trabalho",
+      "script": "esc_gui.pyw",
+      "prefixo": "esc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔋",
+      "nome": "Calculadora de Baterias",
+      "desc": "Autonomia (Peukert), montagem de pack, banco off-grid e tempo de recarga",
+      "chave": "calculadora-baterias",
+      "script": "bat_gui.pyw",
+      "prefixo": "bat",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🎼",
+      "nome": "Teoria Musical",
+      "desc": "Escalas, acordes, campo harmônico, intervalos e transposição de cifras",
+      "chave": "teoria-musical",
+      "script": "esm_gui.pyw",
+      "prefixo": "esm",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🐾",
+      "nome": "Dose de Ração & Pet",
+      "desc": "Quanto seu cão/gato deve comer por dia (RER/MER), água e idade humana",
+      "chave": "pet",
+      "script": "pet_gui.pyw",
+      "prefixo": "pet",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "💇",
+      "nome": "Cronograma Capilar & Oxidante",
+      "desc": "Agenda de hidratação/nutrição/reconstrução + volumes↔% e diluição de oxigenada",
+      "chave": "cabelo",
+      "script": "cab_gui.pyw",
+      "prefixo": "cab",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧳",
+      "nome": "Divisor de Despesas em Grupo",
+      "desc": "Racha conta: saldo de cada um e menor número de transferências pra acertar",
+      "chave": "rateio",
+      "script": "rct_gui.pyw",
+      "prefixo": "rct",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🌡️",
+      "nome": "Carta Psicrométrica",
+      "desc": "Propriedades do ar úmido, ponto de orvalho, entalpia e HVAC",
+      "chave": "carta-psicrometrica",
+      "script": "psi_gui.pyw",
+      "prefixo": "psi",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🤖",
+      "nome": "Cinemática Robótica",
+      "desc": "Cinemática direta e inversa 2D/3D, Jacobiano, singularidades e trajetórias",
+      "chave": "cinematica-robotica",
+      "script": "rob_gui.pyw",
+      "prefixo": "rob",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📒",
+      "nome": "Álbum de Figurinhas",
+      "desc": "Controle de cromos, trocas e estimativa de pacotes para completar o álbum",
+      "chave": "album-figurinhas",
+      "script": "alb_gui.pyw",
+      "prefixo": "alb",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🧭",
+      "nome": "Analisador de PATH",
+      "desc": "Audita PATH (processo/usuario/maquina): quebradas, duplicadas, vazias e gera versao limpa",
+      "chave": "analisador-path",
+      "script": "pth_gui.pyw",
+      "prefixo": "pth",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🔥",
+      "nome": "Duração do Botijão",
+      "desc": "Consumo por queimador, dias do P13/P45, previsão de troca e comparação com gás encanado",
+      "chave": "botijao-gas",
+      "script": "gas_gui.pyw",
+      "prefixo": "gas",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "✈️",
+      "nome": "Aerodinâmica, Sustentação & Arrasto",
+      "desc": "Mecânica de voo, modelo ISA, polar de arrasto, razão de planeio L/D, estol e potência requerida",
+      "chave": "calculadora-aerodinamica-arrasto-sustentacao",
+      "script": "aer_gui.pyw",
+      "prefixo": "aer",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔐",
+      "nome": "Calculadora chmod",
+      "desc": "Octal ↔ rwx, setuid/setgid/sticky, umask e notação relativa (u+x, g-w)",
+      "chave": "calculadora-chmod",
+      "script": "rwx_gui.pyw",
+      "prefixo": "rwx",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🏊",
+      "nome": "Calculadora de Piscina",
+      "desc": "Volume, dosagem de cloro, correção de pH/alcalinidade e tempo de filtragem",
+      "chave": "calculadora-piscina",
+      "script": "psc_gui.pyw",
+      "prefixo": "psc",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "☀️",
+      "nome": "Posição Solar & Algoritmo SPA",
+      "desc": "Algoritmo SPA, elevação, azimute, declinação, equação do tempo, massa de ar e irradiância…",
+      "chave": "calculadora-posicao-solar-astronomia",
+      "script": "spa_gui.pyw",
+      "prefixo": "spa",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🌊",
+      "nome": "Vazão em Placa de Orifício (ISO 5167)",
+      "desc": "Medição de vazão por pressão diferencial ISO 5167-2, Cd Reader-Harris, Reynolds e perda…",
+      "chave": "calculadora-vazao-placa-orificio",
+      "script": "orf_gui.pyw",
+      "prefixo": "orf",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🚕",
+      "nome": "Carro Próprio ou Aplicativo",
+      "desc": "Custo mensal real do carro vs app e transporte público, com ponto de equilíbrio",
+      "chave": "carro-ou-app",
+      "script": "uba_gui.pyw",
+      "prefixo": "uba",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🪱",
+      "nome": "Compostagem Caseira",
+      "desc": "Mistura C:N, volume da composteira, tempo e checklist de problemas",
+      "chave": "compostagem",
+      "script": "cmp_gui.pyw",
+      "prefixo": "cmp",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🔀",
+      "nome": "Conversor de Finais de Linha",
+      "desc": "Detecta e converte CRLF ↔ LF ↔ CR em texto, arquivo ou pasta em lote",
+      "chave": "conversor-finais-linha",
+      "script": "eol_gui.pyw",
+      "prefixo": "eol",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🥫",
+      "nome": "Despensa e Validades",
+      "desc": "Itens com validade, PEPS, o que consumir primeiro e lista de reposição",
+      "chave": "despensa-validade",
+      "script": "dsp_gui.pyw",
+      "prefixo": "dsp",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📡",
+      "nome": "Editor de Hosts por Linhas",
+      "desc": "Lista entradas do hosts, liga/desliga linhas, adiciona hosts e salva com UAC",
+      "chave": "editor-hosts-linhas",
+      "script": "hst_gui.pyw",
+      "prefixo": "hst",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Código de Hamming & ECC (SEC-DED)",
+      "desc": "Correção de erro Hamming(7,4) e SEC-DED(8,4), matriz geradora, paridade, síndrome e canal com…",
+      "chave": "estudio-codigo-hamming-ecc",
+      "script": "ham_gui.pyw",
+      "prefixo": "ham",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🫖",
+      "nome": "Fermentados Caseiros",
+      "desc": "Receitas e cronograma de kombucha, chucrute, kefir e iogurte",
+      "chave": "fermentados-caseiros",
+      "script": "kmb_gui.pyw",
+      "prefixo": "kmb",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎂",
+      "nome": "Conversor de Formas de Bolo",
+      "desc": "Converte área/volume entre formas e escala a receita e o tempo de forno",
+      "chave": "formas-bolo",
+      "script": "bol_gui.pyw",
+      "prefixo": "bol",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📄",
+      "nome": "Formatador YAML / TOML",
+      "desc": "Formata e valida YAML/TOML e converte entre YAML, TOML e JSON",
+      "chave": "formatador-yaml-toml",
+      "script": "yml_gui.pyw",
+      "prefixo": "yml",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧺",
+      "nome": "Guia de Lavanderia",
+      "desc": "Tira-manchas por tecido, dosagem de sabão e temperatura/centrifugação",
+      "chave": "guia-lavanderia",
+      "script": "lvd_gui.pyw",
+      "prefixo": "lvd",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🥕",
+      "nome": "Introdução Alimentar do Bebê",
+      "desc": "Idade, fase, cardápio semanal, registro de ofertas e alimentos a evitar",
+      "chave": "introducao-alimentar",
+      "script": "iab_gui.pyw",
+      "prefixo": "iab",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Limpa Temp",
+      "desc": "Varre pastas TEMP do Windows por idade/tamanho, mostra previa e apaga com relatorio",
+      "chave": "limpa-temp",
+      "script": "tmp_gui.pyw",
+      "prefixo": "tmp",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🗑️",
+      "nome": "Lixeira do Windows",
+      "desc": "Lista, restaura, exclui permanente, esvazia e envia arquivos para a lixeira",
+      "chave": "lixeira-windows",
+      "script": "rec_gui.pyw",
+      "prefixo": "rec",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📚",
+      "nome": "Meta de Leitura",
+      "desc": "Livros, meta anual, páginas por dia, ritmo e previsão de término",
+      "chave": "meta-leitura",
+      "script": "lei_gui.pyw",
+      "prefixo": "lei",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🎄",
+      "nome": "Orçamento de Natal",
+      "desc": "Presentes por pessoa, ceia, divisão do 13º e o que falta comprar",
+      "chave": "orcamento-natal",
+      "script": "ntl_gui.pyw",
+      "prefixo": "ntl",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "⚽",
+      "nome": "Organizador de Pelada",
+      "desc": "Times equilibrados, quem ganha fica, placar, artilharia e rateio da quadra",
+      "chave": "pelada-futebol",
+      "script": "pld_gui.pyw",
+      "prefixo": "pld",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🎯",
+      "nome": "Plano de Estudos para Concurso",
+      "desc": "Distribui horas por peso e domínio, grade semanal, revisões e contagem regressiva",
+      "chave": "plano-concurso",
+      "script": "ccs_gui.pyw",
+      "prefixo": "ccs",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🏢",
+      "nome": "Rateio de Condomínio",
+      "desc": "Rateio por fração ou igualitário, fundo de reserva, multa/juros e chamada de capital",
+      "chave": "rateio-condominio",
+      "script": "cnd_gui.pyw",
+      "prefixo": "cnd",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🏠",
+      "nome": "Reajuste de Aluguel",
+      "desc": "Reajuste por índice, proporcional, multa rescisória e caução",
+      "chave": "reajuste-aluguel",
+      "script": "alu_gui.pyw",
+      "prefixo": "alu",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🚸",
+      "nome": "Rodízio de Carona",
+      "desc": "Escala justa de motoristas, custo de combustível e saldo entre famílias",
+      "chave": "rodizio-carona",
+      "script": "crp_gui.pyw",
+      "prefixo": "crp",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧴",
+      "nome": "Rotina de Skincare",
+      "desc": "Monta rotina manhã/noite, conflitos de ativos, introdução gradual e duração do frasco",
+      "chave": "rotina-skincare",
+      "script": "skn_gui.pyw",
+      "prefixo": "skn",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧼",
+      "nome": "Sabonetes e Velas Artesanais",
+      "desc": "Receita a frio com NaOH, cera/essência/pavio para velas e custo por unidade",
+      "chave": "sabonetes-velas",
+      "script": "sab_gui.pyw",
+      "prefixo": "sab",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🏋️",
+      "nome": "Treino de Academia",
+      "desc": "1RM, tabela de cargas, progressão, anilhas por lado e volume semanal",
+      "chave": "treino-academia",
+      "script": "rmx_gui.pyw",
+      "prefixo": "rmx",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📋",
+      "nome": "Gerador de .gitignore",
+      "desc": "Templates offline (Python/Node/Windows…), merge, detecção de stack e exportação.",
+      "chave": "gerador-gitignore",
+      "script": "gig_gui.pyw",
+      "prefixo": "gig",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🐣",
+      "nome": "Chocolate e Ovos de Páscoa",
+      "desc": "Temperagem, rendimento de ovos, recheio e preço de venda",
+      "chave": "chocolate-pascoa",
+      "script": "pcs_gui.pyw",
+      "prefixo": "pcs",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🐷",
+      "nome": "Desafio da Poupança",
+      "desc": "Desafio 52 semanas, envelopes ou meta com data",
+      "chave": "desafio-poupanca",
+      "script": "cof_gui.pyw",
+      "prefixo": "cof",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🩸",
+      "nome": "Diário de Pressão e Glicemia",
+      "desc": "Registros de pressão e glicemia, médias e CSV para o médico",
+      "chave": "diario-pressao",
+      "script": "prs_gui.pyw",
+      "prefixo": "prs",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🍗",
+      "nome": "Tempo de Forno de Carnes",
+      "desc": "Tempo, temperatura e horário para assar carnes",
+      "chave": "forno-carnes",
+      "script": "asd_gui.pyw",
+      "prefixo": "asd",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "✍️",
+      "nome": "Jogo Stop (Adedonha)",
+      "desc": "Sorteio de letra, cronômetro e pontuação do Stop",
+      "chave": "jogo-stop",
+      "script": "stp_gui.pyw",
+      "prefixo": "stp",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🔧",
+      "nome": "Manutenção da Casa",
+      "desc": "Agenda de manutenções periódicas da casa com atrasadas",
+      "chave": "manutencao-casa",
+      "script": "mnt_gui.pyw",
+      "prefixo": "mnt",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧵",
+      "nome": "Metragem de Tecido",
+      "desc": "Calcula metros de tecido para cortina, toalha, almofada e lençol",
+      "chave": "metragem-costura",
+      "script": "cst_gui.pyw",
+      "prefixo": "cst",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📜",
+      "nome": "Papel de Parede e Revestimentos",
+      "desc": "Rolos de papel de parede e adesivo/placas por m²",
+      "chave": "papel-parede",
+      "script": "ppd_gui.pyw",
+      "prefixo": "ppd",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📺",
+      "nome": "Tamanho Ideal de TV",
+      "desc": "Diagonal ideal pela distância, resolução e altura de instalação",
+      "chave": "tamanho-tv",
+      "script": "tvd_gui.pyw",
+      "prefixo": "tvd",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🍷",
+      "nome": "Harmonização de Vinhos e Queijos",
+      "desc": "Sugere vinhos para queijos, quantidade e temperatura",
+      "chave": "vinhos-queijos",
+      "script": "vnh_gui.pyw",
+      "prefixo": "vnh",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔤",
+      "nome": "Conversor de Encoding",
+      "desc": "Detecta e converte UTF-8/Latin-1/CP1252/UTF-16 (BOM), corrige mojibake e lote em pasta",
+      "chave": "conversor-encoding",
+      "script": "enc_gui.pyw",
+      "prefixo": "enc",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "↔️",
+      "nome": "Conversor de Indentação",
+      "desc": "Detecta e converte tabs ↔ espaços em texto ou pasta de código",
+      "chave": "conversor-indentacao",
+      "script": "ind_gui.pyw",
+      "prefixo": "ind",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Gerador de .editorconfig",
+      "desc": "Presets por stack (Python/Node/Go…), merge, validação e exportação de .editorconfig",
+      "chave": "gerador-editorconfig",
+      "script": "edc_gui.pyw",
+      "prefixo": "edc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Normalizador de Nomes de Arquivo",
+      "desc": "Remove acentos, gera nomes ASCII seguros e renomeia em lote com prévia",
+      "chave": "normalizador-nomes",
+      "script": "nfn_gui.pyw",
+      "prefixo": "nfn",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Reologia de Fluidos Não Newtonianos",
+      "desc": "Modelos Ostwald-de Waele, Bingham e Casson, reogramas e escoamento em duto com núcleo rígido…",
+      "chave": "reologia-fluidos",
+      "script": "reo_gui.pyw",
+      "prefixo": "reo",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⚛️",
+      "nome": "Simulador de Tunelamento Quântico 1D",
+      "desc": "Equação de Schrödinger 1D, coeficientes de transmissão/reflexão e densidade de probabilidade",
+      "chave": "tunelamento-quantico",
+      "script": "tun_gui.pyw",
+      "prefixo": "tun",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "☀️",
+      "nome": "Aquecedor Solar de Água",
+      "desc": "Dimensiona boiler e coletores, estima economia frente ao chuveiro elétrico e payback",
+      "chave": "aquecedor-solar",
+      "script": "aqs_gui.pyw",
+      "prefixo": "aqs",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🍓",
+      "nome": "Calendário de Safra",
+      "desc": "Frutas, legumes e verduras da época no Brasil, o que está barato e lista de compras",
+      "chave": "calendario-safra",
+      "script": "sfr_gui.pyw",
+      "prefixo": "sfr",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🥗",
+      "nome": "Calorias da Receita",
+      "desc": "Tabela nutricional da receita a partir dos ingredientes, totais e por porção",
+      "chave": "calorias-receita",
+      "script": "kcr_gui.pyw",
+      "prefixo": "kcr",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧸",
+      "nome": "Casa Segura para o Bebê",
+      "desc": "Checklist de prevenção por cômodo e fase do bebê, progresso e prioridades",
+      "chave": "casa-segura-bebe",
+      "script": "sgb_gui.pyw",
+      "prefixo": "sgb",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🎁",
+      "nome": "Chá de Bebê, Panela e Casa Nova",
+      "desc": "Sugestão de presentes, fraldas, brincadeiras e comidas para chá de bebê, panela e casa nova",
+      "chave": "chas-presentes",
+      "script": "cha_gui.pyw",
+      "prefixo": "cha",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🌺",
+      "nome": "Cuidados com Orquídeas",
+      "desc": "Luz, rega, adubação e diagnóstico por gênero de orquídea, com registro das plantas",
+      "chave": "cuidados-orquideas",
+      "script": "orq_gui.pyw",
+      "prefixo": "orq",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🌽",
+      "nome": "Festa Junina",
+      "desc": "Quantidades de comidas típicas, receita de quentão, fichas das barracas e sorteio da quadrilha",
+      "chave": "festa-junina",
+      "script": "jun_gui.pyw",
+      "prefixo": "jun",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🛠️",
+      "nome": "Orçamento de Reforma",
+      "desc": "Itens por cômodo, reserva para imprevistos, comparação de orçamentos e cronograma de pagamento",
+      "chave": "orcamento-reforma",
+      "script": "rfm_gui.pyw",
+      "prefixo": "rfm",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🔲",
+      "nome": "Placar de Dominó",
+      "desc": "Placar de dominó com modos por pedras ou batidas, meta, histórico e contagem de pedras",
+      "chave": "placar-domino",
+      "script": "dmn_gui.pyw",
+      "prefixo": "dmn",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "❓",
+      "nome": "Quiz da Família",
+      "desc": "Perguntas por categoria, cronômetro, pontuação com bônus de velocidade e placar",
+      "chave": "quiz-familia",
+      "script": "qzf_gui.pyw",
+      "prefixo": "qzf",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🎉",
+      "nome": "Aniversários da Família",
+      "desc": "datas, idade que vai fazer, contagem regressiva, próximos 30 dias e signo",
+      "chave": "aniversarios-familia",
+      "script": "anv_gui.pyw",
+      "prefixo": "anv",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🥐",
+      "nome": "Cardápio de Café da Manhã",
+      "desc": "cardápio semanal por grupo, quantidades por pessoa e lista de compras",
+      "chave": "cafe-da-manha",
+      "script": "cfm_gui.pyw",
+      "prefixo": "cfm",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🛞",
+      "nome": "Calibragem e Rodízio de Pneus",
+      "desc": "pressão por carga/viagem, psi/bar/kPa, rodízio, TWI e DOT",
+      "chave": "calibragem-pneus",
+      "script": "pnu_gui.pyw",
+      "prefixo": "pnu",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📉",
+      "nome": "Juros do Cartão Rotativo",
+      "desc": "rotativo vs parcelamento vs mínimo, CET, IOF e tempo para quitar",
+      "chave": "cartao-rotativo",
+      "script": "rot_gui.pyw",
+      "prefixo": "rot",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "⏱️",
+      "nome": "Comparador de Timestamps",
+      "desc": "Compara mtime/atime/ctime, lista pasta por data, touch e copia mtime entre arquivos.",
+      "chave": "comparador-timestamps",
+      "script": "mtm_gui.pyw",
+      "prefixo": "mtm",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "💡",
+      "nome": "Rateio da Conta de Luz",
+      "desc": "divide a conta entre moradores por aparelhos e horas (kWh), parte fixa e bandeira",
+      "chave": "conta-luz-republica",
+      "script": "rlz_gui.pyw",
+      "prefixo": "rlz",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Contador de Linhas de Código",
+      "desc": "Conta código, comentários e vazios por linguagem (estilo cloc).",
+      "chave": "contador-linhas-codigo",
+      "script": "clc_gui.pyw",
+      "prefixo": "clc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🛣️",
+      "nome": "Conversor de Path",
+      "desc": "Windows ↔ POSIX ↔ WSL ↔ Git Bash ↔ file://.",
+      "chave": "conversor-path",
+      "script": "wup_gui.pyw",
+      "prefixo": "wup",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🏎️",
+      "nome": "Dinâmica Veicular & Pneu de Pacejka",
+      "desc": "Modelo de bicicleta, gradiente de subesterço, velocidade crítica/característica e Fórmula Mágica de Pacejka",
+      "chave": "dinamica-veicular-pacejka",
+      "script": "dnv_gui.pyw",
+      "prefixo": "dnv",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🙏",
+      "nome": "Dízimo e Doações",
+      "desc": "percentual sobre a renda, metas, histórico mensal e total para o IR",
+      "chave": "dizimo-doacoes",
+      "script": "dzm_gui.pyw",
+      "prefixo": "dzm",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🎈",
+      "nome": "Planejador de Festa Infantil",
+      "desc": "convidados, salgados, doces, bolo, lembrancinhas, cronograma e orçamento",
+      "chave": "festa-infantil",
+      "script": "fsi_gui.pyw",
+      "prefixo": "fsi",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📎",
+      "nome": "Gerador de .gitattributes",
+      "desc": "Presets de EOL, binários, linguagens, export-ignore e diff drivers.",
+      "chave": "gerador-gitattributes",
+      "script": "gat_gui.pyw",
+      "prefixo": "gat",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🛠️",
+      "nome": "Gerador de Makefile",
+      "desc": "Templates de Makefile para Python, Node, C, Go e Docker.",
+      "chave": "gerador-makefile",
+      "script": "mkf_gui.pyw",
+      "prefixo": "mkf",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🔗",
+      "nome": "Gerador de Slug",
+      "desc": "Texto→slug URL/filename, lote, unicidade e âncoras Markdown.",
+      "chave": "gerador-slug",
+      "script": "slg_gui.pyw",
+      "prefixo": "slg",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🌲",
+      "nome": "Gerador de Tree",
+      "desc": "Árvore ASCII/Markdown de diretórios pra colar no README.",
+      "chave": "gerador-tree",
+      "script": "trd_gui.pyw",
+      "prefixo": "trd",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📜",
+      "nome": "Inspetor de Shebang",
+      "desc": "Detecta #! em scripts, aponta CRLF quebrado, sugere interpretador e aplica shebang.",
+      "chave": "inspetor-shebang",
+      "script": "shb_gui.pyw",
+      "prefixo": "shb",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Simulador de Ciclos Termodinâmicos",
+      "desc": "Ciclos de Carnot, Otto, Diesel, Brayton e Rankine, diagramas P-v e T-s, rendimento e trabalho líquido",
+      "chave": "simulador-ciclos-termodinamicos",
+      "script": "ctm_gui.pyw",
+      "prefixo": "ctm",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🌙",
+      "nome": "Diário de Sono do Bebê",
+      "desc": "registra sonecas e noite, total vs recomendado por idade, janelas de vigília e próxima soneca",
+      "chave": "sono-bebe",
+      "script": "sbb_gui.pyw",
+      "prefixo": "sbb",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🛢️",
+      "nome": "Troca de Óleo do Carro",
+      "desc": "intervalo por km e tempo, litros, filtros e próxima troca",
+      "chave": "troca-oleo",
+      "script": "olo_gui.pyw",
+      "prefixo": "olo",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "💉",
+      "nome": "Carteira de Vacinas do Pet",
+      "desc": "cães e gatos, calendário de vacinas, vermífugo e antipulgas, próximas doses e atrasadas",
+      "chave": "vacinas-pet",
+      "script": "vcp_gui.pyw",
+      "prefixo": "vcp",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧾",
+      "nome": "Validador de .env",
+      "desc": "Valida .env, detecta duplicatas/segredos, diff com .env.example e exporta JSON.",
+      "chave": "validador-dotenv",
+      "script": "den_gui.pyw",
+      "prefixo": "den",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🛏️",
+      "nome": "Divisão de Aluguel por Quarto",
+      "desc": "divide aluguel e contas por área do quarto, banheiro privativo, vaga e áreas comuns, com pesos ajustáveis.",
+      "chave": "aluguel-quartos",
+      "script": "alq_gui.pyw",
+      "prefixo": "alq",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⏰",
+      "nome": "Banco de Horas",
+      "desc": "batidas de ponto por dia, jornada contratual, saldo diário e acumulado, horas extras 50%/100% e adicional noturno.",
+      "chave": "banco-horas",
+      "script": "bhr_gui.pyw",
+      "prefixo": "bhr",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🚶",
+      "nome": "Calorias da Atividade",
+      "desc": "gasto calórico por MET (caminhada, corrida, bike, natação etc.) pelo peso e tempo, passos para km e meta semanal.",
+      "chave": "calorias-atividade",
+      "script": "met_gui.pyw",
+      "prefixo": "met",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "💊",
+      "nome": "Cartela do Anticoncepcional",
+      "desc": "cartelas 21/24/28 dias e contínuo, pausa, dia de hoje na cartela, esquecimento (orientação geral informativa) e próxima cartela.",
+      "chave": "cartela-anticoncepcional",
+      "script": "acp_gui.pyw",
+      "prefixo": "acp",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧉",
+      "nome": "Chimarrão e Tererê",
+      "desc": "temperatura ideal da água, erva por cuia, rendimento da garrafa térmica, consumo mensal de erva e custo.",
+      "chave": "chimarrao-terere",
+      "script": "chi_gui.pyw",
+      "prefixo": "chi",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📝",
+      "nome": "Contador de Palavras",
+      "desc": "Conta chars, palavras, linhas, parágrafos e tempo de leitura.",
+      "chave": "contador-palavras",
+      "script": "wdc_gui.pyw",
+      "prefixo": "wdc",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "📄",
+      "nome": "Diff de Texto",
+      "desc": "Diff unified/context/ndiff entre dois textos com similaridade.",
+      "chave": "diff-texto",
+      "script": "tdf_gui.pyw",
+      "prefixo": "tdf",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "🏥",
+      "nome": "Escala de Plantão",
+      "desc": "gera escalas 12x36, 24x48, 6x1 e 5x2 por pessoa, calendário do mês, horas por pessoa e feriados trabalhados.",
+      "chave": "escala-plantao",
+      "script": "plt_gui.pyw",
+      "prefixo": "plt",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Formatador de Tamanho",
+      "desc": "Converte bytes ↔ KiB/MiB/GiB e unidades SI (KB/MB/GB).",
+      "chave": "formatador-tamanho",
+      "script": "hsz_gui.pyw",
+      "prefixo": "hsz",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Frete e Embalagem para Vender Online",
+      "desc": "peso cúbico vs real, caixa ideal, custo de embalagem, taxa do marketplace e preço mínimo com margem.",
+      "chave": "frete-vendas",
+      "script": "frv_gui.pyw",
+      "prefixo": "frv",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🐳",
+      "nome": "Gerador de .dockerignore",
+      "desc": "Templates offline de .dockerignore (Base/Python/Node/Dev/Tests).",
+      "chave": "gerador-dockerignore",
+      "script": "dik_gui.pyw",
+      "prefixo": "dik",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📜",
+      "nome": "Gerador de LICENSE",
+      "desc": "Gera LICENSE MIT/Apache/BSD/GPL/Unlicense com autor e ano.",
+      "chave": "gerador-license",
+      "script": "lic_gui.pyw",
+      "prefixo": "lic",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Gerador de requirements.txt",
+      "desc": "Varre imports Python, ignora stdlib e gera requirements.txt.",
+      "chave": "gerador-requirements",
+      "script": "req_gui.pyw",
+      "prefixo": "req",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧱",
+      "nome": "Drywall e Forro de Gesso",
+      "desc": "placas, montantes, guias, parafusos, fita e massa por m² de parede ou forro, com perdas.",
+      "chave": "gesso-drywall",
+      "script": "dry_gui.pyw",
+      "prefixo": "dry",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🚭",
+      "nome": "Parar de Fumar",
+      "desc": "dias sem fumar, cigarros evitados, dinheiro economizado, marcos de saúde por tempo e metas.",
+      "chave": "parar-fumar",
+      "script": "fum_gui.pyw",
+      "prefixo": "fum",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🕵️",
+      "nome": "Scanner de Segredos",
+      "desc": "Varre código por API keys, tokens, JWT e chaves privadas.",
+      "chave": "scanner-segredos",
+      "script": "sek_gui.pyw",
+      "prefixo": "sek",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "⚗️",
+      "nome": "Simulador de Reatores Químicos",
+      "desc": "Balanço molar de CSTR, PFR e Batelada, cinética de Arrhenius, gráfico de Levenspiel e perfis de concentração",
+      "chave": "simulador-reatores-quimicos",
+      "script": "rea_gui.pyw",
+      "prefixo": "rea",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🪪",
+      "nome": "Vencimento de Documentos",
+      "desc": "CNH, RG, passaporte, título, CRLV, seguros e garantias, dias para vencer, alertas 30/60/90 dias.",
+      "chave": "vencimento-documentos",
+      "script": "vdc_gui.pyw",
+      "prefixo": "vdc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📌",
+      "nome": "Analisador de TODO/FIXME",
+      "desc": "Varre código por TODO, FIXME, XXX, HACK, BUG, NOTE e OPTIMIZE.",
+      "chave": "analisador-todo",
+      "script": "tdo_gui.pyw",
+      "prefixo": "tdo",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🌊",
+      "nome": "Canais Abertos (Manning) & Ressalto Hidráulico",
+      "desc": "Escoamento em canais abertos pela Equação de Manning, Froude, energia específica e ressalto de Bélanger",
+      "chave": "calculadora-canais-abertos-manning",
+      "script": "can_gui.pyw",
+      "prefixo": "can",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🚧",
+      "nome": "Cerca e Alambrado",
+      "desc": "Perímetro, mourões pelo espaçamento, rolos de tela, fios de arame, cantos/esticadores e custo.",
+      "chave": "cerca-alambrado",
+      "script": "cer_gui.pyw",
+      "prefixo": "cer",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🎀",
+      "nome": "Chá Revelação",
+      "desc": "Convidados, palpites menino/menina com placar, bolão, comidas/lembrancinhas e checklist.",
+      "chave": "cha-revelacao",
+      "script": "rev_gui.pyw",
+      "prefixo": "rev",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🌧️",
+      "nome": "Cisterna de Água de Chuva",
+      "desc": "Captação pelo telhado e chuva média, volume ideal, economia de água e meses de autonomia.",
+      "chave": "cisterna-chuva",
+      "script": "cis_gui.pyw",
+      "prefixo": "cis",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔢",
+      "nome": "Comparador SemVer",
+      "desc": "Compara, faz bump e testa ranges SemVer (^ ~ >=).",
+      "chave": "comparador-semver",
+      "script": "smv_gui.pyw",
+      "prefixo": "smv",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🥚",
+      "nome": "Tempo de Cozimento",
+      "desc": "Ovos, arroz, feijão na pressão, grãos, massas e legumes, com proporção de água e timer.",
+      "chave": "cozimento-alimentos",
+      "script": "coz_gui.pyw",
+      "prefixo": "coz",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🎣",
+      "nome": "Diário de Pesca",
+      "desc": "Registra pescarias (local, espécie, peso, isca, lua, maré), recordes e melhor isca por espécie.",
+      "chave": "diario-pesca",
+      "script": "pes_gui.pyw",
+      "prefixo": "pes",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🤝",
+      "nome": "Empréstimos de Objetos",
+      "desc": "O que você emprestou ou pegou emprestado, com quem, data, prazo de devolução e atrasados.",
+      "chave": "emprestimos-objetos",
+      "script": "emp_gui.pyw",
+      "prefixo": "emp",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📰",
+      "nome": "Gerador de CHANGELOG",
+      "desc": "Keep a Changelog: novas versões semver e prévia/exportação do CHANGELOG.md.",
+      "chave": "gerador-changelog",
+      "script": "chg_gui.pyw",
+      "prefixo": "chg",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Gerador de .npmignore",
+      "desc": "Templates offline de .npmignore (Base/testes/docs/TypeScript), merge e exportação.",
+      "chave": "gerador-npmignore",
+      "script": "nmi_gui.pyw",
+      "prefixo": "nmi",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🪝",
+      "nome": "Gerador de pre-commit",
+      "desc": "Presets de .pre-commit-config.yaml (Basico/Python/JS/Seguranca).",
+      "chave": "gerador-pre-commit",
+      "script": "pcc_gui.pyw",
+      "prefixo": "pcc",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🌿",
+      "nome": "Grama em Placas e Sementes",
+      "desc": "m² de grama em placas ou sementes por espécie, terra, adubo e rega inicial.",
+      "chave": "grama-jardim",
+      "script": "grm_gui.pyw",
+      "prefixo": "grm",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎛️",
+      "nome": "Laboratório de Filtros Digitais (DSP)",
+      "desc": "Síntese de filtros IIR, resposta em frequência em dB, diagrama de polos/zeros no plano Z e estabilidade BIBO",
+      "chave": "laboratorio-filtros-digitais",
+      "script": "fdt_gui.pyw",
+      "prefixo": "fdt",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "👁️",
+      "nome": "Lentes de Contato",
+      "desc": "Troca diária/quinzenal/mensal por olho, dias de uso, próxima troca, estoque de caixas e custo mensal.",
+      "chave": "lentes-contato",
+      "script": "lct_gui.pyw",
+      "prefixo": "lct",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🪵",
+      "nome": "Piso Vinílico e Laminado",
+      "desc": "Réguas por cômodo com perda por paginação, caixas, manta, rodapé em barras e cantoneiras.",
+      "chave": "piso-vinilico",
+      "script": "vin_gui.pyw",
+      "prefixo": "vin",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Complexidade Ciclomatica",
+      "desc": "McCabe via AST em Python e heuristica por tokens; analisa buffer ou pasta.",
+      "chave": "complexidade-ciclomatica",
+      "script": "cyc_gui.pyw",
+      "prefixo": "cyc",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🏅",
+      "nome": "Gerador de Badges",
+      "desc": "Gera markdown de badges shields.io com presets e custom label/message/cor.",
+      "chave": "gerador-badges",
+      "script": "bdg_gui.pyw",
+      "prefixo": "bdg",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "✂️",
+      "nome": "Removedor de Comentarios",
+      "desc": "Remove comentarios Python/# // /* */ HTML preservando strings (heuristico).",
+      "chave": "removedor-comentarios",
+      "script": "scm_gui.pyw",
+      "prefixo": "scm",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "👯",
+      "nome": "Funcoes Duplicadas",
+      "desc": "Detecta funcoes Python com mesmo nome ou corpo AST identico.",
+      "chave": "analisador-funcoes-duplicadas",
+      "script": "dfn_gui.pyw",
+      "prefixo": "dfn",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Imports Nao Usados",
+      "desc": "Heuristica AST de imports/from Python nao referenciados no arquivo.",
+      "chave": "analisador-imports-nao-usados",
+      "script": "udi_gui.pyw",
+      "prefixo": "udi",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Analisador de package-lock",
+      "desc": "Conta pacotes/deps no package-lock.json e aponta nomes duplicados.",
+      "chave": "analisador-package-lock",
+      "script": "plk_gui.pyw",
+      "prefixo": "plk",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🧊",
+      "nome": "Analisador pip freeze",
+      "desc": "Compara requirements.txt com pip freeze: pins divergentes e pacotes so de um lado.",
+      "chave": "analisador-pip-freeze",
+      "script": "drf_gui.pyw",
+      "prefixo": "drf",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "📏",
+      "nome": "Tamanho de Funcoes",
+      "desc": "Ranking de defs Python por linhas (LOC) com filtro minimo.",
+      "chave": "analisador-tamanho-funcoes",
+      "script": "fsz_gui.pyw",
+      "prefixo": "fsz",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🕒",
+      "nome": "Arquivos Recentes",
+      "desc": "Lista arquivos modificados nas ultimas N horas por mtime.",
+      "chave": "arquivos-recentes",
+      "script": "mtr_gui.pyw",
+      "prefixo": "mtr",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🌲",
+      "nome": "Arvore de Diretorios",
+      "desc": "Tree ASCII com profundidade, ocultos e so pastas; ignora .git/node_modules.",
+      "chave": "arvore-diretorios",
+      "script": "trv_gui.pyw",
+      "prefixo": "trv",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🌬️",
+      "nome": "Energia Eólica, Aerogeradores & Limite de Betz",
+      "desc": "Curva de potência P(v) em 4 regiões, Limite de Betz (59.3%), TSR, coeficiente Cp e produção anual AEP de Weibull",
+      "chave": "calculadora-energia-eolica-aerogerador",
+      "script": "eoc_gui.pyw",
+      "prefixo": "eoc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📡",
+      "nome": "Guias de Onda Retangulares & Micro-ondas",
+      "desc": "Frequências de corte TE/TM, modo dominante TE10, dispersão, impedância de onda e mapa de campo",
+      "chave": "calculadora-guia-ondas-retangular",
+      "script": "gdo_gui.pyw",
+      "prefixo": "gdo",
+      "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "☢️",
+      "nome": "Cinética de Decaimento Nuclear e Bateman",
+      "desc": "Equações de Bateman, equilíbrio secular e transitório, atividade em Bq/Ci e curvas de decaimento",
+      "chave": "cinetica-decaimento-nuclear-bateman",
+      "script": "dcn_gui.pyw",
+      "prefixo": "dcn",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⬜",
+      "nome": "Compactador de Whitespace",
+      "desc": "Tabs→espacos, trim a direita e colapso de linhas em branco.",
+      "chave": "compactador-whitespace",
+      "script": "wsp_gui.pyw",
+      "prefixo": "wsp",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📏",
+      "nome": "Caminhos Longos",
+      "desc": "Detecta paths longos (alerta antes do MAX_PATH).",
+      "chave": "detector-caminhos-longos",
+      "script": "lng_gui.pyw",
+      "prefixo": "lng",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔠",
+      "nome": "Encoding Misto",
+      "desc": "Detecta UTF-8 BOM, Latin-1 e binario em textos do projeto.",
+      "chave": "detector-encoding-misto",
+      "script": "encm_gui.pyw",
+      "prefixo": "encm",
+      "categoria": "✍️ Texto & Estudo"
+    },
+    {
+      "emoji": "↵",
+      "nome": "Newline final",
+      "desc": "Detecta textos sem newline no final e corrige em lote.",
+      "chave": "detector-newline-final",
+      "script": "nln_gui.pyw",
+      "prefixo": "nln",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🔗",
+      "nome": "Symlinks Quebrados",
+      "desc": "Varre pasta e lista symlinks cujo alvo nao existe.",
+      "chave": "detector-symlinks-quebrados",
+      "script": "syb_gui.pyw",
+      "prefixo": "syb",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Simulador de Engrenagens Planetárias e Epicicloidais",
+      "desc": "Cinemática de Willis, coaxialidade, alavanca de Kutzbach e divisor híbrido Prius",
+      "chave": "engrenagens-planetarias-epicicloidais",
+      "script": "epi_gui.pyw",
+      "prefixo": "epi",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔤",
+      "nome": "Extrator de Strings Binario",
+      "desc": "Extrai strings ASCII e UTF-16LE de arquivos binarios com offset.",
+      "chave": "extrator-strings-binario",
+      "script": "xtr_gui.pyw",
+      "prefixo": "xtr",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🛡️",
+      "nome": "Gerador de .bandit",
+      "desc": "Presets Bandit YAML (Basico, Strict, Django-ish).",
+      "chave": "gerador-bandit-yaml",
+      "script": "bdt_gui.pyw",
+      "prefixo": "bdt",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⬛",
+      "nome": "Gerador Black",
+      "desc": "Snippets [tool.black] para pyproject.toml.",
+      "chave": "gerador-black",
+      "script": "blk_gui.pyw",
+      "prefixo": "blk",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🥟",
+      "nome": "Gerador bunfig.toml",
+      "desc": "Presets Bun bunfig.toml.",
+      "chave": "gerador-bunfig",
+      "script": "bun_gui.pyw",
+      "prefixo": "bun",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📦",
+      "nome": "Gerador Cargo.toml",
+      "desc": "Presets Cargo.toml Rust (bin, lib, clap).",
+      "chave": "gerador-cargo-toml",
+      "script": "cgo_gui.pyw",
+      "prefixo": "cgo",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🛠️",
+      "nome": "Gerador de .clang-format",
+      "desc": "Presets clang-format (LLVM, Google, Mozilla, WebKit, Custom).",
+      "chave": "gerador-clang-format",
+      "script": "clf_gui.pyw",
+      "prefixo": "clf",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Gerador .clang-tidy",
+      "desc": "Presets .clang-tidy (Basico, Modernize, Performance).",
+      "chave": "gerador-clang-tidy",
+      "script": "cty_gui.pyw",
+      "prefixo": "cty",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧱",
+      "nome": "Gerador CMakeLists",
+      "desc": "Presets CMakeLists.txt (exe C++, lib+exe, C+tests).",
+      "chave": "gerador-cmakelists",
+      "script": "cmk_gui.pyw",
+      "prefixo": "cmk",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "👥",
+      "nome": "Gerador CODEOWNERS",
+      "desc": "Templates GitHub CODEOWNERS (basico, monorepo, security).",
+      "chave": "gerador-codeowners",
+      "script": "own_gui.pyw",
+      "prefixo": "own",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "✍️",
+      "nome": "Gerador Commitizen",
+      "desc": "Presets .cz.toml / tool.commitizen conventional commits.",
+      "chave": "gerador-commitizen",
+      "script": "czc_gui.pyw",
+      "prefixo": "czc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📊",
+      "nome": "Gerador de .coveragerc",
+      "desc": "Presets coverage.py (Basico, Strict 90, XML CI).",
+      "chave": "gerador-coveragerc",
+      "script": "cov_gui.pyw",
+      "prefixo": "cov",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🚫",
+      "nome": "Gerador de .eslintignore",
+      "desc": "Templates offline de .eslintignore (Base, Next/Nuxt, testes, configs).",
+      "chave": "gerador-eslintignore",
+      "script": "esi_gui.pyw",
+      "prefixo": "esi",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "❄️",
+      "nome": "Gerador de .flake8",
+      "desc": "Presets flake8 (Basico, Strict, Django).",
+      "chave": "gerador-flake8",
+      "script": "flk_gui.pyw",
+      "prefixo": "flk",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Gerador de GitHub Actions",
+      "desc": "Templates YAML offline de workflows (Python CI, Node, Release, Lint).",
+      "chave": "gerador-github-actions",
+      "script": "gha_gui.pyw",
+      "prefixo": "gha",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📚",
+      "nome": "Gerador de .isort.cfg",
+      "desc": "Presets isort (Black, src, Google).",
+      "chave": "gerador-isort-cfg",
+      "script": "iso_gui.pyw",
+      "prefixo": "iso",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📖",
+      "nome": "Gerador de man page",
+      "desc": "Gera pagina man em troff (.TH/.SH/.TP) com synopsis e opcoes.",
+      "chave": "gerador-manpage",
+      "script": "man_gui.pyw",
+      "prefixo": "man",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "⚙️",
+      "nome": "Gerador meson.build",
+      "desc": "Presets Meson (C, C++, lib+exe).",
+      "chave": "gerador-meson",
+      "script": "msn_gui.pyw",
+      "prefixo": "msn",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔬",
+      "nome": "Gerador de mypy.ini",
+      "desc": "Presets mypy.ini (Basico, Strict, Django-ish).",
+      "chave": "gerador-mypy-ini",
+      "script": "myp_gui.pyw",
+      "prefixo": "myp",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📟",
+      "nome": "Gerador de .npmrc",
+      "desc": "Presets de .npmrc (registry, save-exact, verdaccio, proxy corporativo).",
+      "chave": "gerador-npmrc",
+      "script": "nrc_gui.pyw",
+      "prefixo": "nrc",
+      "categoria": "🌐 Rede & Segurança"
+    },
+    {
+      "emoji": "🟢",
+      "nome": "Gerador de .nvmrc",
+      "desc": "Gera .nvmrc ou .node-version com versao Node (LTS/numeros).",
+      "chave": "gerador-nvmrc",
+      "script": "nvm_gui.pyw",
+      "prefixo": "nvm",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📜",
+      "nome": "Gerador Poetry",
+      "desc": "Presets pyproject.toml Poetry (app, lib+extras, CLI) com nome do projeto.",
+      "chave": "gerador-poetry-pyproject",
+      "script": "poe_gui.pyw",
+      "prefixo": "poe",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "✨",
+      "nome": "Gerador de .prettierrc",
+      "desc": "Presets Prettier offline em JSON/YAML (Padrao, Airbnb-ish, Compacto, Strict).",
+      "chave": "gerador-prettierrc",
+      "script": "ptt_gui.pyw",
+      "prefixo": "ptt",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🐍",
+      "nome": "Gerador de .pylintrc",
+      "desc": "Presets pylint (Basico, Strict, Django).",
+      "chave": "gerador-pylint",
+      "script": "pyl_gui.pyw",
+      "prefixo": "pyl",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Gerador de pytest.ini",
+      "desc": "Presets pytest.ini (Basico, coverage, markers).",
+      "chave": "gerador-pytest-ini",
+      "script": "pti_gui.pyw",
+      "prefixo": "pti",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🐦",
+      "nome": "Gerador de ruff.toml",
+      "desc": "Presets Ruff lint/format (Basico, Strict, Minimal).",
+      "chave": "gerador-ruff-toml",
+      "script": "ruf_gui.pyw",
+      "prefixo": "ruf",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧰",
+      "nome": "Gerador de setup.cfg",
+      "desc": "Gera setup.cfg setuptools com metadata, pytest e flake8 opcionais.",
+      "chave": "gerador-setup-cfg",
+      "script": "scf_gui.pyw",
+      "prefixo": "scf",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🏷️",
+      "nome": "Gerador setuptools_scm",
+      "desc": "Snippets de versao dinamica via git (setuptools_scm).",
+      "chave": "gerador-setuptools-scm",
+      "script": "ssc_gui.pyw",
+      "prefixo": "ssc",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🔄",
+      "nome": "Gerador .stignore",
+      "desc": "Templates Syncthing .stignore (Basico, Dev, Media).",
+      "chave": "gerador-syncthingignore",
+      "script": "stg_gui.pyw",
+      "prefixo": "stg",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧪",
+      "nome": "Gerador de tox.ini",
+      "desc": "Presets tox.ini (multi-py, pytest+ruff, docs mkdocs).",
+      "chave": "gerador-tox-ini",
+      "script": "tox_gui.pyw",
+      "prefixo": "tox",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧶",
+      "nome": "Gerador .yarnrc.yml",
+      "desc": "Presets Yarn Berry (.yarnrc.yml).",
+      "chave": "gerador-yarnrc",
+      "script": "yrn_gui.pyw",
+      "prefixo": "yrn",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📤",
+      "nome": "Inspetor de Exports DLL",
+      "desc": "Le a Export Directory PE32/PE32+ de DLL/EXE e lista ordinal/RVA/nome.",
+      "chave": "inspetor-dll-exports",
+      "script": "dex_gui.pyw",
+      "prefixo": "dex",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🐧",
+      "nome": "Inspetor ELF",
+      "desc": "Le cabecalho ELF32/ELF64 (tipo, machine, entry, PH/SH).",
+      "chave": "inspetor-elf",
+      "script": "elf_gui.pyw",
+      "prefixo": "elf",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🗜️",
+      "nome": "Inspetor ZIP",
+      "desc": "Lista entradas do ZIP com tamanhos, metodo e taxa de compressao.",
+      "chave": "inspetor-zip-central",
+      "script": "zcd_gui.pyw",
+      "prefixo": "zcd",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🧹",
+      "nome": "Limpeza de __pycache__",
+      "desc": "Varre e apaga __pycache__, *.pyc e caches pytest/mypy/ruff.",
+      "chave": "limpeza-pycache",
+      "script": "pyc_gui.pyw",
+      "prefixo": "pyc",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🔗",
+      "nome": "Listador de Hardlinks",
+      "desc": "Agrupa arquivos com mesmo inode (st_nlink>1) numa pasta.",
+      "chave": "listador-hardlinks",
+      "script": "hlk_gui.pyw",
+      "prefixo": "hlk",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🕳️",
+      "nome": "Localizador de Arquivos Vazios",
+      "desc": "Lista arquivos 0 bytes e pastas vazias; apaga arquivos vazios sob confirmacao.",
+      "chave": "localizador-arquivos-vazios",
+      "script": "efn_gui.pyw",
+      "prefixo": "efn",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "📐",
+      "nome": "Simulador de Mecanismo de Quatro Barras",
+      "desc": "Criterio de Grashof, equacao de Freudenstein, angulo de transmissao e curva do acoplador",
+      "chave": "simulador-mecanismo-quatro-barras",
+      "script": "mqb_gui.pyw",
+      "prefixo": "mqb",
+      "categoria": "🖼️ Imagem & Design"
+    },
+    {
+      "emoji": "🐘",
+      "nome": "Top Arquivos Grandes",
+      "desc": "Ranking dos N maiores arquivos da pasta.",
+      "chave": "top-arquivos-grandes",
+      "script": "big_gui.pyw",
+      "prefixo": "big",
+      "categoria": "🗂️ Arquivos & Sistema"
+    },
+    {
+      "emoji": "🧾",
+      "nome": "Validador TOML",
+      "desc": "Valida TOML via tomllib, resume chaves e exporta JSON.",
+      "chave": "validador-toml",
+      "script": "tml_gui.pyw",
+      "prefixo": "tml",
+      "categoria": "🎮 Jogos & Diversão"
+    },
+    {
+      "emoji": "🔄",
+      "nome": "Imports Circulares",
+      "desc": "Detecta ciclos no grafo de imports Python de um projeto.",
+      "chave": "analisador-imports-circulares",
+      "script": "icl_gui.pyw",
+      "prefixo": "icl",
+      "categoria": "🔬 Ciência & Engenharia"
+    },
+    {
+      "emoji": "🍎",
+      "nome": "Inspetor Mach-O",
+      "desc": "Le magic/header Mach-O 32/64 e FAT.",
+      "chave": "inspetor-macho",
+      "script": "mac_gui.pyw",
+      "prefixo": "mac",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    }
+  ],
+  "prefixos": [
+    "acl",
+    "acp",
+    "acu",
+    "ads",
+    "aer",
+    "agr",
+    "alb",
+    "alg",
+    "alq",
+    "alu",
+    "amf",
+    "analisador_texto",
+    "anv",
+    "apo",
+    "aqs",
+    "aqu",
+    "area_transferencia",
+    "as",
+    "asd",
+    "ast",
+    "aud",
+    "b64",
+    "bar",
+    "bat",
+    "bdg",
+    "bdt",
+    "bhr",
+    "big",
+    "bik",
+    "blk",
+    "blm",
+    "bmk",
+    "bnd",
+    "bnf",
+    "bng",
+    "bol",
+    "brg",
+    "brw",
+    "bsc",
+    "bse",
+    "btu",
+    "bun",
+    "busca_arquivos",
+    "bys",
+    "bzr",
+    "cab",
+    "cabecalhos_seguranca",
+    "caderno_python",
+    "calculadora_cientifica",
+    "calculadora_clt",
+    "calendario_br",
+    "can",
+    "canivete",
+    "capturador_cores",
+    "car",
+    "cas",
+    "cbv",
+    "ccp",
+    "ccs",
+    "cer",
+    "certificado_ssl",
+    "cfe",
+    "cfm",
+    "cfr",
+    "cg",
+    "cgo",
+    "cha",
+    "chg",
+    "chi",
+    "chm",
+    "chu",
+    "chz",
+    "cic",
+    "cis",
+    "clc",
+    "clf",
+    "cliente_api",
+    "cll",
+    "cm",
+    "cmb",
+    "cmk",
+    "cmp",
+    "cnc",
+    "cnd",
+    "cof",
+    "cofre_senhas",
+    "compactador",
+    "comparar_pastas",
+    "contatos",
+    "conversor_av",
+    "conversor_imagens",
+    "conversor_unidades",
+    "cov",
+    "coz",
+    "cpt",
+    "crc",
+    "crd",
+    "cripto_arquivos",
+    "crn",
+    "crp",
+    "crx",
+    "cst",
+    "ctk",
+    "ctm",
+    "cty",
+    "cub",
+    "curriculo_pdf",
+    "cyc",
+    "czc",
+    "dc",
+    "dck",
+    "dcn",
+    "dd",
+    "den",
+    "dex",
+    "dfn",
+    "dfx",
+    "dik",
+    "dk",
+    "dlt",
+    "dmn",
+    "dna",
+    "dnv",
+    "drf",
+    "dry",
+    "dsp",
+    "dts",
+    "dzm",
+    "ecc",
+    "edc",
+    "editor_imagem",
+    "efn",
+    "ele",
+    "elf",
+    "elt",
+    "emp",
+    "enc",
+    "encm",
+    "enx",
+    "eoc",
+    "eol",
+    "epc",
+    "epi",
+    "esc",
+    "esi",
+    "esm",
+    "etiquetas",
+    "eul",
+    "ext",
+    "extrator_texto",
+    "fa",
+    "faxina",
+    "fdt",
+    "fei",
+    "ferramentas_br",
+    "ferramentas_dev",
+    "ferramentas_rede",
+    "fft",
+    "financas",
+    "fla",
+    "flashcards",
+    "flk",
+    "fot",
+    "frv",
+    "fsc",
+    "fsi",
+    "fst",
+    "fsz",
+    "fum",
+    "fwl",
+    "fwt",
+    "galeria_fotos",
+    "gas",
+    "gat",
+    "gd",
+    "gdo",
+    "geo",
+    "gg",
+    "gha",
+    "gif",
+    "gig",
+    "gip",
+    "gps_falso",
+    "gpx",
+    "gravador_tela",
+    "gravador_voz",
+    "grf",
+    "grm",
+    "grs",
+    "gry",
+    "gs",
+    "gsl",
+    "gst",
+    "gyr",
+    "ham",
+    "hb",
+    "hdl",
+    "hdp",
+    "hdr",
+    "hlk",
+    "hmn",
+    "hsh",
+    "hst",
+    "hsz",
+    "huf",
+    "hxd",
+    "iab",
+    "icl",
+    "ico",
+    "ind",
+    "info_pc",
+    "inicializacao",
+    "ipm",
+    "iso",
+    "janelas",
+    "jmr",
+    "jsc",
+    "jun",
+    "jwt",
+    "kb",
+    "kcr",
+    "kit_hacker",
+    "kit_pdf",
+    "kmb",
+    "knp",
+    "knt",
+    "kwh",
+    "lan",
+    "lct",
+    "lei",
+    "leitor_ebooks",
+    "lg",
+    "lga",
+    "lgc",
+    "lhn",
+    "lic",
+    "limpar_metadados",
+    "lng",
+    "lok",
+    "lor",
+    "lsc",
+    "lux",
+    "lvd",
+    "mac",
+    "mag",
+    "mal",
+    "man",
+    "mcr",
+    "mdc",
+    "mdx",
+    "med",
+    "met",
+    "metronomo",
+    "mhr",
+    "mid",
+    "mkf",
+    "mkt",
+    "mkv",
+    "mlp",
+    "mm",
+    "mmt",
+    "mnt",
+    "monitor_sistema",
+    "mot",
+    "mqb",
+    "mrs",
+    "msn",
+    "mtc",
+    "mtm",
+    "mtr",
+    "mtx",
+    "myp",
+    "nav",
+    "nbd",
+    "nc",
+    "nca",
+    "nfe",
+    "nfn",
+    "nln",
+    "nmi",
+    "notas",
+    "nrc",
+    "ntl",
+    "ntr",
+    "nvm",
+    "obr",
+    "ofx",
+    "olo",
+    "opt",
+    "orcamentos",
+    "orf",
+    "organizador",
+    "orq",
+    "own",
+    "p3d",
+    "pac",
+    "pal",
+    "paletas_cores",
+    "pao",
+    "pcc",
+    "pcp",
+    "pcs",
+    "pdl",
+    "pem",
+    "pes",
+    "pet",
+    "phn",
+    "pid",
+    "pix_boleto",
+    "player_musica",
+    "plc",
+    "pld",
+    "plk",
+    "plt",
+    "pm",
+    "pnu",
+    "poe",
+    "ppd",
+    "prc",
+    "print_anotador",
+    "prm",
+    "prs",
+    "prt",
+    "prx",
+    "psc",
+    "psi",
+    "pth",
+    "pti",
+    "ptt",
+    "pvs",
+    "pyc",
+    "pyl",
+    "pzz",
+    "qb",
+    "qc",
+    "qrcode_tool",
+    "qth",
+    "qtn",
+    "quiz_geografia",
+    "qzf",
+    "rastreador_tempo",
+    "rc",
+    "rct",
+    "rea",
+    "rec",
+    "recupera",
+    "reg",
+    "relogio_mundial",
+    "renomeador",
+    "reo",
+    "req",
+    "res",
+    "rev",
+    "rfc",
+    "rfm",
+    "rfx",
+    "rgx",
+    "rlc",
+    "rle",
+    "rls",
+    "rlz",
+    "rmx",
+    "rob",
+    "rot",
+    "rpg",
+    "rss",
+    "ruf",
+    "rwx",
+    "sab",
+    "saude",
+    "sb",
+    "sbb",
+    "scf",
+    "sch",
+    "scm",
+    "scn",
+    "sek",
+    "seo",
+    "seq",
+    "sfr",
+    "sgb",
+    "shb",
+    "sir",
+    "skn",
+    "slg",
+    "smv",
+    "snip",
+    "snl",
+    "sno",
+    "som",
+    "sorteios",
+    "spa",
+    "spl",
+    "sqf",
+    "srt",
+    "ssc",
+    "ssk",
+    "stg",
+    "stm",
+    "stp",
+    "stt",
+    "sudoku",
+    "svc",
+    "svg",
+    "syb",
+    "sym",
+    "syn",
+    "tam",
+    "tarefas",
+    "tcs",
+    "tdf",
+    "tdo",
+    "tempo",
+    "texto_fala",
+    "tg",
+    "th",
+    "thm",
+    "tip",
+    "tml",
+    "tmp",
+    "tok",
+    "tox",
+    "trc",
+    "trd",
+    "tre",
+    "treino_digitacao",
+    "trf",
+    "trs",
+    "tru",
+    "trv",
+    "tun",
+    "tvd",
+    "uba",
+    "udi",
+    "uid",
+    "uni",
+    "variaveis_ambiente",
+    "vcp",
+    "vdc",
+    "vdw",
+    "vin",
+    "visualizador_fontes",
+    "visualizador_planilhas",
+    "visualizador_sqlite",
+    "vnh",
+    "volume_apps",
+    "wcg",
+    "wci",
+    "wdc",
+    "webcam_foto",
+    "wfi",
+    "wsp",
+    "wup",
+    "xtr",
+    "yml",
+    "yrn",
+    "zcd",
+    "zpf"
+  ]
+}

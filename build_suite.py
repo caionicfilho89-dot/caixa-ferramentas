@@ -422,7 +422,9 @@ TOOLS = {
     "gerador-badges": "bdg_gui.pyw",
     "removedor-comentarios": "scm_gui.pyw",
     "analisador-funcoes-duplicadas": "dfn_gui.pyw",
+    "analisador-imports-circulares": "icl_gui.pyw",
     "analisador-imports-nao-usados": "udi_gui.pyw",
+
     "analisador-package-lock": "plk_gui.pyw",
     "analisador-pip-freeze": "drf_gui.pyw",
     "analisador-tamanho-funcoes": "fsz_gui.pyw",
@@ -469,6 +471,7 @@ TOOLS = {
     "gerador-yarnrc": "yrn_gui.pyw",
     "inspetor-dll-exports": "dex_gui.pyw",
     "inspetor-elf": "elf_gui.pyw",
+    "inspetor-macho": "mac_gui.pyw",
     "inspetor-zip-central": "zcd_gui.pyw",
     "limpeza-pycache": "pyc_gui.pyw",
     "listador-hardlinks": "hlk_gui.pyw",
