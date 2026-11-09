@@ -361,6 +361,12 @@ BUILTIN = [
     ("📜", "Papel de Parede e Revestimentos", "Rolos de papel de parede e adesivo/placas por m²", "papel-parede", "ppd_gui.pyw"),
     ("📺", "Tamanho Ideal de TV", "Diagonal ideal pela distância, resolução e altura de instalação", "tamanho-tv", "tvd_gui.pyw"),
     ("🍷", "Harmonização de Vinhos e Queijos", "Sugere vinhos para queijos, quantidade e temperatura", "vinhos-queijos", "vnh_gui.pyw"),
+    ("🔤", "Conversor de Encoding", "Detecta e converte UTF-8/Latin-1/CP1252/UTF-16 (BOM), corrige mojibake e lote em pasta", "conversor-encoding", "enc_gui.pyw"),
+    ("↔️", "Conversor de Indentação", "Detecta e converte tabs ↔ espaços em texto ou pasta de código", "conversor-indentacao", "ind_gui.pyw"),
+    ("⚙️", "Gerador de .editorconfig", "Presets por stack (Python/Node/Go…), merge, validação e exportação de .editorconfig", "gerador-editorconfig", "edc_gui.pyw"),
+    ("🧹", "Normalizador de Nomes de Arquivo", "Remove acentos, gera nomes ASCII seguros e renomeia em lote com prévia", "normalizador-nomes", "nfn_gui.pyw"),
+    ("🧪", "Reologia de Fluidos Não Newtonianos", "Modelos Ostwald-de Waele, Bingham e Casson, reogramas e escoamento em duto com núcleo rígido…", "reologia-fluidos", "reo_gui.pyw"),
+    ("⚛️", "Simulador de Tunelamento Quântico 1D", "Equação de Schrödinger 1D, coeficientes de transmissão/reflexão e densidade de probabilidade", "tunelamento-quantico", "tun_gui.pyw"),
 ]
 
 QSS = """

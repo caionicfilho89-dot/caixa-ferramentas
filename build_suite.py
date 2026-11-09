@@ -347,6 +347,12 @@ TOOLS = {
     "papel-parede": "ppd_gui.pyw",
     "tamanho-tv": "tvd_gui.pyw",
     "vinhos-queijos": "vnh_gui.pyw",
+    "conversor-encoding": "enc_gui.pyw",
+    "conversor-indentacao": "ind_gui.pyw",
+    "gerador-editorconfig": "edc_gui.pyw",
+    "normalizador-nomes": "nfn_gui.pyw",
+    "reologia-fluidos": "reo_gui.pyw",
+    "tunelamento-quantico": "tun_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
