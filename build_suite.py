@@ -336,6 +336,17 @@ TOOLS = {
     "rotina-skincare": "skn_gui.pyw",
     "sabonetes-velas": "sab_gui.pyw",
     "treino-academia": "rmx_gui.pyw",
+    "gerador-gitignore": "gig_gui.pyw",
+    "chocolate-pascoa": "pcs_gui.pyw",
+    "desafio-poupanca": "cof_gui.pyw",
+    "diario-pressao": "prs_gui.pyw",
+    "forno-carnes": "asd_gui.pyw",
+    "jogo-stop": "stp_gui.pyw",
+    "manutencao-casa": "mnt_gui.pyw",
+    "metragem-costura": "cst_gui.pyw",
+    "papel-parede": "ppd_gui.pyw",
+    "tamanho-tv": "tvd_gui.pyw",
+    "vinhos-queijos": "vnh_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
