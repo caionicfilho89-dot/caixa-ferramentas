@@ -6555,5 +6555,216 @@
    "Lembre: resultado educativo — a precisão depende da medição de gordura."
   ],
   "exemplo": "80 kg, 180 cm, 15% gordura → massa magra 68 kg, FFMI ≈ 21,0, normalizado ≈ 21,0 (altura = referência), classificação atlético (homem)."
+ },
+ "adaptacao-jet-lag": {
+  "sinopse": "Monta um plano para sofrer menos com o fuso horário: diz a diferença de horas, como ir mudando o horário de dormir antes da viagem e em quantos dias o corpo se acerta.",
+  "para_que": "Pra quem vai viajar para outro país com fuso diferente (Europa, EUA, Ásia).",
+  "como_usar": [
+   "Ajuste Fuso de onde sai (Brasília = UTC -3) e Fuso do destino.",
+   "Escolha a Data de chegada.",
+   "Coloque que horas Costuma dormir e Costuma acordar.",
+   "Escolha os Dias de preparação antes e clique em Montar plano."
+  ],
+  "exemplo": "De Brasília (UTC -3) para Paris (UTC +1), dormindo às 23h: diferença de 4 h para leste. Com 2 dias de preparo (dormir 22h e 21h), o corpo acerta em ~2 dias."
+ },
+ "analisador-volume-treino-semanal": {
+  "sinopse": "Calcula o volume semanal de treino hipertrófico ponderado pelo esforço (RIR - repetições na reserva) e compara com os limiares científicos de adaptação muscular (MV, MEV, MAV, MRV).",
+  "para_que": "Para praticantes de musculação e atletas que querem saber se estão treinando de menos (sem ganho muscular) ou de mais (junk volume e overreaching).",
+  "como_usar": [
+   "Selecione o 'Grupamento Muscular' e o 'Nivel de Experiencia'",
+   "Ajuste 'Series por Sessao' e 'Frequencia Semanal' realizadas no músculo",
+   "Defina o 'RIR Medio' (repetições que sobraram antes da falha muscular)",
+   "Marque ou desmarque 'Sono de qualidade (>= 7-8h) e boa nutricao'",
+   "Analise o cursor no gráfico espectral de zonas (MV -> MEV -> MAV -> MRV)",
+   "Confira a 'Diretriz de Otimizacao do Treino' para saber se deve aumentar ou diminuir séries"
+  ],
+  "exemplo": "Atleta intermediário fazendo peitoral 2x na semana com 8 séries por treino em RIR 1.5 totaliza 16 séries efetivas, caindo na zona 'MAV Ótimo' de hipertrofia máxima com recuperação de ~2.8 dias."
+ },
+ "calculadora-densidade-estudo-pomodoro": {
+  "sinopse": "Mede a densidade líquida e produtividade real de sessões de estudo, separando o tempo de foco profundo do tempo perdido em distrações e pausas, com estimativa de fadiga mental e retenção de memória em 24h.",
+  "para_que": "Para estudantes e concurseiros que passam muitas horas sentados mas sentem que renderam pouco devido a distrações no celular e dispersão mental.",
+  "como_usar": [
+   "Selecione a 'Duracao do Bloco de Foco (minutos)' (ex: 25 min, 50 min ou 90 min)",
+   "Escolha a 'Duracao das Pausas (minutos)' entre os blocos",
+   "Defina a 'Quantidade de Ciclos Realizados' na sessão",
+   "Insira o 'Tempo Total Perdido com Distracoes (min)' (notificações, redes sociais, devaneio)",
+   "Selecione a 'Complexidade Cognitiva da Materia'",
+   "Observe no gráfico empilhado as fatias de foco líquido, dispersão e pausas, junto com o índice de retenção"
+  ],
+  "exemplo": "Estudante realizando 3 ciclos de 50 min com 25 min de dispersão total atinge 83.3% de densidade líquida (125 min de estudo real para 170 min totais de cadeira), mantendo boa retenção de memória (78.5%)."
+ },
+ "calculadora-ir-simplificado": {
+  "sinopse": "Estima o Imposto de Renda retido no holerite com a tabela progressiva mensal.",
+  "para_que": "Para conferir se o desconto de IR no salario esta na ordem de grandeza certa.",
+  "como_usar": [
+   "Informe o rendimento tributavel do mes (salario/brutos tributaveis).",
+   "Indique quantos dependentes legais voce tem para deducao.",
+   "Preencha o INSS ja descontado na folha.",
+   "Clique em Calcular IR mensal e leia base, IR, aliquota efetiva e liquido."
+  ],
+  "exemplo": "R$ 5.000 tributaveis, INSS R$ 550, 0 dependentes → IR ~R$ 338 e liquido ~R$ 4.112."
+ },
+ "carga-horaria-creditos": {
+  "sinopse": "Calcula a carga horária acadêmica do semestre a partir de uma lista de disciplinas, convertendo créditos em horas (ou o inverso) com regra configurável e avisando se a grade ultrapassa o limite de créditos da instituição.",
+  "para_que": "Para estudantes universitários que montam grade a cada semestre e precisam saber quantos créditos somam, quantas horas por semana representam e se estouram o teto (comum: 24 créditos).",
+  "como_usar": [
+   "Ajuste \"Semanas\", \"h/crédito\" (padrão 15 h totais por crédito no semestre) e \"Limite créditos\" conforme seu regulamento",
+   "Adicione cada disciplina com nome e créditos OU horas/semana (deixe 0 no campo que não souber)",
+   "Use \"Remover selecionada\" para tirar linhas da tabela",
+   "Clique em \"Calcular grade\" para ver totais, tabela por disciplina e alerta de limite",
+   "Edite direto na tabela se preferir colar várias disciplinas de uma vez"
+  ],
+  "exemplo": "Quatro disciplinas de 4 créditos em 15 semanas (15 h/cr): 16 créditos, 16 h/semana, 240 h no semestre — abaixo do limite de 24 créditos."
+ },
+ "cargas-power-bank": {
+  "sinopse": "Calcula quantas vezes um power bank recarrega o seu celular de verdade (descontando as perdas) e diz se ele pode ir no avião.",
+  "para_que": "Pra quem vai comprar um power bank ou viajar e quer saber se ele dá conta.",
+  "como_usar": [
+   "Digite a Capacidade do power bank (mAh da caixa).",
+   "Digite a Bateria do celular em mAh (ficha técnica do modelo).",
+   "Ajuste a Carga do celular quando liga e quantos Aparelhos carregando.",
+   "Clique em Calcular cargas para ver as recargas, o tempo pra recarregar e a regra do avião."
+  ],
+  "exemplo": "Power bank de 10.000 mAh e celular de 4.000 mAh do zero: 37 Wh, 24 Wh úteis = cerca de 1,56 recarga. Liberado na bagagem de mão."
+ },
+ "cartao-ou-especie-viagem": {
+  "sinopse": "Mostra qual forma de pagar sai mais barata numa viagem ao exterior: cartão de crédito, dinheiro em espécie ou conta global, já com spread e IOF.",
+  "para_que": "Pra quem vai viajar pra fora e quer decidir como levar o dinheiro.",
+  "como_usar": [
+   "Escolha a Moeda e digite Quanto vai gastar (na moeda).",
+   "Coloque a Cotação comercial do dia.",
+   "Em cada quadro ajuste Spread e IOF; em Espécie, a Cotação da casa, quanto Vai sobrar e a Perda ao revender.",
+   "Clique em Comparar e veja o ranking do mais barato pro mais caro."
+  ],
+  "exemplo": "Gastar US$ 1.000 com dólar a R$ 5,00: cartão (spread 4%, IOF 3,5%) = R$ 5.382,00; conta global (spread 1%) = R$ 5.226,75."
+ },
+ "checklist-entrevista-emprego": {
+  "sinopse": "Calcula a prontidao para entrevista com checklist ponderado: % feito, itens criticos faltando e minutos restantes de preparacao.",
+  "para_que": "Para quem tem entrevista marcada e quer saber o que ainda falta preparar com prioridade.",
+  "como_usar": [
+   "Marque os checkboxes do que ja fez (curriculo, pesquisa da empresa, perguntas, rota, roupa, documentos).",
+   "Ajuste peso e minutos por item se quiser mudar a importancia ou o tempo estimado.",
+   "Clique em Atualizar prontidao para ver a % e o status.",
+   "Use Marcar tudo / Desmarcar tudo para simular cenarios.",
+   "Leia a lista de criticos faltando e o tempo restante de preparacao."
+  ],
+  "exemplo": "Com 4 de 6 itens feitos (incluindo todos os criticos) a prontidao sobe bem; se faltar um critico, ele aparece em destaque mesmo com % alta."
+ },
+ "comparador-hospedagens": {
+  "sinopse": "Compara até 3 hospedagens pelo custo total da estadia, somando diárias, taxa de limpeza, taxa de serviço do site, café da manhã e transporte.",
+  "para_que": "Pra quem está escolhendo onde ficar numa viagem e quer saber qual sai mais barato de verdade.",
+  "como_usar": [
+   "Preencha Noites e Pessoas.",
+   "Em cada Opção, digite Nome, Diária, Taxa de limpeza e Taxa de serviço.",
+   "Desmarque Café incluso se não tiver café e coloque o Café/pessoa/dia; ponha o Transporte/dia até os passeios.",
+   "Clique em Comparar hospedagens e veja o ranking com total e valor por pessoa/noite."
+  ],
+  "exemplo": "4 noites, 2 pessoas: hotel de R$ 320 = R$ 1.280; Airbnb de R$ 220 + limpeza 150 + taxa 14% + café + Uber = R$ 1.514,20. O hotel sai mais barato."
+ },
+ "comparador-salario-beneficios": {
+  "sinopse": "Coloca duas ofertas lado a lado e mostra quanto você ganha de verdade somando salário e benefícios em reais.",
+  "para_que": "Decidir entre vagas com salários parecidos mas pacotes de benefícios diferentes.",
+  "como_usar": [
+   "Preencha Proposta A e B com nome da empresa ou vaga.",
+   "Informe salário bruto mensal e valores mensais de VR, VT, plano de saúde e outros (gym, seguro, etc.).",
+   "No plano de saúde use o mesmo critério nas duas (ex.: coparticipação média ou mensalidade que a empresa paga).",
+   "Clique em Comparar propostas.",
+   "Leia pacote mensal total, diferença A−B e o equivalente bruto se os benefícios fossem cash na folha."
+  ],
+  "exemplo": "A: R$ 8.000 + R$ 1.800 em benefícios = pacote R$ 9.800. B: R$ 9.200 sem VR/VT = pacote R$ 9.200. A ganha R$ 600/mês no pacote total."
+ },
+ "controle-medicacao-horarios": {
+  "sinopse": "Monta a lista de horarios HH:MM de cada remedio ao longo dos dias do tratamento e avisa se duas doses coincidem.",
+  "para_que": "Para organizar antibiotico, anti-inflamatorio ou uso cronico com varios horarios no mesmo dia, sem esquecer a proxima dose.",
+  "como_usar": [
+   "Preencha nome, dose, intervalo em horas, horario da primeira dose (considerando hoje) e quantos dias dura o tratamento.",
+   "Clique em Adicionar a lista para cada medicamento do plano.",
+   "Use Atualizar cronograma para ver os horarios por dia na area de texto.",
+   "Leia o destaque Proxima dose e os alertas de sobreposicao quando dois remedios caem no mesmo intervalo (±30 min).",
+   "Remova itens da lista se precisar remontar o esquema."
+  ],
+  "exemplo": "Amoxicilina 8/8 h com 1a dose as 08:00 por 7 dias → 08:00, 16:00 e 00:00 nos dias necessarios; se outro remedio comeca as 08:15, aparece alerta de sobreposicao."
+ },
+ "custo-consulta-especialista": {
+  "sinopse": "Particular x plano por evento e por mes, com ponto de equilibrio em consultas/mes.",
+  "para_que": "Decidir se vale usar o convenio num especialista caro ou pagar particular.",
+  "como_usar": [
+   "Informe preco particular e coparticipacao do plano.",
+   "Marque se retornos sao inclusos e quantos retornos ha no tratamento.",
+   "Some exames pagos por fora e a mensalidade que voce quer atribuir a esse uso.",
+   "Ajuste consultas/mes e clique em Calcular."
+  ],
+  "exemplo": "Particular R$ 450, copart R$ 80, 1 retorno incluso: plano economiza R$ 370 no evento; com mensalidade R$ 380 atribuida, break-even em 1,15 consultas/mes."
+ },
+ "imposto-compra-internacional": {
+  "sinopse": "Calcula quanto vai custar de verdade uma compra em site de fora (Shein, AliExpress, Shopee, Amazon EUA), somando Imposto de Importação e ICMS.",
+  "para_que": "Pra quem compra em loja internacional e quer saber o valor final antes de fechar o pedido.",
+  "como_usar": [
+   "Digite o Preço do produto, o Frete e o Seguro em dólar.",
+   "Ajuste a Cotação do dólar do dia.",
+   "Coloque o ICMS do seu estado (17% ou 20% na maioria).",
+   "Deixe marcado 'Loja participa do Remessa Conforme' se a loja for do programa.",
+   "Clique em Calcular imposto e veja o TOTAL A PAGAR em reais."
+  ],
+  "exemplo": "Produto de US$ 40, sem frete, dólar a R$ 5,00, ICMS 17%: II US$ 8 + ICMS US$ 9,83 = total R$ 289,15 (44,6% a mais)."
+ },
+ "indice-qualidade-sono-psqi": {
+  "sinopse": "Estima um escore global de qualidade do sono (0–21) com sete componentes no estilo do Pittsburgh Sleep Quality Index, só para aprendizado e reflexão pessoal.",
+  "para_que": "Para quem quer enxergar de forma estruturada latência, duração, eficiência, despertares, remédios e sonolência diurna — sem substituir médico ou polissonografia.",
+  "como_usar": [
+   "Informe latência, horas dormidas e quantos despertares teve por noite",
+   "Marque as escalas 0–3 de qualidade subjetiva, uso de remédio e sonolência diurna",
+   "Use eficiência (%) direta ou preencha horários de deitar e acordar para calcular",
+   "Clique em Calcular índice e leia escore, classificação (boa/moderada/ruim) e dicas",
+   "Leia o aviso educativo no rodapé — não é diagnóstico"
+  ],
+  "exemplo": "7 h dormidas, latência 20 min, eficiência 88%, 1 despertar, escalas 0/0/1 → escore baixo e classificação boa; dicas focam nos componentes com nota mais alta."
+ },
+ "prazos-direito-consumidor": {
+  "sinopse": "Calcula as datas-limite do Código de Defesa do Consumidor: 7 dias de arrependimento, 30/90 dias para defeito, garantia do fabricante e os 30 dias que a loja tem para consertar.",
+  "para_que": "Pra quem comprou algo (principalmente pela internet) e quer saber se ainda dá tempo de devolver ou reclamar.",
+  "como_usar": [
+   "Escolha a Data em que recebeu e confira a Data de hoje.",
+   "Escolha Onde comprou e o Tipo de produto.",
+   "Se o defeito apareceu depois, marque Defeito oculto e escolha quando apareceu.",
+   "Coloque a Garantia do fabricante e, se já levou, marque Já levei para conserto com a data.",
+   "Clique em Ver prazos."
+  ],
+  "exemplo": "Recebeu um fone comprado online em 02/11/2026: pode desistir até 09/11/2026 e reclamar de defeito até 31/01/2027."
+ },
+ "roi-curso-certificacao": {
+  "sinopse": "Simula se vale a pena pagar um preparatório ou certificação técnica pelo aumento salarial esperado.",
+  "para_que": "Profissionais de TI, gestão e áreas técnicas que avaliam investir em certificação com impacto na remuneração.",
+  "como_usar": [
+   "Escolha um cenário base (AWS, PMP, etc.) ou preencha manualmente.",
+   "Informe custo do curso/exame, horas de estudo e (opcional) quanto vale sua hora.",
+   "Defina o aumento mensal esperado, quantos meses até ele aparecer e por quanto tempo dura.",
+   "Clique em Calcular ROI e payback."
+  ],
+  "exemplo": "Curso R$ 1.200 + 80 h a R$ 45/h = R$ 4.800 investidos; aumento de R$ 1.500/mês após 3 meses por 24 meses → payback ~6,2 meses e ROI positivo no horizonte."
+ },
+ "simulador-banco-horas-compensacao": {
+  "sinopse": "Calcula o saldo de compensação de banco de horas CLT, monitora a contagem de meses até a expiração legal (acordo individual ou coletivo) e simula o valor a ser pago em dinheiro com reflexos em DSR, férias e 13º.",
+  "para_que": "Para trabalhadores e profissionais de RH acompanharem se as horas acumuladas estão perto de vencer e qual o montante financeiro devido caso vença o prazo ou ocorra rescisão.",
+  "como_usar": [
+   "Informe o 'Salario Base Mensal (R$)' e selecione o 'Divisor Mensal da Jornada' (ex: 220h)",
+   "Escolha o 'Tipo de Acordo de Compensacao' (Individual - 6 meses ou Coletivo - 12 meses)",
+   "Ajuste 'Meses Decorridos desde o Inicio' da apuração do banco",
+   "Insira o 'Saldo Anterior Acumulado (+/- horas)' e as novas horas extras (50% e 100%)",
+   "Informe as 'Horas Compensadas / Folgadas no Periodo'",
+   "Observe no gráfico de linha do tempo o avanço até o prazo final e a tabela de liquidação financeira"
+  ],
+  "exemplo": "Trabalhador com salário de R$ 3.500,00 e jornada de 220h acumula 12 horas positivas no banco individual; no 4º mês restam 2 meses para compensar ou a empresa deverá pagar R$ 432,67 incluindo adicionais e reflexo de DSR."
+ },
+ "simulador-dissidio": {
+  "sinopse": "Simula reajuste salarial por dissídio/convenção, estima retroativo e o pacote com benefícios fixos.",
+  "para_que": "Para quem quer antecipar o impacto do acordo coletivo no holerite antes do RH fechar os números.",
+  "como_usar": [
+   "Informe Salário atual e Percentual de reajuste.",
+   "Escolha o Mês da data-base e Meses até o retroativo (0 se não houver).",
+   "Preencha Benefícios fixos / mês e, se quiser, marque Aplicar o mesmo % de reajuste nos benefícios fixos.",
+   "Clique em Simular dissídio e veja novo salário, aumento, retroativo e pacote total."
+  ],
+  "exemplo": "Salário R$ 4.000 + 6,5% + 4 meses de retroativo + R$ 800 de benefícios reajustados → novo R$ 4.260, retroativo R$ 1.040, pacote ~R$ 5.112."
  }
 }

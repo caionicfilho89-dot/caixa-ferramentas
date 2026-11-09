@@ -745,6 +745,23 @@ BUILTIN = [
     ("🏙️", "Comparador Salário × Cidade", "Ajusta salários pelo índice de custo de vida entre duas cidades e compara poder de compra.", "comparador-salario-cidade", "scd_gui.pyw"),
     ("💪", "Índice de Massa Muscular (FFMI)", "Calcula FFMI e FFMI normalizado a partir de peso, altura e % de gordura, com classificação aproximada.", "indice-massa-muscular", "imm_gui.pyw"),
     ("📈", "Simulador de Dissídio & Convenção", "Reajuste salarial, retroativo desde a data-base e total com benefícios", "simulador-dissidio", "dsi_gui.pyw"),
+    ("✈️", "Adaptação ao Jet Lag", "Diferença de fuso, preparação do sono antes de viajar e dias para o corpo se ajustar", "adaptacao-jet-lag", "jtl_gui.pyw"),
+    ("🏋️", "Analisador de Volume de Treino Semanal (Hipertrofia)", "Calcula séries semanais efetivas e faixas adaptativas (MV, MEV, MAV, MRV de Mike Israetel / RP) com detector de junk volume", "analisador-volume-treino-semanal", "vth_gui.pyw"),
+    ("🧠", "Calculadora de Densidade de Estudo & Foco Cognitivo", "Calcula a taxa de aproveitamento líquido em sessões de estudo (Pomodoro/Ultradiano), índice de dispersão e fadiga mental de Sweller", "calculadora-densidade-estudo-pomodoro", "epm_gui.pyw"),
+    ("🧾", "Calculadora IR Simplificado", "IRPF mensal: base, aliquota efetiva, IR devido e liquido (tabela progressiva 2024/2025).", "calculadora-ir-simplificado", "irs_gui.pyw"),
+    ("📚", "Carga Horária & Créditos", "Soma créditos e horas da grade semestral, equivalência crédito→hora configurável e alerta de limite", "carga-horaria-creditos", "chh_gui.pyw"),
+    ("🔋", "Cargas do Power Bank", "Quantas recargas reais o power bank dá no celular e se pode levar no avião", "cargas-power-bank", "pwb_gui.pyw"),
+    ("💱", "Cartão ou Espécie na Viagem", "Compara cartão de crédito, dinheiro vivo e conta global com spread, IOF e sobra", "cartao-ou-especie-viagem", "cxv_gui.pyw"),
+    ("🎤", "Checklist de Preparacao para Entrevista", "Checklist ponderado: marque tarefas (curriculo, pesquisa, perguntas, rota, roupa, documentos), ajuste pesos e veja % de prontidao, criticos faltando e tempo restante", "checklist-entrevista-emprego", "cie_gui.pyw"),
+    ("🏨", "Comparador de Hospedagens", "Hotel x pousada x Airbnb com limpeza, taxa do site, café e transporte por pessoa/noite", "comparador-hospedagens", "hsp_gui.pyw"),
+    ("💼", "Comparador Salário × Benefícios", "Compara duas propostas de emprego: bruto, VR, VT, plano de saúde e outros — pacote mensal, diferença e equivalente em bruto.", "comparador-salario-beneficios", "csb_gui.pyw"),
+    ("💊", "Agenda de Medicacao por Horarios", "Cronograma de doses por intervalo em horas; proxima dose a partir de agora; alerta de sobreposicao entre remedios no mesmo horario (±30 min)", "controle-medicacao-horarios", "mdh_gui.pyw"),
+    ("🏥", "Custo Consulta Especialista", "Compara consulta particular vs plano: coparticipacao, retornos, exames e break-even.", "custo-consulta-especialista", "ces_gui.pyw"),
+    ("🌐", "Imposto de Compra Internacional", "Remessa Conforme: Imposto de Importação 20%/60% + ICMS por dentro e total em reais", "imposto-compra-internacional", "imx_gui.pyw"),
+    ("😴", "Índice de Qualidade do Sono (PSQI simplificado)", "Questionário educativo inspirado no PSQI: escore 0–21, classificação e dicas de higiene do sono", "indice-qualidade-sono-psqi", "psq_gui.pyw"),
+    ("🛡️", "Prazos do Consumidor", "Até quando desistir da compra, reclamar de defeito, usar a garantia e cobrar o conserto (CDC)", "prazos-direito-consumidor", "cdc_gui.pyw"),
+    ("🎓", "ROI de Curso & Certificação Profissional", "Payback e ROI de bootcamps e certificações (AWS, PMP, Cisco) com custo de oportunidade das horas de estudo.", "roi-curso-certificacao", "roi_gui.pyw"),
+    ("⏰", "Simulador de Banco de Horas & Compensação (CLT)", "Controle de saldo do banco de horas CLT (art. 59), prazos legais de prescrição (6 meses ou 1 ano) e liquidação com adicional e DSR", "simulador-banco-horas-compensacao", "bhc_gui.pyw"),
 ]
 
 QSS = """

@@ -663,6 +663,23 @@ TOOLS = {
     "comparador-salario-cidade": "scd_gui.pyw",
     "indice-massa-muscular": "imm_gui.pyw",
     "simulador-dissidio": "dsi_gui.pyw",
+    "adaptacao-jet-lag": "jtl_gui.pyw",
+    "analisador-volume-treino-semanal": "vth_gui.pyw",
+    "calculadora-densidade-estudo-pomodoro": "epm_gui.pyw",
+    "calculadora-ir-simplificado": "irs_gui.pyw",
+    "carga-horaria-creditos": "chh_gui.pyw",
+    "cargas-power-bank": "pwb_gui.pyw",
+    "cartao-ou-especie-viagem": "cxv_gui.pyw",
+    "checklist-entrevista-emprego": "cie_gui.pyw",
+    "comparador-hospedagens": "hsp_gui.pyw",
+    "comparador-salario-beneficios": "csb_gui.pyw",
+    "controle-medicacao-horarios": "mdh_gui.pyw",
+    "custo-consulta-especialista": "ces_gui.pyw",
+    "imposto-compra-internacional": "imx_gui.pyw",
+    "indice-qualidade-sono-psqi": "psq_gui.pyw",
+    "prazos-direito-consumidor": "cdc_gui.pyw",
+    "roi-curso-certificacao": "roi_gui.pyw",
+    "simulador-banco-horas-compensacao": "bhc_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
