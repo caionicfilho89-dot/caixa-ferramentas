@@ -304,6 +304,19 @@ BUILTIN = [
     ("🧩", "Simulador Precessao Giroscopica", "", "simulador-precessao-giroscopica", "gyr_gui.pyw"),
     ("🧹", "Tarefas da Casa e Mesada", "Divide tarefas domésticas por pontos e idade, rodízio semanal, checklist do feito e mesada por…", "tarefas-casa", "tcs_gui.pyw"),
     ("🧮", "Verificador de Hash", "MD5/SHA1/SHA256/SHA512, compara arquivos, confere SHA256SUMS e gera listas de checksum", "verificador-hash", "hsh_gui.pyw"),
+    ("☀️", "Calculadora Fotovoltaica", "Dimensiona sistema solar on-grid por cidade (HSP), inversor, strings e retorno financeiro", "calculadora-fotovoltaica", "pvs_gui.pyw"),
+    ("🔌", "Calculadora Elétrica Residencial", "Bitola do fio, disjuntor, queda de tensão e consumo (tabelas NBR 5410)", "calculadora-eletrica-residencial", "ele_gui.pyw"),
+    ("📈", "Simulador de Renda Fixa", "CDB, LCI/LCA, Tesouro e poupança com IR e IOF regressivos e equivalência isento", "simulador-renda-fixa", "rfx_gui.pyw"),
+    ("🖨️", "Calculadora de Impressão 3D", "Custo e preço da peça, metros↔gramas de filamento e calibração de e-steps/fluxo", "calculadora-impressao-3d", "p3d_gui.pyw"),
+    ("📸", "Calculadora de Fotografia", "Profundidade de campo, hiperfocal, exposição/ND, astrofoto, FOV e timelapse", "calculadora-fotografia", "fot_gui.pyw"),
+    ("📊", "Visualizador de Ordenação", "Anima Bubble, Quick, Merge, Heap e outros algoritmos com complexidade", "visualizador-ordenacao", "srt_gui.pyw"),
+    ("🦠", "Simulador de Epidemias", "Modelos SIR/SEIR/SEIRD com vacinação, R0, pico e imunidade de rebanho", "simulador-epidemias", "sir_gui.pyw"),
+    ("🗓️", "Gerador de Escalas de Trabalho", "Escalas 12x36, 24x48, 6x1 e personalizadas com feriados, horas e cobertura", "gerador-escalas-trabalho", "esc_gui.pyw"),
+    ("🔋", "Calculadora de Baterias", "Autonomia (Peukert), montagem de pack, banco off-grid e tempo de recarga", "calculadora-baterias", "bat_gui.pyw"),
+    ("🎼", "Teoria Musical", "Escalas, acordes, campo harmônico, intervalos e transposição de cifras", "teoria-musical", "esm_gui.pyw"),
+    ("🐾", "Dose de Ração & Pet", "Quanto seu cão/gato deve comer por dia (RER/MER), água e idade humana", "pet", "pet_gui.pyw"),
+    ("💇", "Cronograma Capilar & Oxidante", "Agenda de hidratação/nutrição/reconstrução + volumes↔% e diluição de oxigenada", "cabelo", "cab_gui.pyw"),
+    ("🧳", "Divisor de Despesas em Grupo", "Racha conta: saldo de cada um e menor número de transferências pra acertar", "rateio", "rct_gui.pyw"),
 ]
 
 QSS = """
