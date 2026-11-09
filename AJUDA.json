@@ -5803,5 +5803,530 @@
    "“Calcular”"
   ],
   "exemplo": "5 L por R$ 15: R$ 0,15 por lavagem contra R$ 0,60 do comercial."
+ },
+ "academia-vs-equipamentos": {
+  "sinopse": "Compara pagar academia por alguns meses com comprar aparelhos pra treinar em casa.",
+  "para_que": "Pra decidir entre matrícula e montar uma academia em casa.",
+  "como_usar": [
+   "Informe a mensalidade, a Taxa/matrícula e os Meses no horizonte",
+   "Informe o Custo dos equipamentos e a Manutenção/mês",
+   "“Comparar” e veja qual sai mais barato"
+  ],
+  "exemplo": "Academia de R$ 120 × 24 meses contra R$ 1.800 de equipamentos: em casa compensa."
+ },
+ "analisador-desempenho-simulados": {
+  "sinopse": "Calcula a nota líquida de simulados e provas de concurso (estilo Cebraspe, onde erro anula acerto, ou múltipla escolha), o aproveitamento, o risco de chutar e o ritmo por questão comparado à nota de corte.",
+  "para_que": "Para concurseiros e vestibulandos avaliarem o desempenho.",
+  "como_usar": [
+   "Escolha o tipo de prova e informe o Total de Questões e o Tempo Total Gasto",
+   "Informe Questões Certas e Erradas (as em branco são calculadas)",
+   "Informe a Nota de Corte Estimada",
+   "Leia a PONTUAÇÃO LÍQUIDA, o APROVEITAMENTO e o impacto dos erros"
+  ],
+  "exemplo": "Cebraspe 120 itens, 80 certas e 25 erradas: 55 pontos líquidos."
+ },
+ "cafe-casa-vs-cafeteria": {
+  "sinopse": "Compara o gasto mensal com café feito em casa (pacote, leite, filtro) com tomar café na cafeteria.",
+  "para_que": "Pra ver quanto o cafezinho fora pesa no mês.",
+  "como_usar": [
+   "Informe o Preço da cafeteria e quantas xícaras por dia",
+   "Informe Preço do pacote, Xícaras/pacote, Leite/xícara e Filtros/mês",
+   "“Comparar”"
+  ],
+  "exemplo": "2 cafés/dia na cafeteria a R$ 8: R$ 480/mês contra ~R$ 60 em casa."
+ },
+ "calculadora-caucao": {
+  "sinopse": "Calcula o valor da caução (depósito) do aluguel e quanto esse dinheiro renderia se estivesse investido durante o contrato (custo de oportunidade).",
+  "para_que": "Pra quem vai alugar e precisa escolher entre caução, fiador ou seguro-fiança.",
+  "como_usar": [
+   "Informe o aluguel e os Meses de caução",
+   "Informe a Duração do contrato e o Rendimento estimado",
+   "“Calcular”"
+  ],
+  "exemplo": "Caução de 3 × R$ 2.000 = R$ 6.000, que renderia ~R$ 1.800 em 30 meses."
+ },
+ "calculadora-roi-educacao-pos": {
+  "sinopse": "Calcula se uma pós-graduação/faculdade compensa financeiramente: custo total, tempo pra recuperar o investimento com o aumento de salário (payback), retorno em 5 anos e VPL.",
+  "para_que": "Pra quem está decidindo se faz um curso pago.",
+  "como_usar": [
+   "Informe Valor da Mensalidade, Duração do Curso e Custos Extras",
+   "Informe Salário Líquido Atual e o esperado após formado",
+   "Informe a Taxa de Desconto/Oportunidade",
+   "Leia o TEMPO PARA RECUPERAR e o ROI em 5 anos"
+  ],
+  "exemplo": "MBA de R$ 900 × 18 meses com +R$ 1.500 de salário: se paga em ~1 ano após formado."
+ },
+ "cartucho-vs-toner": {
+  "sinopse": "Compara o custo por página e o gasto mensal de imprimir com cartucho (jato de tinta) e com toner (laser).",
+  "para_que": "Antes de comprar impressora ou refil.",
+  "como_usar": [
+   "Informe preço e Páginas do cartucho",
+   "Informe Preço e Páginas do toner",
+   "Informe Páginas/mês e “Comparar”"
+  ],
+  "exemplo": "Cartucho R$ 0,40/página vs toner R$ 0,08: laser compensa acima de 100 páginas/mês."
+ },
+ "cashback-real": {
+  "sinopse": "Calcula quanto de cashback você realmente ganha depois de descontar anuidade, IOF/taxas e o teto do programa.",
+  "para_que": "Pra saber se o cartão com cashback vale a pena.",
+  "como_usar": [
+   "Informe o gasto mensal e o Cashback anunciado (%)",
+   "Informe Anuidade/mês, Teto e IOF/taxas",
+   "“Calcular”"
+  ],
+  "exemplo": "1% anunciado em R$ 2.000 com R$ 15 de anuidade: só 0,25% de verdade."
+ },
+ "comparador-generico-marca": {
+  "sinopse": "Compara o preço por comprimido do remédio de marca com o genérico (mesmo princípio ativo e dosagem).",
+  "para_que": "Pra economizar na farmácia.",
+  "como_usar": [
+   "Informe preço e comprimidos por caixa da marca",
+   "Informe Preço genérico e Comprimidos/caixa",
+   "“Comparar”"
+  ],
+  "exemplo": "Marca R$ 1,20/comp. vs genérico R$ 0,45: economia de 62%."
+ },
+ "comparador-planos-internet": {
+  "sinopse": "Compara planos de internet pelo custo por Mbps, fidelidade e multa de saída.",
+  "para_que": "Na hora de trocar de operadora.",
+  "como_usar": [
+   "Preencha Nome, Preço, Mbps, Fidelidade e Multa e clique “Adicionar plano” (ou cole a lista)",
+   "Repita para cada plano",
+   "“Comparar”"
+  ],
+  "exemplo": "Plano de 500 Mbps a R$ 100 sai R$ 0,20/Mbps, mais barato que 300 Mbps a R$ 90."
+ },
+ "controle-contas-fixas": {
+  "sinopse": "Soma suas contas fixas do mês e avisa quais vencem nos próximos dias.",
+  "para_que": "Pra não esquecer boleto e saber o total fixo do mês.",
+  "como_usar": [
+   "Digite uma conta por linha: nome;valor;dia_vencimento",
+   "Clique “Calcular”",
+   "Veja o total e os vencimentos próximos"
+  ],
+  "exemplo": "Luz;180;10 e Aluguel;1500;5: total R$ 1.680, aluguel vence em 2 dias."
+ },
+ "custo-escola-particular": {
+  "sinopse": "Calcula o custo anual real da escola particular: mensalidades + material, uniforme, transporte, alimentação e atividades extras.",
+  "para_que": "Pra planejar a escola dos filhos ou comparar escolas.",
+  "como_usar": [
+   "Informe a mensalidade e os Meses cobrados/ano",
+   "Informe Material, Uniforme, Transporte, Alimentação e Atividades extras",
+   "“Calcular”"
+  ],
+  "exemplo": "Mensalidade R$ 1.200: custo real de ~R$ 20 mil/ano."
+ },
+ "diluicao-agua-sanitaria": {
+  "sinopse": "Calcula quantos ml de água sanitária (hipoclorito) colocar em certo volume de água pra desinfetar superfícies, roupas ou frutas na concentração certa.",
+  "para_que": "Pra limpar e higienizar alimentos com segurança.",
+  "como_usar": [
+   "Informe o Volume de água",
+   "Escolha o Uso (superfície, roupa, frutas)",
+   "“Calcular”"
+  ],
+  "exemplo": "1 litro de água pra frutas: ~1 colher de sopa de água sanitária."
+ },
+ "diluicao-limpeza": {
+  "sinopse": "Calcula quanto de produto de limpeza concentrado usar pra chegar na diluição desejada (fórmula C1·V1 = C2·V2).",
+  "para_que": "Pra diluir desinfetante/detergente concentrado do jeito certo e economizar.",
+  "como_usar": [
+   "Informe a concentração do produto",
+   "Informe a Concentração desejada e o Volume final",
+   "“Calcular”"
+  ],
+  "exemplo": "Concentrado 1:10 pra 2 L de 1:100: 200 ml de produto + 1,8 L de água."
+ },
+ "distribuicao-refeicoes-macros": {
+  "sinopse": "Divide suas calorias e macros do dia (proteína, gordura, carboidrato) entre 3 a 6 refeições, conferindo a proteína mínima por refeição (leucina) e a melhor hora pra cada uma.",
+  "para_que": "Para quem segue dieta/treino e quer montar o cardápio do dia.",
+  "como_usar": [
+   "Informe a Meta de Calorias e as gramas de Proteína, Gordura e Carboidrato do dia",
+   "Escolha o número de refeições",
+   "Leia a divisão por refeição e a ESTRATÉGIA NUTRICIONAL"
+  ],
+  "exemplo": "2.400 kcal e 160 g de proteína em 4 refeições: 40 g de proteína em cada."
+ },
+ "economia-horta-caseira": {
+  "sinopse": "Calcula quanto a horta de casa economiza: colheita × preço do mercado, menos insumos e (opcionalmente) o valor do seu tempo.",
+  "para_que": "Pra saber se a horta compensa no bolso.",
+  "como_usar": [
+   "Informe a colheita e o Preço/kg no mercado",
+   "Informe Insumos/mês, Horas/mês e Valor da hora",
+   "“Calcular”"
+  ],
+  "exemplo": "5 kg de verduras/mês = R$ 60 de economia (descontando R$ 20 de insumos)."
+ },
+ "entrada-carro-seminovo": {
+  "sinopse": "Simula a compra de carro seminovo financiado: entrada, parcela (tabela Price), total pago e os custos extras de IPVA, seguro e documentação.",
+  "para_que": "Antes de fechar o financiamento do carro.",
+  "como_usar": [
+   "Informe o preço e a Entrada",
+   "Informe Taxa anual e Prazo (meses)",
+   "Informe IPVA, Seguro e Docs/transferência",
+   "“Calcular”"
+  ],
+  "exemplo": "Carro de R$ 60 mil com R$ 20 mil de entrada em 48x: parcela ~R$ 1.100."
+ },
+ "entrada-financiamento": {
+  "sinopse": "Calcula a entrada (%), o saldo financiado e a prestação aproximada (tabela Price) do financiamento do imóvel.",
+  "para_que": "Pra planejar a compra de casa/apartamento.",
+  "como_usar": [
+   "Informe o valor do imóvel e a Entrada",
+   "Informe Taxa anual e Prazo (meses)",
+   "“Calcular”"
+  ],
+  "exemplo": "Imóvel de R$ 400 mil com 20% em 360 meses a 10%/ano: ~R$ 2.800/mês."
+ },
+ "lavanderia-vs-maquina": {
+  "sinopse": "Compara o custo mensal de lavar roupa na lavanderia com lavar em casa (energia, água, sabão e desgaste da máquina).",
+  "para_que": "Pra decidir se compra máquina ou continua na lavanderia.",
+  "como_usar": [
+   "Informe o Preço da lavanderia por carga e cargas por mês",
+   "Informe kWh, Tarifa de energia, Sabão, Água e Tarifa da água por carga",
+   "Informe a Depreciação da máquina e “Comparar”"
+  ],
+  "exemplo": "8 cargas/mês: R$ 200 na lavanderia contra R$ 70 em casa."
+ },
+ "meta-poupanca-viagem": {
+  "sinopse": "Calcula quanto guardar por mês pra juntar o dinheiro da viagem até a data, contando o que já guardou e o rendimento.",
+  "para_que": "Pra planejar férias sem dívida.",
+  "como_usar": [
+   "Informe o custo da viagem e os Meses até a viagem",
+   "Informe o Já guardado e o Rendimento mensal",
+   "“Calcular”"
+  ],
+  "exemplo": "Viagem de R$ 8.000 em 10 meses com R$ 2.000 guardados: ~R$ 590/mês."
+ },
+ "orcamento-festa": {
+  "sinopse": "Monta o orçamento de uma festa/aniversário: comida e bebida por adulto e criança, decoração, bolo, local, outros e taxa de serviço.",
+  "para_que": "Pra planejar o custo da festa antes de fechar com fornecedores.",
+  "como_usar": [
+   "Informe Adultos e Crianças",
+   "Informe Comida/Bebida por pessoa",
+   "Informe Decoração, Bolo, Local, Outros e Taxa de serviço",
+   "“Calcular”"
+  ],
+  "exemplo": "40 adultos e 15 crianças: ~R$ 3.500 no total."
+ },
+ "orcamento-mudanca": {
+  "sinopse": "Estima o custo da mudança: quantos caminhões, caixas, ajudantes, quilometragem e seguro.",
+  "para_que": "Pra orçar e comparar com propostas de transportadoras.",
+  "como_usar": [
+   "Informe o volume e a Capacidade/Preço do caminhão",
+   "Informe Caixas, Ajudantes e seus preços",
+   "Informe Distância, Preço/km e Seguro",
+   "“Calcular”"
+  ],
+  "exemplo": "Apto de 2 quartos a 20 km: 1 caminhão, 30 caixas, 3 ajudantes ≈ R$ 1.600."
+ },
+ "pensao-alimenticia": {
+  "sinopse": "Estima a pensão alimentícia como percentual da renda líquida, considerando o número de filhos e outras despesas. É só uma estimativa — quem define é o juiz.",
+  "para_que": "Pra ter uma noção antes de conversar com advogado.",
+  "como_usar": [
+   "Informe a renda líquida e o Percentual",
+   "Informe Filhos e Outras despesas",
+   "“Calcular”"
+  ],
+  "exemplo": "Renda de R$ 5.000 a 30%: ~R$ 1.500/mês."
+ },
+ "petsitter-vs-creche": {
+  "sinopse": "Compara o custo de deixar o pet com petsitter (por hora), creche (por dia) ou hotelzinho (diária) durante um período.",
+  "para_que": "Pra viagens ou dias de trabalho fora.",
+  "como_usar": [
+   "Informe os dias do período e Horas/dia do sitter",
+   "Informe Petsitter/hora, Creche/dia e Hotelzinho/dia",
+   "“Comparar”"
+  ],
+  "exemplo": "7 dias: petsitter 2 h/dia R$ 420, creche R$ 490, hotel R$ 560."
+ },
+ "planejador-compras-atacado": {
+  "sinopse": "Calcula quanto comprar no atacado pra cobrir as semanas de estoque sem estourar o orçamento nem passar da validade.",
+  "para_que": "Pra compras do mês no atacarejo sem desperdício.",
+  "como_usar": [
+   "Informe o consumo e as Semanas de estoque",
+   "Informe Preço unitário, Orçamento e Validade",
+   "“Planejar”"
+  ],
+  "exemplo": "Consumo de 3 leites/semana por 8 semanas, validade 4 meses: leve 24."
+ },
+ "prestacao-vs-aluguel": {
+  "sinopse": "Compara o custo mensal de comprar (prestação, seguro, IPTU, condomínio) com alugar, considerando a valorização do imóvel.",
+  "para_que": "Pra decidir entre financiar ou continuar no aluguel.",
+  "como_usar": [
+   "Informe Valor do imóvel, a prestação, Seguro, IPTU e Condomínio da compra",
+   "Informe Aluguel e Condomínio do aluguel",
+   "Informe a Valorização anual e “Comparar”"
+  ],
+  "exemplo": "Prestação de R$ 3.000 contra aluguel de R$ 1.800: alugar sai mais barato no curto prazo."
+ },
+ "reembolso-plano-saude": {
+  "sinopse": "Estima quanto o plano de saúde vai reembolsar de uma consulta/exame: valor de tabela × % de cobertura, menos coparticipação, até o teto.",
+  "para_que": "Antes de ir num médico fora da rede.",
+  "como_usar": [
+   "Informe o valor pago e o Valor tabela",
+   "Informe % cobertura, Coparticipação e Teto",
+   "“Calcular”"
+  ],
+  "exemplo": "Consulta de R$ 500 com tabela de R$ 250 a 80%: reembolso de R$ 200."
+ },
+ "simulador-abono-pecuniario-ferias": {
+  "sinopse": "Simula vender 1/3 das férias (10 dias) na CLT: valor do abono (isento de INSS e IR), adiantamento e o salário que sobra na volta, comparando 30 dias de descanso com 20 + venda.",
+  "para_que": "Pra decidir se vale vender parte das férias.",
+  "como_usar": [
+   "Informe Salário Bruto, Média de Adicionais/Horas Extras e Dependentes",
+   "Compare o Cenário 1 (30 dias) com o Cenário 2 (20 dias + venda)",
+   "Leia o GANHO LÍQUIDO e o VALOR ISENTO"
+  ],
+  "exemplo": "Salário de R$ 4.000: vender 10 dias rende ~R$ 1.780 a mais, sem imposto."
+ },
+ "streaming-vs-cinema": {
+  "sinopse": "Compara o gasto mensal com assinaturas de streaming com ir ao cinema (ingresso + pipoca, por pessoa).",
+  "para_que": "Pra decidir onde gastar o dinheiro do lazer.",
+  "como_usar": [
+   "Informe o total das assinaturas",
+   "Informe Sessões/mês, Ingresso, Pipoca/bebida e Pessoas",
+   "“Comparar”"
+  ],
+  "exemplo": "2 idas a dois por mês: R$ 160 contra R$ 60 de streaming."
+ },
+ "academia-infantil": {
+  "sinopse": "Calcula o custo de colocar a criança numa academia/esporte: mensalidade, matrícula, uniforme, competições e transporte.",
+  "para_que": "Pra pais planejarem atividades dos filhos.",
+  "como_usar": [
+   "Informe a mensalidade e os Meses",
+   "Informe Uniforme, Matrícula, Competições/ano e Transporte/mês",
+   "“Calcular”"
+  ],
+  "exemplo": "Judô de R$ 150/mês: ~R$ 2.600/ano com tudo."
+ },
+ "arroz-feijao-porcao": {
+  "sinopse": "Calcula quanto arroz e feijão cru rendem cozidos, quantas porções saem e o custo de cada porção.",
+  "para_que": "Pra cozinhar a quantidade certa e calcular custo de marmita/restaurante.",
+  "como_usar": [
+   "Informe a quantidade de arroz e Feijão cru",
+   "Ajuste os Fatores de rendimento e o tamanho da Porção",
+   "Informe Custo do arroz e do feijão e “Calcular”"
+  ],
+  "exemplo": "500 g de arroz rendem ~1,5 kg: 10 porções a R$ 0,30."
+ },
+ "custo-creche": {
+  "sinopse": "Calcula o custo anual da creche: mensalidades + matrícula, material e alimentação.",
+  "para_que": "Pra pais planejarem o orçamento ou compararem creches.",
+  "como_usar": [
+   "Informe a mensalidade e os Meses",
+   "Informe Matrícula, Material e Alimentação/mês",
+   "“Calcular”"
+  ],
+  "exemplo": "Creche de R$ 1.000/mês: ~R$ 14.500/ano com tudo."
+ },
+ "custo-curso-idioma": {
+  "sinopse": "Calcula o custo total de um curso de idioma (mensalidade, matrícula, material e exame) e quanto sai cada aula.",
+  "para_que": "Pra comparar escolas de idioma.",
+  "como_usar": [
+   "Informe a mensalidade e os Meses",
+   "Informe Matrícula, Material e Exame",
+   "Informe Aulas/semana e “Calcular”"
+  ],
+  "exemplo": "12 meses a R$ 350 com 2 aulas/semana: ~R$ 45 por aula."
+ },
+ "custo-oculos": {
+  "sinopse": "Soma o custo dos óculos: armação, lentes, exame, antirreflexo e garantia, menos o desconto.",
+  "para_que": "Pra comparar orçamentos de óticas.",
+  "como_usar": [
+   "Informe Armação e Lentes",
+   "Informe Exame, Antirreflexo e Garantia",
+   "Informe o Desconto e “Calcular”"
+  ],
+  "exemplo": "Armação R$ 300 + lentes R$ 450 + antirreflexo R$ 150 − 10% = R$ 810."
+ },
+ "desconto-progressivo": {
+  "sinopse": "Aplica faixas de desconto progressivo a um valor de compra (ex.: 5% até R$ 100, 10% acima).",
+  "para_que": "Pra lojistas montarem promoções ou clientes conferirem o desconto.",
+  "como_usar": [
+   "Informe o valor da compra",
+   "Digite as faixas, uma por linha: limite;pct (use inf na última)",
+   "“Calcular”"
+  ],
+  "exemplo": "Compra de R$ 250 com faixas 100;5 e inf;10: desconto de R$ 20."
+ },
+ "diluicao-alvejante": {
+  "sinopse": "Calcula quantos ml de alvejante/cloro colocar na água da máquina pra chegar na concentração (ppm) certa na lavagem.",
+  "para_que": "Pra alvejar roupa sem estragar o tecido.",
+  "como_usar": [
+   "Informe a concentração do alvejante",
+   "Informe Água na máquina e o ppm alvo",
+   "“Calcular”"
+  ],
+  "exemplo": "40 L de água a 100 ppm com cloro de 2,5%: 160 ml."
+ },
+ "diluicao-amaciante": {
+  "sinopse": "Calcula quanto amaciante concentrado e quanta água misturar (em partes, conforme o rótulo) pra um volume final.",
+  "para_que": "Pra render o amaciante concentrado.",
+  "como_usar": [
+   "Informe as partes de produto e as Partes água (do rótulo)",
+   "Informe o Volume final",
+   "“Calcular”"
+  ],
+  "exemplo": "1:3 pra 2 L: 500 ml de amaciante + 1,5 L de água."
+ },
+ "estacionamento-mensalista": {
+  "sinopse": "Compara pagar estacionamento mensalista com pagar avulso (por hora ou diária).",
+  "para_que": "Pra quem para todo dia no trabalho ou faculdade.",
+  "como_usar": [
+   "Informe a mensalidade, Dias no mês e Horas/dia",
+   "Informe Preço/hora ou Diária avulsa",
+   "“Comparar”"
+  ],
+  "exemplo": "20 dias a R$ 25 de diária = R$ 500 contra mensal de R$ 350."
+ },
+ "fermento-natural": {
+  "sinopse": "Calcula as quantidades de farinha e água pra alimentar o fermento natural (levain/starter) nas proporções escolhidas.",
+  "para_que": "Para quem faz pão de fermentação natural.",
+  "como_usar": [
+   "Informe a quantidade de fermento",
+   "Informe Razão água, Razão farinha e Alimentações",
+   "“Calcular”"
+  ],
+  "exemplo": "50 g de starter em 1:1:1: 50 g de farinha + 50 g de água."
+ },
+ "gasolina-postos": {
+  "sinopse": "Compara postos de gasolina pelo preço do litro descontando o custo de dirigir até lá (desvio).",
+  "para_que": "Pra saber se vale ir no posto mais barato e mais longe.",
+  "como_usar": [
+   "Informe o Consumo do carro e quantos litros vai abastecer",
+   "Digite um posto por linha: nome;R$/L;desvio_km",
+   "“Comparar”"
+  ],
+  "exemplo": "Posto 6 km mais longe R$ 0,15 mais barato só compensa acima de ~30 L."
+ },
+ "gorjeta-buffet": {
+  "sinopse": "Calcula a conta do buffet/restaurante: buffet × pessoas + couvert + bebidas + gorjeta, e quanto cada um paga.",
+  "para_que": "Pra dividir a conta em grupo.",
+  "como_usar": [
+   "Informe o preço do buffet e Pessoas",
+   "Informe Couvert/pessoa e Bebidas (total)",
+   "Informe a Gorjeta (%) e “Calcular”"
+  ],
+  "exemplo": "6 pessoas a R$ 70 + R$ 120 de bebida + 10%: R$ 84 cada."
+ },
+ "hospedagem-pet": {
+  "sinopse": "Calcula o custo de hotelzinho/creche pro pet durante a viagem: diárias × pets + banho + transporte − desconto.",
+  "para_que": "Pra planejar a viagem incluindo o pet.",
+  "como_usar": [
+   "Informe os dias, Diária/pet e Pets",
+   "Informe Banho, Transporte e Desconto",
+   "“Calcular”"
+  ],
+  "exemplo": "2 cães por 7 dias a R$ 80 + banho: ~R$ 1.200."
+ },
+ "lavagem-a-seco": {
+  "sinopse": "Compara mandar peças delicadas pra tinturaria (lavagem a seco) com lavar em casa (produto, desgaste do ferro e seu tempo).",
+  "para_que": "Pra quem usa terno, vestidos e roupas delicadas.",
+  "como_usar": [
+   "Informe Preço/peça na tinturaria e peças por mês",
+   "Informe Produto/mês, Depreciação do ferro, Horas/mês e Valor da hora",
+   "“Comparar”"
+  ],
+  "exemplo": "6 peças/mês: R$ 180 na tinturaria contra R$ 50 em casa."
+ },
+ "lista-feira-orcamento": {
+  "sinopse": "Soma a lista da feira/mercado e avisa se estourar o orçamento.",
+  "para_que": "Pra ir às compras com o valor sob controle.",
+  "como_usar": [
+   "Informe o orçamento",
+   "Digite um item por linha: nome;quantidade;preço",
+   "“Somar”"
+  ],
+  "exemplo": "12 itens somam R$ 186; orçamento de R$ 150 estourado em R$ 36."
+ },
+ "manicure-spa-vs-casa": {
+  "sinopse": "Compara o gasto mensal com manicure no salão contra fazer em casa (kit e esmaltes).",
+  "para_que": "Pra decidir se compensa aprender a fazer as unhas em casa.",
+  "como_usar": [
+   "Informe o preço e as Visitas/mês no salão",
+   "Informe Custo do kit, Duração do kit e Esmaltes/mês",
+   "“Comparar”"
+  ],
+  "exemplo": "4 idas a R$ 40 = R$ 160 contra ~R$ 30/mês em casa."
+ },
+ "material-escolar": {
+  "sinopse": "Soma a lista de material escolar item por item e compara com o preço do kit vendido pela escola.",
+  "para_que": "Pra pais decidirem entre comprar o kit ou avulso.",
+  "como_usar": [
+   "Digite um item por linha: item;qtd;preço",
+   "Informe o preço do kit da escola",
+   "“Calcular”"
+  ],
+  "exemplo": "Lista avulsa R$ 380 contra kit de R$ 520: economia de R$ 140."
+ },
+ "plano-celular-gb": {
+  "sinopse": "Compara planos de celular pelo preço por GB e pelo custo do excedente, conforme o seu uso.",
+  "para_que": "Na hora de escolher ou trocar de plano.",
+  "como_usar": [
+   "Informe quantos GB você usa por mês",
+   "Digite um plano por linha: nome;preço;GB;R$/GB excedente",
+   "“Comparar”"
+  ],
+  "exemplo": "Uso de 20 GB: plano de 25 GB a R$ 60 sai mais barato que 15 GB + excedente."
+ },
+ "poupanca-meta": {
+  "sinopse": "Projeta quanto você terá guardando todo mês com juros compostos, ou calcula em quantos meses chega a uma meta.",
+  "para_que": "Pra planejar uma compra, reserva ou objetivo.",
+  "como_usar": [
+   "Informe o saldo inicial, Aporte/mês e Taxa mensal",
+   "Para projetar: informe Meses e clique “Projetar”",
+   "Para a meta: informe a Meta e clique “Meses até meta”"
+  ],
+  "exemplo": "R$ 500/mês a 0,8%: R$ 20 mil em ~35 meses."
+ },
+ "seguro-auto-franquia": {
+  "sinopse": "Compara dois seguros de carro com franquias diferentes pelo custo esperado: prêmio + franquia × sinistros por ano.",
+  "para_que": "Pra escolher entre franquia baixa (seguro caro) e franquia alta (seguro barato).",
+  "como_usar": [
+   "Informe Prêmio A e Franquia A",
+   "Informe Prêmio B e Franquia B",
+   "Informe Sinistros/ano esperados e “Comparar”"
+  ],
+  "exemplo": "Com 0,2 sinistro/ano, a franquia alta sai R$ 300 mais barata."
+ },
+ "taxa-extra-condominio": {
+  "sinopse": "Divide uma taxa extra do condomínio (obra, multa, fundo) entre as unidades, igualmente ou pela fração ideal.",
+  "para_que": "Pra síndicos e moradores conferirem o rateio.",
+  "como_usar": [
+   "Informe o valor da taxa extra",
+   "Escolha o Modo (igualitário ou fração)",
+   "Informe Unidades/Suas unidades ou Sua fração ideal e “Calcular”"
+  ],
+  "exemplo": "Obra de R$ 60 mil em 40 aptos: R$ 1.500 por apto."
+ },
+ "taxa-maquininha": {
+  "sinopse": "Calcula quanto sobra de uma venda depois da taxa da maquininha (débito, crédito à vista ou parcelado, mais taxa fixa).",
+  "para_que": "Pra comerciantes e autônomos definirem preço.",
+  "como_usar": [
+   "Informe o valor da venda",
+   "Informe Taxa à vista, Taxa fixa, Parcelas e Taxa parcelado",
+   "“Calcular”"
+  ],
+  "exemplo": "Venda de R$ 100 no crédito em 3x a 4,5%: você recebe R$ 95,50."
+ },
+ "uber-vs-onibus": {
+  "sinopse": "Compara o gasto mensal andando de Uber/app com ônibus/metrô (incluindo vale-transporte).",
+  "para_que": "Pra decidir como ir ao trabalho/faculdade.",
+  "como_usar": [
+   "Informe o Preço médio da corrida e corridas por mês",
+   "Informe Passagem unitária, Viagens/mês e Vale-transporte",
+   "“Comparar”"
+  ],
+  "exemplo": "40 corridas a R$ 18 = R$ 720 contra R$ 200 de ônibus."
+ },
+ "validade-produtos-limpeza": {
+  "sinopse": "Calcula até quando um produto de limpeza aberto ainda funciona, pelo PAO (prazo depois de aberto, em meses).",
+  "para_que": "Pra não usar desinfetante ou água sanitária vencidos (perdem efeito).",
+  "como_usar": [
+   "Informe a data de abertura",
+   "Informe o PAO (meses)",
+   "“Calcular”"
+  ],
+  "exemplo": "Água sanitária aberta em março com PAO de 6 meses: vale até setembro."
  }
 }
