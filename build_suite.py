@@ -402,6 +402,22 @@ TOOLS = {
     "scanner-segredos": "sek_gui.pyw",
     "simulador-reatores-quimicos": "rea_gui.pyw",
     "vencimento-documentos": "vdc_gui.pyw",
+    "analisador-todo": "tdo_gui.pyw",
+    "calculadora-canais-abertos-manning": "can_gui.pyw",
+    "cerca-alambrado": "cer_gui.pyw",
+    "cha-revelacao": "rev_gui.pyw",
+    "cisterna-chuva": "cis_gui.pyw",
+    "comparador-semver": "smv_gui.pyw",
+    "cozimento-alimentos": "coz_gui.pyw",
+    "diario-pesca": "pes_gui.pyw",
+    "emprestimos-objetos": "emp_gui.pyw",
+    "gerador-changelog": "chg_gui.pyw",
+    "gerador-npmignore": "nmi_gui.pyw",
+    "gerador-pre-commit": "pcc_gui.pyw",
+    "grama-jardim": "grm_gui.pyw",
+    "laboratorio-filtros-digitais": "fdt_gui.pyw",
+    "lentes-contato": "lct_gui.pyw",
+    "piso-vinilico": "vin_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

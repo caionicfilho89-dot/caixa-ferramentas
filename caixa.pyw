@@ -416,6 +416,22 @@ BUILTIN = [
     ("🕵️", "Scanner de Segredos", "Varre código por API keys, tokens, JWT e chaves privadas.", "scanner-segredos", "sek_gui.pyw"),
     ("⚗️", "Simulador de Reatores Químicos", "Balanço molar de CSTR, PFR e Batelada, cinética de Arrhenius, gráfico de Levenspiel e perfis de concentração", "simulador-reatores-quimicos", "rea_gui.pyw"),
     ("🪪", "Vencimento de Documentos", "CNH, RG, passaporte, título, CRLV, seguros e garantias, dias para vencer, alertas 30/60/90 dias.", "vencimento-documentos", "vdc_gui.pyw"),
+    ("📌", "Analisador de TODO/FIXME", "Varre código por TODO, FIXME, XXX, HACK, BUG, NOTE e OPTIMIZE.", "analisador-todo", "tdo_gui.pyw"),
+    ("🌊", "Canais Abertos (Manning) & Ressalto Hidráulico", "Escoamento em canais abertos pela Equação de Manning, Froude, energia específica e ressalto de Bélanger", "calculadora-canais-abertos-manning", "can_gui.pyw"),
+    ("🚧", "Cerca e Alambrado", "Perímetro, mourões pelo espaçamento, rolos de tela, fios de arame, cantos/esticadores e custo.", "cerca-alambrado", "cer_gui.pyw"),
+    ("🎀", "Chá Revelação", "Convidados, palpites menino/menina com placar, bolão, comidas/lembrancinhas e checklist.", "cha-revelacao", "rev_gui.pyw"),
+    ("🌧️", "Cisterna de Água de Chuva", "Captação pelo telhado e chuva média, volume ideal, economia de água e meses de autonomia.", "cisterna-chuva", "cis_gui.pyw"),
+    ("🔢", "Comparador SemVer", "Compara, faz bump e testa ranges SemVer (^ ~ >=).", "comparador-semver", "smv_gui.pyw"),
+    ("🥚", "Tempo de Cozimento", "Ovos, arroz, feijão na pressão, grãos, massas e legumes, com proporção de água e timer.", "cozimento-alimentos", "coz_gui.pyw"),
+    ("🎣", "Diário de Pesca", "Registra pescarias (local, espécie, peso, isca, lua, maré), recordes e melhor isca por espécie.", "diario-pesca", "pes_gui.pyw"),
+    ("🤝", "Empréstimos de Objetos", "O que você emprestou ou pegou emprestado, com quem, data, prazo de devolução e atrasados.", "emprestimos-objetos", "emp_gui.pyw"),
+    ("📰", "Gerador de CHANGELOG", "Keep a Changelog: novas versões semver e prévia/exportação do CHANGELOG.md.", "gerador-changelog", "chg_gui.pyw"),
+    ("📦", "Gerador de .npmignore", "Templates offline de .npmignore (Base/testes/docs/TypeScript), merge e exportação.", "gerador-npmignore", "nmi_gui.pyw"),
+    ("🪝", "Gerador de pre-commit", "Presets de .pre-commit-config.yaml (Basico/Python/JS/Seguranca).", "gerador-pre-commit", "pcc_gui.pyw"),
+    ("🌿", "Grama em Placas e Sementes", "m² de grama em placas ou sementes por espécie, terra, adubo e rega inicial.", "grama-jardim", "grm_gui.pyw"),
+    ("🎛️", "Laboratório de Filtros Digitais (DSP)", "Síntese de filtros IIR, resposta em frequência em dB, diagrama de polos/zeros no plano Z e estabilidade BIBO", "laboratorio-filtros-digitais", "fdt_gui.pyw"),
+    ("👁️", "Lentes de Contato", "Troca diária/quinzenal/mensal por olho, dias de uso, próxima troca, estoque de caixas e custo mensal.", "lentes-contato", "lct_gui.pyw"),
+    ("🪵", "Piso Vinílico e Laminado", "Réguas por cômodo com perda por paginação, caixas, manta, rodapé em barras e cantoneiras.", "piso-vinilico", "vin_gui.pyw"),
 ]
 
 QSS = """
