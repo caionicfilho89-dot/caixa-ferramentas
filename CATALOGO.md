@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-09** · Total: **657 ferramentas** · **657 prefixos** usados.
+> Última geração: **2026-11-09** · Total: **674 ferramentas** · **674 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -15,21 +15,21 @@
 
 ## Índice por categoria
 
-- 💰 Finanças & Trabalho — 76
-- 🏠 Casa, Pet & Pessoal — 108
+- 💰 Finanças & Trabalho — 77
+- 🏠 Casa, Pet & Pessoal — 110
 - 🔬 Ciência & Engenharia — 39
 - 🌐 Rede & Segurança — 45
-- 💻 Dev & Dados — 73
-- 🖼️ Imagem & Design — 37
-- 🎵 Áudio & Vídeo — 21
-- ✍️ Texto & Estudo — 15
+- 💻 Dev & Dados — 74
+- 🖼️ Imagem & Design — 38
+- 🎵 Áudio & Vídeo — 22
+- ✍️ Texto & Estudo — 17
 - 🎮 Jogos & Diversão — 16
-- 🗂️ Arquivos & Sistema — 51
-- 🧰 Outras — 176
+- 🗂️ Arquivos & Sistema — 52
+- 🧰 Outras — 184
 
 ---
 
-## 💰 Finanças & Trabalho  ·  76
+## 💰 Finanças & Trabalho  ·  77
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -50,6 +50,7 @@
 | 📑 | **Calculadora de Rescisão Trabalhista CLT** | Cálculo completo de rescisão contratual: demissão sem justa causa, pedido, acordo mútuo, aviso proporcional, FGTS e férias | `calculadora-rescisao-trabalhista` | `rst` |
 | 🪙 | **Calculadora de Troco** | Troco em notas e moedas a partir do total e do valor pago. | `calculadora-troco` | `tro` |
 | 📡 | **Calculadora RF & dBm** | dBm/mW/W, somar potências, freq↔λ, FSPL, orçamento de enlace e VSWR | `rf-calculo` | `rfc` |
+| 🍽️ | **Calculadora VR/VA Mensal** | Credito mensal de Vale Refeicao e Vale Alimentacao com desconto em folha e media por dia trabalhado | `calculadora-beneficio-vr-va` | `vva` |
 | 🚶 | **Calorias da Atividade** | gasto calórico por MET (caminhada, corrida, bike, natação etc.) pelo peso e tempo, passos para km e meta semanal. | `calorias-atividade` | `met` |
 | 📚 | **Carga Horária & Créditos** | Soma créditos e horas da grade semestral, equivalência crédito→hora configurável e alerta de limite | `carga-horaria-creditos` | `chh` |
 | 🖨️ | **Cartucho × Toner** | Custo por página e gasto mensal de impressão. | `cartucho-vs-toner` | `tdc` |
@@ -110,7 +111,7 @@
 | 💳 | **Validador de Cartão de Crédito** | Algoritmo de Luhn Módulo 10, identificação ISO/IEC 7812, bandeiras e gerador sandbox | `validador-formato-cartao-credito` | `lhn` |
 | 🧮 | **Verificador de Hash** | MD5/SHA1/SHA256/SHA512, compara arquivos, confere SHA256SUMS e gera listas de checksum | `verificador-hash` | `hsh` |
 
-## 🏠 Casa, Pet & Pessoal  ·  108
+## 🏠 Casa, Pet & Pessoal  ·  110
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -176,6 +177,7 @@
 | 🌱 | **Horta & Adubação NPK** | Dimensiona canteiros, adubo NPK, calagem pH e plantas companheiras | `horta-jardim` | `agr` |
 | 🐾 | **Hospedagem Pet** | Hotelzinho/creche durante a viagem. | `hospedagem-pet` | `hpv` |
 | 🎯 | **Hábitos** | Checklist diário, sequências e calendário de progresso | `habitos` | `hb` |
+| 📈 | **Indice de Produtividade Pessoal** | Escore diario 0-100 com % foco, % conclusao de tarefas e classificacao a partir de horas e interrupcoes | `indice-produtividade-pessoal` | `ipp` |
 | 🛡️ | **Inspetor ACL NTFS** | Le dono e permissoes NTFS, mostra icacls, concede leitura e reseta heranca | `inspetor-acl` | `acl` |
 | 🦀 | **Inspetor Cargo.lock** | Lista pacotes name@version de um Cargo.lock. | `inspetor-cargo-lock` | `crl` |
 | 🔬 | **Inspetor de Executáveis** | Análise PE (.exe/.dll), seções, entropia UPX, hashes e strings | `inspetor-executavel` | `dk` |
@@ -200,6 +202,7 @@
 | 🧹 | **Limpa Temp** | Varre pastas TEMP do Windows por idade/tamanho, mostra previa e apaga com relatorio | `limpa-temp` | `tmp` |
 | 🔧 | **Manutenção da Casa** | Agenda de manutenções periódicas da casa com atrasadas | `manutencao-casa` | `mnt` |
 | 🚲 | **Marchas de Bicicleta** | Relação de marchas, desenvolvimento (m) e cadência x velocidade | `calculadora-marchas-bike` | `bik` |
+| 📊 | **Matriz Eisenhower** | Organize tarefas nos 4 quadrantes (fazer agora, agendar, delegar, eliminar) com contagens e ordem sugerida | `organizador-tarefas-eisenhower` | `eis` |
 | 🚭 | **Parar de Fumar** | dias sem fumar, cigarros evitados, dinheiro economizado, marcos de saúde por tempo e metas. | `parar-fumar` | `fum` |
 | 🐶 | **Petsitter × Creche** | Compara petsitter, creche e hotelzinho. | `petsitter-vs-creche` | `pts` |
 | 🧠 | **Planejador da Curva de Ebbinghaus & Revisões** | Cronograma de repetição espaçada (24h, 7d, 15d, 30d, 60d), modelo de retenção exponencial e gráfico comparativo | `planejador-ciclo-ebbinghaus` | `ebb` |
@@ -317,7 +320,7 @@
 | 🔒 | **Trancar Arquivos** | Tranca arquivos com senha (AES-256) | `cripto-arquivos` | `cripto_arquivos` |
 | 📒 | **Álbum de Figurinhas** | Controle de cromos, trocas e estimativa de pacotes para completar o álbum | `album-figurinhas` | `alb` |
 
-## 💻 Dev & Dados  ·  73
+## 💻 Dev & Dados  ·  74
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -387,6 +390,7 @@
 | 🧹 | **Imports Nao Usados** | Heuristica AST de imports/from Python nao referenciados no arquivo. | `analisador-imports-nao-usados` | `udi` |
 | ✍️ | **Jogo Stop (Adedonha)** | Sorteio de letra, cronômetro e pontuação do Stop | `jogo-stop` | `stp` |
 | 🎛️ | **Laboratório de Filtros Digitais (DSP)** | Síntese de filtros IIR, resposta em frequência em dB, diagrama de polos/zeros no plano Z e estabilidade BIBO | `laboratorio-filtros-digitais` | `fdt` |
+| 📅 | **Planejador de Cronograma de Estudo para Editais & Provas** | Calcula a viabilidade temporal de fechamento do edital até o concurso, metas semanais de tópicos e divisão de carga horária por peso da matéria | `planejador-cronograma-estudo-edital` | `pce` |
 | ✂️ | **Removedor de Comentarios** | Remove comentarios Python/# // /* */ HTML preservando strings (heuristico). | `removedor-comentarios` | `scm` |
 | ⚙️ | **Simulador de Ciclos Termodinâmicos** | Ciclos de Carnot, Otto, Diesel, Brayton e Rankine, diagramas P-v e T-s, rendimento e trabalho líquido | `simulador-ciclos-termodinamicos` | `ctm` |
 | 📈 | **Simulador de Dissídio & Convenção** | Reajuste salarial, retroativo desde a data-base e total com benefícios | `simulador-dissidio` | `dsi` |
@@ -395,7 +399,7 @@
 | 📈 | **Visualizador de Planilhas** | Abre CSV/Excel, filtra, soma, gráficos e exporta | `visualizador-planilhas` | `visualizador_planilhas` |
 | 🗄️ | **Visualizador SQLite** | Abre bancos .db, navega tabelas e roda SQL | `visualizador-sqlite` | `visualizador_sqlite` |
 
-## 🖼️ Imagem & Design  ·  37
+## 🖼️ Imagem & Design  ·  38
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -411,6 +415,7 @@
 | 📐 | **Corte de Chapas 2D** | Plano de corte guilhotina pra MDF, vidro e metal com mapa visual | `corte-chapas` | `ccp` |
 | 📦 | **Código de Barras 1D** | Gera e valida EAN-13, EAN-8, Code-128B e ITF-14 + lote sequencial | `codigo-barras` | `bar` |
 | 🖌️ | **Editor de Imagem** | Cortar, redimensionar, filtros, marca d'água, borrar área | `editor-imagem` | `editor_imagem` |
+| 📸 | **Espaço para Fotos e Vídeos** | Quantas fotos e minutos de vídeo cabem no espaço livre do celular e em quantos dias enche | `espaco-fotos-videos-celular` | `arm` |
 | 🎞️ | **Estúdio de GIF & Sprites** | Cria e extrai GIFs animados, efeito Boomerang e Spritesheets | `estudios-gif` | `gif` |
 | ✒️ | **Estúdio de Tipografia** | Escalas modulares harmônicas (H1-Small), pareamento de fontes e CSS | `estudio-tipografia` | `tip` |
 | 📐 | **Estúdio Vetorial SVG** | Gerador paramétrico de ícones/selos SVG, minificador XML e PNG | `estudio-svg` | `svg` |
@@ -437,7 +442,7 @@
 | 🔤 | **Visualizador de Fontes** | Todas as fontes do PC, comparar e ver .ttf sem instalar | `fontes` | `visualizador_fontes` |
 | 📷 | **Webcam** | Espelho, foto e vídeo curto com filtros | `webcam` | `webcam_foto` |
 
-## 🎵 Áudio & Vídeo  ·  21
+## 🎵 Áudio & Vídeo  ·  22
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -455,6 +460,7 @@
 | 🎙️ | **Gravador de Voz** | Grava o microfone em WAV/MP3 com medidor de volume | `gravador-voz` | `gravador_voz` |
 | 📡 | **Guias de Onda Retangulares & Micro-ondas** | Frequências de corte TE/TM, modo dominante TE10, dispersão, impedância de onda e mapa de campo | `calculadora-guia-ondas-retangular` | `gdo` |
 | 🖥️ | **Info do PC** | Hardware, Windows, discos, vídeo, bateria — relatório | `info-pc` | `info_pc` |
+| 📡 | **Internet Ideal para Casa** | Quantos Mbps a casa precisa pelo uso simultâneo no pico (streaming, videochamada, jogos) | `internet-ideal-casa` | `mbp` |
 | 🎛️ | **Laboratório de Áudio** | Sintetizador ADSR, acordes, ondas binaurais de foco e espectro FFT | `laboratorio-audio` | `syn` |
 | 📚 | **Material Escolar** | Soma lista e compara com kit da escola. | `material-escolar` | `mte` |
 | 🎹 | **Metrônomo e Afinador** | Metrônomo preciso + afinador pelo microfone | `metronomo` | `metronomo` |
@@ -463,7 +469,7 @@
 | 🎼 | **Teoria Musical** | Escalas, acordes, campo harmônico, intervalos e transposição de cifras | `teoria-musical` | `esm` |
 | 🏋️ | **Índice de Carga de Treino (sRPE)** | Carga session-RPE (RPE×min), soma semanal, média diária e classificação leve/moderada/alta/muito alta | `indice-carga-treino` | `ict` |
 
-## ✍️ Texto & Estudo  ·  15
+## ✍️ Texto & Estudo  ·  17
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -481,6 +487,8 @@
 | 📰 | **Leitor de Feeds RSS** | Agregador online de notícias e blogs RSS/Atom com leitura limpa | `leitor-rss` | `rss` |
 | 📚 | **Meta de Leitura** | Livros, meta anual, páginas por dia, ritmo e previsão de término | `meta-leitura` | `lei` |
 | 🗒️ | **Notas** | Notas em Markdown com prévia, busca e exportar PDF | `notas-md` | `notas` |
+| 📖 | **Planejador de Leituras Semanais** | Meta operacional da semana: paginas/dia, minutos/dia, se cabe no tempo e data estimada de termino | `planejador-leituras-semanais` | `pls` |
+| ⚡ | **Sessão Flash de Revisão** | Monta blocos de estudo para os minutos disponíveis agora, prioriza tópicos fracos (notas 1-5) e alerta se o tempo não cobre tudo | `planejador-revisao-flash-rapida` | `frp` |
 | 🗣️ | **Texto para Fala** | Lê textos com as vozes do Windows e salva WAV/MP3 | `texto-fala` | `texto_fala` |
 
 ## 🎮 Jogos & Diversão  ·  16
@@ -504,7 +512,7 @@
 | 🧾 | **Validador de .env** | Valida .env, detecta duplicatas/segredos, diff com .env.example e exporta JSON. | `validador-dotenv` | `den` |
 | 🧾 | **Validador TOML** | Valida TOML via tomllib, resume chaves e exporta JSON. | `validador-toml` | `tml` |
 
-## 🗂️ Arquivos & Sistema  ·  51
+## 🗂️ Arquivos & Sistema  ·  52
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -545,6 +553,7 @@
 | 👀 | **Monitor de Pasta** | Observa criacao/alteracao/exclusao em tempo real, filtra por extensao e exporta log CSV/TXT | `monitor-pasta` | `fwt` |
 | 📊 | **Monitor do Sistema** | CPU, memória, disco e rede ao vivo + processos | `monitor-sistema` | `monitor_sistema` |
 | 🧹 | **Normalizador de Nomes de Arquivo** | Remove acentos, gera nomes ASCII seguros e renomeia em lote com prévia | `normalizador-nomes` | `nfn` |
+| ☁️ | **Plano de Nuvem para Backup** | Em quantos meses cada plano de nuvem enche com suas fotos e vídeos e qual o mais barato que aguenta | `plano-nuvem-backup` | `nuv` |
 | ☀️ | **Posição Solar & Algoritmo SPA** | Algoritmo SPA, elevação, azimute, declinação, equação do tempo, massa de ar e irradiância… | `calculadora-posicao-solar-astronomia` | `spa` |
 | 🔒 | **Quem Trava o Arquivo** | Lista processos com o arquivo aberto (Restart Manager) e testa acesso exclusivo | `quem-trava-arquivo` | `lok` |
 | ⏱️ | **Rastreador de Tempo** | Quanto tempo você passa em cada app | `rastreador-tempo` | `rastreador_tempo` |
@@ -560,13 +569,14 @@
 | 🌱 | **Variáveis de Ambiente** | Editor do PATH e variáveis do usuário com backup | `variaveis-ambiente` | `variaveis_ambiente` |
 | 📋 | **Área de Transferência** | Histórico do que você copiou (Ctrl+Shift+V) | `area-transferencia` | `area_transferencia` |
 
-## 🧰 Outras  ·  176
+## 🧰 Outras  ·  184
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
 | 🤸 | **Academia Infantil** | Mensalidade + uniforme + transporte e extras. | `academia-infantil` | `aci` |
 | 🏋️ | **Academia × Equipamentos** | Compara mensalidade com comprar aparelhos em casa. | `academia-vs-equipamentos` | `acd` |
 | ✈️ | **Aerodinâmica, Sustentação & Arrasto** | Mecânica de voo, modelo ISA, polar de arrasto, razão de planeio L/D, estol e potência requerida | `calculadora-aerodinamica-arrasto-sustentacao` | `aer` |
+| 🫀 | **Analisador de Perfil Lipídico & Risco Aterogênico (SBC)** | Calcula índices aterogênicos (Castelli I e II, razão TG/HDL, Não-HDL) e estratificação de risco cardiovascular da Sociedade Brasileira de Cardiologia | `analisador-perfil-lipidico-cardiovascular` | `apl` |
 | 📌 | **Analisador de TODO/FIXME** | Varre código por TODO, FIXME, XXX, HACK, BUG, NOTE e OPTIMIZE. | `analisador-todo` | `tdo` |
 | 🏋️ | **Analisador de Volume de Treino Semanal (Hipertrofia)** | Calcula séries semanais efetivas e faixas adaptativas (MV, MEV, MAV, MRV de Mike Israetel / RP) com detector de junk volume | `analisador-volume-treino-semanal` | `vth` |
 | 🧶 | **Analisador yarn.lock** | Lista entradas versionadas de yarn.lock (v1). | `analisador-yarn-lock` | `ylk` |
@@ -575,6 +585,7 @@
 | 💧 | **Autonomia Caixa d Agua** | Quantos dias a caixa aguenta com o consumo da casa. | `autonomia-caixa-dagua` | `cda` |
 | 🛡️ | **Calculadora & Planejador da Reserva de Emergência** | Meses ideais por estabilidade profissional, custo essencial de vida, simulação de aportes com CDI e IR regressivo | `calculadora-reserva-emergencia` | `rem` |
 | 🍖 | **Calculadora de Churrasco** | Carne por pessoa, carvão, bebidas, custos e rateio | `calculadora-churrasco` | `chu` |
+| 💼 | **Calculadora de Custo de Estagiário para Empresas (Lei 11.788)** | Calcula o custo total real de contratação de estagiário (bolsa, auxílio-transporte integral, seguro de vida, provisão de recesso remunerado e taxa de agente integrador) | `calculadora-custo-estagiario-empresa` | `cee` |
 | 🧠 | **Calculadora de Densidade de Estudo & Foco Cognitivo** | Calcula a taxa de aproveitamento líquido em sessões de estudo (Pomodoro/Ultradiano), índice de dispersão e fadiga mental de Sweller | `calculadora-densidade-estudo-pomodoro` | `epm` |
 | ⚙️ | **Calculadora de Engrenagens** | Engrenagens cilíndricas de dentes retos, relação de redução, RPM e torque | `calculadora-engrenagens` | `grs` |
 | 💧 | **Calculadora de Hidratação & Reposição de Eletrólitos** | Taxa de sudorese, reposição de água e sódio pré/intra/pós-treino e índice de calor ACSM | `calculadora-hidratacao-treino` | `hdt` |
@@ -597,8 +608,11 @@
 | 🌧️ | **Cisterna de Água de Chuva** | Captação pelo telhado e chuva média, volume ideal, economia de água e meses de autonomia. | `cisterna-chuva` | `cis` |
 | ⛽ | **Combustível e Viagem** | Etanol x gasolina, custo de viagem, paradas, CO₂ e consumo médio | `calculadora-combustivel-viagem` | `cbv` |
 | 🔢 | **Comparador SemVer** | Compara, faz bump e testa ranges SemVer (^ ~ >=). | `comparador-semver` | `smv` |
+| 🔧 | **Consertar ou Trocar o Celular** | Custo por ano de consertar x comprar novo, com venda do quebrado e regra dos 50% | `consertar-ou-trocar-celular` | `cvn` |
 | 💡 | **Consumo de Energia da Casa** | kWh e custo por aparelho, conta com bandeira tarifária, maiores consumos, economia de trocas… | `consumo-energia` | `kwh` |
 | 📊 | **Contador de Linhas de Código** | Conta código, comentários e vazios por linguagem (estilo cloc). | `contador-linhas-codigo` | `clc` |
+| 🤝 | **Contribuicao Sindical & Assistencial** | Simula desconto sindical/assistencial: mensal, anual, % efetivo e liquido | `calculadora-contribuicao-sindical` | `isd` |
+| 💧 | **Controle de Agua Diaria por Copos** | Meta diaria de agua em ml e copos por peso, atividade, clima quente e progresso do que ja bebeu | `controle-agua-diaria-copos` | `agd` |
 | 🛡️ | **Controle de Garantias** | Cadastro de produtos e prazo de garantia. | `controle-garantias` | `gar` |
 | 💊 | **Controle de Validade de Remedios** | Cadastro local de remedios com alerta de vencimento. | `controle-validade-remedios` | `rmd` |
 | ⏱️ | **Conversor Epoch** | Unix epoch s/ms/µs/ns ↔ data UTC/local com detecção automática | `conversor-epoch` | `epc` |
@@ -631,6 +645,7 @@
 | 🏛️ | **Estimativa de IPTU** | IPTU pelo valor venal, aliquota, desconto e parcelas. | `calculadora-iptu` | `ipt` |
 | ✒️ | **Estúdio Bézier** | Curvas de Bézier (Casteljau), ponto B(t), tangente e comprimento aproximado | `estudio-bezier` | `bzr` |
 | 🍞 | **Fermento Natural** | Escalas de alimentação do starter. | `fermento-natural` | `fer` |
+| 📦 | **Frete Grátis Vale a Pena?** | Completar o carrinho até o mínimo do frete grátis ou pagar o frete: qual sai melhor | `frete-gratis-vale-a-pena` | `fgr` |
 | ⛽ | **Gasolina Postos** | Compara postos com custo do desvio. | `gasolina-postos` | `gsp` |
 | 🧹 | **Gerador .clang-tidy** | Presets .clang-tidy (Basico, Modernize, Performance). | `gerador-clang-tidy` | `cty` |
 | 🧠 | **Gerador .clangd** | Presets .clangd (Basico, Compile flags, Query driver). | `gerador-clangd` | `cld` |
@@ -694,6 +709,7 @@
 | 💅 | **Manicure Salão × Casa** | Salão vs kit e esmaltes em casa. | `manicure-spa-vs-casa` | `mnc` |
 | 🍱 | **Marmitas da Semana** | Cardápio de marmitas em rodízio, lista de compras em peso cru, custo por marmita e divisão… | `marmitas-semana` | `mmt` |
 | ✈️ | **Meta Poupança Viagem** | Quanto guardar por mês para a viagem. | `meta-poupanca-viagem` | `rvg` |
+| 🚦 | **Multa de Trânsito e Pontos** | Valor da multa com desconto de 20%/40% (SNE), pontos e quanto falta para suspender a CNH | `multa-transito-pontos` | `mtv` |
 | ✍️ | **Números por Extenso & Romanos** | Valores para cheque e recibo, cardinais, ordinais, feminino e algarismos romanos | `numero-extenso` | `ext` |
 | ⚽ | **Organizador de Pelada** | Times equilibrados, quem ganha fica, placar, artilharia e rateio da quadra | `pelada-futebol` | `pld` |
 | 🎒 | **Otimizador da Mochila** | Mochila 0/1 por programação dinâmica e cota fracionária gulosa | `otimizador-mochila` | `knp` |
@@ -738,78 +754,81 @@
 | 🔊 | **Volume por App** | Volume separado pra cada programa + perfis | `volume-apps` | `volume_apps` |
 | 🌳 | **Árvore de Decisão & ID3** | Algoritmo ID3, cálculo de Entropia de Shannon e Ganho de Informação | `arvore-decisao` | `tre` |
 | 🌡️ | **Índice de Conforto Térmico** | Heat Index NWS, Wind Chill, Humidex e ponto de orvalho | `calculadora-indice-conforto` | `wci` |
+| 😰 | **Índice de Estresse Percebido (simplificado)** | Questionário educativo Likert 0–4: escore 0–20, classificação baixa/moderada/alta e dicas genéricas | `indice-estresse-percebido` | `iep` |
 | 💪 | **Índice de Massa Muscular (FFMI)** | Calcula FFMI e FFMI normalizado a partir de peso, altura e % de gordura, com classificação aproximada. | `indice-massa-muscular` | `imm` |
 | 😴 | **Índice de Qualidade do Sono (PSQI simplificado)** | Questionário educativo inspirado no PSQI: escore 0–21, classificação e dicas de higiene do sono | `indice-qualidade-sono-psqi` | `psq` |
 
 ---
 
-## 🔒 Prefixos reservados (657) — NÃO repetir
+## 🔒 Prefixos reservados (674) — NÃO repetir
 
 ```text
-abn  acd  aci  acl  acp  acu  ads  aer  agr  agu
-alb  alg  alq  alu  alv  amc  amf  analisador_texto  ans  anv
-apo  apx  aqs  aqu  area_transferencia  arf  as  asc  asd  ass
-ast  asy  atv  aud  avr  aws  b64  bar  bat  bdg
-bdt  bfi  bhc  bhr  big  bik  blk  blm  bmk  bnd
-bnf  bng  bol  brg  brw  bsc  bse  bts  btu  buf
-bun  busca_arquivos  bys  bzl  bzr  cab  cabecalhos_seguranca  caderno_python  caf  calculadora_cientifica
-calculadora_clt  calendario_br  can  canivete  capturador_cores  car  cas  cau  cbf  cbv
-ccp  ccs  cda  cdc  cdf  cdn  cer  certificado_ssl  ces  cfe
-cfh  cfm  cfr  cfx  cg  cgo  cha  chc  chg  chh
-chi  chm  chu  chz  cic  cie  cin  cis  ckm  clb
-clc  cld  clf  cliente_api  cll  cm  cmb  cmk  cmp  cnc
-cnd  cof  cofre_senhas  compactador  comparar_pastas  contatos  conversor_av  conversor_imagens  conversor_unidades  cov
-coz  cpj  cpt  crc  crd  crh  cripto_arquivos  crl  crn  crp
-crx  csb  csd  csh  csm  cst  ctk  ctm  cts  cty
-cub  cue  curriculo_pdf  cxv  cyc  cyd  czc  d13  dav  dc
-dck  dcn  dcs  dd  den  dep  dex  dfc  dfn  dfx
-dhl  dik  dil  dk  dlt  dlv  dmn  dna  dnv  dop
-dpb  dpg  drc  drf  drm  dry  dsi  dsp  dts  dvc
-dzm  ear  ebb  ecc  ecp  edc  editor_imagem  efn  egg  ele
-elf  elt  emd  emp  ems  enc  encm  ent  enx  eoc
-eol  epc  epi  epm  erg  esc  esi  esm  est  etiquetas
-eul  ext  extrator_texto  fa  fan  faxina  fbs  fcs  fdt  fei
-fer  ferramentas_br  ferramentas_dev  ferramentas_rede  fft  fie  financas  fla  flashcards  flk
-fot  fre  frv  fsc  fsi  fst  fsz  ftr  fum  fwl
-fwt  galeria_fotos  gar  gas  gat  gd  gdb  gdo  gem  gen
-geo  gg  gha  gif  gig  gip  glp  gmd  gps_falso  gpx
-gql  gravador_tela  gravador_voz  grf  grm  grp  grr  grs  gry  gs
-gsl  gsp  gst  gyr  ham  hb  hdc  hdl  hdp  hdr
-hdt  hlk  hlm  hmn  hof  hos  hpv  hrt  hsh  hsp
-hst  hsz  huf  hxd  iab  icl  icn  ico  ict  idi
-imm  imx  ind  info_pc  inicializacao  inv  ipm  ipt  ipv  irs
-iso  iss  itn  janelas  jmr  jrd  jsc  jst  jtl  jun
-jwt  kb  kcr  kit_hacker  kit_pdf  kmb  knp  knt  kst  kwh
-lan  lav  lct  ldm  lei  leitor_ebooks  lfe  lg  lga  lgc
-lhn  lic  limpar_metadados  llb  lng  lok  lor  lsc  lux  lvd
-lvs  mac  mad  mag  mal  man  maq  mcr  mdc  mdh
-mdl  mdv  mdx  med  met  metronomo  mhr  mid  mkf  mkt
-mkv  mlp  mm  mmt  mnc  mnt  mol  monitor_sistema  mot  mqb
-mrs  mse  msn  mtc  mte  mtm  mtr  mtx  myp  nav
-nbd  nc  nca  nfe  nfn  nix  nln  nmi  nmk  notas
-nox  nrc  nsi  ntl  ntr  nvm  oas  obr  ocl  ofx
-olo  opt  orcamentos  orf  organizador  orq  own  p3d  pac  pad
-pai  pal  paletas_cores  pao  pas  pat  pbn  pcc  pcf  pcp
-pcs  pdl  pei  pem  pen  pes  pet  pev  pfl  phn
-phr  pid  pix_boleto  player_musica  plc  pld  plk  plm  plr  plt
-pm  pmt  pnl  pnu  poe  ppd  ppu  prc  print_anotador  prm
-prs  prt  prx  psc  psi  psq  pst  pth  pti  pts
-ptt  pvs  pwb  pyc  pyl  pyr  pyv  pzz  qb  qc
-qrcode_tool  qsm  qth  qtn  quiz_geografia  qzf  rastreador_tempo  rc  rct  rea
-rec  recupera  reg  relogio_mundial  rem  renomeador  reo  req  res  rev
-rfc  rfm  rfx  rgx  rlc  rle  rls  rlz  rmd  rml
-rms  rmx  rnv  rob  roi  rot  rpg  rps  rss  rst
-rsv  ruf  rvg  rvp  rwx  sab  saude  sb  sbb  sbo
-scd  scf  sch  scm  scn  sco  sec  sek  sem  seo
-seq  sfa  sfl  sfr  sgb  sgr  shb  shw  sir  skn
-slg  smt  smv  snip  snl  sno  snw  som  sorteios  spa
-spl  sqf  srt  ssc  ssk  stg  stm  stp  stt  sudoku
-svc  svg  syb  sym  syn  tam  tarefas  tcs  tcx  tdc
-tdf  tdo  tempo  texto_fala  tfr  tg  th  thf  thm  tip
-tml  tmp  tnt  tok  tox  trc  trd  tre  treino_digitacao  trf
-tro  trs  tru  trv  tsk  tun  tvd  tvs  txp  uba
-ubr  udi  uid  uni  utl  vag  variaveis_ambiente  vcp  vdc  vdw
-vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vlm  vnh  volume_apps  vsc  vst  vth
-wcg  wci  wdc  webcam_foto  wfi  wgm  whl  wsp  wup  wxi
-xtr  ylk  ylt  yml  yrn  zcd  zpf
+abn  acd  aci  acl  acp  acu  ads  aer  agd  agr
+agu  alb  alg  alq  alu  alv  amc  amf  analisador_texto  ans
+anv  apl  apo  apx  aqs  aqu  area_transferencia  arf  arm  as
+asc  asd  ass  ast  asy  atv  aud  avr  aws  b64
+bar  bat  bdg  bdt  bfi  bhc  bhr  big  bik  blk
+blm  bmk  bnd  bnf  bng  bol  brg  brw  bsc  bse
+bts  btu  buf  bun  busca_arquivos  bys  bzl  bzr  cab  cabecalhos_seguranca
+caderno_python  caf  calculadora_cientifica  calculadora_clt  calendario_br  can  canivete  capturador_cores  car  cas
+cau  cbf  cbv  ccp  ccs  cda  cdc  cdf  cdn  cee
+cer  certificado_ssl  ces  cfe  cfh  cfm  cfr  cfx  cg  cgo
+cha  chc  chg  chh  chi  chm  chu  chz  cic  cie
+cin  cis  ckm  clb  clc  cld  clf  cliente_api  cll  cm
+cmb  cmk  cmp  cnc  cnd  cof  cofre_senhas  compactador  comparar_pastas  contatos
+conversor_av  conversor_imagens  conversor_unidades  cov  coz  cpj  cpt  crc  crd  crh
+cripto_arquivos  crl  crn  crp  crx  csb  csd  csh  csm  cst
+ctk  ctm  cts  cty  cub  cue  curriculo_pdf  cvn  cxv  cyc
+cyd  czc  d13  dav  dc  dck  dcn  dcs  dd  den
+dep  dex  dfc  dfn  dfx  dhl  dik  dil  dk  dlt
+dlv  dmn  dna  dnv  dop  dpb  dpg  drc  drf  drm
+dry  dsi  dsp  dts  dvc  dzm  ear  ebb  ecc  ecp
+edc  editor_imagem  efn  egg  eis  ele  elf  elt  emd  emp
+ems  enc  encm  ent  enx  eoc  eol  epc  epi  epm
+erg  esc  esi  esm  est  etiquetas  eul  ext  extrator_texto  fa
+fan  faxina  fbs  fcs  fdt  fei  fer  ferramentas_br  ferramentas_dev  ferramentas_rede
+fft  fgr  fie  financas  fla  flashcards  flk  fot  fre  frp
+frv  fsc  fsi  fst  fsz  ftr  fum  fwl  fwt  galeria_fotos
+gar  gas  gat  gd  gdb  gdo  gem  gen  geo  gg
+gha  gif  gig  gip  glp  gmd  gps_falso  gpx  gql  gravador_tela
+gravador_voz  grf  grm  grp  grr  grs  gry  gs  gsl  gsp
+gst  gyr  ham  hb  hdc  hdl  hdp  hdr  hdt  hlk
+hlm  hmn  hof  hos  hpv  hrt  hsh  hsp  hst  hsz
+huf  hxd  iab  icl  icn  ico  ict  idi  iep  imm
+imx  ind  info_pc  inicializacao  inv  ipm  ipp  ipt  ipv  irs
+isd  iso  iss  itn  janelas  jmr  jrd  jsc  jst  jtl
+jun  jwt  kb  kcr  kit_hacker  kit_pdf  kmb  knp  knt  kst
+kwh  lan  lav  lct  ldm  lei  leitor_ebooks  lfe  lg  lga
+lgc  lhn  lic  limpar_metadados  llb  lng  lok  lor  lsc  lux
+lvd  lvs  mac  mad  mag  mal  man  maq  mbp  mcr
+mdc  mdh  mdl  mdv  mdx  med  met  metronomo  mhr  mid
+mkf  mkt  mkv  mlp  mm  mmt  mnc  mnt  mol  monitor_sistema
+mot  mqb  mrs  mse  msn  mtc  mte  mtm  mtr  mtv
+mtx  myp  nav  nbd  nc  nca  nfe  nfn  nix  nln
+nmi  nmk  notas  nox  nrc  nsi  ntl  ntr  nuv  nvm
+oas  obr  ocl  ofx  olo  opt  orcamentos  orf  organizador  orq
+own  p3d  pac  pad  pai  pal  paletas_cores  pao  pas  pat
+pbn  pcc  pce  pcf  pcp  pcs  pdl  pei  pem  pen
+pes  pet  pev  pfl  phn  phr  pid  pix_boleto  player_musica  plc
+pld  plk  plm  plr  pls  plt  pm  pmt  pnl  pnu
+poe  ppd  ppu  prc  print_anotador  prm  prs  prt  prx  psc
+psi  psq  pst  pth  pti  pts  ptt  pvs  pwb  pyc
+pyl  pyr  pyv  pzz  qb  qc  qrcode_tool  qsm  qth  qtn
+quiz_geografia  qzf  rastreador_tempo  rc  rct  rea  rec  recupera  reg  relogio_mundial
+rem  renomeador  reo  req  res  rev  rfc  rfm  rfx  rgx
+rlc  rle  rls  rlz  rmd  rml  rms  rmx  rnv  rob
+roi  rot  rpg  rps  rss  rst  rsv  ruf  rvg  rvp
+rwx  sab  saude  sb  sbb  sbo  scd  scf  sch  scm
+scn  sco  sec  sek  sem  seo  seq  sfa  sfl  sfr
+sgb  sgr  shb  shw  sir  skn  slg  smt  smv  snip
+snl  sno  snw  som  sorteios  spa  spl  sqf  srt  ssc
+ssk  stg  stm  stp  stt  sudoku  svc  svg  syb  sym
+syn  tam  tarefas  tcs  tcx  tdc  tdf  tdo  tempo  texto_fala
+tfr  tg  th  thf  thm  tip  tml  tmp  tnt  tok
+tox  trc  trd  tre  treino_digitacao  trf  tro  trs  tru  trv
+tsk  tun  tvd  tvs  txp  uba  ubr  udi  uid  uni
+utl  vag  variaveis_ambiente  vcp  vdc  vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite
+vlm  vnh  volume_apps  vsc  vst  vth  vva  wcg  wci  wdc
+webcam_foto  wfi  wgm  whl  wsp  wup  wxi  xtr  ylk  ylt
+yml  yrn  zcd  zpf
 ```

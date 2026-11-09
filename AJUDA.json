@@ -6766,5 +6766,210 @@
    "Clique em Simular dissídio e veja novo salário, aumento, retroativo e pacote total."
   ],
   "exemplo": "Salário R$ 4.000 + 6,5% + 4 meses de retroativo + R$ 800 de benefícios reajustados → novo R$ 4.260, retroativo R$ 1.040, pacote ~R$ 5.112."
+ },
+ "analisador-perfil-lipidico-cardiovascular": {
+  "sinopse": "Analisa o perfil lipídico completo calculando índices aterogênicos avançados (Castelli I e II, razão Triglicerídeos/HDL e Colesterol Não-HDL), exibindo as metas terapêuticas recomendadas pela Sociedade Brasileira de Cardiologia.",
+  "para_que": "Para quem faz exames de sangue de rotina e quer entender além do colesterol total isolado, identificando sinais precoces de resistência insulínica e risco cardiovascular.",
+  "como_usar": [
+   "Selecione o 'Sexo Biológico'",
+   "Insira os valores do exame: 'Colesterol Total', 'Colesterol HDL', 'Colesterol LDL' e 'Triglicerídeos'",
+   "Informe a 'Glicemia de Jejum (mg/dL)'",
+   "Marque se houver fatores clínicos como 'Tabagismo ativo', 'Hipertensão' ou histórico familiar",
+   "Confira a 'ESTRATIFICACAO DE RISCO CARDIOVASCULAR' e o gráfico com os 3 medidores aterogênicos",
+   "Verifique na tabela se o seu LDL e Não-HDL estão dentro da meta terapêutica do seu estrato"
+  ],
+  "exemplo": "Homem com CT 195, HDL 52, LDL 115 e Triglicerídeos 120 obtém Não-HDL de 143 mg/dL, Castelli I de 3.75 e razão TG/HDL favorável de 2.31, classificando-se como Baixo Risco Cardiovascular."
+ },
+ "calculadora-beneficio-vr-va": {
+  "sinopse": "Calcula quanto cai no cartao de VR e VA no mes: dias uteis menos feriados e faltas, valor por dia de cada beneficio, coparticipacao percentual descontada em folha e liquido total.",
+  "para_que": "Para trabalhadores CLT conferirem o holerite antes do fechamento, RH validar credito do PAT e quem recebe VR+VA separados ver o impacto de faltas no valor liquido.",
+  "como_usar": [
+   "Informe os dias uteis do mes (calendario da empresa ou contagem manual).",
+   "Preencha o valor creditado por dia de VR e de VA conforme a politica do beneficio.",
+   "Ajuste o percentual de desconto do trabalhador (coparticipacao; patamar comum no VR: ate 20%).",
+   "Some feriados nao trabalhados e faltas sem justificativa para abater dos dias de credito.",
+   "Clique em Calcular credito mensal e leia VR, VA, desconto, liquido e media por dia trabalhado."
+  ],
+  "exemplo": "22 dias uteis, VR R$ 35/dia, VA R$ 20/dia, 20% de desconto e 2 dias abatidos (1 feriado + 1 falta): 20 dias creditados, R$ 700 VR + R$ 400 VA, desconto R$ 220, liquido R$ 880 (media R$ 44/dia)."
+ },
+ "calculadora-contribuicao-sindical": {
+  "sinopse": "Estima o valor da contribuicao sindical ou assistencial sobre o salario bruto, com percentual e teto configuraveis.",
+  "para_que": "Para conferir o impacto no holerite antes de autorizar desconto ou comparar convenções, sem substituir RH ou contador.",
+  "como_usar": [
+   "Informe o Salario base (bruto) do mes.",
+   "Ajuste o Percentual da contribuicao (padrao ilustrativo 1%).",
+   "Defina o Dia do desconto no mes (apenas informativo para o holerite).",
+   "Se a convencao limita a base, marque Limitar base por teto e informe o valor.",
+   "Clique em Calcular contribuicao e leia mensal, anual, % efetivo e liquido."
+  ],
+  "exemplo": "Salario R$ 4.000, 1% sem teto → R$ 40/mes, R$ 480/ano, liquido R$ 3.960. Com teto R$ 3.000 e 2% → base R$ 3.000, desconto R$ 60 (1,5% efetivo sobre R$ 4.000)."
+ },
+ "calculadora-custo-estagiario-empresa": {
+  "sinopse": "Calcula o desembolso mensal e anual real da contratação de estagiários de acordo com a Lei nº 11.788/2008, incluindo vale-transporte integral sem desconto, seguro contra acidentes pessoais, provisão de recesso de 30 dias e taxa de agência, além do comparativo de economia sobre contratação CLT.",
+  "para_que": "Para empresários, gestores e RH planejarem contratações sem surpresas no orçamento e conhecerem as regras específicas da legislação do estágio.",
+  "como_usar": [
+   "Informe o valor da 'Bolsa-Auxílio Mensal (R$)'",
+   "Defina a quantidade de 'Passagens por Dia', o 'Valor da Tarifa' e os 'Dias Presenciais no Mês'",
+   "Insira o valor da apólice de 'Seguro de Acidentes Pessoais' e a 'Taxa Agente Integrador (CIEE/Nube) (%)'",
+   "Adicione benefícios extras como vale-refeição se houver",
+   "Veja no gráfico a proporção de cada despesa no custo total",
+   "Analise a tabela detalhada e a economia gerada em relação a um CLT equivalente"
+  ],
+  "exemplo": "Bolsa de R$ 1.500,00 com 2 conduções de R$ 4,40 por dia útil (22 dias), apólice anual de seguro de R$ 120 e agência a 10% totaliza R$ 1.978,60 mensais, gerando uma economia de mais de R$ 600/mês contra um júnior CLT."
+ },
+ "consertar-ou-trocar-celular": {
+  "sinopse": "Compara quanto custa por ano consertar o celular (ou notebook, TV...) contra comprar um novo, descontando o que você consegue vender o quebrado.",
+  "para_que": "Pra quem quebrou a tela, está com a bateria ruim ou recebeu um orçamento de conserto e não sabe se compensa.",
+  "como_usar": [
+   "Digite o Preço do conserto e Quanto dura depois do conserto (em anos).",
+   "Digite o Preço do aparelho novo e Quanto o novo deve durar.",
+   "Coloque a Venda do aparelho quebrado e o Valor de mercado dele funcionando.",
+   "Clique em Comparar."
+  ],
+  "exemplo": "Conserto de R$ 650 que dá mais 1,5 ano (R$ 433/ano) contra novo de R$ 1.800 por 3 anos vendendo o quebrado por R$ 250 (R$ 517/ano): consertar sai mais barato, mas o conserto passa de 50% do valor do aparelho."
+ },
+ "controle-agua-diaria-copos": {
+  "sinopse": "Define quanta agua beber por dia e traduz a meta em copos, com barra de progresso se voce informar o consumo atual.",
+  "para_que": "Para quem quer manter hidratacao no dia a dia sem adivinhar litros: ajusta pela rotina e pelo calor.",
+  "como_usar": [
+   "Informe seu peso em quilogramas.",
+   "Escolha o nivel de atividade (sedentario, moderado ou intenso).",
+   "Marque clima quente se estiver em onda de calor ou treino ao sol.",
+   "Defina o tamanho do seu copo ou garrafa em mililitros.",
+   "Opcional: preencha quantos ml ja bebeu hoje e clique em Calcular meta."
+  ],
+  "exemplo": "70 kg, sedentario, copo 250 ml, sem clima quente: meta 2450 ml (10 copos). Se ja bebeu 1225 ml, faltam 1225 ml (50%)."
+ },
+ "espaco-fotos-videos-celular": {
+  "sinopse": "Calcula quantas fotos e quantos minutos de vídeo ainda cabem no celular, conforme a câmera, o formato e a resolução do vídeo, e em quantos dias o espaço acaba no seu ritmo.",
+  "para_que": "Pra quem vai viajar ou filmar uma festa e não quer ficar sem espaço no meio.",
+  "como_usar": [
+   "Veja nos Ajustes do celular o Espaço livre e digite aqui.",
+   "Coloque os megapixels da Câmera, o Formato da foto e a Resolução do vídeo.",
+   "Ajuste a Parte do espaço para vídeo.",
+   "Opcional: Fotos por dia e Vídeo por dia para saber em quantos dias enche.",
+   "Clique em Calcular espaço."
+  ],
+  "exemplo": "18 GB livres, câmera 12 MP em HEIC, vídeo 1080p 30fps: cabem 10.000 fotos ou 5 horas de vídeo."
+ },
+ "frete-gratis-vale-a-pena": {
+  "sinopse": "Diz se vale a pena colocar mais um item no carrinho para ganhar o frete grátis ou se é melhor pagar o frete, levando em conta se você vai mesmo usar o item.",
+  "para_que": "Pra quem compra online (Shopee, Mercado Livre, Amazon, farmácia, mercado) e cai no 'frete grátis acima de R$ X'.",
+  "como_usar": [
+   "Digite o Valor do carrinho e o Mínimo para frete grátis.",
+   "Digite o Valor do frete.",
+   "Coloque o Preço do item extra que você pensou em adicionar.",
+   "Diga Quanto você vai usar o item (100% = ia comprar de qualquer jeito).",
+   "Clique em Decidir."
+  ],
+  "exemplo": "Carrinho R$ 82, mínimo R$ 99, frete R$ 19,90, item extra R$ 24,90 que você usaria 60%: desperdício R$ 9,96, menor que o frete. Vale a pena adicionar."
+ },
+ "indice-estresse-percebido": {
+  "sinopse": "Estima um escore de estresse percebido na última semana com cinco perguntas no estilo PSS, apenas para reflexão pessoal e educação em saúde.",
+  "para_que": "Para reconhecer padrões de nervosismo, sobrecarga, sono, irritabilidade e senso de controle — sem substituir psicólogo, psiquiatra ou instrumentos clínicos validados.",
+  "como_usar": [
+   "Leia cada pergunta pensando na última semana",
+   "Escolha de 0 (nunca) a 4 (muito frequente) em cada item",
+   "Clique em Calcular índice e veja escore, classificação e dicas",
+   "Itens de controle são ponderados de forma inversa (menos controle aumenta o escore)",
+   "Leia o aviso educativo: não é diagnóstico; em crise, CVV 188"
+  ],
+  "exemplo": "Controle 3, nervosismo 2, sobrecarga 2, sono 1, irritabilidade 1 → pesos 1+2+2+1+1 = 7, classificação moderada."
+ },
+ "indice-produtividade-pessoal": {
+  "sinopse": "Fecha o dia com um indice objetivo: compara horas de foco reais com o planejado, tarefas concluidas e penaliza interrupcoes.",
+  "para_que": "Para quem quer um numero simples (0-100) e uma classificacao textual ao final do expediente, sem planilha.",
+  "como_usar": [
+   "Informe Horas planejadas e Horas focadas (reais) do dia.",
+   "Preencha Tarefas planejadas e Tarefas concluidas (concluidas nao podem passar do planejado).",
+   "Conte as Interrupcoes relevantes (ligações, pings, pausas nao planejadas).",
+   "Clique em Calcular indice do dia e leia % Foco, % Conclusao, Escore e Classificacao.",
+   "Use so horas OU so tarefas se quiser (pelo menos um dos dois precisa ser > 0)."
+  ],
+  "exemplo": "6h planejadas, 5h focadas, 8 tarefas planejadas, 6 concluidas, 4 interrupcoes -> foco 83%, conclusao 75%, escore ~78 (Muito bom)."
+ },
+ "internet-ideal-casa": {
+  "sinopse": "Soma o que a família usa ao mesmo tempo no horário mais cheio (vídeo, videochamada, jogos, câmeras) e recomenda a velocidade de internet certa, com folga para o Wi-Fi.",
+  "para_que": "Pra quem vai contratar ou trocar o plano de internet e não quer pagar a mais nem ficar travando.",
+  "como_usar": [
+   "Em 'Ao mesmo tempo, no pico', diga quantas pessoas/aparelhos fazem cada atividade juntos.",
+   "Ajuste a Folga para o Wi-Fi (50% é um bom padrão).",
+   "Se baixa jogos ou backups grandes, preencha Download pesado e Quero baixar em.",
+   "Clique em Calcular velocidade e veja o PLANO RECOMENDADO."
+  ],
+  "exemplo": "1 TV em 4K, 2 celulares em vídeo, 1 aula online e 3 pessoas nas redes: 48 Mbps no pico, 72 com folga. Plano recomendado: 100 Mbps."
+ },
+ "multa-transito-pontos": {
+  "sinopse": "Mostra o valor da multa pela gravidade (tabela do CTB), quanto fica com 20% ou 40% de desconto e se os pontos vão estourar o limite da CNH.",
+  "para_que": "Pra quem recebeu uma notificação de multa e quer saber quanto pagar e se a carteira corre risco.",
+  "como_usar": [
+   "Escolha a Gravidade da infração (está na notificação).",
+   "Se a notificação falar em fator multiplicador, escolha o Fator multiplicador.",
+   "Digite os Pontos que já tem (12 meses) e as Gravíssimas que já tem.",
+   "Marque se dirige profissionalmente (EAR) e clique em Calcular."
+  ],
+  "exemplo": "Multa grave (R$ 195,23, 5 pontos) para quem já tem 31 pontos: paga R$ 117,14 pelo SNE e fica com 36 de 40 pontos, perto do limite."
+ },
+ "organizador-tarefas-eisenhower": {
+  "sinopse": "Matriz de Eisenhower para priorizar tarefas pelo eixo urgente × importante, com quatro quadrantes e sequência sugerida de execução.",
+  "para_que": "Quando você tem muita coisa na mesa e precisa decidir o que fazer agora, o que agendar, o que delegar e o que simplesmente cortar.",
+  "como_usar": [
+   "Digite o título da tarefa no campo de texto.",
+   "Marque Urgente e/ou Importante conforme o caso.",
+   "Clique em Adicionar tarefa — ela cai no quadrante certo automaticamente.",
+   "Acompanhe as contagens e as listas nos quatro painéis.",
+   "Leia o resumo com a ordem sugerida (fazer agora → agendar → delegar → eliminar).",
+   "Use Remover selecionada (ou duplo clique) para excluir; o app salva localmente."
+  ],
+  "exemplo": "Tarefa «Ligar pro cliente irritado»: urgente + importante → Fazer agora. «Planejar curso interno»: não urgente + importante → Agendar. «Responder e-mail de spam promocional»: urgente + não importante → Delegar. «Rolar feed sem objetivo»: nem urgente nem importante → Eliminar."
+ },
+ "planejador-cronograma-estudo-edital": {
+  "sinopse": "Mapeia as disciplinas, tópicos e horas necessárias para cobrir um edital antes da data da prova, avaliando se a rotina atual é suficiente e calculando a distribuição proporcional da carga horária semanal conforme o peso de cada matéria.",
+  "para_que": "Para concurseiros e vestibulandos que precisam de um planejamento realista de estudos para saber exatamente quantas páginas/aulas estudar por semana e se dará tempo de fechar o edital.",
+  "como_usar": [
+   "Defina os 'Dias até a Prova / Prazo Limite' e os 'Dias de Reserva Final para Revisão Geral'",
+   "Informe as horas de estudo disponíveis em 'Dias Úteis' e 'Fim de Semana'",
+   "Na tabela de matérias, preencha os 'Tópicos' restantes, o tempo médio 'Min/Top' e o 'Peso (1-5)'",
+   "Adicione ou remova disciplinas usando os botões '+ Adicionar Disciplina' / '- Remover Última'",
+   "Verifique o balanço visual de horas e a taxa percentual de cobertura do edital",
+   "Consulte a tabela de planejamento semanal com as metas de horas e tópicos por matéria"
+  ],
+  "exemplo": "Com 60 dias até a prova e rotina de 3.5h/dia útil e 5h/fim de semana, um candidato com 5 matérias (115 tópicos no total) atinge 108% de cobertura com folga de 7 dias para revisão, precisando de ~27.5 horas de estudo por semana."
+ },
+ "planejador-leituras-semanais": {
+  "sinopse": "Planeja a meta de leitura da semana: paginas por dia, minutos necessarios, se o restante cabe na capacidade e a data estimada de termino.",
+  "para_que": "Para quem quer fechar um livro (ou capitulo) com ritmo semanal realista, nao so uma meta anual.",
+  "como_usar": [
+   "Informe Paginas do livro e Paginas ja lidas.",
+   "Defina Dias disponiveis (1-7) e Minutos por dia (capacidade).",
+   "Escolha a unidade de velocidade (pag/min ou pag/h) e o valor.",
+   "Clique em Calcular plano da semana.",
+   "Veja se cabe na semana, paginas/minutos por dia e a data estimada de termino."
+  ],
+  "exemplo": "Livro 300 pag, 50 lidas, 5 dias, 30 min/dia a 1 pag/min → 50 pag/dia necessarias; se a capacidade for menor, o app mostra que nao cabe e estima a data."
+ },
+ "planejador-revisao-flash-rapida": {
+  "sinopse": "Planejador de sessão flash: divide o tempo ATUAL em blocos por tópico, sugere ordem (mais fraco primeiro) e avisa se não dá para cobrir todos.",
+  "para_que": "Para revisar antes de aula, no intervalo ou na fila — quando você tem 20–60 minutos e quer saber quantos assuntos atacar sem montar cronograma até a prova.",
+  "como_usar": [
+   "Informe Tempo disponível agora (minutos).",
+   "Defina Número de tópicos e Mínimo por tópico (piso de cada bloco).",
+   "Opcional: liste tópicos (um por linha) com nota 1–5 após ; ou vírgula (1 = mais fraco).",
+   "Clique em Montar sessão flash.",
+   "Siga a ordem sugerida e os minutos por bloco."
+  ],
+  "exemplo": "45 min, 5 tópicos, mínimo 8 min → cabem 5 blocos (~9 min cada). Com notas, Genética;1 vem antes de Ecologia;3."
+ },
+ "plano-nuvem-backup": {
+  "sinopse": "Calcula quanto o seu backup cresce por mês (fotos, vídeos, WhatsApp) e mostra em quantos meses cada plano de nuvem enche, recomendando o mais barato que aguenta o tempo que você quer.",
+  "para_que": "Pra quem vive recebendo 'armazenamento cheio' no Google Fotos ou iCloud e quer escolher o plano certo.",
+  "como_usar": [
+   "Digite quanto já está usado na nuvem (Já usado na nuvem).",
+   "Preencha Fotos por mês, Vídeo por mês e os tamanhos médios.",
+   "Escolha por quanto tempo Quero que dure.",
+   "Confira a lista de Planos (nome;GB;preço por mês) e corrija os preços se mudaram.",
+   "Clique em Ver plano ideal."
+  ],
+  "exemplo": "13 GB usados, 300 fotos e 30 min de vídeo por mês (~3 GB/mês): em 24 meses precisa de ~86 GB. O plano de 100 GB a R$ 7,99 aguenta ~29 meses."
  }
 }

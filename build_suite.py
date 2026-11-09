@@ -680,6 +680,23 @@ TOOLS = {
     "prazos-direito-consumidor": "cdc_gui.pyw",
     "roi-curso-certificacao": "roi_gui.pyw",
     "simulador-banco-horas-compensacao": "bhc_gui.pyw",
+    "analisador-perfil-lipidico-cardiovascular": "apl_gui.pyw",
+    "calculadora-beneficio-vr-va": "vva_gui.pyw",
+    "calculadora-contribuicao-sindical": "isd_gui.pyw",
+    "calculadora-custo-estagiario-empresa": "cee_gui.pyw",
+    "consertar-ou-trocar-celular": "cvn_gui.pyw",
+    "controle-agua-diaria-copos": "agd_gui.pyw",
+    "espaco-fotos-videos-celular": "arm_gui.pyw",
+    "frete-gratis-vale-a-pena": "fgr_gui.pyw",
+    "indice-estresse-percebido": "iep_gui.pyw",
+    "indice-produtividade-pessoal": "ipp_gui.pyw",
+    "internet-ideal-casa": "mbp_gui.pyw",
+    "multa-transito-pontos": "mtv_gui.pyw",
+    "organizador-tarefas-eisenhower": "eis_gui.pyw",
+    "planejador-cronograma-estudo-edital": "pce_gui.pyw",
+    "planejador-leituras-semanais": "pls_gui.pyw",
+    "planejador-revisao-flash-rapida": "frp_gui.pyw",
+    "plano-nuvem-backup": "nuv_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

@@ -762,6 +762,23 @@ BUILTIN = [
     ("🛡️", "Prazos do Consumidor", "Até quando desistir da compra, reclamar de defeito, usar a garantia e cobrar o conserto (CDC)", "prazos-direito-consumidor", "cdc_gui.pyw"),
     ("🎓", "ROI de Curso & Certificação Profissional", "Payback e ROI de bootcamps e certificações (AWS, PMP, Cisco) com custo de oportunidade das horas de estudo.", "roi-curso-certificacao", "roi_gui.pyw"),
     ("⏰", "Simulador de Banco de Horas & Compensação (CLT)", "Controle de saldo do banco de horas CLT (art. 59), prazos legais de prescrição (6 meses ou 1 ano) e liquidação com adicional e DSR", "simulador-banco-horas-compensacao", "bhc_gui.pyw"),
+    ("🫀", "Analisador de Perfil Lipídico & Risco Aterogênico (SBC)", "Calcula índices aterogênicos (Castelli I e II, razão TG/HDL, Não-HDL) e estratificação de risco cardiovascular da Sociedade Brasileira de Cardiologia", "analisador-perfil-lipidico-cardiovascular", "apl_gui.pyw"),
+    ("🍽️", "Calculadora VR/VA Mensal", "Credito mensal de Vale Refeicao e Vale Alimentacao com desconto em folha e media por dia trabalhado", "calculadora-beneficio-vr-va", "vva_gui.pyw"),
+    ("🤝", "Contribuicao Sindical & Assistencial", "Simula desconto sindical/assistencial: mensal, anual, % efetivo e liquido", "calculadora-contribuicao-sindical", "isd_gui.pyw"),
+    ("💼", "Calculadora de Custo de Estagiário para Empresas (Lei 11.788)", "Calcula o custo total real de contratação de estagiário (bolsa, auxílio-transporte integral, seguro de vida, provisão de recesso remunerado e taxa de agente integrador)", "calculadora-custo-estagiario-empresa", "cee_gui.pyw"),
+    ("🔧", "Consertar ou Trocar o Celular", "Custo por ano de consertar x comprar novo, com venda do quebrado e regra dos 50%", "consertar-ou-trocar-celular", "cvn_gui.pyw"),
+    ("💧", "Controle de Agua Diaria por Copos", "Meta diaria de agua em ml e copos por peso, atividade, clima quente e progresso do que ja bebeu", "controle-agua-diaria-copos", "agd_gui.pyw"),
+    ("📸", "Espaço para Fotos e Vídeos", "Quantas fotos e minutos de vídeo cabem no espaço livre do celular e em quantos dias enche", "espaco-fotos-videos-celular", "arm_gui.pyw"),
+    ("📦", "Frete Grátis Vale a Pena?", "Completar o carrinho até o mínimo do frete grátis ou pagar o frete: qual sai melhor", "frete-gratis-vale-a-pena", "fgr_gui.pyw"),
+    ("😰", "Índice de Estresse Percebido (simplificado)", "Questionário educativo Likert 0–4: escore 0–20, classificação baixa/moderada/alta e dicas genéricas", "indice-estresse-percebido", "iep_gui.pyw"),
+    ("📈", "Indice de Produtividade Pessoal", "Escore diario 0-100 com % foco, % conclusao de tarefas e classificacao a partir de horas e interrupcoes", "indice-produtividade-pessoal", "ipp_gui.pyw"),
+    ("📡", "Internet Ideal para Casa", "Quantos Mbps a casa precisa pelo uso simultâneo no pico (streaming, videochamada, jogos)", "internet-ideal-casa", "mbp_gui.pyw"),
+    ("🚦", "Multa de Trânsito e Pontos", "Valor da multa com desconto de 20%/40% (SNE), pontos e quanto falta para suspender a CNH", "multa-transito-pontos", "mtv_gui.pyw"),
+    ("📊", "Matriz Eisenhower", "Organize tarefas nos 4 quadrantes (fazer agora, agendar, delegar, eliminar) com contagens e ordem sugerida", "organizador-tarefas-eisenhower", "eis_gui.pyw"),
+    ("📅", "Planejador de Cronograma de Estudo para Editais & Provas", "Calcula a viabilidade temporal de fechamento do edital até o concurso, metas semanais de tópicos e divisão de carga horária por peso da matéria", "planejador-cronograma-estudo-edital", "pce_gui.pyw"),
+    ("📖", "Planejador de Leituras Semanais", "Meta operacional da semana: paginas/dia, minutos/dia, se cabe no tempo e data estimada de termino", "planejador-leituras-semanais", "pls_gui.pyw"),
+    ("⚡", "Sessão Flash de Revisão", "Monta blocos de estudo para os minutos disponíveis agora, prioriza tópicos fracos (notas 1-5) e alerta se o tempo não cobre tudo", "planejador-revisao-flash-rapida", "frp_gui.pyw"),
+    ("☁️", "Plano de Nuvem para Backup", "Em quantos meses cada plano de nuvem enche com suas fotos e vídeos e qual o mais barato que aguenta", "plano-nuvem-backup", "nuv_gui.pyw"),
 ]
 
 QSS = """
