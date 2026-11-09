@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-08",
-  "total": 518,
+  "total": 524,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -4663,6 +4663,60 @@
       "script": "dhl_gui.pyw",
       "prefixo": "dhl",
       "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "❄️",
+      "nome": "Gerador flake.nix",
+      "desc": "Presets Nix flake (devShell, package, overlay).",
+      "chave": "gerador-flake-nix",
+      "script": "nix_gui.pyw",
+      "prefixo": "nix",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "⎈",
+      "nome": "Gerador Helm Chart",
+      "desc": "Presets Chart.yaml / values.yaml / deployment template.",
+      "chave": "gerador-helm-chart",
+      "script": "hlm_gui.pyw",
+      "prefixo": "hlm",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🧩",
+      "nome": "Gerador Kustomization",
+      "desc": "Presets kustomization.yaml (base, overlay, components).",
+      "chave": "gerador-kustomization",
+      "script": "kst_gui.pyw",
+      "prefixo": "kst",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "🏛️",
+      "nome": "Gerador Terraform",
+      "desc": "Presets .tf (provider AWS, modulo local, variables).",
+      "chave": "gerador-terraform",
+      "script": "tfr_gui.pyw",
+      "prefixo": "tfr",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "🟣",
+      "nome": "Gerador Pulumi",
+      "desc": "Presets Pulumi (Python, TypeScript, YAML).",
+      "chave": "gerador-pulumi",
+      "script": "plm_gui.pyw",
+      "prefixo": "plm",
+      "categoria": "💻 Dev & Dados"
+    },
+    {
+      "emoji": "📜",
+      "nome": "Gerador Ansible",
+      "desc": "Presets playbook/inventory/role Ansible.",
+      "chave": "gerador-ansible",
+      "script": "ans_gui.pyw",
+      "prefixo": "ans",
+      "categoria": "🧰 Outras"
     }
   ],
   "prefixos": [
@@ -4678,6 +4732,7 @@
     "alu",
     "amf",
     "analisador_texto",
+    "ans",
     "anv",
     "apo",
     "apx",
@@ -4892,6 +4947,7 @@
     "hdp",
     "hdr",
     "hlk",
+    "hlm",
     "hmn",
     "hsh",
     "hst",
@@ -4921,6 +4977,7 @@
     "kmb",
     "knp",
     "knt",
+    "kst",
     "kwh",
     "lan",
     "lct",
@@ -4976,6 +5033,7 @@
     "nca",
     "nfe",
     "nfn",
+    "nix",
     "nln",
     "nmi",
     "nmk",
@@ -5020,6 +5078,7 @@
     "plc",
     "pld",
     "plk",
+    "plm",
     "plt",
     "pm",
     "pnl",
@@ -5129,6 +5188,7 @@
     "tdo",
     "tempo",
     "texto_fala",
+    "tfr",
     "tg",
     "th",
     "thf",

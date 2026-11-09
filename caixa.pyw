@@ -552,6 +552,12 @@ BUILTIN = [
     ("🐹", "Inspetor go.sum", "Lista modulos/versoes/hashes de go.sum.", "inspetor-go-sum", "gmd_gui.pyw"),
     ("🎯", "Gerador CUE", "Presets linguagem CUE (schema, defaults, unify).", "gerador-cue", "cue_gui.pyw"),
     ("🔮", "Gerador Dhall", "Presets Dhall (record, union, functions).", "gerador-dhall", "dhl_gui.pyw"),
+    ("❄️", "Gerador flake.nix", "Presets Nix flake (devShell, package, overlay).", "gerador-flake-nix", "nix_gui.pyw"),
+    ("⎈", "Gerador Helm Chart", "Presets Chart.yaml / values.yaml / deployment template.", "gerador-helm-chart", "hlm_gui.pyw"),
+    ("🧩", "Gerador Kustomization", "Presets kustomization.yaml (base, overlay, components).", "gerador-kustomization", "kst_gui.pyw"),
+    ("🏛️", "Gerador Terraform", "Presets .tf (provider AWS, modulo local, variables).", "gerador-terraform", "tfr_gui.pyw"),
+    ("🟣", "Gerador Pulumi", "Presets Pulumi (Python, TypeScript, YAML).", "gerador-pulumi", "plm_gui.pyw"),
+    ("📜", "Gerador Ansible", "Presets playbook/inventory/role Ansible.", "gerador-ansible", "ans_gui.pyw"),
 ]
 
 QSS = """
