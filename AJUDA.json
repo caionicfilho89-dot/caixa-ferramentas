@@ -6518,5 +6518,42 @@
    "Confira o resultado na area de saida."
   ],
   "exemplo": "R$ 100 com 1% + R$ 0,50 → liquido R$ 98,50."
+ },
+ "calculadora-densidade-calorica-saciedade": {
+  "sinopse": "Calcula a densidade energética (kcal/g) e a saciedade mecânica gástrica de refeições, comparando o volume de comida necessário contra ultraprocessados para uma mesma cota calórica.",
+  "para_que": "Para pessoas em processo de emagrecimento ou reeducação alimentar que sofrem com fome constante e desejam montar pratos volumosos com baixas calorias.",
+  "como_usar": [
+   "Informe o peso em gramas no campo 'Vegetais e Folhosos (g)'",
+   "Adicione as gramas de 'Frutas e Tuberculos (g)', 'Proteinas Magras (g)' e 'Graos e Cereais (g)'",
+   "Insira as gramas de 'Gorduras, Queijos e Doces (g)' consumidas",
+   "Ajuste a 'Meta Calorica para Comparacao (kcal)' da refeição",
+   "Clique em 'Calcular Densidade & Saciedade' ou veja a atualização em tempo real",
+   "Analise a 'DURACAO ESTIMADA DA SACIEDADE' e os círculos de volume no prato visual"
+  ],
+  "exemplo": "Uma refeição com 200g de vegetais, 150g de batata, 150g de peito de frango, 100g de arroz e 10g de azeite totaliza 610g e ~565 kcal (0.92 kcal/g, Baixa Densidade), garantindo mais de 4h de saciedade mecânica comparado a apenas 111g de fast food para as mesmas 500 kcal."
+ },
+ "comparador-salario-cidade": {
+  "sinopse": "Descobre se um salário maior em outra cidade realmente compra mais, usando índices de custo de vida.",
+  "para_que": "Para avaliar proposta de emprego, mudança de cidade ou comparar remuneração remota com base em outro lugar.",
+  "como_usar": [
+   "Defina a Cidade A com salário atual e índice de custo (100 = referência que você escolher).",
+   "Preencha a Cidade B com salário ofertado e o índice dessa cidade (mesma fonte/tabela).",
+   "Use índices da mesma pesquisa (ex.: Numbeo) para as duas cidades — não misture bases.",
+   "Clique em Comparar poder de compra.",
+   "Leia o salário necessário em B, a diferença percentual e qual cidade tem melhor poder de compra."
+  ],
+  "exemplo": "SP R$ 8.000 (índice 100) vs Curitiba R$ 9.000 (índice 115): equivalente em SP ≈ R$ 7.826 (−2,2%); para igualar SP você precisaria de ≈ R$ 9.200 em Curitiba."
+ },
+ "indice-massa-muscular": {
+  "sinopse": "Estima o Fat-Free Mass Index (índice de massa magra) para comparar desenvolvimento muscular ajustando a altura.",
+  "para_que": "Para acompanhar composição corporal na academia, comparar evolução ao longo do tempo ou contextualizar % de gordura já medido (adipômetro, bioimpedância, etc.).",
+  "como_usar": [
+   "Informe peso em kg, altura em cm e percentual de gordura corporal.",
+   "Escolha o sexo para aplicar as faixas de classificação documentadas (homem ou mulher).",
+   "Leia massa magra, FFMI bruto, FFMI normalizado (referência 1,80 m) e a classificação aproximada.",
+   "Consulte o painel de faixas para entender os limites abaixo/médio/atlético/avançado.",
+   "Lembre: resultado educativo — a precisão depende da medição de gordura."
+  ],
+  "exemplo": "80 kg, 180 cm, 15% gordura → massa magra 68 kg, FFMI ≈ 21,0, normalizado ≈ 21,0 (altura = referência), classificação atlético (homem)."
  }
 }

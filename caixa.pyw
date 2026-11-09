@@ -741,6 +741,10 @@ BUILTIN = [
     ("🎓", "Simulador do Novo FIES & Amortização", "Financiamento estudantil FIES, coparticipação no curso, retenção percentual em folha pelo eSocial e prazo de quitação", "simulador-financiamento-estudantil-fies", "fie_gui.pyw"),
     ("🎁", "Simulador de PLR", "Participação nos Lucros: bruto, IR e líquido por meta e múltiplo de salários.", "simulador-plr", "plr_gui.pyw"),
     ("💠", "Taxa Pix Recebimento", "Líquido após taxa % e fixa no Pix.", "taxa-pix-recebimento", "txp_gui.pyw"),
+    ("🥗", "Calculadora de Densidade Calórica & Saciedade", "Índice de saciedade de Holt e volumetria: comparação de volume no prato para controle da fome no emagrecimento", "calculadora-densidade-calorica-saciedade", "dcs_gui.pyw"),
+    ("🏙️", "Comparador Salário × Cidade", "Ajusta salários pelo índice de custo de vida entre duas cidades e compara poder de compra.", "comparador-salario-cidade", "scd_gui.pyw"),
+    ("💪", "Índice de Massa Muscular (FFMI)", "Calcula FFMI e FFMI normalizado a partir de peso, altura e % de gordura, com classificação aproximada.", "indice-massa-muscular", "imm_gui.pyw"),
+    ("📈", "Simulador de Dissídio & Convenção", "Reajuste salarial, retroativo desde a data-base e total com benefícios", "simulador-dissidio", "dsi_gui.pyw"),
 ]
 
 QSS = """

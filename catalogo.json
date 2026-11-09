@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-09",
-  "total": 636,
+  "total": 640,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -5725,6 +5725,42 @@
       "script": "txp_gui.pyw",
       "prefixo": "txp",
       "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "🥗",
+      "nome": "Calculadora de Densidade Calórica & Saciedade",
+      "desc": "Índice de saciedade de Holt e volumetria: comparação de volume no prato para controle da fome no emagrecimento",
+      "chave": "calculadora-densidade-calorica-saciedade",
+      "script": "dcs_gui.pyw",
+      "prefixo": "dcs",
+      "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🏙️",
+      "nome": "Comparador Salário × Cidade",
+      "desc": "Ajusta salários pelo índice de custo de vida entre duas cidades e compara poder de compra.",
+      "chave": "comparador-salario-cidade",
+      "script": "scd_gui.pyw",
+      "prefixo": "scd",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
+      "emoji": "💪",
+      "nome": "Índice de Massa Muscular (FFMI)",
+      "desc": "Calcula FFMI e FFMI normalizado a partir de peso, altura e % de gordura, com classificação aproximada.",
+      "chave": "indice-massa-muscular",
+      "script": "imm_gui.pyw",
+      "prefixo": "imm",
+      "categoria": "🧰 Outras"
+    },
+    {
+      "emoji": "📈",
+      "nome": "Simulador de Dissídio & Convenção",
+      "desc": "Reajuste salarial, retroativo desde a data-base e total com benefícios",
+      "chave": "simulador-dissidio",
+      "script": "dsi_gui.pyw",
+      "prefixo": "dsi",
+      "categoria": "💻 Dev & Dados"
     }
   ],
   "prefixos": [
@@ -5883,6 +5919,7 @@
     "dc",
     "dck",
     "dcn",
+    "dcs",
     "dd",
     "den",
     "dep",
@@ -5906,6 +5943,7 @@
     "drf",
     "drm",
     "dry",
+    "dsi",
     "dsp",
     "dts",
     "dvc",
@@ -6027,6 +6065,7 @@
     "ico",
     "ict",
     "idi",
+    "imm",
     "ind",
     "info_pc",
     "inicializacao",
@@ -6249,6 +6288,7 @@
     "sb",
     "sbb",
     "sbo",
+    "scd",
     "scf",
     "sch",
     "scm",

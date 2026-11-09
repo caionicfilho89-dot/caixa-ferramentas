@@ -659,6 +659,10 @@ TOOLS = {
     "simulador-financiamento-estudantil-fies": "fie_gui.pyw",
     "simulador-plr": "plr_gui.pyw",
     "taxa-pix-recebimento": "txp_gui.pyw",
+    "calculadora-densidade-calorica-saciedade": "dcs_gui.pyw",
+    "comparador-salario-cidade": "scd_gui.pyw",
+    "indice-massa-muscular": "imm_gui.pyw",
+    "simulador-dissidio": "dsi_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar

@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-09** · Total: **636 ferramentas** · **636 prefixos** usados.
+> Última geração: **2026-11-09** · Total: **640 ferramentas** · **640 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -15,21 +15,21 @@
 
 ## Índice por categoria
 
-- 💰 Finanças & Trabalho — 70
-- 🏠 Casa, Pet & Pessoal — 103
+- 💰 Finanças & Trabalho — 71
+- 🏠 Casa, Pet & Pessoal — 104
 - 🔬 Ciência & Engenharia — 39
 - 🌐 Rede & Segurança — 45
-- 💻 Dev & Dados — 71
+- 💻 Dev & Dados — 72
 - 🖼️ Imagem & Design — 37
 - 🎵 Áudio & Vídeo — 21
 - ✍️ Texto & Estudo — 15
 - 🎮 Jogos & Diversão — 16
 - 🗂️ Arquivos & Sistema — 50
-- 🧰 Outras — 169
+- 🧰 Outras — 170
 
 ---
 
-## 💰 Finanças & Trabalho  ·  70
+## 💰 Finanças & Trabalho  ·  71
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -56,6 +56,7 @@
 | 🛒 | **Comparador de Preços do Mercado** | Preço por kg, litro ou unidade com promoções leve-pague, 2ª unidade e desconto, melhor opção e… | `comparador-mercado` | `mkt` |
 | ⚖️ | **Comparador de Propostas CLT vs PJ** | Comparação financeira detalhada com INSS progressivo, IRPF, FGTS, benefícios, Simples Nacional, recesso e break-even | `comparador-clt-pj` | `cpj` |
 | 🏷️ | **Comparador Preco Unitario** | Compara R$/un entre embalagens do mercado. | `comparador-preco-unitario` | `ppu` |
+| 🏙️ | **Comparador Salário × Cidade** | Ajusta salários pelo índice de custo de vida entre duas cidades e compara poder de compra. | `comparador-salario-cidade` | `scd` |
 | 🛒 | **Compras no Atacado** | Quanto comprar sem estourar orçamento/validade. | `planejador-compras-atacado` | `pat` |
 | 💳 | **Controle de Gastos** | Lançamentos, categorias, orçamento e gráficos | `controle-gastos` | `cg` |
 | 💱 | **Conversor de Moedas** | Conversão offline entre BRL, USD, EUR, BTC e ETH | `conversor-moedas` | `cm` |
@@ -104,7 +105,7 @@
 | 💳 | **Validador de Cartão de Crédito** | Algoritmo de Luhn Módulo 10, identificação ISO/IEC 7812, bandeiras e gerador sandbox | `validador-formato-cartao-credito` | `lhn` |
 | 🧮 | **Verificador de Hash** | MD5/SHA1/SHA256/SHA512, compara arquivos, confere SHA256SUMS e gera listas de checksum | `verificador-hash` | `hsh` |
 
-## 🏠 Casa, Pet & Pessoal  ·  103
+## 🏠 Casa, Pet & Pessoal  ·  104
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -116,6 +117,7 @@
 | 🧯 | **Calculadora de Botijao de Gas** | Estima duracao e custo diario do botijao conforme uso do fogao. | `calculadora-botijao-gas` | `glp` |
 | ☕ | **Calculadora de Café** | Proporção café/água por método (coado, V60, prensa, AeroPress, espresso) e extração | `calculadora-cafe` | `cfe` |
 | 🍺 | **Calculadora de Cerveja** | ABV, OG/FG, IBU e SRM pra receita de cerveja artesanal | `calculadora-cerveja` | `brw` |
+| 🥗 | **Calculadora de Densidade Calórica & Saciedade** | Índice de saciedade de Holt e volumetria: comparação de volume no prato para controle da fome no emagrecimento | `calculadora-densidade-calorica-saciedade` | `dcs` |
 | 🅿️ | **Calculadora de Estacionamento** | Valor do estacionamento por horario e tabela (com teto diario). | `calculadora-estacionamento` | `est` |
 | 🎂 | **Calculadora de Festa** | Comida, bebida e descartáveis por convidados, duração e tipo de festa | `festa` | `fst` |
 | 🌱 | **Calculadora de Hidroponia** | Solução nutritiva, EC/pH e dosagem de sais pra hidroponia | `calculadora-hidroponia` | `hdp` |
@@ -306,7 +308,7 @@
 | 🔒 | **Trancar Arquivos** | Tranca arquivos com senha (AES-256) | `cripto-arquivos` | `cripto_arquivos` |
 | 📒 | **Álbum de Figurinhas** | Controle de cromos, trocas e estimativa de pacotes para completar o álbum | `album-figurinhas` | `alb` |
 
-## 💻 Dev & Dados  ·  71
+## 💻 Dev & Dados  ·  72
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -377,6 +379,7 @@
 | 🎛️ | **Laboratório de Filtros Digitais (DSP)** | Síntese de filtros IIR, resposta em frequência em dB, diagrama de polos/zeros no plano Z e estabilidade BIBO | `laboratorio-filtros-digitais` | `fdt` |
 | ✂️ | **Removedor de Comentarios** | Remove comentarios Python/# // /* */ HTML preservando strings (heuristico). | `removedor-comentarios` | `scm` |
 | ⚙️ | **Simulador de Ciclos Termodinâmicos** | Ciclos de Carnot, Otto, Diesel, Brayton e Rankine, diagramas P-v e T-s, rendimento e trabalho líquido | `simulador-ciclos-termodinamicos` | `ctm` |
+| 📈 | **Simulador de Dissídio & Convenção** | Reajuste salarial, retroativo desde a data-base e total com benefícios | `simulador-dissidio` | `dsi` |
 | ⌨️ | **Treino de Digitação** | Textos em pt-BR, lições ABNT2, PPM e precisão | `treino-digitacao` | `treino_digitacao` |
 | 🛡️ | **Validador de JSON Schema** | Validação Draft-07 de dados JSON, inferência automática e detecção de erros | `validador-json-schema` | `jsc` |
 | 📈 | **Visualizador de Planilhas** | Abre CSV/Excel, filtra, soma, gráficos e exporta | `visualizador-planilhas` | `visualizador_planilhas` |
@@ -546,7 +549,7 @@
 | 🌱 | **Variáveis de Ambiente** | Editor do PATH e variáveis do usuário com backup | `variaveis-ambiente` | `variaveis_ambiente` |
 | 📋 | **Área de Transferência** | Histórico do que você copiou (Ctrl+Shift+V) | `area-transferencia` | `area_transferencia` |
 
-## 🧰 Outras  ·  169
+## 🧰 Outras  ·  170
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -719,10 +722,11 @@
 | 🔊 | **Volume por App** | Volume separado pra cada programa + perfis | `volume-apps` | `volume_apps` |
 | 🌳 | **Árvore de Decisão & ID3** | Algoritmo ID3, cálculo de Entropia de Shannon e Ganho de Informação | `arvore-decisao` | `tre` |
 | 🌡️ | **Índice de Conforto Térmico** | Heat Index NWS, Wind Chill, Humidex e ponto de orvalho | `calculadora-indice-conforto` | `wci` |
+| 💪 | **Índice de Massa Muscular (FFMI)** | Calcula FFMI e FFMI normalizado a partir de peso, altura e % de gordura, com classificação aproximada. | `indice-massa-muscular` | `imm` |
 
 ---
 
-## 🔒 Prefixos reservados (636) — NÃO repetir
+## 🔒 Prefixos reservados (640) — NÃO repetir
 
 ```text
 abn  acd  aci  acl  acp  acu  ads  aer  agr  agu
@@ -740,53 +744,53 @@ cm  cmb  cmk  cmp  cnc  cnd  cof  cofre_senhas  compactador  comparar_pastas
 contatos  conversor_av  conversor_imagens  conversor_unidades  cov  coz  cpj  cpt  crc  crd
 crh  cripto_arquivos  crl  crn  crp  crx  csd  csh  csm  cst
 ctk  ctm  cts  cty  cub  cue  curriculo_pdf  cyc  cyd  czc
-d13  dav  dc  dck  dcn  dd  den  dep  dex  dfc
-dfn  dfx  dhl  dik  dil  dk  dlt  dlv  dmn  dna
-dnv  dop  dpb  dpg  drc  drf  drm  dry  dsp  dts
-dvc  dzm  ear  ebb  ecc  ecp  edc  editor_imagem  efn  egg
-ele  elf  elt  emd  emp  ems  enc  encm  ent  enx
-eoc  eol  epc  epi  erg  esc  esi  esm  est  etiquetas
-eul  ext  extrator_texto  fa  fan  faxina  fbs  fcs  fdt  fei
-fer  ferramentas_br  ferramentas_dev  ferramentas_rede  fft  fie  financas  fla  flashcards  flk
-fot  fre  frv  fsc  fsi  fst  fsz  ftr  fum  fwl
-fwt  galeria_fotos  gar  gas  gat  gd  gdb  gdo  gem  gen
-geo  gg  gha  gif  gig  gip  glp  gmd  gps_falso  gpx
-gql  gravador_tela  gravador_voz  grf  grm  grp  grr  grs  gry  gs
-gsl  gsp  gst  gyr  ham  hb  hdc  hdl  hdp  hdr
-hdt  hlk  hlm  hmn  hof  hos  hpv  hrt  hsh  hst
-hsz  huf  hxd  iab  icl  icn  ico  ict  idi  ind
-info_pc  inicializacao  inv  ipm  ipt  ipv  iso  iss  itn  janelas
-jmr  jrd  jsc  jst  jun  jwt  kb  kcr  kit_hacker  kit_pdf
-kmb  knp  knt  kst  kwh  lan  lav  lct  ldm  lei
-leitor_ebooks  lfe  lg  lga  lgc  lhn  lic  limpar_metadados  llb  lng
-lok  lor  lsc  lux  lvd  lvs  mac  mad  mag  mal
-man  maq  mcr  mdc  mdl  mdv  mdx  med  met  metronomo
-mhr  mid  mkf  mkt  mkv  mlp  mm  mmt  mnc  mnt
-mol  monitor_sistema  mot  mqb  mrs  mse  msn  mtc  mte  mtm
-mtr  mtx  myp  nav  nbd  nc  nca  nfe  nfn  nix
-nln  nmi  nmk  notas  nox  nrc  nsi  ntl  ntr  nvm
-oas  obr  ocl  ofx  olo  opt  orcamentos  orf  organizador  orq
-own  p3d  pac  pad  pai  pal  paletas_cores  pao  pas  pat
-pbn  pcc  pcf  pcp  pcs  pdl  pei  pem  pen  pes
-pet  pev  pfl  phn  phr  pid  pix_boleto  player_musica  plc  pld
-plk  plm  plr  plt  pm  pmt  pnl  pnu  poe  ppd
-ppu  prc  print_anotador  prm  prs  prt  prx  psc  psi  pst
-pth  pti  pts  ptt  pvs  pyc  pyl  pyr  pyv  pzz
-qb  qc  qrcode_tool  qsm  qth  qtn  quiz_geografia  qzf  rastreador_tempo  rc
-rct  rea  rec  recupera  reg  relogio_mundial  rem  renomeador  reo  req
-res  rev  rfc  rfm  rfx  rgx  rlc  rle  rls  rlz
-rmd  rml  rms  rmx  rnv  rob  rot  rpg  rps  rss
-rst  rsv  ruf  rvg  rvp  rwx  sab  saude  sb  sbb
-sbo  scf  sch  scm  scn  sco  sec  sek  sem  seo
-seq  sfa  sfl  sfr  sgb  sgr  shb  shw  sir  skn
-slg  smt  smv  snip  snl  sno  snw  som  sorteios  spa
-spl  sqf  srt  ssc  ssk  stg  stm  stp  stt  sudoku
-svc  svg  syb  sym  syn  tam  tarefas  tcs  tcx  tdc
-tdf  tdo  tempo  texto_fala  tfr  tg  th  thf  thm  tip
-tml  tmp  tnt  tok  tox  trc  trd  tre  treino_digitacao  trf
-tro  trs  tru  trv  tsk  tun  tvd  tvs  txp  uba
-ubr  udi  uid  uni  utl  vag  variaveis_ambiente  vcp  vdc  vdw
-vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vlm  vnh  volume_apps  vsc  vst  wcg
-wci  wdc  webcam_foto  wfi  wgm  whl  wsp  wup  wxi  xtr
-ylk  ylt  yml  yrn  zcd  zpf
+d13  dav  dc  dck  dcn  dcs  dd  den  dep  dex
+dfc  dfn  dfx  dhl  dik  dil  dk  dlt  dlv  dmn
+dna  dnv  dop  dpb  dpg  drc  drf  drm  dry  dsi
+dsp  dts  dvc  dzm  ear  ebb  ecc  ecp  edc  editor_imagem
+efn  egg  ele  elf  elt  emd  emp  ems  enc  encm
+ent  enx  eoc  eol  epc  epi  erg  esc  esi  esm
+est  etiquetas  eul  ext  extrator_texto  fa  fan  faxina  fbs  fcs
+fdt  fei  fer  ferramentas_br  ferramentas_dev  ferramentas_rede  fft  fie  financas  fla
+flashcards  flk  fot  fre  frv  fsc  fsi  fst  fsz  ftr
+fum  fwl  fwt  galeria_fotos  gar  gas  gat  gd  gdb  gdo
+gem  gen  geo  gg  gha  gif  gig  gip  glp  gmd
+gps_falso  gpx  gql  gravador_tela  gravador_voz  grf  grm  grp  grr  grs
+gry  gs  gsl  gsp  gst  gyr  ham  hb  hdc  hdl
+hdp  hdr  hdt  hlk  hlm  hmn  hof  hos  hpv  hrt
+hsh  hst  hsz  huf  hxd  iab  icl  icn  ico  ict
+idi  imm  ind  info_pc  inicializacao  inv  ipm  ipt  ipv  iso
+iss  itn  janelas  jmr  jrd  jsc  jst  jun  jwt  kb
+kcr  kit_hacker  kit_pdf  kmb  knp  knt  kst  kwh  lan  lav
+lct  ldm  lei  leitor_ebooks  lfe  lg  lga  lgc  lhn  lic
+limpar_metadados  llb  lng  lok  lor  lsc  lux  lvd  lvs  mac
+mad  mag  mal  man  maq  mcr  mdc  mdl  mdv  mdx
+med  met  metronomo  mhr  mid  mkf  mkt  mkv  mlp  mm
+mmt  mnc  mnt  mol  monitor_sistema  mot  mqb  mrs  mse  msn
+mtc  mte  mtm  mtr  mtx  myp  nav  nbd  nc  nca
+nfe  nfn  nix  nln  nmi  nmk  notas  nox  nrc  nsi
+ntl  ntr  nvm  oas  obr  ocl  ofx  olo  opt  orcamentos
+orf  organizador  orq  own  p3d  pac  pad  pai  pal  paletas_cores
+pao  pas  pat  pbn  pcc  pcf  pcp  pcs  pdl  pei
+pem  pen  pes  pet  pev  pfl  phn  phr  pid  pix_boleto
+player_musica  plc  pld  plk  plm  plr  plt  pm  pmt  pnl
+pnu  poe  ppd  ppu  prc  print_anotador  prm  prs  prt  prx
+psc  psi  pst  pth  pti  pts  ptt  pvs  pyc  pyl
+pyr  pyv  pzz  qb  qc  qrcode_tool  qsm  qth  qtn  quiz_geografia
+qzf  rastreador_tempo  rc  rct  rea  rec  recupera  reg  relogio_mundial  rem
+renomeador  reo  req  res  rev  rfc  rfm  rfx  rgx  rlc
+rle  rls  rlz  rmd  rml  rms  rmx  rnv  rob  rot
+rpg  rps  rss  rst  rsv  ruf  rvg  rvp  rwx  sab
+saude  sb  sbb  sbo  scd  scf  sch  scm  scn  sco
+sec  sek  sem  seo  seq  sfa  sfl  sfr  sgb  sgr
+shb  shw  sir  skn  slg  smt  smv  snip  snl  sno
+snw  som  sorteios  spa  spl  sqf  srt  ssc  ssk  stg
+stm  stp  stt  sudoku  svc  svg  syb  sym  syn  tam
+tarefas  tcs  tcx  tdc  tdf  tdo  tempo  texto_fala  tfr  tg
+th  thf  thm  tip  tml  tmp  tnt  tok  tox  trc
+trd  tre  treino_digitacao  trf  tro  trs  tru  trv  tsk  tun
+tvd  tvs  txp  uba  ubr  udi  uid  uni  utl  vag
+variaveis_ambiente  vcp  vdc  vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vlm  vnh
+volume_apps  vsc  vst  wcg  wci  wdc  webcam_foto  wfi  wgm  whl
+wsp  wup  wxi  xtr  ylk  ylt  yml  yrn  zcd  zpf
 ```
