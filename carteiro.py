@@ -189,7 +189,13 @@ def parados_com_tarefa():
             parado = (time.time() - time.mktime(time.strptime(d.get("atualizado", ""), "%Y-%m-%d %H:%M"))) / 60
         except ValueError:
             parado = 999
-        if parado < PARADO_MIN or time.time() - _ULTIMO_EMPURRAO.get(ag, 0) < 600:
+        # quem tem menos cota é empurrado menos: normal 10 min, econômico 30 min (crítico já fica fora)
+        try:
+            import economia
+            espera = 1800 if economia.nivel_do_agente(ag) == "economico" else 600
+        except Exception:  # noqa: BLE001
+            espera = 600
+        if parado < PARADO_MIN or time.time() - _ULTIMO_EMPURRAO.get(ag, 0) < espera:
             continue
         livres = tarefas.livres_para(ag)
         if livres:

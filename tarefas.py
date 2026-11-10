@@ -49,10 +49,32 @@ def pegar(agente):
             return t
     for t in ts:
         if t["status"] == "livre" and (agente in t["quem"] or "todos" in t["quem"]):
+            if _outro_tem_mais_folga(agente, t):
+                continue  # deixa pra quem tem mais cota sobrando (Caio: "os com menos tokens fazem menos")
             t.update(status="pegou", por=agente, quando=time.strftime(FMT))
             salvar(ts)
             return t
     return None
+
+
+def _outro_tem_mais_folga(agente, t):
+    """True se outro agente que também pode fazer a tarefa tem bem mais cota sobrando (>15 pontos) e a tarefa
+    não está esperando há mais de 30 min (aí qualquer um pega, pra não travar)."""
+    try:
+        espera = (time.time() - time.mktime(time.strptime(t.get("quando", ""), FMT))) / 60
+    except ValueError:
+        espera = 0
+    if espera > 30:
+        return False
+    try:
+        import economia
+        minha = economia.folga_do_agente(agente)
+        for outro in t["quem"]:
+            if outro != agente and outro != "todos" and economia.folga_do_agente(outro) > minha + 15:
+                return True
+    except Exception:  # noqa: BLE001
+        pass
+    return False
 
 
 def concluir(agente, tid, resultado=""):

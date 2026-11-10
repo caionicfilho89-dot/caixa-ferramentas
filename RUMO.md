@@ -60,6 +60,8 @@ Conta **Claude** = Claude. Conta **SuperGrok** (limite xAI unificado) = Cocaino 
 **Orçamento do dia** (cotas semanais): o que sobrava à meia-noite ÷ dias até renovar. Chegou no orçamento do dia
 → 🟡; passou 25% dele → 🔴 até amanhã. Sobra de um dia vai pros próximos.
 O Caio pode travar na mão: `python economia.py --forcar economico|critico|normal|auto`.
+**Distribuição por folga** (Caio: "os com menos tokens fazem menos"): tarefa que dois podem fazer fica com quem tem mais
+cota sobrando (`economia.folga_do_agente`); em 🟡 o carteiro empurra só a cada 30 min; em 🔴 ou RESERVA o `--pegar` não dá tarefa.
 
 ## 🔥 Tendência do dia (decisão do Caio, 2026-11-10)
 

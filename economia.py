@@ -195,6 +195,24 @@ def atualizar():
     return novo
 
 
+def folga_do_agente(agente, estado=None):
+    """Quanto sobra (0–100) da cota semanal da conta do agente. Crítico = 0. Sem medidor = 50 (neutro).
+    Antigravity: leitura manual do app (cotas_manuais.json)."""
+    estado = estado if estado is not None else _ler(ESTADO, {})
+    if nivel_do_agente(agente, estado) == "critico":
+        return 0.0
+    if agente == "antigravity":
+        try:
+            ag = _ler(os.path.join(HERE, "cotas_manuais.json"), {}).get("antigravity", {})
+            return max(0.0, 100.0 - float(ag["gemini_semana_usado"]))
+        except (KeyError, TypeError, ValueError):
+            return 50.0
+    conta = CONTA_DO_AGENTE.get(agente)
+    janelas = estado.get("contas", {}).get(conta, {}).get("janelas", []) if conta else []
+    semana = [j for j in janelas if j.get("janela") == "semana"]
+    return max(0.0, 100.0 - semana[0]["pct"]) if semana else 50.0
+
+
 def nivel_do_agente(agente, estado=None):
     estado = estado if estado is not None else _ler(ESTADO, {})
     conta = CONTA_DO_AGENTE.get(agente)

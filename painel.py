@@ -153,6 +153,21 @@ def main():
                     d.setdefault("feitos", []).append(f"{time.strftime(FORMATO)} {t['id']} {t['titulo']}: {t['resultado']}")
                     d["feitos"] = d["feitos"][-15:]
                     d["fazendo"], d["arquivos"] = "", []
+            freio = ""
+            try:
+                import economia
+                if economia.nivel_do_agente(a.agente) == "critico":
+                    freio = "sua conta está em 🔴 CRÍTICO (modo economia)"
+                pausados = os.path.join(os.path.dirname(os.path.abspath(__file__)), "agentes_pausados.json")
+                if os.path.exists(pausados):
+                    with open(pausados, encoding="utf-8") as f:
+                        if a.agente in json.load(f):
+                            freio = "você está em RESERVA (agentes_pausados.json)"
+            except Exception:  # noqa: BLE001
+                pass
+            if a.pegar and freio:
+                print(f"\n⛔ Sem tarefa nova: {freio}. Termine o passo atual, anuncie --feito e PARE até liberar.\n")
+                a.pegar = False
             if a.pegar:
                 t = tarefas.pegar(a.agente)
                 if t:
