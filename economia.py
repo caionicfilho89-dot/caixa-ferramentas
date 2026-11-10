@@ -164,7 +164,9 @@ def atualizar():
         pior = {"nivel": "normal", "janelas": []}
         for j in janelas:
             hist.append({"t": agora.isoformat(), "conta": conta, "janela": j["janela"], "pct": j["pct"]})
-            ritmo, estoura_em = prever(hist, conta, j["janela"], j["pct"], j["renova"])
+            # previsão pelo ritmo só na janela curta (5h); a semana é controlada pelo orçamento do dia
+            ritmo, estoura_em = (prever(hist, conta, j["janela"], j["pct"], j["renova"])
+                                 if j["janela"] == "5h" else (None, None))
             nv = nivel(j["pct"], estoura_em)
             usado = orc = None
             if j["janela"] == "semana":  # cota semanal: além do limite, respeita o orçamento do dia
