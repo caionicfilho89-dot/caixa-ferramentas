@@ -197,13 +197,31 @@ Arquivos: `PERGUNTAS.md`, `CRITICA.md`
 - **F7**: teste a Hoje de verdade: cada botão de cartão faz o que diz? (Disco → liberar, Downloads → arrumar,
   Prints → OCR/anotar, Pudim → abre). Duro, com passo a passo.
 
-### 🧑‍🍳 Claude: arquiteto e integrador
-Arquivos: `caixa.pyw`, `build_suite.py`, `RUMO.md`, `painel.py` e os demais `.md`
-- Liga a tela Hoje e a barra no `caixa.pyw` assim que aparecer `--feito` do Cursor ou do Antigravity
-  no painel. Revisa, roda testes, builda o `.exe`, atualiza `%LOCALAPPDATA%\Programs\CaixaFerramentas`
-  e commita. Mantém as filas deste arquivo com tarefas, para ninguém ficar sem o que fazer.
-- 2026-11-10: janela cabe na tela (mín. 664×256, centraliza, abre na frente, foco na barra), Hoje em rolagem,
-  aba Todas troca na hora, ⚙️ junta boot/Menu Iniciar, trava de janela duplicada (2,5 s), FileVersion no exe; v1.5.1.
+### 🔌 Grok CLI também é o INTEGRADOR e faz o BUILD (decisão do Caio, 2026-11-10: "Claude faz menos, delega mais")
+Arquivos que passam a ser dele: `caixa.pyw` (só listas `BUILTIN`/`FERRAMENTAS_COM_ARGS`/`APP_VERSION`), `build_suite.py`
+(só `TOOLS`/`COLLECT_ALL`), `instalador.iss` (versão), `EVOLUCAO.md`, `CATALOGO.md`/`catalogo.json`.
+Checklist de integração (ferramenta nova ou `--feito` que pede "integrar"):
+1. Revisar: `py_compile`, rodar o `test_<px>.py` da ferramenta, `git status` limpo na pasta dela (commit se faltar).
+2. Tupla no FIM do `BUILTIN` + entrada no `TOOLS`; `python catalogo.py` (senão a barra não acha).
+3. `python build_suite.py --stage-only` + `stagedpp.py --selftest` (tem que dar `OK: N`) + testes da Caixa
+   (`PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q -p no:cacheprovider test_respostas.py test_sensores.py test_adp_*.py test_caixa_*.py`).
+Checklist de versão (quando juntar 2+ entregas OU tiver bug corrigido que o Caio vê, **no máx. 1 build a cada 2 h**,
+e NUNCA em modo economia 🟡/🔴):
+4. Subir `APP_VERSION` (caixa.pyw) + `AppVer` (instalador.iss) juntos; uma linha nova no topo do `EVOLUCAO.md`
+   (`- **vX.Y.Z** · DD/MM · N ferramentas · o que o Caio ganhou`, em linguagem dele).
+5. `python build_suite.py` **rodando de dentro de caixa-ferramentas** (nunca com shell parado em `staged\`).
+6. Fechar a Caixa (`Get-Process Caixa | % CloseMainWindow`), `robocopy dist\Caixa %LOCALAPPDATA%\Programs\CaixaFerramentas /MIR`,
+   `Caixa.exe --selftest` = `OK: N`, conferir FileVersion. Commit local (sem push).
+7. `--feito "vX.Y.Z instalado: ..."` e `--pedir grok` pro Cocaino retestar o que mudou.
+
+### 🧐 Cocaino: além de testar, APROVA as filas
+Quando a fila de alguém acabar, o **Antigravity** propõe 3 tarefas novas no `CRITICA.md` (seção "Propostas"), o
+Cocaino escolhe as úteis pro Caio e escreve no RUMO.md na fila de quem vai fazer, com `--pedir` pra avisar.
+
+### 🧑‍🍳 Claude: árbitro (entra pouco, de propósito)
+O Claude **não** integra, não builda e não mantém fila no dia a dia. Chame com `python painel.py <você> --pedir claude "..."`
+só para: bug no core que trava todo mundo, decisão de rumo, conflito entre agentes, mudar carteiro/economia/painel/vigia.
+Arquivos que continuam dele: `carteiro.py`, `economia.py`, `painel.py`, `painel_adesivo.pyw`, `tendencias.py`, `RUMO.md`.
 
 ## Contratos entre as peças (pra ninguém esperar ninguém)
 - `respostas_core.responder(texto: str) -> list[dict]`, com dicts
