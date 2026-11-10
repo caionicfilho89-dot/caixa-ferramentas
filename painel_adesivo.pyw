@@ -115,8 +115,24 @@ def coletar():
         for x in d.get("feitos", []):
             feitos.append((_quando(x), chave, x[17:]))
     feitos.sort(key=lambda z: z[0] or dt.datetime.min, reverse=True)
+    # evolução: EVOLUCAO.md (uma linha por versão) + cobertura da barra (COBERTURA.md)
+    evol = []
+    try:
+        for l in open(os.path.join(HERE, "EVOLUCAO.md"), encoding="utf-8"):
+            m = re.match(r"- \*\*(v[^*]+)\*\* · ([^·]+) · ([^·]+) · (.+)", l.strip())
+            if m:
+                evol.append(tuple(x.strip() for x in m.groups()))
+    except OSError:
+        pass
+    barra = ""
+    try:
+        cob = open(os.path.join(HERE, "COBERTURA.md"), encoding="utf-8").read()
+        m = re.search(r"adaptador na barra: \*\*(\d+)\*\*", cob)
+        barra = m.group(1) if m else ""
+    except OSError:
+        pass
     return {"painel": painel, "pend": pend, "versao": versao, "n": n_ferr, "tend": tend,
-            "carteiro": carteiro, "feitos": feitos[:8]}
+            "carteiro": carteiro, "feitos": feitos[:8], "evol": evol, "barra": barra}
 
 
 class Nota(QWidget):
@@ -223,6 +239,18 @@ class Nota(QWidget):
             caixa.setTextFormat(Qt.TextFormat.RichText)
             caixa.setContentsMargins(8, 6, 8, 6)
             self.corpo_lay.addWidget(caixa)
+
+        if d["evol"]:
+            self._rotulo("EVOLUÇÃO", "secao")
+            primeira = d["evol"][-1]
+            self._rotulo(f"📈 <b>{primeira[2]}</b> ({primeira[1]}) → <b>{d['n']} ferramentas</b> hoje"
+                         + (f" · <b>{d['barra']}</b> respondem na barra" if d["barra"] else "")
+                         + f" · {len(d['evol'])} versões")
+            for ver, data, _n, oque in d["evol"][:5]:
+                atual = ver.lstrip("v") == d["versao"]
+                cor = "#7c5cff" if atual else "#e6e6f0"
+                self._rotulo(f"<b style='color:{cor}'>{ver}</b> <span style='color:#9a9ab0'>{data}</span> "
+                             f"{_corta(oque, 95)}" + (" <span style='color:#7c5cff'>← agora</span>" if atual else ""))
 
         self._rotulo("JÁ FEITO", "secao")
         for t, chave, txt in d["feitos"]:
