@@ -48,6 +48,15 @@ def _id(de, p):
     return hashlib.sha1(f"{de}|{p.get('para')}|{p.get('quando')}|{p.get('texto')}".encode("utf-8")).hexdigest()[:12]
 
 
+def _pausados():
+    """agentes_pausados.json: {"grok": "antigravity"} = Cocaino pausado, os pedidos dele vão pro Antigravity."""
+    try:
+        with open(os.path.join(HERE, "agentes_pausados.json"), encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
 def pendentes(para=None):
     """Pedidos ainda não entregues, agrupados por destinatário: {para: [(id, de, quando, texto)]}."""
     ja = set(_ler_entregues())
@@ -61,8 +70,9 @@ def pendentes(para=None):
                 d = json.load(f)
         except (OSError, ValueError):
             continue
+        redir = _pausados()
         for p in d.get("pedidos", []):
-            alvo = p.get("para")
+            alvo = redir.get(p.get("para"), p.get("para"))
             if not alvo or (para and alvo != para):
                 continue
             i = _id(de, p)
@@ -162,6 +172,8 @@ def parados_com_tarefa():
     pend = pendentes()
     saida = {}
     for ag in ("cursor", "antigravity", "grok", "grokbuild"):
+        if ag in _pausados():
+            continue
         d = {}
         try:
             with open(os.path.join(PAINEL, ag + ".json"), encoding="utf-8") as f:

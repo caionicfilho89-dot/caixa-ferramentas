@@ -1,5 +1,17 @@
 [
  {
+  "id": "T25",
+  "titulo": "KIT FÁBRICA DE AGENTES (prioridade do Caio): empacotar o sistema dos agentes pra reusar em qualquer projeto",
+  "detalhe": "Pasta NOVA C:/Users/caion/fabrica-agentes (git init, commit local). NÃO mexer nas cópias vivas da caixa-ferramentas/fiscal-fabrica.\n1) fabrica.json = TODA a configuração: pasta do projeto, agentes [{nome, apelido, papel, app: processo+titulo da janela, caixaY/enviarX/enviarY/botao, conta}], contas [{nome, fonte: claude_usage|grok_log|manual}], horários.\n2) Copiar e GENERALIZAR (zero caminho fixo; tudo lido do fabrica.json ou env FABRICA_DIR): carteiro.py, economia.py, painel.py, painel_adesivo.pyw, tarefas.py, tendencias.py (opcional), fiscal-fabrica/entregar.ps1, fiscal-fabrica/vigia_local.ps1, iniciar_*.vbs, hook do Grok (~/.grok/hooks/carteiro.json) como modelo.\n3) modelos/RUMO.md genérico (papéis, ciclo do painel, quadro --pegar/--concluir, modo economia, carteiro, Claude árbitro+monitor) e modelos/tarefas.json vazio.\n4) instalar.ps1 <pasta do projeto> [-Nome X]: cria painel/, tarefas.json, RUMO.md, fabrica.json do projeto; NÃO liga nada persistente — só IMPRIME os comandos (Inicialização do Windows, hook do Grok) pro Caio aprovar.\n5) README.md pt-BR curto: o que cada peça faz, como instalar num projeto novo, como adicionar/remover agente.\n6) TESTE: instalar num projeto falso em %TEMP%, rodar painel.py, tarefas.py --nova/--pegar/--concluir, carteiro.py --status, economia.py, painel_adesivo offscreen. Tudo verde.\nAo terminar: --concluir com o resultado e --pedir claude pra revisão.",
+  "quem": [
+   "grokbuild"
+  ],
+  "status": "pegou",
+  "por": "grokbuild",
+  "quando": "2026-11-10 19:36",
+  "resultado": ""
+ },
+ {
   "id": "T01",
   "titulo": "Barra: ligar as 💰 Finanças sem adaptador (lote 1, 15 chaves)",
   "detalhe": "COBERTURA.md seção '💰 Finanças & Trabalho' em 'Chaves sem adaptador': escolha as 15 mais úteis pro Caio, adaptador chamando o _core real, teste com 2 frases cada.",
@@ -7,10 +19,10 @@
    "grokbuild",
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-10 19:18",
+  "resultado": "15 adaptadores (feira, condominio, luz da republica, mudanca, mercado, frete, atacado, reforma, natal, lua de mel, cozinha, presentes, fralda, casamento, predio) chamam o _core. 3 frases cada. unittest 36 OK. Tecla 0: open_tool grava salvar_ultima_chave."
  },
  {
   "id": "T02",
@@ -20,10 +32,10 @@
    "grokbuild",
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-10 19:36",
+  "resultado": "15 adaptadores chamam o _core (glp, agua, oleo, app, protetor, sono, pressao, safra, rega, mesada, airbnb, jet lag, canteiro, horta, expresso). 2 frases. unittest 47 OK. ObservadorDpi na grade. Arquivo fora do Tudo. CAIXA_TESTE=1 nao soma uses."
  },
  {
   "id": "T03",
@@ -33,10 +45,10 @@
    "grokbuild",
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 19:45",
+  "resultado": "Barra: 15 adaptadores de 💻 Dev & Dados sem adaptador implementados (calculadora-cientifica, gitignore, gitattributes, makefile, dockerignore, pre-commit, badges, codeowners, coveragerc, eslintignore, github-actions, prettierrc, justfile, taskfile, python-version) chamando os módulos reais; unittest "
  },
  {
   "id": "T04",
@@ -46,9 +58,9 @@
    "grokbuild",
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
+  "status": "pegou",
+  "por": "antigravity",
+  "quando": "2026-11-10 19:45",
   "resultado": ""
  },
  {
@@ -58,10 +70,10 @@
   "quem": [
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 19:12",
+  "resultado": "sensores de bateria (notebook) e windows update (reinício pendente) implementados no sensores_core com Win32/winreg (< 15 ms total); 53 testes OK na suíte"
  },
  {
   "id": "T06",
@@ -145,10 +157,10 @@
   "quem": [
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 19:40",
+  "resultado": "Barra: respostas de datas e prazos em linguagem natural ('daqui 45 dias úteis', 'quantos dias até o natal', próximo feriado) implementadas reaproveitando calendario-br (cal_datas/cal_feriados); 140/140 PERGUNTAS.md passando; 54 testes OK"
  },
  {
   "id": "T13",
@@ -157,10 +169,10 @@
   "quem": [
    "cursor"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 18:59",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:02",
+  "resultado": "Atalhos 1-8 e Alt+1-8 nos cartoes da Hoje; 0/Alt+0 reabre ultima (ultima_chave.txt); badges [N] no valor; digito solto nao rouba a barra. 54 testes UI OK. Pedido Grok CLI: salvar_ultima_chave no open_tool"
  },
  {
   "id": "T14",
@@ -169,10 +181,10 @@
   "quem": [
    "cursor"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 19:00",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:03",
+  "resultado": "Modo widget: frameless + transparente no canto (arrasta, persiste pos/opacidade), checkbox e botao ⋯ pra voltar; visual compacto capa 72px. 9/9 testes"
  },
  {
   "id": "T15",
@@ -181,10 +193,10 @@
   "quem": [
    "cursor"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 19:00",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:04",
+  "resultado": "Polimento T09 P1: Finanças grade 2 col (Capital/Aporte/Taxa/Prazo visíveis); Print Anotador com lista dos 5 prints recentes + Abrir; Area Transf. texto X=encerra. Smoke OK"
  },
  {
   "id": "T16",
@@ -193,10 +205,10 @@
   "quem": [
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 19:00",
-  "resultado": ""
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-10 19:18",
+  "resultado": "T16 no exe 1.5.6 (17:30:24): Tocando Agora ainda nao esta no instalado (catalogo 751; build 1.5.7 so apos 19:31). Busca tocando agora nao cai em Nada encontrado e oferece Agenda de Medicacao como 1a carta. Notas de Voz abriu, gravou e deixou WAV em notas-de-voz\\audio\\651a7ce8cc85.wav (0,50s apesar d"
  },
  {
   "id": "T17",
@@ -205,21 +217,130 @@
   "quem": [
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 19:00",
-  "resultado": ""
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-10 19:32",
+  "resultado": "T17 exe 1.5.6 semente 2026111017: 10/10 abriram com CAIXA_TESTE=1 (lancamento 19:26 pid 20040 foi SEM a env, janela nao apareceu, nao desfiz config.json). Calculos conferidos a mao. Inuteis para o Caio: gerador-flake-nix, gerador-lldbinit, estudio-tipografia (lista no CRITICA). P2 buffet formato/jan"
  },
  {
   "id": "T18",
   "titulo": "Revisar as 15 ferramentas em destaque na Hoje: ainda são as melhores pro Caio?",
   "detalhe": "Proponha trocas no CRITICA.md com motivo; avise o Cursor.",
   "quem": [
-   "grok"
+   "antigravity"
   ],
   "status": "livre",
   "por": "",
-  "quando": "2026-11-10 19:00",
+  "quando": "2026-11-10 19:32",
   "resultado": ""
+ },
+ {
+  "id": "T19",
+  "titulo": "Hoje: dica visual dos atalhos 1–8 e chip '0 · última usada' (caixa_home)",
+  "detalhe": "Exibir chip '0 · última' ao lado de ATALHOS e feedback visual (flash/highlight) no cartão ao teclar 1–8; garante que o Caio descubra os atalhos de teclado (CRITICA Proposta 6)",
+  "quem": [
+   "cursor"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:17",
+  "resultado": "Chip '0 · ultima' clicavel ao lado de ATALHOS (mostra nome da ultima); flash roxo no cartao ao teclar 1-8; QSS chipUltima + cartaoPequeno[flash]. 18 testes OK"
+ },
+ {
+  "id": "T20",
+  "titulo": "Grade Todas: reflow e tipografia em DPI misto 100% e 300% (caixa_tema)",
+  "detalhe": "Hook em changeEvent/screenChanged para atualizar escala_tipografia e colunas dinamicamente ao mover a janela entre monitores (ex: dock 4K@300% e tela notebook 1366) (CRITICA Proposta 7)",
+  "quem": [
+   "cursor"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:18",
+  "resultado": "layout_grade + ObservadorDpi + tamanho_card_grade; Hoje aplica margens/tipografia por DPR; testes 1366@1 e 3840@3 → 2 cols. Pedido Grok CLI pra grade Todas no caixa.pyw"
+ },
+ {
+  "id": "T21",
+  "titulo": "Busca: limiar mínimo de relevância na busca de reserva para evitar falsos positivos (caixa_busca_ui)",
+  "detalhe": "Ao buscar termos sem ferramenta instalada (ex: 'tocando agora'), a busca de reserva pontua ferramentas irrelevantes como Agenda de Medicacao. Aplicar threshold mínimo de relevância para mostrar 'Nada encontrado' quando nenhuma ferramenta atingir score suficiente (CRITICA T16 P1)",
+  "quem": [
+   "cursor"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:23",
+  "resultado": "Ja feito no pedido T16: _filtrar_fracos em caixa_busca_ui (CONFIANCA_MINIMA 0.40 + irmaos < top-0.20). Sem tool: tocando agora → Nada encontrado. Com tool: so tocando-agora 0.65. test_t16_* + 20 testes OK."
+ },
+ {
+  "id": "T22",
+  "titulo": "Notas de Voz: corrigir buffer e captura contínua de áudio (notas-de-voz)",
+  "detalhe": "Gravação de 3,7s gerou WAV de apenas 0,50s. Ajustar thread de gravação do soundcard para acumular todos os chunks desde o primeiro instante sem descartar frames do início ou término prematuro (CRITICA T16 P2)",
+  "quem": [
+   "cursor"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:24",
+  "resultado": "Thread _Gravacao: sinal pronta so apos mic.recorder aberto; UI Abrindo…→Gravando…; acumula todos os chunks ate parar (sem descartar inicio). Causa do 0,50s era status mentindo durante open do soundcard. 20 testes OK. WAV T16 intacto."
+ },
+ {
+  "id": "T23",
+  "titulo": "Catálogo enxuto: esconder as ferramentas inúteis numa categoria 'Arquivo' (fora da grade padrão)",
+  "detalhe": "Use a lista do Cocaino (T17 no CRITICA.md) + ferramentas sem uso real. Não apaga nada: só some da grade padrão e da Hoje; continua achável pela barra. Peça a lista ao Cocaino se a T17 não tiver saído.",
+  "quem": [
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:27",
+  "resultado": "caixa_arquivo.py: CAT 📦 Arquivo, 32 chaves semente (nichos 0 uso), JSON arquivo_chaves.json, filtrar_grade_padrao/categoria_efetiva. Hoje: ordenar_destaques remove arquivadas. 6 testes arquivo OK. Pedido grok (lista T17) + grokbuild (ligar na grade caixa.pyw). Barra nao filtra."
+ },
+ {
+  "id": "T24",
+  "titulo": "Lista das 100 ferramentas mais inúteis/repetidas do catálogo (pra esconder)",
+  "detalhe": "CATALOGO.md: calculadoras de nicho que o Caio nunca usaria, duplicadas ou 'formulário → número' sem utilidade. Justifique em 1 linha cada. Vai pro CRITICA.md seção 'Arquivo'.",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 19:24",
+  "resultado": ""
+ },
+ {
+  "id": "T26",
+  "titulo": "Hoje: botões Anotar/Assistir sem corte em 1366",
+  "detalhe": "CRITICA proposta 9: minHeight rodapé do cartão + geometria; botões inteiros nos sensores/Pudim em 1366x768",
+  "quem": [
+   "cursor"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:29",
+  "resultado": "CartaoGrande: minH 208, rodape fixo 48px pro botao, detalhe max 44px. Grade usa sizeHint (nao so minHeight) pra nao clipar Anotar/Assistir. test_t26 OK + cabem 1366."
+ },
+ {
+  "id": "T27",
+  "titulo": "Barra: feedback Abrindo/skeleton no debounce",
+  "detalhe": "CRITICA proposta 10: mostrar frase em voo + estado visual enquanto responde; sem cartões velhos",
+  "quem": [
+   "cursor"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:30",
+  "resultado": "Buscando  frase… no debounce; limpa cartas velhas; trunc 42 chars. test_t27 + 21 busca OK."
+ },
+ {
+  "id": "T28",
+  "titulo": "Tema: contraste da lateral de categorias na grade",
+  "detalhe": "CRITICA proposta 11: QSS #side selected/hover com accent #7c5cff legível em 100% e 300%",
+  "quem": [
+   "cursor"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 19:30",
+  "resultado": "QSS #side::item:selected com accent #7c5cff (rgba + border), hover mais claro. test_t28 OK. Pedido grokbuild se QSS legado do caixa.pyw sobrescrever."
  }
 ]
