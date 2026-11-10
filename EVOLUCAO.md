@@ -3,6 +3,7 @@
 Uma linha por versão (mais nova em cima). O painel adesivo lê este arquivo.
 Formato: `- **vX.Y.Z** · DD/MM · N ferramentas · o que o Caio ganhou`. O Claude atualiza a cada versão.
 
+- **v1.5.6** · 10/11 · 751 ferramentas · barra acerta as 120 perguntas do Caio (luz com taxa fixa, etanol, Pix…); 17 ferramentas não travam mais ao fechar no meio de uma tarefa
 - **v1.5.5** · 10/11 · 751 ferramentas · botões da Hoje já abrem na pasta/arquivo certo (Faxina no C:, Organizador nos Downloads, último print); exe ~360 MB menor
 - **v1.5.4** · 10/11 · 751 ferramentas · 🎤 Notas de Voz (1ª Tendência do dia); visual novo dos cartões; Assistir abre o Pudim; destaques pelo seu uso
 - **v1.5.3** · 10/11 · 750 ferramentas · Caixa na bandeja + Ctrl+Espaço chama a barra de qualquer lugar

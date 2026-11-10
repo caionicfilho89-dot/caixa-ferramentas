@@ -25,7 +25,7 @@ from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGrid
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
-APP_VERSION = "1.5.5"
+APP_VERSION = "1.5.6"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
