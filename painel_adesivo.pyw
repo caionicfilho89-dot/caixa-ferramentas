@@ -397,7 +397,7 @@ class Nota(QWidget):
             self._rotulo(f"🧠 <b>Antigravity</b> ({ag.get('plano', '?')}) · Gemini semana {_barra(ag.get('gemini_semana_usado'))}"
                          f" · 5h {ag.get('gemini_5h_usado', '?')}%<br>&nbsp;&nbsp;&nbsp;&nbsp;Claude/GPT e Argon: "
                          f"{'esgotados' if ag.get('claude_gpt_semana_usado', 0) >= 100 else 'ok'} · "
-                         f"<span style='color:#9a9ab0'>leitura manual {ag.get('lido', '?')} (app → Models & Usage)</span>")
+                         f"<span style='color:#9a9ab0'>5h lida sozinha {ag.get('lido_auto', '—')} · semana: print de {ag.get('lido', '?')}</span>")
         except (OSError, ValueError):
             self._rotulo("<span style='color:#9a9ab0'>🧠 Antigravity: sem leitura (app → Models & Usage)</span>")
 

@@ -365,6 +365,16 @@ def main():
         try:
             rodada()
             empurrar_parados()
+            if volta % 60 == 0:  # a cada 30 min: cota ao vivo do Antigravity (agy), numa thread pra não travar
+                import threading
+
+                def _cota_ag():
+                    try:
+                        import cota_antigravity
+                        cota_antigravity.atualizar()
+                    except Exception as ex:  # noqa: BLE001
+                        log(f"cota Antigravity: {ex}")
+                threading.Thread(target=_cota_ag, daemon=True).start()
             if volta % 4 == 0:
                 pedir_propostas_se_faltar()
                 fechar_testes_esquecidos()
