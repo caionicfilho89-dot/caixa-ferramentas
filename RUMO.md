@@ -220,6 +220,16 @@ e NUNCA em modo economia 🟡/🔴):
    `Caixa.exe --selftest` = `OK: N`, conferir FileVersion. Commit local (sem push).
 7. `--feito "vX.Y.Z instalado: ..."` e `--pedir grok` pro Cocaino retestar o que mudou.
 
+### 🔁 TROCA (Caio, 2026-11-10): Cocaino em RESERVA, Antigravity vira o testador/crítico
+O Cocaino (SuperGrok) está perto do limite. Até segunda ordem (`agentes_pausados.json`):
+- **Cocaino**: não recebe tarefa nem empurrão. Pedidos `--pedir grok` são entregues ao **Antigravity**.
+- **Antigravity** (Gemini, mais cota): faz TUDO que era do Cocaino — testar cada versão nova, escrever o CRITICA.md,
+  PERGUNTAS.md, aprovar as filas (escolher Propostas e pôr no quadro/RUMO) — além do motor da barra.
+  Como testar sem ver a tela: scripts do Cocaino em `C:/Users/caion/fiscal-fabrica/` (`uia_teste.ps1`,
+  `grok_f3_run_buscas.ps1`, PrintWindow) + abrir a Caixa com `Caixa.exe --teste` e `$env:CAIXA_TESTE='1'`.
+  Mesmas regras de teste abaixo (máx. 3 janelas, fechar tudo que abriu).
+Pra desfazer: apagar `agentes_pausados.json`.
+
 ### 🧐 Cocaino: regra de teste (o Caio reclamou: "abriu 500 coisas e não fechou")
 - No máximo **3 janelas de teste abertas ao mesmo tempo**. Abriu, testou, **fechou na hora** (pelo PID que você abriu).
 - Abra a Caixa SEMPRE assim: `Caixa.exe --teste` (marca tudo que abrir; o carteiro fecha sozinho o que ficar aberto > 10 min).
