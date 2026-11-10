@@ -211,7 +211,9 @@ def pedir_propostas_se_faltar():
         livres = [t for t in tarefas.ler() if t["status"] == "livre"]
     except Exception:  # noqa: BLE001
         return
-    famintos = [ag for ag in ("cursor", "antigravity", "grok", "grokbuild") if not tarefas.livres_para(ag)]
+    # só conta como "faminto" quem pode trabalhar agora (não pausado, não em modo economia crítico)
+    famintos = [ag for ag in ("cursor", "antigravity", "grok", "grokbuild")
+                if ag not in _pausados() and _economia_permite(ag) and not tarefas.livres_para(ag)]
     if (len(livres) >= 5 and not famintos) or time.time() - _ULTIMO_EMPURRAO.get("_propostas", 0) < 3600:
         return
     _ULTIMO_EMPURRAO["_propostas"] = time.time()
