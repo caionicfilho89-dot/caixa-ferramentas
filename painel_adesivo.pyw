@@ -1,0 +1,300 @@
+"""Painel adesivo da Fábrica — nota fixa na tela com o status do projeto e dos agentes.
+
+Lê só arquivos locais (painel/*.json, catalogo.json, caixa.pyw, TENDENCIA_DO_DIA.md, carteiro.log)
+e atualiza a cada 10 s. Sempre por cima, sem botão na barra de tarefas.
+  - arrastar: move      - 2 cliques no título: recolhe/expande
+  - botão direito: menu (recolher, transparência, fechar)
+Posição e estado ficam salvos em ~/.caixa_painel_adesivo.json.
+"""
+import datetime as dt
+import glob
+import json
+import os
+import re
+import sys
+
+from PyQt6.QtCore import QPoint, Qt, QTimer
+from PyQt6.QtGui import QAction, QFont
+from PyQt6.QtWidgets import (QApplication, QFrame, QLabel, QMenu, QScrollArea, QVBoxLayout, QWidget)
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+CFG = os.path.join(os.path.expanduser("~"), ".caixa_painel_adesivo.json")
+FMT = "%Y-%m-%d %H:%M"
+
+AGENTES = [  # (chave no painel, nome que o Caio usa, emoji, papel)
+    ("claude", "Claude", "🧑‍🍳", "integra e builda"),
+    ("cursor", "Cursor", "🎨", "visual"),
+    ("antigravity", "Antigravity", "🧠", "motor da barra"),
+    ("grokbuild", "Grok CLI", "🔌", "barra + tendência"),
+    ("grok", "Cocaino", "🧐", "crítico/testador"),
+]
+NOME = {a[0]: a[1] for a in AGENTES}
+
+QSS = """
+#nota { background: rgba(17,19,26,235); border: 1px solid #7c5cff; border-radius: 12px; }
+QLabel { color: #e6e6f0; background: transparent; }
+#titulo { font-weight: 700; color: #ffffff; }
+#sub { color: #9a9ab0; }
+#secao { color: #7c5cff; font-weight: 700; letter-spacing: 1px; }
+#agente { background: rgba(255,255,255,10); border-radius: 8px; }
+QScrollArea, QScrollArea > QWidget > QWidget { background: transparent; border: none; }
+QScrollBar:vertical { width: 6px; background: transparent; }
+QScrollBar::handle:vertical { background: #3a3d55; border-radius: 3px; }
+QMenu { background: #1b1e2b; color: #e6e6f0; border: 1px solid #3a3d55; }
+QMenu::item:selected { background: #7c5cff; }
+"""
+
+
+def _ler_json(caminho, padrao=None):
+    try:
+        with open(caminho, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return padrao
+
+
+def _quando(txt):
+    try:
+        return dt.datetime.strptime(txt[:16], FMT)
+    except (ValueError, TypeError):
+        return None
+
+
+def _ha(t):
+    if not t:
+        return "—"
+    m = int((dt.datetime.now() - t).total_seconds() // 60)
+    if m < 1:
+        return "agora"
+    if m < 60:
+        return f"há {m} min"
+    return f"há {m // 60}h{m % 60:02d}"
+
+
+def _corta(s, n):
+    s = " ".join(str(s or "").split())
+    return s if len(s) <= n else s[: n - 1] + "…"
+
+
+def coletar():
+    """Tudo que a nota mostra, lido do disco."""
+    painel = {}
+    for f in glob.glob(os.path.join(HERE, "painel", "*.json")):
+        d = _ler_json(f, {})
+        if d:
+            painel[d.get("agente", os.path.basename(f)[:-5])] = d
+    pend = {}
+    for de, d in painel.items():
+        for p in d.get("pedidos", []):
+            pend.setdefault(p.get("para"), []).append(de)
+    try:
+        src = open(os.path.join(HERE, "caixa.pyw"), encoding="utf-8").read()
+        versao = re.search(r'^APP_VERSION\s*=\s*"([^"]+)"', src, re.M).group(1)
+    except (OSError, AttributeError):
+        versao = "?"
+    cat = _ler_json(os.path.join(HERE, "catalogo.json"), [])
+    n_ferr = len(cat) if isinstance(cat, list) else len(cat.get("ferramentas", cat)) if isinstance(cat, dict) else 0
+    tend = ""
+    try:
+        t = open(os.path.join(HERE, "TENDENCIA_DO_DIA.md"), encoding="utf-8").read()
+        m = re.search(r"\*\*Ideia:\*\*\s*\[([^\]]+)\]", t)
+        tend = m.group(1) if m else ""
+    except OSError:
+        pass
+    carteiro = "?"
+    try:
+        ult = open(os.path.join(HERE, "carteiro.log"), encoding="utf-8").read().strip().splitlines()[-1]
+        carteiro = "ligado" if ult else "?"
+        ents = [l for l in open(os.path.join(HERE, "carteiro.log"), encoding="utf-8") if "ENTREGUE" in l]
+        if ents:
+            carteiro += f" · última entrega {ents[-1][11:16]}"
+    except (OSError, IndexError):
+        pass
+    feitos = []
+    for chave, d in painel.items():
+        for x in d.get("feitos", []):
+            feitos.append((_quando(x), chave, x[17:]))
+    feitos.sort(key=lambda z: z[0] or dt.datetime.min, reverse=True)
+    return {"painel": painel, "pend": pend, "versao": versao, "n": n_ferr, "tend": tend,
+            "carteiro": carteiro, "feitos": feitos[:8]}
+
+
+class Nota(QWidget):
+    def __init__(self):
+        super().__init__(None, Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint
+                         | Qt.WindowType.Tool)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+        self.setWindowTitle("Fábrica da Caixa")
+        self.cfg = _ler_json(CFG, {}) or {}
+        self._arrasto = None
+
+        fora = QVBoxLayout(self)
+        fora.setContentsMargins(0, 0, 0, 0)
+        self.caixa = QFrame(objectName="nota")
+        fora.addWidget(self.caixa)
+        lay = QVBoxLayout(self.caixa)
+        lay.setContentsMargins(12, 10, 12, 10)
+        lay.setSpacing(4)
+        self.titulo = QLabel("🏭 Fábrica da Caixa", objectName="titulo")
+        f = QFont()
+        f.setPointSize(11)
+        f.setBold(True)
+        self.titulo.setFont(f)
+        lay.addWidget(self.titulo)
+        self.resumo = QLabel("", objectName="sub")
+        self.resumo.setWordWrap(True)
+        lay.addWidget(self.resumo)
+
+        self.corpo = QWidget()
+        self.corpo_lay = QVBoxLayout(self.corpo)
+        self.corpo_lay.setContentsMargins(0, 4, 0, 0)
+        self.corpo_lay.setSpacing(5)
+        self.rolagem = QScrollArea()
+        self.rolagem.setWidgetResizable(True)
+        self.rolagem.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.rolagem.setWidget(self.corpo)
+        lay.addWidget(self.rolagem, 1)
+
+        self.setFixedWidth(int(self.cfg.get("largura", 380)))
+        self.resize(self.width(), int(self.cfg.get("altura", 640)))
+        self.setWindowOpacity(float(self.cfg.get("opacidade", 0.96)))
+        tela = QApplication.primaryScreen().availableGeometry()
+        x, y = self.cfg.get("x"), self.cfg.get("y")
+        if x is None or not tela.contains(QPoint(int(x) + 20, int(y) + 20)):
+            x, y = tela.right() - self.width() - 16, tela.top() + 16
+        self.move(int(x), int(y))
+        self.recolhida = bool(self.cfg.get("recolhida", False))
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.atualizar)
+        self.timer.start(10_000)
+        self.atualizar()
+
+    # ------------------------------------------------------------ conteúdo
+    def _limpar(self):
+        while self.corpo_lay.count():
+            it = self.corpo_lay.takeAt(0)
+            if it.widget():
+                it.widget().deleteLater()
+
+    def _rotulo(self, txt, nome=None, wrap=True):
+        lb = QLabel(txt, objectName=nome or "")
+        lb.setWordWrap(wrap)
+        lb.setTextFormat(Qt.TextFormat.RichText)
+        self.corpo_lay.addWidget(lb)
+        return lb
+
+    def atualizar(self):
+        d = coletar()
+        n_pend = sum(len(v) for v in d["pend"].values())
+        self.resumo.setText(
+            f"v{d['versao']} · {d['n']} ferramentas · 📨 {n_pend} pedido(s) no ar<br>"
+            f"📬 carteiro: {d['carteiro']}" + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else ""))
+        self.resumo.setTextFormat(Qt.TextFormat.RichText)
+        self.rolagem.setVisible(not self.recolhida)
+        if self.recolhida:
+            self.setFixedHeight(self.caixa.sizeHint().height())
+            return
+        self.setMinimumHeight(200)
+        self.setMaximumHeight(16777215)
+        self.resize(self.width(), int(self.cfg.get("altura", 640)))
+        self._limpar()
+
+        self._rotulo("AGORA", "secao")
+        for chave, nome, emoji, papel in AGENTES:
+            a = d["painel"].get(chave, {})
+            t = _quando(a.get("atualizado", ""))
+            minutos = (dt.datetime.now() - t).total_seconds() / 60 if t else 9999
+            bola = "🟢" if minutos < 20 else ("🟡" if minutos < 90 else "⚪")
+            fazendo = a.get("fazendo") or ""
+            estado = (f"<b>fazendo:</b> {_corta(fazendo, 110)}" if fazendo
+                      else "<span style='color:#9a9ab0'>parado / esperando</span>")
+            if a.get("bloqueado"):
+                estado += f"<br>⛔ <b>travado:</b> {_corta(a['bloqueado'], 90)}"
+            prox = a.get("proximo") or ""
+            pedidos = d["pend"].get(chave, [])
+            extra = (f"<br>📨 {len(pedidos)} pedido(s) de {', '.join(sorted({NOME.get(p, p) for p in pedidos}))}"
+                     if pedidos else "")
+            caixa = QLabel(
+                f"{bola} {emoji} <b>{nome}</b> <span style='color:#9a9ab0'>· {papel} · {_ha(t)}</span><br>"
+                f"{estado}" + (f"<br><span style='color:#9a9ab0'>depois:</span> {_corta(prox, 90)}" if prox else "")
+                + extra, objectName="agente")
+            caixa.setWordWrap(True)
+            caixa.setTextFormat(Qt.TextFormat.RichText)
+            caixa.setContentsMargins(8, 6, 8, 6)
+            self.corpo_lay.addWidget(caixa)
+
+        self._rotulo("JÁ FEITO", "secao")
+        for t, chave, txt in d["feitos"]:
+            hora = t.strftime("%H:%M") if t else "--:--"
+            self._rotulo(f"<span style='color:#9a9ab0'>{hora}</span> <b>{NOME.get(chave, chave)}</b>: "
+                         f"{_corta(txt, 120)}")
+        self.corpo_lay.addStretch(1)
+        self.titulo.setText(f"🏭 Fábrica da Caixa  <span style='color:#9a9ab0;font-size:9pt'>"
+                            f"{dt.datetime.now():%H:%M}</span>")
+        self.titulo.setTextFormat(Qt.TextFormat.RichText)
+
+    # ------------------------------------------------------------ interação
+    def _salvar(self):
+        self.cfg.update({"x": self.x(), "y": self.y(), "recolhida": self.recolhida,
+                         "opacidade": round(self.windowOpacity(), 2)})
+        if not self.recolhida:
+            self.cfg["altura"] = self.height()
+        try:
+            with open(CFG, "w", encoding="utf-8") as f:
+                json.dump(self.cfg, f)
+        except OSError:
+            pass
+
+    def mousePressEvent(self, e):  # noqa: N802
+        if e.button() == Qt.MouseButton.LeftButton:
+            self._arrasto = e.globalPosition().toPoint() - self.frameGeometry().topLeft()
+
+    def mouseMoveEvent(self, e):  # noqa: N802
+        if self._arrasto is not None and e.buttons() & Qt.MouseButton.LeftButton:
+            self.move(e.globalPosition().toPoint() - self._arrasto)
+
+    def mouseReleaseEvent(self, e):  # noqa: N802
+        if self._arrasto is not None:
+            self._arrasto = None
+            self._salvar()
+
+    def mouseDoubleClickEvent(self, e):  # noqa: N802
+        self.alternar()
+
+    def alternar(self):
+        if not self.recolhida:
+            self.cfg["altura"] = self.height()
+        self.recolhida = not self.recolhida
+        self.atualizar()
+        self._salvar()
+
+    def contextMenuEvent(self, e):  # noqa: N802
+        m = QMenu(self)
+        m.addAction("Expandir" if self.recolhida else "Recolher", self.alternar)
+        m.addAction("Atualizar agora", self.atualizar)
+        sub = m.addMenu("Transparência")
+        for p in (100, 90, 80, 70, 60):
+            a = QAction(f"{p}%", sub)
+            a.triggered.connect(lambda _c=False, v=p: (self.setWindowOpacity(v / 100), self._salvar()))
+            sub.addAction(a)
+        m.addSeparator()
+        m.addAction("Fechar o painel", self.close)
+        m.exec(e.globalPos())
+
+    def closeEvent(self, e):  # noqa: N802
+        self._salvar()
+        super().closeEvent(e)
+
+
+def main():
+    app = QApplication(sys.argv)
+    app.setStyleSheet(QSS)
+    app.setQuitOnLastWindowClosed(True)
+    n = Nota()
+    n.show()
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()
