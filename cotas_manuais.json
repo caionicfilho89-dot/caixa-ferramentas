@@ -1,13 +1,14 @@
 {
  "antigravity": {
-  "lido": "10/11 18:58",
+  "lido": "10/11 20:01 (auto)",
   "plano": "Google AI Pro",
-  "gemini_semana_usado": 36,
+  "gemini_semana_usado": 40,
   "gemini_5h_usado": 5,
   "claude_gpt_semana_usado": 100,
   "argon_semana_usado": 100,
   "renova": "em 4 dias",
   "gemini_5h_renova": "2026-11-11T03:47:41Z",
-  "lido_auto": "10/11 19:57"
+  "lido_auto": "10/11 19:57",
+  "semana_lida_em": 1794351663.228223
  }
 }

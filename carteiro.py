@@ -375,6 +375,17 @@ def main():
                     except Exception as ex:  # noqa: BLE001
                         log(f"cota Antigravity: {ex}")
                 threading.Thread(target=_cota_ag, daemon=True).start()
+            if volta % 60 == 30:  # 1x por semana: print da tela Models do Antigravity (cota semanal), com o Caio longe
+                try:
+                    import cota_antigravity_semanal as cas
+                    if cas.precisa() and segundos_ocioso() >= 120 and not os.path.exists(LOCK):
+                        open(LOCK, "w").close()
+                        try:
+                            log(f"cota semanal Antigravity (print+OCR): {cas.atualizar()}% restante")
+                        finally:
+                            os.remove(LOCK)
+                except Exception as ex:  # noqa: BLE001
+                    log(f"cota semanal Antigravity: {ex}")
             if volta % 4 == 0:
                 pedir_propostas_se_faltar()
                 fechar_testes_esquecidos()
