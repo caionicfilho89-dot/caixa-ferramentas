@@ -435,6 +435,81 @@ def test_tempo_resposta_menor_que_50ms():
     assert media_ms < 50.0, f"Tempo médio de resposta {media_ms:.2f} ms excedeu 50 ms"
 
 
+# ======================================================================
+# F6 & F7: Limpeza de cartas, formatação pt-BR e ranking
+# ======================================================================
+
+def test_f6_formatar_texto_ptbr_floats():
+    # Floats crus com imprecisao
+    assert rc.formatar_texto_ptbr("37.199999999999996") == "37,20"
+    assert "37,20" in rc.formatar_texto_ptbr("gorjeta: 37.199999999999996")
+    # Floats monetários
+    assert rc.formatar_texto_ptbr("total: 285.2") == "total: 285,20"
+    assert rc.formatar_texto_ptbr("valor_conta: 248.0") == "valor_conta: 248,00"
+    assert rc.formatar_texto_ptbr("Troco: R$ 26.50") == "Troco: R$ 26,50"
+    assert rc.formatar_texto_ptbr("Troco: R$ 12.20") == "Troco: R$ 12,20"
+    # Preservação de pt-BR válido e milhares
+    assert rc.formatar_texto_ptbr("1.030,30") == "1.030,30"
+    assert rc.formatar_texto_ptbr("60.000") == "60.000"
+    assert rc.formatar_texto_ptbr("1.320") == "1.320"
+    assert rc.formatar_texto_ptbr("4.096") == "4.096"
+    # Decimais gerais
+    assert rc.formatar_texto_ptbr("2.5 kg = 2.500 g") == "2,5 kg = 2.500 g"
+    assert rc.formatar_texto_ptbr("1.5 h") == "1,5 h"
+    assert rc.formatar_texto_ptbr("14.4 m²") == "14,4 m²"
+    assert rc.formatar_texto_ptbr("220.00 h") == "220,00 h"
+    # Preservação de versão e IP
+    assert rc.formatar_texto_ptbr("v1.5.1") == "v1.5.1"
+    assert rc.formatar_texto_ptbr("1.5.1") == "1.5.1"
+    assert rc.formatar_texto_ptbr("192.168.1.1") == "192.168.1.1"
+
+
+def test_f6_remover_tautologias():
+    # Tautologias devem ser detectadas
+    assert rc._eh_tautologica("1 mês (30,44 dias) = 1 mês (30,44 dias)") is True
+    assert rc._eh_tautologica("1 mes = 1 mes") is True
+    assert rc._eh_tautologica("5 kg = 5 kg") is True
+    # Conversões válidas não são tautológicas
+    assert rc._eh_tautologica("2,5 kg = 2.500 g") is False
+    assert rc._eh_tautologica("10 km = 10.000 metros") is False
+    assert rc._eh_tautologica("100 c = 212 f") is False
+
+
+def test_f6_q10_sem_tautologia_e_q56_sem_float_cru():
+    # Q10: juros compostos não deve trazer conversor-unidades "1 mes = 1 mes"
+    cards_q10 = rc.responder("juros compostos 1% ao mes em 1.000 por 3 meses (montante)")
+    assert len(cards_q10) > 0
+    assert cards_q10[0]["chave_ferramenta"] == "financas"
+    assert "1.030,30" in cards_q10[0]["resposta"]
+    for c in cards_q10:
+        assert not rc._eh_tautologica(c["resposta"])
+        assert "1 mês = 1 mês" not in c["resposta"]
+        assert "1 mes = 1 mes" not in c["resposta"]
+
+    # Q56: gorjeta não deve ter float cru (37.199999999999996) em resposta nem em detalhe
+    cards_q56 = rc.responder("gorjeta 15% em conta de 248,00")
+    assert len(cards_q56) > 0
+    assert "37,20" in cards_q56[0]["resposta"]
+    for c in cards_q56:
+        # Nenhum float com mais de 3 casas sem formatação pt-BR
+        assert "37.19999" not in c["resposta"]
+        assert "37.19999" not in c["detalhe"]
+        assert "248.0" not in c["detalhe"]
+        assert "285.2" not in c["detalhe"]
+
+
+def test_f7_ranking_maximo_3_cartas_e_filtro_baixa_confianca():
+    # Máximo 3 cartas em qualquer resposta com adaptadores
+    for q in ["juros compostos 1% ao mes em 1.000 por 3 meses (montante)",
+              "troco de 100 pra 73,50",
+              "20% de 350"]:
+        res = rc.responder(q)
+        assert len(res) <= 3, f"Esperava no máximo 3 cartas, obteve {len(res)}"
+        if res and res[0]["confianca"] >= 0.80:
+            for c in res:
+                assert c["confianca"] >= 0.35, f"Carta com baixa confiança {c['confianca']} não deveria aparecer"
+
+
 if __name__ == "__main__":
     funcs = [obj for name, obj in list(globals().items()) if name.startswith("test_") and callable(obj)]
     print(f"Executando {len(funcs)} suites de testes...")

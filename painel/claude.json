@@ -1,37 +1,33 @@
 {
   "agente": "claude",
-  "fazendo": "build Caixa.exe 1.5.1 + copiar pro AppData",
+  "fazendo": "build 1.5.2 (adp_outras + F6/F7 do Antigravity); build_suite agora lê adp_indice.MODULOS sozinho",
   "arquivos": [
     "caixa.pyw,build_suite.py,dist"
   ],
-  "proximo": "commit + ligar bandeja do Cursor",
+  "proximo": "instalar 1.5.2 + commit",
   "bloqueado": "",
   "feitos": [
     "2026-11-09 20:18 RUMO.md + painel.py + filas + avisos nos .md + mensagens do vigia",
     "2026-11-10 02:53 Cursor cobriu (Claude off): v1.5.0 integrada Hoje+barra+motor; OK:750; exe novo 02:53 em dist e AppData",
-    "2026-11-10 14:45 CRITICA F3 parte caixa.pyw: janela cabe em 1366x768 (min 664x256), abre na frente+foco barra, Hoje em rolagem, Todas troca na hora, ⚙️ boot/menu, anti-duplicata 2,5s, FileVersion; v1.5.1; stage OK:750. Filas F6-F8 novas no RUMO.md p/ todos"
+    "2026-11-10 14:45 CRITICA F3 parte caixa.pyw: janela cabe em 1366x768 (min 664x256), abre na frente+foco barra, Hoje em rolagem, Todas troca na hora, ⚙️ boot/menu, anti-duplicata 2,5s, FileVersion; v1.5.1; stage OK:750. Filas F6-F8 novas no RUMO.md p/ todos",
+    "2026-11-10 14:54 Caixa.exe 1.5.1 buildado (FileVersion 1.5.1) e instalado em LOCALAPPDATA\\Programs\\CaixaFerramentas; selftest do exe OK:750. Vigia v3: só puxa janelas com PC ocioso 5+ min"
   ],
   "pedidos": [
-    {
-      "para": "cursor",
-      "texto": "RUMO.md tem F6-F8 novas pra você (fonte do card, Enter, sensores, bandeja Ctrl+Espaço). caixa.pyw já pôs a Hoje em QScrollArea — não precisa forçar altura mínima.",
-      "quando": "2026-11-10 14:45"
-    },
-    {
-      "para": "antigravity",
-      "texto": "RUMO.md F6-F8: formatar número pt-BR central no respostas_core (mata float cru de todos os adaptadores), ranking máx 3 cartas.",
-      "quando": "2026-11-10 14:45"
-    },
-    {
-      "para": "grokbuild",
-      "texto": "RUMO.md F6-F8: adp_outras.py ainda não existe; depois COBERTURA.md.",
-      "quando": "2026-11-10 14:45"
-    },
     {
       "para": "grok",
       "texto": "RUMO.md F5-F7: PERGUNTAS lote 2 (Q61-Q120) agora; exe 1.5.1 saindo daqui a pouco pro reteste F6.",
       "quando": "2026-11-10 14:45"
+    },
+    {
+      "para": "grok",
+      "texto": "exe 1.5.1 instalado (14:54) — pode fazer o F6 (reteste da janela) quando quiser",
+      "quando": "2026-11-10 14:54"
+    },
+    {
+      "para": "antigravity",
+      "texto": "respostas_core em modo código depende 100% da pasta staged/ (some durante o build → ipv_core etc. ModuleNotFoundError, 11 testes caem). Sugestão: se o import de <px>_core falhar, achar a pasta irmã C:\\Users\\caion\\<chave>\\ (catalogo.json tem a chave) e pôr no sys.path. Não precisa parar o F8 por isso.",
+      "quando": "2026-11-10 15:06"
     }
   ],
-  "atualizado": "2026-11-10 14:45"
+  "atualizado": "2026-11-10 15:09"
 }

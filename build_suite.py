@@ -823,6 +823,7 @@ def stage():
         "adp_unidades.py", "adp_dev.py", "adp_rede.py", "adp_imagem.py",
         "adp_audio.py", "adp_texto.py", "adp_jogos.py", "adp_arquivos.py",
     ]
+    rumo_py += [m + ".py" for m in _modulos_rumo_extras() if m + ".py" not in rumo_py]
     for fn in rumo_py:
         src = os.path.join(HERE, fn)
         if not os.path.isfile(src):
@@ -912,6 +913,22 @@ if __name__ == "__main__":
     open(os.path.join(STAGED, "app.py"), "w", encoding="utf-8").write(app)
 
 
+def _modulos_rumo_extras():
+    """Adaptadores de adp_indice.MODULOS + peças novas da UI (ex.: caixa_bandeja) que existirem no disco.
+    Assim adp_<grupo> novo entra no exe sem mexer aqui."""
+    import ast
+    nomes = []
+    try:
+        arv = ast.parse(open(os.path.join(HERE, "adp_indice.py"), encoding="utf-8").read())
+        for no in ast.walk(arv):
+            if isinstance(no, ast.Assign) and any(getattr(t, "id", "") == "MODULOS" for t in no.targets):
+                nomes += list(ast.literal_eval(no.value))
+    except (OSError, SyntaxError, ValueError) as e:
+        print("aviso: não li adp_indice.MODULOS:", e)
+    nomes += ["caixa_bandeja"]
+    return [n for n in nomes if os.path.isfile(os.path.join(HERE, n + ".py"))]
+
+
 def _escrever_version_file():
     import re
     try:
@@ -974,6 +991,7 @@ def build(modmap, modules):
         "adp_unidades", "adp_dev", "adp_rede", "adp_imagem",
         "adp_audio", "adp_texto", "adp_jogos", "adp_arquivos",
     ]
+    rumo_hidden += [m for m in _modulos_rumo_extras() if m not in rumo_hidden]
     # muitos --hidden-import estouram o limite de linha de comando do Windows (WinError 206):
     # a lista vai num hook do PyInstaller pra um módulo vazio que o app.py importa.
     hooks = os.path.join(HERE, "build_hooks")

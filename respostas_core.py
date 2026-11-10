@@ -321,6 +321,95 @@ def carregar_adaptadores() -> List[Dict[str, Any]]:
 
 
 # ======================================================================
+# Limpeza e Pós-processamento pt-BR (F6 & F7)
+# ======================================================================
+
+def _eh_tautologica(resposta: str) -> bool:
+    """Detecta respostas tautológicas inuteis onde lado esquerdo == lado direito (ex: '1 mês = 1 mês')."""
+    if not resposta:
+        return True
+    if "=" in resposta:
+        partes = resposta.split("=")
+        if len(partes) == 2:
+            e, d = partes[0].strip(), partes[1].strip()
+            # Remove textos explicativos entre parenteses (ex: '(30,44 dias)')
+            e_limpo = re.sub(r"\(.*?\)", "", e).strip()
+            d_limpo = re.sub(r"\(.*?\)", "", d).strip()
+            # Se normalizados forem identicos, eh tautologia
+            if normalizar_texto(e_limpo) == normalizar_texto(d_limpo):
+                return True
+            # Se tokens normalizados forem identicos
+            e_toks = normalizar_texto(e_limpo).split()
+            d_toks = normalizar_texto(d_limpo).split()
+            if e_toks and d_toks and e_toks == d_toks:
+                return True
+    return False
+
+
+_RE_NUM_PONTO = re.compile(r"(?<![0-9/A-Za-z_.])(\d+(?:\.\d+)+)(?![0-9/A-Za-z_.])")
+
+
+def formatar_texto_ptbr(texto: str) -> str:
+    """Pós-processamento central para formatar números e floats em pt-BR.
+
+    Converte floats crus (ex: 37.199999999999996 -> 37,20; 285.2 -> 285,20; 26.50 -> 26,50)
+    sem quebrar números já no padrão pt-BR (1.030,30; 60.000), versões (1.5.1) ou IPs (192.168.1.1).
+    """
+    if not texto:
+        return ""
+
+    def replacer(match: re.Match) -> str:
+        num_str = match.group(1)
+
+        # Ignora se tem múltiplos pontos (versão 1.5.0, IP 192.168.1.1, etc.)
+        if num_str.count(".") != 1:
+            return num_str
+
+        inteiro, decimal = num_str.split(".")
+
+        # Se for milhar pt-BR puro: 1 a 3 dígitos antes do ponto, e exatamente 3 depois
+        # Ex: 1.320, 2.400, 60.000, 4.096, 5.000
+        # Exceção: 0.xxx é sempre decimal (0,123)
+        if len(decimal) == 3 and inteiro != "0" and len(inteiro) <= 3:
+            return num_str
+
+        try:
+            val = float(num_str)
+        except ValueError:
+            return num_str
+
+        idx = match.start()
+        trecho_prox = texto[max(0, idx - 40):min(len(texto), idx + 40)].lower()
+        eh_dinheiro = any(
+            k in trecho_prox
+            for k in [
+                "r$", "valor", "conta", "total", "gorjeta", "troco", "saldo",
+                "preco", "preço", "pago", "frete", "salario", "salário",
+                "juros", "parcela", "custo", "desconto", "aumento", "compra"
+            ]
+        )
+
+        val_round2 = round(val, 2)
+
+        if len(decimal) >= 3:
+            # Imprecisão de float cru (ex: 37.199999999999996 -> 37,20)
+            fmt = f"{val_round2:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        elif eh_dinheiro or len(decimal) == 2:
+            # Valores monetários ou decimais com 2 casas (ex: 285.2 -> 285,20; 26.50 -> 26,50; 220.00 -> 220,00)
+            fmt = f"{val:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        else:
+            # 1 casa decimal geral (ex: 1.5 -> 1,5; 14.4 -> 14,4)
+            s = f"{val:.4f}".rstrip("0").rstrip(".")
+            p_int, p_dec = s.split(".") if "." in s else (s, "")
+            p_int_fmt = f"{int(p_int):,}".replace(",", ".")
+            fmt = f"{p_int_fmt},{p_dec}" if p_dec else p_int_fmt
+
+        return fmt
+
+    return _RE_NUM_PONTO.sub(replacer, texto)
+
+
+# ======================================================================
 # Motor Principal de Resposta
 # ======================================================================
 
@@ -377,9 +466,38 @@ def responder(texto: str) -> List[Dict[str, Any]]:
             # Qualquer erro interno em um calculo especifico nao quebra os outros
             continue
 
-    if candidatos:
-        candidatos.sort(key=lambda x: x["confianca"], reverse=True)
-        return candidatos
+    candidatos_validos: List[Dict[str, Any]] = []
+    for c in candidatos:
+        # F6: Limpeza de cartas tautológicas (ex: 1 mes = 1 mes)
+        if _eh_tautologica(c.get("resposta", "")):
+            continue
+
+        # F6: Formatação central de resposta e detalhe em pt-BR (elimina float cru)
+        c["resposta"] = formatar_texto_ptbr(c.get("resposta", ""))
+        c["detalhe"] = formatar_texto_ptbr(c.get("detalhe", ""))
+
+        candidatos_validos.append(c)
+
+    if candidatos_validos:
+        candidatos_validos.sort(key=lambda x: x["confianca"], reverse=True)
+
+        # F7: Se a 1ª tiver confiança >= 0.8, carta com confiança < 0.35 não aparece
+        top_conf = candidatos_validos[0]["confianca"]
+        if top_conf >= 0.80:
+            candidatos_validos = [c for c in candidatos_validos if c["confianca"] >= 0.35]
+
+        # Deduplicação de cartas redundantes (mesma ferramenta e mesma resposta)
+        vistos: set = set()
+        dedup: List[Dict[str, Any]] = []
+        for c in candidatos_validos:
+            chave_dedup = (c.get("chave_ferramenta", ""), normalizar_texto(c.get("resposta", "")))
+            if chave_dedup in vistos:
+                continue
+            vistos.add(chave_dedup)
+            dedup.append(c)
+
+        # F7: No máximo 3 cartas
+        return dedup[:3]
 
     # Se nenhum adaptador direto resolveu, aciona a busca de reserva
     return busca_reserva(texto, limite=5)

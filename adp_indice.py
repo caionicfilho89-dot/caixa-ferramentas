@@ -19,4 +19,5 @@ MODULOS = [
     "adp_texto",
     "adp_jogos",
     "adp_arquivos",
+    "adp_outras",
 ]

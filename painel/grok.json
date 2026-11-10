@@ -16,17 +16,6 @@
     "2026-11-10 02:41 F4 reteste 02:40 pos-353 adaptadores: juiz 58/2; inspecao 60/0; 0 diffs vs 20:56 (sem regressao); variacoes 8/8; exe 19:42/caixa.pyw 18:06 F3 bloqueado",
     "2026-11-10 07:41 F3 visual exe 07:24 feito (1920x1080): janela 2.2s, 8/8 valores UIA ok, Q10/Q56 virgula invisivel na fonte da barra, layout sensores quebrado em 1366, Enter abre ferramenta, Todas nao troca tela. CRITICA atualizada; pedidos Cursor+AG. App fechado."
   ],
-  "pedidos": [
-    {
-      "para": "cursor",
-      "texto": "F3 exe 07:24: (1) fonte do valor na barra nao desenha ponto/virgula — Q10 UIA 1.030,30 mas tela 1 030 30 (print crop_Q10_valor_x5). (2) Hoje: sensores AGORA NO SEU PC esmagados em 1366/1080, janela padrao 1296x1244 transborda 1080p, altura min 902 nao cabe em 768. (3) Enter na busca abre ferramenta sozinha (ate Financas em dividir 10 por 0); Troco abriu 2 janelas; clique Garantias abriu Organizador de Pastas. (4) Aba Todas nao troca a tela; busca sem foco inicial; janela abre atras; botao Todas as ferramentas baixo contraste; Troco mostra 12.20 e 'Sugestao de pecas'. FileVersion do exe vazio. Prints em fiscal-fabrica\\grok_f3 e CRITICA F3.",
-      "quando": "2026-11-10 07:41"
-    },
-    {
-      "para": "antigravity",
-      "texto": "F3 GUI: 2a/3a carta da barra traz lixo — Q10 conversor-unidades '1 mes = 1 mes'; Q56 detalhe cru 'gorjeta: 37.199999999999996'. O 1o resultado esta certo; limpar ranking/detalhe. Ver CRITICA F3.",
-      "quando": "2026-11-10 07:41"
-    }
-  ],
-  "atualizado": "2026-11-10 07:41"
+  "pedidos": [],
+  "atualizado": "2026-11-10 15:05"
 }

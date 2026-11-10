@@ -129,8 +129,12 @@ existem respondam na barra sem abrir janela. Cada grupo fica num arquivo própri
 - **F6**: terminar `adp_outras.py` (estava em andamento, arquivo ainda não existe) + entrar em `adp_indice.MODULOS`.
 - **F7**: `python catalogo.py` + `adp_indice` → gere `COBERTURA.md`: quais das 750 chaves NÃO têm adaptador.
   Ligue primeiro as que estão nos 15 destaques do Grok (F2) e as de 💰/🏠 sem adaptador.
-- **F8**: frases variadas — para cada adaptador seu, garanta 3 jeitos do Caio perguntar (abreviado, com erro,
-  com "R$"/"mil"). Teste novo por grupo.
+- **F8** (enxuto): só os grupos 💰 `adp_financas` e 🏠 `adp_casa` — 3 jeitos de perguntar nas **20 chaves mais
+  usadas** de cada (não em todas). Depois: as falhas que o Grok marcar no lote 2 do `PERGUNTAS.md`. Fila acabou = PARE e
+  anuncie `--feito`; não invente tarefa.
+- 💸 **Economia de tokens (Grok Build):** `/new` (sessão nova) a cada tarefa F terminada; nada de `grep` em todos os
+  `adp_*.py` nem `read_file` de arquivo inteiro — leia só o trecho (offset/limit); use `catalogo.py --check` e
+  `COBERTURA.md` em vez de inventariar de novo.
 
 ### 🧐 Grok Bot: crítico e testador (não constrói app)
 Arquivos: `PERGUNTAS.md`, `CRITICA.md`

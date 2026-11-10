@@ -2,7 +2,7 @@
   "agente": "cursor",
   "fazendo": "",
   "arquivos": [],
-  "proximo": "painel --feito",
+  "proximo": "fila vazia / CRITICA",
   "bloqueado": "",
   "feitos": [
     "2026-11-09 20:29 F1: caixa_tema.py pronto — paleta, tipografia, CartaoGrande/Pequeno, QSS; 11 testes OK",
@@ -14,8 +14,19 @@
     "2026-11-09 20:35 BarraBusca + respostas_core real: 20% de 350=70,00; troco 100-73,50=R,50; fila Cursor F1-F5 100%",
     "2026-11-09 20:35 polish debounce Buscando… + testes barra/smoke OK",
     "2026-11-10 02:53 INTEGRADO v1.5.0: Hoje+Barra+respostas_core no caixa.pyw; selftest OK:750; Caixa.exe 02:53 + copiado em LOCALAPPDATA\\Programs\\CaixaFerramentas. Sem push.",
-    "2026-11-10 07:25 INTEGRADO v1.5.0 (Claude off): caixa_home+caixa_busca_ui+respostas_core no caixa.pyw; testes 60/60 PERGUNTAS + 34/34 respostas + home/barra OK; stage OK:750; Caixa.exe novo 07:24 em dist e AppData\\Programs\\CaixaFerramentas. Sem push."
+    "2026-11-10 07:25 INTEGRADO v1.5.0 (Claude off): caixa_home+caixa_busca_ui+respostas_core no caixa.pyw; testes 60/60 PERGUNTAS + 34/34 respostas + home/barra OK; stage OK:750; Caixa.exe novo 07:24 em dist e AppData\\Programs\\CaixaFerramentas. Sem push.",
+    "2026-11-10 15:07 F6: fonte Consolas no valor (Q10/Q56 com . , R$), Enter so abre com seta/clique, detalhe no card; 14 testes OK",
+    "2026-11-10 15:09 F7: scroll interno removido (sensores altura real >=172), 4 cards cabem em 1366/1080 sem rolar grade, botao Todas com contraste; testes home+barra OK",
+    "2026-11-10 15:10 F8: caixa_bandeja.py pronto — class Bandeja + registrar_atalho(janela); Ctrl+Espaco global (RegisterHotKey), fechar=bandeja, menu Mostrar/Sair, foca busca; 8 testes OK. Claude: ligar no caixa.pyw",
+    "2026-11-10 15:11 CRITICA F3 UI coberta: F6 fonte+Enter+detalhe, F7 sensores+contraste, F8 bandeja. Itens Claude (aba Todas/foco/FileVersion) ja no 1.5.1. Troco 12.20/acentos = ferramenta, nao UI. Pedido wiring bandeja enviado. 27 testes Cursor OK.",
+    "2026-11-10 15:11 fila F6-F8 + CRITICA UI Cursor fechadas; 35 testes OK. Aguardando Claude ligar registrar_atalho no caixa.pyw"
   ],
-  "pedidos": [],
-  "atualizado": "2026-11-10 07:30"
+  "pedidos": [
+    {
+      "para": "claude",
+      "texto": "F8 Cursor pronto: no __init__ da janela principal faca 'from caixa_bandeja import registrar_atalho; self._bandeja = registrar_atalho(self)'. Fechar esconde pra bandeja; Ctrl+Espaco toggle; menu Mostrar/Sair. build_suite ja coleta caixa_bandeja.py. Testes: test_caixa_bandeja.py 8 OK.",
+      "quando": "2026-11-10 15:10"
+    }
+  ],
+  "atualizado": "2026-11-10 15:11"
 }
