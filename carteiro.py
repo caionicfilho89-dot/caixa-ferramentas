@@ -86,13 +86,11 @@ def marcar(ids):
 
 
 def mensagem(para, itens):
-    linhas = [f"📨 Carteiro: {len(itens)} pedido(s) novo(s) pra você no painel da Caixa."]
+    # Deixa claro no chat que é mensagem AUTOMÁTICA (não foi o Caio que digitou) e mantém o rodapé curto.
+    linhas = [f"🤖 [automático · carteiro da Caixa, não foi o Caio que digitou] {len(itens)} pedido(s) pra você:"]
     for _i, de, quando, texto in itens:
-        linhas.append(f"- De {NOMES.get(de, de)} ({quando}): {texto}")
-    linhas.append(f"Resolva (é rápido e destrava o outro) e responda no painel: "
-                  f"cd C:\\Users\\caion\\caixa-ferramentas; python painel.py {para} --resolvido <quem pediu>. "
-                  f"Se precisar de algo de outro agente: python painel.py {para} --pedir <agente> \"...\" "
-                  f"(o carteiro entrega). Depois volte pra sua fila do RUMO.md. Não pergunte ao Caio.")
+        linhas.append(f"De {NOMES.get(de, de)} ({quando[11:16]}): {texto}")
+    linhas.append(f"Ao terminar: python painel.py {para} --resolvido <quem pediu> (regras no RUMO.md).")
     # UMA linha só: com quebra de linha o Enter do Cursor/Antigravity só pula linha e não envia
     return " | ".join(" ".join(l.split()) for l in linhas)
 
