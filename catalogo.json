@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-09",
-  "total": 750,
+  "gerado_em": "2026-11-10",
+  "total": 751,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -6751,6 +6751,15 @@
       "script": "pne_gui.pyw",
       "prefixo": "pne",
       "categoria": "🏠 Casa, Pet & Pessoal"
+    },
+    {
+      "emoji": "🎤",
+      "nome": "Notas de Voz",
+      "desc": "Grava, transcreve no PC (sem internet) e separa lembrete e assunto. 🔥 Tendência do dia.",
+      "chave": "notas-de-voz",
+      "script": "nvz_gui.pyw",
+      "prefixo": "nvz",
+      "categoria": "🎵 Áudio & Vídeo"
     }
   ],
   "prefixos": [
@@ -7234,6 +7243,7 @@
     "ntr",
     "nuv",
     "nvm",
+    "nvz",
     "oas",
     "obr",
     "ocl",

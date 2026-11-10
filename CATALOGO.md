@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-09** · Total: **750 ferramentas** · **750 prefixos** usados.
+> Última geração: **2026-11-10** · Total: **751 ferramentas** · **751 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -21,7 +21,7 @@
 - 🌐 Rede & Segurança — 48
 - 💻 Dev & Dados — 79
 - 🖼️ Imagem & Design — 40
-- 🎵 Áudio & Vídeo — 22
+- 🎵 Áudio & Vídeo — 23
 - ✍️ Texto & Estudo — 20
 - 🎮 Jogos & Diversão — 16
 - 🗂️ Arquivos & Sistema — 58
@@ -487,7 +487,7 @@
 | 🔤 | **Visualizador de Fontes** | Todas as fontes do PC, comparar e ver .ttf sem instalar | `fontes` | `visualizador_fontes` |
 | 📷 | **Webcam** | Espelho, foto e vídeo curto com filtros | `webcam` | `webcam_foto` |
 
-## 🎵 Áudio & Vídeo  ·  22
+## 🎵 Áudio & Vídeo  ·  23
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -509,6 +509,7 @@
 | 🎛️ | **Laboratório de Áudio** | Sintetizador ADSR, acordes, ondas binaurais de foco e espectro FFT | `laboratorio-audio` | `syn` |
 | 📚 | **Material Escolar** | Soma lista e compara com kit da escola. | `material-escolar` | `mte` |
 | 🎹 | **Metrônomo e Afinador** | Metrônomo preciso + afinador pelo microfone | `metronomo` | `metronomo` |
+| 🎤 | **Notas de Voz** | Grava, transcreve no PC (sem internet) e separa lembrete e assunto. 🔥 Tendência do dia. | `notas-de-voz` | `nvz` |
 | 🎵 | **Player de Música** | Toca suas músicas: biblioteca, capas e playlists | `player-musica` | `player_musica` |
 | 📻 | **Simulador Modulação AM & FM** | Modulação analógica, formas de onda temporais, índice μ/β e Regra de Carson | `simulador-modulacao-am-fm` | `amf` |
 | 🎼 | **Teoria Musical** | Escalas, acordes, campo harmônico, intervalos e transposição de cifras | `teoria-musical` | `esm` |
@@ -836,7 +837,7 @@
 
 ---
 
-## 🔒 Prefixos reservados (750) — NÃO repetir
+## 🔒 Prefixos reservados (751) — NÃO repetir
 
 ```text
 abn  acd  aci  acl  acp  acu  ads  adt  aer  agd
@@ -887,31 +888,32 @@ mmt  mnc  mnt  mol  monitor_sistema  mot  mpd  mqb  mrs  mse
 msn  mtc  mte  mtm  mtr  mtv  mtx  mvi  myp  nap
 nav  nbd  nc  nca  nce  neg  nfe  nfn  nix  nln
 nmi  nmk  notas  nox  nrc  nsi  ntl  ntr  nuv  nvm
-oas  obr  ocl  odt  ofx  olo  opt  orcamentos  orf  organizador
-orq  own  p20  p3d  pac  pad  pag  pai  pal  paletas_cores
-pao  pas  pat  pbn  pcc  pce  pcf  pcp  pcs  pdl
-pei  pem  pen  per  pes  pet  pev  pfl  phn  phr
-pia  pid  pix_boleto  player_musica  plc  pld  plk  plm  plr  pls
-plt  pm  pmr  pmt  pne  pnl  pnt  pnu  poe  ppd
-ppu  prc  print_anotador  prm  prs  prt  prx  psc  psi  psq
-pst  pth  pti  ptr  pts  ptt  pvs  pwb  pyc  pyl
-pyr  pyv  pzz  qb  qc  qol  qrcode_tool  qsm  qth  qtn
-quiz_geografia  qzf  rastreador_tempo  rc  rct  rcz  rea  rec  recupera  reg
-relogio_mundial  rem  renomeador  reo  req  res  rev  rfc  rfm  rfx
-rgx  rlc  rle  rls  rlz  rmd  rml  rmp  rms  rmx
-rnv  rob  roi  rot  rpg  rps  rsg  rss  rst  rsv
-rtc  ruf  rvg  rvp  rwx  sab  saude  sb  sbb  sbo
-sbp  sbv  scd  scf  sch  scm  scn  sco  sdx  sec
-sek  sem  seo  seq  sfa  sfl  sfr  sgb  sgr  shb
-shw  sir  skl  skn  slg  smt  smv  snip  snl  sno
-snw  som  sorteios  spa  spl  spm  sqf  srt  ssc  ssk
-stg  stm  stp  stt  sudoku  svc  svg  svj  syb  sym
-syn  tag  tam  tarefas  tcr  tcs  tcx  tdc  tdf  tdo
-tempo  texto_fala  tfr  tg  th  thf  thm  tip  tml  tmp
-tnr  tnt  tok  tox  trc  trd  tre  treino_digitacao  trf  trm
-tro  trs  tru  trv  tsk  tun  tvd  tvs  txp  uba
-ubr  udi  uid  uni  utl  vag  variaveis_ambiente  vcp  vdc  vdw
-vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vlm  vnh  vo2  volume_apps  vsc  vst
-vth  vva  wcg  wci  wdc  webcam_foto  wfi  wgm  whl  wlb
-wsp  wup  wxi  xtr  ylk  ylt  yml  yrn  zcd  zpf
+nvz  oas  obr  ocl  odt  ofx  olo  opt  orcamentos  orf
+organizador  orq  own  p20  p3d  pac  pad  pag  pai  pal
+paletas_cores  pao  pas  pat  pbn  pcc  pce  pcf  pcp  pcs
+pdl  pei  pem  pen  per  pes  pet  pev  pfl  phn
+phr  pia  pid  pix_boleto  player_musica  plc  pld  plk  plm  plr
+pls  plt  pm  pmr  pmt  pne  pnl  pnt  pnu  poe
+ppd  ppu  prc  print_anotador  prm  prs  prt  prx  psc  psi
+psq  pst  pth  pti  ptr  pts  ptt  pvs  pwb  pyc
+pyl  pyr  pyv  pzz  qb  qc  qol  qrcode_tool  qsm  qth
+qtn  quiz_geografia  qzf  rastreador_tempo  rc  rct  rcz  rea  rec  recupera
+reg  relogio_mundial  rem  renomeador  reo  req  res  rev  rfc  rfm
+rfx  rgx  rlc  rle  rls  rlz  rmd  rml  rmp  rms
+rmx  rnv  rob  roi  rot  rpg  rps  rsg  rss  rst
+rsv  rtc  ruf  rvg  rvp  rwx  sab  saude  sb  sbb
+sbo  sbp  sbv  scd  scf  sch  scm  scn  sco  sdx
+sec  sek  sem  seo  seq  sfa  sfl  sfr  sgb  sgr
+shb  shw  sir  skl  skn  slg  smt  smv  snip  snl
+sno  snw  som  sorteios  spa  spl  spm  sqf  srt  ssc
+ssk  stg  stm  stp  stt  sudoku  svc  svg  svj  syb
+sym  syn  tag  tam  tarefas  tcr  tcs  tcx  tdc  tdf
+tdo  tempo  texto_fala  tfr  tg  th  thf  thm  tip  tml
+tmp  tnr  tnt  tok  tox  trc  trd  tre  treino_digitacao  trf
+trm  tro  trs  tru  trv  tsk  tun  tvd  tvs  txp
+uba  ubr  udi  uid  uni  utl  vag  variaveis_ambiente  vcp  vdc
+vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vlm  vnh  vo2  volume_apps  vsc
+vst  vth  vva  wcg  wci  wdc  webcam_foto  wfi  wgm  whl
+wlb  wsp  wup  wxi  xtr  ylk  ylt  yml  yrn  zcd
+zpf
 ```
