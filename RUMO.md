@@ -51,6 +51,8 @@ Conta **Claude** = Claude. Conta **SuperGrok** = Grok CLI + Cocaino. Cursor e An
   1 vez a cada 10 min.
 - 🔴 **crítico**: termine o passo atual, anuncie `--feito` com onde parou e **PARE** até a cota renovar
   (o painel mostra a hora). O carteiro não entrega pedido pra quem está em crítico.
+**Orçamento do dia** (cotas semanais): o que sobrava à meia-noite ÷ dias até renovar. Chegou no orçamento do dia
+→ 🟡; passou 25% dele → 🔴 até amanhã. Sobra de um dia vai pros próximos.
 O Caio pode travar na mão: `python economia.py --forcar economico|critico|normal|auto`.
 
 ## 🔥 Tendência do dia (decisão do Caio, 2026-11-10)

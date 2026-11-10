@@ -35,7 +35,7 @@ ICONE = {"normal": "🟢", "economico": "🟡", "critico": "🔴"}
 REGRAS = {
     "normal": "tudo normal",
     "economico": "tarefas pequenas, sem varrer pasta inteira nem ler arquivo inteiro, /new entre tarefas, sem build à toa",
-    "critico": "termine o que está fazendo, anuncie --feito e PARE até a cota renovar",
+    "critico": "termine o que está fazendo, anuncie --feito e PARE até a cota renovar (ou até amanhã, se foi o orçamento do dia)",
 }
 
 
@@ -110,6 +110,33 @@ def prever(hist, conta, janela, pct, renova):
     return ritmo, (bate_100 if estoura else None)
 
 
+def orcamento_do_dia(hist, conta, janela, pct, renova):
+    """Orçamento diário das cotas SEMANAIS: o que sobrava no começo do dia ÷ dias até renovar.
+    Devolve (usado_hoje, orcamento_hoje) em pontos percentuais, ou (None, None) se não der pra calcular."""
+    t_renova = _iso(renova) if renova else None
+    if not t_renova:
+        return None, None
+    agora = _agora()
+    meia_noite = agora.replace(hour=0, minute=0, second=0, microsecond=0)
+    hoje = [(_iso(h["t"]), h["pct"]) for h in hist
+            if h["conta"] == conta and h["janela"] == janela and _iso(h["t"]) and _iso(h["t"]) >= meia_noite]
+    inicio = min(hoje)[1] if hoje else pct          # 1ª leitura do dia (ou agora)
+    if pct < inicio:                                # a semana renovou hoje: conta a partir do zero
+        inicio = 0.0
+    dias = max(1.0, (t_renova - meia_noite).total_seconds() / 86400)
+    return round(pct - inicio, 1), round((100 - inicio) / dias, 1)
+
+
+def nivel_semana(usado, orcamento):
+    if usado is None or not orcamento:
+        return "normal"
+    if usado >= orcamento * 1.25:
+        return "critico"
+    if usado >= orcamento:
+        return "economico"
+    return "normal"
+
+
 def nivel(pct, estoura_em):
     if pct >= 90 or (estoura_em is not None and pct >= 75):
         return "critico"
@@ -139,8 +166,15 @@ def atualizar():
             hist.append({"t": agora.isoformat(), "conta": conta, "janela": j["janela"], "pct": j["pct"]})
             ritmo, estoura_em = prever(hist, conta, j["janela"], j["pct"], j["renova"])
             nv = nivel(j["pct"], estoura_em)
+            usado = orc = None
+            if j["janela"] == "semana":  # cota semanal: além do limite, respeita o orçamento do dia
+                usado, orc = orcamento_do_dia(hist, conta, j["janela"], j["pct"], j["renova"])
+                nv_dia = nivel_semana(usado, orc)
+                if ["normal", "economico", "critico"].index(nv_dia) > ["normal", "economico", "critico"].index(nv):
+                    nv = nv_dia
             j.update(nivel=nv, ritmo_h=round(ritmo, 1) if ritmo else None,
-                     estoura_em=estoura_em.strftime("%H:%M") if estoura_em else None)
+                     estoura_em=estoura_em.strftime("%H:%M") if estoura_em else None,
+                     usado_hoje=usado, orcamento_hoje=orc)
             pior["janelas"].append(j)
             if ["normal", "economico", "critico"].index(nv) > ["normal", "economico", "critico"].index(pior["nivel"]):
                 pior["nivel"] = nv
@@ -172,6 +206,8 @@ def resumo(estado=None):
         partes = []
         for j in c.get("janelas", []):
             p = f"{j['janela']} {j['pct']:.0f}%"
+            if j.get("orcamento_hoje"):
+                p += f" (hoje {j['usado_hoje']:.0f}% de {j['orcamento_hoje']:.0f}% do dia)"
             if j.get("estoura_em"):
                 p += f" (no ritmo atual estoura ~{j['estoura_em']}, antes de renovar)"
             partes.append(p)
