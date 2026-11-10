@@ -90,7 +90,7 @@ def gasto_grok():
     if _grok_cache["mtime"] == mt:
         return _grok_cache["dados"]
     hoje = dt.date.today()
-    pct, fim, tokens, chamadas = None, None, 0, 0
+    pct, fim, tokens, chamadas, lido = None, None, 0, 0, None
     with open(GROK_LOG, encoding="utf-8", errors="replace") as f:
         for linha in f:
             if "creditUsagePercent" in linha:
@@ -98,6 +98,7 @@ def gasto_grok():
                     cfg = json.loads(linha)["ctx"]["config"]
                     pct = float(cfg["creditUsagePercent"])
                     fim = cfg.get("currentPeriod", {}).get("end")
+                    lido = dt.datetime.fromisoformat(json.loads(linha)["ts"].replace("Z", "+00:00")).astimezone().strftime("%H:%M")
                 except (ValueError, KeyError, TypeError):
                     pass
             elif '"prompt_tokens"' in linha:
@@ -110,7 +111,7 @@ def gasto_grok():
                         chamadas += 1
                 except (ValueError, KeyError, TypeError):
                     pass
-    d = {"pct": pct, "fim": fim, "tokens": tokens, "chamadas": chamadas}
+    d = {"pct": pct, "fim": fim, "tokens": tokens, "chamadas": chamadas, "lido": lido}
     _grok_cache.update(mtime=mt, dados=d)
     return d
 
@@ -365,12 +366,13 @@ class Nota(QWidget):
                          + ("lendo…" if cu is None else "não consegui ler o uso agora") + "</span>")
         g = gasto_grok()
         if g and g["pct"] is not None:
-            self._rotulo(f"🔌 <b>Grok CLI</b> (SuperGrok) · semana {_barra(g['pct'])} "
+            self._rotulo(f"🔌 <b>SuperGrok</b> (Cocaino + Grok CLI + Cursor) · semana {_barra(g['pct'])} "
                          f"<span style='color:#9a9ab0'>{_falta(g['fim'] or '')}</span><br>"
-                         f"&nbsp;&nbsp;&nbsp;&nbsp;hoje: {g['tokens'] / 1000:,.0f} mil tokens em {g['chamadas']} chamadas"
+                         f"&nbsp;&nbsp;&nbsp;&nbsp;lido às {g.get('lido') or '?'} (atualiza quando o Grok CLI consulta) · Grok CLI hoje: "
+                         f"{g['tokens'] / 1000:,.0f} mil tokens em {g['chamadas']} chamadas"
                          .replace(",", "."))
-        self._rotulo("<span style='color:#9a9ab0'>🎨 Cursor · 🧠 Antigravity · 🧐 Cocaino: sem medidor no PC "
-                     "(só no site de cada um)</span>")
+        self._rotulo("<span style='color:#9a9ab0'>🧠 Antigravity: sem medidor no PC (só no site do Google). "
+                     "Detalhe do SuperGrok por app: Grok Bot → Configurações → Uso e cobrança</span>")
 
         if d["evol"]:
             self._rotulo("EVOLUÇÃO", "secao")

@@ -2,8 +2,9 @@
 
 Contas medidas (só dado real, nada inventado):
   - claude : plano do Claude (limite de 5 h e da semana) — mesmo endereço do /usage (reusa ~/painel-creditos)
-  - grok   : crédito semanal do SuperGrok (log local do Grok CLI) — vale pro Grok CLI e pro Cocaino
-  Cursor e Antigravity não têm medidor no PC → sempre "normal".
+  - grok   : limite semanal UNIFICADO da conta xAI/SuperGrok (log local do Grok CLI) — vale pro Cocaino,
+             Grok CLI e Cursor (a tela de uso do Grok Bot mostra o Cursor gastando desse mesmo limite)
+  Antigravity não tem medidor no PC → sempre "normal".
 
 Níveis por conta:
   normal     longe do limite
@@ -30,7 +31,7 @@ HIST = os.path.join(HERE, "economia_historico.json")
 GROK_LOG = os.path.join(os.path.expanduser("~"), ".grok", "logs", "unified.jsonl")
 CREDITOS = os.path.join(os.path.expanduser("~"), "painel-creditos", "painel.py")
 
-CONTA_DO_AGENTE = {"claude": "claude", "grokbuild": "grok", "grok": "grok", "cursor": None, "antigravity": None}
+CONTA_DO_AGENTE = {"claude": "claude", "grokbuild": "grok", "grok": "grok", "cursor": "grok", "antigravity": None}
 ICONE = {"normal": "🟢", "economico": "🟡", "critico": "🔴"}
 REGRAS = {
     "normal": "tudo normal",
@@ -62,16 +63,18 @@ def medir_claude():
 
 
 def medir_grok():
-    pct = fim = None
+    pct = fim = lido = None
     with open(GROK_LOG, encoding="utf-8", errors="replace") as f:
         for linha in f:
             if "creditUsagePercent" in linha:
                 try:
-                    cfg = json.loads(linha)["ctx"]["config"]
+                    j = json.loads(linha)
+                    cfg = j["ctx"]["config"]
                     pct, fim = float(cfg["creditUsagePercent"]), cfg.get("currentPeriod", {}).get("end")
+                    lido = (_iso(j.get("ts")) or _agora()).strftime("%H:%M")
                 except (ValueError, KeyError, TypeError):
                     pass
-    return [] if pct is None else [{"janela": "semana", "pct": pct, "renova": fim}]
+    return [] if pct is None else [{"janela": "semana", "pct": pct, "renova": fim, "lido": lido}]
 
 
 def _ler(caminho, padrao):
@@ -208,12 +211,14 @@ def resumo(estado=None):
         partes = []
         for j in c.get("janelas", []):
             p = f"{j['janela']} {j['pct']:.0f}%"
+            if j.get("lido"):
+                p += f" [lido {j['lido']}]"
             if j.get("orcamento_hoje"):
                 p += f" (hoje {j['usado_hoje']:.0f}% de {j['orcamento_hoje']:.0f}% do dia)"
             if j.get("estoura_em"):
                 p += f" (no ritmo atual estoura ~{j['estoura_em']}, antes de renovar)"
             partes.append(p)
-        nome = {"claude": "Claude", "grok": "SuperGrok (Grok CLI + Cocaino)"}.get(conta, conta)
+        nome = {"claude": "Claude", "grok": "SuperGrok (Cocaino + Grok CLI + Cursor)"}.get(conta, conta)
         linhas.append(f"{ICONE[c.get('nivel', 'normal')]} {nome}: {c.get('nivel', 'normal').upper()} · "
                       + ", ".join(partes) + (f" · regra: {REGRAS[c['nivel']]}" if c.get("nivel") != "normal" else ""))
     return linhas

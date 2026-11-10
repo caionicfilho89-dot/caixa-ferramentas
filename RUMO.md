@@ -50,7 +50,7 @@ O carteiro manda esse aviso pra quem está parado há 10+ min; quando sobram < 5
 
 O `python painel.py` mostra no topo o modo de cada conta (medido a cada 3 min pelo carteiro via `economia.py`,
 com **previsão**: se no ritmo atual a cota estoura antes de renovar, já entra em econômico).
-Conta **Claude** = Claude. Conta **SuperGrok** = Grok CLI + Cocaino. Cursor e Antigravity: sem medidor (normal).
+Conta **Claude** = Claude. Conta **SuperGrok** (limite xAI unificado) = Cocaino + Grok CLI + Cursor. Antigravity: sem medidor (normal).
 - 🟢 **normal**: siga a fila.
 - 🟡 **econômico**: só tarefas pequenas e certeiras; nada de varrer pasta inteira, `grep` em tudo ou ler arquivo
   inteiro; `/new` entre tarefas; nada de build/teste pesado à toa; respostas curtas. O carteiro entrega no máx.
