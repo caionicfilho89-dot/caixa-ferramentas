@@ -150,6 +150,9 @@ def rodada():
                 log("Caio voltou ao PC, entrega adiada")
                 break
             ok, info = entregar_janela(para, mensagem(para, pend[para]))
+            if "OCUPADO" in info:  # agente trabalhando: não interrompe, entrega quando ele parar
+                log(f"{para}: ocupado, {len(pend[para])} pedido(s) esperando ele parar")
+                continue
             log(f"{para}: {'ENTREGUE' if ok else 'falhou'} {len(pend[para])} pedido(s) — {info}")
             if ok:
                 marcar([i for i, *_ in pend[para]])
