@@ -152,6 +152,26 @@ def _barra(pct):
     return f"<span style='color:{cor}'>{'█' * cheios}</span><span style='color:#3a3d55'>{'█' * (10 - cheios)}</span> <b style='color:{cor}'>{pct:.0f}%</b>"
 
 
+def _arquivista():
+    import shutil
+    try:
+        livre = shutil.disk_usage("C:/").free / 2**30
+    except OSError:
+        return ""
+    txt = f"<br>💾 C: {livre:.0f} GB livres"
+    try:
+        with open("C:/Users/caion/arquivista/status.json", encoding="utf-8") as f:
+            st = json.load(f)
+        if st.get("bytes", 0) >= 500 * 2**20:
+            txt += (f" · 🗄️ <b>{st['bytes'] / 2**30:.1f} GB prontos pro Drive</b> ({st['arquivos']} arquivos, "
+                    f"lista de {st['quando']}) → clique duplo em <b>Aprovar arquivista</b> na área de trabalho")
+        else:
+            txt += f" · 🗄️ nada grande pra mandar pro Drive ({st['quando']})"
+    except (OSError, ValueError, KeyError):
+        pass
+    return txt
+
+
 def _quadro():
     try:
         with open(os.path.join(HERE, "tarefas.json"), encoding="utf-8") as f:
@@ -317,7 +337,7 @@ class Nota(QWidget):
             eco = []
         self.resumo.setText(
             f"v{d['versao']} · {d['n']} ferramentas · 📨 {n_pend} pedido(s) no ar<br>"
-            f"📬 carteiro: {d['carteiro']}" + _quadro() + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else "")
+            f"📬 carteiro: {d['carteiro']}" + _quadro() + _arquivista() + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else "")
             + "".join(f"<br><b>{_corta(l, 140)}</b>" for l in eco if not l.startswith("🟢")))
         self.resumo.setTextFormat(Qt.TextFormat.RichText)
         self.rolagem.setVisible(not self.recolhida)
