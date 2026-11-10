@@ -114,6 +114,11 @@ Arquivos: `caixa_home.py`, `caixa_busca_ui.py`, `caixa_tema.py`, `test_caixa_hom
   por argumento (`--pasta`, `--arquivo`) só se a ferramenta já aceitar; senão `--pedir claude` com a lista.
 - **F10**: destaque da Hoje ordenado pelo **uso real** (`cfg["uses"]` do caixa.pyw) com os 15 do Grok como ponto de
   partida; mostrar no máx. 8. Teste offscreen a 1366×768 e 3840×2160 (300% DPI).
+- **F12** (bug real, achado em 10/11): fechar a janela com uma QThread rodando derruba o app (0xC0000409) e a Caixa mostra
+  "a ferramenta fechou". A Faxina já foi corrigida (`closeEvent` → `stop()` + `wait(5000)`, ver `faxina-disco/faxina.pyw`).
+  Faça o mesmo nas que têm `(QThread)` sem `closeEvent`: cabecalhos-seguranca, certificado-ssl, cliente-api, compactador,
+  comparar-pastas, conversor-av, conversor-imagens, extrator-texto, gravador-voz, kit-pdf, limpa-metadados, metronomo,
+  recupera-arquivos, rede, scanner-rede, visualizador-planilhas. Teste: abrir, iniciar a tarefa, fechar → sem crash.
 
 ### 🧠 Antigravity: os motores
 Arquivos: `respostas_core.py`, `adp_essenciais.py`, `sensores_core.py`, `test_respostas.py`, `test_sensores.py`
