@@ -16,6 +16,7 @@ Uso:
   python carteiro.py --status        # mostra pendentes e entregues
 """
 import ctypes
+import re
 import hashlib
 import json
 import os
@@ -167,7 +168,10 @@ def parados_com_tarefa():
                 d = json.load(f)
         except (OSError, ValueError):
             pass
-        if d.get("fazendo") or ag in pend:
+        fazendo = (d.get("fazendo") or "").lower()
+        # "aguardando…", "esperando…", "parado", "idle" no campo fazendo = está PARADO de verdade
+        ocupado = fazendo and not re.search(r"aguard|esperan|parad|idle|nada|sem tarefa|fila vazia", fazendo)
+        if ocupado or ag in pend:
             continue
         try:
             parado = (time.time() - time.mktime(time.strptime(d.get("atualizado", ""), "%Y-%m-%d %H:%M"))) / 60
@@ -195,11 +199,13 @@ def pedir_propostas_se_faltar():
         livres = [t for t in tarefas.ler() if t["status"] == "livre"]
     except Exception:  # noqa: BLE001
         return
-    if len(livres) >= 5 or time.time() - _ULTIMO_EMPURRAO.get("_propostas", 0) < 7200:
+    famintos = [ag for ag in ("cursor", "antigravity", "grok", "grokbuild") if not tarefas.livres_para(ag)]
+    if (len(livres) >= 5 and not famintos) or time.time() - _ULTIMO_EMPURRAO.get("_propostas", 0) < 3600:
         return
     _ULTIMO_EMPURRAO["_propostas"] = time.time()
     subprocess.run([sys.executable, os.path.join(HERE, "painel.py"), "claude", "--pedir", "antigravity",
-                    f"Quadro de tarefas com só {len(livres)} livres. Proponha 5 tarefas úteis pro Caio (de COBERTURA.md, "
+                    f"Quadro: {len(livres)} livres; SEM tarefa pra: {', '.join(famintos) or 'ninguém'}. "
+                    f"Crie 2 tarefas pra cada um desses (úteis pro Caio, de COBERTURA.md, "
                     "TENDENCIAS.md, CRITICA.md) com: python tarefas.py --nova \"titulo\" \"detalhe\" agente1,agente2"],
                    capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     log(f"quadro com {len(livres)} livres: pedi propostas ao Antigravity")
@@ -323,7 +329,7 @@ def main():
         try:
             rodada()
             empurrar_parados()
-            if volta % 20 == 0:
+            if volta % 4 == 0:
                 pedir_propostas_se_faltar()
         except Exception as e:  # noqa: BLE001
             log(f"erro: {e}")

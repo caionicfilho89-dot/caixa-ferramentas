@@ -371,8 +371,15 @@ class Nota(QWidget):
                          f"&nbsp;&nbsp;&nbsp;&nbsp;lido às {g.get('lido') or '?'} (atualiza quando o Grok CLI consulta) · Grok CLI hoje: "
                          f"{g['tokens'] / 1000:,.0f} mil tokens em {g['chamadas']} chamadas"
                          .replace(",", "."))
-        self._rotulo("<span style='color:#9a9ab0'>🧠 Antigravity: sem medidor no PC (só no site do Google). "
-                     "Detalhe do SuperGrok por app: Grok Bot → Configurações → Uso e cobrança</span>")
+        try:
+            with open(os.path.join(HERE, "cotas_manuais.json"), encoding="utf-8") as f:
+                ag = json.load(f).get("antigravity", {})
+            self._rotulo(f"🧠 <b>Antigravity</b> ({ag.get('plano', '?')}) · Gemini semana {_barra(ag.get('gemini_semana_usado'))}"
+                         f" · 5h {ag.get('gemini_5h_usado', '?')}%<br>&nbsp;&nbsp;&nbsp;&nbsp;Claude/GPT e Argon: "
+                         f"{'esgotados' if ag.get('claude_gpt_semana_usado', 0) >= 100 else 'ok'} · "
+                         f"<span style='color:#9a9ab0'>leitura manual {ag.get('lido', '?')} (app → Models & Usage)</span>")
+        except (OSError, ValueError):
+            self._rotulo("<span style='color:#9a9ab0'>🧠 Antigravity: sem leitura (app → Models & Usage)</span>")
 
         if d["evol"]:
             self._rotulo("EVOLUÇÃO", "secao")

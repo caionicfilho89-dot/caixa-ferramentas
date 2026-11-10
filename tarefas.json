@@ -71,10 +71,10 @@
    "antigravity",
    "cursor"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 18:02",
+  "resultado": "Sensor crescimento disco 7d: top 3 pastas com cache 6h leve (sem varrer C:), acao Faxina --pasta na #1; testes 10/10"
  },
  {
   "id": "T07",
@@ -84,10 +84,10 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 18:07",
+  "resultado": "Tocando Agora em C:\\Users\\caion\\tocando-agora (npw_): widget Spotify via titulo Win32 + demo + PNG wallpaper aplicar/restaurar; 8/8 testes; ENTREGA.json pronta"
  },
  {
   "id": "T08",
@@ -97,10 +97,10 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 18:09",
+  "resultado": "Controle de Gastos reforçado (ideia Sure): resumo do mês receitas/despesas/saldo, orçamento mensal+por categoria com estouro, dados em LOCALAPPDATA, GUI em abas; 5/5 testes"
  },
  {
   "id": "T09",
@@ -109,10 +109,10 @@
   "quem": [
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-10 18:10",
+  "resultado": "10/10 abriram no exe 1.5.6. Ranking real em config.json (uses): financas 6, faxina 5, engrenagens/conversor/organizador 4, troco/inspetor/print 3, area-transferencia/auditoria-pc 2. P1 no CRITICA: atalhos da Hoje != uses real; Finanças esconde Aporte/Taxa/Prazo; cartoes cortam com Nada encontrado. P"
  },
  {
   "id": "T10",
@@ -121,10 +121,10 @@
   "quem": [
    "cursor"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-10 18:10",
+  "resultado": "Grade Todas: contraste #card elevado (#243044/#5a6788/#f2f4fa); helpers DPI 4K@300% (largura_logica/colunas/escala); testes 37 OK (tema+home+smoke)"
  },
  {
   "id": "T11",
@@ -133,10 +133,10 @@
   "quem": [
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 17:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-10 18:14",
+  "resultado": "Lote 3 pronto em PERGUNTAS.md: Q121-Q140 (20), total 140. Casa/carro/viagem/freela 5 cada; juros, troco, conversoes e datas no meio. Gabaritos conferidos com Python (Decimal + datas). Q125=02/12/2026 e Q139=30/11/2026 com regra sem feriado declarada (Q139 conta 20/11)."
  },
  {
   "id": "T12",
@@ -148,6 +148,78 @@
   "status": "livre",
   "por": "",
   "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T13",
+  "titulo": "Caixa: atalho de teclado pra cada cartão da Hoje (1–8) e pra abrir a última ferramenta usada",
+  "detalhe": "caixa_home + caixa.pyw (peça pro Grok CLI integrar). Teste offscreen.",
+  "quem": [
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 18:59",
+  "resultado": ""
+ },
+ {
+  "id": "T14",
+  "titulo": "Tocando Agora (tendência #4): revisar visual e deixar como widget transparente opcional no canto",
+  "detalhe": "Ferramenta recém-integrada pelo Grok CLI; capriche no visual e no 'sempre por cima'.",
+  "quem": [
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 19:00",
+  "resultado": ""
+ },
+ {
+  "id": "T15",
+  "titulo": "Ferramentas mais usadas: polir as 3 que mais irritaram no teste T09 do Cocaino",
+  "detalhe": "Leia CRITICA.md (T09) e conserte as 3 piores, uma por vez, com teste.",
+  "quem": [
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 19:00",
+  "resultado": ""
+ },
+ {
+  "id": "T16",
+  "titulo": "Testar o Tocando Agora e a Notas de Voz de verdade (abrir, usar sem destrutivo) e anotar",
+  "detalhe": "CRITICA.md, com passo a passo.",
+  "quem": [
+   "grok"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 19:00",
+  "resultado": ""
+ },
+ {
+  "id": "T17",
+  "titulo": "Testar 10 ferramentas aleatórias do catálogo que ninguém testou e marcar as inúteis/quebradas",
+  "detalhe": "CATALOGO.md; anotar no CRITICA.md com sugestão: consertar, juntar com outra ou esconder.",
+  "quem": [
+   "grok"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 19:00",
+  "resultado": ""
+ },
+ {
+  "id": "T18",
+  "titulo": "Revisar as 15 ferramentas em destaque na Hoje: ainda são as melhores pro Caio?",
+  "detalhe": "Proponha trocas no CRITICA.md com motivo; avise o Cursor.",
+  "quem": [
+   "grok"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 19:00",
   "resultado": ""
  }
 ]

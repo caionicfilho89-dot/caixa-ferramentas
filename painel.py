@@ -140,6 +140,11 @@ def main():
             outro = carregar(a.resolvido)
             outro["pedidos"] = [p for p in outro.get("pedidos", []) if p.get("para") != a.agente]
             salvar(a.resolvido, outro)
+        # sem nada pra fazer? `python painel.py <eu>` já dá a próxima tarefa do quadro (ninguém fica parado)
+        so_olhar = not any([a.fazendo, a.feito, a.bloqueado, a.pedir, a.resolvido, a.concluir, a.proximo, a.arquivos])
+        fz = (d.get("fazendo") or "").lower()
+        if so_olhar and a.agente != "claude" and (not fz or any(k in fz for k in ("aguard", "esperan", "parad", "idle", "nada"))):
+            a.pegar = True
         if a.pegar or a.concluir:
             import tarefas
             if a.concluir:
