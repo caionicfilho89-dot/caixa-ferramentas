@@ -773,11 +773,13 @@ TOOLS = {
     "simulador-transicao-carreira-reserva": "tcr_gui.pyw",
     "tempo-liquido-estudo": "tnr_gui.pyw",
     "troca-pneu-carro": "pne_gui.pyw",
+    "notas-de-voz": "nvz_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
 COLLECT_ALL = ["soundcard", "winrt", "winocr", "pillow_heif", "pikepdf", "segno",
-               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes", "mutagen", "bs4"]
+               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes", "mutagen", "bs4",
+               "faster_whisper", "ctranslate2"]  # Notas de Voz (fala→texto offline)
 
 
 def stage():
@@ -889,6 +891,8 @@ def main():
     if "--tool" in argv:
         i = argv.index("--tool")
         key = argv[i + 1] if i + 1 < len(argv) else ""
+        # a ferramenta vê só os argumentos dela (ex.: --pasta X), igual quando roda pelo .pyw
+        sys.argv = [argv[0]] + argv[i + 2:]
         _tool_main(key)
     elif "--selftest" in argv:
         ok = []
@@ -972,6 +976,9 @@ def build(modmap, modules):
     vf = _escrever_version_file()
     if vf:
         cmd += ["--version-file", vf]
+    # torch/transformers entravam de carona com o faster_whisper (+360 MB) e nenhuma ferramenta usa
+    for pesado in ("torch", "transformers", "torchvision", "torchaudio", "tensorflow"):
+        cmd += ["--exclude-module", pesado]
     # empacota o ffmpeg (se estiver em vendor/) pras ferramentas de mídia funcionarem sozinhas
     ff = os.path.join(HERE, "vendor", "ffmpeg.exe")
     if os.path.exists(ff):

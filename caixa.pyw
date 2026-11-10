@@ -25,7 +25,7 @@ from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGrid
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
-APP_VERSION = "1.5.3"
+APP_VERSION = "1.5.5"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
@@ -870,7 +870,11 @@ BUILTIN = [
     ("🚀", "Simulador de Transição de Carreira & Runway Financeiro", "Calcula o fôlego financeiro em meses (runway), burn rate mensal líquido e impacto de cortes de gastos para mudanças profissionais seguras", "simulador-transicao-carreira-reserva", "tcr_gui.pyw"),
     ("⏱️", "Tempo Liquido de Estudo", "Converte minutos brutos na mesa em tempo liquido real, com perdas por interrupcoes e distracao, eficiencia % e meta inversa de bruto para X liquido", "tempo-liquido-estudo", "tnr_gui.pyw"),
     ("🛞", "Troca de Pneu do Carro", "Vida útil em km, meses restantes, status e custo do jogo de pneus.", "troca-pneu-carro", "pne_gui.pyw"),
+    ("🎤", "Notas de Voz", "Grava, transcreve no PC (sem internet) e separa lembrete e assunto. 🔥 Tendência do dia.", "notas-de-voz", "nvz_gui.pyw"),
 ]
+
+# Ferramentas que aceitam --pasta/--arquivo vindos dos botões da Hoje (as outras abrem normal)
+FERRAMENTAS_COM_ARGS = {"faxina-disco", "organizador-downloads", "print-anotador"}  # Cursor F11
 
 QSS = """
 QWidget { background:#0e1016; color:#e7e9f0; font:10pt 'Segoe UI'; }
@@ -1249,6 +1253,9 @@ class Caixa(QWidget):
             self.tela_hoje = _caixa_home.TelaHoje(parent=self)
             self.tela_hoje.abrir_ferramenta.connect(self.open_tool_key)
             self.tela_hoje.executar_comando.connect(self._executar_comando)
+            self.tela_hoje.acao_resolvida.connect(self._acao_hoje)
+            if hasattr(self.tela_hoje, "set_usos"):
+                self.tela_hoje.set_usos(self.cfg.get("uses", {}))
             self.tela_hoje.pediu_todas.connect(self.mostrar_grade)
             # Hoje dentro de rolagem: a janela cabe em 1366x768 sem esmagar nada (CRITICA F3)
             self._hoje_scroll = QScrollArea()
@@ -1370,6 +1377,20 @@ class Caixa(QWidget):
         proxy.path = path
         proxy.exists = True if FROZEN else os.path.exists(path)
         self.open_tool(proxy)
+
+    def _acao_hoje(self, acao: dict):
+        """Botão da Hoje: guarda --pasta/--arquivo pra próxima abertura daquela ferramenta (se ela aceitar)."""
+        chave = (acao or {}).get("chave_ferramenta") or ""
+        if chave not in FERRAMENTAS_COM_ARGS:
+            self._args_pendentes = None
+            return
+        args = list(acao.get("args") or [])
+        if not args:
+            if acao.get("pasta"):
+                args += ["--pasta", str(acao["pasta"])]
+            if acao.get("arquivo"):
+                args += ["--arquivo", str(acao["arquivo"])]
+        self._args_pendentes = (chave, args)
 
     def _executar_comando(self, comando: str):
         cmd = (comando or "").strip()
@@ -1516,17 +1537,25 @@ class Caixa(QWidget):
         try:
             os.makedirs(CFG_DIR, exist_ok=True)
             log = os.path.join(CFG_DIR, "ultima_ferramenta.log")
+            pend = getattr(self, "_args_pendentes", None)
+            extra = pend[1] if pend and pend[0] == card.key else []
+            self._args_pendentes = None
             fh = open(log, "w", encoding="utf-8")
             if FROZEN:
                 # no instalador: o próprio exe abre a ferramenta (Caixa.exe --tool <chave>)
-                p = subprocess.Popen([sys.executable, "--tool", card.key], stdout=fh, stderr=fh)
+                p = subprocess.Popen([sys.executable, "--tool", card.key] + extra, stdout=fh, stderr=fh)
             else:
-                p = subprocess.Popen([pythonw(), card.path], cwd=os.path.dirname(card.path),
+                p = subprocess.Popen([pythonw(), card.path] + extra, cwd=os.path.dirname(card.path),
                                      stdout=fh, stderr=fh)
             fh.close()
-            self.status.setText("Abrindo " + card.tool[1] + "…")
+            msg = "Abrindo " + card.tool[1] + "…"
+            self.status.setText(msg)
+            # some sozinho (CRITICA F7: ficava "Abrindo…" pra sempre)
+            QTimer.singleShot(7000, lambda m=msg: self.status.text() == m and self.status.setText(""))
             self.cfg["uses"][card.key] = self.cfg["uses"].get(card.key, 0) + 1
             save_cfg(self.cfg)
+            if getattr(self, "tela_hoje", None) is not None and hasattr(self.tela_hoje, "set_usos"):
+                self.tela_hoje.set_usos(self.cfg["uses"])
             QTimer.singleShot(6000, lambda: self._checa_abriu(p, card.tool[1], log))
         except Exception as e:  # noqa: BLE001
             QMessageBox.critical(self, "Erro", str(e))
