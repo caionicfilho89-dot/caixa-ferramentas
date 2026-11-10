@@ -15,3 +15,5 @@ vendor/
 
 _quarentena/
 tendencias.log
+carteiro.log
+carteiro_entregues.json

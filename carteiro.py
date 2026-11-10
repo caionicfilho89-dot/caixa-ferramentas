@@ -1,0 +1,209 @@
+"""Carteiro dos agentes — entrega os pedidos do painel (python painel.py X --pedir Y "...") na hora,
+sem o Caio precisar repassar.
+
+Como cada um recebe:
+  - Cursor, Antigravity e Cocaino (Grok Bot): o carteiro cola a mensagem na janela do app e aperta Enter.
+    Entrega a qualquer momento (pedido do Caio); só espera ele ficar 3 s sem digitar e devolve a janela dele.
+  - Grok CLI (grokbuild): pelo hook de parada do próprio Grok (~/.grok/hooks/carteiro.json). Quando ele
+    termina uma resposta e tem pedido novo, o hook devolve {"decision":"block"} e ele continua já lendo o pedido.
+    Não mexe em janela nenhuma (ele divide o terminal com o Claude).
+  - Claude: lê o painel a cada passo (não precisa de entrega).
+
+Uso:
+  python carteiro.py                 # fica rodando (o iniciar_carteiro.vbs abre escondido no logon)
+  python carteiro.py --uma-vez       # uma rodada só (teste)
+  python carteiro.py --hook grokbuild   # usado pelo hook de parada do Grok CLI
+  python carteiro.py --status        # mostra pendentes e entregues
+"""
+import ctypes
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import time
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PAINEL = os.path.join(HERE, "painel")
+ENTREGUES = os.path.join(HERE, "carteiro_entregues.json")
+FISCAL = r"C:\Users\caion\fiscal-fabrica"
+LOCK = os.path.join(FISCAL, "entregando.lock")  # o vigia respeita: não cutuca enquanto o carteiro entrega
+LOG = os.path.join(HERE, "carteiro.log")
+OCIOSO_MIN = 3  # Caio pediu entrega a todo momento: só espera ele parar de digitar (3 s)
+
+NOMES = {"cursor": "Cursor", "antigravity": "Antigravity", "grok": "Cocaino (Grok Bot)",
+         "grokbuild": "Grok CLI", "claude": "Claude"}
+
+
+def log(t):
+    try:
+        with open(LOG, "a", encoding="utf-8") as f:
+            f.write(time.strftime("%Y-%m-%d %H:%M:%S ") + t + "\n")
+    except OSError:
+        pass
+
+
+def _id(de, p):
+    return hashlib.sha1(f"{de}|{p.get('para')}|{p.get('quando')}|{p.get('texto')}".encode("utf-8")).hexdigest()[:12]
+
+
+def pendentes(para=None):
+    """Pedidos ainda não entregues, agrupados por destinatário: {para: [(id, de, quando, texto)]}."""
+    ja = set(_ler_entregues())
+    saida = {}
+    for arq in sorted(os.listdir(PAINEL)):
+        if not arq.endswith(".json"):
+            continue
+        de = arq[:-5]
+        try:
+            with open(os.path.join(PAINEL, arq), encoding="utf-8") as f:
+                d = json.load(f)
+        except (OSError, ValueError):
+            continue
+        for p in d.get("pedidos", []):
+            alvo = p.get("para")
+            if not alvo or (para and alvo != para):
+                continue
+            i = _id(de, p)
+            if i not in ja:
+                saida.setdefault(alvo, []).append((i, de, p.get("quando", ""), p.get("texto", "")))
+    return saida
+
+
+def _ler_entregues():
+    try:
+        with open(ENTREGUES, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return []
+
+
+def marcar(ids):
+    ja = _ler_entregues()
+    ja += [i for i in ids if i not in ja]
+    with open(ENTREGUES, "w", encoding="utf-8") as f:
+        json.dump(ja[-2000:], f)
+
+
+def mensagem(para, itens):
+    linhas = [f"📨 Carteiro: {len(itens)} pedido(s) novo(s) pra você no painel da Caixa."]
+    for _i, de, quando, texto in itens:
+        linhas.append(f"- De {NOMES.get(de, de)} ({quando}): {texto}")
+    linhas.append(f"Resolva (é rápido e destrava o outro) e responda no painel: "
+                  f"cd C:\\Users\\caion\\caixa-ferramentas; python painel.py {para} --resolvido <quem pediu>. "
+                  f"Se precisar de algo de outro agente: python painel.py {para} --pedir <agente> \"...\" "
+                  f"(o carteiro entrega). Depois volte pra sua fila do RUMO.md. Não pergunte ao Caio.")
+    # UMA linha só: com quebra de linha o Enter do Cursor/Antigravity só pula linha e não envia
+    return " | ".join(" ".join(l.split()) for l in linhas)
+
+
+# ------------------------------------------------------------------ entrega por janela (Windows)
+class _LII(ctypes.Structure):
+    _fields_ = [("cbSize", ctypes.c_uint), ("dwTime", ctypes.c_uint)]
+
+
+def segundos_ocioso():
+    lii = _LII()
+    lii.cbSize = ctypes.sizeof(_LII)
+    ctypes.windll.user32.GetLastInputInfo(ctypes.byref(lii))
+    return (ctypes.windll.kernel32.GetTickCount() - lii.dwTime) / 1000.0
+
+
+def _ps(script, *args):
+    r = subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", script, *args],
+                       capture_output=True, text=True, timeout=90,
+                       creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    return (r.stdout or "") + (r.stderr or "")
+
+
+def _titulo_janela(processo):
+    r = subprocess.run(["powershell", "-NoProfile", "-Command",
+                        f"(Get-Process '{processo}' -EA 0 | ? MainWindowTitle | select -First 1).MainWindowTitle"],
+                       capture_output=True, text=True, timeout=30,
+                       creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    return (r.stdout or "").strip()
+
+
+def entregar_janela(para, texto):
+    arq = os.path.join(FISCAL, f"msg_carteiro_{para}.txt")
+    with open(arq, "w", encoding="utf-8") as f:
+        f.write(texto)
+    # entregar.ps1 cola, envia e CONFERE (a caixa de texto tem que ficar vazia); senão não marca como entregue
+    out = _ps(os.path.join(FISCAL, "entregar.ps1"), "-app", para, "-arquivo", arq)
+    return ("ENVIADO" in out), out.strip()[-200:]
+
+
+def rodada():
+    pend = pendentes()
+    alvos = [a for a in ("cursor", "antigravity", "grok") if a in pend]
+    if not alvos:
+        return
+    if segundos_ocioso() < OCIOSO_MIN:
+        return  # Caio usando o PC: espera
+    if os.path.exists(LOCK):
+        return
+    antes = ctypes.windll.user32.GetForegroundWindow()
+    try:
+        open(LOCK, "w").close()
+        for para in alvos:
+            if segundos_ocioso() < 2:  # Caio digitando agora: espera a próxima rodada
+                log("Caio voltou ao PC, entrega adiada")
+                break
+            ok, info = entregar_janela(para, mensagem(para, pend[para]))
+            log(f"{para}: {'ENTREGUE' if ok else 'falhou'} {len(pend[para])} pedido(s) — {info}")
+            if ok:
+                marcar([i for i, *_ in pend[para]])
+    finally:
+        try:
+            os.remove(LOCK)
+        except OSError:
+            pass
+        ctypes.windll.user32.SetForegroundWindow(antes)
+
+
+def hook(para):
+    """Hook de parada do Grok CLI: tem pedido novo? bloqueia o fim do turno e entrega o texto."""
+    try:
+        sys.stdin.read()
+    except Exception:  # noqa: BLE001
+        pass
+    itens = pendentes(para).get(para, [])
+    if itens:
+        marcar([i for i, *_ in itens])
+        log(f"{para}: ENTREGUE via hook {len(itens)} pedido(s)")
+        print(json.dumps({"decision": "block", "reason": mensagem(para, itens)}, ensure_ascii=False))
+
+
+def main():
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:  # noqa: BLE001
+        pass
+    a = sys.argv[1:]
+    if a[:1] == ["--hook"]:
+        try:
+            hook(a[1] if len(a) > 1 else "grokbuild")
+        except Exception as e:  # noqa: BLE001 — hook nunca pode travar o agente
+            log(f"hook erro: {e}")
+        return
+    if a[:1] == ["--status"]:
+        for para, itens in pendentes().items():
+            print(f"{NOMES.get(para, para)}: {len(itens)} pendente(s)")
+            for _i, de, q, t in itens:
+                print(f"   de {de} {q}: {t[:90]}")
+        print(f"ocioso há {segundos_ocioso():.0f}s; entregues registrados: {len(_ler_entregues())}")
+        return
+    if a[:1] == ["--uma-vez"]:
+        rodada()
+        return
+    log("carteiro iniciado")
+    while True:
+        try:
+            rodada()
+        except Exception as e:  # noqa: BLE001
+            log(f"erro: {e}")
+        time.sleep(30)
+
+
+if __name__ == "__main__":
+    main()
