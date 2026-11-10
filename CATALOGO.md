@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-10** · Total: **751 ferramentas** · **751 prefixos** usados.
+> Última geração: **2026-11-10** · Total: **752 ferramentas** · **752 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -18,7 +18,7 @@
 - 💰 Finanças & Trabalho — 94
 - 🏠 Casa, Pet & Pessoal — 126
 - 🔬 Ciência & Engenharia — 41
-- 🌐 Rede & Segurança — 48
+- 🌐 Rede & Segurança — 49
 - 💻 Dev & Dados — 79
 - 🖼️ Imagem & Design — 40
 - 🎵 Áudio & Vídeo — 23
@@ -305,7 +305,7 @@
 | 🪐 | **Simulador Gravitacional N-Corpos** | Mecânica celeste newtoniana, órbitas Keplerianas, 3 corpos e pontos de Lagrange | `simulador-gravitacional-n-corpos` | `nbd` |
 | 🎲 | **Simulador Monte Carlo** | Estimativa de π, integração 1D por amostragem e agulha de Buffon | `simulador-monte-carlo` | `mtc` |
 
-## 🌐 Rede & Segurança  ·  48
+## 🌐 Rede & Segurança  ·  49
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -355,6 +355,7 @@
 | 🕵️ | **Scanner de Segredos** | Varre código por API keys, tokens, JWT e chaves privadas. | `scanner-segredos` | `sek` |
 | 💬 | **Simulador de Negociação Salarial** | Pedido e mínimo aceitável (% ou R$), contraoferta e benefícios atuais vs novos; pacote bruto ou líquido simplificado, ganho anual e zona de acordo. | `simulador-negociacao-salarial` | `neg` |
 | 🔌 | **Simulador de Portas Lógicas** | Álgebra booleana, portas lógicas, tabelas-verdade e mapa de Karnaugh | `simulador-logica` | `lgc` |
+| 🎵 | **Tocando Agora** | Widget do que está tocando e papel de parede com o tile — offline, sem API. | `tocando-agora` | `npw` |
 | 🔒 | **Trancar Arquivos** | Tranca arquivos com senha (AES-256) | `cripto-arquivos` | `cripto_arquivos` |
 | 📒 | **Álbum de Figurinhas** | Controle de cromos, trocas e estimativa de pacotes para completar o álbum | `album-figurinhas` | `alb` |
 
@@ -837,7 +838,7 @@
 
 ---
 
-## 🔒 Prefixos reservados (751) — NÃO repetir
+## 🔒 Prefixos reservados (752) — NÃO repetir
 
 ```text
 abn  acd  aci  acl  acp  acu  ads  adt  aer  agd
@@ -887,33 +888,33 @@ med  met  metronomo  mhr  mid  mkf  mkt  mkv  mlp  mm
 mmt  mnc  mnt  mol  monitor_sistema  mot  mpd  mqb  mrs  mse
 msn  mtc  mte  mtm  mtr  mtv  mtx  mvi  myp  nap
 nav  nbd  nc  nca  nce  neg  nfe  nfn  nix  nln
-nmi  nmk  notas  nox  nrc  nsi  ntl  ntr  nuv  nvm
-nvz  oas  obr  ocl  odt  ofx  olo  opt  orcamentos  orf
-organizador  orq  own  p20  p3d  pac  pad  pag  pai  pal
-paletas_cores  pao  pas  pat  pbn  pcc  pce  pcf  pcp  pcs
-pdl  pei  pem  pen  per  pes  pet  pev  pfl  phn
-phr  pia  pid  pix_boleto  player_musica  plc  pld  plk  plm  plr
-pls  plt  pm  pmr  pmt  pne  pnl  pnt  pnu  poe
-ppd  ppu  prc  print_anotador  prm  prs  prt  prx  psc  psi
-psq  pst  pth  pti  ptr  pts  ptt  pvs  pwb  pyc
-pyl  pyr  pyv  pzz  qb  qc  qol  qrcode_tool  qsm  qth
-qtn  quiz_geografia  qzf  rastreador_tempo  rc  rct  rcz  rea  rec  recupera
-reg  relogio_mundial  rem  renomeador  reo  req  res  rev  rfc  rfm
-rfx  rgx  rlc  rle  rls  rlz  rmd  rml  rmp  rms
-rmx  rnv  rob  roi  rot  rpg  rps  rsg  rss  rst
-rsv  rtc  ruf  rvg  rvp  rwx  sab  saude  sb  sbb
-sbo  sbp  sbv  scd  scf  sch  scm  scn  sco  sdx
-sec  sek  sem  seo  seq  sfa  sfl  sfr  sgb  sgr
-shb  shw  sir  skl  skn  slg  smt  smv  snip  snl
-sno  snw  som  sorteios  spa  spl  spm  sqf  srt  ssc
-ssk  stg  stm  stp  stt  sudoku  svc  svg  svj  syb
-sym  syn  tag  tam  tarefas  tcr  tcs  tcx  tdc  tdf
-tdo  tempo  texto_fala  tfr  tg  th  thf  thm  tip  tml
-tmp  tnr  tnt  tok  tox  trc  trd  tre  treino_digitacao  trf
-trm  tro  trs  tru  trv  tsk  tun  tvd  tvs  txp
-uba  ubr  udi  uid  uni  utl  vag  variaveis_ambiente  vcp  vdc
-vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vlm  vnh  vo2  volume_apps  vsc
-vst  vth  vva  wcg  wci  wdc  webcam_foto  wfi  wgm  whl
-wlb  wsp  wup  wxi  xtr  ylk  ylt  yml  yrn  zcd
-zpf
+nmi  nmk  notas  nox  npw  nrc  nsi  ntl  ntr  nuv
+nvm  nvz  oas  obr  ocl  odt  ofx  olo  opt  orcamentos
+orf  organizador  orq  own  p20  p3d  pac  pad  pag  pai
+pal  paletas_cores  pao  pas  pat  pbn  pcc  pce  pcf  pcp
+pcs  pdl  pei  pem  pen  per  pes  pet  pev  pfl
+phn  phr  pia  pid  pix_boleto  player_musica  plc  pld  plk  plm
+plr  pls  plt  pm  pmr  pmt  pne  pnl  pnt  pnu
+poe  ppd  ppu  prc  print_anotador  prm  prs  prt  prx  psc
+psi  psq  pst  pth  pti  ptr  pts  ptt  pvs  pwb
+pyc  pyl  pyr  pyv  pzz  qb  qc  qol  qrcode_tool  qsm
+qth  qtn  quiz_geografia  qzf  rastreador_tempo  rc  rct  rcz  rea  rec
+recupera  reg  relogio_mundial  rem  renomeador  reo  req  res  rev  rfc
+rfm  rfx  rgx  rlc  rle  rls  rlz  rmd  rml  rmp
+rms  rmx  rnv  rob  roi  rot  rpg  rps  rsg  rss
+rst  rsv  rtc  ruf  rvg  rvp  rwx  sab  saude  sb
+sbb  sbo  sbp  sbv  scd  scf  sch  scm  scn  sco
+sdx  sec  sek  sem  seo  seq  sfa  sfl  sfr  sgb
+sgr  shb  shw  sir  skl  skn  slg  smt  smv  snip
+snl  sno  snw  som  sorteios  spa  spl  spm  sqf  srt
+ssc  ssk  stg  stm  stp  stt  sudoku  svc  svg  svj
+syb  sym  syn  tag  tam  tarefas  tcr  tcs  tcx  tdc
+tdf  tdo  tempo  texto_fala  tfr  tg  th  thf  thm  tip
+tml  tmp  tnr  tnt  tok  tox  trc  trd  tre  treino_digitacao
+trf  trm  tro  trs  tru  trv  tsk  tun  tvd  tvs
+txp  uba  ubr  udi  uid  uni  utl  vag  variaveis_ambiente  vcp
+vdc  vdw  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite  vlm  vnh  vo2  volume_apps
+vsc  vst  vth  vva  wcg  wci  wdc  webcam_foto  wfi  wgm
+whl  wlb  wsp  wup  wxi  xtr  ylk  ylt  yml  yrn
+zcd  zpf
 ```

@@ -1,6 +1,6 @@
 {
   "gerado_em": "2026-11-10",
-  "total": 751,
+  "total": 752,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -6760,6 +6760,15 @@
       "script": "nvz_gui.pyw",
       "prefixo": "nvz",
       "categoria": "🎵 Áudio & Vídeo"
+    },
+    {
+      "emoji": "🎵",
+      "nome": "Tocando Agora",
+      "desc": "Widget do que está tocando e papel de parede com o tile — offline, sem API.",
+      "chave": "tocando-agora",
+      "script": "npw_gui.pyw",
+      "prefixo": "npw",
+      "categoria": "🌐 Rede & Segurança"
     }
   ],
   "prefixos": [
@@ -7237,6 +7246,7 @@
     "nmk",
     "notas",
     "nox",
+    "npw",
     "nrc",
     "nsi",
     "ntl",

@@ -871,6 +871,7 @@ BUILTIN = [
     ("⏱️", "Tempo Liquido de Estudo", "Converte minutos brutos na mesa em tempo liquido real, com perdas por interrupcoes e distracao, eficiencia % e meta inversa de bruto para X liquido", "tempo-liquido-estudo", "tnr_gui.pyw"),
     ("🛞", "Troca de Pneu do Carro", "Vida útil em km, meses restantes, status e custo do jogo de pneus.", "troca-pneu-carro", "pne_gui.pyw"),
     ("🎤", "Notas de Voz", "Grava, transcreve no PC (sem internet) e separa lembrete e assunto. 🔥 Tendência do dia.", "notas-de-voz", "nvz_gui.pyw"),
+    ("🎵", "Tocando Agora", "Widget do que está tocando e papel de parede com o tile — offline, sem API.", "tocando-agora", "npw_gui.pyw"),
 ]
 
 # Ferramentas que aceitam --pasta/--arquivo vindos dos botões da Hoje (as outras abrem normal)
@@ -883,10 +884,10 @@ QWidget { background:#0e1016; color:#e7e9f0; font:10pt 'Segoe UI'; }
 QLineEdit { background:#161a23; border:1px solid #2d3550; border-radius:12px; padding:10px 14px; font:12pt 'Segoe UI'; }
 QLineEdit:focus { border:1px solid #7c5cff; }
 QScrollArea { border:0; }
-#card { background:#161a23; border:1px solid #232a3b; border-radius:16px; }
-#card:hover { border:1px solid #7c5cff; background:#1a1f2b; }
+#card { background:#243044; border:1px solid #5a6788; border-radius:16px; }
+#card:hover { border:1px solid #7c5cff; background:#2c3750; }
 #emoji { font:22pt 'Segoe UI Emoji'; }
-#name { font:700 11pt 'Segoe UI'; }
+#name { font:700 11pt 'Segoe UI'; color:#f2f4fa; }
 #desc { color:#8a93a8; font:9pt 'Segoe UI'; }
 #missing { color:#ff6b6b; font:9pt 'Segoe UI'; }
 #star { color:#ffd166; font:12pt 'Segoe UI'; }
