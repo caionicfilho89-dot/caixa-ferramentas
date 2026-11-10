@@ -1447,6 +1447,9 @@ class Caixa(QWidget):
         return row
 
     def rebuild(self):
+        # grade escondida (tela Hoje): não monta 750 cartões à toa nem troca o subtítulo da Hoje
+        if self._pagina != "grade":
+            return
         q = self.search.text().lower().strip()
         cat = self._cat()
         while self.grid.count():
