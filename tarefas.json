@@ -4,10 +4,10 @@
   "titulo": "KIT FÁBRICA DE AGENTES (prioridade do Caio): empacotar o sistema dos agentes pra reusar em qualquer projeto",
   "detalhe": "Pasta NOVA C:/Users/caion/fabrica-agentes (git init, commit local). NÃO mexer nas cópias vivas da caixa-ferramentas/fiscal-fabrica.\n1) fabrica.json = TODA a configuração: pasta do projeto, agentes [{nome, apelido, papel, app: processo+titulo da janela, caixaY/enviarX/enviarY/botao, conta}], contas [{nome, fonte: claude_usage|grok_log|manual}], horários.\n2) Copiar e GENERALIZAR (zero caminho fixo; tudo lido do fabrica.json ou env FABRICA_DIR): carteiro.py, economia.py, painel.py, painel_adesivo.pyw, tarefas.py, tendencias.py (opcional), fiscal-fabrica/entregar.ps1, fiscal-fabrica/vigia_local.ps1, iniciar_*.vbs, hook do Grok (~/.grok/hooks/carteiro.json) como modelo.\n3) modelos/RUMO.md genérico (papéis, ciclo do painel, quadro --pegar/--concluir, modo economia, carteiro, Claude árbitro+monitor) e modelos/tarefas.json vazio.\n4) instalar.ps1 <pasta do projeto> [-Nome X]: cria painel/, tarefas.json, RUMO.md, fabrica.json do projeto; NÃO liga nada persistente — só IMPRIME os comandos (Inicialização do Windows, hook do Grok) pro Caio aprovar.\n5) README.md pt-BR curto: o que cada peça faz, como instalar num projeto novo, como adicionar/remover agente.\n6) TESTE: instalar num projeto falso em %TEMP%, rodar painel.py, tarefas.py --nova/--pegar/--concluir, carteiro.py --status, economia.py, painel_adesivo offscreen. Tudo verde.\nAo terminar: --concluir com o resultado e --pedir claude pra revisão.",
   "quem": [
-   "grokbuild"
+   "antigravity"
   ],
-  "status": "pegou",
-  "por": "grokbuild",
+  "status": "livre",
+  "por": "",
   "quando": "2026-11-10 19:36",
   "resultado": ""
  },
