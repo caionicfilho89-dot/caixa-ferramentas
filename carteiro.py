@@ -224,6 +224,22 @@ def empurrar_parados():
         log(f"{ag}: parado {minutos} min → empurrão pro quadro ({'ok' if ok else 'falhou'})")
 
 
+def fechar_testes_esquecidos(minutos=10):
+    """Fecha janelas abertas por TESTE (linha de comando com --teste) há mais de N min. Nunca toca no que o Caio abriu."""
+    ps = ("$lim=(Get-Date).AddMinutes(-%d); Get-CimInstance Win32_Process | "
+          "? { $_.CommandLine -match ' --teste( |$)' -and $_.CreationDate -lt $lim } | "
+          "%% { $p=Get-Process -Id $_.ProcessId -EA 0; if($p){ $p.CloseMainWindow()|Out-Null; Start-Sleep 2; "
+          "if(-not $p.HasExited){ Stop-Process -Id $p.Id -Force }; $_.ProcessId } }") % minutos
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", ps], capture_output=True, text=True, timeout=60,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        fechados = [x for x in (r.stdout or "").split() if x.isdigit()]
+        if fechados:
+            log(f"faxina de teste: fechei {len(fechados)} janela(s) esquecida(s) aberta(s) por teste: {fechados}")
+    except Exception as e:  # noqa: BLE001
+        log(f"faxina de teste erro: {e}")
+
+
 def rodada():
     pend = pendentes()
     alvos = [a for a in ("cursor", "antigravity", "grok") if a in pend and _economia_permite(a)]
@@ -331,6 +347,7 @@ def main():
             empurrar_parados()
             if volta % 4 == 0:
                 pedir_propostas_se_faltar()
+                fechar_testes_esquecidos()
         except Exception as e:  # noqa: BLE001
             log(f"erro: {e}")
         time.sleep(30)

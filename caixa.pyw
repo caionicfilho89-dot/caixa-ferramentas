@@ -25,6 +25,11 @@ from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGrid
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
+# Modo teste (Cocaino): "--teste" na linha de comando ou CAIXA_TESTE=1. Não conta uso do Caio e marca tudo que
+# abrir com "--teste", pra o carteiro fechar sozinho o que um teste esquecer aberto.
+if "--teste" in sys.argv:
+    os.environ["CAIXA_TESTE"] = "1"
+MODO_TESTE = os.environ.get("CAIXA_TESTE") == "1"
 APP_VERSION = "1.5.6"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
@@ -41,6 +46,11 @@ except Exception:
     _caixa_tema = None  # type: ignore
     _RUMO_UI = False
     traceback.print_exc()
+
+try:
+    import caixa_arquivo as _caixa_arquivo
+except Exception:
+    _caixa_arquivo = None
 
 
 def _carrega_ajuda():
@@ -899,10 +909,11 @@ QPushButton:checked { background:#2a2740; color:#c9b8ff; }
 #add:hover { background:#28402f; }
 #update { background:#3a2f12; color:#ffd166; font-weight:600; }
 #update:hover { background:#4a3c18; }
-#side { background:#11131a; border:1px solid #1f2533; border-radius:14px; padding:6px; font:10pt 'Segoe UI'; }
-#side::item { padding:8px 10px; border-radius:9px; color:#c7cbd8; }
-#side::item:hover { background:#1a1f2b; }
-#side::item:selected { background:#2a2740; color:#ffffff; }
+#side { background:#161a23; border:1px solid #232a3b; border-radius:14px; padding:6px; font:10pt 'Segoe UI'; outline:none; }
+#side::item { padding:9px 12px; border-radius:9px; color:#c7cbd8; margin:1px 0; }
+#side::item:hover { background:#1a1f2b; color:#e7e9f0; }
+#side::item:selected { background:rgba(124, 92, 255, 0.28); color:#f2f4fa; border:1px solid #7c5cff; font-weight:600; }
+#side::item:selected:hover { background:rgba(124, 92, 255, 0.36); color:#ffffff; }
 #badge { border-radius:12px; font:20pt 'Segoe UI Emoji'; }
 #catlbl { font:8pt 'Segoe UI'; }
 #hero { color:#6ee7b7; font:600 10pt 'Segoe UI'; }
@@ -1039,6 +1050,8 @@ CAT_CORES = {
     "✍️ Texto & Estudo": "#a3e635", "🎮 Jogos & Diversão": "#facc15",
     "🗂️ Arquivos & Sistema": "#94a3b8", CAT_OUTRAS: "#8a93a8",
 }
+if _caixa_arquivo is not None:
+    CAT_CORES[_caixa_arquivo.CAT_ARQUIVO] = _caixa_arquivo.COR_ARQUIVO
 CARD_W, CARD_H, GAP = 272, 116, 12
 F_NOME = QFont("Segoe UI", 11, 700)
 F_DESC = QFont("Segoe UI", 9)
@@ -1065,24 +1078,34 @@ def elide_linhas(texto, fonte, largura, n):
         linhas.append(fm.elidedText(atual, Qt.TextElideMode.ElideRight, largura))
     return "\n".join(linhas[:n])
 CAT_ORDEM = [c[0] for c in CATEGORIAS] + [CAT_OUTRAS]
+if _caixa_arquivo is not None:
+    CAT_ORDEM.append(_caixa_arquivo.CAT_ARQUIVO)
 
 
 def categoria_de(tool):
     """Classifica uma ferramenta (emoji, nome, desc, pasta, script) numa categoria.
 
     Duas passadas: primeiro só o NOME + pasta (sinal forte, evita ruído da descrição);
-    se nada casar, inclui a descrição.
+    se nada casar, inclui a descrição. Arquivadas vão para 📦 Arquivo.
     """
     nome = tool[1].lower()
     pasta = tool[3].lower()
-    for cat, kws in CATEGORIAS:
+    cat = None
+    for nome_cat, kws in CATEGORIAS:
         if any(k in nome or k in pasta for k in kws):
-            return cat
-    txt = nome + " " + tool[2].lower() + " " + pasta
-    for cat, kws in CATEGORIAS:
-        if any(k in txt for k in kws):
-            return cat
-    return CAT_OUTRAS
+            cat = nome_cat
+            break
+    if cat is None:
+        txt = nome + " " + tool[2].lower() + " " + pasta
+        for nome_cat, kws in CATEGORIAS:
+            if any(k in txt for k in kws):
+                cat = nome_cat
+                break
+    if cat is None:
+        cat = CAT_OUTRAS
+    if _caixa_arquivo is not None:
+        return _caixa_arquivo.categoria_efetiva(tool[3], cat)
+    return cat
 
 
 class Card(QFrame):
@@ -1094,7 +1117,8 @@ class Card(QFrame):
         self.caixa = caixa
         self.path = os.path.join(BASE, folder, script)
         self.exists = True if FROZEN else os.path.exists(self.path)
-        self.setFixedSize(CARD_W, CARD_H)
+        cw, ch, _gap = caixa._medidas_grade() if hasattr(caixa, "_medidas_grade") else (CARD_W, CARD_H, GAP)
+        self.setFixedSize(cw, ch)
         self.setCursor(Qt.CursorShape.PointingHandCursor)
         self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.customContextMenuRequested.connect(self._menu)
@@ -1116,7 +1140,7 @@ class Card(QFrame):
 
         col = QVBoxLayout()
         col.setSpacing(3)
-        larg = CARD_W - 46 - 12 - 24 - (16 if fav else 0) - 22
+        larg = self.width() - 46 - 12 - 24 - (16 if fav else 0) - 22
         top = QHBoxLayout()
         top.setSpacing(4)
         nm = QLabel(QFontMetrics(F_NOME).elidedText(name, Qt.TextElideMode.ElideRight, larg), objectName="name")
@@ -1133,7 +1157,7 @@ class Card(QFrame):
         bh.clicked.connect(self.show_help)
         top.addWidget(bh, 0, Qt.AlignmentFlag.AlignTop)
         col.addLayout(top)
-        d = QLabel(elide_linhas(desc, F_DESC, CARD_W - 46 - 12 - 24, 3), objectName="desc")
+        d = QLabel(elide_linhas(desc, F_DESC, self.width() - 46 - 12 - 24, 3), objectName="desc")
         d.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
         col.addWidget(d, 1)
         cl = QLabel(cat.split(" ", 1)[-1], objectName="catlbl")
@@ -1305,6 +1329,11 @@ class Caixa(QWidget):
         self.stack.addWidget(self.pagina_grade)
 
         self._cols_atual = 0
+        self._grade = {"card_w": CARD_W, "card_h": CARD_H, "gap": GAP, "colunas": None}
+        if _RUMO_UI and _caixa_tema is not None and hasattr(_caixa_tema, "ObservadorDpi"):
+            self._obs_dpi = _caixa_tema.ObservadorDpi(self)
+            self._obs_dpi.dpi_mudou.connect(self._aplicar_layout_grade)
+            QTimer.singleShot(0, self._obs_dpi.forcar)
         self._rt = QTimer(self)
         self._rt.setSingleShot(True)
         self._rt.setInterval(120)
@@ -1419,7 +1448,8 @@ class Caixa(QWidget):
             c = categoria_de(t)
             contagem[c] = contagem.get(c, 0) + 1
         nfav = sum(1 for t in tools if t[3] in self.cfg["favorites"])
-        itens = [(f"📂  Tudo  ({len(tools)})", "__all__"), (f"★  Favoritas  ({nfav})", "__fav__"),
+        n_tudo = len(_caixa_arquivo.filtrar_grade_padrao(tools)) if _caixa_arquivo is not None else len(tools)
+        itens = [(f"📂  Tudo  ({n_tudo})", "__all__"), (f"★  Favoritas  ({nfav})", "__fav__"),
                  ("🆕  Novas", "__new__")]
         for cname in CAT_ORDEM:
             if contagem.get(cname):
@@ -1438,9 +1468,36 @@ class Caixa(QWidget):
         it = self.side.currentItem() if hasattr(self, "side") else None
         return it.data(Qt.ItemDataRole.UserRole) if it else "__all__"
 
+    def _medidas_grade(self):
+        lay = getattr(self, "_grade", None) or {}
+        return (
+            int(lay.get("card_w") or CARD_W),
+            int(lay.get("card_h") or CARD_H),
+            int(lay.get("gap") or GAP),
+        )
+
+    def _aplicar_layout_grade(self, _dpr, lay):
+        """T20: CARD_W/H/GAP e colunas acompanham o DPI (100% ↔ 300%)."""
+        global CARD_W, CARD_H, GAP
+        if not isinstance(lay, dict):
+            return
+        CARD_W = int(lay.get("card_w") or CARD_W)
+        CARD_H = int(lay.get("card_h") or CARD_H)
+        GAP = int(lay.get("gap") or GAP)
+        self._grade = lay
+        if hasattr(self, "grid"):
+            self.grid.setSpacing(GAP)
+        if getattr(self, "_pagina", "") == "grade":
+            self._cols_atual = -1
+            self.rebuild()
+
     def _cols(self):
+        lay = getattr(self, "_grade", None) or {}
+        if lay.get("colunas"):
+            return max(1, int(lay["colunas"]))
+        cw, _ch, gap = self._medidas_grade()
         w = self.scroll.viewport().width() - 8
-        return max(1, (w + GAP) // (CARD_W + GAP))
+        return max(1, (w + gap) // (cw + gap))
 
     def resizeEvent(self, e):
         super().resizeEvent(e)
@@ -1516,6 +1573,8 @@ class Caixa(QWidget):
                       key=lambda t: -uses.get(t[3], 0))[:4]
         used_keys = {t[3] for t in used}
         rest = [t for t in rest if t[3] not in used_keys]
+        if _caixa_arquivo is not None:
+            rest = _caixa_arquivo.filtrar_grade_padrao(rest)
         row = 0
         if fav_tools:
             row = self._lay_section("★ Favoritos", fav_tools, row)
@@ -1540,6 +1599,8 @@ class Caixa(QWidget):
             log = os.path.join(CFG_DIR, "ultima_ferramenta.log")
             pend = getattr(self, "_args_pendentes", None)
             extra = pend[1] if pend and pend[0] == card.key else []
+            if MODO_TESTE:
+                extra = extra + ["--teste"]
             self._args_pendentes = None
             fh = open(log, "w", encoding="utf-8")
             if FROZEN:
@@ -1553,10 +1614,13 @@ class Caixa(QWidget):
             self.status.setText(msg)
             # some sozinho (CRITICA F7: ficava "Abrindo…" pra sempre)
             QTimer.singleShot(7000, lambda m=msg: self.status.text() == m and self.status.setText(""))
-            self.cfg["uses"][card.key] = self.cfg["uses"].get(card.key, 0) + 1
-            save_cfg(self.cfg)
-            if getattr(self, "tela_hoje", None) is not None and hasattr(self.tela_hoje, "set_usos"):
-                self.tela_hoje.set_usos(self.cfg["uses"])
+            if os.environ.get("CAIXA_TESTE") != "1":
+                self.cfg["uses"][card.key] = self.cfg["uses"].get(card.key, 0) + 1
+                save_cfg(self.cfg)
+                if getattr(self, "tela_hoje", None) is not None and hasattr(self.tela_hoje, "set_usos"):
+                    self.tela_hoje.set_usos(self.cfg["uses"])
+            if _caixa_home is not None:
+                _caixa_home.salvar_ultima_chave(card.key)
             QTimer.singleShot(6000, lambda: self._checa_abriu(p, card.tool[1], log))
         except Exception as e:  # noqa: BLE001
             QMessageBox.critical(self, "Erro", str(e))

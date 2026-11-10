@@ -222,6 +222,7 @@ e NUNCA em modo economia 🟡/🔴):
 
 ### 🧐 Cocaino: regra de teste (o Caio reclamou: "abriu 500 coisas e não fechou")
 - No máximo **3 janelas de teste abertas ao mesmo tempo**. Abriu, testou, **fechou na hora** (pelo PID que você abriu).
+- Abra a Caixa SEMPRE assim: `Caixa.exe --teste` (marca tudo que abrir; o carteiro fecha sozinho o que ficar aberto > 10 min).
 - Sempre com `$env:CAIXA_TESTE='1'`. No fim de CADA tarefa: conferir que não sobrou nada seu aberto
   (Caixa.exe --tool, ferramentas, diálogos, Bloco de Notas, Explorer) e fechar. Nunca fechar o que o Caio abriu.
 
