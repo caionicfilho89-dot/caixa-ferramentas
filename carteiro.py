@@ -150,7 +150,7 @@ def _economia_permite(para):
 
 
 _ULTIMO_EMPURRAO = {}  # agente -> time.time(); no máx. 1 empurrão a cada 30 min por agente
-PARADO_MIN = 10
+PARADO_MIN = 5
 
 
 def parados_com_tarefa():
@@ -177,7 +177,7 @@ def parados_com_tarefa():
             parado = (time.time() - time.mktime(time.strptime(d.get("atualizado", ""), "%Y-%m-%d %H:%M"))) / 60
         except ValueError:
             parado = 999
-        if parado < PARADO_MIN or time.time() - _ULTIMO_EMPURRAO.get(ag, 0) < 1800:
+        if parado < PARADO_MIN or time.time() - _ULTIMO_EMPURRAO.get(ag, 0) < 600:
             continue
         livres = tarefas.livres_para(ag)
         if livres:
