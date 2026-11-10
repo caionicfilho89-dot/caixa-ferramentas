@@ -1,3 +1,7 @@
+> 🚨 **RUMO NOVO (2026-11-09): leia [RUMO.md](RUMO.md) PRIMEIRO, ele manda mais que este arquivo.**
+> Calculadora nova está PAUSADA. Cada agente tem uma FILA no RUMO.md e um painel: rode `python painel.py`
+> antes e depois de cada tarefa. Terminou? Pega a próxima da fila na hora. Nunca fique parado esperando.
+
 # 🍔 Estações da Fábrica — divisão de trabalho dos 4 agentes
 
 > **Objetivo:** parar de brigar pelos mesmos arquivos. Hoje os 4 agentes editam `caixa.pyw`,

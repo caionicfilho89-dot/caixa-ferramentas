@@ -815,6 +815,26 @@ def stage():
     aj = os.path.join(HERE, "AJUDA.json")
     if os.path.exists(aj):
         shutil.copyfile(aj, os.path.join(STAGED, "AJUDA.json"))
+    # RUMO: tela Hoje, barra, motor de respostas, sensores e adaptadores
+    rumo_py = [
+        "caixa_tema.py", "caixa_home.py", "caixa_busca_ui.py",
+        "respostas_core.py", "sensores_core.py", "adp_indice.py",
+        "adp_essenciais.py", "adp_financas.py", "adp_casa.py", "adp_ciencia.py",
+        "adp_unidades.py", "adp_dev.py", "adp_rede.py", "adp_imagem.py",
+        "adp_audio.py", "adp_texto.py", "adp_jogos.py", "adp_arquivos.py",
+    ]
+    for fn in rumo_py:
+        src = os.path.join(HERE, fn)
+        if not os.path.isfile(src):
+            continue
+        dst_name = fn
+        if dst_name in copied:
+            raise SystemExit(f"COLISÃO RUMO: {dst_name} já veio de {copied[dst_name]}")
+        shutil.copyfile(src, os.path.join(STAGED, dst_name))
+        copied[dst_name] = src
+    cat = os.path.join(HERE, "catalogo.json")
+    if os.path.isfile(cat):
+        shutil.copyfile(cat, os.path.join(STAGED, "catalogo.json"))
     _write_entry(modmap)
     return modmap, sorted(m[:-3] for m in copied)
 
@@ -892,6 +912,36 @@ if __name__ == "__main__":
     open(os.path.join(STAGED, "app.py"), "w", encoding="utf-8").write(app)
 
 
+def _escrever_version_file():
+    import re
+    try:
+        src = open(os.path.join(HERE, "caixa.pyw"), encoding="utf-8").read()
+        ver = re.search(r'^APP_VERSION\s*=\s*"([\d.]+)"', src, re.M).group(1)
+    except (OSError, AttributeError):
+        return None
+    nums = [int(x) for x in ver.split(".")][:4]
+    nums += [0] * (4 - len(nums))
+    tup = "(%d, %d, %d, %d)" % tuple(nums)
+    txt = f"""VSVersionInfo(
+  ffi=FixedFileInfo(filevers={tup}, prodvers={tup}, mask=0x3f, flags=0x0, OS=0x40004,
+                    fileType=0x1, subtype=0x0, date=(0, 0)),
+  kids=[StringFileInfo([StringTable('041604B0', [
+      StringStruct('CompanyName', 'caionicfilho89-dot'),
+      StringStruct('FileDescription', 'Caixa de Ferramentas'),
+      StringStruct('FileVersion', '{ver}'),
+      StringStruct('InternalName', 'Caixa'),
+      StringStruct('OriginalFilename', 'Caixa.exe'),
+      StringStruct('ProductName', 'Caixa de Ferramentas'),
+      StringStruct('ProductVersion', '{ver}')])]),
+        VarFileInfo([VarStruct('Translation', [0x0416, 1200])])]
+)
+"""
+    out = os.path.join(HERE, "build_tmp", "versao_exe.txt")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    open(out, "w", encoding="utf-8").write(txt)
+    return out
+
+
 def build(modmap, modules):
     cmd = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--windowed",
            "--name", "Caixa", "--paths", STAGED,
@@ -901,6 +951,10 @@ def build(modmap, modules):
     ico = os.path.join(HERE, "caixa.ico")
     if os.path.exists(ico):
         cmd += ["--icon", ico]
+    # FileVersion/ProductVersion no exe (CRITICA F3: estavam vazios) — lê APP_VERSION do caixa.pyw
+    vf = _escrever_version_file()
+    if vf:
+        cmd += ["--version-file", vf]
     # empacota o ffmpeg (se estiver em vendor/) pras ferramentas de mídia funcionarem sozinhas
     ff = os.path.join(HERE, "vendor", "ffmpeg.exe")
     if os.path.exists(ff):
@@ -909,14 +963,26 @@ def build(modmap, modules):
     aj = os.path.join(HERE, "AJUDA.json")
     if os.path.exists(aj):
         cmd += ["--add-data", aj + os.pathsep + "."]
+    cat = os.path.join(HERE, "catalogo.json")
+    if os.path.exists(cat):
+        cmd += ["--add-data", cat + os.pathsep + "."]
+    # RUMO: imports dinâmicos (adp_*) e UI — forçar no bundle
+    rumo_hidden = [
+        "caixa_ui", "caixa_tema", "caixa_home", "caixa_busca_ui",
+        "respostas_core", "sensores_core", "adp_indice",
+        "adp_essenciais", "adp_financas", "adp_casa", "adp_ciencia",
+        "adp_unidades", "adp_dev", "adp_rede", "adp_imagem",
+        "adp_audio", "adp_texto", "adp_jogos", "adp_arquivos",
+    ]
     # muitos --hidden-import estouram o limite de linha de comando do Windows (WinError 206):
     # a lista vai num hook do PyInstaller pra um módulo vazio que o app.py importa.
     hooks = os.path.join(HERE, "build_hooks")
     os.makedirs(hooks, exist_ok=True)
     with open(os.path.join(STAGED, "_caixa_mods.py"), "w", encoding="utf-8") as f:
         f.write("# lista de módulos das ferramentas fica em build_hooks/hook-_caixa_mods.py\n")
+    all_hidden = sorted(set(list(modules) + rumo_hidden))
     with open(os.path.join(hooks, "hook-_caixa_mods.py"), "w", encoding="utf-8") as f:
-        f.write("hiddenimports = %r\n" % (sorted(modules),))
+        f.write("hiddenimports = %r\n" % (all_hidden,))
     app_py = os.path.join(STAGED, "app.py")
     src = open(app_py, encoding="utf-8").read()
     if "import _caixa_mods" not in src:

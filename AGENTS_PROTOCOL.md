@@ -1,9 +1,56 @@
+> 🚨 **RUMO NOVO (2026-11-09): leia [RUMO.md](RUMO.md) PRIMEIRO, ele manda mais que este arquivo.**
+> Calculadora nova está PAUSADA. Cada agente tem uma FILA no RUMO.md e um painel: rode `python painel.py`
+> antes e depois de cada tarefa. Terminou? Pega a próxima da fila na hora. Nunca fique parado esperando.
+
 # 🤖 MANUAL DE INTEGRAÇÃO MULTI-AGENTES — CAIXA DE FERRAMENTAS DO CAIO
 
 > **Público-alvo:** Qualquer agente de Inteligência Artificial (Claude, Cursor, Windsurf, Codex, Gemini, Antigravity, Kilo, Copilot, etc.) operando no ambiente Windows do Caio.
 > **Missão:** Expandir a Caixa de Ferramentas rumo à meta de **1 Milhão de Funções / Ferramentas**, trabalhando em paralelo sem quebrar o build nem colidir nomes.
 
 ---
+
+## 📒 0. O CATÁLOGO É LEI — consulte ANTES de inventar
+
+A lista oficial de **todas** as ferramentas que já existem fica em **`CATALOGO.md`**, gerada
+automaticamente do código por **`catalogo.py`** (nunca edite o `.md` à mão — ele é regerado).
+
+**Fluxo obrigatório de todo agente, toda vez, antes de criar:**
+
+```powershell
+Set-Location C:\Users\caion\caixa-ferramentas
+# 1) Já existe algo parecido? (evita repetir ferramenta)
+C:/Python313/python.exe catalogo.py --check "o que eu vou criar"
+# 2) Qual prefixo de 3-4 letras está livre?
+C:/Python313/python.exe catalogo.py --prefixos
+```
+
+- Se o `--check` disser **⚠️ PROVAVELMENTE JÁ EXISTE**, pare e escolha outra ideia (ou melhore a
+  existente, se o Caio pedir). Não crie duplicata.
+- Depois de registrar a ferramenta nova (BUILTIN + TOOLS), rode **`python catalogo.py`** pra ela
+  entrar no catálogo. Assim a próxima rodada já a enxerga e ninguém repete.
+
+> O catálogo é a **única** fonte confiável de "o que já existe". O BACKLOG é só roteiro de ideias.
+
+---
+
+## 0.1 QUALIDADE MINIMA (regra do Caio, 08/11/2026)
+- PROIBIDO criar ferramenta que seja so uma lista fixa de modelos de texto (padrao `PRESETS: dict[str, str]` + render + salvar). Ja existem 77 assim; nao entram mais.
+- PROIBIDO gerar ferramentas em serie por script (ex.: `_gen_nxt.py`).
+- Toda ferramenta nova precisa: (1) campos de entrada que mudam o resultado; (2) resolver um problema do dia a dia de uma pessoa comum (casa, financas, saude, estudo, trabalho); (3) core com logica real e testes com valores conhecidos.
+- O integrador (`fiscal-fabrica\integra.py`) rejeita automaticamente entregas fora dessa regra.
+
+## 0.2 AJUDA OBRIGATORIA (regra do Caio, 09/11/2026)
+- Todo `ENTREGA.json` de ferramenta nova DEVE trazer um objeto `"ajuda"` com 4 campos, em portugues simples, escritos a partir da GUI/core REAL (nao invente funcao que nao existe):
+  ```json
+  "ajuda": {
+    "sinopse": "O que a ferramenta faz, em 1-2 frases.",
+    "para_que": "Pra quem/quando serve (seja honesto: 'Ferramenta de programador', 'Para estudantes de fisica'...).",
+    "como_usar": ["Passo 1 com o nome real do campo/botao", "Passo 2", "Passo 3"],
+    "exemplo": "Um caso concreto com numeros/resultado."
+  }
+  ```
+- `como_usar` = lista de 3 a 6 passos curtos, citando os rotulos reais dos campos e botoes.
+- O integrador copia esse objeto para `caixa-ferramentas\AJUDA.json` (aparece no botao "?" e no menu "Como usar" de cada card). Sem `"ajuda"` a entrega ainda entra, mas gera AVISO e o card fica so com a descricao curta.
 
 ## 🏛️ 1. Arquitetura Fundamental
 
@@ -29,23 +76,18 @@
 Durante a compilação, o script `build_suite.py` copia todos os arquivos `.py` e `.pyw` de todas as ferramentas para a pasta temporária `C:\Users\caion\caixa-ferramentas\staged\`.
 **SE DOIS ARQUIVOS TIVEREM O MESMO NOME (ex.: dois `core.py` ou dois `test_app.py`), O BUILD É ABORTADO COM ERRO DE COLISÃO!**
 
-### 📋 Tabela de Prefixos Já Utilizados (NÃO REPETIR):
-```text
-kh_  fd_  clt_ cu_  pb_  fa_  cg_  rc_  car_ hb_  sb_  dd_  gd_  as_  pm_
-gs_  cm_  nc_  tg_  qb_  cv_  cn_  scn_ lan_ lg_  th_  mm_  kb_  aud_ dk_
-gif_ snip_ rss_ svc_ wfi_ seo_ ccp_ dfx_ syn_ mcr_ prx_ ast_ bar_ chm_ crd_
-lsc_ elt_ dna_ lga_ gpx_ mtx_ fwl_ dck_ stt_ med_ mid_ sch_ agr_ prc_ svg_
-mrs_ cub_ ssk_ nfe_ chz_ ipm_ fsc_ mdx_ ofx_ gsl_ som_ opt_ geo_ bmk_ cmb_
-cfr_ tip_ pcp_ crn_ tre_ rgx_ grf_ lgc_ fft_ jsc_ grs_ stm_ nbd_ cnc_ huf_
-cll_ gip_ bys_ bnf_ pid_ qth_ crc_ uni_ mtc_ qtn_ phn_ cpt_ bsc_ hdr_ rlc_ sqf_ seq_ bse_
-apo_ uid_ wcg_ res_ ext_ crx_ obr_ jwt_ bnd_ pac_ rfc_ jmr_ rpg_ nav_ gst_
-blm_ spl_ wci_ knp_ trf_ ecc_ thm_ lhn_ pet_ cab_ rct_ gry_ rle_ mkv_ prm_
-pvs_  ele_  rfx_  p3d_  fot_  srt_  sir_  esc_  bat_  esm_  trc_  tam_  fst_
-bzr_ tok_ ctk_ prt_ qc_ dc_ gg_ alg_ lor_ zpf_ epc_
-chu_  cbv_  sno_  ntr_  btu_  snl_  fla_  pdl_  pal_  dts_
+### 📋 Prefixos já utilizados (NÃO REPETIR):
+
+**Não decore uma tabela — ela desatualiza.** Peça a lista ao vivo, sempre certa:
+
+```powershell
+C:/Python313/python.exe catalogo.py --prefixos
+# ou confira um específico junto com a busca de duplicata:
+C:/Python313/python.exe catalogo.py --check "minha ideia" -p xyz
 ```
 
-> 💡 **Instrução para novos agentes:** Escolha um prefixo inédito de 3 ou 4 letras que não esteja na lista acima.
+> 💡 **Instrução para novos agentes:** rode o comando acima e escolha um prefixo inédito de 3 ou 4
+> letras que **não** apareça na lista. O `-p xyz` já diz na hora se está livre ou ocupado.
 
 ---
 

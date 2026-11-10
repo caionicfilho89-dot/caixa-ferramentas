@@ -1,3 +1,7 @@
+> 🚨 **RUMO NOVO (2026-11-09): leia [RUMO.md](RUMO.md) PRIMEIRO, ele manda mais que este arquivo.**
+> Calculadora nova está PAUSADA. Cada agente tem uma FILA no RUMO.md e um painel: rode `python painel.py`
+> antes e depois de cada tarefa. Terminou? Pega a próxima da fila na hora. Nunca fique parado esperando.
+
 > 🧭 **Leia primeiro [AGENTS.md](AGENTS.md)** — arquivo mestre com objetivo, regras e estado atual. Em conflito, vale o AGENTS.md.
 
 # Gemini CLI — Caixa de Ferramentas

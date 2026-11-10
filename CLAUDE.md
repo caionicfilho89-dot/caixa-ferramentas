@@ -1,3 +1,7 @@
+> 🚨 **RUMO NOVO (2026-11-09): leia [RUMO.md](RUMO.md) PRIMEIRO, ele manda mais que este arquivo.**
+> Calculadora nova está PAUSADA. Cada agente tem uma FILA no RUMO.md e um painel: rode `python painel.py`
+> antes e depois de cada tarefa. Terminou? Pega a próxima da fila na hora. Nunca fique parado esperando.
+
 > 🧭 **Leia primeiro [AGENTS.md](AGENTS.md)** — arquivo mestre com objetivo, regras e estado atual. Em conflito, vale o AGENTS.md.
 
 # 🧰 Caixa de Ferramentas — protocolo da "fábrica"
@@ -14,7 +18,12 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
   se o uso estiver apertado, rodadas menores (2–3) ou pausar e avisar o Caio.
 
 ## Estado atual (ATUALIZE ao fim de cada rodada)
-- Caixa v1.4.0 = 83 ferramentas no código (caixa.pyw + build_suite.py), sem build de exe recente.
+- **Contagem real: rode `python catalogo.py --stats`** (não confie em número escrito à mão — foi por
+  isso que o Caio mandou criar o catálogo). Em 2026-11-08: **270 ferramentas**, exe buildado (21:02).
+- 📒 **CATALOGO.md** = lista oficial de tudo que existe, gerada do código por `catalogo.py`. ANTES de
+  criar: `python catalogo.py --check "ideia"` (duplicata) e `--prefixos` (prefixo livre). DEPOIS de
+  integrar: `python catalogo.py` pra regerar. Reiniciar os agents pra relerem: `sync_agentes.ps1`.
+- Caixa v1.4.0 base (caixa.pyw + build_suite.py).
   Release v1.4.0 PUBLICADA e os 6 repos (ferramentas-br, kit-hacker, ferramentas-dev, calculadora-clt,
   conversor-unidades, pix-boleto) criados.
 - Limite de 5h de uso: se agentes caírem com 429, retomar cada um via SendMessage após o reset.
@@ -50,6 +59,8 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
 - Versão: `APP_VERSION` em caixa.pyw + `MyAppVersion` em instalador.iss (sempre juntos).
 
 ## Briefing padrão do operário (colar no prompt de cada agente)
+0. ANTES de tudo: `python catalogo.py --check "a ferramenta que vou criar"` (não repetir) e
+   `python catalogo.py --prefixos` (pegar prefixo inédito). Catálogo = fonte da verdade.
 1. Pasta `C:\Users\caion\<pasta>\`, GUI `<nome>.pyw`, módulos com prefixo `<px>_`.
 2. Cabeçalho `HERE=...; sys.path.insert(0, HERE)`; rodapé `def main()` + `if __name__ == "__main__"`.
 3. Tema: copiar QSS de `C:\Users\caion\gps-falso\gps_falso.pyw` (accent #7c5cff, bg #11131a, `#go`).
@@ -66,7 +77,7 @@ ferramenta — a fábrica roda sozinha seguindo `BACKLOG.md`. Fale com ele em pt
 ## Checklist do capitão ao fim da rodada
 1. Pra cada app: rodar `test_<px>.py`, py_compile, conferir `git status` limpo.
 2. Checar colisão de nomes entre módulos de todas as pastas do TOOLS.
-3. Integrar (BUILTIN + TOOLS + COLLECT_ALL). **NÃO buildar o exe a cada rodada** (pedido do Caio):
+3. Integrar (BUILTIN + TOOLS + COLLECT_ALL). **Depois: `python catalogo.py`** pra atualizar o CATALOGO.md. **NÃO buildar o exe a cada rodada** (pedido do Caio):
    a Caixa via `caixa.pyw` já mostra as novas na hora. Build + instalador + release só quando o
    Caio pedir ("fecha uma versão") ou em marco grande. Aí: subir versão, `build_suite.py`, selftest, ISCC.
 4. Commit + push da caixa-ferramentas. Repos novos: o Caio roda `gh repo create` via `!`

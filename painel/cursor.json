@@ -1,0 +1,21 @@
+{
+  "agente": "cursor",
+  "fazendo": "",
+  "arquivos": [],
+  "proximo": "painel --feito",
+  "bloqueado": "",
+  "feitos": [
+    "2026-11-09 20:29 F1: caixa_tema.py pronto — paleta, tipografia, CartaoGrande/Pequeno, QSS; 11 testes OK",
+    "2026-11-09 20:31 F2: caixa_home.py TelaHoje pronta — cartoes vivos, thread 60s, stub sensores; 8 testes OK",
+    "2026-11-09 20:32 F3: caixa_busca_ui.py BarraBusca — debounce 150ms, setas/Enter/Esc, sinal abrir_ferramenta; 10 testes OK",
+    "2026-11-09 20:33 F4: animacoes fade-in, EstadoVazio/Carregando, breakpoints 1366/4K, consultar_texto() pra Grok; 14+8+11 testes OK",
+    "2026-11-09 20:34 F5: atalhos das 15 chaves do CRITICA.md na Hoje; resposta em 1 linha destacada; consultar_texto() pronto pro Grok (34 testes OK)",
+    "2026-11-09 20:34 acabamento: smoke offscreen 1366+4K OK (tema+hoje+barra); fila F1-F5 concluida",
+    "2026-11-09 20:35 BarraBusca + respostas_core real: 20% de 350=70,00; troco 100-73,50=R,50; fila Cursor F1-F5 100%",
+    "2026-11-09 20:35 polish debounce Buscando… + testes barra/smoke OK",
+    "2026-11-10 02:53 INTEGRADO v1.5.0: Hoje+Barra+respostas_core no caixa.pyw; selftest OK:750; Caixa.exe 02:53 + copiado em LOCALAPPDATA\\Programs\\CaixaFerramentas. Sem push.",
+    "2026-11-10 07:25 INTEGRADO v1.5.0 (Claude off): caixa_home+caixa_busca_ui+respostas_core no caixa.pyw; testes 60/60 PERGUNTAS + 34/34 respostas + home/barra OK; stage OK:750; Caixa.exe novo 07:24 em dist e AppData\\Programs\\CaixaFerramentas. Sem push."
+  ],
+  "pedidos": [],
+  "atualizado": "2026-11-10 07:30"
+}

@@ -1,15 +1,17 @@
 """Caixa de Ferramentas do Caio — um app só que reúne todas as ferramentas.
 
-Grade de cartões; clicar abre a ferramenta (cada uma roda no seu processo, então nada
-interfere em nada). Busca no topo, favoritos, abrir no boot, e dá pra adicionar
-ferramentas novas pela própria Caixa (sem mexer no código). Tudo offline.
+Abre na tela Hoje (cartões vivos do PC) + barra que responde perguntas no topo.
+A grade de cartões continua a um clique ("Todas as ferramentas"). Cada ferramenta
+roda no seu processo. Favoritos, boot e adicionar ferramentas pela própria Caixa.
 
 Config do usuário (favoritos + ferramentas adicionadas) em %LOCALAPPDATA%\\CaixaFerramentas.
 """
 import json
 import os
 import subprocess
+import time
 import sys
+import traceback
 import urllib.request
 import webbrowser
 
@@ -17,15 +19,28 @@ from PyQt6.QtCore import Qt, QThread, QTimer, pyqtSignal
 from PyQt6.QtGui import QColor, QFont, QFontMetrics, QIcon, QPainter, QPixmap
 from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGridLayout,
                              QHBoxLayout, QInputDialog, QLabel, QLineEdit, QListWidget, QListWidgetItem, QMenu, QMessageBox,
-                             QPushButton, QScrollArea, QVBoxLayout, QWidget,
-                             QDialog, QTextBrowser)
+                             QPushButton, QScrollArea, QStackedWidget, QVBoxLayout, QWidget,
+                             QDialog, QTextBrowser, QSizePolicy)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
-APP_VERSION = "1.4.0"
+APP_VERSION = "1.5.1"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
+
+# Peças do RUMO (tela Hoje + barra). Se faltar alguma, a Caixa cai na grade clássica.
+try:
+    import caixa_busca_ui as _caixa_busca_ui
+    import caixa_home as _caixa_home
+    import caixa_tema as _caixa_tema
+    _RUMO_UI = True
+except Exception:
+    _caixa_busca_ui = None  # type: ignore
+    _caixa_home = None  # type: ignore
+    _caixa_tema = None  # type: ignore
+    _RUMO_UI = False
+    traceback.print_exc()
 
 
 def _carrega_ajuda():
@@ -1164,6 +1179,7 @@ class Caixa(QWidget):
         self.cfg.setdefault("extra_tools", [])
         self.cfg.setdefault("uses", {})
         self.extra_tools = [tuple(t) for t in self.cfg["extra_tools"]]
+        self._pagina = "hoje" if _RUMO_UI else "grade"
 
         root = QVBoxLayout(self)
         root.setContentsMargins(22, 18, 22, 16)
@@ -1174,9 +1190,20 @@ class Caixa(QWidget):
         tt.setSpacing(2)
         tt.addWidget(QLabel("🧰 Caixa de Ferramentas", objectName="title"))
         self.sub = QLabel("", objectName="sub")
+        self.sub.setWordWrap(True)  # texto longo não pode alargar a janela (CRITICA F3)
+        self.sub.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
         tt.addWidget(self.sub)
-        head.addLayout(tt)
-        head.addStretch(1)
+        head.addLayout(tt, 1)
+        self.hoje_btn = QPushButton("🏠  Hoje")
+        self.hoje_btn.setCheckable(True)
+        self.hoje_btn.setChecked(self._pagina == "hoje")
+        self.hoje_btn.setVisible(_RUMO_UI)
+        self.hoje_btn.clicked.connect(self.mostrar_hoje)
+        self.todas_btn = QPushButton("🧰  Todas")
+        self.todas_btn.setCheckable(True)
+        self.todas_btn.setChecked(self._pagina == "grade")
+        self.todas_btn.setVisible(_RUMO_UI)
+        self.todas_btn.clicked.connect(self.mostrar_grade)
         self.update_btn = QPushButton("🔔  Atualizar")
         self.update_btn.setObjectName("update")
         self.update_btn.hide()
@@ -1187,20 +1214,67 @@ class Caixa(QWidget):
         self.boot_btn.clicked.connect(self.toggle_boot)
         self.sc_btn = QPushButton("📌  Menu Iniciar")
         self.sc_btn.clicked.connect(self.make_shortcut)
+        head.addWidget(self.hoje_btn, 0, Qt.AlignmentFlag.AlignTop)
+        head.addWidget(self.todas_btn, 0, Qt.AlignmentFlag.AlignTop)
         head.addWidget(self.update_btn, 0, Qt.AlignmentFlag.AlignTop)
-        head.addWidget(self.boot_btn, 0, Qt.AlignmentFlag.AlignTop)
-        head.addWidget(self.sc_btn, 0, Qt.AlignmentFlag.AlignTop)
+        # boot e atalho num menu ⚙️ só: o topo cabe em 1366 px (CRITICA F3)
+        self.boot_btn.hide()
+        self.sc_btn.hide()
+        self.mais_btn = QPushButton("⚙️")
+        self.mais_btn.setToolTip("Abrir no boot / atalho no Menu Iniciar")
+        menu_mais = QMenu(self.mais_btn)
+        self._acao_boot = menu_mais.addAction("🔌  Abrir junto com o Windows")
+        self._acao_boot.setCheckable(True)
+        self._acao_boot.setChecked(self.boot_btn.isChecked())
+        self._acao_boot.triggered.connect(lambda _c=False: (self.boot_btn.click(),
+                                                              self._acao_boot.setChecked(self.boot_btn.isChecked())))
+        menu_mais.addAction("📌  Criar atalho no Menu Iniciar").triggered.connect(lambda _c=False: self.sc_btn.click())
+        self.mais_btn.setMenu(menu_mais)
+        head.addWidget(self.mais_btn, 0, Qt.AlignmentFlag.AlignTop)
         root.addLayout(head)
+
+        # Barra que responde tudo (RUMO) — fica sempre no topo quando disponível
+        self.barra = None
+        if _RUMO_UI:
+            self.barra = _caixa_busca_ui.BarraBusca(parent=self)
+            self.barra.abrir_ferramenta.connect(self.open_tool_key)
+            root.addWidget(self.barra)
+
+        self.stack = QStackedWidget()
+        root.addWidget(self.stack, 1)
+
+        # Página 0: Hoje
+        self.tela_hoje = None
+        if _RUMO_UI:
+            self.tela_hoje = _caixa_home.TelaHoje(parent=self)
+            self.tela_hoje.abrir_ferramenta.connect(self.open_tool_key)
+            self.tela_hoje.executar_comando.connect(self._executar_comando)
+            self.tela_hoje.pediu_todas.connect(self.mostrar_grade)
+            # Hoje dentro de rolagem: a janela cabe em 1366x768 sem esmagar nada (CRITICA F3)
+            self._hoje_scroll = QScrollArea()
+            self._hoje_scroll.setWidgetResizable(True)
+            self._hoje_scroll.setFrameShape(QFrame.Shape.NoFrame)
+            self._hoje_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+            self._hoje_scroll.setWidget(self.tela_hoje)
+            self.stack.addWidget(self._hoje_scroll)
+        else:
+            self.stack.addWidget(QWidget())  # placeholder índice 0
+
+        # Página 1: grade clássica
+        self.pagina_grade = QWidget()
+        grade_lay = QVBoxLayout(self.pagina_grade)
+        grade_lay.setContentsMargins(0, 0, 0, 0)
+        grade_lay.setSpacing(10)
 
         sr = QHBoxLayout()
         self.search = QLineEdit()
-        self.search.setPlaceholderText("Buscar ferramenta…")
+        self.search.setPlaceholderText("Filtrar ferramentas na grade…")
         self.search.textChanged.connect(self.rebuild)
         sr.addWidget(self.search, 1)
         add = QPushButton("➕  Adicionar ferramenta", objectName="add")
         add.clicked.connect(self.add_tool)
         sr.addWidget(add)
-        root.addLayout(sr)
+        grade_lay.addLayout(sr)
 
         corpo = QHBoxLayout()
         corpo.setSpacing(14)
@@ -1219,7 +1293,9 @@ class Caixa(QWidget):
         self.grid.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         self.scroll.setWidget(self.host)
         corpo.addWidget(self.scroll, 1)
-        root.addLayout(corpo, 1)
+        grade_lay.addLayout(corpo, 1)
+        self.stack.addWidget(self.pagina_grade)
+
         self._cols_atual = 0
         self._rt = QTimer(self)
         self._rt.setSingleShot(True)
@@ -1229,8 +1305,14 @@ class Caixa(QWidget):
         self.status = QLabel("", objectName="sub")
         root.addWidget(self.status)
 
-        self.search.setFocus()
-        self.rebuild()
+        if _RUMO_UI:
+            self.mostrar_hoje()
+            if self.barra is not None:
+                self.barra.focar()
+        else:
+            self.stack.setCurrentIndex(1)
+            self.search.setFocus()
+            self.rebuild()
 
         # checa atualização em segundo plano (silencioso se falhar)
         self._upd = UpdateThread()
@@ -1239,6 +1321,70 @@ class Caixa(QWidget):
 
     def all_tools(self):
         return BUILTIN + self.extra_tools
+
+    def mostrar_hoje(self):
+        if not _RUMO_UI or self.tela_hoje is None:
+            self.mostrar_grade()
+            return
+        self._pagina = "hoje"
+        self.stack.setCurrentIndex(0)
+        self.hoje_btn.setChecked(True)
+        self.todas_btn.setChecked(False)
+        self.sub.setText("O que importa no seu PC agora. Pergunte qualquer coisa na barra.")
+        if self.barra is not None:
+            self.barra.focar()
+
+    def mostrar_grade(self):
+        self._pagina = "grade"
+        self.stack.setCurrentIndex(1)
+        self.hoje_btn.setChecked(False)
+        self.todas_btn.setChecked(True)
+        self.search.setFocus()
+        # troca a tela na hora; a grade (750 cartões, ~1 s) monta logo depois
+        QTimer.singleShot(0, self.rebuild)
+
+    def open_tool_key(self, chave: str):
+        """Abre ferramenta pela chave (barra / Hoje / atalhos)."""
+        chave = (chave or "").strip()
+        if not chave:
+            return
+        # evita janela duplicada por clique duplo / sinal repetido (CRITICA F3)
+        agora = time.monotonic()
+        ult = getattr(self, "_ult_aberta", ("", 0.0))
+        if ult[0] == chave and agora - ult[1] < 2.5:
+            return
+        self._ult_aberta = (chave, agora)
+        tool = next((t for t in self.all_tools() if t[3] == chave), None)
+        if tool is None:
+            QMessageBox.warning(self, "Ops", f"Não achei a ferramenta “{chave}”.")
+            return
+        folder, script = tool[3], tool[4]
+        path = os.path.join(BASE, folder, script)
+
+        class _Proxy:
+            pass
+
+        proxy = _Proxy()
+        proxy.tool = tool
+        proxy.key = folder
+        proxy.path = path
+        proxy.exists = True if FROZEN else os.path.exists(path)
+        self.open_tool(proxy)
+
+    def _executar_comando(self, comando: str):
+        cmd = (comando or "").strip()
+        if not cmd:
+            return
+        try:
+            if cmd.lower().startswith("explorer"):
+                subprocess.Popen(cmd, shell=True)  # noqa: S602
+            elif os.path.isdir(cmd) or os.path.isfile(cmd):
+                os.startfile(cmd)  # noqa: S606
+            else:
+                subprocess.Popen(cmd, shell=True)  # noqa: S602
+            self.status.setText(f"Comando: {cmd}")
+        except Exception as e:  # noqa: BLE001
+            QMessageBox.warning(self, "Não deu", str(e))
 
     def _popular_categorias(self):
         """Lateral com Tudo, Favoritos, Novas e as categorias (com contagem)."""
@@ -1503,9 +1649,29 @@ class Caixa(QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    app.setStyleSheet(QSS)
+    if _RUMO_UI and _caixa_tema is not None:
+        try:
+            _caixa_tema.aplicar_tema(app)
+        except Exception:
+            traceback.print_exc()
+            app.setStyleSheet(QSS)
+    else:
+        app.setStyleSheet(QSS)
     w = Caixa()
+    # tamanho que cabe na tela de verdade (1080p, 768p, 4K) e centralizado
+    tela = app.primaryScreen()
+    if tela is not None:
+        g = tela.availableGeometry()
+        larg = min(1280, int(g.width() * 0.92))
+        alt = min(860, int(g.height() * 0.92))
+        w.setMinimumSize(min(760, larg), min(520, alt))
+        w.resize(larg, alt)
+        w.move(g.x() + (g.width() - larg) // 2, g.y() + (g.height() - alt) // 2)
     w.show()
+    w.raise_()
+    w.activateWindow()
+    if getattr(w, "barra", None) is not None:
+        QTimer.singleShot(150, w.barra.focar)
     sys.exit(app.exec())
 
 

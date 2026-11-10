@@ -1,3 +1,7 @@
+> 🚨 **RUMO NOVO (2026-11-09): leia [RUMO.md](RUMO.md) PRIMEIRO, ele manda mais que este arquivo.**
+> Calculadora nova está PAUSADA. Cada agente tem uma FILA no RUMO.md e um painel: rode `python painel.py`
+> antes e depois de cada tarefa. Terminou? Pega a próxima da fila na hora. Nunca fique parado esperando.
+
 # 🧭 AGENTS.md — Central de Objetivo e Especificações da Caixa de Ferramentas
 
 > **Este é o arquivo MESTRE.** Todo agente (Claude, Gemini, Antigravity, Codex, Kilo…) lê ISTO primeiro.
