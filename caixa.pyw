@@ -25,7 +25,7 @@ from PyQt6.QtWidgets import (QApplication, QComboBox, QFileDialog, QFrame, QGrid
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(HERE)   # C:\Users\caion — onde ficam as pastas das ferramentas
 FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (instalador)
-APP_VERSION = "1.5.2"
+APP_VERSION = "1.5.3"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
@@ -1667,6 +1667,13 @@ def main():
         w.setMinimumSize(min(760, larg), min(520, alt))
         w.resize(larg, alt)
         w.move(g.x() + (g.width() - larg) // 2, g.y() + (g.height() - alt) // 2)
+    # bandeja + Ctrl+Espaço global (Cursor F8): fechar esconde na bandeja; menu Mostrar/Sair
+    if _RUMO_UI:
+        try:
+            from caixa_bandeja import registrar_atalho
+            w._bandeja = registrar_atalho(w)
+        except Exception:  # noqa: BLE001 — sem bandeja a Caixa ainda abre normal
+            traceback.print_exc()
     w.show()
     w.raise_()
     w.activateWindow()

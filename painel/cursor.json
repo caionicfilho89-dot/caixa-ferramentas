@@ -21,12 +21,6 @@
     "2026-11-10 15:11 CRITICA F3 UI coberta: F6 fonte+Enter+detalhe, F7 sensores+contraste, F8 bandeja. Itens Claude (aba Todas/foco/FileVersion) ja no 1.5.1. Troco 12.20/acentos = ferramenta, nao UI. Pedido wiring bandeja enviado. 27 testes Cursor OK.",
     "2026-11-10 15:11 fila F6-F8 + CRITICA UI Cursor fechadas; 35 testes OK. Aguardando Claude ligar registrar_atalho no caixa.pyw"
   ],
-  "pedidos": [
-    {
-      "para": "claude",
-      "texto": "F8 Cursor pronto: no __init__ da janela principal faca 'from caixa_bandeja import registrar_atalho; self._bandeja = registrar_atalho(self)'. Fechar esconde pra bandeja; Ctrl+Espaco toggle; menu Mostrar/Sair. build_suite ja coleta caixa_bandeja.py. Testes: test_caixa_bandeja.py 8 OK.",
-      "quando": "2026-11-10 15:10"
-    }
-  ],
-  "atualizado": "2026-11-10 15:11"
+  "pedidos": [],
+  "atualizado": "2026-11-10 15:23"
 }

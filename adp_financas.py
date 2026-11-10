@@ -447,7 +447,7 @@ def _data_anos_atras(anos, meses=0):
 ligar(
     "decimo-terceiro-proporcional",
     ["13", "decimo", "13o salario"],
-    [["13", "13o", "decimo"]],
+    [["13", "13o", "decimo", "decmo"]],
     ["rescis", "demiss", "ferias", "hora extra", "fgts", "insalubr", "pericul", "inss", "irrf", "liquido"],
     "decimo-terceiro-proporcional", "d13_core", "calcular",
     [
@@ -461,7 +461,7 @@ ligar(
 ligar(
     "calculadora-clt",
     ["salario liquido", "liquido", "inss", "irrf"],
-    [["liquido", "cair na conta", "holerite"], ["salario", "bruto"]],
+    [["liquido", "liq", "cair na conta", "holerite"], ["salario", "bruto"]],
     ["13", "13o", "decimo", "ferias", "rescis", "demiss", "hora extra", "fgts", "noturn", "pericul", "insalubr", "plr", "pj", "freela", "freelancer"],
     "calculadora-clt", "clt_calc", "salario_liquido",
     [
@@ -505,7 +505,7 @@ ligar(
 ligar(
     "calculadora-clt",
     ["fgts"],
-    [["fgts"]],
+    [["fgts", "fundo de garantia"]],
     ["rescis", "demiss", "multa de 40", "multa do fgts"],
     "calculadora-clt", "clt_calc", "fgts",
     [
@@ -518,7 +518,7 @@ ligar(
 
 
 def _extrair_rescisao_clt(texto):
-    if not combina(texto, [["rescis", "demiss", "mandado embora", "mandaram embora"]], ["dias trabalhados", "avos", "no mes da saida"]):
+    if not combina(texto, [["rescis", "recisao", "demiss", "mandado embora", "mandaram embora"]], ["dias trabalhados", "avos", "no mes da saida"]):
         return None
     if _tem(norm(texto), "dias") and _tem(norm(texto), "meses"):
         return None
@@ -576,7 +576,7 @@ def _modalidade_rst(texto):
 
 
 def _extrair_rst(texto):
-    if not combina(texto, [["rescis", "demiss"], ["dias"]]):
+    if not combina(texto, [["rescis", "recisao", "demiss"], ["dias"]]):
         return None
     params = ler(texto, [
         C("anos_trabalhados", ["anos", "ano"], "ano", False, 0, solto=True),
@@ -626,7 +626,7 @@ ligar(
 
 
 def _extrair_hex(texto):
-    if not combina(texto, [["hora extra", "horas extras", "hora-extra"]], ["noturn", "banco de horas", "sobreaviso", "prontidao"]):
+    if not combina(texto, [["hora extra", "horas extras", "hora-extra", "hrs extra", "hora estra", "he50"]], ["noturn", "banco de hora", "sobreaviso", "prontidao"]):
         return None
     base = ler(texto, [
         C("salario_mensal", ["salario", "bruto"], "din", True, solto=True),
@@ -692,7 +692,7 @@ _registrar(
 ligar(
     "calculadora-adicional-noturno",
     ["adicional noturno", "hora noturna"],
-    [["noturn"]],
+    [["noturn", "notuno"]],
     ["sobreaviso", "prontidao"],
     "calculadora-adicional-noturno", "adt_core", "calcular",
     [
@@ -815,7 +815,7 @@ ligar(
 ligar(
     "simulador-banco-horas-compensacao",
     ["banco de horas"],
-    [["banco de horas"]],
+    [["banco de hora"]],
     [],
     "simulador-banco-horas-compensacao", "bhc_core", "calcular_banco_horas",
     [
@@ -936,7 +936,7 @@ _registrar(
 ligar(
     "calculadora-beneficio-vr-va",
     ["vale refeicao", "vale alimentacao"],
-    [["vale refeicao", "vale alimentacao", "vale-refeicao"]],
+    [["vale refeicao", "vale alimentacao", "vale-refeicao", "vr", "va"]],
     [],
     "calculadora-beneficio-vr-va", "vva_core", "calcular",
     [
@@ -2004,6 +2004,7 @@ ligar(
         C("mensalidade_curso", ["mensalidade", "faculdade"], "din", True, solto=True),
     ],
     "Saldo na formatura", "saldo_devedor_formatura",
+    preparar=lambda texto, p: {**p, "duracao_meses": int(round(p["duracao_meses"]))},
 )
 
 ligar(

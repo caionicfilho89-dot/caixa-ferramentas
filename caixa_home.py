@@ -12,12 +12,11 @@ from typing import Callable
 
 from PyQt6.QtCore import QThread, Qt, pyqtSignal
 from PyQt6.QtWidgets import (
-    QFrame,
     QGridLayout,
     QHBoxLayout,
     QLabel,
     QPushButton,
-    QScrollArea,
+    QSizePolicy,
     QVBoxLayout,
     QWidget,
 )
@@ -111,6 +110,8 @@ class TelaHoje(QWidget):
         self._carregando = False
 
         self.setObjectName("telaHoje")
+        # altura natural do conteúdo — a rolagem fica no QScrollArea do caixa.pyw
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self._timer = None
         tema.aplicar_tema(self)
         self._montar()
@@ -136,7 +137,8 @@ class TelaHoje(QWidget):
         topo.addLayout(col, 1)
 
         self.btn_todas = QPushButton("Todas as ferramentas")
-        self.btn_todas.setObjectName("fantasma")
+        # contraste alto (CRITICA F3) — não mais "fantasma" apagado
+        self.btn_todas.setObjectName("todasFerramentas")
         self.btn_todas.clicked.connect(self.pediu_todas.emit)
         topo.addWidget(self.btn_todas, 0, Qt.AlignmentFlag.AlignTop)
         root.addLayout(topo)
@@ -149,19 +151,21 @@ class TelaHoje(QWidget):
         self.estado_carregando.hide()
         root.addWidget(self.estado_carregando)
 
-        self.scroll = QScrollArea()
-        self.scroll.setWidgetResizable(True)
-        self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.scroll.setFrameShape(QFrame.Shape.NoFrame)
-
+        # Sem scroll interno: cartões com altura real; rolagem é do caixa.pyw.
+        # Scroll aninhado esmagava os sensores numa faixa de ~60 px (CRITICA F3).
         self.area = QWidget()
+        self.area.setSizePolicy(
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum
+        )
         self.grade = QGridLayout(self.area)
         self.grade.setContentsMargins(0, 0, 4, 0)
         self.grade.setHorizontalSpacing(14)
         self.grade.setVerticalSpacing(14)
         self.grade.setAlignment(Qt.AlignmentFlag.AlignTop)
-        self.scroll.setWidget(self.area)
-        root.addWidget(self.scroll, 1)
+        root.addWidget(self.area, 0)
+
+        # alias p/ testes antigos que olhavam self.scroll
+        self.scroll = self.area
 
         self.estado_vazio = tema.EstadoVazio(
             "Nada urgente agora. Quando o disco encher, Downloads bagunçar "
@@ -283,13 +287,46 @@ class TelaHoje(QWidget):
             self.grade.addWidget(card, r, c)
             self._cartoes.append(card)
             tema.animar_entrada(card, duracao_ms=200, atraso_ms=min(i * 40, 240))
-        # estica colunas
+        # estica colunas e trava altura mínima por linha (sizeHint deixa de achar 1 col)
+        rows = (len(self._cartoes) + cols - 1) // cols
+        card_h = max((c.minimumHeight() for c in self._cartoes), default=172)
         for c in range(cols):
             self.grade.setColumnStretch(c, 1)
+        for r in range(rows):
+            self.grade.setRowMinimumHeight(r, card_h)
 
     def _mostrar_vazio(self, vazio: bool) -> None:
         self.estado_vazio.setVisible(vazio)
-        self.scroll.setVisible(not vazio)
+        self.area.setVisible(not vazio)
+
+    def altura_sensores(self, largura: int | None = None) -> int:
+        """Altura da grade pela geometria (cols×rows), não pelo sizeHint 1-col."""
+        n = len(self._cartoes)
+        if n == 0 or self.area.isHidden():
+            return 0
+        w = int(largura) if largura else max(self.width(), 400)
+        cols = max(1, tema.colunas_para_largura(w))
+        rows = (n + cols - 1) // cols
+        card_h = max((c.minimumHeight() for c in self._cartoes), default=172)
+        spacing = max(0, int(self.grade.verticalSpacing()))
+        return rows * card_h + max(0, rows - 1) * spacing
+
+    def cabe_sensores_sem_rolar(self, largura: int, altura_viewport: int) -> bool:
+        """True se topo + seção + 4 sensores cabem no viewport (sem rolar a grade)."""
+        self.resize(max(400, int(largura)), max(200, int(altura_viewport)))
+        from PyQt6.QtWidgets import QApplication
+        QApplication.processEvents()
+        # se o resize reflowou a grade, garante que ainda há cartões medidos
+        if not self._cartoes:
+            return False
+        topo_h = (
+            self.lbl_saudacao.sizeHint().height()
+            + self.lbl_hora.sizeHint().height()
+            + 8
+        )
+        secao_h = self.lbl_secao.sizeHint().height() + 12
+        sens_h = self.altura_sensores(largura)
+        return (topo_h + secao_h + sens_h) <= int(altura_viewport)
 
     def _colunas(self) -> int:
         return tema.colunas_para_largura(max(self.width(), 400))

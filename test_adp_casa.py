@@ -273,5 +273,246 @@ class Casa(unittest.TestCase):
         self.assertIn(af._num(mod.dinheiro_economizado(20, 10, 15)["economizado"]), saida["resposta"])
 
 
+# F8: 3 jeitos de perguntar nas 20 chaves mais usadas da casa.
+# Mesma conta: sem acento, sinônimo que o extrator já aceita, R$ / mil / por cento.
+_TRES = (
+    ("saude", "IMC: 26,12 (Sobrepeso)", (
+        "imc peso 80 altura 1,75",
+        "imc peso 80 kg altura 1,75",
+        "imc 80 kg altura 1,75 m",
+    )),
+    ("pet", "Energia: 1.059 kcal/dia", (
+        "ração cachorro 20 kg",
+        "racao do cachorro 20 kg",
+        "racao cachorro peso 20",
+    )),
+    ("calculadora-cafe", "Água: 480 ml para 30 g de café", (
+        "30 gramas de café no v60",
+        "30 gramas de cafe no v60",
+        "cafe v60 30 gramas",
+    )),
+    ("medidas-de-cozinha", "2,0 xícara de Farinha de trigo = 240,0 g", (
+        "2 xícaras de farinha de trigo",
+        "2 xicaras de farinha de trigo",
+        "xicara de farinha de trigo 2",
+    )),
+    ("calculadora-pao", "Água do pão: 350 g", (
+        "pão 500 g de farinha hidratação 70% sal 2%",
+        "pao 500 g de farinha hidratacao 70% sal 2%",
+        "pao farinha 500 hidratacao 70 por cento sal 2 por cento",
+    )),
+    ("calculadora-pizza", "Pizzas: 3", (
+        "quantas pizzas para 8 pessoas",
+        "pizza para 8 pessoas",
+        "pizza para 8 pessoa",
+    )),
+    ("botijao-gas", "Botijão P13: 32,5 dias", (
+        "botijão p13 consumindo 0,4 kg por dia",
+        "botijao p13 consumindo 0,4 kg por dia",
+        "p13 consumindo 0,4 kg por dia",
+    )),
+    ("tamanho-tv", "TV (SMPTE): 60 polegadas", (
+        "televisão a 2,5 metros",
+        "tv a 2,5 metros",
+        "televisor distancia 2,5 metros",
+    )),
+    ("festa", "Salgados: 360", (
+        "aniversário para 30 adultos e 10 crianças",
+        "aniversario para 30 adultos e 10 criancas",
+        "aniversario 30 adultos e 10 criancas",
+    )),
+    ("grama-jardim", "Placas de grama: 52,50", (
+        "placas de grama para 50 m2",
+        "placa de grama para 50 m2",
+        "grama placas area 50",
+    )),
+    ("enxoval-bebe", "Fraldas: 2970 unidades", (
+        "fraldas para 12 meses",
+        "fralda para 12 meses",
+        "fraldas para 12 mes",
+    )),
+    ("aquecedor-solar", "Boiler: 300 L", (
+        "aquecedor solar para 3 pessoas, banho de 8 minutos",
+        "boiler para 3 pessoas, banho de 8 minutos",
+        "aquecedor solar 3 pessoas 8 minutos",
+    )),
+    ("taxa-extra-condominio", "Sua parte: R$ 500,00", (
+        "taxa extra de condomínio 8000 em 16 apartamentos",
+        "taxa extra de condominio R$ 8 mil em 16 apartamentos",
+        "condominio taxa 8.000 em 16 apartamentos",
+    )),
+    ("gestacional", "DPP: 06/12/2026", (
+        "dpp dum 01/03/2026",
+        "dum 01/03/2026",
+        "gestacao dum 1/3/2026",
+    )),
+    ("calculadora-sono", "Para acordar 07:00, vá dormir às 21:45", (
+        "que horas dormir pra acordar 07:00",
+        "acordar 07:00",
+        "pra acordar 7h",
+    )),
+    ("calculadora-estacionamento", "Estacionamento: R$ 18,00", (
+        "estacionamento de 2 horas, primeira hora 12 e hora adicional 6",
+        "estacionamento de 2 horas, primeira hora R$ 12 e hora adicional 6",
+        "estacionamento 2 horas primeira 12 adicional 6",
+    )),
+    ("tamanhos", "Sapato BR 38 / EU 39 / US 8.0 / UK 6.0 (24.5 cm)", (
+        "sapato feminino 38",
+        "calcado feminino 38",
+        "tenis feminino 38",
+    )),
+    ("reajuste-plano-saude", "Mensalidade no fim: R$ 665,50", (
+        "reajuste do plano de saúde de 500 reais a 10% por 3 anos",
+        "reajuste do plano de saude de R$ 500 a 10% por 3 anos",
+        "reajuste do plano de 500 a 10 por cento por 3 anos",
+    )),
+    ("reembolso-plano-saude", "Reembolso: R$ 240,00", (
+        "reembolso plano paguei 400 tabela 300 cobertura 80%",
+        "reembolso paguei R$ 400 tabela 300 cobertura 80%",
+        "reembolso paguei 400 tabela 300 cobertura 80 por cento",
+    )),
+    ("parar-fumar", "Economizado: R$ 150,00", (
+        "20 dias sem fumar, 10 cigarros por dia, maço de 15 reais",
+        "20 dias sem fumar, 10 cigarros por dia, maco de R$ 15",
+        "20 dias sem fumar, 10 cigarro por dia, maco de 15 reais",
+    )),
+)
+
+
+
+# F8: os 22 registros que faltavam, fora das 20 chaves do dia a dia.
+_MAIS = (
+    ('saude', 'Água: 2450 ml (10 copos)', (
+        'beber agua peso 70',
+        'hidratar agua pesando 70',
+        'beber agua 70 kg',
+    )),
+    ('pet', 'Água do cão: 1.200 ml por dia', (
+        'agua do cachorro 20 kg',
+        'agua da cadela peso 20',
+        'agua do cao 20 kg',
+    )),
+    ('pet', 'Idade humana: 56,8 anos', (
+        'idade humana do cachorro 5 anos',
+        'anos humanos cachorro 5 anos',
+        'idade humana cachoro 5 anos',
+    )),
+    ('cabelo', '30 volumes = 9,00% de água oxigenada', (
+        '30 volumes',
+        'oxigenada 30 volumes',
+        '30 volumen',
+    )),
+    ('cabelo', 'Oxigenada na mistura: 50,00', (
+        'diluir 40 volumes para 20 volumes em 100 ml',
+        'diluicao 40 volumes para 20 volumes 100 ml',
+        'diluir 40 volume em 20 volume 100 mililitro',
+    )),
+    ('calculadora-cerveja', 'ABV: 5,25%', (
+        'og 1,050 fg 1,010',
+        'cerveja og 1,050 e fg 1,010',
+        'abv og 1,050 fg 1,010',
+    )),
+    ('fermentados-caseiros', 'Sal do chucrute: 20,00', (
+        'chucrute 1000 g de repolho',
+        'chucrute repolho 1000 sal 2%',
+        'chucrute 1.000 g',
+    )),
+    ('festa-junina', 'Cachaça: 800 ml', (
+        'quentao 2 litros',
+        'quentao 2 litro',
+        'quentao de 2 litros',
+    )),
+    ('calculadora-aquario', 'Aquário: 60,0 L brutos', (
+        'aquario 50 30 40',
+        'aquario de 50 por 30 por 40',
+        'aquario 50 30 40 cm',
+    )),
+    ('festa-junina', 'Pipoca: 1.600 g', (
+        'festa junina 40 pessoas',
+        'junina 40 convidados',
+        'junina pra 40 pessoa',
+    )),
+    ('festa-infantil', 'Salgados: 150', (
+        'festa infantil 15 criancas',
+        'festa infantil 15 crianca',
+        'aniversario infantil 15 criancas',
+    )),
+    ('calculadora-sono', 'Cafeína restante: 100 mg', (
+        'cafeina 200 mg depois de 5 horas',
+        'cafeina 200 miligrama 5 horas',
+        'cafeina 200 mg 5h',
+    )),
+    ('calculadora-sono', 'Débito desta noite: 2,0 h', (
+        'debito de sono dormi 5 horas idade 30',
+        'debito de sono 5 horas idade 30',
+        'debito sono dormi 5h idade 30',
+    )),
+    ('estimativa-1rm-epley', '1RM médio: 114,58', (
+        '1rm 100 kg 5 repeticoes',
+        'epley 100 kg 5 reps',
+        '1rm com 100 kg 5 repet',
+    )),
+    ('calculadora-marchas-bike', 'Velocidade: 33,6 km/h', (
+        'bike coroa 50 pinhao 15 roda 2100 mm cadencia 80',
+        'coroa 50 pinhao 15 circunferencia 2100 rpm 80',
+        'coroa 50 pinhao 15 roda 2100 cadencia 80',
+    )),
+    ('croche', 'Monte 80 pontos', (
+        'croche amostra 20 pontos largura 40',
+        'trico 20 pontos para 40',
+        'croche 20 ponto largura 40',
+    )),
+    ('troca-pneu-carro', 'Pneu ainda roda: 20.000,00', (
+        'pneu atual 40000 instalado 10000 vida 50000 ando 1000 por mes preco 400',
+        'pneu atual 40000 instalacao 10000 vida 50000 por mes 1000 preco 400',
+        'pneu atual 40000 instalado 10000 vida 50000 ando 1000 por mes preco R$ 400',
+    )),
+    ('cafe-casa-vs-cafeteria', 'Economia do café em casa: R$ 325,87', (
+        'cafeteria 10 por semana cafeteria 8 pacote 20 rende 40',
+        'cafeteria 10 xicaras por semana cafeteria 8 reais pacote 20 rende 40',
+        'cafeteria 10 por semana cafeteria R$ 8 pacote R$ 20 rende 40',
+    )),
+    ('petsitter-vs-creche', 'Mais barato: creche', (
+        'petsitter 5 dias 8 horas sitter 30 creche 80 hotel 100',
+        'pet sitter 5 dias 8 horas por hora 30 creche 80 hotel 100',
+        'petsitter 5 dias 8 horas sitter R$ 30 creche R$ 80 hotel R$ 100',
+    )),
+    ('hospedagem-pet', 'Hotel do pet: R$ 360,00', (
+        'hotelzinho 4 dias diaria 90',
+        'hospedagem 4 dias a 90 reais',
+        'hotelzinho 4 dias diaria R$ 90',
+    )),
+    ('economia-horta-caseira', 'Economia da horta: R$ 33,00', (
+        'horta colhi 8 kg a 6 reais insumos 15',
+        'horta colheita 8 kg preco 6 insumos 15',
+        'horta colhi 8 kg a R$ 6 insumos R$ 15',
+    )),
+    ('lentes-contato', 'Custo das lentes: R$ 26,67', (
+        'lentes caixa 6 preco 80',
+        'lente caixa de 6 por 80 reais',
+        'lentes caixa 6 preco R$ 80',
+    )),
+)
+
+class TresJeitos(unittest.TestCase):
+    def test_vinte_chaves_tres_frases(self):
+        self.assertEqual(len(_TRES), 20)
+        for chave, esperado, frases in _TRES:
+            self.assertEqual(len(frases), 3, chave)
+            for frase in frases:
+                _, saida = _um(frase, chave)
+                self.assertEqual(saida["resposta"], esperado, frase)
+
+    def test_resto_dos_adaptadores(self):
+        """Abreviado, com erro e com R$/mil no que ainda não estava nas 20."""
+        self.assertEqual(len(_MAIS), 22)
+        for chave, esperado, frases in _MAIS:
+            self.assertEqual(len(frases), 3, chave)
+            for frase in frases:
+                _, saida = _um(frase, chave)
+                self.assertEqual(saida["resposta"], esperado, frase)
+
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

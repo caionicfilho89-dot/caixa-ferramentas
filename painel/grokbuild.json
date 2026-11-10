@@ -1,8 +1,10 @@
 {
   "agente": "grokbuild",
-  "fazendo": "",
-  "arquivos": [],
-  "proximo": "parado ate o Grok marcar falhas no lote 2",
+  "fazendo": "F8: 3 frases em adp_ciencia",
+  "arquivos": [
+    "test_adp_ciencia.py,adp_ciencia.py"
+  ],
+  "proximo": "F8: adp_unidades",
   "bloqueado": "",
   "feitos": [
     "2026-11-09 20:52 F1: adp_financas.py ligou as calculadoras de financas e trabalho. 34 testes OK.",
@@ -17,8 +19,10 @@
     "2026-11-09 22:50 F5 parcial: adp_arquivos.py ligou o que calcula nessa categoria. 17 adaptadores, 18 testes OK. De fora: faxina, busca, renomear, zip, lixeira, hosts, processo, servico, benchmark, duplicata, pasta e gerador de config. Introducao alimentar ficou de fora.",
     "2026-11-10 14:58 F6: adp_outras.py 26 frases, 25 chaves, 27 testes OK, no MODULOS. iptu venal 300 mil aliquota 1% = R$ 3.000,00 na barra. F7: COBERTURA.md 253/750 com adaptador, 497 sem. Destaques que faltam sao disco/arquivo/cadastro (Hoje ja mostra) ou botijao que ja responde por botijao-gas.",
     "2026-11-10 15:10 F8 financas: 20 chaves x 3 frases, 35 testes OK",
-    "2026-11-10 15:12 F8 casa: 20 chaves x 3 frases, 45 testes OK. Fila acabou: lote 2 do PERGUNTAS.md ainda nao existe."
+    "2026-11-10 15:12 F8 casa: 20 chaves x 3 frases, 45 testes OK. Fila acabou: lote 2 do PERGUNTAS.md ainda nao existe.",
+    "2026-11-10 15:15 F8 financas: 59 adaptadores com 3 frases (abreviado, erro, R$/mil). unittest 36 OK",
+    "2026-11-10 15:17 F8 casa: 42 adaptadores com 3 frases. unittest 46 OK"
   ],
   "pedidos": [],
-  "atualizado": "2026-11-10 15:12"
+  "atualizado": "2026-11-10 15:17"
 }

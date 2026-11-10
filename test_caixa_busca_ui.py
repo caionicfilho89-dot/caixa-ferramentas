@@ -112,6 +112,67 @@ class TestBarraBusca(unittest.TestCase):
         self.assertEqual(abertos, ["tool-2"])
         barra.deleteLater()
 
+    def test_enter_sem_seta_nao_abre(self):
+        """CRITICA F3: Enter com resposta já na lista NÃO abre ferramenta sozinho."""
+        barra = busca.BarraBusca(responder=_stub_responder, debounce_ms=0)
+        abertos = []
+        barra.abrir_ferramenta.connect(lambda k: abertos.append(k))
+        barra.set_texto("20% de 350")
+        self.assertEqual(len(barra.resultados()), 1)
+        _tecla(barra.campo, Qt.Key.Key_Return)
+        self.assertEqual(abertos, [])
+        # seta = seleção de propósito → aí Enter abre
+        _tecla(barra.campo, Qt.Key.Key_Down)
+        _tecla(barra.campo, Qt.Key.Key_Return)
+        self.assertEqual(abertos, ["calculadora-cientifica"])
+        barra.deleteLater()
+
+    def test_card_mostra_detalhe_e_pontuacao(self):
+        """Fonte mono + detalhe no card (Q10/Q56: '.', ',' e conta visíveis)."""
+        def resp_q10(_t: str) -> list[dict]:
+            return [{
+                "titulo": "Juros compostos",
+                "resposta": "R$ 1.030,30",
+                "detalhe": "1.000 × (1,01)^3 = 1.030,30",
+                "chave_ferramenta": "financas",
+                "confianca": 0.95,
+            }]
+
+        barra = busca.BarraBusca(responder=resp_q10, debounce_ms=0)
+        barra.set_texto("juros compostos 1000 a 1% 3 meses")
+        item = barra._widgets[0]
+        self.assertEqual(item.lbl_resposta.text(), "R$ 1.030,30")
+        self.assertIn(".", item.lbl_resposta.text())
+        self.assertIn(",", item.lbl_resposta.text())
+        self.assertIn("R$", item.lbl_resposta.text())
+        self.assertFalse(item.lbl_detalhe.isHidden())
+        self.assertIn("1.030,30", item.lbl_detalhe.text())
+        fam = item.lbl_resposta.font().family().lower()
+        self.assertTrue(
+            "consolas" in fam or "cascadia" in fam or "courier" in fam,
+            f"fonte do valor deveria ser mono, veio {fam!r}",
+        )
+        barra.deleteLater()
+
+    def test_card_q56_gorjeta_detalhe(self):
+        def resp_q56(_t: str) -> list[dict]:
+            return [{
+                "titulo": "Gorjeta",
+                "resposta": "gorjeta 37,20; total 285,20",
+                "detalhe": "15% de 248,00 = 37,20 · total 285,20",
+                "chave_ferramenta": "calculadora-gorjeta",
+                "confianca": 0.92,
+            }]
+
+        barra = busca.BarraBusca(responder=resp_q56, debounce_ms=0)
+        barra.set_texto("gorjeta 15% numa conta de 248,00")
+        item = barra._widgets[0]
+        self.assertIn("37,20", item.lbl_resposta.text())
+        self.assertIn("285,20", item.lbl_resposta.text())
+        self.assertFalse(item.lbl_detalhe.isHidden())
+        self.assertIn("15%", item.lbl_detalhe.text())
+        barra.deleteLater()
+
     def test_esc_limpa_depois_fecha(self):
         barra = busca.BarraBusca(responder=_stub_responder, debounce_ms=0)
         fechou = []
@@ -160,6 +221,19 @@ class TestBarraBusca(unittest.TestCase):
             txt = f.read()
         ruins = [c for c in txt if 0x0300 <= ord(c) <= 0x1CFF]
         self.assertEqual(ruins, [])
+
+    def test_fonte_resposta_sem_font_merging(self):
+        """NoFontMerging evita sumir '.', ',' e 'R$' (CRITICA F3)."""
+        from PyQt6.QtGui import QFont
+        import caixa_tema as tema
+
+        f = tema.fonte_resposta_barra(16)
+        strat = f.styleStrategy()
+        flag = QFont.StyleStrategy.NoFontMerging
+        # PyQt6: StyleStrategy e Flag; compara via value
+        tem = bool(strat.value & flag.value) if hasattr(strat, "value") else (flag in strat)
+        self.assertTrue(tem, f"strategy={strat!r} deveria incluir NoFontMerging")
+        self.assertIn("consolas", f.family().lower())
 
 
 if __name__ == "__main__":

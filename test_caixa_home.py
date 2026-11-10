@@ -161,6 +161,72 @@ class TestTelaHoje(unittest.TestCase):
         ruins = [c for c in txt if 0x0300 <= ord(c) <= 0x1CFF]
         self.assertEqual(ruins, [])
 
+    def _quatro_sensores(self):
+        return [
+            {
+                "id": "disco",
+                "emoji": "💾",
+                "titulo": "Disco C:",
+                "valor": "42 GB livres",
+                "detalhe": "de 512 GB · 8% livre",
+                "acao": {"rotulo": "Liberar espaço", "chave_ferramenta": "disk-analyzer"},
+            },
+            {
+                "id": "downloads",
+                "emoji": "📥",
+                "titulo": "Downloads",
+                "valor": "17 arquivos soltos",
+                "detalhe": "3 instaladores velhos",
+                "acao": {"rotulo": "Arrumar", "chave_ferramenta": "organizador-downloads"},
+            },
+            {
+                "id": "prints",
+                "emoji": "🖼️",
+                "titulo": "Prints",
+                "valor": "3 recentes",
+                "detalhe": "pasta Capturas de Tela",
+                "acao": {"rotulo": "Anotar", "chave_ferramenta": "print-anotador"},
+            },
+            {
+                "id": "clipboard",
+                "emoji": "📋",
+                "titulo": "Área de transferência",
+                "valor": "texto copiado",
+                "detalhe": "últimos 40 caracteres…",
+                "acao": {"rotulo": "Abrir", "chave_ferramenta": "area-transferencia"},
+            },
+        ]
+
+    def test_sensores_altura_de_verdade(self):
+        """Cartões ≥ 160 px — nada de faixa de 60 px (CRITICA F3 / F7)."""
+        tela = self._tela(lambda: [])
+        tela.renderizar(self._quatro_sensores())
+        self.assertEqual(len(tela._cartoes), 4)
+        for card in tela._cartoes:
+            self.assertGreaterEqual(card.minimumHeight(), 160)
+            self.assertGreaterEqual(card.sizeHint().height(), 160)
+        self.assertGreaterEqual(tela.altura_sensores(), 160)
+        tela._parar()
+        tela.deleteLater()
+
+    def test_quatro_sensores_cabem_1366_e_1080(self):
+        """1366×768 e 1920×1080 mostram GB livres + 4 sensores sem rolar a grade."""
+        tela = self._tela(lambda: [])
+        tela.renderizar(self._quatro_sensores())
+        # viewport da Hoje (descontando chrome/barra ~120 px)
+        self.assertTrue(tela.cabe_sensores_sem_rolar(1366, 768 - 120))
+        self.assertTrue(tela.cabe_sensores_sem_rolar(1920, 1080 - 140))
+        vals = [c.dados()["valor"] for c in tela._cartoes]
+        self.assertTrue(any("GB" in v for v in vals))
+        tela._parar()
+        tela.deleteLater()
+
+    def test_botao_todas_com_contraste(self):
+        tela = self._tela(lambda: [])
+        self.assertEqual(tela.btn_todas.objectName(), "todasFerramentas")
+        tela._parar()
+        tela.deleteLater()
+
 
 if __name__ == "__main__":
     unittest.main()

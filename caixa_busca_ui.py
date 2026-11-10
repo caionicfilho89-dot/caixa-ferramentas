@@ -66,6 +66,7 @@ class ItemResposta(QFrame):
         self.lbl_titulo.setObjectName("respTitulo")
         self.lbl_resposta = QLabel("")
         self.lbl_resposta.setObjectName("respResposta")
+        self.lbl_resposta.setFont(tema.fonte_resposta_barra(16))
         self.lbl_resposta.setWordWrap(False)  # resposta em UMA linha (RUMO)
         self.lbl_resposta.setTextInteractionFlags(
             Qt.TextInteractionFlag.TextSelectableByMouse
@@ -73,6 +74,7 @@ class ItemResposta(QFrame):
         self.lbl_detalhe = QLabel("")
         self.lbl_detalhe.setObjectName("respDetalhe")
         self.lbl_detalhe.setWordWrap(True)
+        self.lbl_detalhe.setMinimumHeight(18)
         col.addWidget(self.lbl_titulo)
         col.addWidget(self.lbl_resposta)
         col.addWidget(self.lbl_detalhe)
@@ -85,9 +87,13 @@ class ItemResposta(QFrame):
 
     def preencher(self, dados: dict) -> None:
         self.lbl_titulo.setText(str(dados.get("titulo") or ""))
-        self.lbl_resposta.setText(str(dados.get("resposta") or ""))
-        detalhe = str(dados.get("detalhe") or "")
+        resposta = str(dados.get("resposta") or "")
+        self.lbl_resposta.setText(resposta)
+        # reaplica fonte mono — QSS sozinho (Segoe ExtraBold) sumia com '.' e ','
+        self.lbl_resposta.setFont(tema.fonte_resposta_barra(16))
+        detalhe = str(dados.get("detalhe") or "").strip()
         self.lbl_detalhe.setText(detalhe)
+        # detalhe da conta sempre no card quando existe (CRITICA F3)
         self.lbl_detalhe.setVisible(bool(detalhe))
         self._chave = str(dados.get("chave_ferramenta") or "")
         self.btn.setVisible(bool(self._chave))
@@ -141,6 +147,8 @@ class BarraBusca(QWidget):
         self._itens_dados: list[dict] = []
         self._widgets: list[ItemResposta] = []
         self._sel = -1
+        # Enter só abre ferramenta se o usuário escolheu de propósito (setas/clique)
+        self._sel_proposital = False
         self._ultima_consulta = ""
 
         self.setObjectName("barraBusca")
@@ -279,10 +287,12 @@ class BarraBusca(QWidget):
             item = ItemResposta(i, self.lista_inner)
             item.preencher(dados)
             item.abrir.connect(self.abrir_ferramenta.emit)
-            item.ativado.connect(self._selecionar)
+            item.ativado.connect(self._selecionar_proposital)
             self.lista_layout.insertWidget(i, item)
             self._widgets.append(item)
-        self._selecionar(0)
+        # destaca o 1º visualmente, mas Enter NÃO abre até seta/clique (CRITICA F3)
+        self._sel_proposital = False
+        self._selecionar(0, proposital=False)
 
     def _limpar_itens(self) -> None:
         for w in self._widgets:
@@ -290,25 +300,36 @@ class BarraBusca(QWidget):
             w.deleteLater()
         self._widgets.clear()
         self._itens_dados.clear()
+        self._sel_proposital = False
 
-    def _selecionar(self, indice: int) -> None:
+    def _selecionar(self, indice: int, proposital: bool = False) -> None:
         if not self._widgets:
             self._sel = -1
+            self._sel_proposital = False
             return
         indice = max(0, min(indice, len(self._widgets) - 1))
         self._sel = indice
+        if proposital:
+            self._sel_proposital = True
         for i, w in enumerate(self._widgets):
             w.set_selecionado(i == indice)
+
+    def _selecionar_proposital(self, indice: int) -> None:
+        self._selecionar(indice, proposital=True)
 
     def _mover_sel(self, delta: int) -> None:
         if not self._widgets:
             return
         if self._sel < 0:
-            self._selecionar(0)
+            self._selecionar(0, proposital=True)
             return
-        self._selecionar(self._sel + delta)
+        self._selecionar(self._sel + delta, proposital=True)
 
     def _ativar_sel(self) -> None:
+        # Resposta já na lista: Enter só abre se o usuário escolheu de propósito
+        # (setas ou clique no card). Botão "Abrir ferramenta" e duplo-clique seguem.
+        if self._itens_dados and not self._sel_proposital:
+            return
         if self._sel < 0 or self._sel >= len(self._itens_dados):
             # sem seleção: consulta imediata
             self._timer.stop()

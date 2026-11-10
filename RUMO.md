@@ -40,6 +40,21 @@ Cartões **vivos, com dados reais**, e cada um tem um botão que resolve:
 
 Cartão sem dado real **não aparece**.
 
+## 🔥 Tendência do dia (decisão do Caio, 2026-11-10)
+
+A Caixa acompanha o que a comunidade dev está curtindo. Todo dia às 08:00 o `tendencias.py` lê GitHub Trending,
+repositórios novos com mais estrelas, Show HN e Reddit, filtra só **ferramenta de PC** (sem isca de pirataria,
+sem golpe/ataque, sem furar DRM, sem stalker) e escreve:
+- `TENDENCIAS.md` — ranking do dia com "parecida na Caixa";
+- `TENDENCIA_DO_DIA.md` — **a tarefa**: fazer a versão nossa, igual ou melhor.
+
+**Quem faz:** o **Grok Build** é o dono da Tendência do dia. Cursor e Antigravity pegam se a fila deles acabar e o
+Grok Build não tiver anunciado `--fazendo "Tendência: ..."` no painel. Isto **não** é calculadora: é a exceção
+liberada à pausa. Regras: código escrito do zero (inspiração na ideia, nunca copiar código, por causa da licença),
+offline, PyQt6, pt-BR, padrão de pasta/prefixo do `AGENTS_PROTOCOL.md`. Se já existe parecida
+(`catalogo.py --check`), **melhore a nossa**. Terminou: `python tendencias.py --feita <url>` + `--feito` no painel;
+o Claude integra.
+
 ---
 
 ## 📡 PAINEL — como um sabe o que o outro está fazendo
@@ -94,6 +109,11 @@ Arquivos: `caixa_home.py`, `caixa_busca_ui.py`, `caixa_tema.py`, `test_caixa_hom
   mostrarem os GB livres e os 4 sensores sem rolar. Botão "Todas as ferramentas" com contraste.
 - **F8**: atalho global **Ctrl+Espaço** + Caixa na bandeja (fechar = minimizar pra bandeja). Arquivo novo seu:
   `caixa_bandeja.py` com `class Bandeja` e `registrar_atalho(janela)`; o Claude liga no `caixa.pyw`.
+- **F9**: botões da Hoje que **resolvem de verdade**: Disco → abre Faxina já no C:; Downloads → Organizador já na
+  pasta Downloads; Prints → Print Anotador/OCR com o último print carregado; Pudim → abre o Pudim. Passe a pasta/arquivo
+  por argumento (`--pasta`, `--arquivo`) só se a ferramenta já aceitar; senão `--pedir claude` com a lista.
+- **F10**: destaque da Hoje ordenado pelo **uso real** (`cfg["uses"]` do caixa.pyw) com os 15 do Grok como ponto de
+  partida; mostrar no máx. 8. Teste offscreen a 1366×768 e 3840×2160 (300% DPI).
 
 ### 🧠 Antigravity: os motores
 Arquivos: `respostas_core.py`, `adp_essenciais.py`, `sensores_core.py`, `test_respostas.py`, `test_sensores.py`
@@ -114,6 +134,8 @@ Arquivos: `respostas_core.py`, `adp_essenciais.py`, `sensores_core.py`, `test_re
   (pós-processamento), assim as 353 adaptações do Grok Build ganham de graça. Teste com Q10 e Q56.
 - **F7**: ranking — carta com confiança < 0,35 não aparece se a 1ª tiver ≥ 0,8; no máximo 3 cartas.
 - **F8**: lote 2 de perguntas (`PERGUNTAS.md` Q61–Q120, o Grok escreve): ≥ 50 de 60 passando.
+- **F9**: em modo código o motor não pode depender de `staged/` (se faltar `<px>_core`, ache a pasta irmã pela
+  chave do `catalogo.json`). Teste: renomeie `staged` num teste temporário e o IPVA continua respondendo.
 
 ### 🔌 Grok Build (agente de terminal): liga as 750 calculadoras na barra
 Arquivos: `adp_indice.py` e `adp_<grupo>.py` (exceto `adp_essenciais.py`), `test_adp_<grupo>.py`.
@@ -135,6 +157,8 @@ existem respondam na barra sem abrir janela. Cada grupo fica num arquivo própri
 - 💸 **Economia de tokens (Grok Build):** `/new` (sessão nova) a cada tarefa F terminada; nada de `grep` em todos os
   `adp_*.py` nem `read_file` de arquivo inteiro — leia só o trecho (offset/limit); use `catalogo.py --check` e
   `COBERTURA.md` em vez de inventariar de novo.
+- ⛔ **F8 acabou em finanças + casa.** Ciência/unidades/dev ficam como estão. Agora: **pare** e espere o lote 2 do
+  `PERGUNTAS.md` (Q61–Q120); quando sair, conserte só as falhas da sua área.
 
 ### 🧐 Grok Bot: crítico e testador (não constrói app)
 Arquivos: `PERGUNTAS.md`, `CRITICA.md`

@@ -72,6 +72,9 @@ CAT_CORES = {
 FONTE = "Segoe UI"
 FONTE_EMOJI = "Segoe UI Emoji"
 FONTE_MONO = "Consolas"
+# Valores monetários/numéricos da barra: mono desenha '.', ',' e 'R$' de verdade
+# (Segoe UI ExtraBold no card sumia com a pontuação — CRITICA F3 / Q10→"1 030 30").
+FONTE_VALOR = "Consolas"
 
 
 def cor_categoria(nome: str) -> str:
@@ -110,6 +113,17 @@ def fonte_valor_grande() -> QFont:
 
 def fonte_valor_pequeno() -> QFont:
     return fonte(16, QFont.Weight.DemiBold)
+
+
+def fonte_resposta_barra(tamanho: int = 16) -> QFont:
+    """Fonte do valor na barra — Consolas pra '.', ',' e 'R$' não sumirem."""
+    f = QFont(FONTE_VALOR, max(10, int(tamanho)))
+    f.setWeight(QFont.Weight.Bold)
+    f.setStyleHint(QFont.StyleHint.TypeWriter)
+    f.setStyleStrategy(
+        QFont.StyleStrategy.PreferAntialias | QFont.StyleStrategy.NoFontMerging
+    )
+    return f
 
 
 def fonte_corpo() -> QFont:
@@ -191,13 +205,26 @@ QLineEdit#campoBusca:focus {{
     color: {TEXTO};
 }}
 #respResposta {{
-    font: 800 16pt '{FONTE}';
+    font: 700 16pt '{FONTE_VALOR}';
     color: {OK};
     padding: 2px 0 4px 0;
 }}
 #respDetalhe {{
-    color: {TEXTO_MUDO};
-    font: 9pt '{FONTE}';
+    color: {TEXTO_SUAVE};
+    font: 10pt '{FONTE}';
+    padding: 0 0 2px 0;
+}}
+QPushButton#todasFerramentas {{
+    background: #2a2740;
+    color: #e7e9f0;
+    border: 1px solid {ACCENT};
+    border-radius: 10px;
+    padding: 10px 16px;
+    font: 700 10pt '{FONTE}';
+}}
+QPushButton#todasFerramentas:hover {{
+    background: {ACCENT};
+    color: #ffffff;
 }}
 #hintBusca {{
     color: {TEXTO_MUDO};
@@ -339,8 +366,9 @@ class CartaoGrande(CartaoBase):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setObjectName("cartaoGrande")
-        self.setMinimumSize(280, 168)
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        # altura de verdade — nunca esmagar numa faixa de 60 px (CRITICA F3 / F7)
+        self.setMinimumSize(260, 172)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         root = QHBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
@@ -617,6 +645,7 @@ __all__ = [
     "fonte",
     "fonte_corpo",
     "fonte_mudo",
+    "fonte_resposta_barra",
     "fonte_secao",
     "fonte_titulo",
     "fonte_valor_grande",
