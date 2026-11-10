@@ -13,7 +13,7 @@ import os
 import re
 import sys
 
-from PyQt6.QtCore import QPoint, Qt, QTimer
+from PyQt6.QtCore import QPoint, Qt, QThread, QTimer, pyqtSignal
 from PyQt6.QtGui import QAction, QFont
 from PyQt6.QtWidgets import (QApplication, QFrame, QLabel, QMenu, QScrollArea, QVBoxLayout, QWidget)
 
@@ -74,6 +74,81 @@ def _ha(t):
 def _corta(s, n):
     s = " ".join(str(s or "").split())
     return s if len(s) <= n else s[: n - 1] + "…"
+
+
+# ---------------------------------------------------------------- gastos
+GROK_LOG = os.path.join(os.path.expanduser("~"), ".grok", "logs", "unified.jsonl")
+_grok_cache = {"mtime": None, "dados": None}
+
+
+def gasto_grok():
+    """Crédito semanal do SuperGrok (creditUsagePercent) e tokens de hoje, do log local do Grok CLI."""
+    try:
+        mt = os.path.getmtime(GROK_LOG)
+    except OSError:
+        return None
+    if _grok_cache["mtime"] == mt:
+        return _grok_cache["dados"]
+    hoje = dt.date.today()
+    pct, fim, tokens, chamadas = None, None, 0, 0
+    with open(GROK_LOG, encoding="utf-8", errors="replace") as f:
+        for linha in f:
+            if "creditUsagePercent" in linha:
+                try:
+                    cfg = json.loads(linha)["ctx"]["config"]
+                    pct = float(cfg["creditUsagePercent"])
+                    fim = cfg.get("currentPeriod", {}).get("end")
+                except (ValueError, KeyError, TypeError):
+                    pass
+            elif '"prompt_tokens"' in linha:
+                try:
+                    j = json.loads(linha)
+                    quando = dt.datetime.fromisoformat(j["ts"].replace("Z", "+00:00")).astimezone()
+                    if quando.date() == hoje:
+                        c = j["ctx"]
+                        tokens += (c.get("prompt_tokens") or 0) - (c.get("cached_prompt_tokens") or 0)                             + (c.get("completion_tokens") or 0) + (c.get("reasoning_tokens") or 0)
+                        chamadas += 1
+                except (ValueError, KeyError, TypeError):
+                    pass
+    d = {"pct": pct, "fim": fim, "tokens": tokens, "chamadas": chamadas}
+    _grok_cache.update(mtime=mt, dados=d)
+    return d
+
+
+class BuscaClaude(QThread):
+    """Uso do plano Claude pelo mesmo endereço do /usage (reaproveita ~/painel-creditos)."""
+    pronto = pyqtSignal(object)
+
+    def run(self):
+        try:
+            import importlib.util
+            sp = importlib.util.spec_from_file_location(
+                "painel_creditos", os.path.join(os.path.expanduser("~"), "painel-creditos", "painel.py"))
+            m = importlib.util.module_from_spec(sp)
+            sp.loader.exec_module(m)
+            self.pronto.emit(m.fetch_usage())
+        except Exception as e:  # noqa: BLE001
+            self.pronto.emit({"erro": str(e)[:80]})
+
+
+def _falta(iso):
+    try:
+        t = dt.datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone()
+    except (ValueError, AttributeError):
+        return ""
+    s = int((t - dt.datetime.now().astimezone()).total_seconds())
+    if s <= 0:
+        return "renovando"
+    d, r = divmod(s, 86400)
+    h, r = divmod(r, 3600)
+    return f"renova em {d}d {h}h" if d else (f"renova em {h}h{r // 60:02d}" if h else f"renova em {r // 60} min")
+
+
+def _barra(pct):
+    pct = max(0.0, min(100.0, float(pct or 0)))
+    cor = "#ef4444" if pct >= 85 else ("#f59e0b" if pct >= 60 else "#22c55e")
+    cheios = int(round(pct / 10))
+    return f"<span style='color:{cor}'>{'█' * cheios}</span><span style='color:#3a3d55'>{'█' * (10 - cheios)}</span> <b style='color:{cor}'>{pct:.0f}%</b>"
 
 
 def coletar():
@@ -180,11 +255,32 @@ class Nota(QWidget):
             x, y = tela.right() - self.width() - 16, tela.top() + 16
         self.move(int(x), int(y))
         self.recolhida = bool(self.cfg.get("recolhida", False))
+        self.claude_uso = None
+        self._busca = None
+        self.timer_claude = QTimer(self)
+        self.timer_claude.timeout.connect(self._buscar_claude)
+        self.timer_claude.start(3 * 60_000)
+        self._buscar_claude()
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.atualizar)
         self.timer.start(10_000)
         self.atualizar()
+
+    def _buscar_claude(self):
+        if self._busca is not None and self._busca.isRunning():
+            return
+        self._busca = BuscaClaude(self)
+        self._busca.pronto.connect(self._claude_chegou)
+        self._busca.start()
+
+    def _claude_chegou(self, d):
+        self.claude_uso = d
+        self.atualizar()
+
+    def closeEvent_threads(self):
+        if self._busca is not None and self._busca.isRunning():
+            self._busca.wait(3000)
 
     # ------------------------------------------------------------ conteúdo
     def _limpar(self):
@@ -239,6 +335,26 @@ class Nota(QWidget):
             caixa.setTextFormat(Qt.TextFormat.RichText)
             caixa.setContentsMargins(8, 6, 8, 6)
             self.corpo_lay.addWidget(caixa)
+
+        self._rotulo("GASTOS", "secao")
+        cu = self.claude_uso
+        if cu and not cu.get("erro"):
+            fh, sd = cu.get("five_hour") or {}, cu.get("seven_day") or {}
+            self._rotulo(f"🧑‍🍳 <b>Claude</b> (plano) · 5h {_barra(fh.get('utilization'))} "
+                         f"<span style='color:#9a9ab0'>{_falta(fh.get('resets_at') or '')}</span><br>"
+                         f"&nbsp;&nbsp;&nbsp;&nbsp;semana {_barra(sd.get('utilization'))} "
+                         f"<span style='color:#9a9ab0'>{_falta(sd.get('resets_at') or '')}</span>")
+        else:
+            self._rotulo("🧑‍🍳 <b>Claude</b>: <span style='color:#9a9ab0'>"
+                         + ("lendo…" if cu is None else "não consegui ler o uso agora") + "</span>")
+        g = gasto_grok()
+        if g and g["pct"] is not None:
+            self._rotulo(f"🔌 <b>Grok CLI</b> (SuperGrok) · semana {_barra(g['pct'])} "
+                         f"<span style='color:#9a9ab0'>{_falta(g['fim'] or '')}</span><br>"
+                         f"&nbsp;&nbsp;&nbsp;&nbsp;hoje: {g['tokens'] / 1000:,.0f} mil tokens em {g['chamadas']} chamadas"
+                         .replace(",", "."))
+        self._rotulo("<span style='color:#9a9ab0'>🎨 Cursor · 🧠 Antigravity · 🧐 Cocaino: sem medidor no PC "
+                     "(só no site de cada um)</span>")
 
         if d["evol"]:
             self._rotulo("EVOLUÇÃO", "secao")
@@ -311,6 +427,7 @@ class Nota(QWidget):
         m.exec(e.globalPos())
 
     def closeEvent(self, e):  # noqa: N802
+        self.closeEvent_threads()
         self._salvar()
         super().closeEvent(e)
 
