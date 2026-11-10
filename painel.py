@@ -58,6 +58,16 @@ def mostrar(eu=None):
     print("=" * 70)
     print("PAINEL DOS AGENTES  (regras: RUMO.md)")
     print("=" * 70)
+    try:  # modo economia (economia.py, atualizado pelo carteiro a cada 3 min)
+        import economia
+        linhas = economia.resumo()
+        if linhas:
+            print("💸 MODO ECONOMIA (vale pra você se for da conta indicada; regras no RUMO.md):")
+            for l in linhas:
+                print("   " + l)
+            print("-" * 70)
+    except Exception:  # noqa: BLE001
+        pass
     for ag in AGENTES:
         d = carregar(ag)
         m = minutos_desde(d.get("atualizado"))

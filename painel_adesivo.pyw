@@ -299,9 +299,15 @@ class Nota(QWidget):
     def atualizar(self):
         d = coletar()
         n_pend = sum(len(v) for v in d["pend"].values())
+        try:
+            import economia
+            eco = economia.resumo()
+        except Exception:  # noqa: BLE001
+            eco = []
         self.resumo.setText(
             f"v{d['versao']} · {d['n']} ferramentas · 📨 {n_pend} pedido(s) no ar<br>"
-            f"📬 carteiro: {d['carteiro']}" + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else ""))
+            f"📬 carteiro: {d['carteiro']}" + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else "")
+            + "".join(f"<br><b>{_corta(l, 140)}</b>" for l in eco if not l.startswith("🟢")))
         self.resumo.setTextFormat(Qt.TextFormat.RichText)
         self.rolagem.setVisible(not self.recolhida)
         if self.recolhida:

@@ -17,3 +17,6 @@ _quarentena/
 tendencias.log
 carteiro.log
 carteiro_entregues.json
+ECONOMIA.json
+economia_historico.json
+*.json.tmp

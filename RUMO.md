@@ -40,6 +40,19 @@ Cartões **vivos, com dados reais**, e cada um tem um botão que resolve:
 
 Cartão sem dado real **não aparece**.
 
+## 💸 Modo economia (decisão do Caio, 2026-11-10)
+
+O `python painel.py` mostra no topo o modo de cada conta (medido a cada 3 min pelo carteiro via `economia.py`,
+com **previsão**: se no ritmo atual a cota estoura antes de renovar, já entra em econômico).
+Conta **Claude** = Claude. Conta **SuperGrok** = Grok CLI + Cocaino. Cursor e Antigravity: sem medidor (normal).
+- 🟢 **normal**: siga a fila.
+- 🟡 **econômico**: só tarefas pequenas e certeiras; nada de varrer pasta inteira, `grep` em tudo ou ler arquivo
+  inteiro; `/new` entre tarefas; nada de build/teste pesado à toa; respostas curtas. O carteiro entrega no máx.
+  1 vez a cada 10 min.
+- 🔴 **crítico**: termine o passo atual, anuncie `--feito` com onde parou e **PARE** até a cota renovar
+  (o painel mostra a hora). O carteiro não entrega pedido pra quem está em crítico.
+O Caio pode travar na mão: `python economia.py --forcar economico|critico|normal|auto`.
+
 ## 🔥 Tendência do dia (decisão do Caio, 2026-11-10)
 
 A Caixa acompanha o que a comunidade dev está curtindo. Todo dia às 08:00 o `tendencias.py` lê GitHub Trending,

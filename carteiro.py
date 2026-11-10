@@ -131,9 +131,26 @@ def entregar_janela(para, texto):
     return ("ENVIADO" in out), out.strip()[-200:]
 
 
+_ULTIMA_ENTREGA = {}  # agente -> time.time() da última entrega (modo econômico: no máx. 1 a cada 10 min)
+
+
+def _economia_permite(para):
+    """Modo economia (economia.py): crítico = não entrega; econômico = 1 entrega a cada 10 min por agente."""
+    try:
+        import economia
+        nv = economia.nivel_do_agente(para)
+    except Exception:  # noqa: BLE001
+        return True
+    if nv == "critico":
+        return False
+    if nv == "economico" and time.time() - _ULTIMA_ENTREGA.get(para, 0) < 600:
+        return False
+    return True
+
+
 def rodada():
     pend = pendentes()
-    alvos = [a for a in ("cursor", "antigravity", "grok") if a in pend]
+    alvos = [a for a in ("cursor", "antigravity", "grok") if a in pend and _economia_permite(a)]
     if not alvos:
         return
     if segundos_ocioso() < OCIOSO_MIN:
@@ -154,6 +171,7 @@ def rodada():
             log(f"{para}: {'ENTREGUE' if ok else 'falhou'} {len(pend[para])} pedido(s) — {info}")
             if ok:
                 marcar([i for i, *_ in pend[para]])
+                _ULTIMA_ENTREGA[para] = time.time()
     finally:
         try:
             os.remove(LOCK)
@@ -169,6 +187,9 @@ def hook(para):
     except Exception:  # noqa: BLE001
         pass
     itens = pendentes(para).get(para, [])
+    if itens and not _economia_permite(para):
+        log(f"{para}: modo economia crítico, pedido segue guardado")
+        return
     if itens:
         marcar([i for i, *_ in itens])
         log(f"{para}: ENTREGUE via hook {len(itens)} pedido(s)")
@@ -198,7 +219,19 @@ def main():
         rodada()
         return
     log("carteiro iniciado")
+    volta = 0
     while True:
+        if volta % 6 == 0:  # a cada 3 min: mede as cotas e atualiza o modo economia
+            try:
+                import economia
+                antes = {c: v.get("nivel") for c, v in economia._ler(economia.ESTADO, {}).get("contas", {}).items()}
+                e = economia.atualizar()
+                depois = {c: v.get("nivel") for c, v in e.get("contas", {}).items()}
+                if antes != depois:
+                    log(f"modo economia mudou: {antes} -> {depois}")
+            except Exception as ex:  # noqa: BLE001
+                log(f"economia erro: {ex}")
+        volta += 1
         try:
             rodada()
         except Exception as e:  # noqa: BLE001
