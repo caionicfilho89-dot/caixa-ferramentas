@@ -111,6 +111,8 @@ def main():
     ap.add_argument("--bloqueado")
     ap.add_argument("--pedir", nargs=2, metavar=("PARA", "TEXTO"))
     ap.add_argument("--resolvido", metavar="DE", help="apaga os pedidos que DE fez para você")
+    ap.add_argument("--pegar", action="store_true", help="pega a próxima tarefa livre do quadro (tarefas.json)")
+    ap.add_argument("--concluir", nargs="+", metavar=("ID", "RESULTADO"), help="marca tarefa do quadro como feita")
     a = ap.parse_args()
 
     if a.agente:
@@ -138,6 +140,23 @@ def main():
             outro = carregar(a.resolvido)
             outro["pedidos"] = [p for p in outro.get("pedidos", []) if p.get("para") != a.agente]
             salvar(a.resolvido, outro)
+        if a.pegar or a.concluir:
+            import tarefas
+            if a.concluir:
+                t = tarefas.concluir(a.agente, a.concluir[0], " ".join(a.concluir[1:]))
+                if t:
+                    d.setdefault("feitos", []).append(f"{time.strftime(FORMATO)} {t['id']} {t['titulo']}: {t['resultado']}")
+                    d["feitos"] = d["feitos"][-15:]
+                    d["fazendo"], d["arquivos"] = "", []
+            if a.pegar:
+                t = tarefas.pegar(a.agente)
+                if t:
+                    d["fazendo"] = f"{t['id']}: {t['titulo']}"
+                    print(f"\n📋 SUA TAREFA: {t['id']} — {t['titulo']}\n   {t['detalhe']}\n"
+                          f"   Ao terminar: python painel.py {a.agente} --concluir {t['id']} \"o que ficou pronto\"\n")
+                else:
+                    print("\n📋 Quadro sem tarefa livre pra você. Proponha 3 no CRITICA.md (seção Propostas) "
+                          "ou --pedir antigravity.\n")
         salvar(a.agente, d)
     mostrar(a.agente)
 

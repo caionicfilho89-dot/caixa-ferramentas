@@ -1,0 +1,153 @@
+[
+ {
+  "id": "T01",
+  "titulo": "Barra: ligar as 💰 Finanças sem adaptador (lote 1, 15 chaves)",
+  "detalhe": "COBERTURA.md seção '💰 Finanças & Trabalho' em 'Chaves sem adaptador': escolha as 15 mais úteis pro Caio, adaptador chamando o _core real, teste com 2 frases cada.",
+  "quem": [
+   "grokbuild",
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T02",
+  "titulo": "Barra: ligar as 🏠 Casa sem adaptador (lote 1, 15 chaves)",
+  "detalhe": "COBERTURA.md seção '🏠 Casa, Pet & Pessoal'. Mesmo padrão.",
+  "quem": [
+   "grokbuild",
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T03",
+  "titulo": "Barra: ligar as 💻 Dev & Dados sem adaptador (lote 1, 15 chaves)",
+  "detalhe": "COBERTURA.md seção '💻 Dev & Dados'. Mesmo padrão.",
+  "quem": [
+   "grokbuild",
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T04",
+  "titulo": "Barra: ligar as 🗂️ Arquivos & Sistema que CALCULAM algo (lote 1)",
+  "detalhe": "COBERTURA.md seção '🗂️ Arquivos & Sistema'; só as que respondem número/texto (não as que mexem em arquivo).",
+  "quem": [
+   "grokbuild",
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T05",
+  "titulo": "Hoje: sensor de bateria/energia (se for notebook) e de atualização pendente do Windows",
+  "detalhe": "sensores_core: só dado real, < 1 s, some se não houver dado. Cartão com ação que resolve.",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T06",
+  "titulo": "Hoje: sensor 'o que mais cresceu no disco nos últimos 7 dias'",
+  "detalhe": "Top 3 pastas que mais cresceram (cache leve, nada de varrer o C: inteiro a cada 60 s). Ação: abrir Faxina na pasta.",
+  "quem": [
+   "antigravity",
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T07",
+  "titulo": "Tendência #4: 'tocando agora' do Spotify como widget/papel de parede",
+  "detalhe": "TENDENCIAS.md #4 (nowPlayingDesktops). Versão nossa, código do zero, offline, PyQt6. Regras da seção 🔥 do RUMO.",
+  "quem": [
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T08",
+  "titulo": "Tendência #3: finanças pessoais estilo 'sure' — o que dá pra trazer pra Controle de Gastos",
+  "detalhe": "Leia o projeto 'we-promise/sure' (só a ideia), compare com controle-gastos e liste/implemente as 3 melhorias mais úteis.",
+  "quem": [
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T09",
+  "titulo": "Testar as 10 ferramentas mais usadas pelo Caio (cfg uses) e anotar o que irrita",
+  "detalhe": "CRITICA.md: o que é confuso/quebrado em cada uma, com passo a passo. Sem botão destrutivo.",
+  "quem": [
+   "grok"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T10",
+  "titulo": "Revisar visual da grade 'Todas' em 1366x768 e 4K (300%)",
+  "detalhe": "Cartões, fonte, rolagem, contraste. Print + correção no caixa_tema/caixa_home.",
+  "quem": [
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T11",
+  "titulo": "Barra: 20 perguntas novas do jeito do Caio (lote 3, Q121–Q140) com gabarito à mão",
+  "detalhe": "PERGUNTAS.md, temas que ainda não tem: casa, carro, viagem, trabalho freela.",
+  "quem": [
+   "grok"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ },
+ {
+  "id": "T12",
+  "titulo": "Barra: responder datas e prazos em linguagem natural ('daqui 45 dias úteis', 'quantos dias até o natal')",
+  "detalhe": "respostas_core/adp_essenciais, reaproveitando calendario-br.",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 17:58",
+  "resultado": ""
+ }
+]

@@ -151,6 +151,16 @@ def _barra(pct):
     return f"<span style='color:{cor}'>{'█' * cheios}</span><span style='color:#3a3d55'>{'█' * (10 - cheios)}</span> <b style='color:{cor}'>{pct:.0f}%</b>"
 
 
+def _quadro():
+    try:
+        with open(os.path.join(HERE, "tarefas.json"), encoding="utf-8") as f:
+            ts = json.load(f)
+    except (OSError, ValueError):
+        return ""
+    n = lambda st: sum(1 for t in ts if t.get("status") == st)  # noqa: E731
+    return f" · 📋 quadro: {n('pegou')} fazendo, {n('livre')} livres, {n('feito')} feitas"
+
+
 def coletar():
     """Tudo que a nota mostra, lido do disco."""
     painel = {}
@@ -306,7 +316,7 @@ class Nota(QWidget):
             eco = []
         self.resumo.setText(
             f"v{d['versao']} · {d['n']} ferramentas · 📨 {n_pend} pedido(s) no ar<br>"
-            f"📬 carteiro: {d['carteiro']}" + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else "")
+            f"📬 carteiro: {d['carteiro']}" + _quadro() + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else "")
             + "".join(f"<br><b>{_corta(l, 140)}</b>" for l in eco if not l.startswith("🟢")))
         self.resumo.setTextFormat(Qt.TextFormat.RichText)
         self.rolagem.setVisible(not self.recolhida)

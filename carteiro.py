@@ -148,6 +148,76 @@ def _economia_permite(para):
     return True
 
 
+_ULTIMO_EMPURRAO = {}  # agente -> time.time(); no máx. 1 empurrão a cada 30 min por agente
+PARADO_MIN = 10
+
+
+def parados_com_tarefa():
+    """Agentes sem 'fazendo' há 10+ min, sem pedido pendente, com tarefa livre no quadro → item de empurrão."""
+    try:
+        import tarefas
+    except Exception:  # noqa: BLE001
+        return {}
+    pend = pendentes()
+    saida = {}
+    for ag in ("cursor", "antigravity", "grok", "grokbuild"):
+        d = {}
+        try:
+            with open(os.path.join(PAINEL, ag + ".json"), encoding="utf-8") as f:
+                d = json.load(f)
+        except (OSError, ValueError):
+            pass
+        if d.get("fazendo") or ag in pend:
+            continue
+        try:
+            parado = (time.time() - time.mktime(time.strptime(d.get("atualizado", ""), "%Y-%m-%d %H:%M"))) / 60
+        except ValueError:
+            parado = 999
+        if parado < PARADO_MIN or time.time() - _ULTIMO_EMPURRAO.get(ag, 0) < 1800:
+            continue
+        livres = tarefas.livres_para(ag)
+        if livres:
+            saida[ag] = (int(parado), livres[0])
+    return saida
+
+
+def texto_empurrao(ag, minutos, t):
+    return (f"🤖 [automático · carteiro da Caixa, não foi o Caio que digitou] Você está parado há {minutos} min e tem "
+            f"tarefa livre no quadro (ex.: {t['id']} {t['titulo']}). Rode: cd C:/Users/caion/caixa-ferramentas; "
+            f"python painel.py {ag} --pegar — e faça a que ele te der. Ao terminar: --concluir <ID> \"resultado\" "
+            f"e --pegar de novo.")
+
+
+def pedir_propostas_se_faltar():
+    """Quadro quase vazio (< 5 livres) → pede 3 propostas ao Antigravity (no máx. 1 vez a cada 2 h)."""
+    try:
+        import tarefas
+        livres = [t for t in tarefas.ler() if t["status"] == "livre"]
+    except Exception:  # noqa: BLE001
+        return
+    if len(livres) >= 5 or time.time() - _ULTIMO_EMPURRAO.get("_propostas", 0) < 7200:
+        return
+    _ULTIMO_EMPURRAO["_propostas"] = time.time()
+    subprocess.run([sys.executable, os.path.join(HERE, "painel.py"), "claude", "--pedir", "antigravity",
+                    f"Quadro de tarefas com só {len(livres)} livres. Proponha 5 tarefas úteis pro Caio (de COBERTURA.md, "
+                    "TENDENCIAS.md, CRITICA.md) com: python tarefas.py --nova \"titulo\" \"detalhe\" agente1,agente2"],
+                   capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    log(f"quadro com {len(livres)} livres: pedi propostas ao Antigravity")
+
+
+def empurrar_parados():
+    if segundos_ocioso() < OCIOSO_MIN or os.path.exists(LOCK):
+        return
+    for ag, (minutos, t) in parados_com_tarefa().items():
+        if ag == "grokbuild" or not _economia_permite(ag):
+            continue  # Grok CLI recebe pelo hook/loop; economia manda segurar
+        ok, info = entregar_janela(ag, texto_empurrao(ag, minutos, t))
+        if "OCUPADO" in info:
+            continue
+        _ULTIMO_EMPURRAO[ag] = time.time()
+        log(f"{ag}: parado {minutos} min → empurrão pro quadro ({'ok' if ok else 'falhou'})")
+
+
 def rodada():
     pend = pendentes()
     alvos = [a for a in ("cursor", "antigravity", "grok") if a in pend and _economia_permite(a)]
@@ -180,6 +250,18 @@ def rodada():
         ctypes.windll.user32.SetForegroundWindow(antes)
 
 
+def parados_com_tarefa_hook(para):
+    """No fim de turno do Grok CLI: tem tarefa livre pra ele e ele não está com nenhuma em andamento?"""
+    try:
+        import tarefas
+        if any(t["status"] == "pegou" and t["por"] == para for t in tarefas.ler()):
+            return None
+        livres = tarefas.livres_para(para)
+        return livres[0] if livres else None
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def hook(para):
     """Hook de parada do Grok CLI: tem pedido novo? bloqueia o fim do turno e entrega o texto."""
     try:
@@ -187,6 +269,12 @@ def hook(para):
     except Exception:  # noqa: BLE001
         pass
     itens = pendentes(para).get(para, [])
+    if not itens and _economia_permite(para):
+        p = parados_com_tarefa_hook(para)
+        if p:
+            print(json.dumps({"decision": "block", "reason": texto_empurrao(para, 0, p)}, ensure_ascii=False))
+            log(f"{para}: fim de turno sem pedido → mandei pegar {p['id']} do quadro")
+        return
     if itens and not _economia_permite(para):
         log(f"{para}: modo economia crítico, pedido segue guardado")
         return
@@ -234,6 +322,9 @@ def main():
         volta += 1
         try:
             rodada()
+            empurrar_parados()
+            if volta % 20 == 0:
+                pedir_propostas_se_faltar()
         except Exception as e:  # noqa: BLE001
             log(f"erro: {e}")
         time.sleep(30)

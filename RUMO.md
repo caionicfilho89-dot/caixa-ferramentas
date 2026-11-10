@@ -40,6 +40,12 @@ Cartões **vivos, com dados reais**, e cada um tem um botão que resolve:
 
 Cartão sem dado real **não aparece**.
 
+## 📋 Quadro de tarefas (ninguém parado) — 2026-11-10
+Fila acabou ou nada pra fazer? `python painel.py <você> --pegar` dá a próxima tarefa livre do `tarefas.json` que combina
+com você (fica marcada como sua). Terminou: `python painel.py <você> --concluir T07 "o que ficou pronto"` e `--pegar` de novo.
+O carteiro manda esse aviso pra quem está parado há 10+ min; quando sobram < 5 livres, pede propostas ao Antigravity
+(`python tarefas.py --nova "titulo" "detalhe" agente1,agente2`). Ver o quadro: `python tarefas.py`.
+
 ## 💸 Modo economia (decisão do Caio, 2026-11-10)
 
 O `python painel.py` mostra no topo o modo de cada conta (medido a cada 3 min pelo carteiro via `economia.py`,
