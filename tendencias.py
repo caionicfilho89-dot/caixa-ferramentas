@@ -236,13 +236,25 @@ def nota_ferramenta(it):
     pos = len(w & set(POSITIVAS))
     neg = len(w & set(NEGATIVAS))
     fora = len(w & set(FORA_DO_FOCO))
+    # a Caixa é app de PC Windows, offline: só-Mac e só-web são ruído (pedido do Caio, 11/11)
+    pc = bool(re.search(r"\b(windows|win1[01]|desktop|cross-platform|multiplataforma|offline|exe|winget|"
+                        r"extension|extensão|extensao|pyqt|qt|tauri|wpf|winui|portable|portátil)\b", texto))
+    if not pc and re.search(r"\b(mac|macos|mac os|osx|os x|apple|iphone|ipad|ios|macbook|swiftui|appkit|"
+                            r"menu bar app|homebrew)\b", texto):
+        return -1
+    if not pc and re.search(r"\b(web|webapp|web-app|web app|browser-based|in the browser|in your browser|"
+                            r"no navegador|site|website|saas|plataforma|nextjs|next\.js|vercel|railway|"
+                            r"self-host|self-hosted|self hostable|hospedar|nostr|ipfs)\b", texto):
+        return -1
     tl = it["titulo"].lower()
     # quem FEZ e está mostrando a ferramenta = sinal forte de tendência (Show Lobsters, Pitch do TabNews, "criei/fiz")
     autor = bool(re.search(r"\bshow\b", it.get("topics", ""))) or bool(
         re.match(r"(pitch:|\[pitch\]|criei|fiz|lancei|desenvolvi|construí|construi|i made|i built)", tl)) or bool(
         re.search(r"\b(criei|lancei|desenvolvi|construí)\b", tl))
     # discussão/pergunta não é ferramenta (Reddit em inglês, TabNews em pt-BR)
-    if it["fonte"].startswith("Reddit") and re.match(r"(why|should|how|what|which|is |are |looking for|any |help)", tl):
+    if it["fonte"].startswith("Reddit") and re.match(
+            r"(why|should|how|what|which|is |are |looking for|any |help|alguém|alguem|como |vale a pena|qual|quais|"
+            r"o que|por que|porque|dúvida|duvida|ajuda|preciso|vocês|voces)", tl):
         return -1
     if it["fonte"].startswith("TabNews") and not autor and re.match(
             r"(como |vale a pena|se |por que|porque|o que|qual|quais|\[ajuda\]|ajuda|dúvida|duvida|estou |eu achava|texto )", tl):
