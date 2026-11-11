@@ -3,6 +3,7 @@
 Uma linha por versão (mais nova em cima). O painel adesivo lê este arquivo.
 Formato: `- **vX.Y.Z** · DD/MM · N ferramentas · o que o Caio ganhou`. O Claude atualiza a cada versão.
 
+- **v1.5.7** · 11/11 · 752 ferramentas · Tocando Agora entra no exe; abrir com --teste não conta como ferramenta mais usada; a Faxina aberta pela Hoje espera o clique em Varrer
 - **v1.5.6** · 10/11 · 751 ferramentas · barra acerta as 120 perguntas do Caio (luz com taxa fixa, etanol, Pix…); 17 ferramentas não travam mais ao fechar no meio de uma tarefa
 - **v1.5.5** · 10/11 · 751 ferramentas · botões da Hoje já abrem na pasta/arquivo certo (Faxina no C:, Organizador nos Downloads, último print); exe ~360 MB menor
 - **v1.5.4** · 10/11 · 751 ferramentas · 🎤 Notas de Voz (1ª Tendência do dia); visual novo dos cartões; Assistir abre o Pudim; destaques pelo seu uso

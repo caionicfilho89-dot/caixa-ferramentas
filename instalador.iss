@@ -3,7 +3,7 @@
 ; Compilar com:  ISCC.exe instalador.iss   (depois de rodar build_suite.py)
 
 #define AppName "Caixa de Ferramentas"
-#define AppVer "1.5.6"
+#define AppVer "1.5.7"
 #define AppPublisher "caionicfilho89-dot"
 #define MainExe "Caixa.exe"
 

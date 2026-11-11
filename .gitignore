@@ -6,6 +6,7 @@ __pycache__/
 staged/
 dist/
 build_tmp/
+build_anchor/
 instalador/
 *.spec
 build_log.txt

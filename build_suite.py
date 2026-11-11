@@ -1006,27 +1006,37 @@ def build(modmap, modules):
         "adp_audio", "adp_texto", "adp_jogos", "adp_arquivos",
     ]
     rumo_hidden += [m for m in _modulos_rumo_extras() if m not in rumo_hidden]
-    # muitos --hidden-import estouram o limite de linha de comando do Windows (WinError 206):
-    # a lista vai num hook do PyInstaller pra um módulo vazio que o app.py importa.
+    # muitos --hidden-import estouram o limite de linha de comando do Windows (WinError 206).
+    # A âncora fica FORA de staged/: stage() apaga essa pasta e, se outro agente stageia
+    # no meio do PyInstaller, o hidden-import some e o exe sai sem ferramenta nenhuma.
     hooks = os.path.join(HERE, "build_hooks")
+    anchor_dir = os.path.join(HERE, "build_anchor")
     os.makedirs(hooks, exist_ok=True)
-    with open(os.path.join(STAGED, "_caixa_mods.py"), "w", encoding="utf-8") as f:
-        f.write("# lista de módulos das ferramentas fica em build_hooks/hook-_caixa_mods.py\n")
+    os.makedirs(anchor_dir, exist_ok=True)
+    with open(os.path.join(anchor_dir, "_caixa_mods.py"), "w", encoding="utf-8") as f:
+        f.write("# ancora vazia; a lista real esta em build_hooks/hook-_caixa_mods.py\n")
     all_hidden = sorted(set(list(modules) + rumo_hidden))
     with open(os.path.join(hooks, "hook-_caixa_mods.py"), "w", encoding="utf-8") as f:
         f.write("hiddenimports = %r\n" % (all_hidden,))
-    app_py = os.path.join(STAGED, "app.py")
-    src = open(app_py, encoding="utf-8").read()
-    if "import _caixa_mods" not in src:
-        with open(app_py, "w", encoding="utf-8") as f:
-            f.write("import _caixa_mods  # noqa: F401 (puxa as ferramentas pro exe)\n" + src)
-    cmd += ["--additional-hooks-dir", hooks, "--hidden-import", "_caixa_mods"]
+    cmd += ["--paths", anchor_dir, "--additional-hooks-dir", hooks, "--hidden-import", "_caixa_mods"]
     for pkg in COLLECT_ALL:
         cmd += ["--collect-all", pkg]
     cmd.append(os.path.join(STAGED, "app.py"))
     print("Rodando PyInstaller…")
     r = subprocess.run(cmd)
-    return r.returncode
+    if r.returncode != 0:
+        return r.returncode
+    toc = os.path.join(HERE, "build_tmp", "Caixa", "PYZ-00.toc")
+    try:
+        blob = open(toc, encoding="utf-8", errors="replace").read()
+    except OSError:
+        print("ERRO: PYZ-00.toc ausente")
+        return 1
+    faltou = [m for m in ("npw_gui", "faxina", "caixa_ui") if m not in blob]
+    if faltou:
+        print("ERRO: ferramentas nao entraram no exe:", ", ".join(faltou))
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
