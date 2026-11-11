@@ -163,7 +163,7 @@ def main():
                 import fabrica_mail
                 alvo = carteiro._pausados().get(para, para)
                 fabrica_mail.enviar(a.agente, alvo, f"Pedido de {a.agente}", texto)
-                if alvo != "grok":
+                if alvo != "grok" or alvo in carteiro._cadeiras_b():
                     carteiro.marcar([carteiro._id(a.agente, pedido)])
                 print(f"📬 pedido enviado pelo correio pra {fabrica_mail.nome(alvo)} ({alvo})")
             except Exception as e:  # noqa: BLE001 — correio fora do ar: o carteiro entrega do jeito antigo

@@ -48,6 +48,15 @@ def _id(de, p):
     return hashlib.sha1(f"{de}|{p.get('para')}|{p.get('quando')}|{p.get('texto')}".encode("utf-8")).hexdigest()[:12]
 
 
+def _cadeiras_b():
+    """Formação B: cadeiras ocupadas pelo Google (agy) — falam pelo correio, não por janela."""
+    try:
+        import formacao
+        return formacao.cadeiras_b()
+    except Exception:  # noqa: BLE001
+        return set()
+
+
 def _pausados():
     """agentes_pausados.json: {"grok": "antigravity"} = Cocaino pausado, os pedidos dele vão pro Antigravity."""
     try:
@@ -237,7 +246,7 @@ def empurrar_parados():
     if segundos_ocioso() < OCIOSO_MIN or os.path.exists(LOCK):
         return
     for ag, (minutos, t) in parados_com_tarefa().items():
-        if ag == "grokbuild" or not _economia_permite(ag):
+        if ag == "grokbuild" or ag in _cadeiras_b() or not _economia_permite(ag):
             continue  # Grok CLI recebe pelo hook/loop; economia manda segurar
         ok, info = entregar_janela(ag, texto_empurrao(ag, minutos, t))
         if "OCUPADO" in info:
@@ -264,7 +273,8 @@ def fechar_testes_esquecidos(minutos=10):
 
 def rodada():
     pend = pendentes()
-    alvos = [a for a in ("cursor", "antigravity", "grok") if a in pend and _economia_permite(a)]
+    alvos = [a for a in ("cursor", "antigravity", "grok") if a in pend and _economia_permite(a)
+             and a not in _cadeiras_b()]
     if not alvos:
         return
     if segundos_ocioso() < OCIOSO_MIN:
@@ -367,7 +377,8 @@ def acordar_com_correio():
     except Exception:  # noqa: BLE001
         return
     for ag in ("cursor", "antigravity"):
-        if ag in _pausados() or not _economia_permite(ag) or time.time() - _ULTIMO_CUTUCAO_CORREIO.get(ag, 0) < 600:
+        if (ag in _pausados() or ag in _cadeiras_b() or not _economia_permite(ag)
+                or time.time() - _ULTIMO_CUTUCAO_CORREIO.get(ag, 0) < 600):
             continue
         try:
             msgs = fabrica_mail.caixa(ag)
@@ -388,6 +399,8 @@ def acordar_com_correio():
 def ponte_cocaino():
     """Cocaino (Grok Bot) não aceita MCP: o carteiro lê o correio dele (PurpleCarp) e cola o texto na janela.
     Em reserva (agentes_pausados.json) → encaminha pro substituto pelo correio."""
+    if "grok" in _cadeiras_b():
+        return  # formação B: a cadeira do Cocaino é um agy com correio próprio
     try:
         import fabrica_mail
         msgs = fabrica_mail.caixa("grok")
@@ -505,6 +518,12 @@ def main():
             if volta % 2 == 0:  # a cada 1 min: Fábrica 2.0 (correio)
                 acordar_com_correio()
                 ponte_cocaino()
+            if volta % 4 == 2:  # a cada 2 min: formação B — cadeira Google que fechou e tem trabalho → reabre
+                try:
+                    import formacao
+                    formacao.garantir_b()
+                except Exception as ex:  # noqa: BLE001
+                    log(f"formação B: {ex}")
             if volta % 6 == 3:  # a cada 3 min: o Gemini atende o correio dele (numa thread: demora)
                 import threading
 

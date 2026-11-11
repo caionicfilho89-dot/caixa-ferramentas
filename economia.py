@@ -31,7 +31,8 @@ HIST = os.path.join(HERE, "economia_historico.json")
 GROK_LOG = os.path.join(os.path.expanduser("~"), ".grok", "logs", "unified.jsonl")
 CREDITOS = os.path.join(os.path.expanduser("~"), "painel-creditos", "painel.py")
 
-CONTA_DO_AGENTE = {"claude": "claude", "grokbuild": "grok", "grok": "grok", "cursor": "grok", "antigravity": None}
+CONTA_DO_AGENTE = {"claude": "claude", "grokbuild": "grok", "grok": "grok", "cursor": "grok",
+                   "antigravity": "google", "gemini": "google"}
 ICONE = {"normal": "🟢", "economico": "🟡", "critico": "🔴"}
 REGRAS = {
     "normal": "tudo normal",
@@ -60,6 +61,27 @@ def medir_claude():
     fh, sd = d.get("five_hour") or {}, d.get("seven_day") or {}
     return [{"janela": "5h", "pct": float(fh.get("utilization") or 0), "renova": fh.get("resets_at")},
             {"janela": "semana", "pct": float(sd.get("utilization") or 0), "renova": sd.get("resets_at")}]
+
+
+def medir_google():
+    """Google AI Pro (Antigravity + Gemini + cadeiras da formação B): cota que o app mostra em Configurações,
+    lida sozinha por cota_antigravity.py (janela 5h, a cada 30 min) e cota_antigravity_semanal.py (semana, OCR)."""
+    import re as _re
+    ag = _ler(os.path.join(HERE, "cotas_manuais.json"), {}).get("antigravity", {})
+    janelas = []
+    if ag.get("gemini_5h_usado") is not None:
+        janelas.append({"janela": "5h", "pct": float(ag["gemini_5h_usado"]), "renova": ag.get("gemini_5h_renova"),
+                        "lido": str(ag.get("lido_auto", ""))[-5:]})
+    if ag.get("gemini_semana_usado") is not None:
+        renova = None
+        m = _re.search(r"(\d+)\s*dia", str(ag.get("renova", "")))
+        base = ag.get("semana_lida_em")
+        if m and base:
+            renova = (dt.datetime.fromtimestamp(float(base), dt.timezone.utc)
+                      + dt.timedelta(days=int(m.group(1)))).isoformat()
+        janelas.append({"janela": "semana", "pct": float(ag["gemini_semana_usado"]), "renova": renova,
+                        "lido": str(ag.get("lido", ""))[:11]})
+    return janelas
 
 
 def medir_grok():
@@ -155,7 +177,7 @@ def atualizar():
     hist = _ler(HIST, [])
     agora = _agora()
     contas = {}
-    for conta, medir in (("claude", medir_claude), ("grok", medir_grok)):
+    for conta, medir in (("claude", medir_claude), ("grok", medir_grok), ("google", medir_google)):
         try:
             janelas = medir()
         except Exception as e:  # noqa: BLE001 — sem medida = mantém o último nível conhecido
@@ -207,15 +229,26 @@ def folga_do_agente(agente, estado=None):
             return max(0.0, 100.0 - float(ag["gemini_semana_usado"]))
         except (KeyError, TypeError, ValueError):
             return 50.0
-    conta = CONTA_DO_AGENTE.get(agente)
+    conta = conta_do_agente(agente)
     janelas = estado.get("contas", {}).get(conta, {}).get("janelas", []) if conta else []
     semana = [j for j in janelas if j.get("janela") == "semana"]
     return max(0.0, 100.0 - semana[0]["pct"]) if semana else 50.0
 
 
+def conta_do_agente(agente):
+    """Conta de cota do agente. Formação B (formacao.py): cadeiras do SuperGrok rodam no Google = conta do Antigravity."""
+    try:
+        import formacao
+        if agente in formacao.cadeiras_b():
+            return CONTA_DO_AGENTE.get("antigravity")
+    except Exception:  # noqa: BLE001
+        pass
+    return CONTA_DO_AGENTE.get(agente)
+
+
 def nivel_do_agente(agente, estado=None):
     estado = estado if estado is not None else _ler(ESTADO, {})
-    conta = CONTA_DO_AGENTE.get(agente)
+    conta = conta_do_agente(agente)
     if not conta:
         return "normal"
     return estado.get("contas", {}).get(conta, {}).get("nivel", "normal")
@@ -236,7 +269,8 @@ def resumo(estado=None):
             if j.get("estoura_em"):
                 p += f" (no ritmo atual estoura ~{j['estoura_em']}, antes de renovar)"
             partes.append(p)
-        nome = {"claude": "Claude", "grok": "SuperGrok (Cocaino + Grok CLI + Cursor)"}.get(conta, conta)
+        nome = {"claude": "Claude", "grok": "SuperGrok (Cocaino + Grok CLI + Cursor)",
+                "google": "Google AI Pro (Antigravity + Gemini + formação B)"}.get(conta, conta)
         linhas.append(f"{ICONE[c.get('nivel', 'normal')]} {nome}: {c.get('nivel', 'normal').upper()} · "
                       + ", ".join(partes) + (f" · regra: {REGRAS[c['nivel']]}" if c.get("nivel") != "normal" else ""))
     return linhas
