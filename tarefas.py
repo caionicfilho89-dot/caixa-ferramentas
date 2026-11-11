@@ -109,7 +109,7 @@ def concluir(agente, tid, resultado=""):
     ts = ler()
     for t in ts:
         if t["id"] == tid:
-            t.update(status="feito", por=agente, quando=time.strftime(FMT), resultado=resultado[:300])
+            t.update(status="feito", por=agente, quando=time.strftime(FMT), resultado=resultado[:2000])
             salvar(ts)
             return t
     return None
