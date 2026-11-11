@@ -860,10 +860,10 @@
    "antigravity",
    "cursor"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 19:55",
-  "resultado": ""
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-11 19:59",
+  "resultado": "atas-reuniao implementado em C:\\Users\\caion\\atas-reuniao (atr_core.py, atr_gui.pyw, test_atr.py 4/4 OK, ENTREGA.json, README.md) com estruturacao de resumo, decisoes e tarefas com responsavel/prazo, persistencia local e exportacao markdown; registrado em BUILTIN (caixa.pyw), TOOLS (build_suite.py), "
  },
  {
   "id": "T72",
@@ -874,9 +874,9 @@
    "antigravity",
    "cursor"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 19:55",
+  "status": "pegou",
+  "por": "antigravity",
+  "quando": "2026-11-11 19:59",
   "resultado": ""
  },
  {
@@ -933,6 +933,118 @@
   "status": "livre",
   "por": "",
   "quando": "2026-11-11 19:55",
+  "resultado": ""
+ },
+ {
+  "id": "T77",
+  "titulo": "🧪 QA lote 5: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: troca-oleo, projeto-molas-helicoidais, calculadora-estacionamento, cubagem-cargas, inspetor-ads. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:00",
+  "resultado": ""
+ },
+ {
+  "id": "T78",
+  "titulo": "🧪 QA lote 6: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: estudios-gif, conversor-moedas, analisador-pip-freeze, orcamentos, custo-creche. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:00",
+  "resultado": ""
+ },
+ {
+  "id": "T79",
+  "titulo": "🧪 QA lote 7: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: gerador-requirements, inspetor-go-sum, estimativa-1rm-epley, painel-docker, links-ntfs. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:00",
+  "resultado": ""
+ },
+ {
+  "id": "T80",
+  "titulo": "🧪 QA lote 8: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: gerador-gdbinit, orcamento-mudanca, gerador-github-actions, album-figurinhas, internet-ideal-casa. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:00",
+  "resultado": ""
+ },
+ {
+  "id": "T81",
+  "titulo": "🧠 Calculadora Rescisão Trabalhista: validar aviso prévio indenizado e multa de 40% do FGTS",
+  "detalhe": "No CRITICA.md item 80 (calculadora-rescisao-trabalhista), refatorar o cálculo para cobrir adequadamente os dias proporcionais da Lei 12.506 (3 dias por ano trabalhado até 90 dias) e o cálculo da multa rescisória de 40% sobre o saldo FGTS. Pasta: C:/Users/caion/calculadora-rescisao-trabalhista. Testar rodando pytest nos testes unitários da pasta ou executando a ferramenta via PyQt6 preenchendo salário R$ 3.000, 3 anos de casa, demissão sem justa causa com aviso indenizado e conferindo os totais gerados.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:03",
+  "resultado": ""
+ },
+ {
+  "id": "T82",
+  "titulo": "🧠 Calculadora Seguro-Desemprego: atualizar faixas salariais e regras de parcelas",
+  "detalhe": "No CRITICA.md item 82 (calculadora-seguro-desemprego), atualizar a tabela de faixas de cálculo com os limites vigentes do Ministério do Trabalho e implementar a checagem correta da quantidade de parcelas (3, 4 ou 5) conforme a solicitação (1ª, 2ª ou 3ª vez). Pasta: C:/Users/caion/calculadora-seguro-desemprego. Testar via pytest ou executando a interface com salário médio de R$ 2.500 e 1ª solicitação com 18 meses trabalhados, verificando se retorna 5 parcelas no teto/valor calculado.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:03",
+  "resultado": ""
+ },
+ {
+  "id": "T83",
+  "titulo": "🧠 Calculadora Black-Scholes: adicionar visualização de Gregas (Delta, Gamma, Theta, Vega)",
+  "detalhe": "No CRITICA.md item 69 (calculadora-financeira-black-scholes), enriquecer a ferramenta calculando não apenas o prêmio teórico (Call/Put), mas também as sensibilidades essenciais (Delta, Gamma, Vega, Theta), tornando a ferramenta realmente útil para mercado financeiro. Pasta: C:/Users/caion/calculadora-financeira-black-scholes. Testar com spot 100, strike 100, juros 10%, vol 20%, prazo 30 dias, comparando os valores de Delta e Gamma com valores analíticos de referência.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:03",
+  "resultado": ""
+ },
+ {
+  "id": "T84",
+  "titulo": "🧠 Stick-itt: adicionar exportação rápida para Markdown e atalho de fixar no topo",
+  "detalhe": "Inspirado na tendência #3 (Stick-itt) e melhorando a ferramenta de notas rápidas, adicionar suporte a fixar a janela sempre no topo (Qt.WindowType.WindowStaysOnTopHint) via toggle de atalho (Ctrl+T) e botão de exportação instantânea do conteúdo para arquivo .md. Pasta: C:/Users/caion/notas-md. Testar abrindo a ferramenta, digitando texto com formatação simples, pressionando Ctrl+T para verificar fixação sobre outras janelas e clicando em exportar para gerar um arquivo .md legível.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 20:03",
   "resultado": ""
  }
 ]

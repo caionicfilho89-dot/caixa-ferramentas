@@ -41,34 +41,19 @@ def _log(t, painel=False):
                        capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
 
 
-def _gemini_cli():
-    import shutil
-    return shutil.which("gemini") or shutil.which("gemini.cmd")
+def perguntar(prompt, timeout=230):
+    """Manda pro Gemini (conta Gemini Pro do Caio) e devolve o texto ('' se falhar).
 
-
-def perguntar(prompt, timeout=170):
-    """Manda pro Gemini e devolve o texto ('' se falhar).
-
-    1º o GEMINI CLI (agente "gemini" da fábrica, conta Gemini Pro do Caio, cota própria): prompt pelo stdin,
-       modo não-interativo = não executa ferramenta nenhuma, só responde.
-    Reserva: agy (Antigravity) em modo plan.
+    Pelo agy: em 11/11/2026 o Google desligou o login pessoal do Gemini CLI ("migrate to the Antigravity suite"),
+    então o caminho oficial da assinatura Pro fora do navegador é o agy. Modo plan + "não use ferramentas":
+    sem esse aviso ele saía lendo arquivo sozinho e estourava o tempo (resposta vazia); com ele responde em ~8 s.
     """
-    g = _gemini_cli()
-    if g:
-        try:
-            r = subprocess.run([g, "-p", "Siga a instrução recebida no stdin e responda só o que ela pede."],
-                               input=prompt, capture_output=True, text=True, encoding="utf-8", errors="replace",
-                               timeout=timeout, cwd=os.environ.get("TEMP", HERE),
-                               creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-            if (r.stdout or "").strip():
-                return r.stdout.strip()
-            _log(f"Gemini CLI sem resposta (código {r.returncode}): {(r.stderr or '')[-200:]}")
-        except Exception as e:  # noqa: BLE001
-            _log(f"Gemini CLI falhou: {e}")
     if not os.path.isfile(AGY):
         return ""
+    prompt = ("NÃO use ferramentas e NÃO leia arquivos: tudo o que você precisa está aqui. Responda direto, só texto.\n\n"
+              + prompt)
     try:
-        r = subprocess.run([AGY, "-p", prompt, "--model", MODELO, "--mode", "plan", "--print-timeout", "150s"],
+        r = subprocess.run([AGY, "-p", prompt, "--model", MODELO, "--mode", "plan", "--print-timeout", "200s"],
                            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout,
                            cwd=os.environ.get("TEMP", HERE), creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
         return (r.stdout or "").strip()

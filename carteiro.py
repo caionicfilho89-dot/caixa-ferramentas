@@ -243,7 +243,7 @@ def empurrar_parados():
         if "OCUPADO" in info:
             continue
         _ULTIMO_EMPURRAO[ag] = time.time()
-        log(f"{ag}: parado {minutos} min → empurrão pro quadro ({'ok' if ok else 'falhou'})")
+        log(f"{ag}: parado {minutos} min → empurrão pro quadro ({'ok' if ok else 'falhou: ' + info[-150:]})")
 
 
 def fechar_testes_esquecidos(minutos=10):
