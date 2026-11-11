@@ -498,6 +498,12 @@ def main():
     if a[:1] == ["--uma-vez"]:
         rodada()
         return
+    # UM carteiro só: em 11/11 havia 8 rodando juntos (reinícios que não fecharam o antigo) → avisos/entregas
+    # duplicados e código velho sobrescrevendo o ECONOMIA.json. O mutex do Windows impede o 2º de subir.
+    _mutex = ctypes.windll.kernel32.CreateMutexW(None, False, "Global\\CaixaFerramentasCarteiro")
+    if ctypes.windll.kernel32.GetLastError() == 183:  # ERROR_ALREADY_EXISTS
+        log("outro carteiro já está rodando — este não sobe")
+        return
     log("carteiro iniciado")
     volta = 0
     while True:
@@ -520,7 +526,9 @@ def main():
                 ponte_cocaino()
             if volta % 4 == 2:  # a cada 2 min: formação B — cadeira Google que fechou e tem trabalho → reabre
                 try:
+                    import importlib
                     import formacao
+                    importlib.reload(formacao)  # sempre o código atual (11/11: abriu cadeira com versão velha)
                     formacao.garantir_b()
                 except Exception as ex:  # noqa: BLE001
                     log(f"formação B: {ex}")

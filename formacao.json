@@ -1,12 +1,12 @@
 {
  "formacao": "B",
- "desde": "2026-11-11 20:37",
+ "desde": "2026-11-11 20:38",
  "pausados_antes": {
   "grok": "antigravity"
  },
  "cadeiras": {
-  "cursor": 23280,
-  "grokbuild": 17044,
-  "grok": 10092
+  "cursor": 22604,
+  "grokbuild": 22020,
+  "grok": 2636
  }
 }

@@ -22,6 +22,23 @@ ARQ = os.path.join(HERE, "formacao.json")
 PAUSADOS = os.path.join(HERE, "agentes_pausados.json")
 AGY = os.path.join(os.environ.get("LOCALAPPDATA", ""), "agy", "bin", "agy.exe")
 RAIZ = "C:/Users/caion/caixa-ferramentas"
+# Modelo das cadeiras: o padrão do agy (Gemini 4 Argon) ESGOTOU em 11/11 ("Individual quota reached").
+# melhor_modelo() pergunta ao agy a cota de CADA modelo e escolhe o mais forte que ainda tem saldo (ordem abaixo).
+PREFERENCIA = ["gemini-4-argon-high", "claude-opus-5-5-high", "gemini-4-argon-medium", "claude-sonnet-5-5-high",
+               "gemini-3.8-flash-high", "gemini-3.8-flash-medium", "gpt-oss-120b-medium", "gemini-3.8-flash-low"]
+MODELO = "gemini-3.8-flash-high"  # reserva se a consulta falhar (era o único com cota em 11/11)
+
+
+def melhor_modelo(minimo=5.0):
+    try:
+        import cota_antigravity
+        cotas = cota_antigravity.ler()
+        for m in PREFERENCIA:
+            if m in cotas and cota_antigravity.pct(cotas[m].get("quota_remaining", 0)) >= minimo:
+                return m
+    except Exception:  # noqa: BLE001
+        pass
+    return MODELO
 
 # chave -> (nome que o Caio usa, nome no Agent Mail, papel da cadeira)
 CADEIRAS = {
@@ -104,10 +121,21 @@ def _achar_pid(marca, espera=20):
 
 def abrir_cadeira(chave):
     nome = CADEIRAS[chave][0]
+    # A instrução vai num ARQUIVO .md e o agy recebe só uma frase curta, sem aspas nem ";". (11/11: o Windows
+    # Terminal picotava o texto no ";" e as aspas internas quebravam os argumentos → abas com erro, agy fechando.)
+    arq = f"C:/Users/caion/fiscal-fabrica/cadeira_{chave}.md"
+    with open(arq, "w", encoding="utf-8") as f:
+        f.write(_prompt(chave) + "\n")
+    prompt = f"Leia o arquivo {arq} e siga TODAS as instrucoes dele agora, em ciclo continuo"
     subprocess.Popen(["wt.exe", "-w", "fabrica", "new-tab", "--title", f"B: {nome} (Gemini)", "-d", RAIZ,
-                      AGY, "-i", _prompt(chave), "--mode", "auto"],
+                      # --mode auto NÃO aprova ferramenta MCP (parava em "Allow calling agent-mail/fetch_inbox?"):
+                      # aprovação automática total — risco assumido explicitamente pelo Caio em 11/11
+                      AGY, "-i", prompt, "--mode", "auto", "--dangerously-skip-permissions", "--model", melhor_modelo(),
+                      # ferramentas ficam em pastas irmãs (C:/Users/caion/<pasta>) e o .md em fiscal-fabrica: sem isso
+                      # o agy para a cada arquivo pedindo "outside workspace" (Caio assumiu o risco, 11/11)
+                      "--add-dir", "C:/Users/caion"],
                      creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-    return _achar_pid(f"CADEIRA DO {nome.upper()}")
+    return _achar_pid(f"cadeira_{chave}.md")
 
 
 def _avisar(texto):
