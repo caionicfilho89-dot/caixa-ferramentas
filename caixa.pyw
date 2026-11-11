@@ -882,6 +882,7 @@ BUILTIN = [
     ("🛞", "Troca de Pneu do Carro", "Vida útil em km, meses restantes, status e custo do jogo de pneus.", "troca-pneu-carro", "pne_gui.pyw"),
     ("🎤", "Notas de Voz", "Grava, transcreve no PC (sem internet) e separa lembrete e assunto. 🔥 Tendência do dia.", "notas-de-voz", "nvz_gui.pyw"),
     ("🎵", "Tocando Agora", "Widget do que está tocando e papel de parede com o tile — offline, sem API.", "tocando-agora", "npw_gui.pyw"),
+    ("🖼️", "Visor de Fotos & Duplicadas", "Abre pastas de fotos na hora (cache de miniaturas), acha duplicadas e rostos, otimiza imagens. 🔥 Tendência do dia.", "visor-fotos", "vft_gui.pyw"),
 ]
 
 # Ferramentas que aceitam --pasta/--arquivo vindos dos botões da Hoje (as outras abrem normal)

@@ -775,6 +775,7 @@ TOOLS = {
     "troca-pneu-carro": "pne_gui.pyw",
     "notas-de-voz": "nvz_gui.pyw",
     "tocando-agora": "npw_gui.pyw",
+    "visor-fotos": "vft_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
