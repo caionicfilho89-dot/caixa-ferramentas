@@ -225,7 +225,9 @@ def pedir_propostas_se_faltar():
     _ULTIMO_EMPURRAO["_propostas"] = time.time()
     subprocess.run([sys.executable, os.path.join(HERE, "painel.py"), "claude", "--pedir", "antigravity",
                     f"Quadro: {len(livres)} livres; SEM tarefa pra: {', '.join(famintos) or 'ninguém'}. "
-                    f"Crie 2 tarefas pra cada um desses (úteis pro Caio, de COBERTURA.md, "
+                    f"Crie 2 tarefas pra cada um desses — SÓ o que melhora o uso REAL do Caio: problemas do CRITICA.md, "
+                    f"ferramentas que ele usa (config uses), a Tendência do dia, esconder as inúteis (T24). PROIBIDO: ligar "
+                    f"adaptador de ferramenta de nicho (vinho, bolo, cronômetro de laps…). Sem tarefa útil? Não crie nada. ("
                     "TENDENCIAS.md, CRITICA.md) com: python tarefas.py --nova \"titulo\" \"detalhe\" agente1,agente2"],
                    capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     log(f"quadro com {len(livres)} livres: pedi propostas ao Antigravity")

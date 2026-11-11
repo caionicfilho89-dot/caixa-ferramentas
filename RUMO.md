@@ -46,6 +46,13 @@ com você (fica marcada como sua). Terminou: `python painel.py <você> --conclui
 O carteiro manda esse aviso pra quem está parado há 10+ min; quando sobram < 5 livres, pede propostas ao Antigravity
 (`python tarefas.py --nova "titulo" "detalhe" agente1,agente2`). Ver o quadro: `python tarefas.py`.
 
+## 🎯 Tarefa tem que ser ÚTIL (Caio, 10/11 — o Antigravity fez 39 tarefas de nicho numa noite)
+Antes de criar ou pegar tarefa: "o Caio usaria isso essa semana?". Se não, NÃO faça.
+- Vale: problema real do CRITICA.md, ferramenta que ele usa (config `uses`), barra pras perguntas dele, Tendência do dia,
+  esconder/juntar inútil (T23/T24), bug, velocidade, visual.
+- NÃO vale: ligar adaptador de calculadora de nicho (vinho, bolo, laps, crochê…), ferramenta nova de calculadora,
+  "mais cobertura" só pra subir número. Ficar parado é MELHOR que gastar cota com isso.
+
 ## 💸 Modo economia (decisão do Caio, 2026-11-10)
 
 O `python painel.py` mostra no topo o modo de cada conta (medido a cada 3 min pelo carteiro via `economia.py`,
