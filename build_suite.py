@@ -839,6 +839,9 @@ def stage():
     cat = os.path.join(HERE, "catalogo.json")
     if os.path.isfile(cat):
         shutil.copyfile(cat, os.path.join(STAGED, "catalogo.json"))
+    tdc = os.path.join(HERE, "tendencias_caixa.json")  # categoria 🔥 Tendências
+    if os.path.isfile(tdc):
+        shutil.copyfile(tdc, os.path.join(STAGED, "tendencias_caixa.json"))
     _write_entry(modmap)
     return modmap, sorted(m[:-3] for m in copied)
 
@@ -991,6 +994,9 @@ def build(modmap, modules):
     cat = os.path.join(HERE, "catalogo.json")
     if os.path.exists(cat):
         cmd += ["--add-data", cat + os.pathsep + "."]
+    tdc = os.path.join(HERE, "tendencias_caixa.json")  # categoria 🔥 Tendências
+    if os.path.exists(tdc):
+        cmd += ["--add-data", tdc + os.pathsep + "."]
     # RUMO: imports dinâmicos (adp_*) e UI — forçar no bundle
     rumo_hidden = [
         "caixa_ui", "caixa_tema", "caixa_home", "caixa_busca_ui",

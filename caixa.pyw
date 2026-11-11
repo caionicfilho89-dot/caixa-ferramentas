@@ -30,7 +30,7 @@ FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (insta
 if "--teste" in sys.argv:
     os.environ["CAIXA_TESTE"] = "1"
 MODO_TESTE = os.environ.get("CAIXA_TESTE") == "1"
-APP_VERSION = "1.5.6"
+APP_VERSION = "1.5.7"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
@@ -1043,12 +1043,27 @@ CATEGORIAS = [
         "monitor", "tempo", "faxina", "busca", "recupera", "espaco", "espaço")),
 ]
 CAT_OUTRAS = "🧰 Outras"
+# 🔥 Tendências: ferramentas nascidas da Tendência do dia (lista em tendencias_caixa.json)
+CAT_TENDENCIAS = "🔥 Tendências"
+def _ler_tendencias():
+    try:
+        import json as _j
+        for d in (HERE, getattr(sys, "_MEIPASS", HERE)):
+            p = os.path.join(d, "tendencias_caixa.json")
+            if os.path.isfile(p):
+                with open(p, encoding="utf-8") as f:
+                    return set(_j.load(f).get("pastas", []))
+    except Exception:
+        pass
+    return set()
+TENDENCIAS_PASTAS = _ler_tendencias()
 CAT_CORES = {
     "💰 Finanças & Trabalho": "#ffd166", "🏠 Casa, Pet & Pessoal": "#6ee7b7",
     "🔬 Ciência & Engenharia": "#60a5fa", "🌐 Rede & Segurança": "#f87171",
     "💻 Dev & Dados": "#7c5cff", "🖼️ Imagem & Design": "#f472b6", "🎵 Áudio & Vídeo": "#fb923c",
     "✍️ Texto & Estudo": "#a3e635", "🎮 Jogos & Diversão": "#facc15",
     "🗂️ Arquivos & Sistema": "#94a3b8", CAT_OUTRAS: "#8a93a8",
+    CAT_TENDENCIAS: "#ff6b35",
 }
 if _caixa_arquivo is not None:
     CAT_CORES[_caixa_arquivo.CAT_ARQUIVO] = _caixa_arquivo.COR_ARQUIVO
@@ -1077,7 +1092,7 @@ def elide_linhas(texto, fonte, largura, n):
     if atual:
         linhas.append(fm.elidedText(atual, Qt.TextElideMode.ElideRight, largura))
     return "\n".join(linhas[:n])
-CAT_ORDEM = [c[0] for c in CATEGORIAS] + [CAT_OUTRAS]
+CAT_ORDEM = [CAT_TENDENCIAS] + [c[0] for c in CATEGORIAS] + [CAT_OUTRAS]
 if _caixa_arquivo is not None:
     CAT_ORDEM.append(_caixa_arquivo.CAT_ARQUIVO)
 
@@ -1090,8 +1105,8 @@ def categoria_de(tool):
     """
     nome = tool[1].lower()
     pasta = tool[3].lower()
-    cat = None
-    for nome_cat, kws in CATEGORIAS:
+    cat = CAT_TENDENCIAS if tool[3] in TENDENCIAS_PASTAS else None
+    for nome_cat, kws in ([] if cat else CATEGORIAS):
         if any(k in nome or k in pasta for k in kws):
             cat = nome_cat
             break

@@ -85,6 +85,11 @@ offline, PyQt6, pt-BR, padrão de pasta/prefixo do `AGENTS_PROTOCOL.md`. Se já 
 (`catalogo.py --check`), **melhore a nossa**. Terminou: `python tendencias.py --feita <url>` + `--feito` no painel;
 o Claude integra.
 
+**TODO DIA, SEM FALTA (Caio, 2026-11-11):** se às 08:00 não rodou, o carteiro roda o radar sozinho (checa a cada 10 min)
+e cria a tarefa `🔥 Tendência do dia DD/MM` no quadro (grokbuild, antigravity). **Categoria 🔥 Tendências:** toda
+ferramenta NOVA que nasce de tendência entra em `tendencias_caixa.json` (campo `pastas`) e aparece em 🔥 Tendências,
+a 1ª categoria da Caixa. Melhorou uma que já existia? Não entra (continua na categoria dela).
+
 ---
 
 ## 📡 PAINEL — como um sabe o que o outro está fazendo

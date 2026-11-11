@@ -299,7 +299,7 @@ def rodar():
    **Escreva o código do zero** (não copie código de outro projeto: licença). Inspiração na ideia, não no código.
 4. Se a ideia não couber (só nuvem, só Mac/Linux, precisa de conta, serve pra ataque):
    `python tendencias.py --feita {escolhida['url']}` e pegue a próxima do `TENDENCIAS.md`.
-5. Pronto e testado: `python tendencias.py --feita {escolhida['url']}` + `python painel.py <você> --feito "..."`.
+5. Pronto e testado: integre na Caixa, ACRESCENTE a pasta em `tendencias_caixa.json` (categoria 🔥 Tendências), `python tendencias.py --feita {escolhida['url']}` + `python painel.py <você> --feito "..."`.
    O Claude revisa, integra na Caixa e builda.
 """
         with open(os.path.join(HERE, "TENDENCIA_DO_DIA.md"), "w", encoding="utf-8") as f:

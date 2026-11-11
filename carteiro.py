@@ -328,6 +328,53 @@ def hook(para):
         print(json.dumps({"decision": "block", "reason": mensagem(para, itens)}, ensure_ascii=False))
 
 
+_tend_ultima_tentativa = 0.0
+
+
+def garantir_tendencia():
+    """Tendência TODO DIA (regra do Caio): se a do dia não saiu (agendamento das 08:00 falhou/PC dormindo),
+    roda o radar; e garante uma tarefa no quadro pra construir a ferramenta e pôr na categoria 🔥 Tendências."""
+    global _tend_ultima_tentativa
+    if time.localtime().tm_hour < 8:
+        return
+    hoje = time.strftime("%d/%m/%Y")
+    arq = os.path.join(HERE, "TENDENCIA_DO_DIA.md")
+    try:
+        topo = open(arq, encoding="utf-8").read(4000)
+    except OSError:
+        topo = ""
+    if hoje not in (topo.splitlines()[0] if topo else ""):
+        if time.time() - _tend_ultima_tentativa < 3600:
+            return
+        _tend_ultima_tentativa = time.time()
+        log("tendência do dia não saiu — rodando o radar")
+        try:
+            subprocess.run([sys.executable.replace("pythonw", "python"), os.path.join(HERE, "tendencias.py")],
+                           cwd=HERE, timeout=300, capture_output=True,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+            topo = open(arq, encoding="utf-8").read(4000)
+        except Exception as ex:  # noqa: BLE001
+            log(f"radar de tendências falhou: {ex}")
+            return
+        if hoje not in (topo.splitlines()[0] if topo else ""):
+            return
+    m = re.search(r"\*\*Ideia:\*\*\s*\[(.+?)\]\((\S+?)\)", topo)
+    if not m:
+        return
+    import tarefas
+    dm = hoje[:5]
+    titulo = f"🔥 Tendência do dia {dm}"
+    if any(t["titulo"].startswith(titulo) for t in tarefas.ler()):
+        return
+    tid = tarefas.nova(f"{titulo}: {m.group(1)[:80]}",
+                       "Siga TENDENCIA_DO_DIA.md (ideia, versão nossa do zero, offline, PyQt6, pt-BR). "
+                       "Pronto e testado: integre na Caixa e ACRESCENTE a pasta em tendencias_caixa.json "
+                       "(categoria 🔥 Tendências) + python tendencias.py --feita " + m.group(2) + ". "
+                       "Se não couber: --feita e faça a próxima do TENDENCIAS.md.",
+                       ["grokbuild", "antigravity"])
+    log(f"tendência do dia {dm} virou tarefa {tid}")
+
+
 def main():
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -388,6 +435,8 @@ def main():
                             os.remove(LOCK)
                 except Exception as ex:  # noqa: BLE001
                     log(f"cota semanal Antigravity: {ex}")
+            if volta % 20 == 1:  # a cada 10 min: a tendência do dia tem que sair todo dia
+                garantir_tendencia()
             if volta % 4 == 0:
                 pedir_propostas_se_faltar()
                 fechar_testes_esquecidos()
