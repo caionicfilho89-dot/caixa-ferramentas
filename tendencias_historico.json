@@ -4,7 +4,205 @@
    "data": "10/11/2026",
    "url": "https://www.reddit.com/r/opensource/comments/1xsqfvu/satori_offline_android_voice_notes_app_with/",
    "titulo": "Satori: Offline Android voice notes app with on-device speech-to-text, reminder extraction, and topic linking (Apache-2.0)"
+  },
+  {
+   "data": "11/11/2026",
+   "url": "https://www.reddit.com/r/software/comments/1xt33gs/windows_ncviewer_a_lightweight_image_viewer_with/",
+   "titulo": "[Windows] NCViewer – A lightweight image viewer with face detection, duplicate search and persistent thumbnail caching"
   }
  ],
- "feitas": []
+ "feitas": [
+  "https://www.reddit.com/r/opensource/comments/1xsqfvu/satori_offline_android_voice_notes_app_with/",
+  "https://www.reddit.com/r/opensource/comments/1xs4rid/nowplayingdesktops_opensource_spotify_nowplaying/",
+  "https://github.com/we-promise/sure",
+  "https://www.reddit.com/r/software/comments/1xt33gs/windows_ncviewer_a_lightweight_image_viewer_with/"
+ ],
+ "radar": {
+  "https://github.com/we-promise/sure": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 1079
+  },
+  "https://github.com/frigadehq/yogurt": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 449
+  },
+  "https://aircad.com": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 156
+  },
+  "https://eaj.no/posts/open-graph-images-with-typst": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 208
+  },
+  "https://youtu.be/rslctyqmvse": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 114
+  },
+  "https://graphpaperpdf.net/1mm-graph-paper": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 48
+  },
+  "https://guiadeti.com.br/cursos/curso-de-html5": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 12
+  },
+  "https://www.ritmoso.app/pt": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 12
+  },
+  "https://guiadeti.com.br/cursos/eletronica-conceitos-e-componentes-basicos": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 48
+  },
+  "https://guiadeti.com.br/cursos/introducao-a-ciencia-da-computacao": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 36
+  },
+  "https://www.tabnews.com.br/devcarlosalberto/criei-uma-biblioteca-em-typescript-para-o-pix": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 402
+  },
+  "https://www.tabnews.com.br/soloo/fiz-uma-ia-de-sobrevivencia-que-roda-100-por-cento-offline-ate-num-pendrive": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 210
+  },
+  "https://guiadeti.com.br/cursos/treinamento-gratuito-de-ciberseguranca-da-eset": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 78
+  },
+  "https://www.tabnews.com.br/samuelcsantos/iluminura-um-editor-markdown-com-cara-de-word-para-revisar-mudancas-de-agentes-de-ia": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 72
+  },
+  "https://lnkd.in/p/dzd-xufr": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 60
+  },
+  "https://github.com/jeffev/hollowtest": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 48
+  },
+  "http://archive.today/2026.11.05-114351/https://www.theverge.com/news/1027379/discord-ditching-electron-web-app": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 36
+  },
+  "https://www.reddit.com/r/software/comments/1xt33gs/windows_ncviewer_a_lightweight_image_viewer_with": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 280
+  },
+  "https://www.reddit.com/r/software/comments/1xt24kt/open_source_lynx_share_a_lightweight_c20_daw_that": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 260
+  },
+  "https://www.reddit.com/r/software/comments/1xtnria/i_made_stickitt_tiny_intuitive_notes_for_people": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 240
+  },
+  "https://www.reddit.com/r/software/comments/1xtm8qs/i_have_this_old_graphic_design_software_cdrom": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 220
+  },
+  "https://www.reddit.com/r/software/comments/1xtbsrv/vicalc_a_keyboarddriven_touchtyping_scientific": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 200
+  },
+  "https://www.reddit.com/r/software/comments/1xtr8kf/mac_mini_server_system_i_made": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 120
+  },
+  "https://www.reddit.com/r/software/comments/1xtoa1d/shelve_a_file_shelf_at_the_edge_of_the_screen": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 80
+  },
+  "https://www.reddit.com/r/software/comments/1xttc3j/im_testing_a_voice_app_talkappspace_where": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 20
+  },
+  "https://www.reddit.com/r/opensource/comments/1xte7g4/dawarich_free_open_source_self_hostable": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 300
+  },
+  "https://www.reddit.com/r/opensource/comments/1xtm8xg/introducing_odc_explorer": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 240
+  },
+  "https://www.reddit.com/r/selfhosted/comments/1xtsr4b/pidockwifi_a_raspberry_pi_5_router_with_two_wifi": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 260
+  },
+  "https://www.reddit.com/r/selfhosted/comments/1xto5xz/media_server_dashboard_v2": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 180
+  },
+  "https://www.reddit.com/r/brdev/comments/1xt1zfy/alguém_realmente_trabalha_no_nubank": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 160
+  },
+  "https://www.reddit.com/r/brdev/comments/1xthe9i/fui_contratado_como_java_pleno_mas_descobri_que": {
+   "dias": [
+    "2026-11-11"
+   ],
+   "pop": 120
+  }
+ }
 }
