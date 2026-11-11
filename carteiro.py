@@ -437,6 +437,12 @@ def main():
                     log(f"cota semanal Antigravity: {ex}")
             if volta % 20 == 1:  # a cada 10 min: a tendência do dia tem que sair todo dia
                 garantir_tendencia()
+            if volta % 20 == 11:  # a cada 10 min: quadro sempre cheio (>= 3 livres por agente ativo)
+                try:
+                    import quadro_cheio
+                    quadro_cheio.encher()
+                except Exception as ex:  # noqa: BLE001
+                    log(f"quadro cheio: {ex}")
             if volta % 4 == 0:
                 pedir_propostas_se_faltar()
                 fechar_testes_esquecidos()

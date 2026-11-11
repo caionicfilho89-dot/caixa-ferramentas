@@ -6,10 +6,10 @@
   "quem": [
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 19:36",
-  "resultado": ""
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:01",
+  "resultado": "Kit Fábrica de Agentes concluído em C:\\Users\\caion\\fabrica-agentes (git init e commit inicial); fabrica.json centraliza agentes, apps e cotas; carteiro, economia, painel, painel_adesivo, tarefas, tendencias, entregar.ps1, vigia_local.ps1, iniciar_*.vbs generalizados sem caminhos fixos; instalar.ps1 "
  },
  {
   "id": "T01",
@@ -58,10 +58,10 @@
    "grokbuild",
    "antigravity"
   ],
-  "status": "pegou",
+  "status": "feito",
   "por": "antigravity",
-  "quando": "2026-11-10 19:45",
-  "resultado": ""
+  "quando": "2026-11-10 19:53",
+  "resultado": "Barra: 8 adaptadores de 🗂️ Arquivos & Sistema que CALCULAM algo implementados (posicao-solar, nmake, protobuf, grpc, roi-curso, deep-work, mobilidade-lombar, introducao-alimentar); unittest test_adp_arquivos 19/19 OK; 54/54 testes da suíte OK"
  },
  {
   "id": "T05",
@@ -229,10 +229,10 @@
   "quem": [
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 19:32",
-  "resultado": ""
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-10 19:54",
+  "resultado": "T18 exe 1.5.6: Hoje mostra 8, nao 15. Fallback pos-zeragem = 8 primeiros da F2 e esconde Financas e Troco. 15/15 F2 abriram. Contas ok exceto Dias Uteis 20/11 (feriado nacional tratado como util). Trocas no CRITICA (saem garantias/validade/assinaturas; entram financas, engrenagens, conversor, troco,"
  },
  {
   "id": "T19",
@@ -302,10 +302,10 @@
   "quem": [
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-10 19:24",
-  "resultado": ""
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:03",
+  "resultado": "Lista das 100 ferramentas mais inúteis/repetidas do catálogo compilada e justificada em 1 linha cada no CRITICA.md na seção 'Arquivo' (geradores de infra nichados, calculadoras industriais/físicas exóticas e formulários triviais)"
  },
  {
   "id": "T26",
@@ -342,5 +342,597 @@
   "por": "cursor",
   "quando": "2026-11-10 19:30",
   "resultado": "QSS #side::item:selected com accent #7c5cff (rgba + border), hover mais claro. test_t28 OK. Pedido grokbuild se QSS legado do caixa.pyw sobrescrever."
+ },
+ {
+  "id": "T29",
+  "titulo": "Tolerância a digitação na Barra: normalizar erros comuns e acentos sem quebrar busca",
+  "detalhe": "Implementar tolerância a digitação na barra (respostas_core) para termos frequentes sem gerar falsos positivos",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:19",
+  "resultado": "Tolerância a digitação e abreviações implementada (Levenshtein/Damerau <= 1, 28 abreviações pt-BR, tempo < 0.05 ms); suíte com 21 variações passando com confianca >= 0.90; 140/140 PERGUNTAS.md OK"
+ },
+ {
+  "id": "T30",
+  "titulo": "Operações Encadeadas e Expressões Compostas na Barra",
+  "detalhe": "Implementar parser para operações encadeadas no adp_essenciais (desconto + frete, parcelas compostas, expressões mistas)",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:24",
+  "resultado": "Operações encadeadas e expressões compostas implementadas no adp_essenciais (desconto + frete/taxa, descontos sucessivos, parcelas combinadas, base com pct e valor fixo, compras com frete, compras mistas); 16 testes novos no test_respostas.py passando com confianca >= 0.95; 140/140 PERGUNTAS.md OK"
+ },
+ {
+  "id": "T31",
+  "titulo": "Sensor de Conectividade de Rede no Painel Hoje",
+  "detalhe": "Adicionar sensor_rede no sensores_core.py (detectar conexao ativa e IP local sem ultrapassar 1s no ler_tudo); test_sensores.py",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:27",
+  "resultado": "Sensor de conectividade de rede implementado em sensores_core.py (detecta tipo Wi-Fi/Ethernet, velocidade em Mbps, IP local e status online/offline em < 15 ms sem travar ler_tudo); integrado ao ler_tudo(); teste unitário test_sensor_rede passando em test_sensores.py"
+ },
+ {
+  "id": "T32",
+  "titulo": "Faxina pela Hoje sem auto-varredura",
+  "detalhe": "Garantir abertura por --pasta sem disparar varredura automatica ate o usuario clicar em Varrer (Proposta 8)",
+  "quem": [
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-11 19:00",
+  "resultado": "Faxina --pasta so seleciona a pasta. Varredura so no clique em Varrer. test_fxd_pasta 2 OK. Entra no proximo exe (1.5.7 ja estava no PyInstaller)."
+ },
+ {
+  "id": "T33",
+  "titulo": "Barra: ligar adaptadores de Obra, Pneus e Casa em adp_outras",
+  "detalhe": "Implementar adaptadores para calculadora-obra (obr_core), calibragem-pneus (pnc_core) e aluguel-quartos (alq_core) chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:33",
+  "resultado": "Adaptadores de calculadora-obra (obr_core), calibragem-pneus (pnu_core) e aluguel-quartos (alq_core) implementados em adp_outras.py e sincronizados com staged/; 30/30 testes em test_adp_outras.py OK; suíte completa 57/57 OK"
+ },
+ {
+  "id": "T34",
+  "titulo": "Barra: ligar adaptadores de Desafio da Poupança e Renda Fixa em adp_outras",
+  "detalhe": "Implementar adaptadores para desafio-poupanca (dsp_core) e simulador-renda-fixa (srf_core) chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:36",
+  "resultado": "Adaptadores de desafio-poupanca (cof_core) e simulador-renda-fixa (rfx_core) implementados em adp_outras.py e sincronizados com staged/; 32/32 testes em test_adp_outras.py OK; suíte completa 57/57 OK"
+ },
+ {
+  "id": "T35",
+  "titulo": "Barra: ligar adaptadores de Saúde e Treino em adp_outras",
+  "detalhe": "Ligar adaptadores para treino-academia (trn_core) e ficha-medica (fmd_core) em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:42",
+  "resultado": "Barra: adaptadores de Treino de Academia (rmx_core/trn_core: 1RM e anilhas) e Ficha Médica (med_core/fmd_core: exames laboratoriais e estoque remédio) implementados em adp_outras.py e sincronizados com staged/; 34/34 testes em test_adp_outras.py OK; suíte completa 57/57 OK; 140/140 PERGUNTAS.md OK"
+ },
+ {
+  "id": "T36",
+  "titulo": "Barra: ligar adaptadores de Viagem e Marmitas em adp_outras",
+  "detalhe": "Ligar adaptadores para mala-viagem (mlv_core) e marmitas-semana (mrm_core) em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:45",
+  "resultado": "Barra: adaptadores de Mala de Viagem (mal_core/mlv_core: peças por dias, clima e tipo, checagem peso 10 kg mala de mão) e Marmitas da Semana (mmt_core/mrm_core: cardápio rodízio, lista de compras e custo por marmita) implementados em adp_outras.py e sincronizados com staged/; 36/36 testes em test_ad"
+ },
+ {
+  "id": "T37",
+  "titulo": "Barra: ligar adaptadores de Trabalho CLT (Adicional Noturno e Insalubridade)",
+  "detalhe": "Ligar adaptadores para adicional noturno e insalubridade em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:52",
+  "resultado": "Barra: adaptadores de Trabalho CLT (adt_core: adicional noturno com hora reduzida e ins_core: adicional de insalubridade 10/20/40%) implementados em adp_outras.py e sincronizados com staged/; 38/38 testes em test_adp_outras.py OK; suíte completa 95/95 OK; 140/140 PERGUNTAS.md OK"
+ },
+ {
+  "id": "T38",
+  "titulo": "Barra: ligar adaptadores de Casa e Hobby (Piscina e Impressão 3D)",
+  "detalhe": "Ligar adaptadores para calculadora-piscina e calculadora-impressao-3d em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:54",
+  "resultado": "Barra: adaptadores de Casa e Hobby (p3d_core: custo e venda de impressão 3D por peso, horas e rolo; psc_core: volume de piscina e dosagem diária/choque de cloro) implementados em adp_outras.py e sincronizados com staged/; 40/40 testes em test_adp_outras.py OK; suíte completa 97/97 OK; 140/140 PERGUN"
+ },
+ {
+  "id": "T39",
+  "titulo": "Barra: ligar adaptadores de Periculosidade e Seguro-Desemprego em adp_outras",
+  "detalhe": "Ligar adaptadores para calculadora-adicional-periculosidade (per_core) e calculadora-seguro-desemprego (csd_core) em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:57",
+  "resultado": "Barra: adaptadores de Periculosidade (per_core: adicional 30% CLT sobre salário base) e Seguro-Desemprego (csd_core: Lei 13.134/2015, carência e faixas MTE) implementados em adp_outras.py e sincronizados com staged/; 42/42 testes em test_adp_outras.py OK; suíte completa 99/99 OK; 140/140 PERGUNTAS.m"
+ },
+ {
+  "id": "T40",
+  "titulo": "Barra: ligar adaptadores de Aquário e Hidráulica em adp_outras",
+  "detalhe": "Ligar adaptadores para calculadora-aquario (aqu_core) e calculadora-hidraulica-tubulacoes em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 20:59",
+  "resultado": "Barra: adaptadores de Aquário (aqu_core: volume bruto/real, filtragem sugerida e termostato) e Hidráulica (hdr_core: perda de carga Darcy-Weisbach mca/bar, Reynolds e regime) implementados em adp_outras.py e sincronizados com staged/; 44/44 testes em test_adp_outras.py OK; suíte completa 101/101 OK;"
+ },
+ {
+  "id": "T41",
+  "titulo": "Barra: ligar adaptadores de Rescisão CLT e Permissões chmod em adp_outras",
+  "detalhe": "Ligar adaptadores para calculadora-rescisao-trabalhista (rst_core) e calculadora-chmod (rwx_core) em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:07",
+  "resultado": "Barra: adaptadores de Rescisão CLT (rst_core: saldo de salário, aviso prévio, 13º/férias proporcionais, FGTS+multa e retenções INSS/IRPF) e Calculadora chmod (rwx_core: conversão octal para simbólico rwxr-xr-x) implementados em adp_outras.py e sincronizados com staged/; 46/46 testes em test_adp_outr"
+ },
+ {
+  "id": "T42",
+  "titulo": "Barra: ligar adaptadores de Motores Elétricos em adp_outras",
+  "detalhe": "Ligar adaptadores para calculadora-motores-eletricos (mot_core) em adp_outras chamando os módulos reais",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:10",
+  "resultado": "Barra: adaptador de Motores Elétricos de Indução (mot_core: potência em kW/CV, corrente nominal In trifásica/monofásica, torque nominal em N.m, rotação síncrona/nominal e dimensionamento de condutor/disjuntor) implementado em adp_outras.py e sincronizado com staged/; 47/47 testes em test_adp_outras."
+ },
+ {
+  "id": "T43",
+  "titulo": "Barra: ligar adaptadores de Filtro de Bloom em adp_outras",
+  "detalhe": "Ligar adaptador para filtro-bloom (blm_core: dimensionamento m/k e falsos positivos) em adp_outras chamando o módulo real",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:17",
+  "resultado": "Barra: adaptador de Filtro de Bloom (blm_core: dimensionamento m/k ótimo por número de itens e taxa de falso positivo) implementado em adp_outras.py e sincronizado com staged/; 48/48 testes em test_adp_outras.py OK; suíte completa 105/105 OK; 140/140 PERGUNTAS.md OK"
+ },
+ {
+  "id": "T44",
+  "titulo": "Barra: ligar adaptadores de Posição Solar e Astronomia em adp_outras",
+  "detalhe": "Ligar adaptador para calculadora-posicao-solar-astronomia (spa_core: azimute, elevação solar e irradiância) em adp_outras chamando o módulo real",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:20",
+  "resultado": "Adaptador de Posição Solar e Astronomia (spa_core) conectado em adp_outras e testado com 100% de sucesso"
+ },
+ {
+  "id": "T45",
+  "titulo": "Barra: ligar adaptadores de Estúdio de Splines em adp_outras",
+  "detalhe": "Ligar estudio-splines (spl_core: spline cubica natural e bezier, interpolacao de pontos e amostragem) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:22",
+  "resultado": "Adaptador de Estúdio de Splines (spl_core: interpolação cúbica natural e Catmull-Rom) conectado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T46",
+  "titulo": "Barra: ligar adaptadores de Baterias e Autonomia em adp_outras",
+  "detalhe": "Ligar calculadora-baterias (bat_core: capacidade Ah/Wh, autonomia sob carga, taxa C-rate e tempo de recarga) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:24",
+  "resultado": "calculadora-baterias (bat_core: capacidade, autonomia Ah/Wh) já validada e 100% coberta com testes unitários em test_adp_arquivos.py"
+ },
+ {
+  "id": "T47",
+  "titulo": "Barra: ligar adaptadores de Água Mineral vs Filtro em adp_outras",
+  "detalhe": "Ligar agua-mineral-vs-filtro (agm_core: comparacao financeira de galoes 20L vs refil purificador e ponto de equilibrio) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:25",
+  "resultado": "Adaptador de Água Mineral vs Filtro (agm_core: galão 20L vs purificador, economia anual e payback) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T48",
+  "titulo": "Barra: ligar adaptadores de Acústica de Salas em adp_outras",
+  "detalhe": "Ligar calculadora-acustica-salas (acu_core: tempo de reverberacao RT60 Sabine e Eyring, volume da sala e coeficientes de absorcao) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:26",
+  "resultado": "Adaptador de Acústica de Salas (acu_core: RT60 Sabine/Eyring, frequência de Schroeder e recomendações) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T49",
+  "titulo": "Barra: ligar adaptadores de Academia vs Home Gym em adp_outras",
+  "detalhe": "Ligar academia-vs-equipamentos (acd_core: mensalidade de academia vs compra de equipamentos em casa, ponto de equilibrio e custo acumulado) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:28",
+  "resultado": "Adaptador de Academia vs Equipamentos (acd_core: custo acumulado, mensalidade vs compra de equipamentos e payback) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T50",
+  "titulo": "Barra: ligar adaptadores de Revisões Anki em adp_outras",
+  "detalhe": "Ligar meta-revisoes-anki-diarias (ank_core: carga diaria de revisoes de flashcards, cards novos e retencao) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:29",
+  "resultado": "Adaptador de Revisões Anki (ank_core: carga diária de revisões, cards novos e retenção estável) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T51",
+  "titulo": "Barra: ligar adaptadores de Aerodinâmica e Arrasto em adp_outras",
+  "detalhe": "Ligar calculadora-aerodinamica-arrasto-sustentacao (aer_core: sustentacao L/D, velocidade de estol, polar de arrasto e modelo ISA) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:31",
+  "resultado": "Adaptador de Aerodinâmica e Arrasto (aer_core: sustentação L/D, velocidade de estol, polar de arrasto e modelo ISA) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T52",
+  "titulo": "Barra: ligar adaptadores de Cartela Anticoncepcional em adp_outras",
+  "detalhe": "Ligar cartela-anticoncepcional (acp_core: ciclo, dias da cartela, pausa e orientacao em caso de esquecimento) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:32",
+  "resultado": "Adaptador de Cartela Anticoncepcional (acp_core: acompanhamento de ciclo, pílula ativa vs pausa e orientação em caso de esquecimento) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T53",
+  "titulo": "Barra: ligar adaptadores de Sessão de Foco em adp_outras",
+  "detalhe": "Ligar planejador-sessao-foco (fcs_core: blocos de deep work, pausas estrategicas e aproveitamento de tempo) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:34",
+  "resultado": "Adaptador de Planejador de Sessão de Foco (fcs_core: blocos de deep work, pausas estratégicas e aproveitamento) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T54",
+  "titulo": "Barra: ligar adaptadores de Amortização Extra SAC/PRICE em adp_outras",
+  "detalhe": "Ligar comparador-credito (crd_core: amortizacao extra, reducao de prazo vs parcela e economia de juros) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:36",
+  "resultado": "Adaptador de Amortização Extra SAC/PRICE (crd_core: amortização extraordinária, redução de prazo e economia de juros) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T55",
+  "titulo": "Barra: ligar adaptadores de Custo de Esporte Infantil em adp_outras",
+  "detalhe": "Ligar custo-academia-infantil (aci_core: mensalidade, uniformes, taxas e custo anual totalizado) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:37",
+  "resultado": "Adaptador de Custo de Esporte Infantil (aci_core: mensalidades, extras e média real anual) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T56",
+  "titulo": "Barra: ligar adaptadores de 13º Salário Proporcional em adp_outras",
+  "detalhe": "Ligar decimo-terceiro (d13_core: calculo de 13o salario CLT proporcional, parcelas e retencoes) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:39",
+  "resultado": "Adaptador de 13º Salário Proporcional (d13_core: cálculo CLT em avos, adiantamento e valor a receber) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T57",
+  "titulo": "Barra: ligar adaptadores de Inspetor de ACL NTFS em adp_outras",
+  "detalhe": "Ligar inspetor-acl-ntfs (acl_core: resumo de regras NTFS, heranca e dono) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:45",
+  "resultado": "Adaptador de Inspetor de ACL NTFS (acl_core: resumo de regras NTFS, herança e dono) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T58",
+  "titulo": "Barra: ligar adaptadores de Tempo de Forno e Carnes em adp_outras",
+  "detalhe": "Ligar forno-carnes (asd_core: tempo de forno por quilo, cortes de carnes, temperatura e ponto) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:46",
+  "resultado": "forno-carnes (asd_core: tempo de forno, temperatura e carnes) já validado e 100% coberto em adp_arquivos.py"
+ },
+ {
+  "id": "T59",
+  "titulo": "Barra: ligar adaptadores de Marchas de Bicicleta em adp_outras",
+  "detalhe": "Ligar calculadora-marchas-bike (bik_core: relacao coroa/pinhao, metros de desenvolvimento, cadencia e velocidade) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:48",
+  "resultado": "Adaptador de Marchas de Bicicleta (bik_core: relação coroa/pinhão, metros de desenvolvimento, velocidade e cadência) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T60",
+  "titulo": "Barra: ligar adaptadores de Formas de Bolo e Escala em adp_outras",
+  "detalhe": "Ligar conversor-formas-bolo (bol_core: conversao redonda vs retangular, fator de escala e volume) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:50",
+  "resultado": "Adaptador de Formas de Bolo e Escala (bol_core: conversão de área/volume, escala de receita e tempo de forno) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T61",
+  "titulo": "Barra: ligar adaptadores de Cronômetro e Laps em adp_outras",
+  "detalhe": "Ligar estudio-cronometro (crn_core: voltas/laps, ritmo medio e tempo total) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:52",
+  "resultado": "Adaptador de Estúdio de Cronometragem (crn_core: relógio de xadrez Fischer e cronômetro com precisão ms) implementado e testado com 100% de sucesso"
+ },
+ {
+  "id": "T62",
+  "titulo": "Barra: ligar adaptadores de Base64 em adp_outras",
+  "detalhe": "Ligar conversor-base64 (b64_core: encode/decode rapido de texto e tamanho em bytes) em adp_outras.py com testes unitarios",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:55",
+  "resultado": "Adaptador de Base64 (b64_core: encode/decode e expansão) implementado e testado com 100% de aprovação"
+ },
+ {
+  "id": "T63",
+  "titulo": "Arquivo: enriquecer arquivo_chaves.json com ferramentas inúteis do CRITICA.md",
+  "detalhe": "Persistir as 114 ferramentas inúteis identificadas no CRITICA.md em arquivo_chaves.json e validar com test_caixa_arquivo.py",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 21:58",
+  "resultado": "114 ferramentas de nicho/inúteis salvas em arquivo_chaves.json e validadas com 7/7 testes em test_caixa_arquivo.py OK"
+ },
+ {
+  "id": "T64",
+  "titulo": "Barra: testes automatizados do Lote 2 (Q61–Q120) e remoção de saldo residual em Q10",
+  "detalhe": "Garantir que todas as perguntas do dia a dia do Caio em PERGUNTAS.md (Q61–Q120: mercado, combustível, parcelas, Pix, horas) estejam no test_respostas.py e remover carta residual de Saldo em Q10",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-10 22:02",
+  "resultado": "Lote 2 (Q61–Q120) com 60/60 acertos (140/140 no total de PERGUNTAS.md); Q10 com card único sem resíduo de Saldo; 129 testes passando"
+ },
+ {
+  "id": "T65",
+  "titulo": "Hoje: alinhar destaques com as ferramentas mais usadas pelo Caio (config uses)",
+  "detalhe": "CRITICA.md T18: remover atalhos de nicho (garantias, validade, assinaturas) dos destaques da Hoje e promover as que o Caio realmente usa: finanças, engrenagens, conversor, troco",
+  "quem": [
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-10 22:00",
+  "resultado": ""
+ },
+ {
+  "id": "T66",
+  "titulo": "Dias Úteis: incluir feriado nacional de 20/11 (Consciência Negra) e ajuste de vencimento",
+  "detalhe": "CRITICA.md: Dias Uteis 10-20/11/2026 conta 20/11 (feriado nacional Lei 14.759/2023) como util. Atualizar tabela de feriados nacionais no core/adaptador para empurrar vencimento corretamente e validar com testes.",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-11 18:56",
+  "resultado": "staged/utl_core.py atualizado com feriado nacional de 20/11 (Consciência Negra, Lei 14.759/2023); cálculo de dias úteis entre 10/11 e 20/11/2026 ajustado de 9 para 8 úteis e vencimento empurrado para 23/11; test_utl.py passando 100%"
+ },
+ {
+  "id": "T67",
+  "titulo": "Arquivo: garantir que ferramentas do arquivo_chaves fiquem fora das sugestões padrão da barra",
+  "detalhe": "CRITICA.md e T24: garantir que as 114 ferramentas inúteis do arquivo_chaves.json não apareçam como primeiros resultados de fallback na barra de busca quando não há correspondência exata.",
+  "quem": [
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-11 18:59",
+  "resultado": "respostas_core.py: busca_reserva agora ignora ferramentas de arquivo_chaves.json em termos genericos de fallback, mantendo busca apenas por nome exato ou chave; test_caixa_arquivo.py com 8/8 testes OK e test_respostas.py com 44/44 testes OK"
+ },
+ {
+  "id": "T68",
+  "titulo": "🔥 Tendência do dia 11/11: [Windows] NCViewer – A lightweight image viewer with face detection, duplicate s",
+  "detalhe": "Siga TENDENCIA_DO_DIA.md (ideia, versão nossa do zero, offline, PyQt6, pt-BR). Pronto e testado: integre na Caixa e ACRESCENTE a pasta em tendencias_caixa.json (categoria 🔥 Tendências) + python tendencias.py --feita https://www.reddit.com/r/software/comments/1xt33gs/windows_ncviewer_a_lightweight_image_viewer_with/. Se não couber: --feita e faça a próxima do TENDENCIAS.md.",
+  "quem": [
+   "grokbuild",
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-11 19:11",
+  "resultado": "visor-fotos implementado em C:\\Users\\caion\\visor-fotos (vft_core.py, vft_gui.pyw, test_vft.py 6/6 OK, ENTREGA.json, README.md) com cache persistente SQLite de miniaturas, scanner de duplicatas MD5/dHash, detecção de rostos e otimizador estilo RIOT; adicionado em tendencias_caixa.json"
+ },
+ {
+  "id": "T69",
+  "titulo": "Print Anotador: abrir print existente ou imagem da área de transferência",
+  "detalhe": "CRITICA.md P1: Print Anotador hoje sempre abre tela em branco; permitir abrir print existente passado por argumento ou colar imagem do clipboard diretamente para anotação rápida.",
+  "quem": [
+   "cursor",
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-11 19:14",
+  "resultado": "Print Anotador atualizado em staged/print_anotador.py e C:\\Users\\caion\\print-anotador: suporte a abrir arquivo por argumento posicional ou --arquivo exibindo o nome do arquivo na janela, suporte a colar do clipboard (botão, atalho Ctrl+V e --clipboard); 3/3 testes OK"
+ },
+ {
+  "id": "T70",
+  "titulo": "Área de Transferência: sincronizar com cartão da Hoje e fechar limpo sem zumbi",
+  "detalhe": "CRITICA.md: ferramenta Area de Transferencia as vezes abre histórico vazio mesmo com dados na Hoje e deixava processo residual no X. Garantir sincronização inicial e encerramento limpo.",
+  "quem": [
+   "cursor",
+   "antigravity"
+  ],
+  "status": "feito",
+  "por": "antigravity",
+  "quando": "2026-11-11 19:16",
+  "resultado": "area_transferencia atualizada em staged/area_transferencia.py e C:\\Users\\caion\\area-transferencia: sincronizacao imediata no startup do dado pre-existente no clipboard e encerramento limpo (tray.hide e UnregisterHotKey); 2/2 testes OK"
+ },
+ {
+  "id": "T71",
+  "titulo": "🔥 Tendência extra 11/11: Yogurt – Free, private, open-source alternative to Granola",
+  "detalhe": "Ideia em alta (https://github.com/FrigadeHQ/yogurt). Mesmo método do TENDENCIA_DO_DIA.md: catalogo.py --check; versão nossa do zero, offline, PyQt6, pt-BR, com teste; registrar na Caixa (BUILTIN + TOOLS) + tendencias_caixa.json; python tendencias.py --feita https://github.com/FrigadeHQ/yogurt. Não cabe (só nuvem/Mac/ataque)? --feita e conclua dizendo por quê.",
+  "quem": [
+   "grokbuild",
+   "antigravity",
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 19:55",
+  "resultado": ""
+ },
+ {
+  "id": "T72",
+  "titulo": "🔥 Tendência extra 11/11: Pitch: Lancei o Superfik: um canvas nativo e open source para trabalha",
+  "detalhe": "Ideia em alta (https://www.tabnews.com.br/brunozilio/lancei-o-superfik-um-canvas-nativo-e-open-source-para-trabalhar-com-agentes-de-ia). Mesmo método do TENDENCIA_DO_DIA.md: catalogo.py --check; versão nossa do zero, offline, PyQt6, pt-BR, com teste; registrar na Caixa (BUILTIN + TOOLS) + tendencias_caixa.json; python tendencias.py --feita https://www.tabnews.com.br/brunozilio/lancei-o-superfik-um-canvas-nativo-e-open-source-para-trabalhar-com-agentes-de-ia. Não cabe (só nuvem/Mac/ataque)? --feita e conclua dizendo por quê.",
+  "quem": [
+   "grokbuild",
+   "antigravity",
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 19:55",
+  "resultado": ""
+ },
+ {
+  "id": "T73",
+  "titulo": "🧪 QA lote 1: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: conversor-av, cartucho-vs-toner, gerador-noxfile, manicure-spa-vs-casa, calculadora-cafe. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 19:55",
+  "resultado": ""
+ },
+ {
+  "id": "T74",
+  "titulo": "🧪 QA lote 2: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: plano-nuvem-backup, gerador-analisador-codigo-hdlc-crc16, indice-qualidade-vida-semanal, cafe-casa-vs-cafeteria, reologia-fluidos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 19:55",
+  "resultado": ""
+ },
+ {
+  "id": "T75",
+  "titulo": "🧪 QA lote 3: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: kit-pdf, gerador-raml, metronomo, formatador-yaml-toml, custo-oculos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 19:55",
+  "resultado": ""
+ },
+ {
+  "id": "T76",
+  "titulo": "🧪 QA lote 4: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: calculadora-engrenagens, comparador-dados, gerador-tree, cozimento-alimentos, estimativa-frete. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 19:55",
+  "resultado": ""
  }
 ]

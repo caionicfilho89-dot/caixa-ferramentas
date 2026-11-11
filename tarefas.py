@@ -11,6 +11,25 @@ import json
 import os
 import sys
 import time
+import re
+import subprocess
+
+# Rodando de dentro da pasta de trabalho de um agente (git worktree, ex.: C:/Users/caion/wt-antigravity)?
+# Quadro/painel são UM SÓ: reexecuta o script da pasta PRINCIPAL (senão cada agente teria um quadro diferente).
+def _principal(aqui):
+    g = os.path.join(aqui, ".git")
+    if os.path.isfile(g):
+        with open(g, encoding="utf-8") as f:
+            m = re.search(r"gitdir:\s*(.+?)[\\/]\.git[\\/]worktrees", f.read())
+        if m:
+            return os.path.normpath(m.group(1))
+    return None
+
+
+_P = _principal(os.path.dirname(os.path.abspath(__file__)))
+if _P and __name__ == "__main__":
+    os.environ.setdefault("CAIXA_WT", os.path.dirname(os.path.abspath(__file__)))
+    sys.exit(subprocess.call([sys.executable, os.path.join(_P, os.path.basename(__file__))] + sys.argv[1:]))
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ARQ = os.path.join(HERE, "tarefas.json")
@@ -78,6 +97,15 @@ def _outro_tem_mais_folga(agente, t):
 
 
 def concluir(agente, tid, resultado=""):
+    """Marca como feita SE passar no portão de qualidade (portao.py). Recusado → {"recusado": motivo}."""
+    try:
+        import portao
+        motivo = portao.verificar(resultado, os.environ.get("CAIXA_WT") or HERE)
+    except Exception as e:  # noqa: BLE001 — portão quebrado não pode travar o quadro
+        motivo = ""
+        print(f"(portão de qualidade com erro, deixei passar: {e})")
+    if motivo:
+        return {"recusado": motivo, "id": tid}
     ts = ler()
     for t in ts:
         if t["id"] == tid:

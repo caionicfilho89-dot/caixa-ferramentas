@@ -17,6 +17,25 @@ import json
 import os
 import sys
 import time
+import re
+import subprocess
+
+# Rodando de dentro da pasta de trabalho de um agente (git worktree, ex.: C:/Users/caion/wt-antigravity)?
+# Quadro/painel são UM SÓ: reexecuta o script da pasta PRINCIPAL (senão cada agente teria um quadro diferente).
+def _principal(aqui):
+    g = os.path.join(aqui, ".git")
+    if os.path.isfile(g):
+        with open(g, encoding="utf-8") as f:
+            m = re.search(r"gitdir:\s*(.+?)[\\/]\.git[\\/]worktrees", f.read())
+        if m:
+            return os.path.normpath(m.group(1))
+    return None
+
+
+_P = _principal(os.path.dirname(os.path.abspath(__file__)))
+if _P and __name__ == "__main__":
+    os.environ.setdefault("CAIXA_WT", os.path.dirname(os.path.abspath(__file__)))
+    sys.exit(subprocess.call([sys.executable, os.path.join(_P, os.path.basename(__file__))] + sys.argv[1:]))
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PASTA = os.path.join(AQUI, "painel")
@@ -149,7 +168,12 @@ def main():
             import tarefas
             if a.concluir:
                 t = tarefas.concluir(a.agente, a.concluir[0], " ".join(a.concluir[1:]))
-                if t:
+                if t and t.get("recusado"):
+                    print(f"\n⛔ {t['id']} NÃO concluída — portão de qualidade: {t['recusado']}\n"
+                          f"   Conserte e rode --concluir de novo (a tarefa continua sua).\n")
+                    a.pegar = False
+                    t = None
+                elif t:
                     d.setdefault("feitos", []).append(f"{time.strftime(FORMATO)} {t['id']} {t['titulo']}: {t['resultado']}")
                     d["feitos"] = d["feitos"][-15:]
                     d["fazendo"], d["arquivos"] = "", []
