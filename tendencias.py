@@ -43,13 +43,18 @@ keyboard mouse terminal shell explorer browser extension privacy cleanup uninsta
 benchmark battery network wifi dns ip port scanner-own font color picker qr metadata exif ebook
 reader podcast subtitle transcribe transcription speech voice tts stt calendar reminder habit budget
 finance expense invoice spreadsheet csv json diff log logs process task automation macro
-ferramenta ferramentas aplicativo programa utilitario utilitário extensao extensão criei fiz desenvolvi
-gratuito gratuita open-source opensource""".split()
+ferramenta ferramentas aplicativo programa utilitario utilitário extensao extensão open-source opensource
+simulador gerador conversor leitor visualizador gerenciador organizador calculadora planilha canvas
+anotações anotacoes notas bloco painel atalho atalhos lançador tradutor cronômetro agenda lembrete
+backup monitor editor buscador limpador compressor gravador captura player tocador arquivos pastas""".split()
 
 NEGATIVAS = """framework library sdk api-client boilerplate template starter tutorial course book roadmap
 awesome interview leetcode dataset benchmark-suite paper papers weights model-zoo kubernetes k8s helm
 terraform blockchain crypto token nft web3 defi react-component vue-component theme dotfiles config
-homework cheatsheet resume""".split()
+homework cheatsheet resume
+curso cursos treinamento roteiro roteiros aprender aula aulas vaga vagas carreira opinião entrevista
+introdução introducao conceitos biblioteca bibliotecas parsing parser decoder encoder compiler
+interpreter""".split()
 
 # nada que sirva pra golpe/ataque a terceiros (regra de ouro da Caixa)
 PROIBIDAS = """malware exploit phishing stealer ransomware keylogger rat botnet ddos crack keygen cheat
@@ -59,9 +64,9 @@ pre-activated activator unlocked""".split()
 
 # iscas de pirataria/vírus que inflam estrela ("Adobe 2026 Installer com tudo liberado")
 ISCAS = [r"all features enabled", r"full[- ]feature", r"desktop installer", r"standalone .*installer",
-         r"20\d\d.*(installer|setup|edition|desktop build)", r"pre-?configured", r"people[- ]search",
+         r"\b20\d\d\b.*(installer|setup|edition|desktop build)", r"pre-?configured", r"people[- ]search",
          r"verif(y|ication) bypass", r"free (download|license)",
-         r"export-?locked", r"drm", r"view-only", r"copy[- ]protect", r"paywall"]  # furar proteção = não
+         r"export-?locked", r"\bdrm\b", r"view-only", r"copy[- ]protect", r"paywall"]  # furar proteção = não
 
 # pouco útil pra Caixa (desconta, não proíbe)
 FORA_DO_FOCO = """agent agents mcp llm gpt claude chatgpt ios iphone ipad macos android switch nintendo emulator
@@ -165,7 +170,8 @@ def hacker_news():
 
 def lobsters():
     """Lobsters (fórum dev, votado): hottest com pontos e nº de comentários."""
-    txt = _get("https://lobste.rs/hottest.json")
+    # tag "show" = autor mostrando o projeto dele (o hottest geral é quase só artigo/discussão)
+    txt = _get("https://lobste.rs/t/show.json")
     if not txt:
         return []
     itens = []
@@ -219,7 +225,7 @@ def reddit():
 
 # ------------------------------------------------------------------ filtro e ranking
 def _palavras(s):
-    return set(re.findall(r"[a-z0-9][a-z0-9\-]+", s.lower()))
+    return set(re.findall(r"[a-z0-9à-ÿ][a-z0-9à-ÿ\-]+", s.lower()))  # com acento (TabNews é pt-BR)
 
 
 def nota_ferramenta(it):
@@ -230,11 +236,18 @@ def nota_ferramenta(it):
     pos = len(w & set(POSITIVAS))
     neg = len(w & set(NEGATIVAS))
     fora = len(w & set(FORA_DO_FOCO))
-    # discussão/pergunta do Reddit não é ferramenta
-    if it["fonte"].startswith("Reddit") and re.match(r"(why|should|how|what|which|is |are |looking for|any |help)",
-                                                      it["titulo"].lower()):
+    tl = it["titulo"].lower()
+    # quem FEZ e está mostrando a ferramenta = sinal forte de tendência (Show Lobsters, Pitch do TabNews, "criei/fiz")
+    autor = bool(re.search(r"\bshow\b", it.get("topics", ""))) or bool(
+        re.match(r"(pitch:|\[pitch\]|criei|fiz|lancei|desenvolvi|construí|construi|i made|i built)", tl)) or bool(
+        re.search(r"\b(criei|lancei|desenvolvi|construí)\b", tl))
+    # discussão/pergunta não é ferramenta (Reddit em inglês, TabNews em pt-BR)
+    if it["fonte"].startswith("Reddit") and re.match(r"(why|should|how|what|which|is |are |looking for|any |help)", tl):
         return -1
-    return pos - 2 * neg - 2 * fora
+    if it["fonte"].startswith("TabNews") and not autor and re.match(
+            r"(como |vale a pena|se |por que|porque|o que|qual|quais|\[ajuda\]|ajuda|dúvida|duvida|estou |eu achava|texto )", tl):
+        return -1
+    return pos + (2 if autor else 0) - 2 * neg - 2 * fora
 
 
 # ------------------------------------------------------------------ pesquisa aprofundada
@@ -356,7 +369,7 @@ def parecida_na_caixa(it, catalogo):
     melhor = (0.0, None)
     for f in catalogo:
         alvo = (f["nome"] + " " + f["desc"]).lower()
-        hit = sum(1 for t in termos if re.search(r"" + re.escape(t), alvo))
+        hit = sum(1 for t in termos if re.search(r"\b" + re.escape(t), alvo))
         nota = hit / len(termos) if len(termos) > 1 else hit * 0.7
         if nota > melhor[0]:
             melhor = (nota, f)
