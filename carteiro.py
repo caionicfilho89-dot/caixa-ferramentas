@@ -306,17 +306,43 @@ def parados_com_tarefa_hook(para):
         return None
 
 
+def _continuar(para, texto):
+    """Resposta do gancho de fim de turno no formato de cada agente: o agente CONTINUA sozinho com o texto."""
+    if para == "cursor":
+        print(json.dumps({"followup_message": texto}, ensure_ascii=False))
+    else:
+        print(json.dumps({"decision": "block", "reason": texto}, ensure_ascii=False))
+
+
+def correio_novo(para):
+    """Fábrica 2.0: mensagens NÃO lidas no Agent Mail (só espia, não marca como lida)."""
+    try:
+        import fabrica_mail
+        return fabrica_mail.caixa(para), fabrica_mail.nome(para)
+    except Exception as e:  # noqa: BLE001 — servidor fora do ar não pode travar o agente
+        log(f"{para}: Agent Mail indisponível no gancho ({str(e)[:80]})")
+        return [], para
+
+
 def hook(para):
-    """Hook de parada do Grok CLI: tem pedido novo? bloqueia o fim do turno e entrega o texto."""
+    """Gancho de fim de turno (Grok CLI e Cursor): correio novo, pedido ou tarefa livre → o agente continua."""
     try:
         sys.stdin.read()
     except Exception:  # noqa: BLE001
         pass
+    msgs, eu = correio_novo(para)
+    if msgs and _economia_permite(para):
+        de = ", ".join(sorted({m.get("from", "?") for m in msgs}))
+        _continuar(para, f"📬 [automático · fábrica] Você ({eu} no Agent Mail) tem {len(msgs)} mensagem(ns) não lida(s) "
+                         f"de {de}. Use fetch_inbox(project_key=\"C:/Users/caion/caixa-ferramentas\", agent_name=\"{eu}\"), "
+                         "faça o que pedirem, responda com reply_message e marque com acknowledge_message.")
+        log(f"{para}: fim de turno → {len(msgs)} mensagem(ns) do Agent Mail")
+        return
     itens = pendentes(para).get(para, [])
     if not itens and _economia_permite(para):
         p = parados_com_tarefa_hook(para)
         if p:
-            print(json.dumps({"decision": "block", "reason": texto_empurrao(para, 0, p)}, ensure_ascii=False))
+            _continuar(para, texto_empurrao(para, 0, p))
             log(f"{para}: fim de turno sem pedido → mandei pegar {p['id']} do quadro")
         return
     if itens and not _economia_permite(para):
@@ -325,7 +351,69 @@ def hook(para):
     if itens:
         marcar([i for i, *_ in itens])
         log(f"{para}: ENTREGUE via hook {len(itens)} pedido(s)")
-        print(json.dumps({"decision": "block", "reason": mensagem(para, itens)}, ensure_ascii=False))
+        _continuar(para, mensagem(para, itens))
+
+
+_ULTIMO_CUTUCAO_CORREIO = {}
+
+
+def acordar_com_correio():
+    """Fábrica 2.0: correio novo pra agente de JANELA parado (Cursor/Antigravity) → cutucão CURTO ("veja seu correio").
+    O conteúdo vai pelo Agent Mail; colar na janela vira só despertador (máx. 1 a cada 10 min por agente)."""
+    if segundos_ocioso() < OCIOSO_MIN or os.path.exists(LOCK):
+        return
+    try:
+        import fabrica_mail
+    except Exception:  # noqa: BLE001
+        return
+    for ag in ("cursor", "antigravity"):
+        if ag in _pausados() or not _economia_permite(ag) or time.time() - _ULTIMO_CUTUCAO_CORREIO.get(ag, 0) < 600:
+            continue
+        try:
+            msgs = fabrica_mail.caixa(ag)
+        except Exception:  # noqa: BLE001
+            return
+        if not msgs:
+            continue
+        eu = fabrica_mail.nome(ag)
+        ok, info = entregar_janela(ag, f"📬 [automático · fábrica] Você ({eu}) tem {len(msgs)} mensagem(ns) no Agent Mail. "
+                                       f"Use fetch_inbox(project_key=\"C:/Users/caion/caixa-ferramentas\", agent_name=\"{eu}\"), "
+                                       "faça o que pedirem, responda com reply_message e marque com acknowledge_message.")
+        if "OCUPADO" in info:
+            continue
+        _ULTIMO_CUTUCAO_CORREIO[ag] = time.time()
+        log(f"{ag}: {len(msgs)} no correio → cutucão ({'ok' if ok else 'falhou: ' + info[-120:]})")
+
+
+def ponte_cocaino():
+    """Cocaino (Grok Bot) não aceita MCP: o carteiro lê o correio dele (PurpleCarp) e cola o texto na janela.
+    Em reserva (agentes_pausados.json) → encaminha pro substituto pelo correio."""
+    try:
+        import fabrica_mail
+        msgs = fabrica_mail.caixa("grok")
+    except Exception:  # noqa: BLE001
+        return
+    if not msgs:
+        return
+    subst = _pausados().get("grok")
+    if subst:
+        for m in msgs:
+            fabrica_mail.enviar(m.get("from", "claude"), subst, "[encaminhado do Cocaino, em reserva] " + str(m.get("subject", "")),
+                                str(m.get("body_md", "")))
+            fabrica_mail.lida("grok", m["id"])
+        log(f"Cocaino em reserva: {len(msgs)} mensagem(ns) encaminhada(s) pro {subst}")
+        return
+    if segundos_ocioso() < OCIOSO_MIN or os.path.exists(LOCK) or not _economia_permite("grok"):
+        return
+    texto = "\n\n".join(f"📬 De {fabrica_mail.apelido(m.get('from', '?'))} — {m.get('subject', '')}:\n{m.get('body_md', '')}"
+                          for m in msgs[:5])
+    texto += ("\n\n(Você não tem o correio MCP: pra responder, rode python C:/Users/caion/caixa-ferramentas/painel.py "
+              "grok --pedir <agente> \"resposta\")")
+    ok, info = entregar_janela("grok", texto)
+    if ok:
+        for m in msgs[:5]:
+            fabrica_mail.lida("grok", m["id"])
+    log(f"Cocaino: {len(msgs[:5])} mensagem(ns) do correio → janela ({'ok' if ok else 'falhou'})")
 
 
 _tend_ultima_tentativa = 0.0
@@ -414,6 +502,19 @@ def main():
         try:
             rodada()
             empurrar_parados()
+            if volta % 2 == 0:  # a cada 1 min: Fábrica 2.0 (correio)
+                acordar_com_correio()
+                ponte_cocaino()
+            if volta % 6 == 3:  # a cada 3 min: o Gemini atende o correio dele (numa thread: demora)
+                import threading
+
+                def _gemini_correio():
+                    try:
+                        import carteiro_ia
+                        carteiro_ia.atender_correio()
+                    except Exception as ex:  # noqa: BLE001
+                        log(f"correio do Gemini: {ex}")
+                threading.Thread(target=_gemini_correio, daemon=True).start()
             if volta % 60 == 0:  # a cada 30 min: cota ao vivo do Antigravity (agy), numa thread pra não travar
                 import threading
 

@@ -19,6 +19,33 @@ Fale com o Caio em **pt-BR informal**, respostas diretas e sem enrolação.
 
 ---
 
+## 📬 FÁBRICA 2.0 — CORREIO DOS AGENTES (MCP Agent Mail) — vale pra TODOS
+
+Desde 11/11/2026 os agentes conversam por um correio de verdade (servidor MCP **agent-mail** em
+`http://127.0.0.1:8765/mcp/`, já ligado no Claude, Cursor, Antigravity e Grok CLI). Nada de esperar o carteiro colar
+texto na sua janela. `project_key` é SEMPRE `C:/Users/caion/caixa-ferramentas`. Seu nome no correio:
+
+| Agente | Nome no Agent Mail | Agente | Nome no Agent Mail |
+|---|---|---|---|
+| Claude (árbitro) | **AmberFern** | Grok CLI | **CopperIbis** |
+| Cursor | **BrightWren** | Cocaino (Grok Bot) | **PurpleCarp** |
+| Antigravity | **FuchsiaWolf** | Gemini (revisor/planejador) | **IvoryCedar** |
+
+1. **Ao começar:** `fetch_inbox(project_key, agent_name=<seu nome>)`. Faça o que pedirem; responda com `reply_message`
+   e marque com `acknowledge_message`.
+2. **Antes de editar arquivo da caixa-ferramentas** (caixa.pyw, build_suite.py, adp_*.py…): reserve com
+   `file_reservation_paths(project_key, agent_name, paths=[...], ttl_seconds=3600, exclusive=true, reason="T88")`.
+   Conflito = outro agente está nele: **pegue outra tarefa ou mande mensagem pra ele**, não edite por cima.
+   Terminou: `release_file_reservations`.
+3. **Precisa de alguém?** `send_message(project_key, sender_name=<você>, to=[<nome dele>], subject, body_md)`.
+   Dúvida de rumo/conflito → **AmberFern** (Claude).
+4. **Ao terminar o turno** o gancho da fábrica confere seu correio e o quadro: se tiver mensagem ou tarefa, você
+   CONTINUA sozinho. Tarefas seguem no quadro (`python painel.py <você> --pegar` / `--concluir`, com portão de
+   qualidade); o Gemini (IvoryCedar) revisa o que você concluir.
+5. Ver as conversas: **http://127.0.0.1:8765/mail** (o Caio também acompanha por ali).
+
+---
+
 ## 🎯 Objetivo
 
 Construir a **maior caixa de ferramentas do mundo** — meta declarada pelo Caio:

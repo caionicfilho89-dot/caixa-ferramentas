@@ -113,6 +113,12 @@ def revisar(maximo=1):
                                 f"O revisor (Gemini) recusou {t['id']}: {j['motivo']} | Pedido original: {t.get('detalhe', '')}",
                                 [t.get("por") or "antigravity"])
             refazer.append(nova)
+            try:
+                import fabrica_mail
+                fabrica_mail.enviar("gemini", t.get("por") or "antigravity", f"Revisão de {t['id']}: refazer ({nova})",
+                                    f"Revisei a {t['id']} ({t['titulo']}) e não aprovei: {j['motivo']}. Criei a {nova} pra você.")
+            except Exception:  # noqa: BLE001
+                pass
             _log(f"{t['id']} recusada pelo revisor → {nova}: {j['motivo']}", painel=True)
         elif j:
             _log(f"{t['id']} aprovada pelo revisor", painel=True)
@@ -174,6 +180,28 @@ def planejar(quantas=4, agentes=("antigravity", "cursor", "grokbuild")):
     if criadas:
         _log(f"planejei {len(criadas)} tarefa(s) útil(eis): {', '.join(criadas)}", painel=True)
     return criadas
+
+
+# ------------------------------------------------------------------ 3. correio (Fábrica 2.0)
+def atender_correio(maximo=2):
+    """O Gemini (IvoryCedar no Agent Mail) lê o correio dele e responde cada mensagem (só texto)."""
+    import fabrica_mail
+    for m in fabrica_mail.caixa("gemini")[:maximo]:
+        de = fabrica_mail.apelido(m.get("from", "?"))
+        if re.match(r"(Contact |Contato )", str(m.get("subject", ""))):  # aviso automático do correio: só marca
+            fabrica_mail.lida("gemini", m["id"])
+            continue
+        resp = perguntar(
+            "Você é o Gemini, revisor e planejador da fábrica de ferramentas offline do Caio (pt-BR). Outro agente te "
+            f"escreveu.\nDE: {de}\nASSUNTO: {m.get('subject', '')}\nMENSAGEM:\n{m.get('body_md', '')}\n\n"
+            "Contexto da fábrica:\n" + _contexto()[:3000] +
+            "\n\nResponda de forma útil e curta (opinião, revisão, plano ou próximo passo). Se pedirem tarefa, "
+            "descreva-a com título e detalhe.")
+        if resp:
+            fabrica_mail.chamar("reply_message", project_key=fabrica_mail.PROJETO, message_id=m["id"],
+                                sender_name=fabrica_mail.nome("gemini"), body_md=resp[:4000])
+        fabrica_mail.lida("gemini", m["id"])
+        _log(f"respondi {de} no correio: {m.get('subject', '')[:60]}", painel=True)
 
 
 if __name__ == "__main__":

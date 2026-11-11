@@ -154,7 +154,20 @@ def main():
             para, texto = a.pedir
             if para not in AGENTES:
                 sys.exit(f"agente desconhecido: {para}")
-            d.setdefault("pedidos", []).append({"para": para, "texto": texto, "quando": time.strftime(FORMATO)})
+            pedido = {"para": para, "texto": texto, "quando": time.strftime(FORMATO)}
+            d.setdefault("pedidos", []).append(pedido)
+            # Fábrica 2.0: o pedido vai pelo CORREIO (Agent Mail). Quem lê MCP recebe lá e o carteiro não cola na
+            # janela; o Cocaino (Grok Bot, sem MCP) continua recebendo pelo carteiro.
+            try:
+                import carteiro
+                import fabrica_mail
+                alvo = carteiro._pausados().get(para, para)
+                fabrica_mail.enviar(a.agente, alvo, f"Pedido de {a.agente}", texto)
+                if alvo != "grok":
+                    carteiro.marcar([carteiro._id(a.agente, pedido)])
+                print(f"📬 pedido enviado pelo correio pra {fabrica_mail.nome(alvo)} ({alvo})")
+            except Exception as e:  # noqa: BLE001 — correio fora do ar: o carteiro entrega do jeito antigo
+                print(f"(correio indisponível, o carteiro entrega: {str(e)[:80]})")
         if a.resolvido:
             outro = carregar(a.resolvido)
             outro["pedidos"] = [p for p in outro.get("pedidos", []) if p.get("para") != a.agente]
