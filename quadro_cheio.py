@@ -81,6 +81,11 @@ def encher(minimo_por_agente=3, maximo_por_vez=6):
     if falta <= 0:
         return []
     criadas = []
+    try:  # 1º o Gemini (carteiro inteligente) planeja tarefas ÚTEIS; os lotes de QA abaixo são plano B
+        import carteiro_ia
+        criadas += carteiro_ia.planejar(quantas=min(4, falta))
+    except Exception as e:  # noqa: BLE001
+        _log(f"planejador Gemini: {e}")
     hoje_iso, hoje = time.strftime("%Y-%m-%d"), time.strftime("%d/%m")
     texto_quadro = " ".join(t["titulo"] + " " + t.get("detalhe", "") for t in ts)
     extras_hoje = sum(1 for t in ts if t["titulo"].startswith("🔥 Tendência extra") and t["quando"].startswith(hoje_iso))

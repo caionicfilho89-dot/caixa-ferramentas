@@ -443,6 +443,16 @@ def main():
                     quadro_cheio.encher()
                 except Exception as ex:  # noqa: BLE001
                     log(f"quadro cheio: {ex}")
+            if volta % 20 == 15:  # a cada 10 min: o Gemini revisa a última tarefa concluída (numa thread: demora)
+                import threading
+
+                def _revisar():
+                    try:
+                        import carteiro_ia
+                        carteiro_ia.revisar()
+                    except Exception as ex:  # noqa: BLE001
+                        log(f"revisor Gemini: {ex}")
+                threading.Thread(target=_revisar, daemon=True).start()
             if volta % 4 == 0:
                 pedir_propostas_se_faltar()
                 fechar_testes_esquecidos()

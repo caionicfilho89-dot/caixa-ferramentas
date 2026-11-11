@@ -27,6 +27,7 @@ AGENTES = [  # (chave no painel, nome que o Caio usa, emoji, papel)
     ("antigravity", "Antigravity", "🧠", "motor da barra"),
     ("grokbuild", "Grok CLI", "🔌", "barra + tendência"),
     ("grok", "Cocaino", "🧐", "crítico/testador"),
+    ("gemini", "Gemini", "✨", "carteiro inteligente: revisa e planeja"),
 ]
 NOME = {a[0]: a[1] for a in AGENTES}
 
