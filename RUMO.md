@@ -92,6 +92,20 @@ a 1ª categoria da Caixa. Melhorou uma que já existia? Não entra (continua na 
 
 ---
 
+## ⛔ PORTÃO DE QUALIDADE + QUADRO SEMPRE CHEIO (Caio, 2026-11-11)
+
+**`--concluir` agora passa por `portao.py`.** A tarefa só vira "feito" se: (1) nada foi feito em `staged/` ou `dist/`
+(cópia de build — o próximo build APAGA; foi o que perdeu o feriado de 20/11 da T66); (2) os testes das pastas de
+ferramenta CITADAS no resultado passam; (3) ferramenta nova (com ENTREGA.json) está registrada em BUILTIN/TOOLS (a T68
+ficou pronta mas invisível); (4) caixa.pyw e build_suite.py compilam. Recusou? A tarefa continua sua: conserte e
+conclua de novo. **Cite sempre a pasta** (`C:/Users/caion/<pasta>`) no resultado.
+
+**O quadro não esvazia mais:** `quadro_cheio.py` (carteiro, a cada 10 min) mantém ≥ 3 tarefas livres por agente
+ativo com 🔥 Tendência extra (máx. 2/dia, do TENDENCIAS.md) e 🧪 lotes de QA (5 ferramentas do catálogo pra testar de
+verdade e consertar). Parado com tarefa livre = falha sua.
+
+---
+
 ## 📡 PAINEL — como um sabe o que o outro está fazendo
 
 Cada agente tem **um arquivo só dele** em `painel/<agente>.json` e mexe nele **só pelo script**:
