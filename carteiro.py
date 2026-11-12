@@ -532,6 +532,14 @@ def main():
             if volta % 2 == 0:  # a cada 1 min: Fábrica 2.0 (correio)
                 acordar_com_correio()
                 ponte_cocaino()
+            if volta % 10 == 7:  # a cada 5 min: cada cadeira na IA que tem cota (regra do Caio, 12/11)
+                try:
+                    import importlib
+                    import formacao
+                    importlib.reload(formacao)
+                    formacao.auto()
+                except Exception as ex:  # noqa: BLE001
+                    log(f"troca automática: {str(ex)[:120]}")
             if volta % 4 == 2:  # a cada 2 min: formação B — cadeira Google que fechou e tem trabalho → reabre
                 try:
                     import importlib

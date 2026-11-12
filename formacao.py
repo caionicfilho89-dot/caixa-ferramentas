@@ -224,6 +224,48 @@ def garantir_b():
         return
 
 
+def _nivel_conta(conta):
+    est = _ler(os.path.join(HERE, "ECONOMIA.json"), {})
+    return (est.get("contas") or {}).get(conta, {}).get("nivel", "normal")
+
+
+def auto():
+    """Regra do Caio (12/11): cada cadeira usa SEMPRE a IA que tem cota. Sem perguntar A ou B.
+    Original (SuperGrok) crítica e Google com folga → cadeira vai pro Google; Google crítico e original com
+    folga → cadeira volta pro agente original. Mínimo 30 min entre trocas da mesma cadeira (sem pingue-pongue)."""
+    e = estado()
+    cad = dict(e.get("cadeiras") or {}) if e.get("formacao") == "B" else {}
+    troca = e.get("trocou") or {}
+    grok, google = _nivel_conta("grok"), _nivel_conta("google")
+    mudou = []
+    for chave in CADEIRAS:
+        if time.time() - troca.get(chave, 0) < 1800:
+            continue
+        no_google = chave in cad
+        if not no_google and grok == "critico" and google != "critico":
+            cad[chave] = abrir_cadeira(chave)
+            mudou.append(f"{chave} → Google")
+        elif no_google and google == "critico" and grok != "critico":
+            pid = cad.pop(chave)
+            if pid and _pid_vivo(pid):
+                subprocess.run(["taskkill", "/PID", str(pid), "/T", "/F"], capture_output=True,
+                               creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+            mudou.append(f"{chave} → original (Grok)")
+        else:
+            continue
+        troca[chave] = time.time()
+    if not mudou:
+        return []
+    novo = {"formacao": "B" if cad else "A", "desde": e.get("desde") or time.strftime("%Y-%m-%d %H:%M"),
+            "pausados_antes": e.get("pausados_antes", {}), "cadeiras": cad, "trocou": troca,
+            "acordou": e.get("acordou", {})}
+    if not cad:  # todas de volta: devolve a reserva do Cocaino como era antes da manobra
+        _salvar(PAUSADOS, e.get("pausados_antes", {}))
+    _salvar(ARQ, novo)
+    _avisar(f"troca automática (SuperGrok {grok}, Google {google}): " + ", ".join(mudou))
+    return mudou
+
+
 if __name__ == "__main__":
     try:
         sys.stdout.reconfigure(encoding="utf-8")
