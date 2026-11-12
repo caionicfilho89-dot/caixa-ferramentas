@@ -1,0 +1,25 @@
+{
+  "_leia": "RUMO NOVO (12/11/2026, Caio): a Caixa é 'TUDO EM UM SÓ LUGAR — os programas que você baixaria, a um clique' + SEMPRE com as tendências. Esta é a VITRINE: cada ferramenta tem que ficar tão boa quanto o programa famoso que ela substitui. A fábrica trabalha em cima desta lista (tarefas '⭐ Paridade'), não cria ferramenta nova de nicho.",
+  "vitrine": [
+    {"chave": "kit-pdf", "substitui": "iLovePDF / PDF24", "essenciais": ["juntar, separar, girar, comprimir", "imagens↔PDF", "extrair texto", "proteger/remover senha", "arrastar e soltar arquivos"]},
+    {"chave": "conversor-av", "substitui": "HandBrake / Format Factory", "essenciais": ["converter vídeo e áudio em lote", "presets prontos (WhatsApp, celular, 1080p)", "cortar trecho", "extrair áudio", "barra de progresso real"]},
+    {"chave": "gravador-tela", "substitui": "OBS (gravar) / ShareX", "essenciais": ["tela ou área", "som do sistema + microfone", "MP4 e GIF", "atalho de teclado pra começar/parar", "contagem regressiva"]},
+    {"chave": "print-anotador", "substitui": "ShareX / Lightshot", "essenciais": ["captura de área com atalho", "seta, texto, tarja/borrão", "copiar e salvar num clique", "abrir print existente"]},
+    {"chave": "busca-arquivos", "substitui": "Everything", "essenciais": ["resultado instantâneo enquanto digita", "filtros por tipo/tamanho/data", "abrir pasta do arquivo", "índice que atualiza sozinho"]},
+    {"chave": "renomeador", "substitui": "PowerRename / Bulk Rename Utility", "essenciais": ["prévia antes de aplicar", "numeração, data EXIF, regex", "desfazer", "arrastar pasta"]},
+    {"chave": "area-transferencia", "substitui": "Ditto / Win+V", "essenciais": ["histórico de texto e imagem", "fixar e buscar", "atalho global", "fechar sem travar"]},
+    {"chave": "conversor-imagens", "substitui": "conversores online / IrfanView", "essenciais": ["lote", "HEIC, WEBP, PNG, JPG", "redimensionar e comprimir", "manter EXIF opcional"]},
+    {"chave": "extrator-texto", "substitui": "PowerToys Text Extractor", "essenciais": ["selecionar área da tela", "OCR em português", "copiar direto", "abrir imagem existente"]},
+    {"chave": "faxina-disco", "substitui": "WinDirStat / CCleaner", "essenciais": ["o que ocupa o disco em gráfico", "maiores arquivos", "duplicados", "mandar pra Lixeira (nunca apagar direto)"]},
+    {"chave": "recupera-arquivos", "substitui": "Recuva", "essenciais": ["recuperar fotos/PDF/ZIP apagados", "modo NTFS com nome original", "prévia", "salvar em outro disco"]},
+    {"chave": "visor-fotos", "substitui": "IrfanView / Google Fotos (duplicadas)", "essenciais": ["abrir pasta na hora (cache)", "duplicadas parecidas", "girar, apagar pra Lixeira", "tela cheia e setas"]},
+    {"chave": "editor-imagem", "substitui": "Paint.NET (básico)", "essenciais": ["cortar, redimensionar, girar", "brilho/contraste", "texto e formas", "desfazer"]},
+    {"chave": "compactador", "substitui": "WinRAR / 7-Zip", "essenciais": ["compactar e extrair ZIP/7z/RAR", "senha", "arrastar e soltar", "progresso"]},
+    {"chave": "cofre-senhas", "substitui": "Bitwarden (local)", "essenciais": ["gerar senha forte", "cofre criptografado", "copiar com limpeza automática", "busca"]},
+    {"chave": "qrcode-tool", "substitui": "geradores de QR online", "essenciais": ["link, Wi-Fi, Pix, contato", "ler QR de imagem/print", "salvar PNG/SVG"]},
+    {"chave": "capturador-cores", "substitui": "PowerToys Color Picker", "essenciais": ["conta-gotas com lupa", "HEX/RGB/HSL", "paleta salva", "atalho global"]},
+    {"chave": "limpa-metadados", "substitui": "ExifCleaner", "essenciais": ["ver e remover GPS/autor", "foto, PDF e Office", "lote", "original intacto"]},
+    {"chave": "organizador-downloads", "substitui": "arrumar Downloads na mão", "essenciais": ["separar por tipo", "achar instaladores velhos", "histórico com Desfazer"]},
+    {"chave": "monitor-sistema", "substitui": "Gerenciador de Tarefas / HWMonitor", "essenciais": ["CPU, RAM, disco, rede ao vivo", "quem está pesando", "temperatura se disponível"]}
+  ]
+}

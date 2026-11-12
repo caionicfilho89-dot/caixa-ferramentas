@@ -194,8 +194,11 @@ def planejar(quantas=4, agentes=("antigravity", "cursor", "grokbuild", "grok")):
         "Você é o planejador da 'Caixa de Ferramentas' do Caio: app Windows offline (PyQt6, pt-BR) com 750+ "
         "ferramentas. Agentes de código vão executar suas tarefas.\n\n" + _contexto() +
         "\n\nJá abertas: " + "; ".join(abertas) + "\nFeitas recentemente: " + "; ".join(recentes) +
-        f"\n\nCrie {quantas} tarefas NOVAS, PEQUENAS (cabem em 30 min) e ÚTEIS de verdade pro Caio: consertar problema do "
-        "CRITICA.md, melhorar ferramenta que ele mais usa, ou ideia de tendência sem parecida. PROIBIDO: ferramenta de nicho "
+        f"\n\nRUMO DA CAIXA: 'tudo em um só lugar — os programas que a pessoa baixaria' (vitrine.json: Kit de PDF, "
+        "Conversor de Áudio/Vídeo, Gravador de Tela, Print Anotador, Busca de Arquivos, Renomeador, Faxina, Recupera "
+        "Arquivos, Compactador...) + sempre com as tendências.\n"
+        f"Crie {quantas} tarefas NOVAS, PEQUENAS (cabem em 30 min) que deixem uma ferramenta da VITRINE mais perto do "
+        "programa famoso que ela substitui, ou consertem problema do CRITICA.md numa delas. PROIBIDO: ferramenta de nicho "
         "inútil, adaptador de barra de nicho, repetir tarefa aberta, build do .exe, nada pra golpe/ataque. Cada uma diz a "
         "PASTA da ferramenta (C:/Users/caion/<pasta>) e como testar. Responda SÓ um JSON: "
         '[{"titulo": "...", "detalhe": "...", "quem": ["antigravity", "cursor", "grokbuild"]}]')

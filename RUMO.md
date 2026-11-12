@@ -4,6 +4,26 @@
 > `AGENTS_PROTOCOL.md`, `BACKLOG.md`, `CLAUDE.md`, `GEMINI.md`, `INSTRUCTIONS_AGENT.md`).
 > Onde eles falarem em "rodada de 6 ferramentas", "lane" ou "um milhão de funções", **vale o que está aqui.**
 
+## ⭐ RUMO NOVO (Caio, 12/11/2026) — "TUDO EM UM SÓ LUGAR, SEMPRE COM AS TENDÊNCIAS" (vale mais que tudo abaixo)
+
+Os dados mostraram: **759 ferramentas e só 25 abertas alguma vez** — virou "amontoado de funções", ninguém
+baixaria. A Caixa passa a ser: **os programas que a pessoa baixaria, num só lugar, a um clique — e que ganha
+sozinha o que estiver bombando (Tendência do dia).** A pessoa baixa UMA vez e a Caixa substitui iLovePDF,
+HandBrake, ShareX, Everything, WinRAR, CCleaner, Recuva…
+
+1. **VITRINE = `vitrine.json`** (20 ferramentas, cada uma com o programa famoso que substitui e o que precisa ter).
+   Trabalho principal da fábrica: tarefas **⭐ Paridade** — deixar cada uma TÃO BOA quanto o famoso
+   (completar o que falta da lista `essenciais`, com teste e conferência na tela).
+2. **PROIBIDO criar ferramenta nova de nicho** (calculadora de bolo, gerador de flake.nix…). Ferramenta nova só se for
+   **Tendência** (programa que o povo está baixando agora) — ela entra em 🔥 Tendências e, se for forte, na vitrine.
+3. **Teste (QA) só nas ferramentas da vitrine** — nada de lotes aleatórios do catálogo.
+4. As outras 700+ continuam existindo (barra e "Todas"), mas **não aparecem na vitrine**.
+5. Qualidade > quantidade: o portão exige o que mudou + como testou. Ritmo calmo (a cota tem que durar a semana).
+6. Próximos passos do produto (o Claude puxa): vitrine na tela inicial mostrando "substitui X", instalador menor
+   (hoje 924 MB), página simples "substitui 20 programas, sem propaganda, em português".
+
+---
+
 ## ⛔ Calculadora nova: PAUSADA. Trabalho: NÃO para.
 
 - **Ninguém cria ferramenta/pasta nova de calculadora.** As 750 que existem **ficam como estão**.

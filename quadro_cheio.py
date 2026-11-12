@@ -124,8 +124,30 @@ def encher(minimo_por_agente=2, maximo_por_vez=4):  # 12/11: as 3 contas zeraram
             "offline, PyQt6, pt-BR, com teste; registrar na Caixa (BUILTIN + TOOLS) + tendencias_caixa.json; "
             f"python tendencias.py --feita {url}. Não cabe (só nuvem/Mac/ataque)? --feita e conclua dizendo por quê.",
             quem_tend))
+    # RUMO NOVO (12/11): nada de lote de QA aleatório do catálogo — a fábrica trabalha na VITRINE (vitrine.json):
+    # cada tarefa ⭐ Paridade deixa UMA ferramenta tão boa quanto o programa famoso que ela substitui.
+    vit = _json(os.path.join(HERE, "vitrine.json"), {}).get("vitrine", [])
+    prog = _json(os.path.join(HERE, "vitrine_progresso.json"), {"proxima": 0})
+    abertas = " ".join(t["titulo"] for t in ts if t["status"] != "feito")
+    tentativas = 0
+    while vit and len(criadas) < falta and tentativas < len(vit):
+        v = vit[prog["proxima"] % len(vit)]
+        prog["proxima"] += 1
+        tentativas += 1
+        if f"[{v['chave']}]" in abertas:
+            continue  # essa já tem tarefa aberta
+        criadas.append(tarefas.nova(
+            f"⭐ Paridade [{v['chave']}]: tão boa quanto {v['substitui']}",
+            f"Ferramenta da VITRINE (RUMO NOVO). Pasta C:/Users/caion/{v['chave']}. Ela substitui {v['substitui']}: "
+            f"tem que ter {'; '.join(v['essenciais'])}. 1) Abra a ferramenta e confira cada item (o que já tem, o que "
+            "falta, o que está ruim). 2) Implemente o que FALTA mais importante (1–2 itens por tarefa), no código-fonte "
+            "da pasta, com teste novo em test_*.py. 3) No --concluir diga item por item: tinha / fiz agora / falta, e "
+            "como testou. Visual em pt-BR, tema escuro, sem travar.",
+            ativos))
+    with open(os.path.join(HERE, "vitrine_progresso.json"), "w", encoding="utf-8") as f:
+        json.dump(prog, f)
     qa = _json(QA, [])
-    cat = _json(os.path.join(HERE, "catalogo.json"), {}).get("ferramentas", [])
+    cat = []  # lotes de QA aleatórios desligados pelo RUMO NOVO
     fora = set(qa) | _arquivadas()
     pool = [f["chave"] for f in cat if f["chave"] not in fora and os.path.isdir(os.path.join(os.path.dirname(HERE), f["chave"]))]
     random.shuffle(pool)

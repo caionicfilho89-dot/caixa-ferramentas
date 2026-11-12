@@ -958,10 +958,10 @@
    "antigravity",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 03:30",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:12",
+  "resultado": "T78 QA lote 6 ok nas 5 pastas. C:/Users/caion/estudios-gif test_gif.py OK: 8 quadros, boomerang de 4 vira 6, spritesheet 1040x520 e fatia em 8, GUI offscreen. C:/Users/caion/conversor-moedas test_cm.py OK: 10 USD = R$ 55,50, 100 BRL = US$ 18,00, 2 EUR = R$ 11,80; tabela offline (volta de 10 USD da R$ 9,99). C:/Users/caion/analisador-pip-freeze test_drf.py OK: requests 2.28 contra 2.31 diverge; corrigi a comparacao de versao, numpy>=2.0 contra 1.26.4 cai em DIVERGENTES e click==8.1 aceita 8.1.0. C:/Users/caion/orcamentos test_orc.py 6/6 OK: 2x100 menos 10 = 190, 1,5x33,33 = 50,00, subtotal 240 menos 40 = 200; GUI 2x150 + 49,90 menos 10 = 339,90. C:/Users/caion/custo-creche test_crh.py OK: 1000x12 + 100 + 50 + 100x12 = 13.350,00 media 1.112,50; 850x10 + 200 + 150 + 40x10 = 9.250,00. Texto da creche agora em R$ pt-BR. Creche e nicho. CRITICA.md estava reservado pelo Cursor, nao editei por cima."
  },
  {
   "id": "T79",
@@ -1752,10 +1752,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "pegou",
+  "status": "feito",
   "por": "cursor",
-  "quando": "2026-11-12 02:55",
-  "resultado": ""
+  "quando": "2026-11-12 04:30",
+  "resultado": "QA lote 68: C:/Users/caion/simulador-reatores-quimicos (test_rea 7/7), C:/Users/caion/lixeira-windows (timeout no _ps + test skip se COM travar; listar/gui OK), C:/Users/caion/calculadora-meia-vida-cafeina (test_caf 4/4; 200mg@5h=100), C:/Users/caion/gerador-npmignore (test_nmi OK), C:/Users/caion/indice-carga-treino (test_ict OK; 420/1260). CRITICA T161."
  },
  {
   "id": "T162",
@@ -1857,10 +1857,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "pegou",
+  "status": "feito",
   "por": "grokbuild",
-  "quando": "2026-11-12 03:04",
-  "resultado": ""
+  "quando": "2026-11-12 03:48",
+  "resultado": "T168 concluida: QA lote 75 testado e validado nas 5 pastas: C:/Users/caion/festa-infantil (test_fsi.py 3/3 OK), C:/Users/caion/gerador-syncthingignore (test_stg.py 2/2 OK), C:/Users/caion/cuidados-orquideas (test_orq.py 5/5 OK), C:/Users/caion/calendario-da-horta (test_cpl.py 5/5 OK), C:/Users/caion/busca-arquivos (test_finder.py 3/3 OK). Contas conferidas na mao, corrigido main de busca-arquivos e GUI offscreen validadas."
  },
  {
   "id": "T169",
@@ -1887,10 +1887,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "pegou",
+  "status": "feito",
   "por": "grok",
-  "quando": "2026-11-12 03:10",
-  "resultado": ""
+  "quando": "2026-11-12 05:06",
+  "resultado": "T170 QA lote 77: C:\\Users\\caion\\calculadora-datas test_dts.py 5 passed; C:\\Users\\caion\\piso-vinilico test_vin.py 3 passed; C:\\Users\\caion\\capturador-cores test_eyedrop.py 3 passed; C:\\Users\\caion\\pet test_pet.py 7 passed; C:\\Users\\caion\\simulador-logica test_lgc.py 5 passed (pytest exigiu PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 por langsmith.pytest_plugin ausente no PC — nao e bug das ferramentas). Contas a mao: pascoa(2026)=05/04/2026; dias_uteis 10-20/11/2026=7 (exclui 20/11); piso 4x3 reta 18x122 cm -> 13,2 m2 / 61 reguas / 8 caixas, custo 1790; eyedrop color_at (0,1)=(0,0,255), #FF5733 hsl(11, 100%, 60%); rer(12)=451,3193713658876, plano castrado 3500 kcal/kg -> 722,11 kcal/dia e 206,32 g/dia; NAND [0,1,1,1], (A&B)|C = 1 e 0. GUI leve aberta/fechada (capturador so open/close). Sem bug de ferramenta, sem pedido. IPTV 14456 intocado."
  },
  {
   "id": "T171",
@@ -1902,10 +1902,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:53",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:20",
+  "resultado": "T171 QA lote 78 ok. C:/Users/caion/meta-leitura test_lei.py 5 OK: 100 paginas em 10 dias = 10 por dia, ritmo 300/30 = 10, termino 2026-01-11. GUI: 200 paginas em 21/12 pedem 20 por dia e, com 300 paginas em 30 dias, ritmo 10. C:/Users/caion/indice-burnout-simplificado test_ibs.py 7 OK: escore 0 baixa, 20 alta com aviso 188, cinco notas 2 = 10 moderada, notas 1/1/3/1/1 = 5 baixa. C:/Users/caion/simulador-gravitacional-n-corpos test_nbd.py 4 OK: orbita v=100, energia inicial -4987,52, deriva desprezivel em 200 passos, centro de massa de 30 em 0 e 10 em 40 fica em 10. Energia na tela em formato brasileiro e ja aparece ao abrir. C:/Users/caion/simulador-renda-fixa test_rfx.py 6 OK: 1000 a 10% em 365 dias base 365 liquido 1082,50 com IR 17,50, IOF do dia 10 = 66% do rendimento, IPCA+5 = 10,25%, isento 85% em 800 dias equivale a 100% tributado, poupanca com Selic 6% = 4,2%. GUI com 1000 em 365 dias: melhor opcao liquido 1136,31. C:/Users/caion/lista-feira-orcamento test_lfe.py OK: 2x5+3 = 13 dentro de 20, 50 estoura 40 em 10. Virgula decimal 4,50 deixa de virar 4. Lista padrao fecha em 37,85. GUI offscreen."
  },
  {
   "id": "T172",
@@ -1917,10 +1917,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:53",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:26",
+  "resultado": "T172 QA lote 79 ok. test_ntr.py, test_csd.py, test_rfm.py, test_hsa.py e test_ind.py passaram. GUI offscreen. C:/Users/caion/calculadora-nutricao IMC 70 kg e 175 cm = 22,86 peso normal; 100 kg e 170 cm = 34,60 obesidade grau I. Tela: homem 82 kg 178 cm IMC 25,9 sobrepeso TMB 1778; mulher 60 kg 165 cm IMC 22,0 TMB 1320. C:/Users/caion/calculadora-seguro-desemprego salario 2500, 1a solicitacao, 18 meses: parcela 1891,63 x 4 = 7566,52. 2a solicitacao, 9 meses, salario 2000: 1600 x 3 = 4800. Tela mostrou R$ 1.891,63 e R$ 1.600,00 (o rotulo usava ponto americano). C:/Users/caion/orcamento-reforma material 50 e mao 40 no metro, qtd 10 = 900; empreitada mao 2000 qtd 5 = item 2500. Tela com reserva 10%: TOTAL R$ 1.980,00 e R$ 2.750,00. C:/Users/caion/hora-de-sair compromisso 09:00, trajeto 35 min, margem 30%: sair 07:59, alarme 07:09 (46 min de trajeto). Compromisso 01:00: alarme 23:00 do dia anterior. C:/Users/caion/conversor-indentacao um tab vira 4 espacos; 8 espacos com largura 4 viram 2 tabs. As cinco servem."
  },
  {
   "id": "T173",
@@ -1932,10 +1932,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:30",
+  "resultado": "T173 QA lote 80 ok. test_sbp.py 4 OK, test_wsp.py OK, test_tox.py OK, test_stt.py 2 OK. GUI offscreen. C:/Users/caion/calculadora-adicional-sobreaviso-prontidao salario 2200, divisor 220, sobreaviso, 60 h sem acionamento: hora 10,00, hora do regime 3,33, total 200,00. Prontidao salario 4400, 30 h com 10 h de acionamento: hora do regime 13,33, espera 266,67, hora extra 300,00, bruto 566,67. Tela mostrou R$ 3,33 e R$ 266,67. C:/Users/caion/compactador-whitespace tres linhas em branco e um tab viram uma linha em branco e 4 espacos. Tab de largura 2 depois de uma letra vira 1 espaco. C:/Users/caion/gerador-tox-ini preset Python multi traz py311, py312, py313 e pytest. Preset de docs traz mkdocs build --strict. C:/Users/caion/qrcode-tool exemplo.com vira https://exemplo.com. Wifi Casa com senha a;b escapa o separador. Telefone vira tel:11988887777. PNG gerado e lido de volta com o mesmo link. C:/Users/caion/laboratorio-estatistica amostra 10 12 14 15 16 18 20 55: media 20, mediana 15,5, Q1 13,5, Q3 18,5, outlier 55. Reta de 1 2 3 4 contra 2 4 6 8 tem inclinacao 2 e em x=5 da y=10. Tela do exemplo: N=11, media 20,7273, outlier 48, previsao em x=30 igual a 60,5392. As cinco servem."
  },
  {
   "id": "T174",
@@ -1947,10 +1947,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 04:31",
+  "resultado": "QA lote 81: C:/Users/caion/quadro-branco (test_qb OK), C:/Users/caion/recupera-arquivos (test_rcv.py 4/4 criado; carve JPEG + runlist), C:/Users/caion/visualizador-ordenacao (test_srt 5/5; bubble/quick), C:/Users/caion/gerador-flatbuffers (test_fbs OK), C:/Users/caion/conversor-epoch (test_epc 3/3; epoch 0 e 1700000000). CRITICA T174. flatbuffers nicho."
  },
  {
   "id": "T175",
@@ -1962,10 +1962,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:34",
+  "resultado": "T175 QA lote 82. test_td.py test_mnt.py test_ipm.py test_ofx.py test_thf.py sairam 0. GUI offscreen. C:/Users/caion/treino-digitacao: hello world em 2,5 s da 52,8 ppm e precisao 100; casa como cxsy da 2 erros, 16 ppm bruto e 8 liquido. C:/Users/caion/manutencao-casa: 15/01/2026 mais 6 meses = 15/07/2026; 31/01/2026 mais 1 mes = 28/02/2026; 31/01/2024 mais 1 mes = 29/02/2024. C:/Users/caion/calculadora-subrede: 192.168.15.3/24 rede 192.168.15.0 com 254 hosts; 10.0.0.1/30 com 2 hosts; VLSM 100, 50 e 2 vira 192.168.10.0/25, 192.168.10.128/26 e 192.168.10.192/30. IPv6 /64 mostra 18.446.744.073.709.551.616. C:/Users/caion/gerador-ofx: 10 lancamentos semente 123 saldo 1000 fecha em 28828,71 e a soma bate; o arquivo segue com ponto no BALAMT. Rotulos da tela: 1234,56 vira 1.234,56. C:/Users/caion/gerador-thrift: Struct, Service e Exceptions geram IDL com namespace; Service e Exceptions trazem service. As cinco servem."
  },
  {
   "id": "T176",
@@ -1977,10 +1977,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 04:32",
+  "resultado": "QA lote 83: C:/Users/caion/sono-bebe (test_sbb 4/4; 10h e 12h@6m ok), C:/Users/caion/gerador-devcontainer (test_dvc OK), C:/Users/caion/meta-vocabulario-idioma (test_mvi 7/7; meta cabe), C:/Users/caion/simulador-precessao-giroscopica (test_gyr 5/5), C:/Users/caion/inspetor-zip-central (test_zcd OK). CRITICA T176. nicho: devcontainer+giroscopio."
  },
  {
   "id": "T177",
@@ -1992,10 +1992,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:37",
+  "resultado": "T177 QA lote 84. test_chz.py test_enx.py test_pld.py test_vcp.py test_tvd.py sairam 0. GUI offscreen. C:/Users/caion/estudio-xadrez: inicial 39 a 39. e2 e4 depois e7 e5. Mate do Pastor fica 39 a 38, mais 1 das brancas. C:/Users/caion/enxoval-bebe: 24 meses com 10 por cento da 5049 fraldas e R$ 7.058,70; pano R$ 2.460,00. Em 6 meses sem margem: 1560 fraldas e R$ 1.857,00. C:/Users/caion/pelada-futebol: semente 42, forcas 11 e 10. Quadra 120 com 4 mensalistas e 2 avulsos de 15: mensalista 22,50. Na tela, 200 com avulso 25 e 3 avulsos: mensalista R$ 41,67. C:/Users/caion/vacinas-pet: V8 em 08/11/2025 volta em 08/11/2026. Antirrabica de 01/10/2024 atrasada 403 dias. Gato nascido em 01/01/2026: V4 em 26/02, 19/03 e 09/04. C:/Users/caion/tamanho-tv: sofa a 2,5 m pede 60,5 pol no SMPTE e 82,2 no THX. TV de 55 pol pede 2,27 m. A 3 m em HD o SMPTE pede 72,6 pol e uma TV de 65 no THX pede 1,98 m. As cinco servem."
  },
  {
   "id": "T178",
@@ -2007,10 +2007,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:43",
+  "resultado": "T178 QA lote 85. Testes test_ms.py test_pti.py test_tnt.py test_ass.py test_jwt.py sairam 0. GUI offscreen nas cinco. C:/Users/caion/monitor-sistema: 1536 vira 1,5 KB e 5 GiB vira 5,0 GB; 7500 s vira 2h 05min; taxa de 1000 a 5000 em 2 s da 2000. Segunda conta: 2 MiB/s vira 2,0 MB/s e 12,34 por cento vira 12,3. GUI leu CPU 16,4 por cento em 12 nucleos e RAM 49,8 por cento (15,8 GB de 31,8 GB); disco 0 B/s e rede 459,9 KB/s. Nao finalizei processo. C:/Users/caion/gerador-pytest-ini: preset Basico tem testpaths e addopts -q; preset Markers tem slow e not slow. GUI offscreen trocou a lista e o texto mudou nos dois. C:/Users/caion/calculadora-rendimento-tinta: 40 m2, 2 demaos, 12 m2 por litro e 10 por cento de perda da 7,33 L e 3 latas. GUI na parede porosa com 50 m2 e 1 demao deu 5,50 L. C:/Users/caion/controle-assinaturas: 29,90 mensal mais 120 anual fecha em 39,90 por mes e 478,80 por ano. Segunda conta 1500 mensal mais 2400 anual fecha em 1.700,00 por mes e 20.400,00 por ano. A tela usava ponto no valor; agora mostra R$ 1.500,00 e R$ 1.700,00. O teste da janela grava num arquivo temporario. C:/Users/caion/decodificador-jwt: token de brinquedo confere com o segredo, segredo errado nao confere, nome Lote. exp 100 no instante 120 esta vencido; exp 500 ainda tem 380 s. GUI offscreen mostrou assinatura valida e depois invalida. As cinco servem."
  },
  {
   "id": "T179",
@@ -2022,10 +2022,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:48",
+  "resultado": "QA lote 86. test_pls.py, test_uba.py, test_ham.py, pb_tests.py e test_mdh.py sairam 0. GUI offscreen nas cinco. Leituras C:/Users/caion/planejador-leituras-semanais: 300 com 100 lidas, 5 dias, 2 pag/min da 200 restantes, 40 pag/dia, 20 min, cabe em 2 dias; 400 pag, 3 dias, 30 pag/hora e 30 min nao cabe (capacidade 15 pag/dia, falta 355). GUI 320 cabe e GUI 400 nao cabe. Carro C:/Users/caion/carro-ou-app: 60000 com dep 12, IPVA 3, seguro 200, manut 100, 1000 km, 10 km/l e litro 5 da total 1550 (dep 600, comb 500); corrida 10 km 20 min dinamica 2 da 70; equilibrio 200 km, e None se o variavel do carro ja ganha. Tela mostrava ponto no decimal; agora a GUI default e R$ 2.380,00 e o publico R$ 220,00; segundo cenario carro R$ 65,00 e publico R$ 200,00. Hamming C:/Users/caion/estudio-codigo-hamming-ecc: bloco 7,4 dados 1 0 1 1 fica OK; inverter o bit 3 corrige e devolve os dados; texto Oi com 1 bit ruim volta (1 corrigido, 0 erro duplo); bloco 8,4 com dois bits ruins vira erro duplo. GUI [1, 0, 0, 1] OK e, com o bit 1 invertido, status corrigido com os mesmos dados. Pix C:/Users/caion/pix-boleto: exemplo do BCB crc ok (Fulano de Tal, BRASILIA, crc 29B1). Telefone (11) 98765-4321 vira +5511987654321, valor 12,5, e o payload guarda 12.50 com ponto porque o Pix exige ponto. GUI resumo R$ 12,50. Boleto sintetico do proprio teste (Itau) valor 1234,56 mostrado R$ 1.234,56, vence 29/11/2026, numeros conferem. Energia 123,45 mostrado R$ 123,45. Entrada 123 da erro. So confere, nao gera boleto. Medicacao C:/Users/caion/controle-medicacao-horarios: 8 h as 08:00 da 08:00 e 16:00; 12 h as 06:00 da 06:00 e 18:00; proxima dose 10:00 esta a 60 min; 08:00 e 08:20 se cruzam em 20 min. O botao adicionar quebrava (lia intervalo em vez de intervalo_horas). Agora a lista mostra cada 8 h e o alerta de 20 min. As cinco servem."
  },
  {
   "id": "T180",
@@ -2037,10 +2037,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:58",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:53",
+  "resultado": "QA lote 87. test_cfr.py, test_fa.py, test_fa_gui.py, test_fwl.py e test_txp.py sairam 0. GUI offscreen nas cinco. Cifras C:/Users/caion/estudio-cifras: ATAQUE com deslocamento 3 vira DWDTXH na conta e na tela. HELLO no Atbash vira SVOOL na conta e na tela. ATTACKATDAWN com chave LEMON vira LXFOPVEFRNHR. Autenticador C:/Users/caion/autenticador-2fa: no instante 59 o codigo de 8 digitos e 94287082 e a tela mostra 9428 7082. HOTP no contador 0 e 755224 e a tela mostra 755 224. O cofre de teste nao foi criado. Firewall C:/Users/caion/gerenciador-firewall: bloquear um exe monta duas regras, saida e entrada, sem aplicar. Porta UDP 53 de saida para bloquear monta a regra DNS OUT BLOCK. A tela listou 527 regras e 0 da Caixa. Nao cliquei em bloquear nem em apagar. Taxa C:/Users/caion/taxa-pix-recebimento: 100 com 0,99 por cento da taxa 0,99 e liquido 99,01. 2500 com 0,99 por cento mais 0,50 da taxa 25,25 e liquido 2474,75. A tela usava ponto; agora mostra R$ 99,01 e R$ 2.474,75. Pacote C:/Users/caion/ferramentas-br: MDC de 48 e 18 e 6, na tela igual. 12,5 por cento de 80 e 10, na tela igual. Nao ha teste com prefixo test_ nessa pasta. As cinco servem."
  },
  {
   "id": "T181",
@@ -2052,10 +2052,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 03:04",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 04:59",
+  "resultado": "T181 QA lote 88. test_fad.py, test_buf.py, test_elf.py, test_mkv.py e test_cpj.py passaram na GUI offscreen. Fadiga 8 h, sono 8 h, 1 plantao, pausa 60 min, esforco 2 deu escore 21 Fadiga baixa; 14 h, sono 3 h, 5 plantoes, pausa 0, esforco 10 deu escore 99 Fadiga alta. A tela mostrou os mesmos. Gorjeta 79,90 para 2 pessoas a 10% total R$ 175,78 (R$ 87,89 cada); 50 para 4, couvert 5 e bebidas 20 a 10% total R$ 264,00 (R$ 66,00 cada). A tela bateu. ELF minimo ELF64 LE tipo DYN entry 0; segundo cabecalho tipo EXEC entry 0x401000. A tela leu o arquivo minimo. Markov 56 tokens, 46 estados, 51 transicoes, ramificacao 1.109. Seed 42 e seed 7 bateram nucleo e tela. Comparador bruto 10000, VR 1000, saude 500, PLR 12000: liquido R$ 7.487,08, INSS R$ 908,86, IR R$ 1.604,06, FGTS R$ 800,00, pacote R$ 140.146,81 por ano. Nota 15000 no simples anexo 3 livre R$ 9.808,74; tela CLT mais vantajosa em R$ 1.870,16 por mes. Segundo caso bruto 5000 contra nota 4000: liquido R$ 4.135,68 contra livre R$ 3.386,80. Ajustei a tela do comparador para virgula decimal. As cinco servem. C:/Users/caion/indice-fadiga-turno C:/Users/caion/gorjeta-buffet C:/Users/caion/inspetor-elf C:/Users/caion/gerador-markov C:/Users/caion/comparador-clt-pj"
  },
  {
   "id": "T182",
@@ -2067,10 +2067,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 03:04",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 05:02",
+  "resultado": "T182 QA lote 89. test_api.py, test_esc.py, test_gem.py, test_pfl.py e test_fwt.py passaram na GUI offscreen. Cliente de API: JSON valido aceito e chave solta recusada. POST para exemplo.test/v1/itens com bearer abc voltou o mesmo metodo, a mesma url e o corpo json. A tela gerou o mesmo curl e marcou JSON valido. Importar curl de GET ping com x=1 deixou metodo GET e a url ping. Query q=cafe e pagina=2. Escalas: 12x36 com A e B em 30 dias a partir de 5 de janeiro deu 15 plantoes e 180 h cada, cobertura 1 e nenhum dia vazio. 5x2 sem escalonar, Ana e Bruno, 7 dias, deu 5 plantoes e 44 h cada, cobertura 2 nos cinco primeiros dias e 0 nos dois ultimos. Pascoa de 2026 cai em 5 de abril. A tela mostrou 15 plantoes, 180,0 h e 5 plantoes, 44,0 h. Gemspec basico tem meu_gem e licenca MIT. Com deps tem rack e rspec. O arquivo meu_gem.gemspec bateu com o texto. A tela mostrou os dois. Procfile Django tem gunicorn e migrate. Node tem server.js e worker.js. O arquivo Procfile bateu. A tela mostrou os dois. Monitor: arquivo novo b.py com 1 byte e a.txt modificado de 2 para 3 bytes. Filtro py, txt e log. a.TXT entra e a.md fica de fora. A tela listou criado e modificado. As cinco servem. C:/Users/caion/cliente-api C:/Users/caion/gerador-escalas-trabalho C:/Users/caion/gerador-gemspec C:/Users/caion/gerador-procfile C:/Users/caion/monitor-pasta"
  },
  {
   "id": "T183",
@@ -2082,10 +2082,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 03:04",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 05:03",
+  "resultado": "QA lote 90: C:/Users/caion/calculadora-ciclos-sono-rem (test_csr 3/3; 23:00→06:44 e 07:00→23:16), C:/Users/caion/rateio-condominio (test_cnd 5/5; 550/1100 e multa 1025), C:/Users/caion/analisador-difracao-raios-x-bragg (test_brg 6/6; d100/d110), C:/Users/caion/comparar-pastas (test_cpz OK), C:/Users/caion/simulador-modulacao-am-fm (test_amf 5/5; mu0.5 beta4). CRITICA T183. nicho: bragg+amfm."
  },
  {
   "id": "T184",
@@ -2097,10 +2097,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 03:09",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 05:07",
+  "resultado": "T184 QA lote 91. test_eb.py, test_egg.py, test_stp.py e test_pyl.py passaram com GUI offscreen. C:/Users/caion/gps-falso nao tem arquivo test_. Nada quebrado, codigo intacto. Ebook Livro Teste da Autora Exemplo, 2 capitulos, busca raposa nos indices 0, 1 e 1, progresso 38 por cento. Txt escapa a tag. Markdown tem 2 capitulos e o segundo se chama Cap 2. GUI mostrou raposa no primeiro e Dois no segundo, posicao Sub 2/2, capitulo salvo 1. Pacote demo versao 9.9.9 e outro versao 1.2.3 com a dependencia requests. Sem metadata o nome sai como interrogacao. GUI mostrou Nome demo Versao 9.9.9 e Nome outro Versao 1.2.3. Stop com semente: letras EVCMF. Rodada A 15, B 15, C 10. Segunda A 20, B 20, C 20. Placar A 35, B 35, C 30. GUI sorteou a letra R e o placar bateu os mesmos numeros. GPS haversine 360748.8 m. Passo de uma hora a 36 km/h rumo leste andou 35959.5 m. Checksum das sentencas GGA e RMC confere. GUI gravou 2 linhas em arquivo temporario, posicoes -23.55050, -46.63330 e -22.90680, -43.17290, checksums ok, sem abrir porta. Pylint Basico e Strict: arquivo gravado igual ao texto e a GUI das duas linhas conferiu. As cinco servem. Pastas: C:/Users/caion/leitor-ebooks C:/Users/caion/inspetor-dist-info C:/Users/caion/jogo-stop C:/Users/caion/gps-falso C:/Users/caion/gerador-pylint"
  },
  {
   "id": "T185",
@@ -2112,10 +2112,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 03:09",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 05:04",
+  "resultado": "QA lote 92: C:/Users/caion/quadro-kanban (test_kb OK), C:/Users/caion/hospedagem-vs-aluguel (test_hos OK; 6100 vs 2500), C:/Users/caion/relogio-mundial (test_rm 10/10), C:/Users/caion/indice-produtividade-pessoal (test_ipp 8/8; foco 75/100), C:/Users/caion/quiz-familia (test_qzf 5/5). CRITICA T185."
  },
  {
   "id": "T186",
@@ -2127,9 +2127,331 @@
    "grok",
    "grokbuild"
   ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 05:05",
+  "resultado": "QA lote 93: C:/Users/caion/controle-gastos (test_cg 5/5; R$ 1.234,50), C:/Users/caion/frete-gratis-vale-a-pena (test_fgr OK; falta 17 VALE), C:/Users/caion/inspetor-pcap (test_pcp 2/2), C:/Users/caion/imposto-compra-internacional (test_imx OK; 40USD→57.83), C:/Users/caion/editor-imagem (test_ei 5/5). CRITICA T186."
+ },
+ {
+  "id": "T187",
+  "titulo": "🧪 QA lote 94: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: paletas, fermentados-caseiros, calculadora-clt, meta-poupanca-viagem, rotina-mobilidade-lombar. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 05:10",
+  "resultado": "QA lote 94 ok. Pastas: C:\\Users\\caion\\paletas (test_pl.py 3 passed; parse_hex('#abc')=(170,187,204); contraste WCAG cinza 119 vs branco=4,478089453577214). C:\\Users\\caion\\fermentados-caseiros (test_kmb.py 2 passed; kombucha 3L/80g/15%/22C/morango cha 2,55 starter 0,45 acucar 240 F1 11 F2 3; salmoura 2L 3,5%=70g e chucrute 1500g 2,5%=37,5g). C:\\Users\\caion\\calculadora-clt (test_clt.py 18 passed; inss(3000)=248,60; salario_liquido(6000)=4973,39 com INSS 641,51 IRRF 385,10). C:\\Users\\caion\\meta-poupanca-viagem (test_rvg.py 3 passed; planejar(5000,8,ja 1000,0%) parcela 500; com 0,8% a.m. PMT=486,17). C:\\Users\\caion\\rotina-mobilidade-lombar (test_mbl.py 7 passed; 10 min iniciante+resp total 592s em 2 ciclos; 12 min intermediario suave sem resp 727s em 5 ciclos, com prancha sem respiracao_inicio). PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 (plugin langsmith do ambiente, nao e bug). 2 contas a mao cada, todas bateram. GUI leve CAIXA_TESTE=1 abriu/fechou pelos PIDs 28888/29640/29504 e 4808/22284; IPTV 14456 e pythonw do Caio intocados. Sem bugs, sem inutil, sem --pedir, sem alteracao de codigo, sem git. CRITICA.md secao 'T187 QA lote 94'."
+ },
+ {
+  "id": "T188",
+  "titulo": "🧪 QA lote 95: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: calculadora-obra, entrada-carro-seminovo, gerador-cmakelists, aluguel-quartos, conversor-base64-arquivo. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 05:11",
+  "resultado": "T188 QA lote 95. test_obr.py, test_sem.py, test_cmk.py, test_alq.py e test_b64.py passaram com GUI offscreen. Obra: parede 34,68 m2, tinta 5,78 L, compra 1 galao de 3,6 L e 3 quartos de 0,9 L, total 6,3 L e sobra 0,52 L. Piso de 20 m2 com perda 10 compra 22 m2, 62 pecas e 11 caixas. Na diagonal a perda vai a 15, a compra a 23 m2 e as pecas a 64. A tela mostrou 34,68 m2, 5,78 L e o piso diagonal. Seminovo sem juros em 40 meses: a financiar R$ 40.000,00, prestacao R$ 1.000,00, desembolso R$ 10.500,00, custo do mes R$ 1.300,00, total R$ 40.000,00. Com taxa de 12 por cento em 12 meses: a financiar R$ 30.000,00, prestacao R$ 2.665,46, total das parcelas R$ 31.985,52. A tela bateu. Ajustei o texto do seminovo para virgula decimal. CMake: projeto demo no primeiro preset e caixa_lib no segundo. O arquivo CMakeLists.txt ficou igual ao texto. A tela mostrou os dois. Aluguel de 2.500,00 mais contas de 450,00 da total R$ 2.950,00: suite R$ 1.328,18, segundo quarto R$ 843,25, terceiro R$ 778,57. Dois quartos iguais de 12 m2 em aluguel de 2.000,00 ficam R$ 1.000,00 cada. A tela bateu. Ajustei a virgula na tela do aluguel. Base64 da palavra caixa: 5 bytes viram 8 e a volta confere. Tres bytes viram 4, acrescimo 33,33 por cento. A tela mostrou 5 para 8 e o modo url safe de 2 bytes voltou os mesmos bytes. As cinco servem. Pastas: C:/Users/caion/calculadora-obra C:/Users/caion/entrada-carro-seminovo C:/Users/caion/gerador-cmakelists C:/Users/caion/aluguel-quartos C:/Users/caion/conversor-base64-arquivo"
+ },
+ {
+  "id": "T189",
+  "titulo": "🧪 QA lote 96: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: analisador-desempenho-simulados, mapa-gap-habilidades, conversor-path, analisador-imports-nao-usados, calorias-receita. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 05:12",
+  "resultado": "QA lote 96 ok. Pastas: C:\\Users\\caion\\analisador-desempenho-simulados (test_qsm.py 3 passed; Quadrix 80q 50/20/10 liquida 40,0 aprov 50,0% tempo 120s corte nao; Cespe 60q 40/10/10 liquida 30,0 aprov 50,0% tempo 90s corte sim). C:\\Users\\caion\\mapa-gap-habilidades (test_skl.py 4 passed; Python 2->5 peso 4 / 12h gap 3 pri 12 horas 36,0; mapa C/D/E 15h/nivel 1o D, gap 5, horas 75,0, pri 21). C:\\Users\\caion\\conversor-path (test_wup.py 3 passed; D:\\Docs\\foto.png -> /mnt/d/Docs/foto.png e /d/Docs/foto.png; convert_all(/mnt/e/tmp/x) -> E:\\tmp\\x). C:\\Users\\caion\\analisador-imports-nao-usados (test_udi.py 2 passed; json unused; col e Dict unused, List usado). C:\\Users\\caion\\calorias-receita (test_kcr.py 5 passed; banana 150g 138,0 kcal; frango 150+arroz 200+azeite 10 / 2 porcoes total 582,9 por porcao 291,4). PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 (plugin langsmith do ambiente, nao e bug). 2 contas a mao cada, todas bateram. GUI leve CAIXA_TESTE=1 abriu/fechou pelos PIDs 10836/22704/23580 e 26732/21940; IPTV 14456 e pythonw do Caio intocados. Sem bugs, sem inutil, sem --pedir, sem alteracao de codigo, sem git. CRITICA.md secao 'T189 QA lote 96'."
+ },
+ {
+  "id": "T190",
+  "titulo": "🧪 QA lote 97: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: gas-encanado-vs-botijao, tempo, meta-paginas-leitura-dia, tunelamento-quantico, analisador-tamanho-funcoes. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 05:15",
+  "resultado": "QA lote 97. test_gne.py, test_tm.py, test_pag.py, test_tun.py e test_fsz.py passaram. GUI offscreen. Gas: o texto agora usa virgula. Conta 1 botijao R$ 72,00 e encanado R$ 50,00, mais barato o encanado, diferenca R$ 22,00/mes (~R$ 264,00/ano). Conta 2 botijao R$ 76,92 (R$ 7,69/kg) e encanado R$ 250,00, mais barato o botijao, diferenca R$ 173,08/mes (~R$ 2.076,96/ano). GUI igual. Tempo: 07:30 vira 7 e 30, 23:05 vira 23 e 5. Contagem de 90 s aos 40 s resta 00:50. Pomodoro parado 25:00, foco 1 de 4. Foco em 10 min mostra 10:00. Cinco abas. Nada agendado. O comando de desligar so foi montado, nao executado. Leitura: 400 paginas, 80 lidas, 45 min, 25 por hora, 30 dias: restam 320, meta 10.7 pag/dia, 25.6 min, viavel, 18 dias de leitura, 13 dias antes. Segunda: 100 paginas, 10 min, 10 por hora, 5 dias: precisa 20 pag/dia, capacidade 1.7, inviavel, 55 dias depois. GUI bateu. Tunel eletron 3.5 eV, barreira 5 eV, largura 0.35 nm: transmissao 4.0881% evanescente. Com 8 eV: transmissao 99.9666% sobre a barreira. GUI bateu. Funcoes: big com 5 linhas e small com 2. GUI listou 2 funcoes, maior 5. As cinco servem. Pastas: C:/Users/caion/gas-encanado-vs-botijao C:/Users/caion/tempo C:/Users/caion/meta-paginas-leitura-dia C:/Users/caion/tunelamento-quantico C:/Users/caion/analisador-tamanho-funcoes"
+ },
+ {
+  "id": "T191",
+  "titulo": "🧪 QA lote 98: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: lance-consorcio, custo-jardineiro, chocolate-pascoa, ritmo-fala-apresentacao, hospedagem-pet. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 05:14",
+  "resultado": "QA lote 98 ok. Pastas: C:\\Users\\caion\\lance-consorcio (test_csc.py 4 passed; 60k/800/30mes/lance 20% +taxa 500 → lance 12000 esperar 24500 total 12500 econ 12000 dar_lance; embutido 80k/900/24mes/15% → liq 68000 parcela 765 total 18360 econ 3240 dar_lance). C:\\Users\\caion\\custo-jardineiro (test_jrd.py 2 passed; 4x120 vs 6h*40+25 → 480 vs 265 melhor voce anual 5760; 1x80 vs 5h*30 → 80 vs 150 melhor jardineiro). C:\\Users\\caion\\chocolate-pascoa (test_pcs.py 5 passed; 500g forma 300g simples → 4 ovos sobra 80g; 8 ovos 105g choc 60/kg +50g rech 30/kg +1,50 margem 40% → unit 9,30 venda 13,02 lucro 29,76). C:\\Users\\caion\\ritmo-fala-apresentacao (test_spm.py 10 passed; 'Ola, mundo-bonito! Sao 3 palavras?'=5; 900 pal/8 min/buffer 10%/140 wpm → util 7,2 WPM 125 faixa ideal expandir +108). C:\\Users\\caion\\hospedagem-pet (test_hpv.py 2 passed; 7d*95*2 +banho 40 +transp 30 desc 10% → bruto 1400 liquido 1260 por dia/pet 90; 3d*120+transp 50 → 410 / 136,67). PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 (plugin langsmith do ambiente, nao e bug). 2 contas a mao cada, todas bateram. GUI leve CAIXA_TESTE=1 abriu/fechou pelos PIDs 9252/20916/25384 e 10872/7620; IPTV 14456 e pythonw do Caio intocados. Sem bugs, sem inutil, sem --pedir, sem alteracao de codigo, sem git. CRITICA.md secao 'T191 QA lote 98'."
+ },
+ {
+  "id": "T192",
+  "titulo": "🧪 QA lote 99: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: desconto-progressivo, calculadora-iptu, adaptacao-jet-lag, cartao-ou-especie-viagem, multa-cancelamento-academia. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 05:17",
+  "resultado": "QA lote 99 ok. Pastas: C:\\Users\\caion\\desconto-progressivo (test_dpg.py 3 passed; aplicar 400 faixas 5/8/12% desconto 26 liquido 374; parse 200;5 / 500,5;8 / acima;12 e aplicar 600 desconto 45,98 liquido 554,02). C:\\Users\\caion\\calculadora-iptu (test_ipt.py 3 passed; venal 350000 aliq 0,8% desc 5% bruto 2800 liquido 2660; venal 125000 aliq 0,8% 3x parcela 333,33 ultima 333,34). C:\\Users\\caion\\adaptacao-jet-lag (test_jtl.py 7 passed; UTC-3->UTC+9 = 12 h leste; SP-Tokyo chegada 10/06/2026 com 3d preparo = 9 dias adaptado 19/06, dormir 22:00/21:00/20:00 desde 07/06, sono destino 11:00). C:\\Users\\caion\\cartao-ou-especie-viagem (test_cxv.py 6 passed; cartao 800*5,50*spread 3,5%*IOF 3,5% = 4713,39; especie cot 5,70 IOF 3,5 sobra 15 perda 8 = 4798,26). C:\\Users\\caion\\multa-cancelamento-academia (test_mca.py 4 passed; 180x6 meses multa 25%+40 aviso 30d cancelar 490 vs cumprir 1080 rec cancelar; 200x1 mes multa 90%+30 cancelar 210 vs 200 rec cumprir). PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 (plugin langsmith do ambiente, nao e bug). 2 contas a mao cada, todas bateram. GUI leve CAIXA_TESTE=1 abriu/fechou pelos PIDs 27752/26972/14596 e 21288/24044; IPTV 14456 e pythonw do Caio intocados. Sem bugs, sem inutil, sem --pedir, sem alteracao de codigo, sem git. CRITICA.md secao 'T192 QA lote 99'."
+ },
+ {
+  "id": "T193",
+  "titulo": "🧪 QA lote 100: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: placar-truco, volume-apps, orcamento-festa, flashcards-repeticao, notas-criptografadas. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 05:17",
+  "resultado": "QA lote 100. test_tru.py, test_va.py, test_fan.py e test_fla.py passaram. GUI offscreen. Notas nao tem arquivo test_. Truco: vira 7 a manilha e Q, vira 3 a manilha e 4. Truco vale 3. Se o outro corre do seis, conta truco e o placar fica 3 a 3. Na tela a vira 7 mostrou manilha Q. Primeira mao Nos 1 a 0. Corrida do seis: Eles 3, placar 1 a 3. Volume no backend falso: 0,35 vira 35 e 70 vira 0,7. Chrome foi de 30 para 55. Perfil deixou Chrome em 12 mudo e Spotify em 90, master 22. A tela mostrou os mesmos. O slider do Spotify foi para 15 e o backend acompanhou. Festa: 10 adultos, comida 40, bebida 20, decor 100, bolo 50, taxa 10 por cento. Comida R$ 400,00, bebida R$ 200,00, fixos R$ 150,00, taxa R$ 75,00, total R$ 825,00, R$ 82,50 por pessoa. Segunda: 2 adultos e 1 crianca, total R$ 150,00, R$ 50,00 por pessoa. Ajustei a virgula no texto. A tela bateu. Flashcards: nota 5 abre intervalo de 1 dia e a proxima cai em 13 de novembro, fator 2,6. Nota 4 em seguida abre 6 dias, proxima em 19 de novembro. A tela mostrou gato e cat, botao facil 1 dia, e o arquivo temporario guardou intervalo 1. Notas: a primeira nota e a segunda linha voltaram iguais. Senha errada recusou. A tela abriu cofre vazio temporario, salvou o texto da tela e a leitura conferiu. As cinco servem. Pastas: C:/Users/caion/placar-truco C:/Users/caion/volume-apps C:/Users/caion/orcamento-festa C:/Users/caion/flashcards-repeticao C:/Users/caion/notas-criptografadas"
+ },
+ {
+  "id": "T194",
+  "titulo": "🧪 QA lote 101: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: diario-pressao, calculadora-rescisao-trabalhista, cinematica-robotica, scanner-segredos, simulador-circuitos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "pegou",
+  "por": "grok",
+  "quando": "2026-11-12 05:17",
+  "resultado": ""
+ },
+ {
+  "id": "T195",
+  "titulo": "🧪 QA lote 102: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: detector-magic, gerador-nvmrc, removedor-comentarios, planejador-sessao-foco, escala-plantao. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "pegou",
+  "por": "grokbuild",
+  "quando": "2026-11-12 05:17",
+  "resultado": ""
+ },
+ {
+  "id": "T196",
+  "titulo": "🧪 QA lote 103: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: checklist-entrevista-emprego, rendimento-pao-caseiro, material-escolar, treino-academia, fatoracao-primos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T197",
+  "titulo": "🧪 QA lote 104: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: dinamica-veicular-pacejka, gerador-changelog, consertar-ou-trocar-celular, editor-hosts-linhas, gerador-wix. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T198",
+  "titulo": "🧪 QA lote 105: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: calculadora-combinatoria, custo-total-por-km, area-transferencia, prestacao-vs-aluguel, streaming-vs-cinema. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T199",
+  "titulo": "🧪 QA lote 106: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: simulador-aposentadoria, inspetor-dll-exports, rendimento-sabao-caseiro, estudio-criptografia-feistel-des, caderno-python. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T200",
+  "titulo": "🧪 QA lote 107: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: tarefas-casa, leitor-rss, estimativa-seguro-residencial, gerador-clang-format, reajuste-aluguel. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T201",
+  "titulo": "🧪 QA lote 108: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: gerador-graficos, habitos, planejador-casamento, cartao-rotativo, arroz-feijao-porcao. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T202",
+  "titulo": "🧪 QA lote 109: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: conducao-termica-transiente-fourier, validador-dotenv, rastreador-deep-work-semanal, listador-hardlinks, cashback-real. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T203",
+  "titulo": "🧪 QA lote 110: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: carga-horaria-creditos, cartela-anticoncepcional, grama-jardim, autonomia-caixa-dagua, reajuste-plano-saude. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T204",
+  "titulo": "🧪 QA lote 111: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: gerador-chocolatey-nuspec, gerador-identificadores, conversor-temperatura-cor, ficha-medica, caixa-leitner-intervalos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T205",
+  "titulo": "🧪 QA lote 112: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: planejador-revisao-provas, taxa-maquininha, comparador-proposta-estagio, controle-carro, orcamento-lua-de-mel. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "claude",
+  "quando": "2026-11-12 06:01",
+  "resultado": "CANCELADA pelo RUMO NOVO (12/11): lote de QA aleatório; a fábrica agora trabalha na vitrine (⭐ Paridade)."
+ },
+ {
+  "id": "T206",
+  "titulo": "⭐ Paridade [kit-pdf]: tão boa quanto iLovePDF / PDF24",
+  "detalhe": "Ferramenta da VITRINE (RUMO NOVO). Pasta C:/Users/caion/kit-pdf. Ela substitui iLovePDF / PDF24: tem que ter juntar, separar, girar, comprimir; imagens↔PDF; extrair texto; proteger/remover senha; arrastar e soltar arquivos. 1) Abra a ferramenta e confira cada item (o que já tem, o que falta, o que está ruim). 2) Implemente o que FALTA mais importante (1–2 itens por tarefa), no código-fonte da pasta, com teste novo em test_*.py. 3) No --concluir diga item por item: tinha / fiz agora / falta, e como testou. Visual em pt-BR, tema escuro, sem travar.",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
   "status": "livre",
   "por": "",
-  "quando": "2026-11-12 03:14",
+  "quando": "2026-11-12 06:01",
+  "resultado": ""
+ },
+ {
+  "id": "T207",
+  "titulo": "⭐ Paridade [conversor-av]: tão boa quanto HandBrake / Format Factory",
+  "detalhe": "Ferramenta da VITRINE (RUMO NOVO). Pasta C:/Users/caion/conversor-av. Ela substitui HandBrake / Format Factory: tem que ter converter vídeo e áudio em lote; presets prontos (WhatsApp, celular, 1080p); cortar trecho; extrair áudio; barra de progresso real. 1) Abra a ferramenta e confira cada item (o que já tem, o que falta, o que está ruim). 2) Implemente o que FALTA mais importante (1–2 itens por tarefa), no código-fonte da pasta, com teste novo em test_*.py. 3) No --concluir diga item por item: tinha / fiz agora / falta, e como testou. Visual em pt-BR, tema escuro, sem travar.",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 06:01",
+  "resultado": ""
+ },
+ {
+  "id": "T208",
+  "titulo": "⭐ Paridade [gravador-tela]: tão boa quanto OBS (gravar) / ShareX",
+  "detalhe": "Ferramenta da VITRINE (RUMO NOVO). Pasta C:/Users/caion/gravador-tela. Ela substitui OBS (gravar) / ShareX: tem que ter tela ou área; som do sistema + microfone; MP4 e GIF; atalho de teclado pra começar/parar; contagem regressiva. 1) Abra a ferramenta e confira cada item (o que já tem, o que falta, o que está ruim). 2) Implemente o que FALTA mais importante (1–2 itens por tarefa), no código-fonte da pasta, com teste novo em test_*.py. 3) No --concluir diga item por item: tinha / fiz agora / falta, e como testou. Visual em pt-BR, tema escuro, sem travar.",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 06:01",
+  "resultado": ""
+ },
+ {
+  "id": "T209",
+  "titulo": "⭐ Paridade [print-anotador]: tão boa quanto ShareX / Lightshot",
+  "detalhe": "Ferramenta da VITRINE (RUMO NOVO). Pasta C:/Users/caion/print-anotador. Ela substitui ShareX / Lightshot: tem que ter captura de área com atalho; seta, texto, tarja/borrão; copiar e salvar num clique; abrir print existente. 1) Abra a ferramenta e confira cada item (o que já tem, o que falta, o que está ruim). 2) Implemente o que FALTA mais importante (1–2 itens por tarefa), no código-fonte da pasta, com teste novo em test_*.py. 3) No --concluir diga item por item: tinha / fiz agora / falta, e como testou. Visual em pt-BR, tema escuro, sem travar.",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 06:01",
   "resultado": ""
  }
 ]
