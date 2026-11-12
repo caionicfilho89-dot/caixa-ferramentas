@@ -252,6 +252,9 @@ def coletar():
 
 # ------------------------------------------------------------------ Fábrica 2.0: correio (Agent Mail) e mapa
 WEB_CORREIO = "http://127.0.0.1:8765/mail/"
+# Desde 11/11 o painel da fábrica é o Claude Code Monitor; esta nota fica SÓ COM O MAPA (pedido do Caio).
+# python painel_adesivo.pyw --completo  → volta o painel inteiro (alertas, agentes, conversas, gastos...)
+SO_MAPA = "--completo" not in sys.argv
 
 
 def _formacao():
@@ -576,15 +579,15 @@ class Nota(QWidget):
         self.resize(self.width(), int(self.cfg.get("altura", 640)))
         self._limpar()
 
-        self._rotulo("⚠️ PRA VOCÊ SABER", "secao")
-        lista = alertas(d, self.correio, cad_g)
-        if lista:
-            for nv, txt in lista:
-                self._rotulo(txt, f"alerta{nv}")
-        else:
-            self._rotulo("✅ tudo certo — nada precisa de você agora", "alerta0")
-
-        self._rotulo("MAPA DA FÁBRICA", "secao")
+        if not SO_MAPA:
+            self._rotulo("⚠️ PRA VOCÊ SABER", "secao")
+            lista = alertas(d, self.correio, cad_g)
+            if lista:
+                for nv, txt in lista:
+                    self._rotulo(txt, f"alerta{nv}")
+            else:
+                self._rotulo("✅ tudo certo — nada precisa de você agora", "alerta0")
+            self._rotulo("MAPA DA FÁBRICA", "secao")
         try:
             import economia
             nivel_de = economia.nivel_do_agente
@@ -615,6 +618,14 @@ class Nota(QWidget):
         mapa = Mapa()
         mapa.dados(nos, arestas)
         self.corpo_lay.addWidget(mapa)
+        if SO_MAPA:  # só o desenho: o resto mora no Claude Code Monitor
+            self.resumo.setVisible(False)
+            self.rolagem.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+            self.titulo.setText(f"🗺️ Mapa da fábrica  <span style='color:#9a9ab0;font-size:9pt'>"
+                                f"{dt.datetime.now():%H:%M} · 2 cliques no mapa = correio</span>")
+            self.titulo.setTextFormat(Qt.TextFormat.RichText)
+            self.setFixedHeight(mapa.height() + 62)
+            return
 
         self._rotulo("AGORA", "secao")
         for chave, nome, emoji, papel in AGENTES:
