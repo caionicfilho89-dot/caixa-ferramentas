@@ -148,7 +148,7 @@ def _contexto():
     return "\n\n".join(partes)
 
 
-def planejar(quantas=4, agentes=("antigravity", "cursor", "grokbuild")):
+def planejar(quantas=4, agentes=("antigravity", "cursor", "grokbuild", "grok")):
     """Cria até N tarefas úteis no quadro. No máx. 1 vez por hora. Devolve os IDs criados."""
     import tarefas
     e = _estado()

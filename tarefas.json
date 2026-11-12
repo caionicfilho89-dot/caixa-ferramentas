@@ -1052,7 +1052,8 @@
   "titulo": "↩️ Refazer T73: 🧪 QA lote 1: testar 5 ferramentas",
   "detalhe": "O revisor (Gemini) recusou T73: O resultado foi cortado abruptamente em '2 cont' e não confirma a conferência manual das contas/GUI nem o resultado prático exigido. | Pedido original: Teste DE VERDADE: conversor-av, cartucho-vs-toner, gerador-noxfile, manicure-spa-vs-casa, calculadora-cafe. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
   "quem": [
-   "antigravity"
+   "antigravity",
+   "grok"
   ],
   "status": "livre",
   "por": "",
@@ -1174,10 +1175,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "pegou",
+  "status": "feito",
   "por": "grokbuild",
-  "quando": "2026-11-12 02:11",
-  "resultado": ""
+  "quando": "2026-11-12 02:15",
+  "resultado": "T122 concluida: Ferramentas de sistema do config uses testadas com sucesso: C:/Users/caion/faxina-disco (test_fxd_pasta.py OK, abertura segura sem varredura destrutiva), C:/Users/caion/organizador-downloads (test_od.py OK, classificacao segura com log e rollback), C:/Users/caion/print-anotador (test_print_anotador.py OK, suporte a --arquivo e clipboard), C:/Users/caion/area-transferencia (test_area_transferencia.py OK, persistencia e sync imediato), C:/Users/caion/info-pc (test_ip.py OK, coleta real do Windows 11 no MAMBO). Relatorio registrado no CRITICA.md."
  },
  {
   "id": "T123",
@@ -1187,10 +1188,10 @@
    "grok",
    "grokbuild"
   ],
-  "status": "pegou",
+  "status": "feito",
   "por": "grok",
-  "quando": "2026-11-12 02:11",
-  "resultado": ""
+  "quando": "2026-11-12 02:13",
+  "resultado": "T123 concluida: Validacao no app real concluida para as 2 ferramentas do config uses e registradas no CRITICA.md: C:/Users/caion/calculadora-rendimento-tinta (test_tnt.py 3/3 OK, calculos de rendimento por m2 e demaos validados para quartos de 40 m2 com 7,33 L e fachadas de 180 m2 com 39,6 L, sugerido combo de embalagens no CRITICA) e C:/Users/caion/dias-uteis-pagamento (test_utl.py 2/2 OK, feriado de 20/11 Consciencia Negra verificado e pulado com sucesso entre 19/11 e 23/11, prazos de 30, 60 e 90 dias uteis validados para 28/12/2026, 09/02/2027 e 23/03/2027, sugerido formato dd/MM/yyyy e calendario bancario FEBRABAN no CRITICA)."
  },
  {
   "id": "T124",
@@ -1201,9 +1202,9 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:11",
+  "status": "pegou",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:15",
   "resultado": ""
  },
  {
@@ -1213,7 +1214,8 @@
   "quem": [
    "antigravity",
    "cursor",
-   "grokbuild"
+   "grokbuild",
+   "grok"
   ],
   "status": "livre",
   "por": "",
@@ -1227,7 +1229,8 @@
   "quem": [
    "antigravity",
    "cursor",
-   "grokbuild"
+   "grokbuild",
+   "grok"
   ],
   "status": "livre",
   "por": "",
@@ -1241,7 +1244,8 @@
   "quem": [
    "antigravity",
    "cursor",
-   "grokbuild"
+   "grokbuild",
+   "grok"
   ],
   "status": "livre",
   "por": "",
@@ -1255,7 +1259,8 @@
   "quem": [
    "grokbuild",
    "antigravity",
-   "cursor"
+   "cursor",
+   "grok"
   ],
   "status": "livre",
   "por": "",
@@ -1269,7 +1274,8 @@
   "quem": [
    "grokbuild",
    "antigravity",
-   "cursor"
+   "cursor",
+   "grok"
   ],
   "status": "livre",
   "por": "",
