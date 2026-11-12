@@ -972,10 +972,10 @@
    "antigravity",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:00",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:02",
+  "resultado": "QA lote 7 testado com 100% de sucesso nas 5 pastas: C:/Users/caion/gerador-requirements (test_req.py OK, PIP_MAP e extracao validados), C:/Users/caion/inspetor-go-sum (test_gmd.py OK, parse e resumo validados), C:/Users/caion/estimativa-1rm-epley (test_epl.py 10/10 OK, Epley/Brzycki calculados na mao), C:/Users/caion/painel-docker (test_dck.py 2/2 OK, auditoria e compose validados), C:/Users/caion/links-ntfs (test_sym.py 11/11 OK, inspecao NTFS e atalhos validados). Todas as contas conferidas na mao e GUIs validadas."
  },
  {
   "id": "T80",
@@ -986,10 +986,10 @@
    "antigravity",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:00",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:04",
+  "resultado": "T80 concluida: QA lote 8 testado com 100% de sucesso nas 5 pastas: C:/Users/caion/gerador-gdbinit (test_gdb.py OK), C:/Users/caion/orcamento-mudanca (test_mdv.py OK), C:/Users/caion/gerador-github-actions (test_gha.py OK), C:/Users/caion/album-figurinhas (test_alb.py OK), C:/Users/caion/internet-ideal-casa (test_mbp.py OK). Todas as contas conferidas na mao, GUIs validadas e relatorio completo registrado no CRITICA.md."
  },
  {
   "id": "T81",
@@ -1000,10 +1000,10 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:03",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:03",
+  "resultado": "Calculos de rescisao trabalhista validados com sucesso em C:/Users/caion/calculadora-rescisao-trabalhista: aviso previo proporcional pela Lei 12.506 (30 dias base + 3 dias/ano ate 90 dias = 39 dias para 3 anos, totalizando R$ 3.900,00 de aviso indenizado para salario de R$ 3.000), estimativa de FGTS (36 meses a 8% = R$ 8.640,00), multa rescisoria de 40% (R$ 3.456,00) e saque total liberado (R$ 12.096,00). 6 testes passando em test_rst.py (100% OK), incluindo cenario de R$ 3.000 / 3 anos na GUI e no core."
  },
  {
   "id": "T82",
@@ -1014,10 +1014,10 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:03",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:05",
+  "resultado": "Calculos e faixas do seguro-desemprego validados com sucesso em C:/Users/caion/calculadora-seguro-desemprego: faixas vigentes MTE (faixa 1 ate R$ 2.138,76 a 80%, faixa 2 de R$ 2.138,77 a R$ 3.564,96 a 50%, teto R$ 2.424,11 e piso minimo R$ 1.518,00), e regras de carencia e parcelas pela Lei 13.134/2015 (1a solicitacao: 12-23 meses = 4 parcelas, 24+ meses = 5 parcelas; 2a solicitacao: 9-11 meses = 3 parcelas, 12-23 = 4, 24+ = 5; 3a+: 6-11 = 3, 12-23 = 4, 24+ = 5). Para salario medio de R$ 2.500: parcela calculada em R$ 1.891,63 (4 parcelas para 18 meses = R$ 7.566,52; 5 parcelas para 24+ meses = R$ 9.458,15). 4 testes em test_csd.py passando 100%."
  },
  {
   "id": "T83",
@@ -1028,10 +1028,10 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:03",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:05",
+  "resultado": "T83 concluida: Calculadora Black-Scholes em C:/Users/caion/calculadora-financeira-black-scholes com calculo e visualizacao completa das Gregas (Delta Call +0.5683 / Put -0.4317, Gamma 0.06856, Vega 0.1127, Theta Call -0.0524 / Put -0.0252 no cenario spot 100, strike 100, juros 10%, vol 20%, 30 dias). 5 testes passando em test_bsc.py incluindo test_benchmark_t83 e test_gui_smoke."
  },
  {
   "id": "T84",
@@ -1042,10 +1042,10 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:03",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:06",
+  "resultado": "Stick-itt/Notas validado com sucesso em C:/Users/caion/notas-md: adicionado toggle de fixar janela sempre no topo com atalho global Ctrl+T e botao no toolbar (WindowStaysOnTopHint com feedback visual '📌 No Topo ✓' e indicador no status), botao e metodo de exportacao rapida para Markdown (.md com atomic_write e fallback com nome da nota), testes de exportacao .md e toggle topo incluidos em test_nm.py (8/8 testes passando 100%)."
  },
  {
   "id": "T85",
@@ -1068,10 +1068,10 @@
    "antigravity",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:21",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:07",
+  "resultado": "T86 concluida: QA lote 9 testado com 100% de sucesso nas 5 pastas: C:/Users/caion/laboratorio-quimica (test_chm.py OK), C:/Users/caion/checklist-saida-emprego (test_cse.py OK), C:/Users/caion/cronograma-do-evento (test_cre.py OK), C:/Users/caion/simulador-campo-magnetico-biot-savart (test_bts.py OK), C:/Users/caion/receitas (test_rc.py OK). Todas as contas conferidas na mao e GUIs validadas."
  },
  {
   "id": "T87",
@@ -1082,10 +1082,10 @@
    "antigravity",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:25",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:08",
+  "resultado": "QA lote 10 testado com 100% de sucesso nas 5 pastas: C:/Users/caion/introducao-alimentar (test_iab.py 5/5 OK, faixas etarias e cardapio conferidos na mao), C:/Users/caion/analisador-perfil-aerodinamico-naca (test_nca.py 5/5 OK, curvatura/espessura NACA 4 digitos conferidos), C:/Users/caion/planejador-tempo-estrategia-prova (test_etp.py 4/4 OK, ENEM e concursos com tempos liquidos conferidos), C:/Users/caion/distribuicao-refeicoes-macros (test_drm.py 3/3 OK, distribuicao de macros em 3 a 6 refeicoes conferida), C:/Users/caion/vencimento-documentos (test_vdc.py 3/3 OK, delta de dias e faixas de alerta conferidos). Todas as contas conferidas e GUIs validadas."
  },
  {
   "id": "T88",
@@ -1107,10 +1107,10 @@
    "grokbuild",
    "antigravity"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 21:59",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:08",
+  "resultado": "T117 concluida: Visor de Fotos & Duplicadas integrado com sucesso em C:/Users/caion/visor-fotos (test_vft.py 6/6 OK), registrado em tendencias_caixa.json (categoria 🔥 Tendências), BUILTIN em caixa.pyw e TOOLS em build_suite.py. Tendência marcada como feita via tendencias.py."
  },
  {
   "id": "T118",
@@ -1121,10 +1121,10 @@
    "antigravity",
    "grokbuild"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 23:04",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:10",
+  "resultado": "Calculadora de Troco ajustada em C:/Users/caion/calculadora-troco: formatacao de valores monetarios em padrao pt-BR com virgula decimal ('R$ 12,20' em vez de ponto), acentuacao e texto corrigidos em tro_core.py e tro_gui.pyw ('Sugestao de pecas' -> 'Sugestão de peças:'), testes atualizados em test_tro.py (4 testes passando 100% no pytest, smoke GUI offscreen validado)."
  },
  {
   "id": "T119",
@@ -1135,9 +1135,145 @@
    "antigravity",
    "grokbuild"
   ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:11",
+  "resultado": "T119 concluida: Calculadora de IPVA em C:/Users/caion/calculadora-ipva atualizada com calculo de parcelamento em ate 5x sem juros e desconto a vista de cota unica (3% a 5%). Cenarios de 3x, 5x e desconto adicionados em test_ipv.py e validados na GUI (6/6 testes passando 100%)."
+ },
+ {
+  "id": "T120",
+  "titulo": "🧐 Grok: Testar no app real as ferramentas do config uses (Finanças após T109, Troco, IPVA e Botijão)",
+  "detalhe": "Como crítico/testador, abrir e validar as ferramentas que o Caio mais usa: conferir se Finanças agora exibe Aporte, Taxa e Prazo sem rolagem em 1366x768 (T109), testar se Troco calcula corretamente e respeita formatação pt-BR, testar IPVA e Botijão de Gás com valores realistas. Registrar problemas, bugs de usabilidade ou layout no CRITICA.md.",
+  "quem": [
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:07",
+  "resultado": "T120 concluida: Ferramentas do config uses validadas no app real e registradas no CRITICA.md: C:/Users/caion/financas (test_fin.py 12/12 OK, layout em 1366x768 exibe Capital, Aporte, Taxa e Prazo sem rolagem com maximum=0, contas de Juros Compostos e SAC/Price validadas), C:/Users/caion/calculadora-troco (test_tro.py 3/3 OK, decomposicao exata de pecas para compras de R$ 37,80 e R$ 73,50, apontado no CRITICA.md ponto decimal em vez de virgula pt-BR), C:/Users/caion/calculadora-ipva (test_ipv.py 4/4 OK, calculos de SP auto 4% e moto 2% e SC 2% validados com formatacao pt-BR), C:/Users/caion/calculadora-botijao-gas (test_glp.py 2/2 OK, consumo e duracao de 57,8 dias para botijao P13 a R$ 110 validados, apontada pontuacao decimal no CRITICA.md)."
+ },
+ {
+  "id": "T121",
+  "titulo": "🧐 Grok: Auditar arquivo_chaves.json e conferir se as 100 ferramentas inúteis (T24) não poluem a busca",
+  "detalhe": "No CRITICA.md (seção Arquivo) e na busca da Caixa: verificar se as ferramentas de nicho extremo (ex.: geradores de flake nix/lldbinit, calculadoras exóticas) estão efetivamente fora dos destaques da Hoje e não tomam a frente de buscas cotidianas do Caio. Testar consultas do dia a dia e registrar no CRITICA.md se há mais alguma ferramenta inútil interferindo no fluxo real.",
+  "quem": [
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:11",
+  "resultado": "T121 concluida: Auditoria de arquivo_chaves.json e caixa_arquivo.py em C:/Users/caion/caixa-ferramentas realizada com sucesso (test_caixa_arquivo.py 8/8 OK, test_respostas.py e test_sensores.py 66/66 OK). Corrigido problema critico onde 6 ferramentas do Top 15 e CLT (C:/Users/caion/calculadora-ipva, C:/Users/caion/calculadora-botijao-gas, C:/Users/caion/controle-garantias, C:/Users/caion/controle-validade-remedios, C:/Users/caion/controle-assinaturas, C:/Users/caion/calculadora-rescisao-trabalhista) estavam indevidamente arquivadas e sumiam das buscas genericas do Caio. Adicionadas as protecoes em _PROTEGIDAS, limpo arquivo_chaves.json para 111 ferramentas legitimamente de nicho e adicionadas as inuteis confirmadas do QA (commitizen, poetry, etc). Consultas reais de ipva, gas, remedio e garantia agora retornam os apps principais em 1o lugar. Relatorio registrado no CRITICA.md."
+ },
+ {
+  "id": "T122",
+  "titulo": "🧐 Grok: Testar ferramentas de sistema e desktop do config uses (Faxina, Downloads, Print, Área de Transferência e Info PC)",
+  "detalhe": "No app real Caixa.exe e nas pastas do Caio: testar as 5 ferramentas de sistema que ele usa no dia a dia (faxina-disco, organizador-downloads, print-anotador, area-transferencia, info-pc). Verificar se abrem sem erro, se a Faxina não dispara varredura destrutiva sozinha, se o organizador detecta arquivos soltos e se a Info do PC mostra dados reais do Windows 11. Anotar passo a passo e problemas no CRITICA.md.",
+  "quem": [
+   "grok",
+   "grokbuild"
+  ],
+  "status": "pegou",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:11",
+  "resultado": ""
+ },
+ {
+  "id": "T123",
+  "titulo": "🧐 Grok: Testar calculadora-rendimento-tinta e dias-uteis-pagamento (contas e feriados do config uses)",
+  "detalhe": "Validar no executável e nas pastas C:/Users/caion/calculadora-rendimento-tinta e C:/Users/caion/dias-uteis-pagamento: testar se o cálculo de rendimento de tinta por m² e demãos bate com o uso prático, e conferir se dias-uteis-pagamento considera corretamente feriados nacionais recentes (ex.: 20/11 Consciência Negra) e prazos de 30/60/90 dias úteis. Apontar divergências e sugestões no CRITICA.md.",
+  "quem": [
+   "grok",
+   "grokbuild"
+  ],
+  "status": "pegou",
+  "por": "grok",
+  "quando": "2026-11-12 02:11",
+  "resultado": ""
+ },
+ {
+  "id": "T124",
+  "titulo": "🧠 Calculadora de Botijão de Gás: formatar saídas em padrão pt-BR (R$, vírgula e dias)",
+  "detalhe": "Consertar o problema de usabilidade apontado no CRITICA.md para 'calculadora-botijao-gas'. A função de formatação/exibição usa formatações com ponto decimal inglês (ex.: '13.0 kg', 'Preco: R$ 110.00', '57.8 dias', 'R$ 1.90'). Ajustar para padrão pt-BR ('13,0 kg', 'Preço: R$ 110,00', '57,8 dias', 'R$ 1,90'). Pasta: C:/Users/caion/calculadora-botijao-gas. Como testar: executar pytest test_calculadora_botijao_gas.py ou rodar a ferramenta verificando se strings de resumo, valores em R$ e consumo diário saem com vírgula decimal e acentuação correta.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
   "status": "livre",
   "por": "",
-  "quando": "2026-11-11 23:04",
+  "quando": "2026-11-12 02:11",
+  "resultado": ""
+ },
+ {
+  "id": "T125",
+  "titulo": "🧠 Calculadora Rendimento de Tinta: adicionar cálculo de demãos e tipo de superfície",
+  "detalhe": "Aprimorar a 'calculadora-rendimento-tinta', uma das top ferramentas do Caio (recentemente protegida em T121). Incluir seletor de tipo de superfície (parede nova/porosa absorve +20%, repintura lisa padrão, gesso/massa corrida) e multiplicador de número de demãos (1 a 4), calculando o total de litros necessários e recomendando latas padrão (latão 18L, galão 3,6L, quarto 900ml). Pasta: C:/Users/caion/calculadora-rendimento-tinta. Como testar: executar pytest test_rendimento_tinta.py e simular uma parede de 40m² com 2 demãos em gesso, verificando a quantidade calculada de latas/galões.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:11",
+  "resultado": ""
+ },
+ {
+  "id": "T126",
+  "titulo": "🧠 Controle de Validade de Remédios: alerta visual de medicamentos vencidos e próximos de ven",
+  "detalhe": "Melhorar 'controle-validade-remedios' (ferramenta top protegida). Adicionar destaque visual e badges coloridas na listagem para remédios vencidos (vermelho), a vencer em até 30 dias (amarelo/laranja) e válidos (verde), além de contador resumo no topo ('X vencidos, Y próximos'). Pasta: C:/Users/caion/controle-validade-remedios. Como testar: executar pytest test_validade_remedios.py e lançar medicamentos com datas passadas, datas para os próximos 15 dias e datas futuras, confirmando os status e ordenação por urgência.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:11",
+  "resultado": ""
+ },
+ {
+  "id": "T127",
+  "titulo": "🧠 Tendência Sure: Importador / Conversor de extratos bancários CSV para OFX",
+  "detalhe": "Inspirado na tendência #1 do GitHub Trending (we-promise/sure - finanças pessoais offline e abertas). Criar utilitário offline 'conversor-extrato-csv-ofx' para converter extratos CSV de bancos brasileiros comuns (Nubank, Inter, Itaú, BB) em arquivos .OFX padronizados compatíveis com a Caixa e softwares financeiros. Pasta: C:/Users/caion/conversor-extrato-csv-ofx. Como testar: rodar pytest test_conversor_ofx.py com amostras sintéticas de CSV de data, descrição e valor, conferindo a geração de XML/OFX válido com tags STMTTRN e saldo correto.",
+  "quem": [
+   "antigravity",
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:11",
+  "resultado": ""
+ },
+ {
+  "id": "T128",
+  "titulo": "🔥 Tendência extra 12/11: Jev-powered autocorrection",
+  "detalhe": "Ideia em alta (https://levmiseri.com/nospace). Mesmo método do TENDENCIA_DO_DIA.md: catalogo.py --check; versão nossa do zero, offline, PyQt6, pt-BR, com teste; registrar na Caixa (BUILTIN + TOOLS) + tendencias_caixa.json; python tendencias.py --feita https://levmiseri.com/nospace. Não cabe (só nuvem/Mac/ataque)? --feita e conclua dizendo por quê.",
+  "quem": [
+   "grokbuild",
+   "antigravity",
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:11",
+  "resultado": ""
+ },
+ {
+  "id": "T129",
+  "titulo": "🔥 Tendência extra 12/11: deforester - Logging for Janet",
+  "detalhe": "Ideia em alta (https://codeberg.org/veqq/deforester). Mesmo método do TENDENCIA_DO_DIA.md: catalogo.py --check; versão nossa do zero, offline, PyQt6, pt-BR, com teste; registrar na Caixa (BUILTIN + TOOLS) + tendencias_caixa.json; python tendencias.py --feita https://codeberg.org/veqq/deforester. Não cabe (só nuvem/Mac/ataque)? --feita e conclua dizendo por quê.",
+  "quem": [
+   "grokbuild",
+   "antigravity",
+   "cursor"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:11",
   "resultado": ""
  }
 ]

@@ -63,9 +63,17 @@ def salvar(ts):
             json.dump(antes, f, ensure_ascii=False, indent=1)
     except (OSError, ValueError):
         pass
-    tmp = ARQ + ".tmp"
+    tmp = f"{ARQ}.{os.getpid()}.tmp"  # um tmp por processo: dois gravando juntos não se atropelam
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(ts, f, ensure_ascii=False, indent=1)
+    # Windows: substituir falha (WinError 32) se outro processo está lendo o tarefas.json naquele instante.
+    # Antes isso derrubava o quadro_cheio (parou de criar tarefas às 21:53 de 11/11). Tenta por ~6 s.
+    for tentativa in range(40):
+        try:
+            os.replace(tmp, ARQ)
+            return
+        except PermissionError:
+            time.sleep(0.15)
     os.replace(tmp, ARQ)
 
 
