@@ -521,6 +521,14 @@ def main():
         try:
             rodada()
             empurrar_parados()
+            if volta % 2 == 1:  # a cada 1 min: o painel (Claude Code Monitor) mostra TODOS os agentes
+                try:
+                    import importlib
+                    import ponte_monitor
+                    importlib.reload(ponte_monitor)
+                    ponte_monitor.sincronizar()
+                except Exception as ex:  # noqa: BLE001
+                    log(f"ponte do Monitor: {str(ex)[:120]}")
             if volta % 2 == 0:  # a cada 1 min: Fábrica 2.0 (correio)
                 acordar_com_correio()
                 ponte_cocaino()
