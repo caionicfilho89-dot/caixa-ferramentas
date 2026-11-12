@@ -61,8 +61,18 @@ def _rodar_testes(pasta):
     return ""
 
 
-def verificar(resultado, raiz=HERE):
-    """'' = aprovado; senão o motivo da recusa (o agente lê e conserta)."""
+def verificar(resultado, raiz=HERE, titulo=""):
+    """'' = aprovado; senão o motivo da recusa (o agente lê e conserta).
+    12/11: ritmo menor, QUALIDADE maior (pedido do Caio) — resultado vago ou sem teste não passa."""
+    texto = (resultado or "").strip()
+    if len(texto) < 60:
+        return ("resultado vago demais: descreva O QUE mudou, EM QUAL pasta/arquivo e COMO testou "
+                "(ex.: 'C:/Users/caion/x: corrigi Y; test_x.py 12 OK; conferi 2 contas na mão').")
+    if not re.search(r"test|teste|conferi|confer|selftest|ok|passou|passaram", texto, re.I):
+        return "faltou dizer como você testou (teste rodado, resultado, ou conferência feita na mão)."
+    if "QA lote" in titulo and len(pastas_citadas(texto)) < 5:
+        return ("lote de QA precisa citar as 5 pastas testadas (C:/Users/caion/<pasta>); o portão roda os testes "
+                f"delas — só achei {len(pastas_citadas(texto))}.")
     if re.search(r"(^|[\s\\/'\"`(])(staged|dist)[\\/]", resultado):
         return ("você editou staged/ ou dist/ — é cópia de build, o próximo build APAGA. Faça a mudança no "
                 "CÓDIGO-FONTE (pasta da ferramenta C:/Users/caion/<pasta> ou o .py da caixa-ferramentas) e conclua de novo.")

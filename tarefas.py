@@ -126,7 +126,8 @@ def concluir(agente, tid, resultado=""):
     """Marca como feita SE passar no portão de qualidade (portao.py). Recusado → {"recusado": motivo}."""
     try:
         import portao
-        motivo = portao.verificar(resultado, os.environ.get("CAIXA_WT") or HERE)
+        titulo = next((t["titulo"] for t in ler() if t["id"] == tid), "")
+        motivo = portao.verificar(resultado, os.environ.get("CAIXA_WT") or HERE, titulo)
     except Exception as e:  # noqa: BLE001 — portão quebrado não pode travar o quadro
         motivo = ""
         print(f"(portão de qualidade com erro, deixei passar: {e})")
