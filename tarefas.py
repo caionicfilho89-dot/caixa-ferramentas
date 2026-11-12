@@ -37,14 +37,32 @@ FMT = "%Y-%m-%d %H:%M"
 
 
 def ler():
-    try:
-        with open(ARQ, encoding="utf-8") as f:
-            return json.load(f)
-    except (OSError, ValueError):
+    """Lê o quadro. Falha de leitura NÃO vira "quadro vazio": em 11/11 21:59 uma leitura que falhou (arquivo
+    sendo gravado por outro processo) devolveu [] e a tarefa nova foi gravada por cima de 88 tarefas."""
+    if not os.path.exists(ARQ):
         return []
+    erro = None
+    for _ in range(20):
+        try:
+            with open(ARQ, encoding="utf-8") as f:
+                return json.load(f)
+        except (OSError, ValueError) as e:
+            erro = e
+            time.sleep(0.15)
+    raise RuntimeError(f"quadro (tarefas.json) ilegível agora, não vou fingir que está vazio: {erro}")
 
 
 def salvar(ts):
+    # trava de segurança: gravar um quadro que encolheu de repente (ex.: 88 → 1) é quase sempre bug
+    try:
+        with open(ARQ, encoding="utf-8") as f:
+            antes = json.load(f)
+        if len(antes) >= 10 and len(ts) < len(antes) * 0.5:
+            raise RuntimeError(f"recusei gravar o quadro encolhendo de {len(antes)} para {len(ts)} tarefas")
+        with open(ARQ + ".bak", "w", encoding="utf-8") as f:
+            json.dump(antes, f, ensure_ascii=False, indent=1)
+    except (OSError, ValueError):
+        pass
     tmp = ARQ + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(ts, f, ensure_ascii=False, indent=1)

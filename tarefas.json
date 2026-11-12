@@ -1098,5 +1098,46 @@
   "por": "claude",
   "quando": "2026-11-11 20:31",
   "resultado": "CANCELADA pelo Claude: recusa falsa — o quadro cortava o resultado em 300 caracteres e o revisor leu a T74 pela metade. Limite agora 2000."
+ },
+ {
+  "id": "T117",
+  "titulo": "🔥 Tendência do dia 11/11: [Windows] NCViewer – A lightweight image viewer with face detection, duplicate s",
+  "detalhe": "Siga TENDENCIA_DO_DIA.md (ideia, versão nossa do zero, offline, PyQt6, pt-BR). Pronto e testado: integre na Caixa e ACRESCENTE a pasta em tendencias_caixa.json (categoria 🔥 Tendências) + python tendencias.py --feita https://www.reddit.com/r/software/comments/1xt33gs/windows_ncviewer_a_lightweight_image_viewer_with/. Se não couber: --feita e faça a próxima do TENDENCIAS.md.",
+  "quem": [
+   "grokbuild",
+   "antigravity"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 21:59",
+  "resultado": ""
+ },
+ {
+  "id": "T118",
+  "titulo": "🧠 Calculadora de Troco: formatação R$ com vírgula pt-BR e acentuação no detalhe das peças",
+  "detalhe": "Conforme apontado no CRITICA.md (seção Troco interno) e em conformidade com as ferramentas usadas pelo Caio (config uses): a Calculadora de Troco (C:/Users/caion/calculadora-troco) gera valores com ponto decimal em vez de vírgula ('R$ 12.20' em vez de 'R$ 12,20') e o texto 'Sugestao de pecas' sem acento em tro_core.py e tro_gui.pyw. Ajustar a formatação para padrão monetário brasileiro, atualizar test_tro.py e validar a interface offscreen.",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 23:04",
+  "resultado": ""
+ },
+ {
+  "id": "T119",
+  "titulo": "🧠 Calculadora de IPVA: adicionar opção de parcelamento padrão (3x/5x) e desconto à vista",
+  "detalhe": "No C:/Users/caion/calculadora-ipva (ferramenta presente no config uses do Caio): adicionar ao ipv_core.py e ipv_gui.pyw o cálculo de parcelamento em até 5x sem juros (conforme regras comuns de SP/MG/RJ) e desconto típico de cota única à vista (ex: 3% a 5%). Atualizar test_ipv.py com cenários de parcelamento e desconto e validar GUI.",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-11 23:04",
+  "resultado": ""
  }
 ]
