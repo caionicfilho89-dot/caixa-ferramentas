@@ -211,7 +211,8 @@ def garantir_b():
             cpu_antes = (e.get("cpu") or {}).get(chave)
             e.setdefault("cpu", {})[chave] = cpu
             _salvar(ARQ, e)
-            ocioso = cpu_antes is not None and cpu is not None and cpu - cpu_antes < 2.0
+            # parado o agy ainda gasta ~0,16 s/5 s (tela redesenhando) ≈ 4 s em 2 min; rodando teste/ferramenta gasta bem mais
+            ocioso = cpu_antes is not None and cpu is not None and cpu - cpu_antes < 6.0
             limite = 15 if ocioso else 40
             if parada < limite or time.time() - ultimo < 900 or economia.nivel_do_agente(chave) == "critico":
                 continue
