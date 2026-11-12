@@ -102,6 +102,19 @@ def _pid_vivo(pid):
         return False
 
 
+def _cpu_arvore(pid):
+    """Segundos de CPU do processo e dos filhos (o agy roda ferramentas em subprocessos)."""
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command",
+                            f"$t=0; $ids=@({int(pid)}); $f=@(Get-CimInstance Win32_Process | Where-Object {{ $_.ParentProcessId -eq {int(pid)} }} | ForEach-Object ProcessId); "
+                            "foreach ($i in $ids + $f) { $p = Get-Process -Id $i -EA SilentlyContinue; if ($p) { $t += $p.CPU } }; $t"],
+                           capture_output=True, text=True, timeout=20,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        return float(r.stdout.strip().replace(",", ".") or 0)
+    except (ValueError, OSError, subprocess.TimeoutExpired):
+        return None
+
+
 def _achar_pid(marca, espera=20):
     """PID do agy que está com a marca no prompt (a aba do Windows Terminal não devolve o PID)."""
     fim = time.time() + espera
@@ -192,7 +205,15 @@ def garantir_b():
             except Exception:  # noqa: BLE001
                 continue
             ultimo = (e.get("acordou") or {}).get(chave, 0)
-            if parada < 40 or time.time() - ultimo < 1800 or economia.nivel_do_agente(chave) == "critico":
+            # ocioso de verdade = processo do agy (e filhos) sem gastar CPU desde a última olhada (2 min).
+            # Assim acorda em ~15 min em vez de 40, sem interromper quem está numa tarefa longa.
+            cpu = _cpu_arvore(pid)
+            cpu_antes = (e.get("cpu") or {}).get(chave)
+            e.setdefault("cpu", {})[chave] = cpu
+            _salvar(ARQ, e)
+            ocioso = cpu_antes is not None and cpu is not None and cpu - cpu_antes < 2.0
+            limite = 15 if ocioso else 40
+            if parada < limite or time.time() - ultimo < 900 or economia.nivel_do_agente(chave) == "critico":
                 continue
             try:
                 import tarefas
