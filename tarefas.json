@@ -2453,5 +2453,19 @@
   "por": "",
   "quando": "2026-11-12 06:01",
   "resultado": ""
+ },
+ {
+  "id": "T210",
+  "titulo": "⭐ Paridade [ferramentas-br]: tão boa quanto 4Devs (site)",
+  "detalhe": "Ferramenta da VITRINE. Pasta C:/Users/caion/ferramentas-br. Meta: poder dizer SUBSTITUI O 4DEVS. 1) Liste TODAS as funções do 4Devs (geradores, validadores, ferramentas de texto) e compare com as 74 da Ferramentas BR: tem / falta. 2) Implemente as que faltam mais usadas (no código-fonte, com teste). 3) No --concluir: tabela tem/fiz/falta e como testou.",
+  "quem": [
+   "cursor",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 06:02",
+  "resultado": ""
  }
 ]

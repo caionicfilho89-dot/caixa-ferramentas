@@ -11,7 +11,7 @@ baixaria. A Caixa passa a ser: **os programas que a pessoa baixaria, num só lug
 sozinha o que estiver bombando (Tendência do dia).** A pessoa baixa UMA vez e a Caixa substitui iLovePDF,
 HandBrake, ShareX, Everything, WinRAR, CCleaner, Recuva…
 
-1. **VITRINE = `vitrine.json`** (20 ferramentas, cada uma com o programa famoso que substitui e o que precisa ter).
+1. **VITRINE = `vitrine.json`** (21 ferramentas — inclui Ferramentas BR = substitui o 4Devs —, cada uma com o programa famoso que substitui e o que precisa ter).
    Trabalho principal da fábrica: tarefas **⭐ Paridade** — deixar cada uma TÃO BOA quanto o famoso
    (completar o que falta da lista `essenciais`, com teste e conferência na tela).
 2. **PROIBIDO criar ferramenta nova de nicho** (calculadora de bolo, gerador de flake.nix…). Ferramenta nova só se for
