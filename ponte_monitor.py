@@ -76,6 +76,82 @@ def _garantir_sessao(est, sid, nome, modelo):
     return est["sessoes"][sid]
 
 
+def _barra(pct, n=10):
+    try:
+        p = max(0.0, min(100.0, float(pct)))
+    except (TypeError, ValueError):
+        return "··········"
+    cheio = round(p / 100 * n)
+    return "█" * cheio + "░" * (n - cheio) + f" {p:.0f}%"
+
+
+def _texto_cotas():
+    est = _ler(os.path.join(HERE, "ECONOMIA.json"), {}) or {}
+    nomes = {"claude": "Claude", "grok": "SuperGrok (Cursor·Grok CLI·Cocaino)", "google": "Google (Antigravity·Gemini·formação B)"}
+    bola = {"normal": "🟢", "economico": "🟡", "critico": "🔴"}
+    linhas = []
+    for conta, c in (est.get("contas") or {}).items():
+        partes = []
+        for j in c.get("janelas", []):
+            ren = j.get("renova") or ""
+            quando = ""
+            try:
+                t = dt.datetime.fromisoformat(str(ren).replace("Z", "+00:00")).astimezone().replace(tzinfo=None)
+                falta = t - dt.datetime.now()
+                h = int(falta.total_seconds() // 3600)
+                quando = f" (renova em {h // 24}d {h % 24}h)" if h >= 24 else f" (renova em {h}h{int(falta.total_seconds() % 3600 // 60):02d})"
+            except (ValueError, TypeError):
+                pass
+            partes.append(f"{j.get('janela')} {_barra(j.get('pct'))}{quando}")
+        linhas.append(f"{bola.get(c.get('nivel'), '⚪')} {nomes.get(conta, conta)}: " + " · ".join(partes))
+    return "\n".join(linhas) or "sem leitura de cota agora"
+
+
+def _texto_mapa():
+    sys.path.insert(0, HERE)
+    import fabrica_mail as fm
+    estado = []
+    for chave, (nome, _m, _n) in list(AGENTES.items()) + [("claude", ("🧑‍🍳 Claude", "", True))]:
+        p = _ler(os.path.join(HERE, "painel", f"{chave}.json"), {})
+        try:
+            t = dt.datetime.strptime(p.get("atualizado", ""), "%Y-%m-%d %H:%M")
+            minutos = (dt.datetime.now() - t).total_seconds() / 60
+        except ValueError:
+            minutos = 9999
+        icone = "🟢" if (p.get("fazendo") and minutos < 30) or minutos < 10 else ("🟡" if minutos < 180 else "⚪")
+        g = " [G]" if chave in _cadeiras_b() else ""
+        estado.append(f"{icone} {nome.split(' ', 1)[1].split(' (')[0] if ' ' in nome else nome}{g}")
+    arestas = {}
+    agora = dt.datetime.now(dt.timezone.utc)
+    for destino in list(AGENTES) + ["claude"]:
+        try:
+            for m in fm.caixa(destino, so_novas=False, limite=15):
+                t = dt.datetime.fromisoformat(str(m.get("created_ts", "")).replace("Z", "+00:00"))
+                if agora - t > dt.timedelta(hours=1):
+                    continue
+                a, b = fm.apelido(m.get("from", "?")), fm.apelido(fm.nome(destino))
+                if a != b:
+                    k = " ↔ ".join(sorted((a, b)))
+                    arestas[k] = arestas.get(k, 0) + 1
+        except Exception:  # noqa: BLE001
+            continue
+    conv = " · ".join(f"{k} ({v})" for k, v in sorted(arestas.items(), key=lambda x: -x[1])) or "ninguém conversou na última hora"
+    return "  ".join(estado) + "\n💬 conversas (1h): " + conv
+
+
+def _card(est, chave_card, nome, modelo, texto):
+    """Card fixo no Monitor: a descrição (prompt) é atualizada quando o texto muda."""
+    sid = _sid(nome)
+    st = _garantir_sessao(est, sid, nome, modelo)
+    if texto != st.get("texto"):
+        enviar("UserPromptSubmit", dict(_base(sid, "UserPromptSubmit", nome, modelo), prompt=texto))
+        enviar("Stop", _base(sid, "Stop", nome, modelo))
+        st["texto"] = texto
+        return 2
+    return 0
+
+
+
 def sincronizar():
     est = _ler(ESTADO, {})
     est.setdefault("sessoes", {})
@@ -158,6 +234,15 @@ def sincronizar():
                                             notification_type="fabrica"))
                 enviados += 1
         est["alertas"] = atuais
+    except Exception:  # noqa: BLE001
+        pass
+    # ---- cards fixos: cotas e mapa (pedido do Caio: "põe o mapa e as cotas no monitor também")
+    try:
+        enviados += _card(est, "cotas", "💸 Cotas das contas", "cotas", _texto_cotas())
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        enviados += _card(est, "mapa", "🗺️ Mapa da fábrica", "mapa", _texto_mapa())
     except Exception:  # noqa: BLE001
         pass
     with open(ESTADO, "w", encoding="utf-8") as f:
