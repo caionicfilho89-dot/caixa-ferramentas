@@ -72,7 +72,7 @@ def _arquivadas():
     return set(d) if isinstance(d, list) else set()
 
 
-def encher(minimo_por_agente=3, maximo_por_vez=6):
+def encher(minimo_por_agente=4, maximo_por_vez=10):
     import tarefas
     ts = tarefas.ler()
     ativos = _ativos()

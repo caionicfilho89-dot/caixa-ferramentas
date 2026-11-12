@@ -1055,10 +1055,10 @@
    "antigravity",
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-11 20:10",
-  "resultado": ""
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:22",
+  "resultado": "T85 concluida: Refacao do QA lote 1 testada com 100% de sucesso nas 5 pastas citadas: C:/Users/caion/conversor-av (test_avconv.py 4/4 OK, parsing _hms e comandos ffmpeg validados), C:/Users/caion/cartucho-vs-toner (test_tdc.py 2/2 OK, comparacao de cpp e economia mensal calculados na mao), C:/Users/caion/gerador-noxfile (test_nox.py 2/2 OK, presets estaticos noxfile validados), C:/Users/caion/manicure-spa-vs-casa (test_mnc.py 2/2 OK, comparacao de custos salao vs casa e payback de kit calculados na mao), C:/Users/caion/calculadora-cafe (test_cfe.py 4/4 OK, brew ratio, cronograma de despejos, rendimento e TDS calculados na mao). Todas as contas conferidas, GUIs validadas offscreen e relatorio completo registrado no CRITICA.md."
  },
  {
   "id": "T86",
@@ -1202,10 +1202,10 @@
    "cursor",
    "grokbuild"
   ],
-  "status": "pegou",
+  "status": "feito",
   "por": "grokbuild",
-  "quando": "2026-11-12 02:15",
-  "resultado": ""
+  "quando": "2026-11-12 02:18",
+  "resultado": "T124 concluida: Calculadora de Botijão de Gás em C:/Users/caion/calculadora-botijao-gas ajustada com formatação completa em padrão pt-BR (R$ com vírgula, 'Preço: R$ 110,00', '13,0 kg', '57,8 dias' e acentuação corrigida na GUI e no core). 3 testes passando em test_glp.py (100% OK) e integração com adp_casa validada."
  },
  {
   "id": "T125",
@@ -1217,10 +1217,10 @@
    "grokbuild",
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:11",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:19",
+  "resultado": "Calculadora de Rendimento de Tinta em C:/Users/caion/calculadora-rendimento-tinta atualizada com sucesso: adicionado seletor de tipo de superficie (repintura lisa padrão fator 1.0, parede nova/porosa +20% absorcao fator 1.20 e gesso/massa corrida), controle de demaos (1 a 4), calculo de litros necessarios e recomendacao inteligente de combo de embalagens (18L, 3.6L, 0.9L para menor sobra). Cenario de parede de 40 m2 com 2 demaos em gesso validado (80 m2 efetivos, 7,33 L necessarios -> combo de 2 galoes de 3,6 L + 1 quarto de 900 ml = 8,10 L comprados, sobra de apenas 0,77 L). 5 testes passando em test_tnt.py e pytest test_rendimento_tinta.py (100% OK, GUI offscreen validada)."
  },
  {
   "id": "T126",
@@ -1232,10 +1232,10 @@
    "grokbuild",
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:11",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:20",
+  "resultado": "T126 concluida: Controle de Validade de Remédios em C:/Users/caion/controle-validade-remedios aprimorado com card de contadores no topo (vencidos, próximos e válidos), badges visuais coloridas na listagem (vermelho para vencidos, amarelo para alerta e verde para válidos) e ordenação automática por urgência (rmd_core.py e rmd_gui.pyw). 4 testes passando em test_rmd.py (100% OK) e integração com sensores_core e tela Hoje validada."
  },
  {
   "id": "T127",
@@ -1247,10 +1247,10 @@
    "grokbuild",
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:11",
-  "resultado": ""
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:24",
+  "resultado": "T127 concluida: Conversor de Extrato CSV para OFX criado e integrado com sucesso em C:/Users/caion/conversor-extrato-csv-ofx: suporte a bancos brasileiros (Nubank, Inter, Itau, BB, Bradesco e generico), deteccao de delimitadores e datas pt-BR, geracao de OFX 1.02 padronizado com tags STMTTRN/BALAMT e saldo correto. 6 testes passando em test_cxo.py e pytest test_conversor_ofx.py (100% OK), registrada em BUILTIN/TOOLS e tendencias_caixa.json."
  },
  {
   "id": "T128",
@@ -1262,10 +1262,10 @@
    "cursor",
    "grok"
   ],
-  "status": "livre",
-  "por": "",
-  "quando": "2026-11-12 02:11",
-  "resultado": ""
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:26",
+  "resultado": "T128 concluida: Escrita Sem Espaço (NoSpace) criada do zero em C:/Users/caion/escrita-sem-espaco (test_nsp.py 5/5 OK), registrada em tendencias_caixa.json (categoria 🔥 Tendências), BUILTIN em caixa.pyw e TOOLS em build_suite.py. Tendência marcada como feita via tendencias.py."
  },
  {
   "id": "T129",
@@ -1277,9 +1277,424 @@
    "cursor",
    "grok"
   ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:23",
+  "resultado": "T129 concluida: Tendencia deforester avaliada e marcada como feita em C:/Users/caion/caixa-ferramentas via tendencias.py --feita https://codeberg.org/veqq/deforester. Descartada para construcao de app desktop por ser uma biblioteca de logging estritamente voltada a linguagem funcional Janet/Scheme (Lisp dialect para Unix), enquadrando-se nas regras de descarte de frameworks/libs das tendencias."
+ },
+ {
+  "id": "T130",
+  "titulo": "🧐 Grok: Testar ferramentas de controle pessoal do config uses (Garantias, Validade de Remédios e Assinaturas)",
+  "detalhe": "No app real e nas pastas C:/Users/caion/controle-garantias, C:/Users/caion/controle-validade-remedios e C:/Users/caion/controle-assinaturas: testar se salvam dados corretamente, se avisam itens vencidos/próximos do vencimento, se a interface é limpa e se não há perdas de estado entre aberturas. Registrar no CRITICA.md com sugestões práticas de usabilidade.",
+  "quem": [
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:26",
+  "resultado": "T130 concluida: Ferramentas de controle pessoal do config uses validadas e registradas no CRITICA.md: C:/Users/caion/controle-garantias (test_gar.py OK, persistencia local em ~/.caixa_garantias.json e calculo de dias restantes validados), C:/Users/caion/controle-validade-remedios (test_rmd.py OK, persistencia em ~/.caixa_remedios.json, badges de status e contadores validados) e C:/Users/caion/controle-assinaturas (test_ass.py OK, calculo mensal e anual conferido na mao, detectada falha critica de perda de estado por falta de persistencia em disco, apontada no CRITICA.md)."
+ },
+ {
+  "id": "T131",
+  "titulo": "🧐 Grok: Testar Kit-PDF e atalhos rápidos da tela Hoje no Caixa.exe",
+  "detalhe": "Validar no executável e em C:/Users/caion/kit-pdf: testar as operações essenciais do Kit-PDF (juntar PDFs, extrair páginas, compactar) com arquivos de teste, conferir se os atalhos 1 a 8 da tela Hoje continuam responsivos e se o chip de última ferramenta usada (tecla 0) funciona sem travar. Anotar no CRITICA.md.",
+  "quem": [
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:30",
+  "resultado": "T131 concluida: Kit-PDF e atalhos rapidos da tela Hoje testados no executavel e em C:/Users/caion/kit-pdf (test_pdfops.py OK, merge, extract e compress sem perdas e com imagens validados). Atalhos de 1 a 8 e chip/tecla 0 da tela Hoje verificados sem travamentos. Relatorio registrado no CRITICA.md."
+ },
+ {
+  "id": "T132",
+  "titulo": "🧪 QA lote 43: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: simulador-mecanismo-quatro-barras, custo-deslocamento-trabalho, auditor-seo, calculadora-equiparacao-salarial-clt, pensao-alimenticia. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:28",
+  "resultado": "QA lote 43 concluido com 100% de sucesso nas 5 ferramentas: C:/Users/caion/simulador-mecanismo-quatro-barras (test_mqb.py 7/7 OK), C:/Users/caion/custo-deslocamento-trabalho (test_cmt.py 6/6 OK), C:/Users/caion/auditor-seo (test_seo.py 3/3 OK), C:/Users/caion/calculadora-equiparacao-salarial-clt (test_eqs.py 4/4 OK), C:/Users/caion/pensao-alimenticia (test_pen.py 2/2 OK). Contas na mao conferidas e interfaces offscreen validadas."
+ },
+ {
+  "id": "T133",
+  "titulo": "🧪 QA lote 44: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: gerador-ansible, custo-pedagio-tag, gerador-bazel, codigo-resistores, dummy-data-generator. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:29",
+  "resultado": "T133 concluida: QA lote 44 testado e validado nas 5 pastas: C:/Users/caion/gerador-ansible (test_ans.py 2/2 OK, presets YAML validados), C:/Users/caion/custo-pedagio-tag (test_tag.py 3/3 OK, comparacao de pedagio com e sem desconto de tag calculada na mao com economia e empate), C:/Users/caion/gerador-bazel (test_bzl.py 2/2 OK, presets MODULE/BUILD validados), C:/Users/caion/codigo-resistores (test_res.py 5/5 OK, codigo de cores de 4 a 6 faixas, SMD e serie E calculados na mao), C:/Users/caion/dummy-data-generator (criado test_gd.py 4/4 OK testando geracao de dados, exportacao CSV/JSON e smoke GUI offscreen). Avaliacoes registradas no CRITICA.md."
+ },
+ {
+  "id": "T134",
+  "titulo": "🧪 QA lote 45: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: validador-toml, ergonomia-pausas-trabalho, custo-escola-particular, inspetor-macho, tocando-agora. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:30",
+  "resultado": "QA lote 45 concluido com 100% de sucesso nas 5 ferramentas: C:/Users/caion/validador-toml (test_tml.py 3/3 OK), C:/Users/caion/ergonomia-pausas-trabalho (test_erg.py 4/4 OK), C:/Users/caion/custo-escola-particular (test_ecp.py 2/2 OK), C:/Users/caion/inspetor-macho (test_mac.py 2/2 OK), C:/Users/caion/tocando-agora (test_npw.py 9/9 OK). Contas na mao conferidas, geracao de PNGs e GUIs offscreen validadas."
+ },
+ {
+  "id": "T135",
+  "titulo": "🧪 QA lote 46: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: planejador-intervalo-almoco, custo-consulta-especialista, estimativa-conta-agua, inicializacao, top-arquivos-grandes. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:32",
+  "resultado": "T135 concluida: QA lote 46 testado e validado nas 5 pastas: C:/Users/caion/planejador-intervalo-almoco (test_pia.py 6/6 OK, calculo de tempo fixo, refeicao liquida e alerta de horario apertado conferidos na mao), C:/Users/caion/custo-consulta-especialista (test_ces.py 7/7 OK, comparacao particular vs plano e break-even de mensalidade conferidos na mao), C:/Users/caion/estimativa-conta-agua (test_agu.py 3/3 OK, consumo em m3 por banho/roupa/louca e fatura com tarifa/taxa conferidos na mao), C:/Users/caion/inicializacao (test_ini.py 9/9 OK, protocolo binario reversivel StartupApproved e parsing de linha de comando com variaveis validados), C:/Users/caion/top-arquivos-grandes (test_big.py 2/2 OK, ordenacao decrescente, filtros de pastas e formatacao de bytes validados). Avaliacoes registradas no CRITICA.md."
+ },
+ {
+  "id": "T136",
+  "titulo": "🧪 QA lote 47: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: casa-segura-bebe, calculadora-adicional-periculosidade, gerador-bunfig, complexidade-ciclomatica, gerador-tool-versions. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:32",
+  "resultado": "QA lote 47 concluido com 100% de sucesso nas 5 ferramentas: C:/Users/caion/casa-segura-bebe (test_sgb.py 5/5 OK), C:/Users/caion/calculadora-adicional-periculosidade (test_per.py 7/7 OK), C:/Users/caion/gerador-bunfig (test_bun.py 2/2 OK), C:/Users/caion/complexidade-ciclomatica (test_cyc.py 4/4 OK), C:/Users/caion/gerador-tool-versions (test_tvs.py 2/2 OK). Contas na mao conferidas, geracao de presets e GUIs offscreen validadas."
+ },
+ {
+  "id": "T137",
+  "titulo": "🧪 QA lote 48: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: planejador-pausa-olhos-20-20-20, calculadora-baterias, cofre-snippets, gerador-inno-setup, estudio-grafos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:33",
+  "resultado": "T137 concluida: QA lote 48 testado e validado nas 5 pastas: C:/Users/caion/planejador-pausa-olhos-20-20-20 (test_p20.py 6/6 OK), C:/Users/caion/calculadora-baterias (test_bat.py 6/6 OK), C:/Users/caion/cofre-snippets (test_snip.py 1/1 OK), C:/Users/caion/gerador-inno-setup (test_iss.py 1/1 OK), C:/Users/caion/estudio-grafos (test_grf.py 2/2 OK). Contas na mao conferidas e relatorio registrado no CRITICA.md."
+ },
+ {
+  "id": "T138",
+  "titulo": "🧠 Calculadora Rendimento de Tinta: sugestão de combo de embalagens (Latas 18L, Galões 3,6L, Quartos 900ml)",
+  "detalhe": "Conforme apontado pelo Grok no CRITICA.md após validação da ferramenta (C:/Users/caion/calculadora-rendimento-tinta): além de calcular a litragem total necessária, sugerir a melhor combinação comercial de latas (18 L), galões (3,6 L) e quartos (0,9 L) para minimizar sobra e custo. Implementar em tnt_core.py e tnt_gui.pyw, adicionar testes em test_tnt.py e validar offscreen.",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild",
+   "grok"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:32",
+  "resultado": "T138 concluida: Calculadora de Rendimento de Tinta em C:/Users/caion/calculadora-rendimento-tinta possui algoritmo de recomendacao de combo comercial de embalagens (Latas 18 L, Galoes 3,6 L e Quartos 900 ml) para minimizar a sobra e custo total, com formatacao pt-BR e integracao visual completa na GUI e testes automatizados (test_tnt.py e test_rendimento_tinta.py, 10/10 OK, smoke offscreen validado)."
+ },
+ {
+  "id": "T139",
+  "titulo": "🧠 Dias Úteis e Pagamentos: suporte a formato dd/mm/aaaa e calendário bancário FEBRABAN",
+  "detalhe": "Conforme sugerido no CRITICA.md na avaliação do C:/Users/caion/dias-uteis-pagamento: garantir suporte flexível a datas no formato brasileiro (dd/mm/aaaa) na interface e na barra, e explicitar feriados bancários sem expediente financeiro (carnaval, quarta-feira de cinzas parcial, etc.). Atualizar utl_core.py, utl_gui.pyw e test_utl.py.",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild",
+   "grok"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:35",
+  "resultado": "T139 concluida: Suporte a formato brasileiro dd/mm/aaaa e calendario bancario FEBRABAN implementados com sucesso em C:/Users/caion/dias-uteis-pagamento: adicionadas funcoes formatar_data_br, parse_data e feriados_bancarios (segunda/terca de carnaval e 31/12 sem expediente - Res. CMN 4.880/2020) em utl_core.py; atualizado utl_gui.pyw com checkbox para alternar calendario bancario e exibicao de relatorio em dd/mm/aaaa; 8 testes passando em test_utl.py (100% OK) e smoke GUI offscreen validado."
+ },
+ {
+  "id": "T140",
+  "titulo": "🧠 Organizador de Downloads: histórico de movimentações com botão Desfazer",
+  "detalhe": "No C:/Users/caion/organizador-downloads (ferramenta de sistema frequente do Caio no config uses): adicionar registro local da última organização de arquivos (caminho original -> destino) e botão 'Desfazer' na interface para reverter movimentações com segurança. Atualizar test_od.py e testar offscreen.",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grokbuild",
+   "grok"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:36",
+  "resultado": "T140 concluida: Organizador de Downloads em C:/Users/caion/organizador-downloads atualizado com registro local e tab de Historico (caminho original -> destino), botao Desfazer habilitado dinamicamente com tooltip e funcao get_last_history. 9 testes passando em test_od.py (100% OK, incluindo teste de GUI offscreen para organizacao, historico e reversao com seguranca)."
+ },
+ {
+  "id": "T141",
+  "titulo": "🧪 QA lote 49: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: parar-fumar, analisador-benford, visualizador-sqlite, indice-equilibrio-vida-trabalho, extrator-strings-binario. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:37",
+  "resultado": "T141 concluida: QA lote 49 testado e validado nas 5 pastas: C:/Users/caion/parar-fumar (test_fum.py 3/3 OK), C:/Users/caion/analisador-benford (test_bnf.py 5/5 OK), C:/Users/caion/visualizador-sqlite (test_sq.py 10/10 OK), C:/Users/caion/indice-equilibrio-vida-trabalho (test_wlb.py 13/13 OK), C:/Users/caion/extrator-strings-binario (test_xtr.py 1/1 OK). Contas na mao conferidas e relatorio registrado no CRITICA.md."
+ },
+ {
+  "id": "T142",
+  "titulo": "🧪 QA lote 50: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: custo-home-office, regra-50-30-20, gerador-helm-chart, calculadora-matrizes, gerador-bandit-yaml. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:38",
+  "resultado": "T142 concluida: QA lote 50 testado e validado nas 5 pastas: C:/Users/caion/custo-home-office (test_hof.py 10/10 OK, comparacao de custos HO vs presencial e break-even de dias/semana conferidos na mao), C:/Users/caion/regra-50-30-20 (test_regra.py 7/7 OK, envelopes 50/30/20, saldo e diagnosticos de estouro conferidos na mao), C:/Users/caion/gerador-helm-chart (test_hlm.py 2/2 OK, presets YAML Chart/values/deployment validados), C:/Users/caion/calculadora-matrizes (test_mtx.py 2/2 OK, determinante, traco, inversa e sistemas lineares Ax=b conferidos na mao), C:/Users/caion/gerador-bandit-yaml (test_bdt.py 1/1 OK, presets .bandit validados). Avaliacoes registradas no CRITICA.md."
+ },
+ {
+  "id": "T143",
+  "titulo": "🧪 QA lote 51: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: planejador-mudanca, planejador-compras-atacado, gestacional, indice-estresse-percebido, saque-aniversario-fgts. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:39",
+  "resultado": "QA lote 51 concluido com 100% de sucesso nas 5 ferramentas: C:/Users/caion/planejador-mudanca (test_mdc.py 4/4 OK), C:/Users/caion/planejador-compras-atacado (test_pat.py 3/3 OK), C:/Users/caion/gestacional (test_gst.py 8/8 OK), C:/Users/caion/indice-estresse-percebido (test_iep.py 6/6 OK), C:/Users/caion/saque-aniversario-fgts (test_fgs.py 6/6 OK). Contas na mao conferidas e interfaces offscreen validadas."
+ },
+ {
+  "id": "T144",
+  "titulo": "🧪 QA lote 52: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: localizador-arquivos-vazios, botijao-gas, compressao-rle, checklist-prova-certificacao, arquivos-recentes. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grokbuild",
+  "quando": "2026-11-12 02:40",
+  "resultado": "T144 concluida: QA lote 52 testado e validado nas 5 pastas: C:/Users/caion/localizador-arquivos-vazios (test_efn.py 1/1 OK), C:/Users/caion/botijao-gas (test_gas.py 5/5 OK), C:/Users/caion/compressao-rle (test_rle.py 3/3 OK), C:/Users/caion/checklist-prova-certificacao (test_crt.py 10/10 OK), C:/Users/caion/arquivos-recentes (test_mtr.py 1/1 OK). Contas na mao conferidas e relatorio registrado no CRITICA.md."
+ },
+ {
+  "id": "T145",
+  "titulo": "🧪 QA lote 53: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: analisador-todo, calculadora-fotografia, analisador-perfil-lipidico-cardiovascular, reembolso-plano-saude, calculadora-roi-educacao-pos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "grok",
+  "quando": "2026-11-12 02:41",
+  "resultado": "T145 concluida: QA lote 53 testado e validado nas 5 pastas: C:/Users/caion/analisador-todo (test_tdo.py 2/2 OK, deteccao de marcadores TODO/FIXME e resumo de contagem validados), C:/Users/caion/calculadora-fotografia (test_fot.py 3/3 OK, regra dos 500, filtros ND e hiperfocal conferidos na mao), C:/Users/caion/analisador-perfil-lipidico-cardiovascular (test_apl.py 4/4 OK, colesterol nao-HDL, Castelli I e II, e relacao TG/HDL conferidos na mao), C:/Users/caion/reembolso-plano-saude (test_rms.py 4/4 OK, calculos de teto de tabela, coparticipacao e desembolso do bolso conferidos na mao), C:/Users/caion/calculadora-roi-educacao-pos (test_cbf.py 5/5 OK, payback simples, payback descontado e ROI em 5 anos conferidos na mao). Avaliacoes registradas no CRITICA.md."
+ },
+ {
+  "id": "T146",
+  "titulo": "🧪 QA lote 54: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: indice-massa-muscular, mapa-mental, calculadora-taxa-delivery, calculadora-simples-nacional, vinhos-queijos. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "feito",
+  "por": "cursor",
+  "quando": "2026-11-12 02:41",
+  "resultado": "QA lote 54 concluido com 100% de sucesso nas 5 ferramentas: C:/Users/caion/indice-massa-muscular (test_imm.py 5/5 OK), C:/Users/caion/mapa-mental (test_mm.py 2/2 OK), C:/Users/caion/calculadora-taxa-delivery (test_dlv.py 3/3 OK), C:/Users/caion/calculadora-simples-nacional (test_snl.py 6/6 OK), C:/Users/caion/vinhos-queijos (test_vnh.py 5/5 OK). Contas na mao conferidas e interfaces offscreen validadas."
+ },
+ {
+  "id": "T147",
+  "titulo": "🧠 Controle de Assinaturas: implementar persistência em disco JSON e dia de cobrança",
+  "detalhe": "Conforme apontado no CRITICA.md (T130), a ferramenta C:/Users/caion/controle-assinaturas perde tudo ao fechar pois ass_gui.pyw mantém itens apenas em memória mockada. Implementar persistência atômica em ~/.caixa_assinaturas.json, adicionar dia de cobrança na fatura e atualizar test_ass.py.",
+  "quem": [
+   "cursor",
+   "grokbuild",
+   "grok"
+  ],
+  "status": "pegou",
+  "por": "grok",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T148",
+  "titulo": "🧪 QA lote 55: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: simulador-controle-pid, analisador-wifi, comparador-generico-marca, analisador-funcoes-duplicadas, cabecalhos-seguranca. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
   "status": "livre",
   "por": "",
-  "quando": "2026-11-12 02:11",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T149",
+  "titulo": "🧪 QA lote 56: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: conversor-imagens, gerador-yarnrc, seguro-viagem-cobertura, gerador-license, simulador-optica. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T150",
+  "titulo": "🧪 QA lote 57: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: inspetor-http, planejador-ciclo-ebbinghaus, analisador-yarn-lock, frete-sedex-vs-pac, consumo-energia. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T151",
+  "titulo": "🧪 QA lote 58: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: agendador-tarefas, inspetor-shebang, planejador-meta-redacao, laboratorio-crc, contador-palavras. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T152",
+  "titulo": "🧪 QA lote 59: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: corte-chapas, calculadora-fotovoltaica, validador-formato-cartao-credito, calculadora-ipva, rateio-condominio-m2. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T153",
+  "titulo": "🧪 QA lote 60: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: dados-rpg, gerador-ssl, analisador-cpu-termico, limpa-temp, gesso-drywall. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T154",
+  "titulo": "🧪 QA lote 61: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: economia-horta-caseira, gerador-flake8, gerador-cargo-toml, rega-plantas, analisador-nota-corte-sisu-enem. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T155",
+  "titulo": "🧪 QA lote 62: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: controle-postura-timer, guia-lavanderia, diff-texto, ferramentas-dev, certificado-ssl. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T156",
+  "titulo": "🧪 QA lote 63: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: notas-de-voz, diff-hex, gerador-senhas, entrada-financiamento, prazos-direito-consumidor. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
+  "resultado": ""
+ },
+ {
+  "id": "T157",
+  "titulo": "🧪 QA lote 64: testar 5 ferramentas",
+  "detalhe": "Teste DE VERDADE: limpeza-pycache, conversor-finais-linha, gerador-ruff-toml, inspetor-processos, conversor-coordenadas. Pra cada uma: rode test_*.py da pasta C:/Users/caion/<pasta>, abra a GUI e confira 2 contas/resultados na mão. Quebrou? Conserte no CÓDIGO-FONTE da pasta (nunca staged/dist) e rode o teste de novo. Inútil pro Caio? Anote no CRITICA.md. No --concluir CITE as 5 pastas (o portão de qualidade roda os testes delas).",
+  "quem": [
+   "cursor",
+   "antigravity",
+   "grok",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 02:42",
   "resultado": ""
  }
 ]

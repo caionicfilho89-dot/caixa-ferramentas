@@ -581,7 +581,7 @@ def main():
                     log(f"cota semanal Antigravity: {ex}")
             if volta % 20 == 1:  # a cada 10 min: a tendência do dia tem que sair todo dia
                 garantir_tendencia()
-            if volta % 20 == 11:  # a cada 10 min: quadro sempre cheio (>= 3 livres por agente ativo)
+            if volta % 10 == 1:  # a cada 5 min: quadro sempre cheio (>= 4 livres por agente; agentes do Google são rápidos)
                 try:
                     import quadro_cheio
                     quadro_cheio.encher()
@@ -593,7 +593,7 @@ def main():
                 def _revisar():
                     try:
                         import carteiro_ia
-                        carteiro_ia.revisar()
+                        carteiro_ia.revisar(maximo=3)
                     except Exception as ex:  # noqa: BLE001
                         log(f"revisor Gemini: {ex}")
                 threading.Thread(target=_revisar, daemon=True).start()
