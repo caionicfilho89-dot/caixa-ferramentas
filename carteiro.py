@@ -191,13 +191,15 @@ def parados_com_tarefa():
             pass
         fazendo = (d.get("fazendo") or "").lower()
         # "aguardando…", "esperando…", "parado", "idle" no campo fazendo = está PARADO de verdade
-        ocupado = fazendo and not re.search(r"aguard|esperan|parad|idle|nada|sem tarefa|fila vazia", fazendo)
-        if ocupado or ag in pend:
-            continue
         try:
             parado = (time.time() - time.mktime(time.strptime(d.get("atualizado", ""), "%Y-%m-%d %H:%M"))) / 60
         except ValueError:
             parado = 999
+        # "fazendo" velho não é ocupado: o Antigravity ficou 7 h com "fazendo T78" sem atualizar (12/11)
+        ocupado = (fazendo and parado < 60
+                   and not re.search(r"aguard|esperan|parad|idle|nada|sem tarefa|fila vazia", fazendo))
+        if ocupado or ag in pend:
+            continue
         # quem tem menos cota é empurrado menos: normal 10 min, econômico 30 min (crítico já fica fora)
         try:
             import economia

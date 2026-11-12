@@ -72,8 +72,33 @@ def _arquivadas():
     return set(d) if isinstance(d, list) else set()
 
 
+def soltar_presas(horas=2):
+    """Tarefa "pegou" há mais de N horas com o dono sem dar notícia no painel há 1 h → volta a ficar livre."""
+    import tarefas
+    ts = tarefas.ler()
+    agora = time.time()
+    soltas = []
+    for t in ts:
+        if t["status"] != "pegou":
+            continue
+        try:
+            desde = time.mktime(time.strptime(t["quando"], "%Y-%m-%d %H:%M"))
+            p = _json(os.path.join(HERE, "painel", f"{t['por']}.json"), {})
+            noticia = time.mktime(time.strptime(p.get("atualizado", "2000-01-01 00:00"), "%Y-%m-%d %H:%M"))
+        except (ValueError, OverflowError):
+            continue
+        if agora - desde > horas * 3600 and agora - noticia > 3600:
+            soltas.append(f"{t['id']}({t['por']})")
+            t.update(status="livre", por="", quando=time.strftime("%Y-%m-%d %H:%M"))
+    if soltas:
+        tarefas.salvar(ts)
+        _log(f"quadro: soltei tarefa(s) presa(s) com dono sumido: {', '.join(soltas)}")
+    return soltas
+
+
 def encher(minimo_por_agente=4, maximo_por_vez=10):
     import tarefas
+    soltar_presas()
     ts = tarefas.ler()
     ativos = _ativos()
     livres = sum(1 for t in ts if t["status"] == "livre")
