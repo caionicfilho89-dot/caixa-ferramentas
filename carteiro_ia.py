@@ -41,6 +41,31 @@ def _log(t, painel=False):
                        capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
 
 
+def _cota_esgotada(saida):
+    """O agy avisa "Individual quota reached" quando a cota SEMANAL do Google acaba — a janela de 5 h pode até ter
+    folga, então o modo economia não via (12/11: Gemini esgotado até 14/11 e a fábrica achando que estava 🟡).
+    Ao ver o aviso, marca a semana do Google como 100% e recalcula a economia (a troca automática faz o resto)."""
+    if "quota reached" not in saida.lower():
+        return
+    try:
+        p = os.path.join(HERE, "cotas_manuais.json")
+        d = _json(p, {})
+        ag = d.setdefault("antigravity", {})
+        if ag.get("gemini_semana_usado") == 100 and time.time() - float(ag.get("semana_lida_em") or 0) < 3600:
+            return
+        ag.update(gemini_semana_usado=100, semana_lida_em=time.time(),
+                  lido=time.strftime("%d/%m %H:%M") + " (agy: quota reached)")
+        if not re.search(r"\d+\s*dia", str(ag.get("renova", ""))):
+            ag["renova"] = "em 7 dias"
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump(d, f, ensure_ascii=False, indent=1)
+        import economia
+        economia.atualizar()
+        _log("cota do Google ESGOTADA (agy: quota reached) → economia marcou crítico; cadeiras voltam pro Grok")
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def perguntar(prompt, timeout=230):
     """Manda pro Gemini (conta Gemini Pro do Caio) e devolve o texto ('' se falhar).
 
@@ -56,6 +81,7 @@ def perguntar(prompt, timeout=230):
         r = subprocess.run([AGY, "-p", prompt, "--model", MODELO, "--mode", "plan", "--print-timeout", "200s"],
                            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout,
                            cwd=os.environ.get("TEMP", HERE), creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        _cota_esgotada((r.stdout or "") + (r.stderr or ""))
         return (r.stdout or "").strip()
     except Exception as e:  # noqa: BLE001
         _log(f"Gemini não respondeu: {e}")
