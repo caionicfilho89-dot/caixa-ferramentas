@@ -181,6 +181,33 @@ def garantir_b():
         return
     for chave, pid in list(e.get("cadeiras", {}).items()):
         if pid and _pid_vivo(pid):
+            # viva mas PARADA: depois de uma cota crítica o painel manda "PARE até liberar" e ninguém acorda
+            # a cadeira (agy não tem gancho de fim de turno). 11/11: 4 h paradas com a cota já liberada.
+            try:
+                import economia
+                p = _ler(os.path.join(HERE, "painel", f"{chave}.json"), {})
+                parada = (time.time() - time.mktime(time.strptime(p.get("atualizado", ""), "%Y-%m-%d %H:%M"))) / 60
+            except (ValueError, OverflowError):
+                parada = 9999
+            except Exception:  # noqa: BLE001
+                continue
+            ultimo = (e.get("acordou") or {}).get(chave, 0)
+            if parada < 40 or time.time() - ultimo < 1800 or economia.nivel_do_agente(chave) == "critico":
+                continue
+            try:
+                import tarefas
+                if not tarefas.livres_para(chave):
+                    continue
+            except Exception:  # noqa: BLE001
+                continue
+            subprocess.run(["taskkill", "/PID", str(pid), "/T", "/F"], capture_output=True,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+            e.setdefault("acordou", {})[chave] = time.time()
+            e["cadeiras"][chave] = abrir_cadeira(chave)
+            _salvar(ARQ, e)
+            _avisar(f"cadeira {chave} (Google) estava parada há {int(parada)} min com tarefa livre → reiniciei pra acordar")
+            return
+        if pid and _pid_vivo(pid):
             continue
         try:
             import fabrica_mail
