@@ -1,216 +1,33 @@
 {
- "_leia": "RUMO NOVO (12/11/2026, Caio): a Caixa é 'TUDO EM UM SÓ LUGAR — os programas que você baixaria, a um clique' + SEMPRE com as tendências. Esta é a VITRINE: cada ferramenta tem que ficar tão boa quanto o programa famoso que ela substitui. A fábrica trabalha em cima desta lista (tarefas '⭐ Paridade'), não cria ferramenta nova de nicho.",
+ "_leia": "RUMO NOVO (12/11/2026, Caio): 'TUDO EM UM SÓ LUGAR — os programas que a pessoa baixaria, a um clique' + SEMPRE com as tendências. A vitrine NÃO tem número inventado: entra o que aparece nas listas de programas que as pessoas instalam (Ninite = só apps populares pedidos pelos usuários; Showmetech = 94 essenciais pra Windows, BR) E que uma ferramenta local consegue substituir. Navegador, mensageiro, nuvem, jogo, streaming, Office, antivírus e runtime ficam fora (a Caixa não substitui). 'construir': true = aparece nas listas e a Caixa ainda não tem. Refazer a pesquisa quando o Caio pedir ou a cada versão grande.",
+ "fontes": ["https://ninite.com/", "https://www.showmetech.com.br/programas-essenciais-para-instalar-no-seu-pc-com-windows/", "4Devs: pedido do Caio (12/11)"],
  "vitrine": [
-  {
-   "chave": "ferramentas-br",
-   "substitui": "4Devs (site)",
-   "essenciais": [
-    "gerar e validar CPF, CNPJ, RG, CNH, título de eleitor, PIS, cartão de crédito",
-    "gerador de pessoa, empresa e veículo fictícios",
-    "certidões e renavam",
-    "conferir lista do 4Devs item por item (o que falta, implementar)",
-    "copiar resultado num clique, offline"
-   ]
-  },
-  {
-   "chave": "kit-pdf",
-   "substitui": "iLovePDF / PDF24",
-   "essenciais": [
-    "juntar, separar, girar, comprimir",
-    "imagens↔PDF",
-    "extrair texto",
-    "proteger/remover senha",
-    "arrastar e soltar arquivos"
-   ]
-  },
-  {
-   "chave": "conversor-av",
-   "substitui": "HandBrake / Format Factory",
-   "essenciais": [
-    "converter vídeo e áudio em lote",
-    "presets prontos (WhatsApp, celular, 1080p)",
-    "cortar trecho",
-    "extrair áudio",
-    "barra de progresso real"
-   ]
-  },
-  {
-   "chave": "gravador-tela",
-   "substitui": "OBS (gravar) / ShareX",
-   "essenciais": [
-    "tela ou área",
-    "som do sistema + microfone",
-    "MP4 e GIF",
-    "atalho de teclado pra começar/parar",
-    "contagem regressiva"
-   ]
-  },
-  {
-   "chave": "print-anotador",
-   "substitui": "ShareX / Lightshot",
-   "essenciais": [
-    "captura de área com atalho",
-    "seta, texto, tarja/borrão",
-    "copiar e salvar num clique",
-    "abrir print existente"
-   ]
-  },
-  {
-   "chave": "busca-arquivos",
-   "substitui": "Everything",
-   "essenciais": [
-    "resultado instantâneo enquanto digita",
-    "filtros por tipo/tamanho/data",
-    "abrir pasta do arquivo",
-    "índice que atualiza sozinho"
-   ]
-  },
-  {
-   "chave": "renomeador",
-   "substitui": "PowerRename / Bulk Rename Utility",
-   "essenciais": [
-    "prévia antes de aplicar",
-    "numeração, data EXIF, regex",
-    "desfazer",
-    "arrastar pasta"
-   ]
-  },
-  {
-   "chave": "area-transferencia",
-   "substitui": "Ditto / Win+V",
-   "essenciais": [
-    "histórico de texto e imagem",
-    "fixar e buscar",
-    "atalho global",
-    "fechar sem travar"
-   ]
-  },
-  {
-   "chave": "conversor-imagens",
-   "substitui": "conversores online / IrfanView",
-   "essenciais": [
-    "lote",
-    "HEIC, WEBP, PNG, JPG",
-    "redimensionar e comprimir",
-    "manter EXIF opcional"
-   ]
-  },
-  {
-   "chave": "extrator-texto",
-   "substitui": "PowerToys Text Extractor",
-   "essenciais": [
-    "selecionar área da tela",
-    "OCR em português",
-    "copiar direto",
-    "abrir imagem existente"
-   ]
-  },
-  {
-   "chave": "faxina-disco",
-   "substitui": "WinDirStat / CCleaner",
-   "essenciais": [
-    "o que ocupa o disco em gráfico",
-    "maiores arquivos",
-    "duplicados",
-    "mandar pra Lixeira (nunca apagar direto)"
-   ]
-  },
-  {
-   "chave": "recupera-arquivos",
-   "substitui": "Recuva",
-   "essenciais": [
-    "recuperar fotos/PDF/ZIP apagados",
-    "modo NTFS com nome original",
-    "prévia",
-    "salvar em outro disco"
-   ]
-  },
-  {
-   "chave": "visor-fotos",
-   "substitui": "IrfanView / Google Fotos (duplicadas)",
-   "essenciais": [
-    "abrir pasta na hora (cache)",
-    "duplicadas parecidas",
-    "girar, apagar pra Lixeira",
-    "tela cheia e setas"
-   ]
-  },
-  {
-   "chave": "editor-imagem",
-   "substitui": "Paint.NET (básico)",
-   "essenciais": [
-    "cortar, redimensionar, girar",
-    "brilho/contraste",
-    "texto e formas",
-    "desfazer"
-   ]
-  },
-  {
-   "chave": "compactador",
-   "substitui": "WinRAR / 7-Zip",
-   "essenciais": [
-    "compactar e extrair ZIP/7z/RAR",
-    "senha",
-    "arrastar e soltar",
-    "progresso"
-   ]
-  },
-  {
-   "chave": "cofre-senhas",
-   "substitui": "Bitwarden (local)",
-   "essenciais": [
-    "gerar senha forte",
-    "cofre criptografado",
-    "copiar com limpeza automática",
-    "busca"
-   ]
-  },
-  {
-   "chave": "qrcode-tool",
-   "substitui": "geradores de QR online",
-   "essenciais": [
-    "link, Wi-Fi, Pix, contato",
-    "ler QR de imagem/print",
-    "salvar PNG/SVG"
-   ]
-  },
-  {
-   "chave": "capturador-cores",
-   "substitui": "PowerToys Color Picker",
-   "essenciais": [
-    "conta-gotas com lupa",
-    "HEX/RGB/HSL",
-    "paleta salva",
-    "atalho global"
-   ]
-  },
-  {
-   "chave": "limpa-metadados",
-   "substitui": "ExifCleaner",
-   "essenciais": [
-    "ver e remover GPS/autor",
-    "foto, PDF e Office",
-    "lote",
-    "original intacto"
-   ]
-  },
-  {
-   "chave": "organizador-downloads",
-   "substitui": "arrumar Downloads na mão",
-   "essenciais": [
-    "separar por tipo",
-    "achar instaladores velhos",
-    "histórico com Desfazer"
-   ]
-  },
-  {
-   "chave": "monitor-sistema",
-   "substitui": "Gerenciador de Tarefas / HWMonitor",
-   "essenciais": [
-    "CPU, RAM, disco, rede ao vivo",
-    "quem está pesando",
-    "temperatura se disponível"
-   ]
-  }
+  {"chave": "ferramentas-br", "substitui": "4Devs (site)", "evidencia": "Caio (uso real BR)", "essenciais": ["gerar e validar CPF, CNPJ, RG, CNH, título, PIS, cartão", "pessoa/empresa/veículo fictícios", "certidões e renavam", "conferir o 4Devs item por item", "copiar num clique, offline"]},
+  {"chave": "compactador", "substitui": "7-Zip / WinRAR / PeaZip", "evidencia": "Ninite (Compression)", "essenciais": ["compactar e extrair ZIP/7z/RAR", "senha", "arrastar e soltar", "progresso"]},
+  {"chave": "kit-pdf", "substitui": "PDF24 / CutePDF / Foxit / SumatraPDF / Acrobat Reader", "evidencia": "Ninite (Documents) + Showmetech", "essenciais": ["ler PDF rápido", "juntar, separar, girar, comprimir", "imagens↔PDF", "extrair texto", "proteger/remover senha"]},
+  {"chave": "conversor-av", "substitui": "HandBrake", "evidencia": "Ninite (Media)", "essenciais": ["converter vídeo e áudio em lote", "presets (WhatsApp, celular, 1080p)", "cortar trecho", "extrair áudio", "progresso real"]},
+  {"chave": "gravador-tela", "substitui": "OBS Studio / Loom / Nimbus", "evidencia": "Ninite (Media) + Showmetech", "essenciais": ["tela ou área", "som do sistema + microfone", "MP4 e GIF", "atalho começar/parar", "contagem regressiva"]},
+  {"chave": "print-anotador", "substitui": "Greenshot / ShareX / Captura e Esboço", "evidencia": "Ninite (Imaging) + Showmetech", "essenciais": ["captura de área com atalho", "seta, texto, tarja/borrão", "copiar e salvar num clique", "abrir print existente"]},
+  {"chave": "visor-fotos", "substitui": "IrfanView / XnView / FastStone / SageThumbs", "evidencia": "Ninite (Imaging) + Showmetech", "essenciais": ["abrir pasta na hora (cache)", "HEIC/WebP/RAW", "duplicadas parecidas", "girar, apagar pra Lixeira", "tela cheia e setas"]},
+  {"chave": "editor-imagem", "substitui": "Paint.NET / GIMP / PhotoScape X", "evidencia": "Ninite (Imaging) + Showmetech", "essenciais": ["cortar, redimensionar, girar", "brilho/contraste/filtros", "texto e formas", "camadas simples", "desfazer"]},
+  {"chave": "conversor-imagens", "substitui": "extensões HEIF/WebP/RAW + conversores", "evidencia": "Showmetech (Extensões do Windows)", "essenciais": ["lote", "HEIC, WEBP, RAW, PNG, JPG", "redimensionar e comprimir", "manter EXIF opcional"]},
+  {"chave": "cofre-senhas", "substitui": "KeePass / KeePassXC / Bitwarden / 1Password / SafeInCloud", "evidencia": "Ninite (Other) + Showmetech", "essenciais": ["gerar senha forte", "cofre criptografado", "copiar com limpeza automática", "busca", "importar/exportar"]},
+  {"chave": "busca-arquivos", "substitui": "Everything", "evidencia": "Ninite (Other)", "essenciais": ["resultado instantâneo enquanto digita", "filtros tipo/tamanho/data", "abrir pasta do arquivo", "índice que atualiza sozinho"]},
+  {"chave": "renomeador", "substitui": "PowerToys PowerRename", "evidencia": "Ninite + Showmetech (PowerToys)", "essenciais": ["prévia antes de aplicar", "numeração, data EXIF, regex", "desfazer", "arrastar pasta"]},
+  {"chave": "capturador-cores", "substitui": "PowerToys Color Picker", "evidencia": "Ninite + Showmetech (PowerToys)", "essenciais": ["conta-gotas com lupa", "HEX/RGB/HSL", "paleta salva", "atalho global"]},
+  {"chave": "extrator-texto", "substitui": "PowerToys Text Extractor", "evidencia": "Ninite + Showmetech (PowerToys)", "essenciais": ["selecionar área da tela", "OCR em português", "copiar direto", "abrir imagem existente"]},
+  {"chave": "faxina-disco", "substitui": "WinDirStat / WizTree / CCleaner / Glary / Advanced SystemCare / PC Manager", "evidencia": "Ninite (Utilities) + Showmetech", "essenciais": ["o que ocupa o disco em gráfico", "maiores arquivos e duplicados", "limpar temporários com segurança", "mandar pra Lixeira (nunca apagar direto)"]},
+  {"chave": "info-pc", "substitui": "CPU-Z / PC Health Check", "evidencia": "Showmetech (Utilitários, Verificador)", "essenciais": ["processador, RAM, placa, disco, GPU", "saúde do disco/bateria", "copiar relatório"]},
+  {"chave": "rede", "substitui": "Speedtest by Ookla / Advanced IP Scanner", "evidencia": "Showmetech + Ninite (Utilities)", "essenciais": ["teste de velocidade da internet", "quem está na minha rede (IP/fabricante)", "ping e diagnóstico simples"]},
+  {"chave": "player-musica", "substitui": "AIMP / foobar2000 / MusicBee / Winamp", "evidencia": "Ninite (Media)", "essenciais": ["biblioteca por pasta", "playlist", "equalizador", "atalhos de mídia do teclado"]},
+  {"chave": "laboratorio-audio", "substitui": "Audacity", "evidencia": "Ninite (Media)", "essenciais": ["gravar", "cortar/juntar", "normalizar volume e remover ruído", "exportar MP3/WAV"]},
+  {"chave": "notas-md", "substitui": "Evernote", "evidencia": "Ninite + Showmetech", "essenciais": ["notas com busca", "pastas/etiquetas", "imagens na nota", "exportar"]},
+  {"chave": "tarefas", "substitui": "Microsoft To Do", "evidencia": "Showmetech (Produtividade)", "essenciais": ["listas", "data e lembrete", "repetição", "minhas tarefas de hoje"]},
+  {"chave": "comparar-pastas", "substitui": "WinMerge", "evidencia": "Ninite (Developer Tools)", "essenciais": ["comparar pastas", "comparar 2 arquivos de texto lado a lado", "copiar diferenças"]},
+  {"chave": "scanner-documentos", "substitui": "Scanner do Windows", "evidencia": "Showmetech (Utilitários)", "essenciais": ["digitalizar da impressora", "virar PDF", "cortar/endireitar"]},
+  {"chave": "desinstalador", "substitui": "Revo Uninstaller", "evidencia": "Ninite (Utilities)", "construir": true, "essenciais": ["listar programas instalados", "desinstalar", "limpar sobras (pastas/registro) com confirmação", "busca"]},
+  {"chave": "copiador-rapido", "substitui": "TeraCopy", "evidencia": "Ninite (Utilities)", "construir": true, "essenciais": ["copiar/mover grande com fila", "pausar/retomar", "verificar (hash) depois", "pular erro sem travar"]},
+  {"chave": "player-video", "substitui": "VLC / K-Lite Codecs", "evidencia": "Ninite (Media) + Showmetech", "construir": true, "essenciais": ["toca qualquer formato (ffmpeg/libmpv)", "legenda .srt", "velocidade e atalhos", "lista de reprodução"]},
+  {"chave": "editor-texto", "substitui": "Notepad++", "evidencia": "Ninite (Developer Tools)", "construir": true, "essenciais": ["abas", "destaque de sintaxe", "localizar/substituir com regex", "codificação (UTF-8/ANSI)", "não perde texto ao fechar"]}
  ]
 }

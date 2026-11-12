@@ -136,6 +136,15 @@ def encher(minimo_por_agente=2, maximo_por_vez=4):  # 12/11: as 3 contas zeraram
         tentativas += 1
         if f"[{v['chave']}]" in abertas:
             continue  # essa já tem tarefa aberta
+        if v.get("construir"):  # aparece nas listas (Ninite/Showmetech) e a Caixa ainda não tem: CONSTRUIR
+            criadas.append(tarefas.nova(
+                f"🆕 Construir [{v['chave']}]: substituir {v['substitui']}",
+                f"Pesquisa (vitrine.json, {v.get('evidencia', '')}): as pessoas instalam {v['substitui']} e a Caixa não tem. "
+                f"Crie C:/Users/caion/{v['chave']} do zero (código próprio, offline, PyQt6, pt-BR, tema escuro, prefixo livre "
+                f"via catalogo.py --prefixos), com: {'; '.join(v['essenciais'])}. Teste test_*.py; registre em BUILTIN/TOOLS; "
+                "no --concluir: o que tem, como testou.",
+                ativos))
+            continue
         criadas.append(tarefas.nova(
             f"⭐ Paridade [{v['chave']}]: tão boa quanto {v['substitui']}",
             f"Ferramenta da VITRINE (RUMO NOVO). Pasta C:/Users/caion/{v['chave']}. Ela substitui {v['substitui']}: "
