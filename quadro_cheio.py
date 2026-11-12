@@ -96,7 +96,7 @@ def soltar_presas(horas=2):
     return soltas
 
 
-def encher(minimo_por_agente=4, maximo_por_vez=10):
+def encher(minimo_por_agente=2, maximo_por_vez=4):  # 12/11: as 3 contas zeraram numa madrugada — ritmo que a cota aguenta
     import tarefas
     soltar_presas()
     ts = tarefas.ler()
@@ -129,7 +129,9 @@ def encher(minimo_por_agente=4, maximo_por_vez=10):
     fora = set(qa) | _arquivadas()
     pool = [f["chave"] for f in cat if f["chave"] not in fora and os.path.isdir(os.path.join(os.path.dirname(HERE), f["chave"]))]
     random.shuffle(pool)
-    while len(criadas) < falta and len(pool) >= 5:
+    lotes_qa = 0
+    while len(criadas) < falta and len(pool) >= 5 and lotes_qa < 1:  # no máx. 1 lote de teste por rodada
+        lotes_qa += 1
         lote, pool = pool[:5], pool[5:]
         criadas.append(tarefas.nova(
             f"🧪 QA lote {len(qa) // 5 + 1}: testar 5 ferramentas",
