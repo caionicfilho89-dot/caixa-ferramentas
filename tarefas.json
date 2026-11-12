@@ -2467,5 +2467,44 @@
   "por": "",
   "quando": "2026-11-12 06:02",
   "resultado": ""
+ },
+ {
+  "id": "T211",
+  "titulo": "🎯 Produto: tela inicial mostra a VITRINE (substitui X)",
+  "detalhe": "RUMO NOVO. Na tela Hoje/inicial (caixa_home.py), uma seção VITRINE com as ferramentas de vitrine.json (pule as construir=true até existirem): cartão com emoji, nome e a linha \"substitui <programa famoso>\", clique abre a ferramenta. As outras 700+ só em Todas/barra. Visual no tema escuro, sem quebrar o que existe. Teste offscreen + foto conferida. No --concluir: arquivos mexidos e como testou.",
+  "quem": [
+   "cursor",
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 06:07",
+  "resultado": ""
+ },
+ {
+  "id": "T212",
+  "titulo": "🎯 Produto: instalador menor (hoje 924 MB)",
+  "detalhe": "Medir o que mais pesa em dist/Caixa (pastas/libs), propor e aplicar cortes seguros (excluir libs não usadas, UPX onde der, não embutir o que é opcional). Meta: < 400 MB sem quebrar ferramenta da vitrine. Rodar build_suite.py --stage-only + selftest. No --concluir: antes/depois em MB e o que cortou.",
+  "quem": [
+   "grokbuild"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 06:07",
+  "resultado": ""
+ },
+ {
+  "id": "T213",
+  "titulo": "🎯 Produto: página \"substitui 27 programas\" (README + texto de loja)",
+  "detalhe": "Escrever em pt-BR um README.md/LEIA-ME curto e vendedor: o que é a Caixa (tudo em um só lugar, offline, sem propaganda, em português, sempre com as tendências), tabela das ferramentas da vitrine.json com o programa que cada uma substitui, como instalar. Sem prometer o que não existe (só itens sem construir). No --concluir: arquivo criado.",
+  "quem": [
+   "cursor",
+   "grokbuild",
+   "grok"
+  ],
+  "status": "livre",
+  "por": "",
+  "quando": "2026-11-12 06:07",
+  "resultado": ""
  }
 ]
