@@ -252,6 +252,9 @@ def empurrar_parados():
             continue  # Grok CLI recebe pelo hook/loop; economia manda segurar
         ok, info = entregar_janela(ag, texto_empurrao(ag, minutos, t))
         if "OCUPADO" in info:
+            if time.time() - _ULTIMO_EMPURRAO.get("ocup_" + ag, 0) > 600:  # registra (antes era silencioso)
+                _ULTIMO_EMPURRAO["ocup_" + ag] = time.time()
+                log(f"{ag}: parado {minutos} min mas a janela parece ocupada — não empurrei")
             continue
         _ULTIMO_EMPURRAO[ag] = time.time()
         log(f"{ag}: parado {minutos} min → empurrão pro quadro ({'ok' if ok else 'falhou: ' + info[-150:]})")
