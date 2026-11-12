@@ -75,6 +75,12 @@ def perguntar(prompt, timeout=230):
     """
     if not os.path.isfile(AGY):
         return ""
+    try:  # Google esgotado (crítico): nem tenta — cada chamada só devolveria "quota reached"
+        import economia
+        if economia.nivel_do_agente("gemini") == "critico":
+            return ""
+    except Exception:  # noqa: BLE001
+        pass
     prompt = ("NÃO use ferramentas e NÃO leia arquivos: tudo o que você precisa está aqui. Responda direto, só texto.\n\n"
               + prompt)
     try:
