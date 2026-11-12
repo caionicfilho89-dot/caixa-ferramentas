@@ -13,7 +13,7 @@ import os
 import re
 import sys
 
-from PyQt6.QtCore import QPoint, Qt, QThread, QTimer, pyqtSignal
+from PyQt6.QtCore import QPoint, QPointF, QRectF, Qt, QThread, QTimer, QUrl, pyqtSignal
 from PyQt6.QtGui import QAction, QFont
 from PyQt6.QtWidgets import (QApplication, QFrame, QLabel, QMenu, QScrollArea, QVBoxLayout, QWidget)
 
@@ -32,15 +32,23 @@ AGENTES = [  # (chave no painel, nome que o Caio usa, emoji, papel)
 NOME = {a[0]: a[1] for a in AGENTES}
 
 QSS = """
-#nota { background: rgba(17,19,26,235); border: 1px solid #7c5cff; border-radius: 12px; }
+#nota { background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #171a26, stop:1 #10121a);
+        border: 1px solid #2f3350; border-top: 3px solid #7c5cff; border-radius: 14px; }
 QLabel { color: #e6e6f0; background: transparent; }
 #titulo { font-weight: 700; color: #ffffff; }
-#sub { color: #9a9ab0; }
-#secao { color: #7c5cff; font-weight: 700; letter-spacing: 1px; }
-#agente { background: rgba(255,255,255,10); border-radius: 8px; }
+#sub { color: #a9a9c2; }
+#secao { color: #a99bff; font-weight: 800; font-size: 8pt; letter-spacing: 2px;
+         padding: 10px 0 3px 2px; border-bottom: 1px solid #262a40; }
+#agente { background: #1c1f2e; border-radius: 10px; padding: 7px 9px; border: 1px solid #262a40; }
+#alerta2 { background: rgba(255,92,92,0.13); border: 1px solid rgba(255,92,92,0.45); border-radius: 9px; padding: 6px 8px; }
+#alerta1 { background: rgba(245,197,66,0.10); border: 1px solid rgba(245,197,66,0.38); border-radius: 9px; padding: 6px 8px; }
+#alerta0 { background: rgba(61,220,132,0.10); border: 1px solid rgba(61,220,132,0.35); border-radius: 9px; padding: 6px 8px; }
+#linha { color: #c9c9da; padding: 1px 2px; }
+#mapa { background: #141724; border: 1px solid #262a40; border-radius: 12px; }
 QScrollArea, QScrollArea > QWidget > QWidget { background: transparent; border: none; }
 QScrollBar:vertical { width: 6px; background: transparent; }
 QScrollBar::handle:vertical { background: #3a3d55; border-radius: 3px; }
+QToolTip { background: #1c1f2e; color: #e6e6f0; border: 1px solid #7c5cff; padding: 6px; border-radius: 6px; }
 QMenu { background: #1b1e2b; color: #e6e6f0; border: 1px solid #3a3d55; }
 QMenu::item:selected { background: #7c5cff; }
 """
@@ -204,7 +212,7 @@ def coletar():
     tend = ""
     try:
         t = open(os.path.join(HERE, "TENDENCIA_DO_DIA.md"), encoding="utf-8").read()
-        m = re.search(r"\*\*Ideia:\*\*\s*\[([^\]]+)\]", t)
+        m = re.search(r"\*\*Ideia:\*\*\s*\[(.+?)\]\(http", t)  # título pode ter [colchetes]
         tend = m.group(1) if m else ""
     except OSError:
         pass
@@ -240,6 +248,197 @@ def coletar():
         pass
     return {"painel": painel, "pend": pend, "versao": versao, "n": n_ferr, "tend": tend,
             "carteiro": carteiro, "feitos": feitos[:8], "evol": evol, "barra": barra}
+
+
+# ------------------------------------------------------------------ Fábrica 2.0: correio (Agent Mail) e mapa
+WEB_CORREIO = "http://127.0.0.1:8765/mail/"
+
+
+def _formacao():
+    d = _ler_json(os.path.join(HERE, "formacao.json"), {}) or {}
+    return d.get("formacao", "A"), set((d.get("cadeiras") or {}).keys()) if d.get("formacao") == "B" else set()
+
+
+
+def alertas(d, correio, cad_g):
+    """O que o Caio PRECISA saber, sem procurar (pedido dele, 11/11). Lista de (nível, texto); nível 2 = urgente."""
+    out = []
+    agora = dt.datetime.now()
+    # 1) cotas: crítico/econômico e quando renova; formação B pode voltar pra A?
+    try:
+        import economia
+        est = _ler_json(os.path.join(HERE, "ECONOMIA.json"), {}) or {}
+        nomes = {"claude": "Claude", "grok": "SuperGrok", "google": "Google"}
+        for conta, c in (est.get("contas") or {}).items():
+            nv = c.get("nivel")
+            if nv in ("critico", "economico"):
+                ren = [j.get("renova") for j in c.get("janelas", []) if j.get("renova")]
+                quando = _falta(ren[0]) if ren else ""
+                out.append((2 if nv == "critico" else 1,
+                            f"{'🔴' if nv == 'critico' else '🟡'} cota <b>{nomes.get(conta, conta)}</b> "
+                            f"{'CRÍTICA' if nv == 'critico' else 'apertando'} {quando}"))
+        if cad_g and economia._ler(economia.ESTADO, {}).get("contas", {}).get("grok", {}).get("nivel") == "normal":
+            out.append((2, "🔀 SuperGrok voltou ao normal: já dá pra voltar pra <b>Formação A</b> "
+                           "(<code>python formacao.py A</code>)"))
+    except Exception:  # noqa: BLE001
+        pass
+    # 2) agentes travados / parados com trabalho
+    for chave, nome, _e, _p in AGENTES:
+        a = d["painel"].get(chave, {})
+        if a.get("bloqueado"):
+            out.append((2, f"⛔ <b>{nome}</b> travado: {_corta(a['bloqueado'], 80)}"))
+    # 3) log do carteiro (última 1h): recusas, falhas repetidas, erros, cadeira reaberta
+    try:
+        linhas = open(os.path.join(HERE, "carteiro.log"), encoding="utf-8", errors="replace").read().splitlines()[-400:]
+        recentes = []
+        for l in linhas:
+            t = _quando(l[:16])
+            if t and t > agora - dt.timedelta(hours=1):
+                recentes.append(l[20:] if l[16:17] == ":" else l[17:])  # log tem HH:MM:SS
+        recusas = [l for l in recentes if "recusada pelo revisor" in l]
+        if recusas:
+            out.append((1, f"↩️ Gemini mandou refazer {len(recusas)} tarefa(s): {_corta(recusas[-1].replace('Gemini: ', ''), 90)}"))
+        falhas = {}
+        for l in recentes:
+            if "falhou" in l.lower():
+                ag = l.split(":")[0]
+                falhas[ag] = falhas.get(ag, 0) + 1
+        for ag, q in falhas.items():
+            if q >= 3:
+                out.append((1, f"⚠️ carteiro falhou {q}x com <b>{ag}</b> na última hora"))
+        erros = [l for l in recentes if "Traceback" in l or " erro" in l.lower()]
+        if erros:
+            out.append((1, f"🐞 erro no carteiro: {_corta(erros[-1], 90)}"))
+        reab = [l for l in recentes if "reabri" in l]
+        if len(reab) >= 3:
+            out.append((1, f"🔁 cadeira da formação B reaberta {len(reab)}x na última hora (algo derrubando o agente?)"))
+    except OSError:
+        pass
+    # 4) correio fora do ar
+    if correio and correio.get("erro"):
+        out.append((2, "📭 <b>correio (Agent Mail) fora do ar</b> — clique 🏭 Ligar Fabrica"))
+    # 5) novidades boas (últimas 3 h)
+    for t, chave, txt in d.get("feitos", [])[:8]:
+        if t and t > agora - dt.timedelta(hours=3) and re.search(r"instalad|v\d+\.\d+\.\d+|Tendência|integrad", txt, re.I):
+            out.append((0, f"✨ {NOME.get(chave, chave)}: {_corta(txt, 90)}"))
+            break
+    out.sort(key=lambda x: -x[0])
+    return out[:6]
+
+
+class BuscaCorreio(QThread):
+    """Lê o correio de todos os agentes (só espia, não marca lida) numa thread: mensagens recentes + não lidas."""
+    pronto = pyqtSignal(dict)
+
+    def run(self):
+        out = {"msgs": [], "nao_lidas": {}, "erro": None}
+        try:
+            sys.path.insert(0, HERE)
+            import fabrica_mail as fm
+            vistos = set()
+            for chave, *_r in AGENTES:
+                try:
+                    todas = fm.caixa(chave, so_novas=False, limite=15)
+                    out["nao_lidas"][chave] = sum(1 for m in todas if not m.get("read_ts"))
+                    for m in todas:
+                        if m.get("id") in vistos:
+                            continue
+                        vistos.add(m.get("id"))
+                        out["msgs"].append({"id": m.get("id"), "de": fm.apelido(m.get("from", "?")),
+                                            "para": NOME.get(chave, chave), "assunto": str(m.get("subject", "")),
+                                            "quando": str(m.get("created_ts", ""))})
+                except Exception:  # noqa: BLE001
+                    continue
+            out["msgs"].sort(key=lambda m: m["quando"], reverse=True)
+        except Exception as e:  # noqa: BLE001
+            out["erro"] = str(e)[:80]
+        self.pronto.emit(out)
+
+
+def _iso_local(txt):
+    try:
+        t = dt.datetime.fromisoformat(txt.replace("Z", "+00:00"))
+        return t.astimezone().replace(tzinfo=None)
+    except (ValueError, AttributeError):
+        return None
+
+
+class Mapa(QWidget):
+    """A fábrica em imagem: agentes em círculo (cor = estado), linhas = quem conversou com quem na última hora,
+    selo G = cadeira rodando no Google (formação B). Passe o mouse num agente; 2 cliques abre o correio no Edge."""
+    COR = {"trab": "#3ddc84", "parado": "#f5c542", "sem_cota": "#ff5c5c", "off": "#6b6b80"}
+
+    def __init__(self):
+        super().__init__()
+        self.setFixedHeight(262)
+        self.setObjectName("mapa")
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.setMouseTracking(True)
+        self.nos = []          # [(chave, nome, emoji, estado, google, dica)]
+        self.arestas = {}      # (nomeA, nomeB) -> nº de mensagens
+        self._pos = {}
+
+    def dados(self, nos, arestas):
+        self.nos, self.arestas = nos, arestas
+        self.update()
+
+    def paintEvent(self, _e):  # noqa: N802
+        from PyQt6.QtGui import QColor, QPainter, QPen
+        import math
+        p = QPainter(self)
+        p.setRenderHint(QPainter.RenderHint.Antialiasing)
+        w, h = self.width(), self.height()
+        cx, cy, r = w / 2, (h - 18) / 2 + 2, min(w, h - 18) / 2 - 40  # espaço embaixo pra legenda
+        self._pos = {}
+        n = max(1, len(self.nos))
+        for i, no in enumerate(self.nos):
+            ang = -math.pi / 2 + 2 * math.pi * i / n
+            self._pos[no[1]] = QPointF(cx + r * math.cos(ang), cy + r * math.sin(ang))
+        for (a, b), qtd in self.arestas.items():
+            if a in self._pos and b in self._pos:
+                pen = QPen(QColor(124, 92, 255, 90 + min(qtd, 8) * 18))
+                pen.setWidthF(1.2 + min(qtd, 8) * 0.7)
+                pen.setCapStyle(Qt.PenCapStyle.RoundCap)
+                p.setPen(pen)
+                p.drawLine(self._pos[a], self._pos[b])
+        for chave, nome, emoji, estado, google, _dica in self.nos:
+            c = self._pos[nome]
+            cor = QColor(self.COR.get(estado, "#6b6b80"))
+            brilho = QColor(cor)
+            brilho.setAlpha(55)
+            p.setPen(Qt.PenStyle.NoPen)
+            p.setBrush(brilho)
+            p.drawEllipse(c, 29, 29)              # brilho em volta
+            p.setPen(QPen(QColor("#0f111a"), 3))
+            p.setBrush(cor)
+            p.drawEllipse(c, 21, 21)
+            f = p.font(); f.setPointSize(13); p.setFont(f)
+            p.setPen(QColor("#11131a"))
+            p.drawText(QRectF(c.x() - 21, c.y() - 21, 42, 42), Qt.AlignmentFlag.AlignCenter, emoji)
+            if google:
+                p.setBrush(QColor("#4285f4")); p.setPen(QPen(QColor("#11131a"), 1.5))
+                p.drawEllipse(QPointF(c.x() + 16, c.y() - 16), 8, 8)
+                f.setPointSize(7); f.setBold(True); p.setFont(f); p.setPen(QColor("white"))
+                p.drawText(QRectF(c.x() + 8, c.y() - 24, 16, 16), Qt.AlignmentFlag.AlignCenter, "G")
+            f.setPointSize(8); f.setBold(True); p.setFont(f); p.setPen(QColor("#e6e6f0"))
+            p.drawText(QRectF(c.x() - 50, c.y() + 22, 100, 16), Qt.AlignmentFlag.AlignCenter, nome)
+        f = p.font(); f.setPointSize(7); f.setBold(False); p.setFont(f); p.setPen(QColor("#9a9ab0"))
+        p.drawText(QRectF(4, h - 14, w - 8, 14), Qt.AlignmentFlag.AlignLeft,
+                   "🟢 trabalhando  🟡 parado  🔴 sem cota  G = Google · linha = conversa (1h)")
+        p.end()
+
+    def mouseMoveEvent(self, e):  # noqa: N802
+        from PyQt6.QtWidgets import QToolTip
+        for _chave, nome, _emoji, _est, _g, dica in self.nos:
+            c = self._pos.get(nome)
+            if c and (c - e.position()).manhattanLength() < 30:
+                QToolTip.showText(e.globalPosition().toPoint(), dica, self)
+                return
+        QToolTip.hideText()
+
+    def mouseDoubleClickEvent(self, _e):  # noqa: N802
+        from PyQt6.QtGui import QDesktopServices
+        QDesktopServices.openUrl(QUrl(WEB_CORREIO))
 
 
 class Nota(QWidget):
@@ -280,7 +479,7 @@ class Nota(QWidget):
 
         self.setFixedWidth(int(self.cfg.get("largura", 380)))
         self.resize(self.width(), int(self.cfg.get("altura", 640)))
-        self.setWindowOpacity(float(self.cfg.get("opacidade", 0.96)))
+        self.setWindowOpacity(max(0.99, float(self.cfg.get("opacidade", 1.0))))
         tela = QApplication.primaryScreen().availableGeometry()
         x, y = self.cfg.get("x"), self.cfg.get("y")
         if x is None or not tela.contains(QPoint(int(x) + 20, int(y) + 20)):
@@ -294,6 +493,13 @@ class Nota(QWidget):
         self.timer_claude.start(3 * 60_000)
         self._buscar_claude()
 
+        self.correio = None
+        self._busca_correio = None
+        self.timer_correio = QTimer(self)
+        self.timer_correio.timeout.connect(self._buscar_correio)
+        self.timer_correio.start(60_000)
+        QTimer.singleShot(1500, self._buscar_correio)
+
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.atualizar)
         self.timer.start(10_000)
@@ -305,6 +511,17 @@ class Nota(QWidget):
         self._busca = BuscaClaude(self)
         self._busca.pronto.connect(self._claude_chegou)
         self._busca.start()
+
+    def _buscar_correio(self):
+        if self._busca_correio is not None and self._busca_correio.isRunning():
+            return
+        self._busca_correio = BuscaCorreio(self)
+        self._busca_correio.pronto.connect(self._correio_chegou)
+        self._busca_correio.start()
+
+    def _correio_chegou(self, d):
+        self.correio = d
+        self.atualizar()
 
     def _claude_chegou(self, d):
         self.claude_uso = d
@@ -336,10 +553,19 @@ class Nota(QWidget):
             eco = economia.resumo()
         except Exception:  # noqa: BLE001
             eco = []
+        form, cad_g = _formacao()
+        co = self.correio or {}
+        agora = dt.datetime.now()
+        ult_h = [m for m in co.get("msgs", []) if (_iso_local(m["quando"]) or dt.datetime.min) > agora - dt.timedelta(hours=1)]
+        linha_form = ("<span style='color:#8ab4f8'>🔀 <b>Formação B</b> · Google em "
+                      + ", ".join(NOME.get(c, c) for c in sorted(cad_g)) + "</span>" if form == "B"
+                      else "<span style='color:#a9a9c2'>🔀 Formação A (original)</span>")
         self.resumo.setText(
-            f"v{d['versao']} · {d['n']} ferramentas · 📨 {n_pend} pedido(s) no ar<br>"
-            f"📬 carteiro: {d['carteiro']}" + _quadro() + _arquivista() + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else "")
-            + "".join(f"<br><b>{_corta(l, 140)}</b>" for l in eco if not l.startswith("🟢")))
+            f"v{d['versao']} · {d['n']} ferramentas · 📨 {n_pend} pedido(s) no ar<br>{linha_form}<br>"
+            f"📬 correio: {len(ult_h)} msg na última hora"
+            + (f" · <span style='color:#ff5c5c'>servidor fora do ar</span>" if co.get("erro") else "")
+            + _quadro() + _arquivista() + (f"<br>🔥 hoje: {_corta(d['tend'], 70)}" if d["tend"] else "")
+            )
         self.resumo.setTextFormat(Qt.TextFormat.RichText)
         self.rolagem.setVisible(not self.recolhida)
         if self.recolhida:
@@ -349,6 +575,46 @@ class Nota(QWidget):
         self.setMaximumHeight(16777215)
         self.resize(self.width(), int(self.cfg.get("altura", 640)))
         self._limpar()
+
+        self._rotulo("⚠️ PRA VOCÊ SABER", "secao")
+        lista = alertas(d, self.correio, cad_g)
+        if lista:
+            for nv, txt in lista:
+                self._rotulo(txt, f"alerta{nv}")
+        else:
+            self._rotulo("✅ tudo certo — nada precisa de você agora", "alerta0")
+
+        self._rotulo("MAPA DA FÁBRICA", "secao")
+        try:
+            import economia
+            nivel_de = economia.nivel_do_agente
+        except Exception:  # noqa: BLE001
+            def nivel_de(_a):
+                return "normal"
+        nos, arestas = [], {}
+        for chave, nome, emoji, papel in AGENTES:
+            a = d["painel"].get(chave, {})
+            t = _quando(a.get("atualizado", ""))
+            minutos = (dt.datetime.now() - t).total_seconds() / 60 if t else 9999
+            if nivel_de(chave) == "critico":
+                est = "sem_cota"
+            elif (a.get("fazendo") and minutos < 30) or minutos < 10:
+                est = "trab"
+            elif minutos < 180:
+                est = "parado"
+            else:
+                est = "off"
+            nl = (co.get("nao_lidas") or {}).get(chave, 0)
+            dica = (f"<b>{emoji} {nome}</b>{' (Google)' if chave in cad_g else ''}<br>{papel}<br>"
+                    f"{_corta(a.get('fazendo') or 'parado', 120)}<br>📬 {nl} não lida(s) · {_ha(t)}")
+            nos.append((chave, nome, emoji, est, chave in cad_g, dica))
+        for m in ult_h:
+            k = tuple(sorted((m["de"], m["para"])))
+            if k[0] != k[1]:
+                arestas[k] = arestas.get(k, 0) + 1
+        mapa = Mapa()
+        mapa.dados(nos, arestas)
+        self.corpo_lay.addWidget(mapa)
 
         self._rotulo("AGORA", "secao")
         for chave, nome, emoji, papel in AGENTES:
@@ -365,14 +631,31 @@ class Nota(QWidget):
             pedidos = d["pend"].get(chave, [])
             extra = (f"<br>📨 {len(pedidos)} pedido(s) de {', '.join(sorted({NOME.get(p, p) for p in pedidos}))}"
                      if pedidos else "")
+            selo = " <b style='color:#4285f4'>[Google]</b>" if chave in cad_g else ""
+            nl = (co.get("nao_lidas") or {}).get(chave, 0)
+            selo += f" <span style='color:#f5c542'>📬{nl}</span>" if nl else ""
             caixa = QLabel(
-                f"{bola} {emoji} <b>{nome}</b> <span style='color:#9a9ab0'>· {papel} · {_ha(t)}</span><br>"
+                f"{bola} {emoji} <b>{nome}</b>{selo} <span style='color:#9a9ab0'>· {papel} · {_ha(t)}</span><br>"
                 f"{estado}" + (f"<br><span style='color:#9a9ab0'>depois:</span> {_corta(prox, 90)}" if prox else "")
                 + extra, objectName="agente")
             caixa.setWordWrap(True)
             caixa.setTextFormat(Qt.TextFormat.RichText)
-            caixa.setContentsMargins(8, 6, 8, 6)
+            faixa = {"🟢": "#3ddc84", "🟡": "#f5c542"}.get(bola, "#6b6b80")
+            caixa.setStyleSheet(f"#agente {{ border-left: 4px solid {faixa}; }}")
             self.corpo_lay.addWidget(caixa)
+
+        self._rotulo("CONVERSAS (correio)", "secao")
+        if co.get("msgs"):
+            for m in co["msgs"][:6]:
+                t = _iso_local(m["quando"])
+                lb = self._rotulo(f"<span style='color:#9a9ab0'>{t.strftime('%H:%M') if t else '--:--'}</span> "
+                                  f"<b>{m['de']}</b> → <b>{m['para']}</b>: "
+                                  f"<a style='color:#b9a8ff;text-decoration:none' href='{WEB_CORREIO}'>"
+                                  f"{_corta(m['assunto'], 70)}</a>")
+                lb.setOpenExternalLinks(True)
+        else:
+            self._rotulo("<span style='color:#9a9ab0'>" + ("lendo o correio…" if self.correio is None
+                                                         else "nenhuma mensagem ainda") + "</span>")
 
         self._rotulo("GASTOS", "secao")
         cu = self.claude_uso
@@ -395,7 +678,7 @@ class Nota(QWidget):
         try:
             with open(os.path.join(HERE, "cotas_manuais.json"), encoding="utf-8") as f:
                 ag = json.load(f).get("antigravity", {})
-            self._rotulo(f"🧠 <b>Antigravity</b> ({ag.get('plano', '?')}) · Gemini semana {_barra(ag.get('gemini_semana_usado'))}"
+            self._rotulo(f"🧠 <b>Google</b> (Antigravity + Gemini{' + formação B' if cad_g else ''}, {ag.get('plano', '?')}) · Gemini semana {_barra(ag.get('gemini_semana_usado'))}"
                          f" · 5h {ag.get('gemini_5h_usado', '?')}%<br>&nbsp;&nbsp;&nbsp;&nbsp;Claude/GPT e Argon: "
                          f"{'esgotados' if ag.get('claude_gpt_semana_usado', 0) >= 100 else 'ok'} · "
                          f"<span style='color:#9a9ab0'>5h lida sozinha {ag.get('lido_auto', '—')} · semana: print de {ag.get('lido', '?')}</span>")
