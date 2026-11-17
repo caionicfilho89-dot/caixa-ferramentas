@@ -144,11 +144,6 @@ function paginaInicio() {
   const tend = dados.ferramentas.filter((f) => f.categoria === dados.tendencia).reverse().slice(0, 8);
   return `
     <div class="ola"><h1>${saud}, Caio</h1><span class="data">${esc(data)}</span></div>
-    <div class="mascotes">
-      <div class="mascote folha"><img src="arte/folha.svg" alt=""><span>Maconha</span></div>
-      <div class="mascote po"><img src="arte/po.svg" alt=""><span>Pó</span></div>
-      <div class="mascote cristal"><img src="arte/cristal.svg" alt=""><span>Azulzinho</span></div>
-    </div>
     <div class="secao">Agora no seu PC</div>
     <div class="hoje" id="hoje">${hoje.length ? hoje.map(blocoHoje).join("") : `<div class="carregando">Olhando o PC…</div>`}</div>
     ${favs.length ? `<div class="secao">⭐ Favoritos</div>${grade(favs)}` : ""}
@@ -318,9 +313,9 @@ function pintarMuro() {
     ? ["#39ff14", "#ff1fd1", "#3ad0ff", "#fff200", "#ff8a00", "#9d4dff", "#ffffff"]
     : ["#ff2d95", "#c6ff00", "#00e5ff", "#ffe600", "#ff6a00", "#ffffff"];
   const palavras = viagem ? [
-    "MACONHA", "420", "BECK", "BASEADO", "THC", "LARICA", "BRISA", "PÓ", "FARINHA", "BRANQUINHA",
-    "CARREIRA", "AZULZINHO", "CRISTAL", "METH", "LSD", "DOCE", "BALA", "MD", "DMT", "KETA",
-    "LANÇA", "COGUMELO", "CHAPADO", "LOMBRA", "VIAJOU", "TÔ DE BOA", "SÓ NA PAZ", "🍄", "💊", "🌿", "💉", "❄️", "💎",
+    "BRISA", "LARICA", "LOMBRA", "VIAJOU", "TÔ DE BOA", "SÓ NA PAZ", "420", "DE LEVE", "SUAVE",
+    "VIAGEM", "NAS NUVENS", "TÁ BATENDO", "SEGURA", "SEM PRESSA", "PAZ", "OLHO VERMELHO", "VIBE",
+    "🍄", "💊", "🌿", "❄️", "💎", "🌀", "👁️", "🍭", "☁️", "✨",
   ] : [
     "CAIXA", "PIXO", "OFFLINE", "769", "ZL", "SP", "CAIO", "FAZ VC MESMO", "SEM NUVEM",
     "TMJ", "VILA", "QUEBRADA", "100% LOCAL", "CRIA", "ATÉ O FIM", "♛", "★", "↯", "PAZ",
