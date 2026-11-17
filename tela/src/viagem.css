@@ -160,26 +160,66 @@ body.viagem .cartao-vitrine:hover { transform: rotate(0) scale(1.06); box-shadow
 body.viagem .cartao-vitrine .rot { font-family: "Redondo", sans-serif; color: var(--sol); }
 body.viagem .cartao-vitrine .alvo { font-family: "Redondo", sans-serif; color: #fff; text-decoration-color: var(--magenta); }
 
-/* ── Ferramentas: cápsulas de remédio de duas cores ── */
+/* ── Ferramentas: cápsula de remédio de verdade ──
+   tampa colorida (com o ícone) encaixada por cima do corpo (com o texto);
+   sombreado de cilindro, reflexo no topo e sombra no chão. */
+body.viagem .grade { gap: 18px 16px; }
 body.viagem .bloco {
-  border: 0; border-radius: 999px; padding: 0 18px 0 8px;
-  background: linear-gradient(90deg, var(--c1, #e62e2d) 0 50%, var(--c2, #fff8ec) 50% 100%);
-  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .18), inset 0 6px 0 rgba(255, 255, 255, .25), 0 8px 18px -10px rgba(0, 0, 0, .9);
+  --cil: linear-gradient(180deg, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .12) 28%,
+         rgba(255, 255, 255, 0) 48%, rgba(0, 0, 0, .06) 70%, rgba(0, 0, 0, .30) 100%);
+  position: relative; isolation: isolate;
+  height: 70px; padding: 0 22px 0 0; gap: 0;
+  border: 0; border-radius: 999px;
+  background: var(--cil), var(--c2, #fff4dc);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(0, 0, 0, .22),
+    0 14px 12px -10px rgba(0, 0, 0, .75);
   color: #120b07;
+  transition: transform .18s cubic-bezier(.3, 1.6, .5, 1), box-shadow .18s;
+}
+/* tampa: mais curta que o corpo, um tiquinho mais alta (encaixe) e com emenda */
+body.viagem .bloco::before {
+  content: ""; position: absolute; z-index: -1;
+  left: -1px; top: -3px; bottom: -3px; width: 38%;
+  border-radius: 999px 10px 10px 999px;
+  background: var(--cil), var(--c1, #e62e2d);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(0, 0, 0, .25),
+    inset -3px 0 0 rgba(0, 0, 0, .14),
+    2px 0 0 rgba(255, 255, 255, .35);
+}
+/* reflexo de luz correndo pelo topo */
+body.viagem .bloco::after {
+  content: ""; position: absolute; z-index: 2; pointer-events: none;
+  left: 7%; right: 9%; top: 7px; height: 11px; border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, 0));
+  filter: blur(.6px);
 }
 body.viagem .grade .bloco:nth-child(3n+1) { --c1: #e62e2d; --c2: #fff4dc; }
 body.viagem .grade .bloco:nth-child(3n+2) { --c1: #ffd21f; --c2: #fff4dc; }
 body.viagem .grade .bloco:nth-child(3n) { --c1: #e62e2d; --c2: #ffd21f; }
-body.viagem .bloco .ic { background: rgba(255, 255, 255, .85); border-radius: 50%; box-shadow: 0 2px 0 rgba(0, 0, 0, .2); }
-body.viagem .bloco .n { color: #120b07; font-weight: 800; }
-body.viagem .bloco .ds { color: #5c3b1f; }
-body.viagem .bloco:hover {
-  transform: rotate(-1.5deg) scale(1.03);
-  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .18), inset 0 6px 0 rgba(255, 255, 255, .25), 0 0 26px var(--c1);
+/* ícone no meio da tampa, texto no corpo */
+body.viagem .bloco .ic {
+  width: 38%; height: 100%; flex-shrink: 0; border-radius: 0;
+  background: none; box-shadow: none; font-size: 24px;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, .35));
 }
-body.viagem .grade .bloco:nth-child(n):hover { /* anula as bordas de spray do tema pichação */
-  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .18), inset 0 6px 0 rgba(255, 255, 255, .25), 0 0 26px var(--c1);
+body.viagem .bloco .txt { padding-left: 12px; position: relative; z-index: 1; }
+body.viagem .bloco .n {
+  color: #120b07; font-weight: 800; font-size: 13.5px; line-height: 1.2;
+  white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
 }
+body.viagem .bloco .ds { display: none; } /* a descrição aparece na dica ao passar o mouse */
+body.viagem .grade { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+body.viagem .bloco:hover,
+body.viagem .grade .bloco:nth-child(n):hover {
+  transform: translateY(-4px) rotate(-2deg);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(0, 0, 0, .22),
+    0 22px 16px -12px rgba(0, 0, 0, .8),
+    0 0 24px -4px var(--c1);
+}
+body.viagem .bloco .estrela { z-index: 3; top: 6px; right: 14px; }
 body.viagem .estrela { color: #7d5c3b; }
 body.viagem .estrela.on, body.viagem .estrela:hover { color: #ff8a1f; text-shadow: none; }
 
@@ -319,3 +359,53 @@ body.viagem .marca-nome .elem, body.viagem .nav-titulo .elem {
   border-color: var(--gelo); box-shadow: 0 0 12px rgba(255, 244, 220, .55);
 }
 body.viagem .marca-nome .elem i, body.viagem .nav-titulo .elem i { font-size: .3em; }
+
+
+/* ══ Interativo (interativo.js) ══════════════════════════════ */
+/* letras soltas dos títulos: o JS mexe nelas conforme o mouse chega perto */
+body.viagem .letra { display: inline-block; transition: transform .12s ease-out, color .12s; will-change: transform; }
+body.viagem .letra.perto:not(.elem) { -webkit-text-fill-color: var(--magenta); }
+body.viagem .marca-nome, body.viagem .nav-titulo, body.viagem #conteudo h1, body.viagem #conteudo .secao { cursor: pointer; }
+@keyframes onda {
+  0% { translate: 0 0; }
+  35% { translate: 0 -16px; rotate: -10deg; }
+  70% { translate: 0 3px; rotate: 4deg; }
+  100% { translate: 0 0; rotate: 0deg; }
+}
+
+/* comprimido inclina em 3D seguindo o mouse; o brilho corre junto */
+body.viagem .bloco:hover,
+body.viagem .grade .bloco:nth-child(n):hover {
+  transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-5px) scale(1.03);
+  transition: transform .06s linear, box-shadow .18s;
+}
+body.viagem .bloco::after { transform: translateX(var(--gx, 0%)); transition: transform .08s linear; }
+
+/* fumacinha atrás do cursor */
+.fumaca {
+  position: fixed; z-index: 50; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 244, 220, .55), rgba(255, 244, 220, 0) 70%);
+  animation: sobe 1.1s ease-out forwards;
+}
+@keyframes sobe {
+  from { opacity: .9; transform: translate(0, 0) scale(.6); }
+  to { opacity: 0; transform: translate(var(--dx, 0px), -46px) scale(2.4); }
+}
+
+/* estouro de comprimidos no clique */
+.estouro {
+  position: fixed; z-index: 60; pointer-events: none; font-style: normal; line-height: 1;
+  translate: -50% -50%;
+  animation: estoura .75s cubic-bezier(.2, .8, .3, 1) forwards;
+}
+@keyframes estoura {
+  from { opacity: 1; transform: translate(0, 0) rotate(0) scale(.4); }
+  60% { opacity: 1; }
+  to { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1.1); }
+}
+
+/* títulos com degradê: com as letras soltas o degradê some, então cada letra ganha a sua cor */
+body.viagem h1 .letra:not(.elem), body.viagem .marca-nome .letra:not(.elem) { -webkit-text-fill-color: var(--sol); }
+body.viagem h1 .letra:not(.elem):nth-child(3n+2), body.viagem .marca-nome .letra:not(.elem):nth-child(3n+2) { -webkit-text-fill-color: var(--laranja); }
+body.viagem h1 .letra:not(.elem):nth-child(3n), body.viagem .marca-nome .letra:not(.elem):nth-child(3n) { -webkit-text-fill-color: var(--magenta); }
+body.viagem h1 .letra.perto:not(.elem), body.viagem .marca-nome .letra.perto:not(.elem) { -webkit-text-fill-color: #fff4dc; }
