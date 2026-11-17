@@ -94,7 +94,7 @@
       ultimoBloco.style.removeProperty("--ry");
       ultimoBloco.style.removeProperty("--gx");
       ultimoBloco.style.removeProperty("--gtx");
-      ultimoBloco.style.removeProperty("--gty");
+      ultimoBloco.style.removeProperty("--inclina");
     }
     ultimoBloco = b;
     if (!b) return;
@@ -104,8 +104,8 @@
     b.style.setProperty("--rx", ((0.5 - y) * 22).toFixed(1) + "deg");
     b.style.setProperty("--gx", ((x - 0.5) * 40).toFixed(1) + "%");
     // os grânulos têm peso: escorregam pro lado que desceu
-    b.style.setProperty("--gtx", ((x - 0.5) * -9).toFixed(1) + "px");
-    b.style.setProperty("--gty", ((y - 0.5) * -6 + 2).toFixed(1) + "px");
+    b.style.setProperty("--gtx", ((x - 0.5) * -8).toFixed(1) + "px");
+    b.style.setProperty("--inclina", ((x - 0.5) * -10).toFixed(1) + "deg");
   }
 
   // ── Fumacinha atrás do cursor ────────────────────────────
@@ -127,21 +127,21 @@
 
   // ── Clique: estouro de comprimidos e brilhos ─────────────
   const PECAS = ["💊", "✨", "💊", "✨"];
-  const CORES_GRAO = ["#fff4dc", "#ffd21f", "#e62e2d", "#ffb3a8"];
+  const CORES_GRAO = ["#fffaf0"];
   function derramar(b) {
     b.classList.add("abrindo");
     setTimeout(() => b.classList.remove("abrindo"), 650);
     const r = b.getBoundingClientRect();
     const bocaX = r.left + r.width * 0.36, bocaY = r.top + r.height * 0.5;
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < 10; i++) {
       const g = document.createElement("i");
       g.className = "grao-caindo";
-      const d = 5 + Math.random() * 4;
+      const d = 8 + Math.random() * 10;
       const cor = CORES_GRAO[i % CORES_GRAO.length];
       g.style.cssText = `left:${(bocaX + Math.random() * 10 - 5).toFixed(0)}px;top:${(bocaY + Math.random() * 16 - 8).toFixed(0)}px;` +
         `width:${d.toFixed(1)}px;height:${d.toFixed(1)}px;` +
-        `background:radial-gradient(circle at 35% 30%, #fff 0 18%, ${cor} 40%, rgba(0,0,0,.35) 100%);` +
-        `--x:${(Math.random() * 90 - 60).toFixed(0)}px;animation-delay:${(Math.random() * 0.15).toFixed(2)}s`;
+        `background:radial-gradient(circle, rgba(255,250,240,.85), rgba(255,250,240,0) 70%);` +
+        `--x:${(Math.random() * 50 - 35).toFixed(0)}px;animation-delay:${(Math.random() * 0.15).toFixed(2)}s`;
       document.body.appendChild(g);
       g.addEventListener("animationend", () => g.remove());
     }
