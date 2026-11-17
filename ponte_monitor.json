@@ -1,0 +1,386 @@
+{
+ "sessoes": {
+  "54e4e5f4-b51c-5cfd-9d4b-0a01f518d47c": {
+   "fazendo": "T78: 🧪 QA lote 6: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "43212ffa-069d-5a5e-a22d-cd3305fb7064": {
+   "fazendo": "",
+   "feitos": 15,
+   "msgs": []
+  },
+  "61b20933-bdd0-50f6-a817-0a93375b8500": {
+   "fazendo": "T127: 🧪 QA lote 40: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "c697ca66-d271-5b2e-ad94-f8523ae772f6": {
+   "fazendo": "",
+   "feitos": 15,
+   "msgs": []
+  },
+  "ca27e2df-deba-5262-85bb-57b9801c7752": {
+   "fazendo": "T128: 🧪 QA lote 41: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "c3057fd6-44b6-5064-b006-e70b601bb6ca": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": []
+  },
+  "67ccab6f-0b5f-590e-946e-7e7511807559": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "🟢 Claude: 5h █░░░░░░░░░ 7% (renova em 3h30) · semana ████░░░░░░ 45% (renova em 3d 6h)\n🔴 SuperGrok (Cursor·Grok CLI·Cocaino): semana ████████░░ 85% (renova em 3d 18h)\n🔴 Google (Antigravity·Gemini·formação B): 5h ████████░░ 80% (renova em 2d 19h) · semana ████░░░░░░ 40% (renova em 2d 20h)"
+  },
+  "a168a43a-7bd0-51f7-b6c0-1c317eeb6c55": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "⚪ Antigravity  🟡 Grok CLI [G]  🟡 Cocaino [G]  🟡 Gemini  🟡 Cursor [G]  🟡 Claude\n💬 conversas (1h): Antigravity ↔ Claude (3)"
+  },
+  "fee674bf-e659-5dc1-a63b-b53d08e834b0": {
+   "fazendo": "T78: 🧪 QA lote 6: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "74efd284-077a-56c5-9c96-6c78c11e57d9": {
+   "fazendo": "T78: 🧪 QA lote 6: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "b5b9d829-d664-5bdc-8218-9a0b234f8f08": {
+   "fazendo": "T170: 🧪 QA lote 77: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "c1df8186-92c8-5693-a45c-6bf7cfd38d16": {
+   "fazendo": "",
+   "feitos": 15,
+   "msgs": []
+  },
+  "861a4c67-b61a-57fa-9717-d2d129203246": {
+   "fazendo": "T161: 🧪 QA lote 68: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "1d8ed4b7-9ef7-566c-b19c-b71e6098df35": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": []
+  },
+  "76b1f5b9-0a98-591b-b1f0-d4baf21ba845": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "🔴 Claude: 5h ██████████ 100% (renova em 0h40) · semana ██████░░░░ 60% (renova em 2d 22h)\n🔴 SuperGrok (Cursor·Grok CLI·Cocaino): semana ██████████ 100% (renova em 3d 10h)\n🔴 Google (Antigravity·Gemini·formação B): 5h ████████░░ 79% (renova em 2d 11h) · semana ██████████ 100% (renova em 1d 21h)"
+  },
+  "90b18c63-839e-565e-93bf-8b8f925f3c41": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "⚪ Antigravity  🟡 Grok CLI  🟡 Cocaino  ⚪ Gemini  🟡 Cursor  ⚪ Claude\n💬 conversas (1h): ninguém conversou na última hora"
+  },
+  "85c260d1-f69c-571f-a47a-bb916187c978": {
+   "fazendo": "T195: 🧪 QA lote 102: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "53275a2a-909b-54d1-96d6-09fc248d2860": {
+   "fazendo": "T194 QA lote 101",
+   "feitos": 15,
+   "msgs": []
+  },
+  "ffc15fcd-975a-5e9f-ae7d-ce32f2602862": {
+   "fazendo": "T78: 🧪 QA lote 6: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "203e447b-de24-536a-9673-d77a3108164c": {
+   "fazendo": "T195: 🧪 QA lote 102: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "84068b64-400e-5b1d-a062-22cba0e98bf5": {
+   "fazendo": "T194 QA lote 101",
+   "feitos": 15,
+   "msgs": []
+  },
+  "605e77ff-475a-589e-96d3-59ee0d6918af": {
+   "fazendo": "",
+   "feitos": 15,
+   "msgs": []
+  },
+  "2662a167-3382-5b77-8e96-990a4d449054": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": []
+  },
+  "88484a0d-60fd-58fa-9a4e-4860219409a7": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "🟡 Claude: 5h ██░░░░░░░░ 24% (renova em 2h43) · semana ███████░░░ 70% (renova em 1d 8h)\n🔴 SuperGrok (Cursor·Grok CLI·Cocaino): semana ██████████ 100% (renova em 1d 20h)\n🔴 Google (Antigravity·Gemini·formação B): 5h ░░░░░░░░░░ 0% (renova em 4h29) · semana ██████████ 100% (renova em 7h13)"
+  },
+  "b6b03361-365c-5ac4-acbe-7a9ccd6b976d": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "⚪ Antigravity  ⚪ Grok CLI  ⚪ Cocaino  ⚪ Gemini  ⚪ Cursor  🟡 Claude\n💬 conversas (1h): Claude ↔ GrokCLI (2) · Claude ↔ Cursor (2) · Antigravity ↔ Claude (1)"
+  },
+  "787a987d-4b24-550c-a6c7-68828e6bb586": {
+   "fazendo": "T78: 🧪 QA lote 6: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "cdc4d9ca-d7bf-5754-882c-44ffd7836398": {
+   "fazendo": "T195: 🧪 QA lote 102: testar 5 ferramentas",
+   "feitos": 15,
+   "msgs": []
+  },
+  "2a3590a0-8441-5b03-977a-74fab030ba61": {
+   "fazendo": "T194 QA lote 101",
+   "feitos": 15,
+   "msgs": []
+  },
+  "ba834d1a-38d6-52ed-aed6-e90b323f8c54": {
+   "fazendo": "",
+   "feitos": 15,
+   "msgs": []
+  },
+  "03f92e91-330f-533a-aad0-f69e6c086bcf": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": []
+  },
+  "d2f5c780-e7b2-52c7-a6ac-255544d7e4f2": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "🟢 Claude: 5h █░░░░░░░░░ 6% (renova em 2h38) · semana ██░░░░░░░░ 18% (renova em 6d 9h)\n🟢 SuperGrok (Cursor·Grok CLI·Cocaino): semana ██████████ 100% (renova em -2h16)\n🟢 Google (Antigravity·Gemini·formação B): 5h ██████████ 100% (renova em 1h32) · semana ██████████ 100% (renova em 6d 23h)"
+  },
+  "e7cb15f0-06f7-5e8f-a5b7-683156b63162": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "⚪ Antigravity  🟡 Grok CLI [G]  🟡 Cocaino [G]  🟡 Gemini  🟡 Cursor [G]  ⚪ Claude\n💬 conversas (1h): ninguém conversou na última hora"
+  },
+  "b4ddbfe0-5690-59db-b2b4-07ab568e9d81": {
+   "fazendo": "T303: ⭐ Paridade [comparar-pastas]: tão boa quanto WinMerge",
+   "feitos": 15,
+   "msgs": []
+  },
+  "73efac85-569a-508f-9483-6b5dcbc1a1ca": {
+   "fazendo": "T297: ⭐ Paridade [info-pc]: tão boa quanto CPU-Z / PC Health Check",
+   "feitos": 15,
+   "msgs": []
+  },
+  "4743bfc6-f93e-58d1-9347-af28e618a872": {
+   "fazendo": "T302: ⭐ Paridade [tarefas]: tão boa quanto Microsoft To Do",
+   "feitos": 15,
+   "msgs": []
+  },
+  "ec0caf53-4a89-5d88-b062-6a4fdd45492a": {
+   "fazendo": "aguardando proxima tarefa",
+   "feitos": 15,
+   "msgs": []
+  },
+  "467c9744-919e-5a40-84eb-9111e3206ee6": {
+   "fazendo": "T334: 🧠 ⭐ Paridade [kit-pdf]: Extração e Remoção de Páginas Selecionadas (estilo PDF24 / Acrobat)",
+   "feitos": 15,
+   "msgs": []
+  },
+  "f97a916e-4e71-50a4-8c27-06fa96781f73": {
+   "fazendo": "T336: ⭐ Paridade [player-musica]: tão boa quanto AIMP / foobar2000 / MusicBee / Winamp",
+   "feitos": 15,
+   "msgs": []
+  },
+  "c814db3f-94ab-58aa-8eb9-dbc7660fdc9a": {
+   "fazendo": "",
+   "feitos": 15,
+   "msgs": []
+  },
+  "a921cf98-9a1b-5de4-8864-2deb41d6e956": {
+   "fazendo": "T334: 🧠 ⭐ Paridade [kit-pdf]: Extração e Remoção de Páginas Selecionadas (estilo PDF24 / Acrobat)",
+   "feitos": 15,
+   "msgs": []
+  },
+  "1d8bab84-97d8-51db-b199-9b74dad34635": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": []
+  },
+  "b5582cf1-0b3e-5501-9706-295cf8109e85": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "🟢 Claude: 5h ███████░░░ 69% (renova em 1h24) · semana ███░░░░░░░ 28% (renova em 5d 8h)\n🟢 SuperGrok (Cursor·Grok CLI·Cocaino): semana █░░░░░░░░░ 10% (renova em 5d 20h)\n🟢 Google (Antigravity·Gemini·formação B): 5h ██████████ 100% (renova em 0h59) · semana ██████████ 100% (renova em 6d 22h)"
+  },
+  "faa36755-c2bf-5864-82d6-a65097c73940": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "⚪ Antigravity  🟢 Grok CLI [G]  🟡 Cocaino [G]  🟡 Gemini  🟡 Cursor [G]  🟢 Claude\n💬 conversas (1h): Antigravity ↔ Claude (1) · Claude ↔ Cocaino (1) · Claude ↔ Cursor (1)"
+  }
+ },
+ "alertas": [
+  "🔀 SuperGrok voltou ao normal: já dá pra voltar pra Formação A (python formacao.py A)",
+  "🔁 cadeira da formação B reaberta 3x na última hora (algo derrubando o agente?)",
+  "✨ Grok CLI: T342 ⭐ Paridade [desinstalador]: tão boa quanto Revo Uninstaller: Paridade com Revo Unins…"
+ ],
+ "msgs_vistas": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  48,
+  49,
+  50,
+  51,
+  52,
+  53,
+  54,
+  55,
+  56,
+  57,
+  58,
+  59,
+  60,
+  61,
+  62,
+  63,
+  64,
+  65,
+  66,
+  67,
+  68,
+  69,
+  70,
+  71,
+  72,
+  73,
+  74,
+  75,
+  76,
+  77,
+  78,
+  79,
+  80,
+  81,
+  82,
+  83,
+  84,
+  85,
+  86,
+  87,
+  88,
+  89,
+  90,
+  91,
+  92,
+  93,
+  94,
+  95,
+  96,
+  97,
+  98,
+  99,
+  100,
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109,
+  110,
+  111,
+  112,
+  113,
+  114,
+  115,
+  116,
+  117,
+  118,
+  119,
+  120,
+  121,
+  122,
+  123,
+  124,
+  125,
+  126,
+  127,
+  128,
+  129,
+  130,
+  131,
+  132,
+  133,
+  134,
+  135,
+  136,
+  137,
+  138,
+  139,
+  140,
+  141,
+  142,
+  143,
+  144,
+  145,
+  146,
+  147,
+  148,
+  149,
+  150,
+  151,
+  152
+ ]
+}

@@ -69,7 +69,9 @@ class TestSmokeUi(unittest.TestCase):
                 break
             _esperar(30)
         self.assertEqual(tela.cartoes_visiveis()[0]["id"], "disco")
-        self.assertEqual(len(tela._atalhos), 15)
+        # F10: no máx. 8 destaques (antes eram os 15 do Grok)
+        self.assertEqual(len(tela._atalhos), home.MAX_DESTAQUES)
+        self.assertEqual(home.MAX_DESTAQUES, 8)
         tela._parar()
         win.close()
 

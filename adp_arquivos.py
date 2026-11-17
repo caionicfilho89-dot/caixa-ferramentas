@@ -456,6 +456,173 @@ def _calcular_nuvem(params):
     return _chamar(fazer)
 
 
+# ----------------------------------------------------------------------
+# Lote 1 Novos Adaptadores Arquivos & Sistema (que CALCULAM algo)
+# ----------------------------------------------------------------------
+
+# 1. calculadora-posicao-solar-astronomia
+def _extrair_posicao_solar(texto):
+    if not combina(texto, [["posicao solar", "azimute solar", "zenite solar"]]):
+        return None
+    p = ler(texto, [
+        C("lat", ["lat", "latitude"], "num", False),
+        C("lon", ["lon", "longitude"], "num", False),
+        C("dia", ["dia"], "num", False),
+        C("mes", ["mes"], "num", False),
+        C("hora", ["hora", "h"], "num", False),
+    ])
+    lat = p.get("lat") if p and p.get("lat") is not None else -23.55
+    lon = p.get("lon") if p and p.get("lon") is not None else -46.63
+    dia = int(p.get("dia")) if p and p.get("dia") is not None else 21
+    mes = int(p.get("mes")) if p and p.get("mes") is not None else 6
+    hora = float(p.get("hora")) if p and p.get("hora") is not None else 12.0
+    return {"lat": lat, "lon": lon, "dia": dia, "mes": mes, "hora": hora}
+
+def _calcular_posicao_solar(params):
+    def fazer():
+        mod = carregar("calculadora-posicao-solar-astronomia", "spa_core")
+        pos = mod.calcular_posicao_solar(params["lat"], params["lon"], -3.0, params["dia"], params["mes"], params["hora"], 2026)
+        return pacote(f"Zênite {_num(pos.zenite_deg, 1)}°, Azimute {_num(pos.azimute_deg, 1)}°", f"Elevação solar: {_num(pos.elevacao_deg, 1)}°.")
+    return _chamar(fazer)
+
+
+# 2. gerador-nmake
+def _extrair_nmake(texto):
+    if not combina(texto, [["gerar nmake", "nmake preset"]]):
+        return None
+    preset = _depois(texto, "gerar nmake") or _depois(texto, "nmake preset") or "C cl.exe"
+    return {"preset": preset.strip()}
+
+def _calcular_nmake(params):
+    def fazer():
+        mod = carregar("gerador-nmake", "nmk_core")
+        out = mod.render(params["preset"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (NMake)", f"Makefile nmake preset '{params['preset']}' gerado.")
+    return _chamar(fazer)
+
+
+# 3. gerador-protobuf
+def _extrair_protobuf(texto):
+    if not combina(texto, [["gerar protobuf", "protobuf preset"]]):
+        return None
+    preset = _depois(texto, "gerar protobuf") or _depois(texto, "protobuf preset") or "Mensagem"
+    return {"preset": preset.strip()}
+
+def _calcular_protobuf(params):
+    def fazer():
+        mod = carregar("gerador-protobuf", "pbn_core")
+        out = mod.render(params["preset"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (.proto)", f"Definição Protobuf preset '{params['preset']}' gerada.")
+    return _chamar(fazer)
+
+
+# 4. gerador-grpc
+def _extrair_grpc(texto):
+    if not combina(texto, [["gerar grpc", "grpc preset"]]):
+        return None
+    preset = _depois(texto, "gerar grpc") or _depois(texto, "grpc preset") or "Unary"
+    return {"preset": preset.strip()}
+
+def _calcular_grpc(params):
+    def fazer():
+        mod = carregar("gerador-grpc", "grp_core")
+        out = mod.render(params["preset"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (gRPC proto)", f"Serviço gRPC preset '{params['preset']}' gerado.")
+    return _chamar(fazer)
+
+
+# 5. roi-curso-certificacao
+def _extrair_roi_curso(texto):
+    if not combina(texto, [["roi do curso", "roi da certificacao", "roi curso"]]):
+        return None
+    p = ler(texto, [
+        C("custo", ["custo", "inscricao"], "num", False),
+        C("horas", ["horas"], "num", False),
+        C("valor_hora", ["valor hora"], "num", False),
+        C("aumento", ["aumento", "salario"], "num", False),
+        C("meses", ["meses"], "num", False),
+    ])
+    custo = p.get("custo") or 1000.0
+    horas = p.get("horas") or 100.0
+    vhora = p.get("valor_hora") or 30.0
+    aumento = p.get("aumento") or 500.0
+    meses = int(p.get("meses") or 12)
+    return {"custo": custo, "horas": horas, "vhora": vhora, "aumento": aumento, "meses": meses}
+
+def _calcular_roi_curso(params):
+    def fazer():
+        mod = carregar("roi-curso-certificacao", "roi_core")
+        ent = mod.EntradaCertificacao(
+            params["custo"],
+            params["horas"],
+            params["vhora"],
+            params["aumento"],
+            0,
+            params["meses"],
+        )
+        res = mod.calcular_roi_certificacao(ent)
+        pb = f"{_num(res['mes_payback'], 1)} meses" if res.get("mes_payback") else "N/A"
+        return pacote(f"ROI {_num(res['roi_pct'], 1)}%", f"Payback: {pb}; Lucro: {mod.brl(res['lucro_projetado'])}.")
+    return _chamar(fazer)
+
+
+# 6. rastreador-deep-work-semanal
+def _extrair_deep_work(texto):
+    if not combina(texto, [["deep work", "foco semanal"]]):
+        return None
+    p = ler(texto, [
+        C("meta", ["meta"], "num", False),
+        C("horas", ["horas", "h"], "num", False),
+    ])
+    meta = p.get("meta") or 20.0
+    horas = p.get("horas") or 4.0
+    return {"meta": meta, "horas_dia": horas}
+
+def _calcular_deep_work(params):
+    def fazer():
+        mod = carregar("rastreador-deep-work-semanal", "dee_core")
+        dias = [params["horas_dia"]] * 5 + [0.0, 0.0]
+        res = mod.calcular_semana_deep_work(params["meta"], dias)
+        return pacote(f"{_num(res.total_horas, 1)}h ({res.status_meta})", f"Média de {_num(res.media_por_dia, 1)}h/dia (meta: {_num(params['meta'], 0)}h).")
+    return _chamar(fazer)
+
+
+# 7. rotina-mobilidade-lombar
+def _extrair_lombar(texto):
+    if not combina(texto, [["mobilidade lombar", "rotina lombar"]]):
+        return None
+    p = ler(texto, [
+        C("minutos", ["minutos", "min"], "num", False),
+    ])
+    minutos = int(p.get("minutos")) if p and p.get("minutos") is not None else 10
+    return {"minutos": minutos}
+
+def _calcular_lombar(params):
+    def fazer():
+        mod = carregar("rotina-mobilidade-lombar", "mbl_core")
+        sess = mod.montar_sessao(params["minutos"], "iniciante", "suave", True)
+        return pacote(f"{len(sess.itens)} passos ({params['minutos']} min)", f"Rotina suave iniciante com respiração ({_num(sess.total_segundos // 60, 0)} min total).")
+    return _chamar(fazer)
+
+
+# 8. introducao-alimentar
+def _extrair_introducao_alimentar(texto):
+    if not combina(texto, [["introducao alimentar", "fase do bebe", "alimentar bebe"]]):
+        return None
+    return {"texto": texto}
+
+def _calcular_introducao_alimentar(params):
+    def fazer():
+        mod = carregar("introducao-alimentar", "iab_core")
+        fase_txt = mod.fase(6)
+        evitar = mod.alimentos_evitar(6)
+        return pacote(f"Fase: {fase_txt}", f"Evitar no início: {', '.join(evitar[:3])}.")
+    return _chamar(fazer)
+
+
 _registrar("calculadora-baterias", ["autonomia bateria"], _extrair_bateria, _calcular_bateria)
 _registrar("calculadora-dinamica-orbital-hohmann", ["transferencia hohmann"], _extrair_hohmann, _calcular_hohmann)
 _registrar("analisador-zipf", ["lei de zipf"], _extrair_zipf, _calcular_zipf)
@@ -473,3 +640,13 @@ _registrar("cozimento-alimentos", ["tempo de cozimento"], _extrair_cozinha, _cal
 _registrar("compostagem", ["volume composteira"], _extrair_composto, _calcular_composto)
 _registrar("planejador-tempo-estrategia-prova", ["estrategia de prova"], _extrair_prova, _calcular_prova)
 _registrar("plano-nuvem-backup", ["crescimento nuvem"], _extrair_nuvem, _calcular_nuvem)
+
+# 8 novos adaptadores T04 (Arquivos & Sistema que calculam algo)
+_registrar("calculadora-posicao-solar-astronomia", ["posicao solar"], _extrair_posicao_solar, _calcular_posicao_solar)
+_registrar("gerador-nmake", ["gerar nmake"], _extrair_nmake, _calcular_nmake)
+_registrar("gerador-protobuf", ["gerar protobuf"], _extrair_protobuf, _calcular_protobuf)
+_registrar("gerador-grpc", ["gerar grpc"], _extrair_grpc, _calcular_grpc)
+_registrar("roi-curso-certificacao", ["roi do curso"], _extrair_roi_curso, _calcular_roi_curso)
+_registrar("rastreador-deep-work-semanal", ["deep work"], _extrair_deep_work, _calcular_deep_work)
+_registrar("rotina-mobilidade-lombar", ["mobilidade lombar"], _extrair_lombar, _calcular_lombar)
+_registrar("introducao-alimentar", ["introducao alimentar"], _extrair_introducao_alimentar, _calcular_introducao_alimentar)

@@ -139,6 +139,41 @@ class Arquivos(unittest.TestCase):
         mod = af.carregar("plano-nuvem-backup", "nuv_core")
         self.assertEqual(saida["resposta"], af._num(mod.crescimento_gb(200, 4, 10, 8), 2) + " GB/mês")
 
+    def test_novos_arquivos_lote1(self):
+        # 1. calculadora-posicao-solar-astronomia
+        saida = _um("posicao solar latitude -23.55 longitude -46.63 dia 21 mes 6 hora 12", "calculadora-posicao-solar-astronomia")
+        self.assertIn("Zênite", saida["resposta"])
+        self.assertIn("Azimute", saida["resposta"])
+
+        # 2. gerador-nmake
+        saida = _um("gerar nmake C cl.exe", "gerador-nmake")
+        self.assertIn("linhas (NMake)", saida["resposta"])
+
+        # 3. gerador-protobuf
+        saida = _um("gerar protobuf Mensagem", "gerador-protobuf")
+        self.assertIn("linhas (.proto)", saida["resposta"])
+
+        # 4. gerador-grpc
+        saida = _um("gerar grpc Unary", "gerador-grpc")
+        self.assertIn("linhas (gRPC proto)", saida["resposta"])
+
+        # 5. roi-curso-certificacao
+        saida = _um("roi do curso custo 1000 horas 100 valor hora 30 aumento 500 meses 12", "roi-curso-certificacao")
+        self.assertIn("ROI", saida["resposta"])
+        self.assertIn("Payback", saida["detalhe"])
+
+        # 6. rastreador-deep-work-semanal
+        saida = _um("deep work meta 20 horas 4", "rastreador-deep-work-semanal")
+        self.assertIn("20,0h", saida["resposta"])
+
+        # 7. rotina-mobilidade-lombar
+        saida = _um("mobilidade lombar minutos 10", "rotina-mobilidade-lombar")
+        self.assertIn("passos (10 min)", saida["resposta"])
+
+        # 8. introducao-alimentar
+        saida = _um("introducao alimentar", "introducao-alimentar")
+        self.assertIn("Fase:", saida["resposta"])
+
 
 if __name__ == "__main__":
     unittest.main()

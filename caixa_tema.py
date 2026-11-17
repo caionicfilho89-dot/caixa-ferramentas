@@ -72,9 +72,8 @@ CAT_CORES = {
 FONTE = "Segoe UI"
 FONTE_EMOJI = "Segoe UI Emoji"
 FONTE_MONO = "Consolas"
-# Valores monetários/numéricos da barra: mono desenha '.', ',' e 'R$' de verdade
-# (Segoe UI ExtraBold no card sumia com a pontuação — CRITICA F3 / Q10→"1 030 30").
-FONTE_VALOR = "Consolas"
+# Valores da barra: mono SEM letter-spacing (Consolas Bold + tracking → "1 .030 , 30").
+FONTE_VALOR = "Cascadia Mono"
 
 
 def cor_categoria(nome: str) -> str:
@@ -116,14 +115,28 @@ def fonte_valor_pequeno() -> QFont:
 
 
 def fonte_resposta_barra(tamanho: int = 16) -> QFont:
-    """Fonte do valor na barra — Consolas pra '.', ',' e 'R$' não sumirem."""
-    f = QFont(FONTE_VALOR, max(10, int(tamanho)))
+    """Fonte da resposta na barra — Consolas (estilo Finanças) com '.' e ',' perfeitamente nítidos."""
+    f = QFont()
+    f.setFamilies(["Consolas", "Segoe UI", FONTE_MONO, "Courier New"])
+    f.setPointSize(max(10, int(tamanho)))
     f.setWeight(QFont.Weight.Bold)
     f.setStyleHint(QFont.StyleHint.TypeWriter)
     f.setStyleStrategy(
         QFont.StyleStrategy.PreferAntialias | QFont.StyleStrategy.NoFontMerging
     )
+    f.setLetterSpacing(QFont.SpacingType.AbsoluteSpacing, 0.0)
+    f.setKerning(True)
     return f
+
+
+def normalizar_valor_barra(texto: str) -> str:
+    """Tira espaços estranhos ao redor de '.' e ',' em números (Q10)."""
+    import re
+    s = str(texto or "")
+    # "1 .030 , 30" → "1.030,30"
+    s = re.sub(r"(\d)\s+([.,])\s*(\d)", r"\1\2\3", s)
+    s = re.sub(r"(\d)\s+([.,])\s*(\d)", r"\1\2\3", s)  # 2ª pass (vários)
+    return s
 
 
 def fonte_corpo() -> QFont:
@@ -137,38 +150,96 @@ def fonte_mudo() -> QFont:
 def qss_app() -> str:
     """QSS global da cara nova (Hoje + barra + grade)."""
     return f"""
-QWidget {{
+/* Fundo só em janelas/containers — NÃO em todo QWidget (vira faixa por label). */
+QMainWindow, QDialog, #telaHoje, #barraBusca, QWidget#janelaCaixa {{
     background: {BG};
     color: {TEXTO};
     font: 10pt '{FONTE}';
 }}
-QScrollArea {{ border: 0; background: transparent; }}
+QWidget {{
+    color: {TEXTO};
+    font: 10pt '{FONTE}';
+}}
+QLabel {{
+    background: transparent;
+    border: 0;
+}}
+QFrame {{
+    background: transparent;
+}}
+QScrollArea {{
+    border: 0;
+    background: transparent;
+}}
+QScrollArea > QWidget > QWidget {{
+    background: transparent;
+}}
 QScrollBar:vertical {{
-    background: {BG_SOFT}; width: 10px; margin: 0;
+    background: {BG_SOFT};
+    width: 12px;
+    margin: 0;
+    border: 0;
 }}
 QScrollBar::handle:vertical {{
-    background: {BORDER}; border-radius: 5px; min-height: 28px;
+    background: #3a4460;
+    border-radius: 6px;
+    min-height: 32px;
+    margin: 2px;
 }}
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{ height: 0; }}
+QScrollBar::handle:vertical:hover {{
+    background: {ACCENT};
+}}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{
+    height: 0;
+    background: transparent;
+    border: 0;
+}}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {{
+    background: {BG_SOFT};
+    border: 0;
+}}
+QScrollBar:horizontal {{
+    background: {BG_SOFT};
+    height: 12px;
+    margin: 0;
+    border: 0;
+}}
+QScrollBar::handle:horizontal {{
+    background: #3a4460;
+    border-radius: 6px;
+    min-width: 32px;
+    margin: 2px;
+}}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {{
+    width: 0; background: transparent; border: 0;
+}}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {{
+    background: {BG_SOFT}; border: 0;
+}}
 
 #tituloApp {{
+    background: transparent;
     font: 800 22pt '{FONTE}';
     color: {TEXTO};
 }}
 #subtitulo {{
+    background: transparent;
     color: {TEXTO_MUDO};
     font: 10pt '{FONTE}';
 }}
 #secao {{
+    background: transparent;
     color: {TEXTO_MUDO};
     font: 700 10pt '{FONTE}';
     letter-spacing: 0.6px;
 }}
 #saudacao {{
+    background: transparent;
     font: 700 18pt '{FONTE}';
     color: {TEXTO};
 }}
 #horaHoje {{
+    background: transparent;
     color: {TEXTO_MUDO};
     font: 10pt '{FONTE}';
 }}
@@ -201,15 +272,19 @@ QLineEdit#campoBusca:focus {{
     background: #2a2740;
 }}
 #respTitulo {{
+    background: transparent;
     font: 700 11pt '{FONTE}';
     color: {TEXTO};
 }}
 #respResposta {{
-    font: 700 16pt '{FONTE_VALOR}';
+    background: transparent;
+    font: 700 16pt 'Consolas', 'Segoe UI', '{FONTE_MONO}', monospace;
     color: {OK};
     padding: 2px 0 4px 0;
+    letter-spacing: 0;
 }}
 #respDetalhe {{
+    background: transparent;
     color: {TEXTO_SUAVE};
     font: 10pt '{FONTE}';
     padding: 0 0 2px 0;
@@ -227,6 +302,7 @@ QPushButton#todasFerramentas:hover {{
     color: #ffffff;
 }}
 #hintBusca {{
+    background: transparent;
     color: {TEXTO_MUDO};
     font: 8pt '{FONTE}';
 }}
@@ -248,16 +324,18 @@ QPushButton#go {{
 }}
 QPushButton#go:hover {{ background: {ACCENT_HOVER}; }}
 QPushButton#acaoCartao {{
-    background: #222a38;
-    border: 1px solid {BORDER};
-    border-radius: 10px;
-    padding: 8px 12px;
-    font: 600 9pt '{FONTE}';
+    background: #2a2740;
+    border: 1px solid {ACCENT};
+    border-radius: 12px;
+    padding: 12px 20px;
+    min-height: 36px;
+    font: 700 11pt '{FONTE}';
+    color: #e7e9f0;
 }}
 QPushButton#acaoCartao:hover {{
-    border: 1px solid {ACCENT};
-    background: #2a2740;
-    color: #c9b8ff;
+    border: 1px solid {ACCENT_HOVER};
+    background: {ACCENT};
+    color: #ffffff;
 }}
 QPushButton#fantasma {{
     background: transparent;
@@ -278,29 +356,59 @@ QPushButton#fantasma:hover {{
     background: {BG_HOVER};
     border: 1px solid #3a4460;
 }}
+#cartaoPequeno[flash="true"] {{
+    background: #2a2148;
+    border: 2px solid {ACCENT};
+}}
+#cartaoGrande QLabel, #cartaoPequeno QLabel {{
+    background: transparent;
+}}
+QPushButton#chipUltima {{
+    background: #2a2148;
+    color: #e7e9f0;
+    border: 1px solid {ACCENT};
+    border-radius: 999px;
+    padding: 4px 12px;
+    font: 700 9pt '{FONTE}';
+}}
+QPushButton#chipUltima:hover {{
+    background: {ACCENT};
+    color: #ffffff;
+}}
+QPushButton#chipUltima[flash="true"] {{
+    background: {ACCENT};
+    color: #ffffff;
+}}
 #emojiGrande {{
+    background: transparent;
     font: 28pt '{FONTE_EMOJI}';
 }}
 #emojiPequeno {{
+    background: transparent;
     font: 18pt '{FONTE_EMOJI}';
 }}
 #valorGrande {{
-    font: 700 26pt '{FONTE}';
+    background: transparent;
+    font: 700 18pt '{FONTE}';
     color: {TEXTO};
 }}
 #valorPequeno {{
-    font: 700 14pt '{FONTE}';
+    background: transparent;
+    font: 700 13pt '{FONTE}';
     color: {TEXTO};
 }}
 #tituloCartao {{
+    background: transparent;
     font: 700 11pt '{FONTE}';
     color: {TEXTO_SUAVE};
 }}
 #detalheCartao {{
+    background: transparent;
     color: {TEXTO_MUDO};
     font: 9pt '{FONTE}';
 }}
 #estadoVazio {{
+    background: transparent;
     color: {TEXTO_MUDO};
     font: 11pt '{FONTE}';
 }}
@@ -310,6 +418,97 @@ QPushButton#fantasma:hover {{
     border-radius: 999px;
     padding: 4px 10px;
     font: 600 8pt '{FONTE}';
+}}
+
+/* ---- Grade "Todas" (CRITICA F7 + T10: legível em 1366 e 4K@300%) ---- */
+#card {{
+    background: #243044;
+    border: 1px solid #5a6788;
+    border-radius: 16px;
+}}
+#card:hover {{
+    background: #2c3750;
+    border: 1px solid {ACCENT};
+}}
+#card QLabel {{
+    background: transparent;
+}}
+#name {{
+    background: transparent;
+    font: 700 11pt '{FONTE}';
+    color: #f2f4fa;
+}}
+#desc {{
+    background: transparent;
+    color: #d0d5e4;
+    font: 9pt '{FONTE}';
+}}
+#emoji, #badge {{
+    background: transparent;
+    font: 20pt '{FONTE_EMOJI}';
+}}
+#catlbl {{
+    background: transparent;
+    font: 8pt '{FONTE}';
+    color: {TEXTO_MUDO};
+}}
+#star {{
+    background: transparent;
+    color: {AVISO};
+    font: 12pt '{FONTE}';
+}}
+#missing {{
+    background: transparent;
+    color: {ERRO};
+    font: 9pt '{FONTE}';
+}}
+#title {{
+    background: transparent;
+    font: 800 22pt '{FONTE}';
+    color: {TEXTO};
+}}
+#sub {{
+    background: transparent;
+    color: {TEXTO_MUDO};
+}}
+#section {{
+    background: transparent;
+    color: {TEXTO_MUDO};
+    font: 700 10pt '{FONTE}';
+}}
+#hero {{
+    background: transparent;
+    color: {OK};
+    font: 600 10pt '{FONTE}';
+}}
+#side {{
+    background: {BG_ELEV};
+    border: 1px solid {BORDER};
+    border-radius: 14px;
+    padding: 6px;
+    color: {TEXTO};
+    outline: none;
+}}
+#side::item {{
+    padding: 9px 12px;
+    border-radius: 9px;
+    color: {TEXTO_SUAVE};
+    margin: 1px 0;
+}}
+#side::item:hover {{
+    background: {BG_HOVER};
+    color: {TEXTO};
+}}
+/* T28: selecionado com accent — legível em 100% e 300% DPI */
+#side::item:selected {{
+    background: rgba(124, 92, 255, 0.28);
+    color: #f2f4fa;
+    border: 1px solid {ACCENT};
+    font-weight: 600;
+}}
+#side::item:selected:hover {{
+    background: rgba(124, 92, 255, 0.36);
+    color: #ffffff;
 }}
 """
 
@@ -366,9 +565,10 @@ class CartaoGrande(CartaoBase):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setObjectName("cartaoGrande")
-        # altura de verdade — nunca esmagar numa faixa de 60 px (CRITICA F3 / F7)
-        self.setMinimumSize(260, 172)
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        # altura de verdade — nunca esmagar numa faixa de 60 px (CRITICA F3 / F7 / T09)
+        # T26/T314: piso ajustado pra caber valor + detalhe + botão Anotar/Assistir sem overflow em 1366x768
+        self.setMinimumSize(250, 200)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.MinimumExpanding)
 
         root = QHBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
@@ -395,22 +595,40 @@ class CartaoGrande(CartaoBase):
         self.valor = QLabel("—")
         self.valor.setObjectName("valorGrande")
         self.valor.setWordWrap(True)
+        self.valor.setMinimumHeight(28)
+        self.valor.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         corpo.addWidget(self.valor)
 
         self.detalhe = QLabel("")
         self.detalhe.setObjectName("detalheCartao")
         self.detalhe.setWordWrap(True)
+        self.detalhe.setMaximumHeight(44)  # no máx. ~2 linhas — não empurra o botão pra fora
         corpo.addWidget(self.detalhe)
 
         corpo.addStretch(1)
 
+        # T26: rodapé com altura mínima própria — o stretch não pode esmagar o botão
+        rodape = QWidget()
+        rodape.setObjectName("rodapeCartao")
+        rodape.setMinimumHeight(48)
+        rodape.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        rod_lay = QHBoxLayout(rodape)
+        rod_lay.setContentsMargins(0, 2, 0, 0)
+        rod_lay.setSpacing(0)
         self.btn = QPushButton("Abrir")
         self.btn.setObjectName("acaoCartao")
         self.btn.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.btn.setMinimumHeight(40)
+        self.btn.setMinimumWidth(140)
+        self.btn.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         self.btn.clicked.connect(self._emitir_acao)
-        corpo.addWidget(self.btn, 0, Qt.AlignmentFlag.AlignLeft)
+        rod_lay.addWidget(self.btn, 0, Qt.AlignmentFlag.AlignLeft)
+        rod_lay.addStretch(1)
+        corpo.addWidget(rodape, 0)
 
         root.addLayout(corpo, 1)
+        # garante que o fundo do card (não dos labels) pinte pelo QSS
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
     def preencher(self, dados: dict, cor: str | None = None) -> None:
         self._dados = dict(dados or {})
@@ -418,6 +636,10 @@ class CartaoGrande(CartaoBase):
         self.titulo.setText(str(self._dados.get("titulo") or "—"))
         self.valor.setText(str(self._dados.get("valor") or "—"))
         self.detalhe.setText(str(self._dados.get("detalhe") or ""))
+        # labels sem faixa própria (bug visual 1.5.3)
+        for lbl in (self.emoji, self.titulo, self.valor, self.detalhe):
+            lbl.setAutoFillBackground(False)
+            lbl.setStyleSheet("background: transparent; border: 0;")
         acao = self._dados.get("acao") or {}
         rotulo = acao.get("rotulo") or "Abrir"
         self.btn.setText(str(rotulo))
@@ -480,8 +702,30 @@ class CartaoPequeno(CartaoBase):
         self.titulo.setText(str(self._dados.get("titulo") or "—"))
         self.valor.setText(str(self._dados.get("valor") or "—"))
         self.detalhe.setText(str(self._dados.get("detalhe") or ""))
+        for lbl in (self.emoji, self.titulo, self.valor, self.detalhe):
+            lbl.setAutoFillBackground(False)
+            lbl.setStyleSheet("background: transparent; border: 0;")
         cid = str(self._dados.get("id") or "")
         self._aplicar_faixa(cor or cor_categoria(cid) or ACCENT)
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+
+    def destacar(self, ms: int = 450) -> None:
+        """T19: flash visual quando a tecla 1–8 aciona o cartão."""
+        self.setProperty("flash", True)
+        self.style().unpolish(self)
+        self.style().polish(self)
+        self.update()
+
+        def _off():
+            try:
+                self.setProperty("flash", False)
+                self.style().unpolish(self)
+                self.style().polish(self)
+                self.update()
+            except RuntimeError:
+                pass
+
+        QTimer.singleShot(max(80, int(ms)), _off)
 
 
 class EstadoVazio(QWidget):
@@ -560,9 +804,31 @@ class EstadoCarregando(QWidget):
         self.update()
 
 
-def colunas_para_largura(largura: int) -> int:
-    """Grade responsiva: 1 col no estreito, 2 no 1366, 3–4 no 4K."""
-    w = int(largura or 0)
+def dpr_de_widget(widget: QWidget | None = None) -> float:
+    """Lê o devicePixelRatio do screen do widget (fallback 1.0)."""
+    try:
+        if widget is not None:
+            scr = widget.screen()
+            if scr is not None:
+                return float(scr.devicePixelRatio())
+        from PyQt6.QtGui import QGuiApplication
+        scr = QGuiApplication.primaryScreen()
+        if scr is not None:
+            return float(scr.devicePixelRatio())
+    except Exception:
+        pass
+    return 1.0
+
+
+def largura_logica(largura_px: int, dpr: float = 1.0) -> int:
+    """Converte largura física → lógica (4K @ 300% ≈ 1280 lógica)."""
+    escala = float(dpr) if float(dpr) > 0 else 1.0
+    return max(1, int(round(int(largura_px or 0) / escala)))
+
+
+def colunas_para_largura(largura: int, dpr: float = 1.0) -> int:
+    """Grade responsiva: usa largura lógica (DPI). 1366→2; 4K@100%→4; 4K@300%→2."""
+    w = largura_logica(largura, dpr) if float(dpr or 1.0) > 1.0 else int(largura or 0)
     if w >= LARGURA_4K:
         return 4
     if w >= 1800:
@@ -572,9 +838,9 @@ def colunas_para_largura(largura: int) -> int:
     return 1
 
 
-def margens_para_largura(largura: int) -> tuple[int, int, int, int]:
-    """Margens da tela Hoje conforme o monitor."""
-    w = int(largura or 0)
+def margens_para_largura(largura: int, dpr: float = 1.0) -> tuple[int, int, int, int]:
+    """Margens da tela Hoje conforme o monitor (respeita DPI)."""
+    w = largura_logica(largura, dpr) if float(dpr or 1.0) > 1.0 else int(largura or 0)
     if w >= LARGURA_4K:
         return (48, 28, 48, 28)
     if w <= LARGURA_COMPACTA:
@@ -582,9 +848,13 @@ def margens_para_largura(largura: int) -> tuple[int, int, int, int]:
     return (20, 16, 20, 16)
 
 
-def escala_tipografia(largura: int) -> float:
-    """Fator de escala leve pra 4K (1.0 no 1366, até 1.25)."""
-    w = int(largura or 1366)
+def escala_tipografia(largura: int, dpr: float = 1.0) -> float:
+    """Fator de escala leve. Em DPI alto (>=2.5) não infla fonte (o SO já escala)."""
+    dpr_f = float(dpr or 1.0)
+    if dpr_f >= 2.5:
+        return 1.0
+    # com DPR intermediário, usa largura lógica
+    w = largura_logica(largura, dpr_f) if dpr_f > 1.0 else int(largura or 1366)
     if w >= LARGURA_4K:
         return 1.25
     if w >= 1920:
@@ -592,6 +862,101 @@ def escala_tipografia(largura: int) -> float:
     if w <= 1280:
         return 0.95
     return 1.0
+
+
+def tamanho_card_grade(dpr: float = 1.0) -> tuple[int, int, int]:
+    """(CARD_W, CARD_H, GAP) sugeridos pra grade Todas — lógico, não físico."""
+    # em DPI alto o Qt já escala; manter tamanho lógico estável
+    if float(dpr or 1.0) >= 2.5:
+        return (260, 112, 10)
+    if float(dpr or 1.0) >= 1.5:
+        return (268, 114, 11)
+    return (272, 116, 12)
+
+
+def layout_grade(largura: int, dpr: float = 1.0) -> dict:
+    """T20: pacote único pra reflow da grade Todas / Hoje ao mudar DPI."""
+    dpr_f = float(dpr) if float(dpr or 0) > 0 else 1.0
+    w_log = largura_logica(largura, dpr_f) if dpr_f > 1.0 else int(largura or 0)
+    cw, ch, gap = tamanho_card_grade(dpr_f)
+    return {
+        "dpr": dpr_f,
+        "largura_logica": w_log,
+        "colunas": colunas_para_largura(largura, dpr_f),
+        "margens": margens_para_largura(largura, dpr_f),
+        "escala": escala_tipografia(largura, dpr_f),
+        "card_w": cw,
+        "card_h": ch,
+        "gap": gap,
+    }
+
+
+def contraste_grade_todas_ok(qss: str | None = None) -> bool:
+    """True se o QSS da grade eleva o cartão acima do fundo (não preto-no-preto)."""
+    texto = qss if qss is not None else qss_app()
+    # cartão precisa ser mais claro que o BG base
+    return (
+        "#243044" in texto
+        and "#5a6788" in texto
+        and "#f2f4fa" in texto
+        and "#card" in texto
+    )
+
+
+class ObservadorDpi(QWidget):
+    """T20: observa troca de tela/DPI e emite layout novo.
+
+    Uso (Grok CLI / caixa.pyw):
+        obs = ObservadorDpi(janela)
+        obs.dpi_mudou.connect(lambda dpr, lay: janela.aplicar_layout_grade(lay))
+        obs.forcar()  # aplica já na abertura
+    """
+
+    dpi_mudou = pyqtSignal(float, dict)
+
+    def __init__(self, host: QWidget, parent=None):
+        super().__init__(parent or host)
+        self._host = host
+        self._dpr = -1.0
+        self._assinatura: tuple | None = None
+        self.hide()
+        host.installEventFilter(self)
+        # Qt 6: muda de monitor / escala
+        try:
+            from PyQt6.QtGui import QGuiApplication
+            app = QGuiApplication.instance()
+            if app is not None and hasattr(app, "screenAdded"):
+                app.screenAdded.connect(lambda *_: self.forcar())
+        except Exception:
+            pass
+
+    def eventFilter(self, obj, event):  # noqa: N802
+        from PyQt6.QtCore import QEvent
+        tipos = {QEvent.Type.Show, QEvent.Type.Resize, QEvent.Type.WindowActivate}
+        # ScreenChangeInternal existe em alguns builds do Qt6
+        sci = getattr(QEvent.Type, "ScreenChangeInternal", None)
+        if sci is not None:
+            tipos.add(sci)
+        if obj is self._host and event.type() in tipos:
+            self._checar()
+        return super().eventFilter(obj, event)
+
+    def _checar(self) -> None:
+        dpr = dpr_de_widget(self._host)
+        w = max(1, int(self._host.width() or 1366))
+        lay = layout_grade(w, dpr)
+        assinatura = (round(dpr, 2), lay["colunas"], lay["card_w"], lay["escala"])
+        if assinatura == self._assinatura:
+            return
+        self._dpr = dpr
+        self._assinatura = assinatura
+        self.dpi_mudou.emit(dpr, lay)
+
+    def forcar(self) -> dict:
+        self._assinatura = None
+        self._checar()
+        w = max(1, int(self._host.width() or 1366))
+        return layout_grade(w, dpr_de_widget(self._host))
 
 
 def animar_entrada(widget: QWidget, duracao_ms: int = 220, atraso_ms: int = 0) -> QPropertyAnimation:
@@ -639,9 +1004,15 @@ __all__ = [
     "TEXTO_MUDO",
     "animar_entrada",
     "aplicar_tema",
+    "ObservadorDpi",
     "colunas_para_largura",
+    "contraste_grade_todas_ok",
     "cor_categoria",
+    "dpr_de_widget",
     "escala_tipografia",
+    "largura_logica",
+    "layout_grade",
+    "tamanho_card_grade",
     "fonte",
     "fonte_corpo",
     "fonte_mudo",
@@ -651,5 +1022,6 @@ __all__ = [
     "fonte_valor_grande",
     "fonte_valor_pequeno",
     "margens_para_largura",
+    "normalizar_valor_barra",
     "qss_app",
 ]

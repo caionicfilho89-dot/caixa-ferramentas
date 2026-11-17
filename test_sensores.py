@@ -150,6 +150,162 @@ def test_sensor_vencimentos_stub_e_isolamento():
             sc.os.path.expanduser = orig_expand
 
 
+def test_sensor_crescimento_com_historico_sintetico():
+    """T06: com 2 amostras, devolve top pastas e ação Faxina na #1."""
+    import json
+    import tempfile
+    import time
+
+    with tempfile.TemporaryDirectory() as tmp:
+        arq = os.path.join(tmp, "disco_crescimento.json")
+        p_dl = os.path.join(tmp, "Downloads")
+        p_doc = os.path.join(tmp, "Documents")
+        os.makedirs(p_dl)
+        os.makedirs(p_doc)
+        with open(os.path.join(p_dl, "a.bin"), "wb") as f:
+            f.write(b"x" * 5000)
+        with open(os.path.join(p_doc, "b.bin"), "wb") as f:
+            f.write(b"y" * 1000)
+
+        orig_arq = sc._CRESC_ARQ
+        orig_ttl = sc._CRESC_TTL
+        orig_cand = sc._pastas_candidatas_crescimento
+        try:
+            sc._CRESC_ARQ = arq
+            sc._CRESC_TTL = 0
+            sc._pastas_candidatas_crescimento = lambda: [p_dl, p_doc]
+
+            agora = time.time()
+            baseline = {
+                "atualizado": agora - 6 * 86400,
+                "amostras": [{
+                    "ts": agora - 6 * 86400,
+                    "pastas": {p_dl: 100, p_doc: 900},
+                }],
+                "top": [],
+            }
+            with open(arq, "w", encoding="utf-8") as f:
+                json.dump(baseline, f)
+
+            card = sc.sensor_crescimento_disco()
+            assert card is not None
+            assert card["id"] == "crescimento"
+            assert card["acao"]["chave_ferramenta"] == "faxina-disco"
+            assert card["acao"]["pasta"] == p_dl
+            assert "--pasta" in card["acao"]["args"]
+            assert "Downloads" in card["valor"] or "downloads" in card["valor"].lower()
+        finally:
+            sc._CRESC_ARQ = orig_arq
+            sc._CRESC_TTL = orig_ttl
+            sc._pastas_candidatas_crescimento = orig_cand
+
+
+def test_sensor_crescimento_cache_quente_nao_revarre():
+    """Cache < 6 h: não chama amostragem pesada."""
+    import json
+    import tempfile
+    import time
+
+    with tempfile.TemporaryDirectory() as tmp:
+        arq = os.path.join(tmp, "disco_crescimento.json")
+        pasta = os.path.join(tmp, "Downloads")
+        orig_arq = sc._CRESC_ARQ
+        orig_amostrar = sc._amostrar_pastas_agora
+        chamado = {"n": 0}
+
+        def _boom():
+            chamado["n"] += 1
+            raise AssertionError("não deveria amostrar com cache quente")
+
+        try:
+            sc._CRESC_ARQ = arq
+            sc._amostrar_pastas_agora = _boom
+            agora = time.time()
+            with open(arq, "w", encoding="utf-8") as f:
+                json.dump({
+                    "atualizado": agora,
+                    "amostras": [
+                        {"ts": agora - 86400, "pastas": {pasta: 10}},
+                        {"ts": agora, "pastas": {pasta: 100}},
+                    ],
+                    "top": [{"pasta": pasta, "delta": 90, "agora": 100}],
+                }, f)
+
+            card = sc.sensor_crescimento_disco()
+            assert card is not None
+            assert chamado["n"] == 0
+            assert card["acao"]["pasta"] == pasta
+        finally:
+            sc._CRESC_ARQ = orig_arq
+            sc._amostrar_pastas_agora = orig_amostrar
+
+
+def test_sensor_bateria():
+    """T05: sensor_bateria devolve dict com contrato ou None se for desktop."""
+    card = sc.sensor_bateria()
+    if card is not None:
+        assert card["id"] == "bateria"
+        assert "Bateria" in card["titulo"]
+        assert "%" in card["valor"]
+        assert "acao" in card and "rotulo" in card["acao"]
+    else:
+        # Em desktops/VMs sem bateria, deve ser None
+        assert card is None
+
+    # Simula notebook com 75% carregando
+    import ctypes
+    orig_fn = sc.ctypes.windll.kernel32.GetSystemPowerStatus
+
+    def _mock_power(byref_s):
+        s = byref_s._obj
+        s.ACLineStatus = 1
+        s.BatteryFlag = 0
+        s.BatteryLifePercent = 75
+        s.BatteryLifeTime = 0xFFFFFFFF
+        return 1
+
+    try:
+        sc.ctypes.windll.kernel32.GetSystemPowerStatus = _mock_power
+        mock_card = sc.sensor_bateria()
+        assert mock_card is not None
+        assert mock_card["id"] == "bateria"
+        assert "75%" in mock_card["valor"]
+        assert "Carregando" in mock_card["valor"]
+        assert mock_card["emoji"] == "⚡"
+    finally:
+        sc.ctypes.windll.kernel32.GetSystemPowerStatus = orig_fn
+
+
+def test_sensor_windows_update():
+    """T05: sensor_windows_update devolve cartão de reinício pendente ou None se em dia."""
+    card = sc.sensor_windows_update()
+    if card is not None:
+        assert card["id"] == "windows_update"
+        assert card["emoji"] == "🔄"
+        assert "Windows Update" in card["titulo"]
+        assert "Reinício" in card["valor"] or "Pendente" in card["valor"]
+        assert "ms-settings:windowsupdate" in card["acao"]["comando"]
+    else:
+        assert card is None
+
+
+def test_sensor_rede():
+    """T31: sensor_rede detecta conexão ativa, tipo e IP local em < 50 ms."""
+    t0 = time.perf_counter()
+    card = sc.sensor_rede()
+    dt_ms = (time.perf_counter() - t0) * 1000.0
+
+    assert dt_ms < 50.0, f"sensor_rede demorou {dt_ms:.2f} ms (limite é 50 ms)"
+    assert card is not None
+    assert card["id"] == "rede"
+    assert card["emoji"] in ["🌐", "📶"]
+    assert "Rede" in card["titulo"]
+    assert "Conectado" in card["valor"] or "Desconectado" in card["valor"]
+    assert "IP local:" in card["detalhe"] or "Nenhuma conexão" in card["detalhe"]
+    assert "acao" in card
+    assert card["acao"].get("chave_ferramenta") == "rede" or "network" in card["acao"].get("comando", "")
+
+
 if __name__ == "__main__":
     import os
     funcs = [obj for name, obj in list(globals().items()) if name.startswith("test_") and callable(obj)]

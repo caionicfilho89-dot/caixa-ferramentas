@@ -1282,3 +1282,274 @@ def _calcular_fumar(params):
 
 
 _registrar("parar-fumar", ["sem fumar", "cigarro"], _extrair_fumar, _calcular_fumar)
+
+
+# T02: 15 chaves de casa que a cobertura ainda não ligava.
+
+_MESES = {
+    "janeiro": 1, "fevereiro": 2, "marco": 3, "abril": 4, "maio": 5, "junho": 6,
+    "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12,
+}
+
+
+def _extrair_glp(texto):
+    if not combina(texto, [["glp"]], ["botijao", "p13", "p45"]):
+        return None
+    return ler(texto, [
+        C("horas_por_dia", ["horas", "hora"], "hora", True),
+        C("kg_botijao", ["kg"], "num", True),
+        C("preco_botijao", ["reais"], "din", True),
+        C("bocas_em_uso", ["bocas", "boca"], "int", True),
+    ])
+
+
+def _calcular_glp(params):
+    mod = carregar("calculadora-botijao-gas", "glp_core")
+    r = mod.estimar(params["kg_botijao"], params["preco_botijao"], params["bocas_em_uso"], 0.2, params["horas_por_dia"])
+    return pacote(f"Dura {_num(r['dias'], 1)} dias", f"Custo por dia {_brl(r['custo_dia'])}. Consumo 0,2 kg por boca/hora, padrão do adaptador.")
+
+
+def _extrair_agua_conta(texto):
+    if not combina(texto, [["conta de agua"]]):
+        return None
+    return ler(texto, [
+        C("m3", ["m3"], "num", True),
+        C("tarifa", ["tarifa"], "din", True),
+        C("taxa", ["taxa"], "din", True),
+    ])
+
+
+def _calcular_agua_conta(params):
+    mod = carregar("estimativa-conta-agua", "agu_core")
+    r = mod.custo(params["m3"], params["tarifa"], params["taxa"])
+    return mostrar(mod, r, "Conta de água", "total_rs")
+
+
+def _extrair_oleo(texto):
+    if not combina(texto, [["troca de oleo", "oleo do carro"]]):
+        return None
+    return ler(texto, [
+        C("litros", ["litros", "litro"], "num", True),
+        C("preco_litro", ["reais"], "din", True),
+        C("filtro_oleo", ["filtro"], "din", True),
+    ])
+
+
+def _calcular_oleo(params):
+    mod = carregar("troca-oleo", "olo_core")
+    r = mod.custo_estimado(params["litros"], params["preco_litro"], params["filtro_oleo"])
+    return mostrar(mod, r, "Troca de óleo", "total")
+
+
+def _extrair_app(texto):
+    if not combina(texto, [["corrida de app"]]):
+        return None
+    return ler(texto, [
+        C("minutos", ["minutos", "minuto"], "int", True),
+        C("km", ["km"], "num", True),
+        C("tarifa_base", ["base"], "din", True),
+        C("por_km", ["por km"], "din", True),
+        C("por_min", ["por minuto"], "din", True),
+    ])
+
+
+def _calcular_app(params):
+    mod = carregar("carro-ou-app", "uba_core")
+    r = mod.custo_corrida_app(params["km"], params["minutos"], params["tarifa_base"], params["por_km"], params["por_min"], 1)
+    return mostrar(mod, r, "Corrida de app")
+
+
+def _extrair_frasco(texto):
+    if not combina(texto, [["protetor", "frasco"]]):
+        return None
+    if "protetor" not in norm(texto) and "frasco" not in norm(texto):
+        return None
+    if not combina(texto, [["protetor"]]):
+        return None
+    return ler(texto, [
+        C("ml", ["frasco"], "num", True),
+        C("dose_ml_dia", ["dose"], "num", True),
+    ])
+
+
+def _calcular_frasco(params):
+    mod = carregar("rotina-skincare", "skn_core")
+    dias = mod.duracao_frasco(params["ml"], params["dose_ml_dia"])
+    return mostrar(mod, dias, "O frasco dura", None, False)
+
+
+def _extrair_sono_bebe(texto):
+    if not combina(texto, [["bebe"], ["sono"]]):
+        return None
+    return ler(texto, [C("meses", ["meses", "mes"], "mes", True)])
+
+
+def _calcular_sono_bebe(params):
+    mod = carregar("sono-bebe", "sbb_core")
+    r = mod.recomendacao_sono(int(params["meses"]))
+    return pacote(f"Sono do bebê: {_num(r['alvo'], 1)} h", f"Entre {_num(r['horas_min'], 1)} e {_num(r['horas_max'], 1)} h.")
+
+
+def _extrair_pressao(texto):
+    if not combina(texto, [["pressao"], ["diastolica"]]):
+        return None
+    return ler(texto, [
+        C("sistolica", ["sistolica", "pressao"], "int", True),
+        C("diastolica", ["diastolica"], "int", True),
+    ])
+
+
+def _calcular_pressao(params):
+    mod = carregar("diario-pressao", "prs_core")
+    classe = mod.classificar_pa(int(params["sistolica"]), int(params["diastolica"]))
+    return pacote(f"Pressão: {classe}", f"{int(params['sistolica'])} por {int(params['diastolica'])}: {classe}.")
+
+
+def _extrair_safra(texto):
+    if not combina(texto, [["safra"]]):
+        return None
+    t = norm(texto)
+    mes = next((n for nome, n in _MESES.items() if nome in t), None)
+    if mes is None:
+        return None
+    mod = carregar("calendario-safra", "sfr_core")
+    item = next((k for k in mod.ITENS if norm(k) in t), None)
+    if item is None:
+        return None
+    return {"item": item, "mes": mes}
+
+
+def _calcular_safra(params):
+    mod = carregar("calendario-safra", "sfr_core")
+    nivel = mod.nivel(params["item"], params["mes"])
+    return pacote(f"Safra da {params['item']}: {nivel}", f"{params['item']} no mês {params['mes']}: {nivel}.")
+
+
+def _extrair_rega(texto):
+    if not combina(texto, [["vaso"], ["regar", "rega"]]):
+        return None
+    return ler(texto, [C("diametro_cm", ["cm"], "num", True)])
+
+
+def _calcular_rega(params):
+    mod = carregar("rega-plantas", "reg_core")
+    ml = mod.volume_ml(params["diametro_cm"])
+    return pacote(f"Rega: {_num(ml, 0)} ml", f"Vaso de {_num(params['diametro_cm'], 0)} cm: {_num(ml, 0)} ml.")
+
+
+def _extrair_mesada(texto):
+    if not combina(texto, [["mesada"]]):
+        return None
+    return ler(texto, [
+        C("minimo_pct", ["minimo"], "pct", True),
+        C("feitos", ["feitas"], "int", True),
+        C("total", ["total"], "int", True),
+        C("base", ["base"], "din", True),
+        C("bonus_100", ["bonus"], "din", True),
+    ])
+
+
+def _calcular_mesada(params):
+    mod = carregar("tarefas-casa", "tcs_core")
+    valor = mod.mesada(params["feitos"], params["total"], params["base"], params["bonus_100"], params["minimo_pct"])
+    return mostrar(mod, valor, "Mesada")
+
+
+def _extrair_airbnb(texto):
+    if not combina(texto, [["airbnb"]], ["hospedagem", "hotelzinho", "pet"]):
+        return None
+    return ler(texto, [
+        C("noites", ["noites", "noite"], "int", True),
+        C("pessoas", ["pessoas", "pessoa"], "int", True),
+        C("diaria", ["diaria", "reais"], "din", True),
+    ])
+
+
+def _calcular_airbnb(params):
+    mod = carregar("comparador-hospedagens", "hsp_core")
+    op = mod.Opcao("estadia", params["diaria"])
+    r = mod.total(op, int(params["noites"]), int(params["pessoas"]))
+    return mostrar(mod, r, "Estadia", "total")
+
+
+def _extrair_jet(texto):
+    if not combina(texto, [["jet lag", "jetlag"]]):
+        return None
+    nums = re.findall(r"fuso\s*(-?\d+)", norm(texto))
+    if len(nums) < 2:
+        return None
+    return {"origem": float(nums[0]), "destino": float(nums[1])}
+
+
+def _calcular_jet(params):
+    mod = carregar("adaptacao-jet-lag", "jtl_core")
+    horas = mod.diferenca(params["origem"], params["destino"])
+    return pacote(f"Fuso: {_num(horas, 0)} h", f"De {params['origem']:g} para {params['destino']:g}: {_num(horas, 1)} h.")
+
+
+def _extrair_canteiro(texto):
+    if not combina(texto, [["canteiro"], ["alface"]]):
+        return None
+    p = ler(texto, [
+        C("length_m", ["comprimento"], "num", True),
+        C("width_m", ["largura"], "num", True),
+    ])
+    if not p:
+        return None
+    p["crop"] = "Alface"
+    return p
+
+
+def _calcular_canteiro(params):
+    mod = carregar("horta-jardim", "agr_core")
+    r = mod.calculate_bed_fertilizer_and_plants(params["length_m"], params["width_m"], params["crop"])
+    return pacote(f"Mudas: {r['estimated_plants']}", f"Canteiro de alface: {r['estimated_plants']} mudas em {_num(r['area_m2'], 1)} m².")
+
+
+def _extrair_horta_cal(texto):
+    if not combina(texto, [["calendario da horta"]]):
+        return None
+    t = norm(texto)
+    mod = carregar("calendario-da-horta", "cpl_core")
+    cultura = next((k for k in mod.CULTURAS if norm(k) in t), None)
+    if cultura is None:
+        return None
+    return {"cultura": cultura}
+
+
+def _calcular_horta_cal(params):
+    mod = carregar("calendario-da-horta", "cpl_core")
+    dias = mod.intervalo_ideal(params["cultura"])
+    return pacote(f"Replante a cada {dias} dias", f"{params['cultura']}: intervalo ideal de {dias} dias.")
+
+
+def _extrair_expresso(texto):
+    if not combina(texto, [["expresso"]], ["cafeina", "v60", "coado"]):
+        return None
+    return ler(texto, [
+        C("ml", ["ml"], "num", True),
+        C("mg_por_ml", ["mg por ml", "mg/ml"], "num", True),
+    ])
+
+
+def _calcular_expresso(params):
+    mod = carregar("controle-cafeina-doses-dia", "cfd_core")
+    mg = mod.cafeina_por_volume(params["ml"], params["mg_por_ml"])
+    return pacote(f"Cafeína: {_num(mg, 0)} mg", f"{_num(params['ml'], 0)} ml × {_num(params['mg_por_ml'], 1)} mg/ml.")
+
+
+_registrar("calculadora-botijao-gas", ["glp"], _extrair_glp, _calcular_glp)
+_registrar("estimativa-conta-agua", ["conta de agua"], _extrair_agua_conta, _calcular_agua_conta)
+_registrar("troca-oleo", ["troca de oleo", "oleo do carro"], _extrair_oleo, _calcular_oleo)
+_registrar("carro-ou-app", ["corrida de app"], _extrair_app, _calcular_app)
+_registrar("rotina-skincare", ["protetor"], _extrair_frasco, _calcular_frasco)
+_registrar("sono-bebe", ["bebe", "sono"], _extrair_sono_bebe, _calcular_sono_bebe)
+_registrar("diario-pressao", ["pressao"], _extrair_pressao, _calcular_pressao)
+_registrar("calendario-safra", ["safra"], _extrair_safra, _calcular_safra)
+_registrar("rega-plantas", ["vaso", "regar"], _extrair_rega, _calcular_rega)
+_registrar("tarefas-casa", ["mesada"], _extrair_mesada, _calcular_mesada)
+_registrar("comparador-hospedagens", ["airbnb"], _extrair_airbnb, _calcular_airbnb)
+_registrar("adaptacao-jet-lag", ["jet lag"], _extrair_jet, _calcular_jet)
+_registrar("horta-jardim", ["canteiro", "alface"], _extrair_canteiro, _calcular_canteiro)
+_registrar("calendario-da-horta", ["calendario da horta"], _extrair_horta_cal, _calcular_horta_cal)
+_registrar("controle-cafeina-doses-dia", ["expresso"], _extrair_expresso, _calcular_expresso)

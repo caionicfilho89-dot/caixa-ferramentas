@@ -629,6 +629,81 @@ _TODOS = (
         'folego financeiro guardado 20000 gasto 4000',
         'transicao de carreira tenho R$ 20 mil despesa R$ 4 mil',
     )),
+    ('lista-feira-orcamento', 'Total da feira: R$ 17,00', (
+        'lista da feira orcamento 100 quantidade 2 preco 8,50',
+        'feira orcamento 100 qtd 2 preco 8,50',
+        'lista da feira teto de 100 reais quantidade 2 preco 8,50',
+    )),
+    ('rateio-condominio', 'Total em atraso: R$ 460,50', (
+        'condominio 450 atrasado 10 dias',
+        'condominio de 450 atrasado 10 dias',
+        'condominio de 450 reais atrasado ha 10 dias',
+    )),
+    ('conta-luz-republica', 'Cada um: R$ 106,67', (
+        'conta de luz da republica 320 reais para 3 moradores',
+        'luz na republica 320 reais entre 3 pessoas',
+        'conta de luz da republica de 320 reais com 3 moradores',
+    )),
+    ('orcamento-mudanca', 'Total da mudança: R$ 1.020,00', (
+        'mudanca volume 12 capacidade 20 frete 600 30 caixas por caixa 4 2 ajudantes diaria 150',
+        'mudanca volume 12 capacidade 20 frete 600 caixas 30 por caixa 4 ajudantes 2 diaria 150',
+        'orcamento de mudanca volume 12 capacidade 20 frete 600 30 caixas por caixa 4 2 ajudantes diaria 150',
+    )),
+    ('comparador-mercado', 'Economia no mês: R$ 10,80', (
+        'no mercado o caro sai 12,50 e o barato 9,80 consumo 4',
+        'caro 12,50 barato 9,80 consumo 4',
+        'o caro sai R$ 12,50 o barato R$ 9,80 consumo 4',
+    )),
+    ('frete-vendas', 'Preço mínimo: R$ 105,88', (
+        'preco minimo produto 50 embalagem 4 frete 18 taxa 12% margem 20%',
+        'preco minimo produto 50 reais embalagem 4 reais frete 18 reais taxa 12% margem 20%',
+        'preco minimo produto R$ 50 embalagem R$ 4 frete R$ 18 taxa 12% margem 20%',
+    )),
+    ('planejador-compras-atacado', 'Custo no atacado: R$ 64,00', (
+        'compras no atacado consumo 2 estoque 4 semanas preco 8 orcamento 100 validade 90 dias',
+        'atacado consumo 2 estoque 4 preco 8 orcamento 100 validade 90 dias',
+        'lista de compras no atacado consumo 2 estoque 4 semanas preco 8 orcamento 100 validade 90 dias',
+    )),
+    ('orcamento-reforma', 'Total da reforma: R$ 750,00', (
+        'orcamento de reforma material 200 mao de obra 150 quantidade 3',
+        'reforma material 200 mao de obra 150 quantidade 3',
+        'reforma material de 200 mao de obra de 150 quantidade 3',
+    )),
+    ('orcamento-natal', 'Ceia de natal: R$ 540,00', (
+        'ceia de natal para 12 convidados a 45 reais',
+        'ceia de natal 12 convidados 45 reais',
+        'ceia de natal para 12 convidados a 45 reais de extra 0',
+    )),
+    ('orcamento-lua-de-mel', 'Total da lua de mel: R$ 4.800,00', (
+        'lua de mel passagem 2000 hotel 400 por 7 noites',
+        'lua de mel passagem 2000 reais hotel 400 7 noites',
+        'lua de mel passagem R$ 2 mil diaria 400 7 noites',
+    )),
+    ('orcamento-reforma-cozinha', 'Total da cozinha: R$ 12.320,00', (
+        'reforma da cozinha moveis 4000 eletros 2500 bancada 1800 revestimento 900 mao de obra 2000',
+        'cozinha moveis 4000 eletros 2500 bancada 1800 revestimento 900 mao de obra 2000',
+        'cozinha moveis 4 mil eletros 2500 bancada 1800 revestimento 900 mao de obra 2 mil',
+    )),
+    ('orcamento-presentes-casamento', 'Presentes do casamento: R$ 8.400,00', (
+        'lista de casamento 80 convidados presente medio 150 reais',
+        'casamento 80 convidados presente de 150 reais',
+        'lista de casamento 80 convidados presente medio de R$ 150',
+    )),
+    ('custo-fralda-geriatrica', 'Fralda no mês: R$ 405,00', (
+        'fralda geriatrica 6 trocas pacote de 45 reais com 20 unidades',
+        'geriatrica 6 trocas pacote de 45 reais 20 unidades',
+        'custo da fralda geriatrica 6 trocas pacote de 45 reais 20 unidades',
+    )),
+    ('planejador-casamento', 'Custo por pessoa: R$ 200,00', (
+        'custo do casamento 20000 reais por pessoa com 100 pessoas',
+        'casamento de 20000 reais por pessoa com 100 pessoas',
+        'casamento de R$ 20 mil por pessoa com 100 pessoas',
+    )),
+    ('orcamento-manutencao-predial', 'Por unidade no mês: R$ 70,00', (
+        'manutencao predial elevador 400 limpeza 300 para 10 unidades',
+        'manutencao do predio elevador 400 limpeza 300 10 unidades',
+        'manutencao predial elevador 400 reais limpeza 300 reais para 10 unidades',
+    )),
 )
 
 class TresJeitos(unittest.TestCase):

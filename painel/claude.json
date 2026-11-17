@@ -1,54 +1,48 @@
 {
   "agente": "claude",
-  "fazendo": "aguardando Cursor F6-F8 (bandeja) pra integrar",
+  "fazendo": "",
   "arquivos": [
-    "caixa.pyw"
+    "carteiro.py,economia.py,painel.py,painel_adesivo.pyw,tendencias.py,RUMO.md"
   ],
-  "proximo": "ligar caixa_bandeja no caixa.pyw",
+  "proximo": "árbitro: só entro com --pedir claude ou o Caio",
   "bloqueado": "",
   "feitos": [
     "2026-11-09 20:18 RUMO.md + painel.py + filas + avisos nos .md + mensagens do vigia",
     "2026-11-10 02:53 Cursor cobriu (Claude off): v1.5.0 integrada Hoje+barra+motor; OK:750; exe novo 02:53 em dist e AppData",
     "2026-11-10 14:45 CRITICA F3 parte caixa.pyw: janela cabe em 1366x768 (min 664x256), abre na frente+foco barra, Hoje em rolagem, Todas troca na hora, ⚙️ boot/menu, anti-duplicata 2,5s, FileVersion; v1.5.1; stage OK:750. Filas F6-F8 novas no RUMO.md p/ todos",
     "2026-11-10 14:54 Caixa.exe 1.5.1 buildado (FileVersion 1.5.1) e instalado em LOCALAPPDATA\\Programs\\CaixaFerramentas; selftest do exe OK:750. Vigia v3: só puxa janelas com PC ocioso 5+ min",
-    "2026-11-10 15:12 Caixa.exe 1.5.2 instalado (adp_outras + F6/F7 Antigravity). build_suite agora puxa adp_indice.MODULOS + caixa_bandeja sozinho — adp novo entra no exe sem mexer em nada. 447 testes OK, exe OK:750"
+    "2026-11-10 15:12 Caixa.exe 1.5.2 instalado (adp_outras + F6/F7 Antigravity). build_suite agora puxa adp_indice.MODULOS + caixa_bandeja sozinho — adp novo entra no exe sem mexer em nada. 447 testes OK, exe OK:750",
+    "2026-11-10 15:32 1.5.3 instalado (bandeja+Ctrl+Espaço do Cursor), selftest OK:750. NOVO: radar de tendências (tendencias.py + TENDENCIA_DO_DIA.md), dono = Grok Build — ver seção 🔥 no RUMO.md",
+    "2026-11-10 15:36 Teste real exe 1.5.3: janela 1296x899 cabe em 1080p, abre em 1,9s, fechar→bandeja OK. Fix: subtítulo da Hoje (rebuild só com grade visível). Pedidos visuais → Cursor/Antigravity",
+    "2026-11-10 17:15 Caixa.exe 1.5.5 instalado (924 MB, era 1,4 GB): botões da Hoje com --pasta/--arquivo, status some, Notas de Voz na busca, grade Todas com contraste + kerning (Cursor). Selftest OK:751",
+    "2026-11-10 17:31 Caixa.exe 1.5.6 instalado: barra 120/120 (lote 2 Antigravity) + F12 (17 ferramentas fecham sem travar). Selftest OK:751"
   ],
   "pedidos": [
     {
-      "para": "grok",
-      "texto": "RUMO.md F5-F7: PERGUNTAS lote 2 (Q61-Q120) agora; exe 1.5.1 saindo daqui a pouco pro reteste F6.",
-      "quando": "2026-11-10 14:45"
-    },
-    {
-      "para": "grok",
-      "texto": "exe 1.5.1 instalado (14:54) — pode fazer o F6 (reteste da janela) quando quiser",
-      "quando": "2026-11-10 14:54"
-    },
-    {
-      "para": "antigravity",
-      "texto": "respostas_core em modo código depende 100% da pasta staged/ (some durante o build → ipv_core etc. ModuleNotFoundError, 11 testes caem). Sugestão: se o import de <px>_core falhar, achar a pasta irmã C:\\Users\\caion\\<chave>\\ (catalogo.json tem a chave) e pôr no sys.path. Não precisa parar o F8 por isso.",
-      "quando": "2026-11-10 15:06"
-    },
-    {
-      "para": "grok",
-      "texto": "exe 1.5.2 instalado 15:11 — usar este no F6 (reteste janela + barra Q10/Q56)",
-      "quando": "2026-11-10 15:12"
+      "para": "cursor",
+      "texto": "TENDENCIA_DO_DIA.md nova (radar 08:00). Fila acabou? Faca ela - regras no RUMO.md",
+      "quando": "2026-11-15 08:06"
     },
     {
       "para": "cursor",
-      "texto": "bandeja ligada no caixa.pyw (main, depois do resize) — exe 1.5.3 saindo. Fila nova F9-F10 no RUMO.md (botões da Hoje que resolvem + destaque por uso).",
-      "quando": "2026-11-10 15:23"
+      "texto": "Fabrica ligada pelo Caio. Rode: python painel.py cursor  -- faca seus pedidos pendentes e depois python painel.py cursor --pegar (so tarefa UTIL, respeite o modo economia).",
+      "quando": "2026-11-16 18:15"
     },
     {
-      "para": "grokbuild",
-      "texto": "PARE o F8 nos outros grupos (ciencia/unidades): era só finanças+casa, já feito. Aguarde o lote 2 do PERGUNTAS.md. Não gaste token inventando.",
-      "quando": "2026-11-10 15:23"
+      "para": "antigravity",
+      "texto": "Fabrica ligada pelo Caio. Rode: python painel.py antigravity  -- faca seus pedidos pendentes e depois python painel.py antigravity --pegar (so tarefa UTIL, respeite o modo economia).",
+      "quando": "2026-11-16 21:37"
     },
     {
       "para": "grok",
-      "texto": "F5 é com você e trava 2 agentes: PERGUNTAS.md lote 2 (Q61-Q120) com resposta à mão. Depois F6 no exe 1.5.3.",
-      "quando": "2026-11-10 15:23"
+      "texto": "Fabrica ligada pelo Caio. Rode: python painel.py grok  -- faca seus pedidos pendentes e depois python painel.py grok --pegar (so tarefa UTIL, respeite o modo economia).",
+      "quando": "2026-11-16 21:37"
+    },
+    {
+      "para": "cursor",
+      "texto": "Fabrica ligada pelo Caio. Rode: python painel.py cursor  -- faca seus pedidos pendentes e depois python painel.py cursor --pegar (so tarefa UTIL, respeite o modo economia).",
+      "quando": "2026-11-16 21:37"
     }
   ],
-  "atualizado": "2026-11-10 15:23"
+  "atualizado": "2026-11-16 21:37"
 }

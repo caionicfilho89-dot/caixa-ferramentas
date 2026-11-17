@@ -111,6 +111,59 @@ class TestResponsivo(unittest.TestCase):
         self.assertEqual(tema.colunas_para_largura(2560), 4)
         self.assertEqual(tema.colunas_para_largura(3840), 4)
 
+    def test_grade_4k_300_dpi(self):
+        """4K físico @ 300% → ~1280 lógica → 2 colunas, tipografia sem inflar."""
+        self.assertEqual(tema.largura_logica(3840, 3.0), 1280)
+        self.assertEqual(tema.colunas_para_largura(3840, dpr=3.0), 2)
+        self.assertEqual(tema.colunas_para_largura(1366, dpr=1.0), 2)
+        self.assertEqual(tema.escala_tipografia(3840, dpr=3.0), 1.0)
+        self.assertEqual(tema.margens_para_largura(3840, dpr=3.0)[0], 16)
+
+    def test_t20_layout_dpr_1_para_3(self):
+        """Simula notebook 1366@100% → 4K@300%: colunas e tipografia mudam certo."""
+        lay100 = tema.layout_grade(1366, dpr=1.0)
+        self.assertEqual(lay100["colunas"], 2)
+        self.assertEqual(lay100["card_w"], 272)
+        self.assertAlmostEqual(lay100["escala"], 1.0, places=2)
+
+        lay300 = tema.layout_grade(3840, dpr=3.0)
+        self.assertEqual(lay300["colunas"], 2)
+        self.assertEqual(lay300["largura_logica"], 1280)
+        self.assertEqual(lay300["escala"], 1.0)
+        self.assertEqual(lay300["card_w"], 260)
+
+        # 4K nativo @100% continua com 4 colunas
+        lay4k = tema.layout_grade(3840, dpr=1.0)
+        self.assertEqual(lay4k["colunas"], 4)
+        self.assertGreaterEqual(lay4k["escala"], 1.2)
+
+    def test_t20_observador_dpi_emite(self):
+        from PyQt6.QtWidgets import QWidget
+        host = QWidget()
+        host.resize(1366, 768)
+        hits = []
+        obs = tema.ObservadorDpi(host)
+        obs.dpi_mudou.connect(lambda dpr, lay: hits.append((dpr, lay["colunas"])))
+        lay = obs.forcar()
+        self.assertTrue(hits)
+        self.assertEqual(lay["colunas"], hits[-1][1])
+        host.deleteLater()
+
+    def test_contraste_grade_todas(self):
+        self.assertTrue(tema.contraste_grade_todas_ok())
+        qss = tema.qss_app()
+        self.assertIn("#243044", qss)
+        self.assertIn("#f2f4fa", qss)
+
+    def test_t28_side_selected_com_accent(self):
+        """Lateral de categorias: selected com #7c5cff legível (100%/300%)."""
+        qss = tema.qss_app()
+        self.assertIn("#side::item:selected", qss)
+        trecho = qss.split("#side::item:selected")[1][:280]
+        self.assertIn(tema.ACCENT, trecho)
+        self.assertIn("#f2f4fa", trecho)
+        self.assertIn("rgba(124, 92, 255", trecho)
+
     def test_margens_e_escala(self):
         self.assertEqual(tema.margens_para_largura(1366)[0], 16)
         self.assertEqual(tema.margens_para_largura(3000)[0], 48)

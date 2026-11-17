@@ -514,5 +514,80 @@ class TresJeitos(unittest.TestCase):
 
 
 
+# T02: 2 frases cada. Números iguais; a segunda só muda a ordem das palavras.
+_LOTE_CASA = (
+    ('calculadora-botijao-gas', 'Dura 21,7 dias', (
+        'glp 13 kg por 110 reais 2 bocas 1,5 horas',
+        'glp de 13 kg a 110 reais com 2 bocas por 1,5 horas',
+    )),
+    ('estimativa-conta-agua', 'Conta de água: R$ 117,00', (
+        'conta de agua 12 m3 tarifa 8,50 taxa 15',
+        'conta de agua de 12 m3 com tarifa 8,50 e taxa 15',
+    )),
+    ('troca-oleo', 'Troca de óleo: R$ 180,00', (
+        'troca de oleo 4 litros a 35 reais filtro 40',
+        'oleo do carro 4 litros 35 reais e filtro 40',
+    )),
+    ('carro-ou-app', 'Corrida de app: R$ 47,50', (
+        'corrida de app 12 km em 25 minutos base 5 por km 2,50 por minuto 0,50',
+        'corrida de app com 12 km em 25 minutos base 5 por km 2,50 por minuto 0,50',
+    )),
+    ('rotina-skincare', 'O frasco dura: 100,00', (
+        'frasco de protetor com 50 ml e dose de 0,5 ml',
+        'protetor frasco 50 ml dose 0,5 ml',
+    )),
+    ('sono-bebe', 'Sono do bebê: 13,5 h', (
+        'bebe de 6 meses quanto sono',
+        'sono do bebe de 6 meses',
+    )),
+    ('diario-pressao', 'Pressão: Pré-hipertensão', (
+        'pressao sistolica 120 diastolica 80',
+        'pressao 120 e diastolica 80',
+    )),
+    ('calendario-safra', 'Safra da manga: forte', (
+        'safra da manga em novembro',
+        'em novembro a safra da manga',
+    )),
+    ('rega-plantas', 'Rega: 1.570 ml', (
+        'regar vaso de 20 cm',
+        'vaso de 20 cm para regar',
+    )),
+    ('tarefas-casa', 'Mesada: R$ 16,00', (
+        'mesada 8 feitas de um total de 10 base 20 bonus 10 minimo 70%',
+        'mesada com 8 feitas total 10 base 20 bonus 10 minimo 70%',
+    )),
+    ('comparador-hospedagens', 'Estadia: R$ 800,00', (
+        'airbnb diaria de 200 reais por 4 noites para 2 pessoas',
+        'airbnb 4 noites 2 pessoas diaria 200 reais',
+    )),
+    ('adaptacao-jet-lag', 'Fuso: 5 h', (
+        'jet lag do fuso 3 para o fuso 8',
+        'jetlag fuso 3 e fuso 8',
+    )),
+    ('horta-jardim', 'Mudas: 27', (
+        'canteiro de alface comprimento 2 largura 1',
+        'alface no canteiro comprimento 2 e largura 1',
+    )),
+    ('calendario-da-horta', 'Replante a cada 15 dias', (
+        'calendario da horta alface',
+        'alface no calendario da horta',
+    )),
+    ('controle-cafeina-doses-dia', 'Cafeína: 80 mg', (
+        'expresso 200 ml a 0,4 mg por ml',
+        'expresso de 200 ml com 0,4 mg por ml',
+    )),
+)
+
+
+class LoteCasa(unittest.TestCase):
+    def test_quinze_chaves_duas_frases(self):
+        self.assertEqual(len(_LOTE_CASA), 15)
+        for chave, esperado, frases in _LOTE_CASA:
+            self.assertEqual(len(frases), 2, chave)
+            for frase in frases:
+                _, saida = _um(frase, chave)
+                self.assertEqual(saida["resposta"], esperado, frase)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

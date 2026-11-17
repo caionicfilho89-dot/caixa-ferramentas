@@ -357,7 +357,13 @@ def detalhe_de(mod, resultado):
         for k, v in resultado.items():
             if isinstance(v, (dict, list)):
                 continue
-            linhas.append(f"{k}: {v}")
+            if isinstance(v, float):
+                v_str = _num(round(v, 2), casas=2)
+            elif isinstance(v, int):
+                v_str = f"{v:,}".replace(",", ".")
+            else:
+                v_str = str(v)
+            linhas.append(f"{k}: {v_str}")
         return "\n".join(linhas)
     return str(resultado)
 
@@ -2020,4 +2026,255 @@ ligar(
         C("reserva_total", ["reserva", "tenho", "guardado"], "din", True, solto=True),
     ],
     "Meses de fôlego", "meses_runway_operacional", False,
+)
+
+
+# T01: 15 chaves de finanças que a cobertura ainda não ligava. Cada uma chama o _core real.
+
+def _extrair_feira(texto):
+    if not combina(texto, [["feira"]], ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"]):
+        return None
+    return ler(texto, [
+        C("orcamento", ["orcamento", "teto"], "din", True),
+        C("qtd", ["quantidade", "qtd"], "din", True),
+        C("preco", ["preco"], "din", True),
+    ])
+
+
+def _calcular_feira(params):
+    mod = carregar("lista-feira-orcamento", "lfe_core")
+    r = mod.totalizar(
+        [{"nome": "item", "qtd": params["qtd"], "preco": params["preco"]}],
+        params["orcamento"],
+    )
+    return mostrar(mod, r, "Total da feira", "total")
+
+
+def _extrair_multa_condominio(texto):
+    if not combina(texto, [["condominio"], ["atras"]], []):
+        return None
+    return ler(texto, [
+        C("dias_atraso", ["dias", "dia"], "int", True),
+        C("multa_pct", ["multa"], "pct", False, 2.0),
+        C("juros_am_pct", ["juros"], "pct", False, 1.0),
+        C("valor", ["condominio"], "din", True, solto=True),
+    ])
+
+
+def _calcular_multa_condominio(params):
+    mod = carregar("rateio-condominio", "cnd_core")
+    multa, juros, total = mod.multa_juros(
+        params["valor"], params["dias_atraso"], params["multa_pct"], params["juros_am_pct"],
+    )
+    return pacote(
+        f"Total em atraso: {_brl(total)}",
+        f"Multa {_brl(multa)}. Juros {_brl(juros)}. Total {_brl(total)}.",
+    )
+
+
+def _extrair_luz_republica(texto):
+    if not combina(texto, [["luz"], ["republica"]], []):
+        return None
+    return ler(texto, [
+        C("pessoas", ["moradores", "pessoas"], "int", True),
+        C("total_conta", ["reais"], "din", True),
+    ])
+
+
+def _calcular_luz_republica(params):
+    mod = carregar("conta-luz-republica", "rlz_core")
+    n = int(params["pessoas"])
+    moradores = [{"nome": str(i + 1), "aparelhos": []} for i in range(n)]
+    r = mod.rateio(moradores, params["total_conta"], 0.0)
+    cada = r["moradores"][0]["pagar"]
+    return pacote(f"Cada um: {_brl(cada)}", f"Conta {_brl(r['total_conta'])} entre {n}. Cada um {_brl(cada)}.")
+
+
+def _extrair_mudanca(texto):
+    if not combina(texto, [["mudanca"]], []):
+        return None
+    return ler(texto, [
+        C("volume_m3", ["volume"], "din", True),
+        C("capacidade_caminhao_m3", ["capacidade"], "din", True),
+        C("preco_caminhao", ["frete"], "din", True),
+        C("caixas", ["caixas"], "int", True),
+        C("preco_caixa", ["por caixa"], "din", True),
+        C("ajudantes", ["ajudantes"], "int", True),
+        C("preco_ajudante", ["diaria"], "din", True),
+    ])
+
+
+def _calcular_mudanca(params):
+    mod = carregar("orcamento-mudanca", "mdv_core")
+    r = mod.orcar(
+        params["volume_m3"], params["capacidade_caminhao_m3"], params["preco_caminhao"],
+        int(params["caixas"]), params["preco_caixa"], int(params["ajudantes"]), params["preco_ajudante"],
+    )
+    return mostrar(mod, r, "Total da mudança", "total")
+
+
+def _extrair_mercado(texto):
+    if not combina(texto, [["caro"], ["barato"]], []):
+        return None
+    return ler(texto, [
+        C("ppu_caro", ["caro"], "din", True),
+        C("ppu_barato", ["barato"], "din", True),
+        C("consumo_mes", ["consumo"], "din", True),
+    ])
+
+
+def _calcular_mercado(params):
+    mod = carregar("comparador-mercado", "mkt_core")
+    r = mod.economia_mensal(params["ppu_caro"], params["ppu_barato"], params["consumo_mes"])
+    return mostrar(mod, r, "Economia no mês")
+
+
+_registrar("lista-feira-orcamento", ["feira"], [["feira"]], ["segunda", "terca", "quarta", "quinta", "sexta", "sabado", "domingo"], _extrair_feira, _calcular_feira)
+_registrar("rateio-condominio", ["condominio", "atraso"], [["condominio"], ["atras"]], [], _extrair_multa_condominio, _calcular_multa_condominio)
+_registrar("conta-luz-republica", ["luz", "republica"], [["luz"], ["republica"]], [], _extrair_luz_republica, _calcular_luz_republica)
+_registrar("orcamento-mudanca", ["mudanca"], [["mudanca"]], [], _extrair_mudanca, _calcular_mudanca)
+_registrar("comparador-mercado", ["caro", "barato"], [["caro"], ["barato"]], [], _extrair_mercado, _calcular_mercado)
+
+ligar(
+    "frete-vendas",
+    ["preco minimo", "vender"],
+    [["preco minimo"]],
+    [],
+    "frete-vendas", "frv_core", "preco_minimo",
+    [
+        C("taxa_pct", ["taxa"], "pct", True),
+        C("margem_pct", ["margem"], "pct", True),
+        C("custo_produto", ["produto"], "din", True),
+        C("custo_emb", ["embalagem"], "din", True),
+        C("frete_pago_vendedor", ["frete"], "din", True),
+    ],
+    "Preço mínimo", "preco_minimo",
+)
+
+ligar(
+    "planejador-compras-atacado",
+    ["atacado", "estoque"],
+    [["atacado"], ["estoque"], ["validade"]],
+    ["varejo"],
+    "planejador-compras-atacado", "pat_core", "planejar",
+    [
+        C("semanas_estoque", ["estoque"], "int", True),
+        C("validade_dias", ["validade"], "int", True),
+        C("consumo_semanal", ["consumo"], "din", True),
+        C("preco_unidade", ["preco"], "din", True),
+        C("orcamento", ["orcamento"], "din", True),
+    ],
+    "Custo no atacado", "custo",
+)
+
+ligar(
+    "orcamento-reforma",
+    ["reforma", "material"],
+    [["reforma"], ["material"], ["mao de obra"]],
+    ["cozinha"],
+    "orcamento-reforma", "rfm_core", "custo_item",
+    [
+        C("quantidade", ["quantidade"], "din", True),
+        C("material", ["material"], "din", True),
+        C("mao_obra", ["mao de obra"], "din", True),
+    ],
+    "Total da reforma", "total",
+)
+
+ligar(
+    "orcamento-natal",
+    ["natal", "ceia"],
+    [["natal"], ["ceia"]],
+    [],
+    "orcamento-natal", "ntl_core", "ceia",
+    [
+        C("convidados", ["convidados"], "int", True),
+        C("custo_por_pessoa", ["reais"], "din", True),
+        C("extras", ["extra"], "din", False, 0.0),
+    ],
+    "Ceia de natal",
+)
+
+ligar(
+    "orcamento-lua-de-mel",
+    ["lua de mel"],
+    [["lua de mel"]],
+    [],
+    "orcamento-lua-de-mel", "ldm_core", "orcar",
+    [
+        C("noites", ["noites", "noite"], "int", True),
+        C("passagem", ["passagem"], "din", True),
+        C("hotel_diaria", ["diaria", "hotel"], "din", True),
+    ],
+    "Total da lua de mel", "total",
+)
+
+ligar(
+    "orcamento-reforma-cozinha",
+    ["cozinha"],
+    [["cozinha"], ["moveis"], ["eletros"]],
+    [],
+    "orcamento-reforma-cozinha", "rcz_core", "calcular",
+    [
+        C("moveis", ["moveis"], "din", True),
+        C("eletros", ["eletros"], "din", True),
+        C("bancada", ["bancada"], "din", True),
+        C("revestimento", ["revestimento"], "din", True),
+        C("mao_obra", ["mao de obra"], "din", True),
+    ],
+    "Total da cozinha", "total",
+)
+
+ligar(
+    "orcamento-presentes-casamento",
+    ["presente", "casamento"],
+    [["presente"], ["casamento"]],
+    [],
+    "orcamento-presentes-casamento", "csg_core", "calcular",
+    [
+        C("convidados", ["convidados"], "int", True),
+        C("valor_medio_presente", ["presente"], "din", True),
+    ],
+    "Presentes do casamento", "total_convidados",
+)
+
+ligar(
+    "custo-fralda-geriatrica",
+    ["fralda", "geriatrica"],
+    [["geriatrica"]],
+    [],
+    "custo-fralda-geriatrica", "frg_core", "calcular",
+    [
+        C("un_pacote", ["unidades"], "int", True),
+        C("trocas_dia", ["trocas"], "int", True),
+        C("preco_pacote", ["reais"], "din", True),
+    ],
+    "Fralda no mês", "mensal",
+)
+
+ligar(
+    "planejador-casamento",
+    ["casamento", "por pessoa"],
+    [["casamento"], ["por pessoa"]],
+    ["presente"],
+    "planejador-casamento", "cas_core", "custo_por_pessoa",
+    [
+        C("pessoas", ["pessoas"], "int", True),
+        C("total", ["reais"], "din", True, solto=True),
+    ],
+    "Custo por pessoa",
+)
+
+ligar(
+    "orcamento-manutencao-predial",
+    ["manutencao", "predial"],
+    [["manutencao"], ["elevador"]],
+    [],
+    "orcamento-manutencao-predial", "mpd_core", "calcular",
+    [
+        C("unidades", ["unidades"], "int", False, 1),
+        C("elevador_mensal", ["elevador"], "din", True),
+        C("limpeza_mensal", ["limpeza"], "din", False, 0.0),
+    ],
+    "Por unidade no mês", "por_unidade_mes",
 )

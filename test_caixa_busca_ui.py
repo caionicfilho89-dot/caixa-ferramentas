@@ -48,10 +48,21 @@ def _stub_responder(texto: str) -> list[dict]:
         }]
     if "xyzzy" in t:
         return []
-    # busca de reserva: 5 parecidas
+    if "fraco t16" in t:
+        # simula exe sem Tocando Agora: só hits fracos tipo "agora" na descrição
+        return [
+            {"titulo": "Agenda de Medicacao por Horarios", "resposta": "",
+             "detalhe": "a partir de agora", "chave_ferramenta": "controle-medicacao-horarios",
+             "confianca": 0.33},
+            {"titulo": "Matriz Eisenhower", "resposta": "", "detalhe": "sugestão",
+             "chave_ferramenta": "organizador-tarefas-eisenhower", "confianca": 0.33},
+            {"titulo": "Sessão Flash", "resposta": "", "detalhe": "sugestão",
+             "chave_ferramenta": "planejador-revisao-flash-rapida", "confianca": 0.33},
+        ]
+    # busca de reserva: 5 parecidas (acima do piso da UI)
     return [
         {"titulo": f"Ferramenta {i}", "resposta": "", "detalhe": "sugestão",
-         "chave_ferramenta": f"tool-{i}", "confianca": 0.3}
+         "chave_ferramenta": f"tool-{i}", "confianca": 0.55}
         for i in range(1, 6)
     ]
 
@@ -79,6 +90,26 @@ class TestBarraBusca(unittest.TestCase):
         self.assertEqual(res[0]["resposta"], "70")
         barra.deleteLater()
 
+    def test_t27_buscando_mostra_frase_e_limpa_cartas(self):
+        """CRITICA proposta 10: skeleton com a consulta atual; sem cartas velhas."""
+        barra = busca.BarraBusca(responder=_stub_responder, debounce_ms=5000)
+        barra.set_texto("troco")
+        barra.consultar_agora()
+        self.assertEqual(len(barra.resultados()), 1)
+        # digita de novo: limpa cartas e mostra a frase em voo
+        barra.set_texto("20% de 350")
+        self.assertEqual(barra.resultados(), [])
+        self.assertFalse(barra.lbl_vazio.isHidden())
+        msg = barra.lbl_vazio.text()
+        self.assertIn("Buscando", msg)
+        self.assertIn("20%", msg)
+        self.assertLessEqual(barra.lista_frame.maximumHeight(), 80)
+        # consulta muda no meio do debounce → texto acompanha
+        barra.set_texto("ipva de um carro bem caro em SP")
+        self.assertIn("ipva", barra.lbl_vazio.text().lower())
+        self.assertIn("…", barra.lbl_vazio.text())  # truncado
+        barra.deleteLater()
+
     def test_consultar_agora_sem_debounce(self):
         barra = busca.BarraBusca(responder=_stub_responder, debounce_ms=5000)
         barra.set_texto("troco de 100 pra 73,50")
@@ -100,6 +131,71 @@ class TestBarraBusca(unittest.TestCase):
         self.assertEqual(len(barra.resultados()), 5)
         barra.deleteLater()
 
+    def test_t16_busca_fraca_vira_nada_encontrado(self):
+        """CRITICA T16: 'tocando agora' sem ferramenta boa não oferece Agenda errada."""
+        barra = busca.BarraBusca(responder=_stub_responder, debounce_ms=0)
+        out = barra.consultar_texto("fraco t16 tocando agora")
+        self.assertEqual(out, [])
+        self.assertEqual(barra.resultados(), [])
+        self.assertIn("Nada encontrado", barra.lbl_vazio.text())
+        # Enter com lista vazia não abre nada
+        abertos = []
+        barra.abrir_ferramenta.connect(lambda k: abertos.append(k))
+        _tecla(barra.campo, Qt.Key.Key_Return)
+        self.assertEqual(abertos, [])
+        barra.deleteLater()
+
+    def test_t16_filtra_irmaos_fracos_do_topo(self):
+        def resp(_t):
+            return [
+                {"titulo": "Tocando Agora", "resposta": "", "detalhe": "",
+                 "chave_ferramenta": "tocando-agora", "confianca": 0.65},
+                {"titulo": "Agenda", "resposta": "", "detalhe": "",
+                 "chave_ferramenta": "controle-medicacao-horarios", "confianca": 0.33},
+            ]
+
+        barra = busca.BarraBusca(responder=resp, debounce_ms=0)
+        out = barra.consultar_texto("tocando agora")
+        self.assertEqual(len(out), 1)
+        self.assertEqual(out[0]["chave_ferramenta"], "tocando-agora")
+        barra.deleteLater()
+
+    def test_filtrar_fracos_unit(self):
+        self.assertEqual(busca._filtrar_fracos([]), [])
+        self.assertEqual(
+            busca._filtrar_fracos([{"titulo": "x", "confianca": 0.33}]),
+            [],
+        )
+        ok = [{"titulo": "y", "confianca": 0.55, "chave_ferramenta": "a"}]
+        self.assertEqual(busca._filtrar_fracos(ok), ok)
+
+    def test_t17_titulo_amigavel_insalubridade(self):
+        """CRITICA T17: carta não pode mostrar a chave no lugar do nome."""
+        chave = "calculadora-adicional-insalubridade"
+        amig = busca.titulo_amigavel({
+            "titulo": chave,
+            "chave_ferramenta": chave,
+            "resposta": "Insalubridade no mês: R$ 151,80",
+            "confianca": 0.9,
+        })
+        self.assertNotEqual(amig, chave)
+        self.assertIn("Insalubridade", amig)
+        # card na lista
+        barra = busca.BarraBusca(
+            responder=lambda _t: [{
+                "titulo": chave,
+                "resposta": "Insalubridade no mês: R$ 151,80",
+                "detalhe": "",
+                "chave_ferramenta": chave,
+                "confianca": 0.9,
+            }],
+            debounce_ms=0,
+        )
+        barra.consultar_texto("insalubridade")
+        self.assertIn("Insalubridade", barra._widgets[0].lbl_titulo.text())
+        self.assertNotEqual(barra._widgets[0].lbl_titulo.text(), chave)
+        barra.deleteLater()
+
     def test_setas_e_enter(self):
         barra = busca.BarraBusca(responder=_stub_responder, debounce_ms=0)
         abertos = []
@@ -113,14 +209,19 @@ class TestBarraBusca(unittest.TestCase):
         barra.deleteLater()
 
     def test_enter_sem_seta_nao_abre(self):
-        """CRITICA F3: Enter com resposta já na lista NÃO abre ferramenta sozinho."""
+        """CRITICA F3: Enter com resposta já na lista NÃO abre ferramenta sozinho e copia resultado."""
         barra = busca.BarraBusca(responder=_stub_responder, debounce_ms=0)
         abertos = []
         barra.abrir_ferramenta.connect(lambda k: abertos.append(k))
         barra.set_texto("20% de 350")
         self.assertEqual(len(barra.resultados()), 1)
+        cb = QApplication.clipboard()
+        if cb:
+            cb.clear()
         _tecla(barra.campo, Qt.Key.Key_Return)
         self.assertEqual(abertos, [])
+        if cb:
+            self.assertEqual(cb.text(), "70")
         # seta = seleção de propósito → aí Enter abre
         _tecla(barra.campo, Qt.Key.Key_Down)
         _tecla(barra.campo, Qt.Key.Key_Return)
@@ -148,11 +249,30 @@ class TestBarraBusca(unittest.TestCase):
         self.assertFalse(item.lbl_detalhe.isHidden())
         self.assertIn("1.030,30", item.lbl_detalhe.text())
         fam = item.lbl_resposta.font().family().lower()
+        families = " ".join(
+            f.lower() for f in (item.lbl_resposta.font().families() or [fam])
+        )
         self.assertTrue(
-            "consolas" in fam or "cascadia" in fam or "courier" in fam,
-            f"fonte do valor deveria ser mono, veio {fam!r}",
+            any(x in families or x in fam for x in ("consolas", "cascadia", "courier")),
+            f"fonte do valor deveria ser mono, veio {fam!r} / {families!r}",
+        )
+        # sem espaços fantasma ao redor de . e ,
+        self.assertEqual(
+            item.lbl_resposta.text(),
+            "R$ 1.030,30",
         )
         barra.deleteLater()
+
+    def test_normalizar_kerning_q10(self):
+        import caixa_tema as tema
+        self.assertEqual(
+            tema.normalizar_valor_barra("1 .030 , 30"),
+            "1.030,30",
+        )
+        self.assertEqual(
+            tema.normalizar_valor_barra("R$ 1.030,30"),
+            "R$ 1.030,30",
+        )
 
     def test_card_q56_gorjeta_detalhe(self):
         def resp_q56(_t: str) -> list[dict]:
@@ -202,6 +322,15 @@ class TestBarraBusca(unittest.TestCase):
         self.assertTrue(barra.lista_frame.isHidden())
         barra.deleteLater()
 
+    def test_t09_nada_encontrado_compacto(self):
+        """Estado vazio da barra não pode roubar altura da Hoje (T09 P1)."""
+        barra = busca.BarraBusca(responder=lambda _t: [], debounce_ms=0)
+        barra.set_texto("xyzzy-sem-resultado")
+        self.assertFalse(barra.lista_frame.isHidden())
+        self.assertLessEqual(barra.lista_frame.maximumHeight(), 80)
+        self.assertIn("Nada encontrado", barra.lbl_vazio.text())
+        barra.deleteLater()
+
     def test_responder_padrao_sem_modulo(self):
         out = busca._responder_padrao("20% de 350")
         self.assertIsInstance(out, list)
@@ -233,7 +362,41 @@ class TestBarraBusca(unittest.TestCase):
         # PyQt6: StyleStrategy e Flag; compara via value
         tem = bool(strat.value & flag.value) if hasattr(strat, "value") else (flag in strat)
         self.assertTrue(tem, f"strategy={strat!r} deveria incluir NoFontMerging")
-        self.assertIn("consolas", f.family().lower())
+        self.assertEqual(f.letterSpacing(), 0.0)
+        fams = " ".join(x.lower() for x in (f.families() or [f.family()]))
+        self.assertTrue(
+            any(x in fams for x in ("consolas", "cascadia", "courier")),
+            f"mono esperado, veio {fams!r}",
+        )
+
+    def test_acentuacao_ptbr_titulos_e_sugestoes(self):
+        """T110 / Proposta 14: títulos dos cartões e sugestões respeitam acentuação pt-BR."""
+        # 1. titulo_amigavel com nome sem acento ou chave
+        t1 = busca.titulo_amigavel({
+            "titulo": "Agenda de Medicacao por Horarios",
+            "chave_ferramenta": "controle-medicacao-horarios",
+        })
+        self.assertIn("Medicação", t1)
+        self.assertIn("Horários", t1)
+
+        t2 = busca.titulo_amigavel({
+            "titulo": "calculadora-rescisao-trabalhista",
+            "chave_ferramenta": "calculadora-rescisao-trabalhista",
+        })
+        self.assertIn("Rescisão", t2)
+
+        # 2. ItemResposta.preencher ajusta título e texto 'Abrir ferramenta (...)'
+        item = busca.ItemResposta(0)
+        item.preencher({
+            "titulo": "Agenda de Medicacao por Horarios",
+            "resposta": "Abrir ferramenta (Agenda de Medicacao por Horarios)",
+            "chave_ferramenta": "controle-medicacao-horarios",
+            "confianca": 0.65,
+        })
+        self.assertIn("Medicação", item.lbl_titulo.text())
+        self.assertIn("Medicação", item.lbl_resposta.text())
+        self.assertIn("Horários", item.lbl_resposta.text())
+        item.deleteLater()
 
 
 if __name__ == "__main__":

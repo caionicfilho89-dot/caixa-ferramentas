@@ -3,6 +3,8 @@
 Uma linha por versão (mais nova em cima). O painel adesivo lê este arquivo.
 Formato: `- **vX.Y.Z** · DD/MM · N ferramentas · o que o Caio ganhou`. O Claude atualiza a cada versão.
 
+- **v1.5.9** · 16/11 · 769 ferramentas · 4 programas que substituem os famosos: Desinstalador (Revo), Player de Vídeo (VLC), Editor de Texto (Notepad++), Copiador Rápido (TeraCopy); 12 novas das Tendências: Atas de Reunião, Notas Adesivas, Protetor Ocular, Canivete do Técnico de PC, Super-Resolução de vídeo, Escrita sem Espaço, Regra 50/30/20 e mais; janela principal escura de novo
+- **v1.5.8** · 12/11 · 759 ferramentas · Rescisão/Seguro-Desemprego/IPVA/Troco/Botijão/Tinta revisados; Dias Úteis com 20/11 e calendário bancário; Validade de Remédios com alerta; Assinaturas salvam; Downloads com Desfazer; Visor de Fotos e conversor CSV→OFX (Tendências); ~350 ferramentas testadas
 - **v1.5.7** · 11/11 · 752 ferramentas · Tocando Agora entra no exe; abrir com --teste não conta como ferramenta mais usada; a Faxina aberta pela Hoje espera o clique em Varrer
 - **v1.5.6** · 10/11 · 751 ferramentas · barra acerta as 120 perguntas do Caio (luz com taxa fixa, etanol, Pix…); 17 ferramentas não travam mais ao fechar no meio de uma tarefa
 - **v1.5.5** · 10/11 · 751 ferramentas · botões da Hoje já abrem na pasta/arquivo certo (Faxina no C:, Organizador nos Downloads, último print); exe ~360 MB menor

@@ -337,6 +337,286 @@ class Outras(unittest.TestCase):
         ):
             self.assertEqual(_um(frase, "calculadora-dsr-hora-extra")["resposta"], mod.brl(r["dsr"]), frase)
 
+    def test_obra(self):
+        r = _um("piso 50x50 para 30 m2", "calculadora-obra")
+        self.assertIsNotNone(r)
+        self.assertIn("132", r["resposta"])
+
+    def test_pneu(self):
+        r = _um("calibragem 30 psi na estrada", "calibragem-pneus")
+        self.assertIsNotNone(r)
+        self.assertIn("33", r["resposta"])
+
+    def test_aluguel_quartos(self):
+        r = _um("aluguel 2000 quartos 15m2 e 10m2", "aluguel-quartos")
+        self.assertIsNotNone(r)
+        self.assertIn("Q1", r["resposta"])
+        self.assertIn("Q2", r["resposta"])
+
+    def test_desafio_poupanca(self):
+        r = _um("desafio 52 semanas", "desafio-poupanca")
+        self.assertIsNotNone(r)
+        self.assertIn("1.378", r["resposta"])
+
+    def test_renda_fixa(self):
+        r = _um("cdb 10000 a 12% por 365 dias", "simulador-renda-fixa")
+        self.assertIsNotNone(r)
+        self.assertIn("10.990", r["resposta"])
+
+    def test_treino(self):
+        r1 = _um("1rm 80kg 8 reps", "treino-academia")
+        self.assertIsNotNone(r1)
+        self.assertIn("1RM estimado", r1["resposta"])
+        self.assertIn("100.3", r1["resposta"])
+
+        r2 = _um("anilhas para 80kg", "treino-academia")
+        self.assertIsNotNone(r2)
+        self.assertIn("Por lado", r2["resposta"])
+        self.assertIn("25kg", r2["resposta"])
+        self.assertIn("5kg", r2["resposta"])
+
+    def test_ficha_medica(self):
+        r1 = _um("glicemia 105", "ficha-medica")
+        self.assertIsNotNone(r1)
+        self.assertIn("Acima do Referencial", r1["resposta"])
+        self.assertIn("105", r1["resposta"])
+
+        r2 = _um("colesterol total 180", "ficha-medica")
+        self.assertIsNotNone(r2)
+        self.assertIn("Normal", r2["resposta"])
+        self.assertIn("180", r2["resposta"])
+
+        r3 = _um("estoque de remedio 60 comprimidos 2 por dia", "ficha-medica")
+        self.assertIsNotNone(r3)
+        self.assertIn("30 dias", r3["resposta"])
+        self.assertIn("Confortável", r3["resposta"])
+
+    def test_mala_viagem(self):
+        r1 = _um("mala de viagem 5 dias", "mala-viagem")
+        self.assertIsNotNone(r1)
+        self.assertIn("Mala", r1["resposta"])
+        self.assertIn("kg", r1["resposta"])
+        self.assertIn("Cabe na mala de mão", r1["resposta"])
+
+    def test_marmitas(self):
+        r1 = _um("marmitas para 5 dias", "marmitas-semana")
+        self.assertIsNotNone(r1)
+        self.assertIn("Total:", r1["resposta"])
+        self.assertIn("/marmita", r1["resposta"])
+
+    def test_noturno(self):
+        r1 = _um("adicional noturno 40 horas salario 3000", "calculadora-adicional-noturno")
+        self.assertIsNotNone(r1)
+        self.assertIn("Adicional:", r1["resposta"])
+        self.assertIn("109,09", r1["resposta"])
+
+    def test_insalubridade(self):
+        r1 = _um("insalubridade grau maximo", "calculadora-adicional-insalubridade")
+        self.assertIsNotNone(r1)
+        self.assertIn("Insalubridade:", r1["resposta"])
+        self.assertIn("607,20", r1["resposta"])
+
+        r2 = _um("adicional de insalubridade grau medio", "calculadora-adicional-insalubridade")
+        self.assertIsNotNone(r2)
+        self.assertIn("Insalubridade:", r2["resposta"])
+        self.assertIn("303,60", r2["resposta"])
+
+    def test_impressao_3d(self):
+        r1 = _um("impressao 3d 100g 4 horas rolo 120", "calculadora-impressao-3d")
+        self.assertIsNotNone(r1)
+        self.assertIn("Custo:", r1["resposta"])
+        self.assertIn("17,22", r1["resposta"])
+
+    def test_piscina(self):
+        r1 = _um("piscina 6x3 com 1.4 de profundidade", "calculadora-piscina")
+        self.assertIsNotNone(r1)
+        self.assertIn("Volume:", r1["resposta"])
+        self.assertIn("25.2 m³", r1["resposta"])
+        self.assertIn("78g/dia", r1["resposta"])
+
+        r2 = _um("cloro de choque piscina 25 m3", "calculadora-piscina")
+        self.assertIsNotNone(r2)
+        self.assertIn("choque", r2["resposta"].lower())
+        self.assertIn("385g", r2["resposta"])
+
+    def test_periculosidade(self):
+        r1 = _um("periculosidade salario 3000", "calculadora-adicional-periculosidade")
+        self.assertIsNotNone(r1)
+        self.assertIn("Periculosidade (30%):", r1["resposta"])
+        self.assertIn("900,00", r1["resposta"])
+
+    def test_seguro_desemprego(self):
+        r1 = _um("seguro desemprego salario 2500 trabalhou 14 meses", "calculadora-seguro-desemprego")
+        self.assertIsNotNone(r1)
+        self.assertIn("4 parcelas de", r1["resposta"])
+        self.assertIn("1.862,42", r1["resposta"])
+
+    def test_aquario(self):
+        r1 = _um("aquario 60x30x40", "calculadora-aquario")
+        self.assertIsNotNone(r1)
+        self.assertIn("72L", r1["resposta"])
+        self.assertIn("61.2L", r1["resposta"])
+
+    def test_hidraulica(self):
+        r1 = _um("perda de carga 2 l/s tubo 50mm 100m", "calculadora-hidraulica-tubulacoes")
+        self.assertIsNotNone(r1)
+        self.assertIn("Perda de carga:", r1["resposta"])
+        self.assertIn("mca", r1["resposta"])
+
+    def test_rescisao(self):
+        r1 = _um("rescisao salario 3000 anos 2 meses 6", "calculadora-rescisao-trabalhista")
+        self.assertIsNotNone(r1)
+        self.assertIn("Rescisão", r1["resposta"])
+        self.assertIn("TRCT", r1["resposta"])
+
+    def test_chmod(self):
+        r1 = _um("chmod 755", "calculadora-chmod")
+        self.assertIsNotNone(r1)
+        self.assertIn("755", r1["resposta"])
+        self.assertIn("rwxr-xr-x", r1["resposta"])
+
+        r2 = _um("chmod 644", "calculadora-chmod")
+        self.assertIsNotNone(r2)
+        self.assertIn("644", r2["resposta"])
+        self.assertIn("rw-r--r--", r2["resposta"])
+
+    def test_motor(self):
+        r1 = _um("motor eletrico 5 cv 220v", "calculadora-motores-eletricos")
+        self.assertIsNotNone(r1)
+        self.assertIn("Motor 5 CV", r1["resposta"])
+        self.assertIn("In =", r1["resposta"])
+
+    def test_bloom(self):
+        r1 = _um("filtro de bloom 10000 itens 1%", "filtro-bloom")
+        self.assertIsNotNone(r1)
+        self.assertIn("Filtro de Bloom:", r1["resposta"])
+        self.assertIn("95.851 bits", r1["resposta"])
+        self.assertIn("k = 7 hashes", r1["resposta"])
+
+    def test_posicao_solar(self):
+        r1 = _um("posicao solar sao paulo 15/03 12h", "calculadora-posicao-solar-astronomia")
+        self.assertIsNotNone(r1)
+        self.assertIn("Posição Solar", r1["resposta"])
+        self.assertIn("Elevação", r1["resposta"])
+        self.assertIn("Azimute", r1["resposta"])
+        self.assertIn("Zenite", r1["detalhe"])
+        self.assertIn("Nascer", r1["detalhe"])
+
+    def test_spline(self):
+        r1 = _um("spline pontos 0 0 1 2 2 1 3 3 em x=1.5", "estudio-splines")
+        self.assertIsNotNone(r1)
+        self.assertIn("Spline Cúbico em x = 1.5", r1["resposta"])
+        self.assertIn("segmentos cúbicos", r1["detalhe"])
+
+    def test_agua_filtro(self):
+        r1 = _um("agua mineral vs filtro galao 14 filtro 350", "agua-mineral-vs-filtro")
+        self.assertIsNotNone(r1)
+        self.assertIn("Água Mineral × Filtro", r1["resposta"])
+        self.assertIn("Mineral:", r1["detalhe"])
+        self.assertIn("Filtro:", r1["detalhe"])
+
+    def test_acustica(self):
+        r1 = _um("acustica sala 5x4x2.8 estudio", "calculadora-acustica-salas")
+        self.assertIsNotNone(r1)
+        self.assertIn("Acústica da Sala", r1["resposta"])
+        self.assertIn("RT60 Sabine", r1["resposta"])
+        self.assertIn("Schroeder", r1["detalhe"])
+
+    def test_academia_casa(self):
+        r1 = _um("academia vs equipamentos mensalidade 200 casa 2400 em 24 meses", "academia-vs-equipamentos")
+        self.assertIsNotNone(r1)
+        self.assertIn("Academia × Home Gym", r1["resposta"])
+        self.assertIn("Academia:", r1["detalhe"])
+        self.assertIn("Casa:", r1["detalhe"])
+
+    def test_anki(self):
+        r1 = _um("meta anki 20 novos por dia 1500 cards 30 minutos", "meta-revisoes-anki-diarias")
+        self.assertIsNotNone(r1)
+        self.assertIn("Meta Anki:", r1["resposta"])
+        self.assertIn("revisões/dia", r1["resposta"])
+        self.assertIn("Fila jovem:", r1["detalhe"])
+
+    def test_aerodinamica(self):
+        r1 = _um("aerodinamica cessna velocidade 200 km/h 1500m", "calculadora-aerodinamica-arrasto-sustentacao")
+        self.assertIsNotNone(r1)
+        self.assertIn("Aerodinâmica (Cessna", r1["resposta"])
+        self.assertIn("L/D =", r1["resposta"])
+        self.assertIn("Estol =", r1["resposta"])
+        self.assertIn("Potência:", r1["detalhe"])
+
+    def test_anticoncepcional(self):
+        r1 = _um("esqueci anticoncepcional 10h dia 8", "cartela-anticoncepcional")
+        self.assertIsNotNone(r1)
+        self.assertIn("Esquecimento de Pílula", r1["resposta"])
+        self.assertIn("LEVE", r1["resposta"])
+        self.assertIn("Menos de 12 horas", r1["detalhe"])
+
+    def test_sessao_foco(self):
+        r1 = _um("sessao de foco 3 horas bloco 50 pausa 10 09:00", "planejador-sessao-foco")
+        self.assertIsNotNone(r1)
+        self.assertIn("Sessão de Foco:", r1["resposta"])
+        self.assertIn("blocos", r1["resposta"])
+        self.assertIn("Agenda: 09:00 às", r1["detalhe"])
+
+    def test_amortizacao(self):
+        r1 = _um("amortizacao extra valor 200000 taxa 10% em 360 meses aporte 1000", "comparador-credito")
+        self.assertIsNotNone(r1)
+        self.assertIn("Amortização Extra", r1["resposta"])
+        self.assertIn("Economia de", r1["resposta"])
+        self.assertIn("Prazo reduz", r1["detalhe"])
+
+    def test_esporte_infantil(self):
+        r1 = _um("esporte infantil mensalidade 250 uniforme 200 matricula 100 transporte 60", "custo-academia-infantil")
+        self.assertIsNotNone(r1)
+        self.assertIn("Custo de Esporte Infantil:", r1["resposta"])
+        self.assertIn("Média real de", r1["resposta"])
+        self.assertIn("Mensalidades:", r1["detalhe"])
+
+    def test_decimo_terceiro(self):
+        r1 = _um("decimo terceiro salario 3600 em 8 meses adiantamento 1000", "decimo-terceiro")
+        self.assertIsNotNone(r1)
+        self.assertIn("13º Salário (8/12 avos)", r1["resposta"])
+        self.assertIn("Bruto R$ 2.400,00", r1["resposta"])
+        self.assertIn("a receber R$ 1.400,00", r1["resposta"])
+
+    def test_acl(self):
+        r1 = _um("acl ntfs C:\\Users\\caion\\caixa-ferramentas", "inspetor-acl-ntfs")
+        self.assertIsNotNone(r1)
+        self.assertIn("ACL NTFS (caixa-ferramentas)", r1["resposta"])
+        self.assertIn("Dono", r1["resposta"])
+        self.assertIn("regras", r1["resposta"])
+
+    def test_marchas_bike(self):
+        r1 = _um("marchas bike coroa 50 pinhao 15 cadencia 90", "calculadora-marchas-bike")
+        self.assertIsNotNone(r1)
+        self.assertIn("Marcha 50x15", r1["resposta"])
+        self.assertIn("m/pedalada", r1["resposta"])
+        self.assertIn("km/h a 90 rpm", r1["resposta"])
+
+    def test_forma_bolo(self):
+        r1 = _um("forma de bolo 20cm para 25cm", "conversor-formas-bolo")
+        self.assertIsNotNone(r1)
+        self.assertIn("Forma de Bolo", r1["resposta"])
+        self.assertIn("Escala = 1.56x receita", r1["resposta"])
+        self.assertIn("Volume original:", r1["detalhe"])
+
+    def test_cronometro(self):
+        r1 = _um("relogio de xadrez 3+2 fischer", "estudio-cronometro")
+        self.assertIsNotNone(r1)
+        self.assertIn("Relógio de Xadrez (3+2 Fischer)", r1["resposta"])
+        self.assertIn("Brancas 03:00.000", r1["resposta"])
+        self.assertIn("Pretas 03:00.000", r1["resposta"])
+
+    def test_base64(self):
+        r1 = _um("codificar base64 ola", "conversor-base64")
+        self.assertIsNotNone(r1)
+        self.assertIn("Base64 Encode", r1["resposta"])
+        self.assertIn("b2xh", r1["resposta"])
+
+        r2 = _um("decodificar base64 b2xh", "conversor-base64")
+        self.assertIsNotNone(r2)
+        self.assertIn("Base64 Decode: ola", r2["resposta"])
+
 
 if __name__ == "__main__":
     unittest.main()

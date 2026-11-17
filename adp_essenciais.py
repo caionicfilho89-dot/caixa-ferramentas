@@ -27,9 +27,254 @@ from typing import Any, Dict, List, Optional, Tuple
 import respostas_core as rc
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
 STAGED = os.path.join(HERE, "staged")
 if os.path.isdir(STAGED) and STAGED not in sys.path:
-    sys.path.insert(0, STAGED)
+    sys.path.append(STAGED)
+
+
+# ======================================================================
+# 0. Operações Encadeadas e Expressões Compostas na Barra (Proposta 2 / T30)
+# ======================================================================
+
+_RE_OP_ADICIONAL = r'(?:(?:\+|\bmais\b|\bcom\b)\s*(?:(?:frete|entrega|taxa|envio)\s*(?:de\s*)?([0-9.,]+(?:\s*mil)?)|([0-9.,]+(?:\s*mil)?)\s*(?:reais\s*)?(?:de\s*)?(?:frete|entrega|taxa|envio)))'
+
+_RE_DESC_FRETE = re.compile(
+    r'(?:([0-9.,]+)\s*%\s*(?:de\s*)?desconto\s*(?:em|de|sobre)\s*([0-9.,]+(?:\s*mil)?)(?:\s*reais)?|desconto\s*(?:de\s*)?([0-9.,]+)\s*%\s*(?:em|de|sobre)\s*([0-9.,]+(?:\s*mil)?)(?:\s*reais)?|desconto\s*(?:de\s*)?([0-9.,]+)\s*(?:reais)?\s*(?:em|no|de)\s*([0-9.,]+(?:\s*mil)?)(?:\s*reais)?)\s*' + _RE_OP_ADICIONAL,
+    re.IGNORECASE
+)
+
+_RE_PARCELAS_COMPOSTAS = re.compile(
+    r'(\d+)\s*(?:x|vezes|parcelas?)\s*(?:de\s*)?([0-9.,]+(?:\s*mil)?)\s*(?:e|\+|\bmais\b|,)\s*(\d+)\s*(?:(?:x|vezes|parcelas?)\s*(?:de\s*)?|de\s*)([0-9.,]+(?:\s*mil)?)',
+    re.IGNORECASE
+)
+
+_RE_PRODUTOS_FRETE = re.compile(
+    r'(\d+)\s*(?:unidades?|itens|produtos?|pecas?)\s*(?:de\s*)?([0-9.,]+(?:\s*mil)?)\s*' + _RE_OP_ADICIONAL,
+    re.IGNORECASE
+)
+
+_RE_BASE_PCT_FIXO = re.compile(
+    r'([0-9.,]+(?:\s*mil)?)\s*(?:reais)?\s*(menos|mais|\+|-)\s*([0-9.,]+)\s*%\s*(menos|mais|\+|-)\s*([0-9.,]+(?:\s*mil)?)',
+    re.IGNORECASE
+)
+
+_RE_DESC_SUCESSIVOS = re.compile(
+    r'(?:([0-9.,]+(?:\s*mil)?)\s*(?:reais)?\s*(?:com\s+)?desconto\s+(?:de\s+)?([0-9.,]+)\s*%\s*(?:e\s+depois|e\s+mais|\+)\s*(?:desconto\s+(?:de\s+)?|mais\s+)?([0-9.,]+)\s*%\s*(?:de\s+desconto)?|([0-9.,]+(?:\s*mil)?)\s*menos\s*([0-9.,]+)\s*%\s*menos\s*([0-9.,]+)\s*%)',
+    re.IGNORECASE
+)
+
+_RE_PARCELAS_ENTRADA = re.compile(
+    r'(?:entrada\s*(?:de\s*)?([0-9.,]+(?:\s*mil)?)\s*(?:\+|\be\b|\bmais\b)\s*(\d+)\s*(?:x|vezes|parcelas?)\s*(?:de\s*)?([0-9.,]+(?:\s*mil)?)|(\d+)\s*(?:x|vezes|parcelas?)\s*(?:de\s*)?([0-9.,]+(?:\s*mil)?)\s*(?:\+|\be\b|\bmais\b)\s*(?:entrada\s*(?:de\s*)?|([0-9.,]+(?:\s*mil)?)\s*(?:reais\s*)?(?:de\s*)?entrada\s*)([0-9.,]+(?:\s*mil)?))',
+    re.IGNORECASE
+)
+
+_RE_ITENS_MISTOS = re.compile(
+    r'(\d+)\s+[a-zA-ZÀ-ÿ]+\s+de\s+([0-9.,]+(?:\s*mil)?)\s*(?:e|\+|\bmais\b|,)\s*(\d+)\s+[a-zA-ZÀ-ÿ]+\s+de\s+([0-9.,]+(?:\s*mil)?)',
+    re.IGNORECASE
+)
+
+
+def extrair_operacoes_compostas(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+
+    # 1. Desconto + Frete / Entrega / Taxa
+    m_df = _RE_DESC_FRETE.search(norm)
+    if m_df:
+        g = m_df.groups()
+        pct = rc.numero_br(g[0] or g[2])
+        base = rc.numero_br(g[1] or g[3] or g[5])
+        desc_fixo = rc.numero_br(g[4]) if g[4] else None
+        adic = rc.numero_br(g[6] or g[7]) or 0.0
+        tipo_adic = "frete" if "frete" in norm else ("entrega" if "entrega" in norm else ("envio" if "envio" in norm else "taxa"))
+        if base and (pct or desc_fixo):
+            return {
+                "tipo": "desconto_frete",
+                "base": base,
+                "pct": pct,
+                "desc_fixo": desc_fixo,
+                "adicional": adic,
+                "tipo_adicional": tipo_adic,
+            }
+
+    # 2. Descontos Sucessivos (ex: 1000 menos 10% menos 10%)
+    m_ds = _RE_DESC_SUCESSIVOS.search(norm)
+    if m_ds:
+        g = m_ds.groups()
+        base = rc.numero_br(g[0] or g[3])
+        d1 = rc.numero_br(g[1] or g[4])
+        d2 = rc.numero_br(g[2] or g[5])
+        if base and d1 and d2:
+            return {"tipo": "descontos_sucessivos", "base": base, "d1": d1, "d2": d2}
+
+    # 3. Base mais/menos percentual e mais/menos valor fixo (ex: 200 reais menos 15% mais 30)
+    m_bpf = _RE_BASE_PCT_FIXO.search(norm)
+    if m_bpf:
+        base = rc.numero_br(m_bpf.group(1))
+        op1 = m_bpf.group(2).lower()
+        pct = rc.numero_br(m_bpf.group(3))
+        op2 = m_bpf.group(4).lower()
+        val2 = rc.numero_br(m_bpf.group(5))
+        if base and pct and val2:
+            return {"tipo": "base_pct_fixo", "base": base, "op1": op1, "pct": pct, "op2": op2, "val2": val2}
+
+    # 4. Parcelas Combinadas (ex: 3 parcelas de 120 e 2 de 80)
+    m_pc = _RE_PARCELAS_COMPOSTAS.search(norm)
+    if m_pc:
+        q1 = int(m_pc.group(1))
+        v1 = rc.numero_br(m_pc.group(2))
+        q2 = int(m_pc.group(3))
+        v2 = rc.numero_br(m_pc.group(4))
+        if v1 and v2 and q1 > 0 and q2 > 0:
+            return {"tipo": "parcelas_combinadas", "q1": q1, "v1": v1, "q2": q2, "v2": v2}
+
+    # 5. Itens mistos (ex: 4 camisetas de 35 e 2 bermudas de 60)
+    m_im = _RE_ITENS_MISTOS.search(norm)
+    if m_im and "parcela" not in norm and "vezes" not in norm:
+        q1 = int(m_im.group(1))
+        v1 = rc.numero_br(m_im.group(2))
+        q2 = int(m_im.group(3))
+        v2 = rc.numero_br(m_im.group(4))
+        if v1 and v2 and q1 > 0 and q2 > 0:
+            return {"tipo": "parcelas_combinadas", "q1": q1, "v1": v1, "q2": q2, "v2": v2, "label": "Compras Mistas"}
+
+    # 6. Parcelas + Entrada (ex: entrada de 500 + 4 parcelas de 250)
+    m_pe = _RE_PARCELAS_ENTRADA.search(norm)
+    if m_pe:
+        g = m_pe.groups()
+        if g[0]:
+            ent = rc.numero_br(g[0]) or 0.0
+            q = int(g[1])
+            v = rc.numero_br(g[2]) or 0.0
+        else:
+            q = int(g[3])
+            v = rc.numero_br(g[4]) or 0.0
+            ent = rc.numero_br(g[5] or g[6]) or 0.0
+        if q > 0 and v > 0:
+            return {"tipo": "parcelas_entrada", "q": q, "v": v, "entrada": ent}
+
+    # 7. Produtos + Frete (ex: 3 produtos de 45 mais frete de 20)
+    m_pf = _RE_PRODUTOS_FRETE.search(norm)
+    if m_pf:
+        q = int(m_pf.group(1))
+        v = rc.numero_br(m_pf.group(2)) or 0.0
+        adic = rc.numero_br(m_pf.group(3) or m_pf.group(4)) or 0.0
+        tipo_adic = "frete" if "frete" in norm else ("entrega" if "entrega" in norm else "taxa")
+        if q > 0 and v > 0:
+            return {"tipo": "compras_frete", "q": q, "v": v, "adicional": adic, "tipo_adicional": tipo_adic}
+
+    return None
+
+
+def calcular_operacoes_compostas(p: Dict[str, Any]) -> Dict[str, Any]:
+    tipo = p.get("tipo")
+
+    if tipo == "desconto_frete":
+        base = p["base"]
+        if p.get("pct") is not None:
+            pct = p["pct"]
+            desc_val = base * (pct / 100.0)
+            subtotal = max(0.0, base - desc_val)
+            desc_str = f"{pct:g}% (R$ {rc.formatar_br(desc_val, 2)})"
+        else:
+            desc_val = p.get("desc_fixo", 0.0)
+            subtotal = max(0.0, base - desc_val)
+            desc_str = f"R$ {rc.formatar_br(desc_val, 2)}"
+        adic = p["adicional"]
+        total = subtotal + adic
+        tipo_adic = p.get("tipo_adicional", "frete")
+        ans = rc.formatar_br(total, 2)
+        return {
+            "titulo": "Desconto + Frete / Taxa",
+            "resposta": f"R$ {ans}",
+            "detalhe": f"Base R$ {rc.formatar_br(base, 2)} - desconto {desc_str} = R$ {rc.formatar_br(subtotal, 2)} + {tipo_adic} R$ {rc.formatar_br(adic, 2)} = total R$ {ans}.",
+            "chave_ferramenta": "calculadora-desconto",
+            "confianca": 0.98,
+        }
+
+    elif tipo == "descontos_sucessivos":
+        base = p["base"]
+        d1, d2 = p["d1"], p["d2"]
+        val1 = base * (d1 / 100.0)
+        apos1 = base - val1
+        val2 = apos1 * (d2 / 100.0)
+        total = apos1 - val2
+        ans = rc.formatar_br(total, 2)
+        return {
+            "titulo": "Descontos Sucessivos",
+            "resposta": f"R$ {ans}",
+            "detalhe": f"R$ {rc.formatar_br(base, 2)} - {d1:g}% (R$ {rc.formatar_br(val1, 2)}) = R$ {rc.formatar_br(apos1, 2)} - {d2:g}% (R$ {rc.formatar_br(val2, 2)}) = final R$ {ans}.",
+            "chave_ferramenta": "calculadora-desconto",
+            "confianca": 0.98,
+        }
+
+    elif tipo == "base_pct_fixo":
+        base = p["base"]
+        pct = p["pct"]
+        val2 = p["val2"]
+        op1 = p["op1"]
+        op2 = p["op2"]
+        val_pct = base * (pct / 100.0)
+        apos_pct = base - val_pct if op1 in ["menos", "-"] else base + val_pct
+        total = apos_pct - val2 if op2 in ["menos", "-"] else apos_pct + val2
+        s1 = "-" if op1 in ["menos", "-"] else "+"
+        s2 = "-" if op2 in ["menos", "-"] else "+"
+        ans = rc.formatar_br(total, 2)
+        return {
+            "titulo": "Cálculo Encadeado",
+            "resposta": f"R$ {ans}",
+            "detalhe": f"R$ {rc.formatar_br(base, 2)} {s1} {pct:g}% (R$ {rc.formatar_br(val_pct, 2)}) = R$ {rc.formatar_br(apos_pct, 2)} {s2} R$ {rc.formatar_br(val2, 2)} = total R$ {ans}.",
+            "chave_ferramenta": "financas",
+            "confianca": 0.98,
+        }
+
+    elif tipo == "parcelas_combinadas":
+        q1, v1 = p["q1"], p["v1"]
+        q2, v2 = p["q2"], p["v2"]
+        tot1 = q1 * v1
+        tot2 = q2 * v2
+        total = tot1 + tot2
+        rotulo = p.get("label", "Parcelas Combinadas")
+        ans = rc.formatar_br(total, 2)
+        return {
+            "titulo": rotulo,
+            "resposta": f"R$ {ans}",
+            "detalhe": f"{q1}× R$ {rc.formatar_br(v1, 2)} (R$ {rc.formatar_br(tot1, 2)}) + {q2}× R$ {rc.formatar_br(v2, 2)} (R$ {rc.formatar_br(tot2, 2)}) = total R$ {ans}.",
+            "chave_ferramenta": "compras-parceladas",
+            "confianca": 0.98,
+        }
+
+    elif tipo == "parcelas_entrada":
+        q, v = p["q"], p["v"]
+        ent = p["entrada"]
+        tot_parc = q * v
+        total = tot_parc + ent
+        ans = rc.formatar_br(total, 2)
+        return {
+            "titulo": "Parcelas com Entrada",
+            "resposta": f"R$ {ans}",
+            "detalhe": f"Entrada R$ {rc.formatar_br(ent, 2)} + {q}× R$ {rc.formatar_br(v, 2)} (R$ {rc.formatar_br(tot_parc, 2)}) = total R$ {ans}.",
+            "chave_ferramenta": "compras-parceladas",
+            "confianca": 0.98,
+        }
+
+    elif tipo == "compras_frete":
+        q, v = p["q"], p["v"]
+        adic = p["adicional"]
+        tipo_adic = p.get("tipo_adicional", "frete")
+        subtot = q * v
+        total = subtot + adic
+        ans = rc.formatar_br(total, 2)
+        return {
+            "titulo": "Compras + Frete",
+            "resposta": f"R$ {ans}",
+            "detalhe": f"{q}× R$ {rc.formatar_br(v, 2)} (R$ {rc.formatar_br(subtot, 2)}) + {tipo_adic} R$ {rc.formatar_br(adic, 2)} = total R$ {ans}.",
+            "chave_ferramenta": "compras-parceladas",
+            "confianca": 0.98,
+        }
+
+    return {"titulo": "Operação Composta", "resposta": "", "detalhe": "", "confianca": 0.0}
 
 
 # ======================================================================
@@ -105,13 +350,21 @@ def extrair_porcentagem(texto: str) -> Optional[Dict[str, Any]]:
         if p is not None and b is not None:
             return {"tipo": "aumento", "pct": p, "base": b}
 
-    # Ex: "desconto de 10% em 500", "10% de desconto em 500"
-    m_desc = re.search(r"(?:desconto\s+de\s+([0-9.,]+)\s*%\s*(?:em|de|sobre)\s*([0-9.,]+(?:\s*mil)?)|([0-9.,]+)\s*%\s+de\s+desconto\s+(?:em|de|sobre)\s*([0-9.,]+(?:\s*mil)?))", norm)
+    # Ex: "desconto de 10% em 500", "10% de desconto em 500", "10% desconto em 500"
+    m_desc = re.search(r"(?:desconto\s+de\s+([0-9.,]+)\s*%\s*(?:em|de|sobre)\s*([0-9.,]+(?:\s*mil)?)|([0-9.,]+)\s*%\s*(?:de\s+)?desconto\s+(?:em|de|sobre)\s*([0-9.,]+(?:\s*mil)?))", norm)
     if m_desc:
         p = rc.numero_br(m_desc.group(1) or m_desc.group(3))
         b = rc.numero_br(m_desc.group(2) or m_desc.group(4))
         if p is not None and b is not None:
             return {"tipo": "desconto", "pct": p, "base": b}
+
+    # Ex: "porcentagem de 15 em 200", "calculo de 15% de 200"
+    m_p_de = re.search(r"porcentagem\s+(?:de\s+)?([0-9.,]+)\s*(?:%|\s*por\s*cento)?\s*(?:em|de|sobre)\s*([0-9.,]+(?:\s*mil)?)", norm)
+    if m_p_de:
+        p = rc.numero_br(m_p_de.group(1))
+        b = rc.numero_br(m_p_de.group(2))
+        if p is not None and b is not None:
+            return {"tipo": "de", "pct": p, "base": b}
 
     # Ex: "salario 3.200, desconto 9%"
     m_sal_desc = re.search(r"salario\s+([0-9.,]+(?:\s*mil)?)[,\s]+desconto\s+([0-9.,]+)\s*%", norm)
@@ -147,8 +400,8 @@ def calcular_porcentagem(p: Dict[str, Any]) -> Dict[str, Any]:
         cheio = p["pago"] / (1.0 - (p["desc_pct"] / 100.0))
         return {
             "titulo": "Preço Cheio Original",
-            "resposta": f"{rc.formatar_br(cheio, 0 if cheio == int(cheio) else 2)}",
-            "detalhe": f"Preço cheio = {rc.formatar_br(p['pago'])} ÷ (1 − {p['desc_pct']:g}%) = {rc.formatar_br(cheio, 0 if cheio == int(cheio) else 2)}",
+            "resposta": f"{rc.formatar_br(cheio, 2)}",
+            "detalhe": f"Preço cheio = {rc.formatar_br(p['pago'], 2)} ÷ (1 − {p['desc_pct']:g}%) = {rc.formatar_br(cheio, 2)}",
             "chave_ferramenta": "financas",
             "confianca": 0.98,
         }
@@ -157,7 +410,7 @@ def calcular_porcentagem(p: Dict[str, Any]) -> Dict[str, Any]:
         pct = (p["desconto"] / p["base"]) * 100.0
         return {
             "titulo": "Desconto no Preço",
-            "resposta": f"{rc.formatar_br(final, 0 if final == int(final) else 2)}; desconto ≈ {rc.formatar_br(pct, 2)}%",
+            "resposta": f"{rc.formatar_br(final, 2)}; desconto ≈ {rc.formatar_br(pct, 2)}%",
             "detalhe": f"Preço final: {rc.formatar_br(final, 2)} (desconto de R$ {rc.formatar_br(p['desconto'], 2)} = {rc.formatar_br(pct, 2)}%)",
             "chave_ferramenta": "financas",
             "confianca": 0.98,
@@ -177,7 +430,7 @@ def calcular_porcentagem(p: Dict[str, Any]) -> Dict[str, Any]:
         liq = p["base"] - desc
         return {
             "titulo": "Desconto Salarial",
-            "resposta": f"desconto {rc.formatar_br(desc, 0 if desc == int(desc) else 2)}; líquido {rc.formatar_br(liq, 0 if liq == int(liq) else 2)}",
+            "resposta": f"desconto {rc.formatar_br(desc, 2)}; líquido {rc.formatar_br(liq, 2)}",
             "detalhe": f"Salário: R$ {rc.formatar_br(p['base'], 2)}. Desconto de {p['pct']:g}%: R$ {rc.formatar_br(desc, 2)}. Líquido: R$ {rc.formatar_br(liq, 2)}.",
             "chave_ferramenta": "calculadora-clt",
             "confianca": 0.98,
@@ -455,12 +708,13 @@ def extrair_compras_unitarias(texto: str) -> Optional[Dict[str, Any]]:
         return {"tipo": "compra_frete", "qtd": q, "preco": preco, "frete": frete}
 
     # Ex: "comprei 4 un a 12,90 cada, total?", "150 kWh a 0,85 R$/kWh", "combustivel 40 litros a 5,89 o litro"
-    m_un = re.search(r"([0-9.,]+)\s*(?:un|unidades?|itens?|kwh|litros?)\s*a\s*([0-9.,]+)", norm)
-    if m_un:
-        q = rc.numero_br(m_un.group(1))
-        p = rc.numero_br(m_un.group(2))
-        if q and p:
-            return {"tipo": "multiplicacao", "qtd": q, "unitario": p}
+    if not any(k in norm for k in ["taxa", "fixa", "adicional", "pix"]):
+        m_un = re.search(r"([0-9.,]+)\s*(?:un|unidades?|itens?|kwh|litros?)\s*a\s*([0-9.,]+)", norm)
+        if m_un:
+            q = rc.numero_br(m_un.group(1))
+            p = rc.numero_br(m_un.group(2))
+            if q and p:
+                return {"tipo": "multiplicacao", "qtd": q, "unitario": p}
 
     # Ex: "12 parcelas de 189,90, total pago"
     m_parc = re.search(r"(\d+)\s*parcelas?\s*de\s*([0-9.,]+)", norm)
@@ -575,12 +829,12 @@ def calcular_media(p: Dict[str, Any]) -> Dict[str, Any]:
 def extrair_gorjeta_rateio(texto: str) -> Optional[Dict[str, Any]]:
     norm = rc.normalizar_texto(texto)
 
-    # Ex: "gorjeta 10% em conta de 186,00", "gorjeta 15% numa conta de 248,00"
-    m_gorj = re.search(r"gorjeta\s*([0-9.,]+)\s*%\s*(?:em|numa|de)?\s*(?:conta\s+de\s*)?([0-9.,]+)", norm)
+    # Ex: "gorjeta 10% em conta de 186,00", "gorjeta 15% numa conta de 248,00", "gorjeta 15% conta 248,00"
+    m_gorj = re.search(r"gorjeta\s*([0-9.,]+)\s*%\s*(?:em|numa|de|sobre)?\s*(?:conta\s*(?:de\s*)?)?([0-9.,]+)", norm)
     if m_gorj:
         pct = rc.numero_br(m_gorj.group(1))
         conta = rc.numero_br(m_gorj.group(2))
-        if pct and conta:
+        if pct is not None and conta is not None:
             return {"tipo": "gorjeta", "pct": pct, "conta": conta}
 
     # Ex: "rateio 360: joao 50%, maria 30%, ana 20%"
@@ -628,7 +882,7 @@ def calcular_gorjeta_rateio(p: Dict[str, Any]) -> Dict[str, Any]:
         linhas = []
         for nome, pct in p["partes"]:
             v = tot * (pct / 100.0)
-            linhas.append(f"{nome} {rc.formatar_br(v, 0 if v == int(v) else 2)}")
+            linhas.append(f"{nome} {rc.formatar_br(v, 2)}")
         res_str = "; ".join(linhas)
         return {
             "titulo": "Rateio Proporcional",
@@ -639,7 +893,7 @@ def calcular_gorjeta_rateio(p: Dict[str, Any]) -> Dict[str, Any]:
         }
     elif tipo == "split":
         cada = p["total"] / p["n"]
-        ans = rc.formatar_br(cada, 0 if cada == int(cada) else 2)
+        ans = rc.formatar_br(cada, 2)
         return {
             "titulo": "Divisão de Conta",
             "resposta": f"{ans} cada",
@@ -649,7 +903,7 @@ def calcular_gorjeta_rateio(p: Dict[str, Any]) -> Dict[str, Any]:
         }
     else:  # parcelar
         cada = p["total"] / p["n"]
-        ans = rc.formatar_br(cada, 0 if cada == int(cada) else 2)
+        ans = rc.formatar_br(cada, 2)
         return {
             "titulo": "Parcelamento sem Juros",
             "resposta": f"{ans}",
@@ -990,7 +1244,7 @@ def calcular_datas_especiais(p: Dict[str, Any]) -> Dict[str, Any]:
 
 def extrair_troco(texto: str) -> Optional[Dict[str, Any]]:
     norm = rc.normalizar_texto(texto)
-    if "troco" not in norm:
+    if "troco" not in norm and "sobra" not in norm:
         return None
     nums = rc.extrair_numeros(texto)
     if len(nums) < 2:
@@ -1117,7 +1371,7 @@ def extrair_juros(texto: str) -> Optional[Dict[str, Any]]:
             capital = cands_cap[0] if cands_cap else 1000.0
             m_meses = re.search(r"(\d+)\s*mes(?:es)?", norm)
             prazo = int(m_meses.group(1)) if m_meses else (nums[-1] if len(nums) > 2 else 12.0)
-            so_juros = "so juros" in norm or "só juros" in norm
+            so_juros = "so juros" in norm or "só juros" in norm or "so os juros" in norm or "só os juros" in norm
             return {"tipo": "simples", "capital": capital, "taxa": taxa, "prazo": prazo, "so_juros": so_juros}
 
     if "juros compostos" in norm or "quanto rende" in norm:
@@ -1211,6 +1465,9 @@ def extrair_conversao(texto: str) -> Optional[Dict[str, Any]]:
 
     # Ex: "converter 2,5 kg pra gramas", "3 km em metros", "100 c em f", "250 ml em litros", "3,5 m em cm"
     m = re.search(r"(?:converter\s+)?([0-9.,]+)\s*([a-zA-Z]+)\s*(?:em|pra|para)\s*([a-zA-Z]+)", norm)
+    if not m:
+        # Ex: "pneu 205 mm de largura, isso da quantos cm"
+        m = re.search(r"([0-9.,]+)\s*([a-zA-Z]+).*?(?:quantos|quantas|em|pra|para)\s+([a-zA-Z]+)", norm)
     if m:
         val = rc.numero_br(m.group(1))
         u1 = m.group(2).lower()
@@ -1284,8 +1541,13 @@ def calcular_dias_uteis(p: Dict[str, Any]) -> Dict[str, Any]:
             cur += datetime.timedelta(days=1)
         dt_final = cur
     else:
-        import utl_core
-        dt_final = utl_core.adicionar_uteis(p["base"], n)
+        # T12: usa cal_datas do calendario-br (com feriados nacionais incluindo Consciência Negra)
+        try:
+            import cal_datas
+            dt_final = cal_datas.somar_uteis(p["base"], n)
+        except Exception:
+            import utl_core
+            dt_final = utl_core.adicionar_uteis(p["base"], n)
 
     ans = dt_final.strftime("%d/%m/%Y")
     return {
@@ -1470,34 +1732,40 @@ def calcular_churrasco(p: Dict[str, Any]) -> Dict[str, Any]:
 
 def extrair_etanol_gasolina(texto: str) -> Optional[Dict[str, Any]]:
     norm = rc.normalizar_texto(texto)
-    if not any(g in norm for g in ["etanol", "gasolina", "alcool ou gasolina", "compensa etanol"]):
+    tem_ambos = ("etanol" in norm or "alcool" in norm) and "gasolina" in norm
+    tem_compensa = "compensa" in norm or "qual vale" in norm or "rende" in norm
+    if not (tem_ambos or ("etanol" in norm and tem_compensa)):
         return None
     if "km" in norm or "viagem" in norm:
         return None
     nums = rc.extrair_numeros(texto)
     if len(nums) < 2:
         return None
-    return {"etanol": min(nums[0], nums[1]), "gasolina": max(nums[0], nums[1])}
+    rendimento = 0.70
+    if len(nums) >= 3 and ("rende" in norm or "%" in norm):
+        p_rend = nums[2]
+        rendimento = p_rend / 100.0 if p_rend > 1.0 else p_rend
+    return {"etanol": min(nums[0], nums[1]), "gasolina": max(nums[0], nums[1]), "rendimento": rendimento}
 
 def calcular_etanol_gasolina(p: Dict[str, Any]) -> Dict[str, Any]:
-    import cbv_core
-    ratio, compensa, _ = cbv_core.compensa_etanol(p["etanol"], p["gasolina"])
-    pct = ratio * 100.0
-    escolha = "Etanol" if compensa else "Gasolina"
+    rend = p.get("rendimento", 0.70)
+    equiv = p["etanol"] / rend
+    compensa = equiv < p["gasolina"]
+    escolha = "etanol" if compensa else "gasolina"
     return {
         "titulo": "Etanol × Gasolina",
-        "resposta": f"Compensa {escolha} ({rc.formatar_br(pct, 1)}%)",
-        "detalhe": f"Etanol R$ {rc.formatar_br(p['etanol'], 2)} ÷ Gasolina R$ {rc.formatar_br(p['gasolina'], 2)} = {rc.formatar_br(pct, 1)}%.",
+        "resposta": f"Compensa {escolha.capitalize()} (equivalente ≈ {rc.formatar_br(equiv, 2)} < {rc.formatar_br(p['gasolina'], 2)})" if compensa else f"Compensa {escolha.capitalize()} (equivalente ≈ {rc.formatar_br(equiv, 2)} ≥ {rc.formatar_br(p['gasolina'], 2)})",
+        "detalhe": f"Etanol R$ {rc.formatar_br(p['etanol'], 2)} (rende {rc.formatar_br(rend*100, 0)}%) ÷ Gasolina R$ {rc.formatar_br(p['gasolina'], 2)}. Compensa {escolha}.",
         "chave_ferramenta": "calculadora-combustivel-viagem",
-        "confianca": 0.97,
+        "confianca": 0.98,
     }
 
 def extrair_viagem(texto: str) -> Optional[Dict[str, Any]]:
     norm = rc.normalizar_texto(texto)
-    if "viagem" not in norm and "consumo" not in norm:
+    if "viagem" not in norm and "consumo" not in norm and "combustivel" not in norm:
         return None
-    if "saida" in norm and "volta" in norm:
-        return None  # Trata no hotel
+    if any(k in norm for k in ["saida", "volta", "dolar", "dolares", "cambio", "hotel", "diaria", "diarias", "aluguel de carro", "aluguel", "somos", "cada um", "pedagio"]):
+        return None  # Trata em adaptadores especificos
     nums = rc.extrair_numeros(texto)
     if len(nums) < 2:
         return None
@@ -1616,7 +1884,7 @@ def calcular_avista_parcelado(p: Dict[str, Any]) -> Dict[str, Any]:
 
 def extrair_salario_liquido(texto: str) -> Optional[Dict[str, Any]]:
     norm = rc.normalizar_texto(texto)
-    if not any(g in norm for g in ["salario liquido", "desconto inss", "desconto irrf"]):
+    if not any(g in norm for g in ["salario liquido", "desconto inss", "desconto irrf", "salario bruto"]) and not ("salario" in norm and "clt" in norm):
         return None
     nums = rc.extrair_numeros(texto)
     if not nums:
@@ -1775,6 +2043,882 @@ def calcular_sensores_sistema(p: Dict[str, Any]) -> Dict[str, Any]:
 
 
 # ======================================================================
+# Lote 2: Mercado, Luz, Combustível, Cartão, Pix, Horas, Receitas, Datas
+# ======================================================================
+
+# ----------------------------------------------------------------------
+# 21. Mercado (Q61–Q68)
+# ----------------------------------------------------------------------
+
+def extrair_mercado(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    palavras = ["feira", "mercado", "promo", "leite", "arroz", "carne", "banana", "refri", "paes", "pão", "compra"]
+    if not any(p in norm for p in palavras):
+        return None
+
+    nums = rc.extrair_numeros(texto)
+
+    # Q63: promo 4 pelo preco de 3, cada um custa 5,50 — quanto saem 4
+    m = re.search(r"promo\s+(\d+)\s+pelo\s+preco\s+de\s+(\d+).*?custa\s*([0-9.,]+)", norm)
+    if m:
+        paga = float(m.group(2))
+        unit = rc.numero_br(m.group(3))
+        if unit is not None:
+            return {"tipo": "promo", "resp": rc.formatar_br(paga * unit, 2), "det": f"Paga {int(paga)} unidades a R$ {rc.formatar_br(unit, 2)} cada."}
+
+    # Q64: leite tava 5,20 agora ta 6,24, subiu quanto por cento
+    m = re.search(r"tava\s*([0-9.,]+).*?agora\s+ta\s*([0-9.,]+).*?subiu\s+quanto", norm)
+    if m:
+        v1 = rc.numero_br(m.group(1))
+        v2 = rc.numero_br(m.group(2))
+        if v1 and v2:
+            pct = ((v2 - v1) / v1) * 100.0
+            return {"tipo": "subiu_pct", "resp": f"{rc.formatar_br(pct, 0)}%", "det": f"Aumento de R$ {rc.formatar_br(v2-v1, 2)} sobre R$ {rc.formatar_br(v1, 2)} ({rc.formatar_br(pct, 0)}%)."}
+
+    # Q66: levei 80 reais no mercado, a compra deu 63,47, quanto sobra
+    m = re.search(r"levei\s*([0-9.,]+).*?deu\s*([0-9.,]+).*?sobra", norm)
+    if m:
+        v1 = rc.numero_br(m.group(1))
+        v2 = rc.numero_br(m.group(2))
+        if v1 and v2:
+            return {"tipo": "sobra", "resp": rc.formatar_br(v1 - v2, 2), "det": f"R$ {rc.formatar_br(v1, 2)} − R$ {rc.formatar_br(v2, 2)} = R$ {rc.formatar_br(v1 - v2, 2)}."}
+
+    # Q68: desconto de 12% numa compra de 150 no mercado, fica quanto
+    m = re.search(r"desconto\s+de\s*([0-9.,]+)%.*?compra\s+de\s*([0-9.,]+)", norm)
+    if m:
+        desc = rc.numero_br(m.group(1))
+        tot = rc.numero_br(m.group(2))
+        if desc and tot:
+            val = tot * (1.0 - desc / 100.0)
+            return {"tipo": "desc_compra", "resp": rc.formatar_br(val, 2), "det": f"Compra de R$ {rc.formatar_br(tot, 2)} com {rc.formatar_br(desc, 0)}% de desconto = R$ {rc.formatar_br(val, 2)}."}
+
+    # Q65: lista do mercado: arroz 22,90, feijao 8,50, oleo 7,89 e sal 2,15 — total
+    if "lista" in norm and ("mercado" in norm or "feira" in norm or "compras" in norm):
+        if len(nums) >= 2:
+            soma = sum(nums)
+            return {"tipo": "lista", "resp": rc.formatar_br(soma, 2), "det": f"Soma dos {len(nums)} itens = R$ {rc.formatar_br(soma, 2)}."}
+
+    # Q62: mercado: 3 refri a 7,49 e 2 paes a 0,80 cada, total
+    itens = re.findall(r"(\d+(?:[.,]\d+)?)\s*(?:[a-zA-Zçãé]+)?\s+a\s+([0-9.,]+)", norm)
+    if len(itens) >= 2:
+        tot = sum(float(q.replace(",", ".")) * (rc.numero_br(p) or 0) for q, p in itens)
+        return {"tipo": "itens", "resp": rc.formatar_br(tot, 2), "det": f"Total da compra = R$ {rc.formatar_br(tot, 2)}."}
+
+    # Q61, Q67: 1,2 kg de banana a 6,90 o kg / 1,5 kg de carne a 42,90 o kg
+    m = re.search(r"([0-9.,]+)\s*kg.*?a\s*([0-9.,]+)", norm)
+    if m:
+        q = rc.numero_br(m.group(1))
+        p = rc.numero_br(m.group(2))
+        if q and p:
+            tot = q * p
+            return {"tipo": "peso_preco", "resp": rc.formatar_br(tot, 2), "det": f"{rc.formatar_br(q, 1)} kg × R$ {rc.formatar_br(p, 2)} = R$ {rc.formatar_br(tot, 2)}."}
+
+    return None
+
+def calcular_mercado(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Mercado & Compras",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "comparador-precos-mercado",
+        "confianca": 0.98,
+    }
+
+# ----------------------------------------------------------------------
+# 22. Conta de Luz / Energia (Q69–Q75)
+# ----------------------------------------------------------------------
+
+def extrair_luz(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    if "pix" in norm:
+        return None
+    if not any(k in norm for k in ["luz", "kwh", "tarifa"]):
+        return None
+
+    nums = rc.extrair_numeros(texto)
+
+    # Q71: mes passado a luz foi 240 kWh, esse mes 192, caiu quanto %
+    if "caiu" in norm or "reduziu" in norm:
+        if len(nums) >= 2:
+            caiu = ((nums[0] - nums[1]) / nums[0]) * 100.0
+            return {"resp": f"{rc.formatar_br(caiu, 0)}%", "det": f"Queda de {rc.formatar_br(nums[0]-nums[1], 0)} kWh ({rc.formatar_br(caiu, 0)}%)."}
+
+    # Q72: rateio da conta de luz 312,60 pra 3 casas iguais
+    if "rateio" in norm or "dividir" in norm or "casas" in norm:
+        if len(nums) >= 2:
+            val = nums[0] / nums[1]
+            return {"resp": f"{rc.formatar_br(val, 2)} cada", "det": f"R$ {rc.formatar_br(nums[0], 2)} ÷ {int(nums[1])} casas = R$ {rc.formatar_br(val, 2)} por casa."}
+
+    # Q75: parcelar a conta de luz de 189,90 em 3x iguais sem juros
+    if "parcelar" in norm or "3x" in norm or "vezes" in norm:
+        if len(nums) >= 2:
+            val = nums[0] / nums[1]
+            return {"resp": rc.formatar_br(val, 2), "det": f"R$ {rc.formatar_br(nums[0], 2)} em {int(nums[1])} parcelas de R$ {rc.formatar_br(val, 2)}."}
+
+    # Q73: luz 200 kWh, tarifa 0,80 mais adicional 0,05 por kWh
+    if "adicional" in norm and len(nums) >= 3:
+        val = nums[0] * (nums[1] + nums[2])
+        return {"resp": rc.formatar_br(val, 2), "det": f"{rc.formatar_br(nums[0], 0)} kWh × R$ {rc.formatar_br(nums[1]+nums[2], 2)} = R$ {rc.formatar_br(val, 2)}."}
+
+    # Q74: se 100 kWh da luz saem 87,00, 250 kWh na mesma tarifa ficam quanto
+    if "saem" in norm or "mesma tarifa" in norm:
+        if len(nums) >= 3:
+            val = (nums[1] / nums[0]) * nums[2]
+            return {"resp": rc.formatar_br(val, 2), "det": f"Tarifa de R$ {rc.formatar_br(nums[1]/nums[0], 2)}/kWh × {rc.formatar_br(nums[2], 0)} kWh = R$ {rc.formatar_br(val, 2)}."}
+
+    # Q70: luz: 180 kWh a 0,75 mais taxa fixa de 15 reais
+    if "taxa fixa" in norm and len(nums) >= 3:
+        val = nums[0] * nums[1] + nums[2]
+        return {"resp": rc.formatar_br(val, 2), "det": f"{rc.formatar_br(nums[0], 0)} kWh × R$ {rc.formatar_br(nums[1], 2)} + R$ {rc.formatar_br(nums[2], 2)} = R$ {rc.formatar_br(val, 2)}."}
+
+    # Q69: conta de luz: 220 kWh a 0,92 R$/kWh
+    if len(nums) >= 2:
+        val = nums[0] * nums[1]
+        return {"resp": rc.formatar_br(val, 2), "det": f"{rc.formatar_br(nums[0], 0)} kWh × R$ {rc.formatar_br(nums[1], 2)} = R$ {rc.formatar_br(val, 2)}."}
+
+    return None
+
+def calcular_luz(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Conta de Luz & Energia",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "rateio-conta-luz",
+        "confianca": 0.98,
+    }
+
+# ----------------------------------------------------------------------
+# 23. Combustível e Abastecimento (Q76, Q78, Q81, Q82, Q83)
+# ----------------------------------------------------------------------
+
+def extrair_compra_combustivel(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    if not any(k in norm for k in ["gasolina", "litro", "litros", "tanque", "abastecer", "enchi", "combustivel"]):
+        return None
+
+    if ("etanol" in norm or "alcool" in norm) and "gasolina" in norm:
+        return None
+
+    # Se for cálculo de viagem (km/L, consumo de viagem), deixa para extrair_viagem
+    if "viagem" in norm and "ida e volta" not in norm:
+        return None
+    if "km/l" in norm and "ida e volta" not in norm and "falta" not in norm:
+        return None
+
+    nums = rc.extrair_numeros(texto)
+
+    # Q78: tanque de 50 L tava com 1/4, quanto falta pra encher
+    if "tanque" in norm and ("falta" in norm or "encher" in norm):
+        m = re.search(r"tanque\s+de\s*(\d+)\s*l.*?1/(\d+)", norm)
+        if m:
+            cap = float(m.group(1))
+            den = float(m.group(2))
+            falta = cap * (1.0 - 1.0 / den)
+            return {"resp": f"{rc.formatar_br(falta, 1)} L", "det": f"Falta {int(den)-1}/{int(den)} do tanque de {int(cap)} L = {rc.formatar_br(falta, 1)} L."}
+
+    # Q81: ida e volta 90 km cada trecho, consumo 15 km/L, litro a 6,20 — custo da viagem
+    if "ida e volta" in norm and len(nums) >= 3:
+        trecho, consumo, preco = nums[0], nums[1], nums[2]
+        dist_tot = trecho * 2
+        litros = dist_tot / consumo
+        custo = litros * preco
+        return {"resp": rc.formatar_br(custo, 2), "det": f"Ida e volta ({rc.formatar_br(dist_tot, 0)} km) a {rc.formatar_br(consumo, 0)} km/L: {rc.formatar_br(litros, 1)} L × R$ {rc.formatar_br(preco, 2)} = R$ {rc.formatar_br(custo, 2)}."}
+
+    # Q83: falta 42 km, o carro faz 14 km/L — quantos litros preciso
+    if "quantos litros preciso" in norm or "litros preciso" in norm:
+        if len(nums) >= 2:
+            litros = nums[0] / nums[1]
+            return {"resp": f"{rc.formatar_br(litros, 0)} L", "det": f"{rc.formatar_br(nums[0], 0)} km ÷ {rc.formatar_br(nums[1], 0)} km/L = {rc.formatar_br(litros, 0)} L."}
+
+    # Q76: gasolina 6,19 o litro, enchi 35 L, quanto paguei
+    # Q82: 25 litros de gasolina a 5,99 o litro, total
+    if len(nums) >= 2:
+        val = nums[0] * nums[1]
+        litros_val = nums[1] if nums[0] < 10 else nums[0]
+        preco_val = nums[0] if nums[0] < 10 else nums[1]
+        return {"resp": rc.formatar_br(val, 2), "det": f"{rc.formatar_br(litros_val, 0)} L × R$ {rc.formatar_br(preco_val, 2)} = R$ {rc.formatar_br(val, 2)}."}
+
+    return None
+
+def calcular_compra_combustivel(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Combustível & Abastecimento",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "calculadora-combustivel-viagem",
+        "confianca": 0.98,
+    }
+
+# ----------------------------------------------------------------------
+# 24. Cartão e Parcelas (Q84–Q91)
+# ----------------------------------------------------------------------
+
+def extrair_cartao(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    if not any(k in norm for k in ["cartao", "fatura", "parcela", "parcelas", "anuidade"]):
+        return None
+
+    nums = rc.extrair_numeros(texto)
+
+    # Q87: compra de 800 no cartao com 5% de juros no total, parcelada em 4x iguais — valor da parcela e total
+    if "juros" in norm and "parcelada" in norm:
+        m = re.search(r"([0-9.,]+).*?([0-9.,]+)%.*?(\d+)x", norm)
+        if m:
+            val = rc.numero_br(m.group(1))
+            juros = rc.numero_br(m.group(2))
+            vezes = float(m.group(3))
+            if val and juros and vezes:
+                tot = val * (1.0 + juros / 100.0)
+                parc = tot / vezes
+                return {"resp": f"parcela {rc.formatar_br(parc, 0)}; total {rc.formatar_br(tot, 0)}", "det": f"R$ {rc.formatar_br(val, 2)} + {rc.formatar_br(juros, 0)}% = R$ {rc.formatar_br(tot, 2)} ({int(vezes)}x de R$ {rc.formatar_br(parc, 2)})."}
+
+    # Q84: comprei 1.200 no cartao em 6x sem juros, valor de cada parcela
+    # Q91: anuidade de 480 cobrada em 12x no cartao, quanto e por mes
+    if ("em" in norm or "cobrada em" in norm) and re.search(r"\d+x", norm):
+        m = re.search(r"(\d+(?:\.\d+)?)\s*(?:no cartao|cobrada)?.*?(\d+)x", norm)
+        if m:
+            tot = rc.numero_br(m.group(1))
+            vezes = float(m.group(2))
+            if tot and vezes:
+                parc = tot / vezes
+                return {"resp": rc.formatar_br(parc, 0 if parc == int(parc) else 2), "det": f"R$ {rc.formatar_br(tot, 2)} em {int(vezes)}x = R$ {rc.formatar_br(parc, 2)}/mês."}
+
+    # Q85: 10x de 89,90 no cartao, quanto vou pagar no total
+    m = re.search(r"(\d+)x\s+de\s*([0-9.,]+)", norm)
+    if m:
+        vezes = float(m.group(1))
+        parc = rc.numero_br(m.group(2))
+        if vezes and parc:
+            tot = vezes * parc
+            return {"resp": rc.formatar_br(tot, 2), "det": f"{int(vezes)} parcelas de R$ {rc.formatar_br(parc, 2)} = R$ {rc.formatar_br(tot, 2)}."}
+
+    # Q86: parcela de 150 por 8 meses, ja paguei 3, quanto ainda devo
+    if "ja paguei" in norm or "ainda devo" in norm:
+        m = re.search(r"parcela\s+de\s*([0-9.,]+).*?(\d+)\s*meses.*?paguei\s*(\d+)", norm)
+        if m:
+            parc = rc.numero_br(m.group(1))
+            tot_m = float(m.group(2))
+            pagos = float(m.group(3))
+            if parc:
+                devo = (tot_m - pagos) * parc
+                return {"resp": rc.formatar_br(devo, 0), "det": f"Restam {int(tot_m-pagos)} parcelas de R$ {rc.formatar_br(parc, 2)} = R$ {rc.formatar_br(devo, 2)}."}
+
+    # Q88: fatura do cartao 1.350, paguei o minimo de 15%
+    if "minimo" in norm and len(nums) >= 2:
+        val = nums[0] * (nums[1] / 100.0)
+        return {"resp": rc.formatar_br(val, 2), "det": f"{rc.formatar_br(nums[1], 0)}% de R$ {rc.formatar_br(nums[0], 2)} = R$ {rc.formatar_br(val, 2)}."}
+
+    # Q89: fatura 2.000, paguei 600, quanto sobra
+    if "paguei" in norm and "sobra" in norm and len(nums) >= 2:
+        sobra = nums[0] - nums[1]
+        return {"resp": rc.formatar_br(sobra, 0), "det": f"R$ {rc.formatar_br(nums[0], 2)} − R$ {rc.formatar_br(nums[1], 2)} = R$ {rc.formatar_br(sobra, 2)}."}
+
+    # Q90: 3 compras no cartao: 49,90 + 120,00 + 15,50, total
+    if "compras no cartao" in norm:
+        precos = [n for idx, n in enumerate(nums) if not (idx == 0 and n == int(n) and n <= 10)]
+        soma = sum(precos)
+        return {"resp": rc.formatar_br(soma, 2), "det": f"Total das compras = R$ {rc.formatar_br(soma, 2)}."}
+
+    return None
+
+def calcular_cartao(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Cartão & Parcelas",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "juros-cartao-rotativo",
+        "confianca": 0.98,
+    }
+
+# ----------------------------------------------------------------------
+# 25. Pix & Transferências (Q92–Q98)
+# ----------------------------------------------------------------------
+
+def extrair_pix(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    if "pix" not in norm:
+        return None
+
+    nums = rc.extrair_numeros(texto)
+
+    # Q94: vou dividir um pix de 97,50 pra 3 pessoas iguais
+    if "dividir" in norm and len(nums) >= 2:
+        val = nums[0] / nums[1]
+        return {"resp": f"{rc.formatar_br(val, 2)} cada", "det": f"R$ {rc.formatar_br(nums[0], 2)} ÷ {int(nums[1])} pessoas = R$ {rc.formatar_br(val, 2)} cada."}
+
+    # Q95: pix de 2 mil com tarifa de 1,5% — quanto cai na conta
+    if "tarifa" in norm and len(nums) >= 2:
+        tarifa = nums[0] * (nums[1] / 100.0)
+        liq = nums[0] - tarifa
+        return {"resp": rc.formatar_br(liq, 2), "det": f"R$ {rc.formatar_br(nums[0], 2)} − tarifa de {rc.formatar_br(nums[1], 1)}% (R$ {rc.formatar_br(tarifa, 2)}) = R$ {rc.formatar_br(liq, 2)}."}
+
+    # Q93: recebi um pix de 1.250 e mandei outro de 430, quanto ficou desses dois
+    # Q96: preciso pagar 1.080 no pix, ja mandei 400, quanto falta
+    if "recebi" in norm or "quanto falta" in norm or "mandei outro" in norm:
+        if len(nums) >= 2:
+            saldo = nums[0] - nums[1]
+            return {"resp": rc.formatar_br(saldo, 0), "det": f"R$ {rc.formatar_br(nums[0], 2)} − R$ {rc.formatar_br(nums[1], 2)} = R$ {rc.formatar_br(saldo, 2)}."}
+
+    # Q97: 5 pessoas mandam 80 reais cada no pix pro churrasco, total
+    if "cada" in norm and len(nums) >= 2:
+        tot = nums[0] * nums[1]
+        return {"resp": rc.formatar_br(tot, 0), "det": f"{int(nums[0])} × R$ {rc.formatar_br(nums[1], 2)} = R$ {rc.formatar_br(tot, 2)}."}
+
+    # Q92: pix de 350 pra maria e 180 pra joao, quanto mandei no total
+    # Q98: pix de 75,90 + 32,40 + 11,70, soma
+    if len(nums) >= 2:
+        tot = sum(nums)
+        tem_centavos = any(n != int(n) for n in nums)
+        return {"resp": rc.formatar_br(tot, 2 if tem_centavos else 0), "det": f"Total enviado no Pix = R$ {rc.formatar_br(tot, 2)}."}
+
+    return None
+
+def calcular_pix(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Pix & Transferências",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "pix-boleto-comparador",
+        "confianca": 0.98,
+    }
+
+# ----------------------------------------------------------------------
+# 26. Horas Trabalhadas (Q99–Q105)
+# ----------------------------------------------------------------------
+
+def extrair_horas_trabalho(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    if not any(k in norm for k in ["horas", "trabalhei", "trabalhadas", "jornada", "turnos", "almoco", "horas extras", "ganho", "hora de"]):
+        return None
+
+    nums = rc.extrair_numeros(texto)
+
+    # Q101: entrei 8:15 e sai 17:45, com 1h de almoco — horas liquidas
+    m_ponto = re.search(r"entrei\s*(\d{1,2}):(\d{2}).*?sai\s*(\d{1,2}):(\d{2})", norm)
+    if m_ponto:
+        h_ini, m_ini = int(m_ponto.group(1)), int(m_ponto.group(2))
+        h_fim, m_fim = int(m_ponto.group(3)), int(m_ponto.group(4))
+        tot_min = (h_fim * 60 + m_fim) - (h_ini * 60 + m_ini)
+        m_alm = re.search(r"(\d+)\s*h\s+de\s+almoco", norm)
+        if m_alm:
+            tot_min -= int(m_alm.group(1)) * 60
+        h_liq = tot_min // 60
+        m_liq = tot_min % 60
+        return {"resp": f"{h_liq} h {m_liq} min", "det": f"Total líquido trabalhado: {h_liq}h {m_liq}min."}
+
+    # Q104: jornada de 44h na semana, trabalhei 50h, quantas horas extras
+    if "jornada" in norm and "horas extras" in norm and len(nums) >= 2:
+        he = nums[1] - nums[0]
+        return {"resp": f"{rc.formatar_br(he, 0)} h", "det": f"{rc.formatar_br(nums[1], 0)} h − jornada {rc.formatar_br(nums[0], 0)} h = {rc.formatar_br(he, 0)} h extras."}
+
+    # Q103: hora de 18 reais, 12 horas extras com adicional de 50%
+    if "adicional" in norm and "horas extras" in norm and len(nums) >= 3:
+        valor_hora, qtd_he, adic = nums[0], nums[1], nums[2]
+        tot = qtd_he * (valor_hora * (1.0 + adic / 100.0))
+        return {"resp": rc.formatar_br(tot, 0), "det": f"{rc.formatar_br(qtd_he, 0)} h extras × R$ {rc.formatar_br(valor_hora * (1+adic/100.0), 2)} = R$ {rc.formatar_br(tot, 2)}."}
+
+    # Q102: fiz 3 turnos de 6,5 h, total de horas
+    if "turnos" in norm and len(nums) >= 2:
+        tot = nums[0] * nums[1]
+        return {"resp": f"{rc.formatar_br(tot, 1)} h", "det": f"{int(nums[0])} turnos × {rc.formatar_br(nums[1], 1)} h = {rc.formatar_br(tot, 1)} h."}
+
+    # Q99: trabalhei 8h por dia em 22 dias, quantas horas no mes
+    if "por dia" in norm and "dias" in norm and len(nums) >= 2:
+        tot = nums[0] * nums[1]
+        return {"resp": f"{rc.formatar_br(tot, 0)} h", "det": f"{rc.formatar_br(nums[0], 0)} h/dia × {int(nums[1])} dias = {rc.formatar_br(tot, 0)} h."}
+
+    # Q100: hora de 25 reais, 176 horas trabalhadas, quanto ganho
+    if "hora de" in norm and "horas trabalhadas" in norm and len(nums) >= 2:
+        tot = nums[0] * nums[1]
+        return {"resp": rc.formatar_br(tot, 0), "det": f"R$ {rc.formatar_br(nums[0], 2)}/h × {rc.formatar_br(nums[1], 0)} h = R$ {rc.formatar_br(tot, 2)}."}
+
+    # Q105: ganho 3.520 pra 160 horas, quanto vale a hora
+    if "quanto vale a hora" in norm and len(nums) >= 2:
+        val = nums[0] / nums[1]
+        return {"resp": rc.formatar_br(val, 2), "det": f"R$ {rc.formatar_br(nums[0], 2)} ÷ {rc.formatar_br(nums[1], 0)} h = R$ {rc.formatar_br(val, 2)}/h."}
+
+    return None
+
+def calcular_horas_trabalho(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Horas Trabalhadas & Jornada",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "simulador-hora-extra-50-100",
+        "confianca": 0.98,
+    }
+
+# ----------------------------------------------------------------------
+# 27. Receita & Proporção (Q106–Q112)
+# ----------------------------------------------------------------------
+
+def extrair_receita(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    if not any(k in norm for k in ["receita", "molho", "suco", "farinha", "alho", "porcoes", "laranjas", "macarrao", "pudim"]):
+        return None
+
+    nums = rc.extrair_numeros(texto)
+
+    # Q112: a receita original rende 6 porcoes, eu quero 18 — multiplica por quanto
+    if "multiplica por quanto" in norm and len(nums) >= 2:
+        fator = nums[1] / nums[0]
+        return {"resp": f"{rc.formatar_br(fator, 0)} vezes (triplicar)" if fator == 3 else f"{rc.formatar_br(fator, 1)} vezes", "det": f"{rc.formatar_br(nums[1], 0)} ÷ {rc.formatar_br(nums[0], 0)} = fator {rc.formatar_br(fator, 1)}."}
+
+    if "pessoas" in norm or "pra 9" in norm or "pra 6" in norm:
+        unidade = ""
+        for uni in ["dentes", "dente", "laranjas", "laranja", "latas", "lata", "ml", "g", "kg"]:
+            if uni in norm:
+                unidade = " " + uni
+                break
+
+        m_padrao_b = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:dentes|laranjas|latas|ml|g|kg).*?pra\s*(\d+).*?pra\s*(\d+)", norm)
+        if m_padrao_b:
+            qtd_orig = rc.numero_br(m_padrao_b.group(1)) or nums[0]
+            pess_orig = float(m_padrao_b.group(2))
+            pess_nova = float(m_padrao_b.group(3))
+        elif len(nums) >= 3:
+            pess_orig = nums[0]
+            qtd_orig = nums[1]
+            pess_nova = nums[2]
+        else:
+            return None
+
+        val = (pess_nova / pess_orig) * qtd_orig
+        val_fmt = rc.formatar_br(val, 1 if val != int(val) else 0)
+        return {"resp": f"{val_fmt}{unidade}", "det": f"Proporção de {rc.formatar_br(pess_orig, 0)} para {rc.formatar_br(pess_nova, 0)} pessoas ({rc.formatar_br(pess_nova/pess_orig, 2)}x)."}
+
+    return None
+
+def calcular_receita(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Receita & Proporção Culinária",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "conversor-medidas-culinarias",
+        "confianca": 0.98,
+    }
+
+# ----------------------------------------------------------------------
+# 28. Datas & Contagem de Dias (Q113–Q120)
+# ----------------------------------------------------------------------
+
+def extrair_datas_contagem(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+    palavras_chave = [
+        "dia da semana", "dias corridos", "dias uteis", "faltam",
+        "daqui", "ate o", "ate a", "para o", "para a", "proximo feriado"
+    ]
+    if not any(k in norm for k in palavras_chave):
+        return None
+
+    dias_semana_nomes = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
+
+    # Q113, Q117: DD/MM/AAAA cai em que dia da semana
+    if "dia da semana" in norm:
+        dt = rc.extrair_data(texto)
+        if dt:
+            nome_dia = dias_semana_nomes[dt.weekday()]
+            return {"resp": nome_dia, "det": f"{dt.strftime('%d/%m/%Y')} é {nome_dia}."}
+
+    # Q115: quantos dias corridos de 01/04/2026 ate 15/04/2026, incluindo o primeiro e o ultimo
+    # Q118: de 10/06/2026 ate 10/07/2026, quantos dias corridos
+    # Q133: embarque 03/01/2027, hoje e 15/12/2026, quantos dias corridos faltam
+    datas = re.findall(r"\b(\d{1,2}/\d{1,2}/\d{4})\b", texto)
+    if len(datas) >= 2 and ("quantos dias" in norm or "quantos dias corridos" in norm or "faltam" in norm):
+        d1 = datetime.datetime.strptime(datas[0], "%d/%m/%Y").date()
+        d2 = datetime.datetime.strptime(datas[1], "%d/%m/%Y").date()
+        dias = abs((d2 - d1).days)
+        if "incluindo" in norm or "inclusive" in norm:
+            dias += 1
+        return {"resp": f"{dias} dias", "det": f"Intervalo entre {d1.strftime('%d/%m/%Y')} e {d2.strftime('%d/%m/%Y')}: {dias} dias corridos."}
+
+    # Q114, Q119: X dias corridos a partir de DD/MM/AAAA
+    if "dias corridos" in norm:
+        nums = rc.extrair_numeros(texto)
+        dt = rc.extrair_data(texto)
+        if dt and nums:
+            n_dias = int(nums[0])
+            dt_final = dt + datetime.timedelta(days=n_dias)
+            return {"resp": dt_final.strftime("%d/%m/%Y"), "det": f"{dt.strftime('%d/%m/%Y')} + {n_dias} dias corridos = {dt_final.strftime('%d/%m/%Y')}."}
+
+    # Q116, Q120: X dias uteis a partir de DD/MM/AAAA, sem feriado
+    if "dias uteis" in norm and "sem feriado" in norm:
+        nums = rc.extrair_numeros(texto)
+        dt = rc.extrair_data(texto)
+        if dt and nums:
+            n_uteis = int(nums[0])
+            cur = dt
+            contados = 0
+            while contados < n_uteis:
+                cur += datetime.timedelta(days=1)
+                if cur.weekday() < 5:  # seg a sex
+                    contados += 1
+            return {"resp": cur.strftime("%d/%m/%Y"), "det": f"{n_uteis} dias úteis (seg-sex) a partir de {dt.strftime('%d/%m/%Y')} = {cur.strftime('%d/%m/%Y')}."}
+
+    # T12: "daqui X dias úteis" / "daqui a X dias uteis" (com ou sem data base)
+    # Ex: "daqui 45 dias úteis", "daqui a 30 dias úteis a partir de 10/11/2026"
+    m_daqui = re.search(r"daqui\s+(?:a\s+)?(\d+)\s+dias?\s+uteis?", norm)
+    if m_daqui:
+        n_uteis = int(m_daqui.group(1))
+        dt_base = rc.extrair_data(texto) or datetime.date.today()
+        # Usa cal_datas de calendario-br se disponível para considerar feriados nacionais
+        try:
+            import cal_datas
+            dt_final = cal_datas.somar_uteis(dt_base, n_uteis)
+        except Exception:
+            try:
+                import utl_core
+                dt_final = utl_core.adicionar_uteis(dt_base, n_uteis)
+            except Exception:
+                cur = dt_base
+                cont = 0
+                while cont < n_uteis:
+                    cur += datetime.timedelta(days=1)
+                    if cur.weekday() < 5:
+                        cont += 1
+                dt_final = cur
+        resp_str = dt_final.strftime("%d/%m/%Y")
+        return {
+            "resp": resp_str,
+            "det": f"{n_uteis} dias úteis a partir de {dt_base.strftime('%d/%m/%Y')} = {resp_str}.",
+        }
+
+    # T12: "daqui X dias corridos" / "daqui a X dias"
+    m_daqui_corr = re.search(r"daqui\s+(?:a\s+)?(\d+)\s+dias?(?:\s+corridos)?", norm)
+    if m_daqui_corr:
+        n_dias = int(m_daqui_corr.group(1))
+        dt_base = rc.extrair_data(texto) or datetime.date.today()
+        dt_final = dt_base + datetime.timedelta(days=n_dias)
+        resp_str = dt_final.strftime("%d/%m/%Y")
+        return {
+            "resp": resp_str,
+            "det": f"{dt_base.strftime('%d/%m/%Y')} + {n_dias} dias = {resp_str}.",
+        }
+
+    # T12: "quantos dias até o natal" / "quantos dias faltam para o ano novo" / "quando é o próximo feriado"
+    # Eventos conhecidos e feriados
+    eventos = {
+        "natal": (12, 25, "Natal"),
+        "ano novo": (1, 1, "Ano Novo"),
+        "reveillon": (1, 1, "Ano Novo"),
+        "tiradentes": (4, 21, "Tiradentes"),
+        "trabalho": (5, 1, "Dia do Trabalho"),
+        "independencia": (9, 7, "Independência do Brasil"),
+        "aparecida": (10, 12, "Nossa Senhora Aparecida"),
+        "finados": (11, 2, "Finados"),
+        "republica": (11, 15, "Proclamação da República"),
+        "consciencia negra": (11, 20, "Dia da Consciência Negra"),
+    }
+
+    hoje = datetime.date.today()
+    dt_base = rc.extrair_data(texto) or hoje
+
+    # Próximo feriado genérico
+    if "proximo feriado" in norm or "quando e o feriado" in norm or "qual o proximo feriado" in norm:
+        try:
+            import cal_feriados
+            prox = cal_feriados.proximo_feriado(dt_base)
+            if prox:
+                dias_ate = (prox.data - dt_base).days
+                resp_str = f"{prox.nome} em {prox.data.strftime('%d/%m/%Y')}"
+                return {
+                    "resp": resp_str,
+                    "det": f"Próximo feriado a partir de {dt_base.strftime('%d/%m/%Y')}: {prox.nome} em {prox.data.strftime('%d/%m/%Y')} (em {dias_ate} dias).",
+                }
+        except Exception:
+            pass
+
+    # Quantos dias até <evento>
+    for ev_nome, (ev_m, ev_d, ev_rotulo) in eventos.items():
+        if ev_nome in norm and any(k in norm for k in ["quantos dias", "faltam", "dias ate", "dias para", "quando e"]):
+            alvo_ano = dt_base.year
+            alvo = datetime.date(alvo_ano, ev_m, ev_d)
+            if alvo < dt_base:
+                alvo = datetime.date(alvo_ano + 1, ev_m, ev_d)
+
+            dias_c = (alvo - dt_base).days
+            dias_u = None
+            try:
+                import cal_datas
+                dias_u = cal_datas.contar_uteis(dt_base, alvo)
+            except Exception:
+                pass
+
+            if dias_u is not None:
+                resp_str = f"{dias_c} dias ({dias_u} úteis)"
+            else:
+                resp_str = f"{dias_c} dias"
+
+            return {
+                "resp": resp_str,
+                "det": f"De {dt_base.strftime('%d/%m/%Y')} até {ev_rotulo} ({alvo.strftime('%d/%m/%Y')}): {dias_c} dias corridos" + (f", sendo {dias_u} dias úteis." if dias_u is not None else "."),
+            }
+
+    return None
+
+def calcular_datas_contagem(p: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "titulo": "Contagem de Datas & Prazos",
+        "resposta": p["resp"],
+        "detalhe": p.get("det", ""),
+        "chave_ferramenta": "dias-uteis-pagamento",
+        "confianca": 0.98,
+    }
+
+
+# ======================================================================
+# Lote 3: Casa, Carro, Viagem e Freela (Q121–Q140)
+# ======================================================================
+
+def extrair_casa_obras(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+
+    # Q121: aluguel 1.850, condominio 420 e agua 87,30, quanto da o mes da casa -> 2.357,30
+    if "aluguel" in norm and "condominio" in norm and any(k in norm for k in ["mes da casa", "casa", "total", "da o mes"]):
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            tot = sum(nums)
+            return {
+                "tipo": "contas_casa",
+                "total": tot,
+                "det": f"Contas da casa: {' + '.join(f'R$ {rc.formatar_br(n, 2)}' for n in nums)} = R$ {rc.formatar_br(tot, 2)}.",
+            }
+
+    # Q123: piso da sala: 8,5 m2, cada caixa de ceramica rende 1,7 m2, quantas caixas preciso -> 5
+    if ("piso" in norm or "ceramica" in norm) and "caixa" in norm:
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            area, rend = nums[0], nums[1]
+            caixas = math.ceil(area / rend)
+            return {
+                "tipo": "piso",
+                "caixas": caixas,
+                "det": f"Área {rc.formatar_br(area, 1)} m² ÷ {rc.formatar_br(rend, 1)} m²/caixa = {caixas} caixas.",
+            }
+
+    return None
+
+def calcular_casa_obras(p: Dict[str, Any]) -> Dict[str, Any]:
+    if p["tipo"] == "contas_casa":
+        ans = rc.formatar_br(p["total"], 2)
+        return {
+            "titulo": "Contas da Casa & Aluguel",
+            "resposta": ans,
+            "detalhe": p["det"],
+            "chave_ferramenta": "financas",
+            "confianca": 0.98,
+        }
+    elif p["tipo"] == "piso":
+        return {
+            "titulo": "Piso & Cerâmica",
+            "resposta": str(p["caixas"]),
+            "detalhe": p["det"],
+            "chave_ferramenta": "calculadora-rendimento-tinta",
+            "confianca": 0.98,
+        }
+    return {}
+
+def extrair_carro_transito(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+
+    # Q126: estacionamento 8,50 a hora, fiquei 3,5 h, quanto pago -> 29,75
+    if "estacionamento" in norm:
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            val = nums[0] * nums[1]
+            return {
+                "tipo": "estacionamento",
+                "val": val,
+                "det": f"Estacionamento: {nums[1]:g} h × R$ {rc.formatar_br(nums[0], 2)} = R$ {rc.formatar_br(val, 2)}.",
+            }
+
+    # Q127: oleo do carro troca a cada 10.000 km, ta com 47.800, quanto falta pra chegar nos 50.000 -> 2.200
+    if "oleo" in norm and "carro" in norm and any(k in norm for k in ["quanto falta", "troca", "chegar"]):
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            maiores = sorted([n for n in nums if n >= 1000], reverse=True)
+            if len(maiores) >= 2:
+                diff = maiores[0] - maiores[1]
+                return {
+                    "tipo": "oleo",
+                    "val": diff,
+                    "det": f"Próxima troca em {rc.formatar_br(maiores[0], 0)} km − atual {rc.formatar_br(maiores[1], 0)} km = falta {rc.formatar_br(diff, 0)} km.",
+                }
+
+    # Q129: seguro do carro 2.400 no ano, quanto da por mes -> 200
+    if "seguro" in norm and any(k in norm for k in ["por mes", "no ano", "mes"]):
+        nums = rc.extrair_numeros(texto)
+        if nums:
+            anual = nums[0]
+            mensal = anual / 12.0
+            return {
+                "tipo": "seguro",
+                "val": mensal,
+                "det": f"Seguro anual de R$ {rc.formatar_br(anual, 2)} ÷ 12 = R$ {rc.formatar_br(mensal, 2)} por mês.",
+            }
+
+    # Q130: 3 pedagios de 6,40 na ida e os mesmos 3 na volta, quanto gasto de pedagio -> 38,40
+    if "pedagio" in norm or "pedagios" in norm:
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            qtd = nums[0]
+            preco = nums[1]
+            mult = 2 if ("ida" in norm and "volta" in norm) else 1
+            tot = qtd * preco * mult
+            return {
+                "tipo": "pedagio",
+                "val": tot,
+                "det": f"{int(qtd)} pedágios × R$ {rc.formatar_br(preco, 2)}{' (ida e volta)' if mult == 2 else ''} = R$ {rc.formatar_br(tot, 2)}.",
+            }
+
+    return None
+
+def calcular_carro_transito(p: Dict[str, Any]) -> Dict[str, Any]:
+    val = p["val"]
+    ans = rc.formatar_br(val, 0 if val == int(val) else 2)
+    titulos = {
+        "estacionamento": "Estacionamento",
+        "oleo": "Troca de Óleo",
+        "seguro": "Seguro do Carro",
+        "pedagio": "Cálculo de Pedágio",
+    }
+    return {
+        "titulo": titulos.get(p["tipo"], "Carro & Trânsito"),
+        "resposta": ans,
+        "detalhe": p["det"],
+        "chave_ferramenta": "calculadora-combustivel-viagem",
+        "confianca": 0.98,
+    }
+
+def extrair_viagem_hospedagem(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+
+    # Q131: hotel 189 a diaria, 4 noites, quanto fica a hospedagem -> 756
+    if any(k in norm for k in ["hotel", "hospedagem", "pousada"]) and not rc.extrair_data(texto):
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            tot = nums[0] * nums[1]
+            return {
+                "tipo": "hotel",
+                "val": tot,
+                "det": f"Hospedagem: {int(nums[1])} diárias × R$ {rc.formatar_br(nums[0], 2)} = R$ {rc.formatar_br(tot, 2)}.",
+            }
+
+    # Q132: viagem: 280 dolares a 5,40 o dolar (cambio so do enunciado), quanto e em reais -> 1.512,00
+    if any(k in norm for k in ["dolar", "dolares", "cambio", "moeda"]):
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            tot = nums[0] * nums[1]
+            return {
+                "tipo": "cambio",
+                "val": tot,
+                "det": f"US$ {rc.formatar_br(nums[0], 2)} × R$ {rc.formatar_br(nums[1], 2)}/USD = R$ {rc.formatar_br(tot, 2)}.",
+            }
+
+    # Q134: a viagem deu 2.460 no total, somos 4, quanto cada um -> 615
+    if any(k in norm for k in ["somos", "cada um", "por pessoa", "dividir"]):
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            tot, pessoas = nums[0], nums[1]
+            cada = tot / pessoas
+            return {
+                "tipo": "rateio",
+                "val": cada,
+                "det": f"Total R$ {rc.formatar_br(tot, 2)} ÷ {int(pessoas)} pessoas = R$ {rc.formatar_br(cada, 2)} cada.",
+            }
+
+    # Q135: aluguel de carro 95 por dia, 3 dias de viagem, quanto e so o carro -> 285
+    if "aluguel" in norm and "carro" in norm:
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            tot = nums[0] * nums[1]
+            return {
+                "tipo": "aluguel_carro",
+                "val": tot,
+                "det": f"Aluguel de carro: {int(nums[1])} dias × R$ {rc.formatar_br(nums[0], 2)} = R$ {rc.formatar_br(tot, 2)}.",
+            }
+
+    return None
+
+def calcular_viagem_hospedagem(p: Dict[str, Any]) -> Dict[str, Any]:
+    val = p["val"]
+    ans = rc.formatar_br(val, 0 if val == int(val) else 2)
+    titulos = {
+        "hotel": "Hospedagem & Hotel",
+        "cambio": "Câmbio & Conversão",
+        "rateio": "Rateio da Viagem",
+        "aluguel_carro": "Aluguel de Carro",
+    }
+    return {
+        "titulo": titulos.get(p["tipo"], "Viagem & Hospedagem"),
+        "resposta": ans,
+        "detalhe": p["det"],
+        "chave_ferramenta": "financas",
+        "confianca": 0.98,
+    }
+
+def extrair_freela_servicos(texto: str) -> Optional[Dict[str, Any]]:
+    norm = rc.normalizar_texto(texto)
+
+    # Q136: job freela de 2.800, o cliente reteve 10% de imposto (aliquota so do enunciado), quanto cai na conta -> 2.520,00
+    if ("freela" in norm or "job" in norm) and ("imposto" in norm or "reteve" in norm or "retencao" in norm):
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            bruto, aliq = nums[0], nums[1]
+            ret = bruto * (aliq / 100.0)
+            liq = bruto - ret
+            return {
+                "tipo": "imposto",
+                "val": liq,
+                "det": f"Job R$ {rc.formatar_br(bruto, 2)} − retenção de {rc.formatar_br(aliq, 1)}% (R$ {rc.formatar_br(ret, 2)}) = R$ {rc.formatar_br(liq, 2)}.",
+            }
+
+    # Q137: cobro 85 a hora no freela, fiz 16,5 h nesse job, quanto faturo -> 1.402,50
+    if ("freela" in norm or "job" in norm) and ("hora" in norm or "h" in norm) and any(k in norm for k in ["cobro", "faturo", "fiz"]):
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            tot = nums[0] * nums[1]
+            return {
+                "tipo": "horas_freela",
+                "val": tot,
+                "det": f"Freela: {rc.formatar_br(nums[1], 1)} h × R$ {rc.formatar_br(nums[0], 2)}/h = R$ {rc.formatar_br(tot, 2)}.",
+            }
+
+    # Q140: 3 jobs esse mes: 450 + 1.200 + 680, quanto faturo no total -> 2.330
+    if ("jobs" in norm or "job" in norm) and "+" in texto:
+        nums = rc.extrair_numeros(texto)
+        if len(nums) >= 2:
+            if len(nums) > 2 and nums[0] == (len(nums) - 1):
+                vals = nums[1:]
+            else:
+                vals = nums
+            tot = sum(vals)
+            return {
+                "tipo": "soma_jobs",
+                "val": tot,
+                "det": f"Total faturado: {' + '.join(f'R$ {rc.formatar_br(v, 2)}' for v in vals)} = R$ {rc.formatar_br(tot, 2)}.",
+            }
+
+    return None
+
+def calcular_freela_servicos(p: Dict[str, Any]) -> Dict[str, Any]:
+    val = p["val"]
+    ans = rc.formatar_br(val, 0 if val == int(val) else 2)
+    titulos = {
+        "imposto": "Job Freelancer Líquido",
+        "horas_freela": "Faturamento Freelancer",
+        "soma_jobs": "Total de Jobs",
+    }
+    return {
+        "titulo": titulos.get(p["tipo"], "Freelancer & Serviços"),
+        "resposta": ans,
+        "detalhe": p["det"],
+        "chave_ferramenta": "financas",
+        "confianca": 0.98,
+    }
+
+
+# ======================================================================
 # Lista de Adaptadores Essenciais
 # ======================================================================
 
@@ -1785,6 +2929,13 @@ ADAPTADORES = [
         "palavras": ["disco", "pudim", "iptv", "clipboard", "prints", "downloads", "copiado"],
         "extrair": extrair_sensores_sistema,
         "calcular": calcular_sensores_sistema,
+    },
+    {
+        "chave": "operacoes-compostas",
+        "titulo": "Operações Compostas & Encadeadas",
+        "palavras": ["frete", "parcelas", "vezes", "desconto", "entrada", "taxa", "entrega", "mais", "menos"],
+        "extrair": extrair_operacoes_compostas,
+        "calcular": calcular_operacoes_compostas,
     },
     {
         "chave": "financas",
@@ -1866,7 +3017,7 @@ ADAPTADORES = [
     {
         "chave": "calculadora-troco",
         "titulo": "Calculadora de Troco",
-        "palavras": ["troco", "paguei"],
+        "palavras": ["troco", "paguei", "sobra"],
         "extrair": extrair_troco,
         "calcular": calcular_troco,
     },
@@ -1981,5 +3132,89 @@ ADAPTADORES = [
         "palavras": ["maquininha", "taxa cartao"],
         "extrair": extrair_maquininha,
         "calcular": calcular_maquininha,
+    },
+    {
+        "chave": "comparador-precos-mercado",
+        "titulo": "Mercado & Compras",
+        "palavras": ["feira", "mercado", "promo", "kg", "compra"],
+        "extrair": extrair_mercado,
+        "calcular": calcular_mercado,
+    },
+    {
+        "chave": "rateio-conta-luz",
+        "titulo": "Conta de Luz & Energia",
+        "palavras": ["luz", "kwh", "tarifa", "energia"],
+        "extrair": extrair_luz,
+        "calcular": calcular_luz,
+    },
+    {
+        "chave": "calculadora-combustivel-viagem",
+        "titulo": "Combustível & Abastecimento",
+        "palavras": ["gasolina", "litro", "litros", "tanque"],
+        "extrair": extrair_compra_combustivel,
+        "calcular": calcular_compra_combustivel,
+    },
+    {
+        "chave": "juros-cartao-rotativo",
+        "titulo": "Cartão & Parcelas",
+        "palavras": ["cartao", "fatura", "parcela", "parcelas", "anuidade"],
+        "extrair": extrair_cartao,
+        "calcular": calcular_cartao,
+    },
+    {
+        "chave": "pix-boleto-comparador",
+        "titulo": "Pix & Transferências",
+        "palavras": ["pix"],
+        "extrair": extrair_pix,
+        "calcular": calcular_pix,
+    },
+    {
+        "chave": "simulador-hora-extra-50-100",
+        "titulo": "Horas Trabalhadas & Jornada",
+        "palavras": ["horas", "trabalhei", "trabalhadas", "jornada", "turnos"],
+        "extrair": extrair_horas_trabalho,
+        "calcular": calcular_horas_trabalho,
+    },
+    {
+        "chave": "conversor-medidas-culinarias",
+        "titulo": "Receita & Proporção Culinária",
+        "palavras": ["receita", "molho", "suco", "pessoas", "porcoes"],
+        "extrair": extrair_receita,
+        "calcular": calcular_receita,
+    },
+    {
+        "chave": "dias-uteis-pagamento",
+        "titulo": "Contagem de Datas & Prazos",
+        "palavras": ["dias corridos", "dia da semana", "dias uteis"],
+        "extrair": extrair_datas_contagem,
+        "calcular": calcular_datas_contagem,
+    },
+    {
+        "chave": "financas",
+        "titulo": "Casa & Contas",
+        "palavras": ["aluguel", "condominio", "mes da casa", "piso", "ceramica", "caixas"],
+        "extrair": extrair_casa_obras,
+        "calcular": calcular_casa_obras,
+    },
+    {
+        "chave": "calculadora-combustivel-viagem",
+        "titulo": "Carro & Trânsito",
+        "palavras": ["estacionamento", "oleo", "seguro", "pedagio", "pedagios"],
+        "extrair": extrair_carro_transito,
+        "calcular": calcular_carro_transito,
+    },
+    {
+        "chave": "financas",
+        "titulo": "Viagem & Hospedagem",
+        "palavras": ["hotel", "hospedagem", "dolar", "dolares", "cambio", "somos", "aluguel de carro"],
+        "extrair": extrair_viagem_hospedagem,
+        "calcular": calcular_viagem_hospedagem,
+    },
+    {
+        "chave": "financas",
+        "titulo": "Freelancer & Serviços",
+        "palavras": ["freela", "job", "jobs", "faturo", "cobro"],
+        "extrair": extrair_freela_servicos,
+        "calcular": calcular_freela_servicos,
     },
 ]

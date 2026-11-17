@@ -30,7 +30,7 @@ FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (insta
 if "--teste" in sys.argv:
     os.environ["CAIXA_TESTE"] = "1"
 MODO_TESTE = os.environ.get("CAIXA_TESTE") == "1"
-APP_VERSION = "1.5.7"
+APP_VERSION = "1.5.9"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
@@ -780,7 +780,7 @@ BUILTIN = [
     ("🎤", "Checklist de Preparacao para Entrevista", "Checklist ponderado: marque tarefas (curriculo, pesquisa, perguntas, rota, roupa, documentos), ajuste pesos e veja % de prontidao, criticos faltando e tempo restante", "checklist-entrevista-emprego", "cie_gui.pyw"),
     ("🏨", "Comparador de Hospedagens", "Hotel x pousada x Airbnb com limpeza, taxa do site, café e transporte por pessoa/noite", "comparador-hospedagens", "hsp_gui.pyw"),
     ("💼", "Comparador Salário × Benefícios", "Compara duas propostas de emprego: bruto, VR, VT, plano de saúde e outros — pacote mensal, diferença e equivalente em bruto.", "comparador-salario-beneficios", "csb_gui.pyw"),
-    ("💊", "Agenda de Medicacao por Horarios", "Cronograma de doses por intervalo em horas; proxima dose a partir de agora; alerta de sobreposicao entre remedios no mesmo horario (±30 min)", "controle-medicacao-horarios", "mdh_gui.pyw"),
+    ("💊", "Agenda de Medicação por Horários", "Cronograma de doses por intervalo em horas; próxima dose a partir de agora; alerta de sobreposição entre remédios no mesmo horário (±30 min)", "controle-medicacao-horarios", "mdh_gui.pyw"),
     ("🏥", "Custo Consulta Especialista", "Compara consulta particular vs plano: coparticipacao, retornos, exames e break-even.", "custo-consulta-especialista", "ces_gui.pyw"),
     ("🌐", "Imposto de Compra Internacional", "Remessa Conforme: Imposto de Importação 20%/60% + ICMS por dentro e total em reais", "imposto-compra-internacional", "imx_gui.pyw"),
     ("😴", "Índice de Qualidade do Sono (PSQI simplificado)", "Questionário educativo inspirado no PSQI: escore 0–21, classificação e dicas de higiene do sono", "indice-qualidade-sono-psqi", "psq_gui.pyw"),
@@ -883,6 +883,22 @@ BUILTIN = [
     ("🎤", "Notas de Voz", "Grava, transcreve no PC (sem internet) e separa lembrete e assunto. 🔥 Tendência do dia.", "notas-de-voz", "nvz_gui.pyw"),
     ("🎵", "Tocando Agora", "Widget do que está tocando e papel de parede com o tile — offline, sem API.", "tocando-agora", "npw_gui.pyw"),
     ("🖼️", "Visor de Fotos & Duplicadas", "Abre pastas de fotos na hora (cache de miniaturas), acha duplicadas e rostos, otimiza imagens. 🔥 Tendência do dia.", "visor-fotos", "vft_gui.pyw"),
+    ("📝", "Atas de Reunião & Decisões", "Anotações de reuniões com extração de resumo executivo, decisões e tarefas com responsáveis e prazos — offline e privado. 🔥 Tendência do dia.", "atas-reuniao", "atr_gui.pyw"),
+    ("🤖", "Canvas de Agentes de IA", "Canvas 2D interativo e planejador de fluxo de agentes de IA com herança de contexto e compilação de prompts. 🔥 Tendência do dia.", "canvas-agentes", "cag_gui.pyw"),
+    ("💰", "Regra 50/30/20", "Planejamento financeiro rápido: 50% necessidades, 30% desejos e 20% poupança. 🔥 Tendência do dia.", "regra-50-30-20", "r50_gui.pyw"),
+    ("🏦", "Conversor de Extrato CSV para OFX", "Converte extratos bancários CSV de bancos brasileiros (Nubank, Inter, Itaú, BB) para OFX padronizado. 🔥 Tendência do dia.", "conversor-extrato-csv-ofx", "cxo_gui.pyw"),
+    ("🔤", "Escrita Sem Espaço (NoSpace)", "Escrita contínua sem barra de espaço com segmentação probabilística em tempo real. 🔥 Tendência do dia.", "escrita-sem-espaco", "nsp_gui.pyw"),
+    ("📌", "Notas Adesivas & Dock (Stick-itt)", "Post-its flutuantes na tela com Always-on-Top, Fold em 1 linha e detecção de lembretes @horário. 🔥 Tendência do dia.", "notas-adesivas-dock", "stk_gui.pyw"),
+    ("👁️", "Protetor Ocular & Filtro de Tela", "Pausas visuais 20-20-20 com detecção de ociosidade, exercícios oculares, filtro de luz azul e dimmer extra. 🔥 Tendência do dia.", "protetor-ocular", "eyg_gui.pyw"),
+    ("🚀", "Super-Resolução & 120 FPS (Veyra)", "Upscaling Lanczos + Nitidez Adaptativa CAS, redução de ruído, cortina Antes/Depois e interpolação de vídeo 60/120 FPS. 🔥 Tendência do dia.", "estudio-upscale-video", "vnr_gui.pyw"),
+    ("🗑️", "Desinstalador de Programas", "Desinstala apps e limpa sobras no disco e registro (substitui Revo Uninstaller)", "desinstalador", "uns_gui.pyw"),
+    ("🎬", "Player de Vídeo", "Toca qualquer formato, legendas .SRT, velocidade e playlist (substitui VLC)", "player-video", "vpl_gui.pyw"),
+    ("📝", "Editor de Texto", "Abas múltiplas, realce de sintaxe, regex e codificação UTF-8/ANSI (substitui Notepad++)", "editor-texto", "npp_gui.pyw"),
+    ("⚡", "Copiador Rápido", "Cópia e movimentação veloz de arquivos e pastas com fila, pausa/retomada e verificação de hash (substitui TeraCopy)", "copiador-rapido", "cpr_gui.pyw"),
+    ("🎭", "Estúdio de Cena", "Deck de clipe com camadas no quadro, falas ramificadas e troca ao vivo entre 7 idiomas. 🔥 Tendência do dia.", "estudio-cena", "ecn_gui.pyw"),
+    ("🎮", "Motor V.E.T.O.R de Diálogos", "Motor de cenas em Canvas 2D, linha do tempo sincronizada e diálogo dinâmico em 7 idiomas (V.E.T.O.R). 🔥 Tendência do dia.", "motor-dialogos", "vtr_gui.pyw"),
+    ("💼", "Copilot de Candidaturas & Vagas", "Mapeamento semântico de perguntas e selects de vagas (Gupy, Greenhouse, Lever) com banco de respostas e autofill. 🔥 Tendência do dia.", "copilot-candidaturas", "g3a_gui.pyw"),
+    ("🧰", "Canivete do Técnico de PC", "Canivete portátil para técnicos de PC e manutenção Windows: backup/restauração de perfil, diagnóstico de saúde, reparos rápidos de rede/SFC e ordens de serviço. 🔥 Tendência do dia.", "canivete-tecnico-pc", "sak_gui.pyw"),
 ]
 
 # Ferramentas que aceitam --pasta/--arquivo vindos dos botões da Hoje (as outras abrem normal)
@@ -1216,6 +1232,9 @@ class Card(QFrame):
 class Caixa(QWidget):
     def __init__(self):
         super().__init__()
+        # a janela principal é QWidget: o tema novo só pinta QMainWindow/QDialog → ficava clara (1.5.8)
+        self.setObjectName("janelaCaixa")
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setWindowTitle("Caixa de Ferramentas do Caio")
         self.setWindowIcon(window_icon())
         self.resize(1280, 800)

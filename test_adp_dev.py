@@ -297,6 +297,67 @@ class Dev(unittest.TestCase):
         mod = af.carregar("painel-docker", "dck_core")
         self.assertIn(str(mod.audit_dockerfile(corpo)["score"]), saida["resposta"])
 
+    def test_novos_dev_lote1(self):
+        # 1. calculadora-cientifica
+        _, s1 = _um("calcular expressao sin(pi/2)", "calculadora-cientifica")
+        self.assertEqual(s1["resposta"], "1.0")
+
+        # 2. gerador-gitignore
+        _, s2 = _um("gerar gitignore Python", "gerador-gitignore")
+        self.assertIn("regras (.gitignore)", s2["resposta"])
+
+        # 3. gerador-gitattributes
+        _, s3 = _um("gerar gitattributes EOL LF (texto)", "gerador-gitattributes")
+        self.assertIn("regras (.gitattributes)", s3["resposta"])
+
+        # 4. gerador-makefile
+        _, s4 = _um("gerar makefile Python", "gerador-makefile")
+        self.assertIn("linhas (Makefile)", s4["resposta"])
+
+        # 5. gerador-dockerignore
+        _, s5 = _um("gerar dockerignore Python", "gerador-dockerignore")
+        self.assertIn("regras (.dockerignore)", s5["resposta"])
+
+        # 6. gerador-pre-commit
+        _, s6 = _um("gerar pre-commit Python", "gerador-pre-commit")
+        self.assertIn("linhas (.pre-commit-config.yaml)", s6["resposta"])
+
+        # 7. gerador-badges
+        _, s7 = _um("gerar badge build", "gerador-badges")
+        self.assertIn("img.shields.io", s7["resposta"])
+
+        # 8. gerador-codeowners
+        _, s8 = _um("gerar codeowners @dev", "gerador-codeowners")
+        self.assertIn("linhas (CODEOWNERS)", s8["resposta"])
+
+        # 9. gerador-coveragerc
+        _, s9 = _um("gerar coveragerc Basico", "gerador-coveragerc")
+        self.assertIn("linhas (.coveragerc)", s9["resposta"])
+
+        # 10. gerador-eslintignore
+        _, s10 = _um("gerar eslintignore Base", "gerador-eslintignore")
+        self.assertIn("regras (.eslintignore)", s10["resposta"])
+
+        # 11. gerador-github-actions
+        _, s11 = _um("gerar github actions Python CI", "gerador-github-actions")
+        self.assertIn("linhas (.github/workflows)", s11["resposta"])
+
+        # 12. gerador-prettierrc
+        _, s12 = _um("gerar prettierrc Padrao", "gerador-prettierrc")
+        self.assertIn("linhas (.prettierrc)", s12["resposta"])
+
+        # 13. gerador-justfile
+        _, s13 = _um("gerar justfile Python", "gerador-justfile")
+        self.assertIn("receitas (justfile)", s13["resposta"])
+
+        # 14. gerador-taskfile
+        _, s14 = _um("gerar taskfile Python", "gerador-taskfile")
+        self.assertIn("linhas (Taskfile.yml)", s14["resposta"])
+
+        # 15. gerador-python-version
+        _, s15 = _um("gerar python-version 3.13.0", "gerador-python-version")
+        self.assertEqual(s15["resposta"], "3.13.0")
+
 
 if __name__ == "__main__":
     unittest.main()

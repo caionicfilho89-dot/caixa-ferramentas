@@ -8,6 +8,7 @@ Contrato (RUMO.md):
 - Cache com TTL de 5s para chamadas repetidas.
 - F4: Disco, Downloads e Prints Recentes.
 - F5: Vencimentos, Área de Transferência e Pudim IPTV.
+- T06: Crescimento de pastas (7 dias) com cache em disco 6 h.
 """
 from __future__ import annotations
 
@@ -18,6 +19,7 @@ import json
 import os
 import re
 import shutil
+import socket
 import sys
 import time
 from typing import Any, Dict, List, Optional, Tuple
@@ -32,15 +34,18 @@ _CACHE_TEMPO: float = 0.0
 # ======================================================================
 
 def _formatar_tamanho_bytes(num_bytes: int) -> str:
-    """Formata bytes em B, KB, MB, GB."""
+    """Formata bytes em B, KB, MB, GB com vírgula pt-BR."""
     if num_bytes < 1024:
         return f"{num_bytes} B"
     elif num_bytes < 1024 ** 2:
-        return f"{num_bytes / 1024:.1f} KB"
+        val = num_bytes / 1024
+        return f"{val:.1f}".replace(".", ",") + " KB"
     elif num_bytes < 1024 ** 3:
-        return f"{num_bytes / (1024 ** 2):.1f} MB"
+        val = num_bytes / (1024 ** 2)
+        return f"{val:.1f}".replace(".", ",") + " MB"
     else:
-        return f"{num_bytes / (1024 ** 3):.1f} GB"
+        val = num_bytes / (1024 ** 3)
+        return f"{val:.1f}".replace(".", ",") + " GB"
 
 
 def _tempo_relativo(ts_epoch: float) -> str:
@@ -101,11 +106,12 @@ def sensor_disco() -> Optional[Dict[str, Any]]:
         else:
             detalhe = f"Total de {total_gb:.0f} GB — liberar espaço em temporários e cache"
 
+        livre_gb_str = f"{livre_gb:.1f}".replace(".", ",")
         return {
             "id": "disco",
             "emoji": "💾",
             "titulo": "Disco C:",
-            "valor": f"{livre_gb:.1f} GB livres ({usado_pct:.0f}% usado)",
+            "valor": f"{livre_gb_str} GB livres ({usado_pct:.0f}% usado)",
             "detalhe": detalhe,
             "acao": {
                 "rotulo": "Liberar espaço",
@@ -325,6 +331,7 @@ def sensor_clipboard() -> Optional[Dict[str, Any]]:
         elif "\n" in texto_limpo or "\r" in texto_limpo:
             linhas = [l for l in texto_limpo.splitlines() if l.strip()]
             preview = linhas[0][:36] + "…" if len(linhas[0]) > 36 else linhas[0]
+            preview = preview.strip("\"'")
             valor = f'"{preview}"'
             detalhe = f"{len(linhas)} linhas ({len(texto)} caracteres) copiadas"
         else:
@@ -332,6 +339,7 @@ def sensor_clipboard() -> Optional[Dict[str, Any]]:
                 preview = uma_linha[:39] + "…"
             else:
                 preview = uma_linha
+            preview = preview.strip("\"'")
             valor = f'"{preview}"'
             detalhe = f"{len(texto)} caracteres prontos para colar"
 
@@ -486,6 +494,408 @@ def sensor_vencimentos() -> Optional[Dict[str, Any]]:
 
 
 # ======================================================================
+# T06: O que mais cresceu no disco (últimos 7 dias) — cache leve
+# ======================================================================
+
+_CRESC_TTL = 6 * 3600  # não reamostra a cada 60 s da Hoje
+_CRESC_JANELA = 7 * 86400
+_CRESC_ORCAMENTO_S = 0.75  # orçamento total da amostragem
+_CRESC_ARQ = os.path.join(
+    os.environ.get("LOCALAPPDATA", os.path.expanduser("~")),
+    "CaixaFerramentas",
+    "disco_crescimento.json",
+)
+
+
+def _pastas_candidatas_crescimento() -> List[str]:
+    """Pastas relevantes do usuário — nunca o C:\\ inteiro."""
+    home = os.path.expanduser("~")
+    nomes = [
+        "Downloads",
+        "Documents",
+        "Documentos",
+        "Desktop",
+        "Área de Trabalho",
+        "Videos",
+        "Vídeos",
+        "Pictures",
+        "Imagens",
+        "Music",
+        "Músicas",
+        "OneDrive",
+    ]
+    out: List[str] = []
+    vistos = set()
+    for n in nomes:
+        p = os.path.normpath(os.path.join(home, n))
+        key = os.path.normcase(p)
+        if key in vistos or not os.path.isdir(p):
+            continue
+        vistos.add(key)
+        out.append(p)
+    temp = os.environ.get("TEMP") or os.environ.get("TMP")
+    if temp and os.path.isdir(temp):
+        key = os.path.normcase(os.path.normpath(temp))
+        if key not in vistos:
+            out.append(os.path.normpath(temp))
+            vistos.add(key)
+    return out
+
+
+def _tamanho_limitado(pasta: str, deadline: float, max_arquivos: int = 6000) -> int:
+    """Soma tamanho com teto de tempo/arquivos (amostra, não inventário forense)."""
+    total = 0
+    n = 0
+    pilha = [pasta]
+    while pilha and n < max_arquivos and time.perf_counter() < deadline:
+        atual = pilha.pop()
+        try:
+            with os.scandir(atual) as it:
+                for entry in it:
+                    if n >= max_arquivos or time.perf_counter() >= deadline:
+                        break
+                    n += 1
+                    try:
+                        if entry.is_symlink():
+                            continue
+                        if entry.is_file(follow_symlinks=False):
+                            total += entry.stat(follow_symlinks=False).st_size
+                        elif entry.is_dir(follow_symlinks=False):
+                            pilha.append(entry.path)
+                    except OSError:
+                        continue
+        except OSError:
+            continue
+    return total
+
+
+def _ler_cache_crescimento() -> Dict[str, Any]:
+    try:
+        with open(_CRESC_ARQ, encoding="utf-8") as f:
+            dados = json.load(f)
+        return dados if isinstance(dados, dict) else {}
+    except (OSError, ValueError, TypeError):
+        return {}
+
+
+def _salvar_cache_crescimento(dados: Dict[str, Any]) -> None:
+    try:
+        pasta = os.path.dirname(_CRESC_ARQ)
+        os.makedirs(pasta, exist_ok=True)
+        tmp = _CRESC_ARQ + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(dados, f, ensure_ascii=False, indent=0)
+        os.replace(tmp, _CRESC_ARQ)
+    except OSError:
+        pass
+
+
+def _amostrar_pastas_agora() -> Dict[str, int]:
+    candidatos = _pastas_candidatas_crescimento()
+    if not candidatos:
+        return {}
+    por = max(0.05, _CRESC_ORCAMENTO_S / max(1, len(candidatos)))
+    tamanhos: Dict[str, int] = {}
+    t0 = time.perf_counter()
+    for pasta in candidatos:
+        if time.perf_counter() - t0 > _CRESC_ORCAMENTO_S:
+            break
+        deadline = time.perf_counter() + por
+        tamanhos[pasta] = _tamanho_limitado(pasta, deadline)
+    return tamanhos
+
+
+def _calcular_top_crescimento(
+    amostras: List[Dict[str, Any]], atual: Dict[str, int], agora: float
+) -> List[Tuple[str, int, int]]:
+    """Devolve [(pasta, delta, tamanho_atual)] top 3 com delta > 0 na janela de 7 dias."""
+    alvo = agora - _CRESC_JANELA
+    base: Optional[Dict[str, int]] = None
+    # amostra mais antiga ainda dentro/perto da janela (ou a mais antiga disponível)
+    candidatas = [a for a in amostras if isinstance(a, dict) and isinstance(a.get("pastas"), dict)]
+    if not candidatas:
+        return []
+    # preferir amostra ~7 dias atrás; senão a mais antiga
+    com_ts = [(float(a.get("ts") or 0), a["pastas"]) for a in candidatas]
+    com_ts.sort(key=lambda x: x[0])
+    base = com_ts[0][1]
+    for ts, pastas in com_ts:
+        if ts <= alvo:
+            base = pastas
+        else:
+            break
+    deltas: List[Tuple[str, int, int]] = []
+    for pasta, tam in atual.items():
+        ant = int(base.get(pasta, 0)) if isinstance(base, dict) else 0
+        delta = int(tam) - ant
+        if delta > 0:
+            deltas.append((pasta, delta, int(tam)))
+    deltas.sort(key=lambda x: -x[1])
+    return deltas[:3]
+
+
+def sensor_crescimento_disco() -> Optional[Dict[str, Any]]:
+    """Top 3 pastas que mais cresceram (cache 6 h; sem varrer o C: inteiro)."""
+    try:
+        agora = time.time()
+        cache = _ler_cache_crescimento()
+        amostras = list(cache.get("amostras") or [])
+        top_cache = cache.get("top") or []
+        atualizado = float(cache.get("atualizado") or 0)
+
+        precisa_amostrar = (agora - atualizado) >= _CRESC_TTL or not amostras
+        if precisa_amostrar:
+            atual = _amostrar_pastas_agora()
+            if atual:
+                amostras.append({"ts": agora, "pastas": atual})
+                # mantém ~14 dias; sempre preserva as 2 mais recentes (baseline)
+                corte = agora - (_CRESC_JANELA + 7 * 86400)
+                recentes = [
+                    a for a in amostras
+                    if isinstance(a, dict) and float(a.get("ts") or 0) >= corte
+                ]
+                if len(recentes) < 2:
+                    validas = [a for a in amostras if isinstance(a, dict)]
+                    validas.sort(key=lambda a: float(a.get("ts") or 0))
+                    recentes = validas[-2:]
+                amostras = recentes
+                top = _calcular_top_crescimento(amostras[:-1], atual, agora) if len(amostras) >= 2 else []
+                cache = {
+                    "atualizado": agora,
+                    "amostras": amostras,
+                    "top": [
+                        {"pasta": p, "delta": d, "agora": t} for p, d, t in top
+                    ],
+                }
+                _salvar_cache_crescimento(cache)
+                top_cache = cache["top"]
+        else:
+            # cache quente: zero I/O pesado
+            top_cache = cache.get("top") or []
+
+        if not top_cache:
+            return None  # ainda coletando baseline ou nada cresceu
+
+        def _rotulo(caminho: str) -> str:
+            nome = os.path.basename(caminho.rstrip("\\/")) or caminho
+            if nome.lower() in ("temp", "tmp"):
+                return "Temp"
+            return nome
+
+        linhas = []
+        for item in top_cache[:3]:
+            pasta = str(item.get("pasta") or "")
+            delta = int(item.get("delta") or 0)
+            if not pasta or delta <= 0:
+                continue
+            linhas.append(f"{_rotulo(pasta)} +{_formatar_tamanho_bytes(delta)}")
+        if not linhas:
+            return None
+
+        pasta_acao = str(top_cache[0].get("pasta") or "")
+        return {
+            "id": "crescimento",
+            "emoji": "📈",
+            "titulo": "O que mais cresceu (7 dias)",
+            "valor": linhas[0],
+            "detalhe": " · ".join(linhas),
+            "acao": {
+                "rotulo": "Abrir na Faxina",
+                "chave_ferramenta": "faxina-disco",
+                "pasta": pasta_acao,
+                "args": ["--pasta", pasta_acao],
+            },
+        }
+    except Exception:
+        return None
+
+
+# ======================================================================
+# T05: Sensores de Bateria/Energia e Windows Update
+# ======================================================================
+
+def sensor_bateria() -> Optional[Dict[str, Any]]:
+    """Informa o status e percentual da bateria em notebooks.
+
+    Some se for desktop ou se não houver bateria física instalada.
+    """
+    if os.name != "nt":
+        return None
+
+    try:
+        class SYSTEM_POWER_STATUS(ctypes.Structure):
+            _fields_ = [
+                ("ACLineStatus", ctypes.c_byte),
+                ("BatteryFlag", ctypes.c_byte),
+                ("BatteryLifePercent", ctypes.c_byte),
+                ("SystemStatusFlag", ctypes.c_byte),
+                ("BatteryLifeTime", ctypes.c_ulong),
+                ("BatteryFullLifeTime", ctypes.c_ulong),
+            ]
+
+        s = SYSTEM_POWER_STATUS()
+        if not ctypes.windll.kernel32.GetSystemPowerStatus(ctypes.byref(s)):
+            return None
+
+        flag = s.BatteryFlag & 0xFF
+        pct = s.BatteryLifePercent & 0xFF
+
+        # Flag 128 (0x80) = No system battery, 255 = Unknown
+        if (flag & 128) != 0 or pct > 100 or pct == 255:
+            return None
+
+        ac = s.ACLineStatus & 0xFF
+        # ac: 0 = Bateria, 1 = Na tomada, 255 = Desconhecido
+
+        if ac == 1:
+            if pct >= 99:
+                emoji = "🔋"
+                valor = f"{pct}% · Bateria cheia"
+                detalhe = "Conectado à tomada (100% carregada)"
+            else:
+                emoji = "⚡"
+                valor = f"{pct}% · Carregando"
+                detalhe = "Conectado à tomada"
+        else:
+            emoji = "🪫" if pct <= 20 else "🔋"
+            valor = f"{pct}% · Na bateria"
+            if s.BatteryLifeTime != 0xFFFFFFFF and s.BatteryLifeTime > 0:
+                horas = int(s.BatteryLifeTime // 3600)
+                mins = int((s.BatteryLifeTime % 3600) // 60)
+                detalhe = f"Restam aprox. {horas}h {mins}min de autonomia"
+            else:
+                detalhe = f"{pct}% de carga restante"
+
+        return {
+            "id": "bateria",
+            "emoji": emoji,
+            "titulo": "Bateria & Energia",
+            "valor": valor,
+            "detalhe": detalhe,
+            "acao": {
+                "rotulo": "Opções de Energia",
+                "comando": "control powercfg.cpl",
+            },
+        }
+    except Exception:
+        return None
+
+
+# ======================================================================
+# Sensor de Conectividade de Rede e IP Local (Proposta 3 / T31)
+# ======================================================================
+
+def sensor_rede() -> Optional[Dict[str, Any]]:
+    """Informa o status da conexão ativa de rede e IP local.
+
+    Executa em menos de 15 ms via tabela de roteamento de socket e psutil.
+    """
+    my_ip: Optional[str] = None
+    online = False
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        my_ip = s.getsockname()[0]
+        s.close()
+        online = True
+    except Exception:
+        pass
+
+    if not online or not my_ip:
+        return {
+            "id": "rede",
+            "emoji": "🌐",
+            "titulo": "Conexão de Rede",
+            "valor": "Desconectado",
+            "detalhe": "Nenhuma conexão de rede ativa detectada",
+            "acao": {
+                "rotulo": "Configurações de Rede",
+                "chave_ferramenta": "rede",
+                "comando": "ms-settings:network",
+            },
+        }
+
+    tipo = "Rede Local"
+    emoji = "🌐"
+    detalhe_vel = ""
+    try:
+        import psutil
+        for name, addrs in psutil.net_if_addrs().items():
+            if any(getattr(a, "address", "") == my_ip for a in addrs):
+                nl = name.lower()
+                if "wi-fi" in nl or "wifi" in nl or "wlan" in nl or "sem fio" in nl:
+                    tipo = "Wi-Fi"
+                    emoji = "📶"
+                elif "ethernet" in nl or "eth" in nl or "local" in nl:
+                    tipo = "Ethernet"
+                    emoji = "🌐"
+                else:
+                    tipo = name
+                stats = psutil.net_if_stats().get(name)
+                if stats and getattr(stats, "speed", 0) > 0:
+                    detalhe_vel = f" ({stats.speed} Mbps)"
+                break
+    except Exception:
+        pass
+
+    return {
+        "id": "rede",
+        "emoji": emoji,
+        "titulo": "Conexão de Rede",
+        "valor": f"{tipo} Conectado",
+        "detalhe": f"IP local: {my_ip}{detalhe_vel}",
+        "acao": {
+            "rotulo": "Ver Conexão",
+            "chave_ferramenta": "rede",
+            "comando": "ms-settings:network",
+        },
+    }
+
+
+def sensor_windows_update() -> Optional[Dict[str, Any]]:
+    """Detecta se há atualizações pendentes do Windows ou reinicialização necessária.
+
+    Lê diretamente do Registro do Windows (< 5 ms). Some se estiver tudo em dia.
+    """
+    if os.name != "nt":
+        return None
+
+    try:
+        import winreg
+        chaves_reboot = [
+            (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending"),
+            (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired"),
+            (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\WindowsUpdate\Auto Update\RebootRequired"),
+        ]
+
+        reboot_pendente = False
+        for hkey, subkey in chaves_reboot:
+            try:
+                with winreg.OpenKey(hkey, subkey):
+                    reboot_pendente = True
+                    break
+            except (FileNotFoundError, OSError):
+                pass
+
+        if reboot_pendente:
+            return {
+                "id": "windows_update",
+                "emoji": "🔄",
+                "titulo": "Windows Update",
+                "valor": "Reinício pendente",
+                "detalhe": "Atualizações instaladas aguardando reinicialização do sistema",
+                "acao": {
+                    "rotulo": "Windows Update",
+                    "comando": "ms-settings:windowsupdate",
+                },
+            }
+
+        return None
+    except Exception:
+        return None
+
+
+# ======================================================================
 # Leitor Completo com Cache
 # ======================================================================
 
@@ -503,6 +913,10 @@ def ler_tudo(forcar: bool = False) -> List[Dict[str, Any]]:
 
     sensores = [
         sensor_disco,
+        sensor_crescimento_disco,
+        sensor_rede,
+        sensor_bateria,
+        sensor_windows_update,
         sensor_downloads,
         sensor_prints_recentes,
         sensor_pudim,

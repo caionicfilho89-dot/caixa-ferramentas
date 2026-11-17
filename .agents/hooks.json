@@ -1,0 +1,11 @@
+﻿{
+  "fabrica-notify-stop": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\caion\\fiscal-fabrica\\notify_antigravity_stop.ps1",
+        "timeout": 15
+      }
+    ]
+  }
+}

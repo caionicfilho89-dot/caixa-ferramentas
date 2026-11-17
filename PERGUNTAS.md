@@ -1,5 +1,5 @@
-# PERGUNTAS.md — 60 casos de teste no estilo do Caio (gabarito à mão)
-Autor: Grok Bot (crítico/testador) · revisão 2026-11-09 20:35
+# PERGUNTAS.md — 140 casos de teste no estilo do Caio (gabarito à mão)
+Autor: Grok Bot (crítico/testador) · revisão 2026-11-10 18:14 America/Sao_Paulo (lote 3 Q121–Q140 anexado; lotes 1 e 2 preservados)
 
 Não são citações literais do Caio: são **frases inventadas no jeito informal dele**
 (abreviação, vírgula decimal, sem acento às vezes) para testar a barra.
@@ -315,3 +315,433 @@ Meta do motor: ~50/60. Ambiguidades de produto ficam em `CRITICA.md`, não aqui.
 - Correção importante: **Q08 = 08/05/2026** (não 07/05)
 - Q56/Q57 antigas (ambíguas) removidas desta lista → ver CRITICA
 - Q60 usa **GiB/MiB** explicitamente → 4.096
+---
+
+# Lote 2 — Q61–Q120 (dia a dia do Caio ainda não coberto no lote 1)
+Autor: Grok Bot · 2026-11-10 15:45 America/Sao_Paulo
+
+Frases no jeito informal do Caio (abreviacao, virgula decimal, as vezes sem acento).
+**Gabarito calculado à mão** e conferido por script independente (`fiscal-fabrica/_gen_lote2.py`, Decimal + calendario), sem `_core.py`.
+Valores de tarifa/preco **so os do enunciado** (nada de tabela real inventada).
+Datas: regra declarada em cada item; dias uteis = segunda a sexta, **sem feriado**, salvo se o enunciado disser o contrario.
+Temas (~7–8 cada): mercado, conta de luz, combustivel, parcelas no cartao, Pix, horas trabalhadas, receita pra mais pessoas, datas.
+Meta do motor no lote 2: ~50/60.
+
+---
+
+## Q61
+**Pergunta:** feira: 1,2 kg de banana a 6,90 o kg, quanto fica
+**Resposta esperada:** 8,28
+**Conta:** 1,2 × 6,90 = 8,28.
+
+## Q62
+**Pergunta:** mercado: 3 refri a 7,49 e 2 paes a 0,80 cada, total
+**Resposta esperada:** 24,07
+**Conta:** 3 × 7,49 = 22,47; 2 × 0,80 = 1,60; 22,47 + 1,60 = 24,07.
+
+## Q63
+**Pergunta:** promo 4 pelo preco de 3, cada um custa 5,50 — quanto saem 4
+**Resposta esperada:** 16,50
+**Conta:** paga 3 unidades: 3 × 5,50 = 16,50.
+
+## Q64
+**Pergunta:** leite tava 5,20 agora ta 6,24, subiu quanto por cento
+**Resposta esperada:** 20%
+**Conta:** aumento = 6,24 − 5,20 = 1,04; 1,04 ÷ 5,20 = 0,20 = 20%.
+
+## Q65
+**Pergunta:** lista do mercado: arroz 22,90, feijao 8,50, oleo 7,89 e sal 2,15 — total
+**Resposta esperada:** 41,44
+**Conta:** 22,90 + 8,50 = 31,40; + 7,89 = 39,29; + 2,15 = 41,44.
+
+## Q66
+**Pergunta:** levei 80 reais no mercado, a compra deu 63,47, quanto sobra
+**Resposta esperada:** 16,53
+**Conta:** 80,00 − 63,47 = 16,53.
+
+## Q67
+**Pergunta:** 1,5 kg de carne a 42,90 o kg, quanto pago
+**Resposta esperada:** 64,35
+**Conta:** 1,5 × 42,90 = 64,35.
+
+## Q68
+**Pergunta:** desconto de 12% numa compra de 150 no mercado, fica quanto
+**Resposta esperada:** 132,00
+**Conta:** 12% de 150 = 18; 150 − 18 = 132,00.
+
+## Q69
+**Pergunta:** conta de luz: 220 kWh a 0,92 R$/kWh (tarifa so do enunciado)
+**Resposta esperada:** 202,40
+**Conta:** 220 × 0,92 = 202,40.
+
+## Q70
+**Pergunta:** luz: 180 kWh a 0,75 mais taxa fixa de 15 reais (valores do enunciado)
+**Resposta esperada:** 150,00
+**Conta:** 180 × 0,75 = 135; 135 + 15 = 150,00.
+
+## Q71
+**Pergunta:** mes passado a luz foi 240 kWh, esse mes 192, caiu quanto %
+**Resposta esperada:** 20%
+**Conta:** queda = 240 − 192 = 48; 48 ÷ 240 = 0,20 = 20%.
+
+## Q72
+**Pergunta:** rateio da conta de luz 312,60 pra 3 casas iguais
+**Resposta esperada:** 104,20 cada
+**Conta:** 312,60 ÷ 3 = 104,20.
+
+## Q73
+**Pergunta:** luz 200 kWh, tarifa 0,80 mais adicional 0,05 por kWh (so do enunciado)
+**Resposta esperada:** 170,00
+**Conta:** 200 × 0,80 = 160; 200 × 0,05 = 10; 160 + 10 = 170,00.
+
+## Q74
+**Pergunta:** se 100 kWh da luz saem 87,00, 250 kWh na mesma tarifa ficam quanto
+**Resposta esperada:** 217,50
+**Conta:** tarifa = 87,00 ÷ 100 = 0,87; 250 × 0,87 = 217,50.
+
+## Q75
+**Pergunta:** parcelar a conta de luz de 189,90 em 3x iguais sem juros
+**Resposta esperada:** 63,30
+**Conta:** 189,90 ÷ 3 = 63,30.
+
+## Q76
+**Pergunta:** gasolina 6,19 o litro, enchi 35 L, quanto paguei
+**Resposta esperada:** 216,65
+**Conta:** 35 × 6,19 = 216,65.
+
+## Q77
+**Pergunta:** viagem 270 km, carro faz 15 km/L, gasolina a 6,00 (preco do enunciado) — quanto gasto
+**Resposta esperada:** 108,00
+**Conta:** litros = 270 ÷ 15 = 18 L; 18 × 6,00 = 108,00.
+
+## Q78
+**Pergunta:** tanque de 50 L tava com 1/4, quanto falta pra encher
+**Resposta esperada:** 37,5 L
+**Conta:** falta 3/4 do tanque: 0,75 × 50 = 37,5 L.
+
+## Q79
+**Pergunta:** etanol 4,29 e gasolina 6,15, etanol rende 70% da gasolina — qual vale mais a pena (precos do enunciado)
+**Resposta esperada:** etanol (equivalente ≈ 6,13 < 6,15)
+**Conta:** preco equivalente do etanol = 4,29 ÷ 0,70 = 6,12857… ≈ 6,13 (arredonda a 2 casas). Como 6,13 < 6,15, o etanol sai um pouco mais barato por km equivalente.
+
+## Q80
+**Pergunta:** andei 360 km com 30 L, qual o consumo em km/L
+**Resposta esperada:** 12 km/L
+**Conta:** 360 ÷ 30 = 12 km/L.
+
+## Q81
+**Pergunta:** ida e volta 90 km cada trecho, consumo 15 km/L, litro a 6,20 — custo da viagem
+**Resposta esperada:** 74,40
+**Conta:** distancia = 90 × 2 = 180 km; 180 ÷ 15 = 12 L; 12 × 6,20 = 74,40.
+
+## Q82
+**Pergunta:** 25 litros de gasolina a 5,99 o litro, total
+**Resposta esperada:** 149,75
+**Conta:** 25 × 5,99 = 149,75.
+
+## Q83
+**Pergunta:** falta 42 km, o carro faz 14 km/L — quantos litros preciso
+**Resposta esperada:** 3 L
+**Conta:** 42 ÷ 14 = 3 L.
+
+## Q84
+**Pergunta:** comprei 1.200 no cartao em 6x sem juros, valor de cada parcela
+**Resposta esperada:** 200
+**Conta:** 1.200 ÷ 6 = 200.
+
+## Q85
+**Pergunta:** 10x de 89,90 no cartao, quanto vou pagar no total
+**Resposta esperada:** 899,00
+**Conta:** 10 × 89,90 = 899,00.
+
+## Q86
+**Pergunta:** parcela de 150 por 8 meses, ja paguei 3, quanto ainda devo
+**Resposta esperada:** 750
+**Conta:** faltam 5 parcelas; 5 × 150 = 750.
+
+## Q87
+**Pergunta:** compra de 800 no cartao com 5% de juros no total, parcelada em 4x iguais — valor da parcela e total
+**Resposta esperada:** parcela 210; total 840
+**Conta:** total com juros = 800 × 1,05 = 840; parcela = 840 ÷ 4 = 210.
+
+## Q88
+**Pergunta:** fatura do cartao 1.350, paguei o minimo de 15% (percentual so do enunciado)
+**Resposta esperada:** 202,50
+**Conta:** 0,15 × 1.350 = 202,50.
+
+## Q89
+**Pergunta:** fatura 2.000, paguei 600, quanto sobra
+**Resposta esperada:** 1.400
+**Conta:** 2.000 − 600 = 1.400.
+
+## Q90
+**Pergunta:** 3 compras no cartao: 49,90 + 120,00 + 15,50, total
+**Resposta esperada:** 185,40
+**Conta:** 49,90 + 120,00 = 169,90; + 15,50 = 185,40.
+
+## Q91
+**Pergunta:** anuidade de 480 cobrada em 12x no cartao, quanto e por mes
+**Resposta esperada:** 40
+**Conta:** 480 ÷ 12 = 40.
+
+## Q92
+**Pergunta:** pix de 350 pra maria e 180 pra joao, quanto mandei no total
+**Resposta esperada:** 530
+**Conta:** 350 + 180 = 530.
+
+## Q93
+**Pergunta:** recebi um pix de 1.250 e mandei outro de 430, quanto ficou desses dois
+**Resposta esperada:** 820
+**Conta:** 1.250 − 430 = 820.
+
+## Q94
+**Pergunta:** vou dividir um pix de 97,50 pra 3 pessoas iguais
+**Resposta esperada:** 32,50 cada
+**Conta:** 97,50 ÷ 3 = 32,50.
+
+## Q95
+**Pergunta:** pix de 2 mil com tarifa de 1,5% (tarifa so do enunciado, nao regra real do pix) — quanto cai na conta
+**Resposta esperada:** 1.970,00
+**Conta:** 1,5% de 2.000 = 30; 2.000 − 30 = 1.970,00.
+
+## Q96
+**Pergunta:** preciso pagar 1.080 no pix, ja mandei 400, quanto falta
+**Resposta esperada:** 680
+**Conta:** 1.080 − 400 = 680.
+
+## Q97
+**Pergunta:** 5 pessoas mandam 80 reais cada no pix pro churrasco, total
+**Resposta esperada:** 400
+**Conta:** 5 × 80 = 400.
+
+## Q98
+**Pergunta:** pix de 75,90 + 32,40 + 11,70, soma
+**Resposta esperada:** 120,00
+**Conta:** 75,90 + 32,40 = 108,30; + 11,70 = 120,00.
+
+## Q99
+**Pergunta:** trabalhei 8h por dia em 22 dias, quantas horas no mes
+**Resposta esperada:** 176 h
+**Conta:** 8 × 22 = 176 h.
+
+## Q100
+**Pergunta:** hora de 25 reais, 176 horas trabalhadas (valores do enunciado), quanto ganho
+**Resposta esperada:** 4.400
+**Conta:** 176 × 25 = 4.400.
+
+## Q101
+**Pergunta:** entrei 8:15 e sai 17:45, com 1h de almoco — horas liquidas
+**Resposta esperada:** 8 h 30 min
+**Conta:** 17:45 − 8:15 = 9 h 30 min; menos 1 h de almoco = 8 h 30 min (510 min).
+
+## Q102
+**Pergunta:** fiz 3 turnos de 6,5 h, total de horas
+**Resposta esperada:** 19,5 h
+**Conta:** 3 × 6,5 = 19,5 h.
+
+## Q103
+**Pergunta:** hora de 18 reais, 12 horas extras com adicional de 50% (adicional do enunciado)
+**Resposta esperada:** 324
+**Conta:** hora extra = 18 × 1,5 = 27; 12 × 27 = 324.
+
+## Q104
+**Pergunta:** jornada de 44h na semana, trabalhei 50h, quantas horas extras
+**Resposta esperada:** 6 h
+**Conta:** 50 − 44 = 6 h.
+
+## Q105
+**Pergunta:** ganho 3.520 pra 160 horas, quanto vale a hora
+**Resposta esperada:** 22,00
+**Conta:** 3.520 ÷ 160 = 22,00.
+
+## Q106
+**Pergunta:** receita de bolo pra 8 pessoas usa 300g de farinha; pra 12 pessoas, quanta farinha
+**Resposta esperada:** 450 g
+**Conta:** fator 12 ÷ 8 = 1,5; 300 × 1,5 = 450 g.
+
+## Q107
+**Pergunta:** molho pra 4 pessoas leva 2 dentes de alho; pra 10 pessoas, quantos dentes
+**Resposta esperada:** 5 dentes
+**Conta:** 2 × (10 ÷ 4) = 2 × 2,5 = 5 dentes.
+
+## Q108
+**Pergunta:** pudim pra 6 usa 1 lata de leite; pra 9 pessoas, quantas latas
+**Resposta esperada:** 1,5 lata
+**Conta:** 9 ÷ 6 = 1,5 lata.
+
+## Q109
+**Pergunta:** suco: 3 laranjas pra 2 pessoas, pra 8 pessoas quantas laranjas
+**Resposta esperada:** 12 laranjas
+**Conta:** 3 × (8 ÷ 2) = 3 × 4 = 12.
+
+## Q110
+**Pergunta:** a receita pede 500 ml de agua pra 4 pessoas; pra 6, quantos ml
+**Resposta esperada:** 750 ml
+**Conta:** 500 × (6 ÷ 4) = 500 × 1,5 = 750 ml.
+
+## Q111
+**Pergunta:** 250g de macarrao pra 2 pessoas, pra 5 pessoas quanto de macarrao
+**Resposta esperada:** 625 g
+**Conta:** 250 × (5 ÷ 2) = 250 × 2,5 = 625 g.
+
+## Q112
+**Pergunta:** a receita original rende 6 porcoes, eu quero 18 — multiplica por quanto
+**Resposta esperada:** 3 vezes (triplicar)
+**Conta:** 18 ÷ 6 = 3.
+
+## Q113
+**Pergunta:** 15/11/2026 cai em que dia da semana
+**Resposta esperada:** domingo
+**Conta:** regra: calendario gregoriano civil (Python datetime). 15/11/2026 = domingo. Nao usa feriado nesta pergunta (so o dia da semana).
+
+## Q114
+**Pergunta:** 10 dias corridos a partir de 20/03/2026, nao conta o dia 20, soma 10 dias
+**Resposta esperada:** 30/03/2026
+**Conta:** regra: dias corridos, 20/03 + 10 = 30/03/2026 (segunda-feira). Nao desconta fim de semana nem feriado.
+
+## Q115
+**Pergunta:** quantos dias corridos de 01/04/2026 ate 15/04/2026, incluindo o primeiro e o ultimo
+**Resposta esperada:** 15 dias
+**Conta:** regra: inclusivo nos dois extremos. 15 − 1 + 1 = 15 dias.
+
+## Q116
+**Pergunta:** 15 dias uteis a partir de 02/03/2026, so seg-sex, sem feriado, nao conta o dia 02/03, conta a partir do proximo util
+**Resposta esperada:** 23/03/2026
+**Conta:** regra: uteis = segunda a sexta, **sem feriado**; nao conta 02/03/2026 (segunda) → 1º dia = 03/03/2026 (terça). Uteis: 03, 04, 05, 06, 09, 10, 11, 12, 13, 16, 17, 18, 19, 20, 23 → o 15º e 23/03/2026 (segunda).
+
+## Q117
+**Pergunta:** 01/05/2026 cai em que dia da semana
+**Resposta esperada:** sexta-feira
+**Conta:** regra: so dia da semana no calendario civil. 01/05/2026 = sexta-feira. (E feriado do trabalhador no Brasil, mas a pergunta pede so o dia da semana.)
+
+## Q118
+**Pergunta:** de 10/06/2026 ate 10/07/2026, quantos dias corridos (nao conta o dia inicial, conta o final: 10/06 + N = 10/07)
+**Resposta esperada:** 30 dias
+**Conta:** regra: diferenca de datas corridas 10/07 − 10/06 = 30 dias (junho tem 30 dias). Nao desconta fim de semana.
+
+## Q119
+**Pergunta:** 45 dias corridos a partir de 15/11/2026 (15/11 + 45, nao conta o 15)
+**Resposta esperada:** 30/12/2026
+**Conta:** regra: dias corridos. Restam 15 dias em novembro depois do 15 (16–30); 45 − 15 = 30 → 30/12/2026 (quarta-feira). Conferencia: date(2026,11,15) + 45 dias.
+
+## Q120
+**Pergunta:** 20 dias uteis a partir de 06/04/2026, so seg-sex, sem feriado, nao conta o dia 06/04, conta a partir do proximo util
+**Resposta esperada:** 04/05/2026
+**Conta:** regra: uteis = segunda a sexta, **sem feriado** (o 01/05/2026, sexta, **entra na conta** porque o enunciado exclui feriado). 06/04/2026 = segunda (nao conta) → 1º dia = 07/04/2026 (terça). Abril: 07–10 (4), 13–17 (5), 20–24 (5), 27–30 (4) = 18; restam 2: 01/05 e 04/05 → 04/05/2026 (segunda).
+
+---
+
+## Resumo lote 2
+- Contagem: **Q61–Q120 = 60** (todas calculaveis com dados na frase; soma geral Q01–Q120 = 120)
+- Distribuicao: mercado 8 (Q61–Q68), luz 7 (Q69–Q75), combustivel 8 (Q76–Q83), cartao 8 (Q84–Q91), Pix 7 (Q92–Q98), horas 7 (Q99–Q105), receita 7 (Q106–Q112), datas 8 (Q113–Q120)
+- Datas conferidas por codigo; Q116 e Q120 usam regra **sem feriado** (declarada). Q120 conta 01/05/2026 de proposito, por essa regra.
+- Nenhuma pergunta do lote 2 repete o enunciado do lote 1.
+
+## Q121
+**Pergunta:** aluguel 1.850, condominio 420 e agua 87,30, quanto da o mes da casa
+**Resposta esperada:** 2.357,30
+**Conta:** 1.850 + 420 = 2.270; 2.270 + 87,30 = 2.357,30.
+
+## Q122
+**Pergunta:** na loja de material paguei 200, a compra deu 163,40, qual o troco
+**Resposta esperada:** 36,60
+**Conta:** 200,00 − 163,40 = 36,60.
+
+## Q123
+**Pergunta:** piso da sala: 8,5 m2, cada caixa de ceramica rende 1,7 m2, quantas caixas preciso
+**Resposta esperada:** 5
+**Conta:** 8,5 ÷ 1,7 = 5 caixas.
+
+## Q124
+**Pergunta:** peguei 2.000 emprestado pra reforma da casa, juros compostos 2% ao mes por 2 meses (montante, taxa so do enunciado)
+**Resposta esperada:** 2.080,80
+**Conta:** M = 2.000 × (1,02)^2. 1,02 × 1,02 = 1,0404; 1,0404 × 2.000 = 2.080,80.
+
+## Q125
+**Pergunta:** o pedreiro vai 12 dias uteis a partir de 16/11/2026, so seg-sex, sem feriado, nao conta o dia 16/11, conta a partir do proximo util — que dia termina
+**Resposta esperada:** 02/12/2026
+**Conta:** regra: úteis = segunda a sexta, **sem feriado** (nenhum feriado é descontado). 16/11/2026 = segunda (não conta) → 1º dia = 17/11/2026 (terça). 17–20 (4), 23–27 (5), 30/11, 01/12 e 02/12 (3) = 12. Termina em 02/12/2026 (quarta-feira). Conferência por código.
+
+## Q126
+**Pergunta:** estacionamento 8,50 a hora, fiquei 3,5 h, quanto pago
+**Resposta esperada:** 29,75
+**Conta:** 8,50 × 3,5 = 29,75.
+
+## Q127
+**Pergunta:** oleo do carro troca a cada 10.000 km, ta com 47.800, quanto falta pra chegar nos 50.000
+**Resposta esperada:** 2.200
+**Conta:** 50.000 − 47.800 = 2.200 km.
+
+## Q128
+**Pergunta:** pneu 205 mm de largura, isso da quantos cm
+**Resposta esperada:** 20,5 cm
+**Conta:** 205 mm ÷ 10 = 20,5 cm.
+
+## Q129
+**Pergunta:** seguro do carro 2.400 no ano, quanto da por mes
+**Resposta esperada:** 200
+**Conta:** 2.400 ÷ 12 = 200.
+
+## Q130
+**Pergunta:** 3 pedagios de 6,40 na ida e os mesmos 3 na volta, quanto gasto de pedagio
+**Resposta esperada:** 38,40
+**Conta:** 3 × 6,40 = 19,20 na ida; ida + volta = 19,20 × 2 = 38,40.
+
+## Q131
+**Pergunta:** hotel 189 a diaria, 4 noites, quanto fica a hospedagem
+**Resposta esperada:** 756
+**Conta:** 189 × 4 = 756.
+
+## Q132
+**Pergunta:** viagem: 280 dolares a 5,40 o dolar (cambio so do enunciado), quanto e em reais
+**Resposta esperada:** 1.512,00
+**Conta:** 280 × 5,40 = 1.512,00.
+
+## Q133
+**Pergunta:** embarque 03/01/2027, hoje e 15/12/2026, quantos dias corridos faltam (nao conta o 15/12, conta o 03/01)
+**Resposta esperada:** 19 dias
+**Conta:** regra: dias corridos. 15/12/2026 + 19 = 03/01/2027. Restam 16 dias em dezembro depois do 15 (16–31) + 3 em janeiro (01–03) = 19. Conferência: date(2027,1,3) − date(2026,12,15) = 19. 03/01/2027 = domingo.
+
+## Q134
+**Pergunta:** a viagem deu 2.460 no total, somos 4, quanto cada um
+**Resposta esperada:** 615
+**Conta:** 2.460 ÷ 4 = 615.
+
+## Q135
+**Pergunta:** aluguel de carro 95 por dia, 3 dias de viagem, quanto e so o carro
+**Resposta esperada:** 285
+**Conta:** 95 × 3 = 285.
+
+## Q136
+**Pergunta:** job freela de 2.800, o cliente reteve 10% de imposto (aliquota so do enunciado), quanto cai na conta
+**Resposta esperada:** 2.520,00
+**Conta:** 10% de 2.800 = 280; 2.800 − 280 = 2.520,00.
+
+## Q137
+**Pergunta:** cobro 85 a hora no freela, fiz 16,5 h nesse job, quanto faturo
+**Resposta esperada:** 1.402,50
+**Conta:** 85 × 16,5 = 1.402,50.
+
+## Q138
+**Pergunta:** cliente atrasou um freela de 1.500, combinamos juros simples 2% ao mes por 3 meses, so os juros (taxa so do enunciado)
+**Resposta esperada:** 90
+**Conta:** J = 1.500 × 0,02 × 3 = 90.
+
+## Q139
+**Pergunta:** prazo do job: 15 dias uteis a partir de 09/11/2026, so seg-sex, sem feriado, nao conta o dia 09/11, conta a partir do proximo util
+**Resposta esperada:** 30/11/2026
+**Conta:** regra: úteis = segunda a sexta, **sem feriado** (o 20/11/2026, sexta, **entra na conta** porque o enunciado exclui feriado). 09/11/2026 = segunda (não conta) → 1º dia = 10/11/2026 (terça). 10–13 (4), 16–20 (5; inclui 20/11), 23–27 (5) = 14; resta 1: 30/11/2026 (segunda). Conferência por código.
+
+## Q140
+**Pergunta:** 3 jobs esse mes: 450 + 1.200 + 680, quanto faturo no total
+**Resposta esperada:** 2.330
+**Conta:** 450 + 1.200 = 1.650; 1.650 + 680 = 2.330.
+
+---
+
+## Resumo lote 3
+- Contagem: **Q121–Q140 = 20** (todas calculáveis com dados na frase; soma geral Q01–Q140 = 140)
+- Distribuição: casa 5 (Q121–Q125), carro 5 (Q126–Q130), viagem 5 (Q131–Q135), trabalho freela 5 (Q136–Q140)
+- Também cobrem usos reais das ferramentas mais usadas: juros (Q124 compostos, Q138 simples), troco (Q122), conversões (Q123 caixas/m², Q128 mm→cm, Q132 câmbio do enunciado), datas (Q125, Q133, Q139)
+- Datas conferidas por código; Q125 e Q139 usam regra **sem feriado** (declarada). Q139 conta 20/11/2026 de propósito, por essa regra.
+- Nenhuma pergunta do lote 3 repete o enunciado dos lotes 1 e 2.

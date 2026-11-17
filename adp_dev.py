@@ -942,6 +942,249 @@ def _calcular_docker(params):
     return _chamar(fazer)
 
 
+# ----------------------------------------------------------------------
+# Lote 1 Novos Adaptadores Dev & Dados (15 chaves)
+# ----------------------------------------------------------------------
+
+# 1. calculadora-cientifica
+def _extrair_calc_cientifica(texto):
+    if not combina(texto, [["calcular expressao", "calc cientifica", "calculadora cientifica"]]):
+        return None
+    expr = _depois(texto, "calcular expressao") or _depois(texto, "calc cientifica") or _depois(texto, "calculadora cientifica")
+    if not expr:
+        return None
+    return {"expr": expr.strip()}
+
+def _calcular_calc_cientifica(params):
+    def fazer():
+        mod = carregar("calculadora-cientifica", "cc_eval")
+        res = mod.evaluate(params["expr"])
+        return pacote(str(res), f"Expressão: {params['expr']}")
+    return _chamar(fazer)
+
+
+# 2. gerador-gitignore
+def _extrair_gitignore(texto):
+    if not combina(texto, [["gerar gitignore", "gitignore template"]]):
+        return None
+    lang = _depois(texto, "gerar gitignore") or _depois(texto, "gitignore template") or "Python"
+    return {"lang": lang.strip()}
+
+def _calcular_gitignore(params):
+    def fazer():
+        mod = carregar("gerador-gitignore", "gig_core")
+        t = mod.get_template(params["lang"]) or mod.get_template("Python")
+        linhas = len(t.splitlines())
+        return pacote(f"{linhas} regras (.gitignore)", f"Template {params['lang']} com {linhas} linhas.")
+    return _chamar(fazer)
+
+
+# 3. gerador-gitattributes
+def _extrair_gitattributes(texto):
+    if not combina(texto, [["gerar gitattributes", "gitattributes preset"]]):
+        return None
+    preset = _depois(texto, "gerar gitattributes") or _depois(texto, "gitattributes preset") or "EOL LF (texto)"
+    return {"preset": preset.strip()}
+
+def _calcular_gitattributes(params):
+    def fazer():
+        mod = carregar("gerador-gitattributes", "gat_core")
+        attr = mod.build([params["preset"]])
+        linhas = len(attr.lines)
+        return pacote(f"{linhas} regras (.gitattributes)", f"Preset {params['preset']} gerado com sucesso.")
+    return _chamar(fazer)
+
+
+# 4. gerador-makefile
+def _extrair_makefile(texto):
+    if not combina(texto, [["gerar makefile", "makefile template"]]):
+        return None
+    stack = _depois(texto, "gerar makefile") or _depois(texto, "makefile template") or "Python"
+    return {"stack": stack.strip()}
+
+def _calcular_makefile(params):
+    def fazer():
+        mod = carregar("gerador-makefile", "mkf_core")
+        m = mod.get_template(params["stack"]) or mod.get_template("Python")
+        linhas = len(m.splitlines())
+        return pacote(f"{linhas} linhas (Makefile)", f"Makefile para {params['stack']} gerado.")
+    return _chamar(fazer)
+
+
+# 5. gerador-dockerignore
+def _extrair_dockerignore(texto):
+    if not combina(texto, [["gerar dockerignore", "dockerignore template"]]):
+        return None
+    stack = _depois(texto, "gerar dockerignore") or _depois(texto, "dockerignore template") or "Python"
+    return {"stack": stack.strip()}
+
+def _calcular_dockerignore(params):
+    def fazer():
+        mod = carregar("gerador-dockerignore", "dik_core")
+        out = mod.merge([params["stack"]])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} regras (.dockerignore)", f".dockerignore para {params['stack']} gerado.")
+    return _chamar(fazer)
+
+
+# 6. gerador-pre-commit
+def _extrair_precommit(texto):
+    if not combina(texto, [["gerar pre-commit", "gerar pre commit", "pre-commit preset"]]):
+        return None
+    stack = _depois(texto, "gerar pre-commit") or _depois(texto, "gerar pre commit") or _depois(texto, "pre-commit preset") or "Python"
+    return {"stack": stack.strip()}
+
+def _calcular_precommit(params):
+    def fazer():
+        mod = carregar("gerador-pre-commit", "pcc_core")
+        out = mod.merge([params["stack"]])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (.pre-commit-config.yaml)", f"Hooks para {params['stack']} gerados.")
+    return _chamar(fazer)
+
+
+# 7. gerador-badges
+def _extrair_badges(texto):
+    if not combina(texto, [["gerar badge", "badge shield"]]):
+        return None
+    rotulo = _depois(texto, "gerar badge") or _depois(texto, "badge shield") or "status"
+    return {"rotulo": rotulo.strip()}
+
+def _calcular_badges(params):
+    def fazer():
+        mod = carregar("gerador-badges", "bdg_core")
+        s = mod.shield(params["rotulo"], "ok", color="green")
+        return pacote(s, f"Badge Markdown gerado para '{params['rotulo']}'.")
+    return _chamar(fazer)
+
+
+# 8. gerador-codeowners
+def _extrair_codeowners(texto):
+    if not combina(texto, [["gerar codeowners", "codeowners template"]]):
+        return None
+    owner = _depois(texto, "gerar codeowners") or _depois(texto, "codeowners template") or "@team"
+    return {"owner": owner.strip()}
+
+def _calcular_codeowners(params):
+    def fazer():
+        mod = carregar("gerador-codeowners", "own_core")
+        out = mod.render("Basico", owner=params["owner"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (CODEOWNERS)", f"CODEOWNERS para {params['owner']} gerado.")
+    return _chamar(fazer)
+
+
+# 9. gerador-coveragerc
+def _extrair_coveragerc(texto):
+    if not combina(texto, [["gerar coveragerc", "coveragerc preset"]]):
+        return None
+    preset = _depois(texto, "gerar coveragerc") or _depois(texto, "coveragerc preset") or "Basico"
+    return {"preset": preset.strip()}
+
+def _calcular_coveragerc(params):
+    def fazer():
+        mod = carregar("gerador-coveragerc", "cov_core")
+        out = mod.render(params["preset"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (.coveragerc)", f"Configuração de cobertura preset '{params['preset']}'.")
+    return _chamar(fazer)
+
+
+# 10. gerador-eslintignore
+def _extrair_eslintignore(texto):
+    if not combina(texto, [["gerar eslintignore", "eslintignore template"]]):
+        return None
+    tmpl = _depois(texto, "gerar eslintignore") or _depois(texto, "eslintignore template") or "Base"
+    return {"tmpl": tmpl.strip()}
+
+def _calcular_eslintignore(params):
+    def fazer():
+        mod = carregar("gerador-eslintignore", "esi_core")
+        out = mod.merge([params["tmpl"]])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} regras (.eslintignore)", f".eslintignore para {params['tmpl']} gerado.")
+    return _chamar(fazer)
+
+
+# 11. gerador-github-actions
+def _extrair_gha(texto):
+    if not combina(texto, [["gerar github actions", "workflow github actions"]]):
+        return None
+    tmpl = _depois(texto, "gerar github actions") or _depois(texto, "workflow github actions") or "Python CI"
+    return {"tmpl": tmpl.strip()}
+
+def _calcular_gha(params):
+    def fazer():
+        mod = carregar("gerador-github-actions", "gha_core")
+        out = mod.render(params["tmpl"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (.github/workflows)", f"Workflow '{params['tmpl']}' gerado.")
+    return _chamar(fazer)
+
+
+# 12. gerador-prettierrc
+def _extrair_prettierrc(texto):
+    if not combina(texto, [["gerar prettierrc", "prettierrc preset"]]):
+        return None
+    preset = _depois(texto, "gerar prettierrc") or _depois(texto, "prettierrc preset") or "Padrao"
+    return {"preset": preset.strip()}
+
+def _calcular_prettierrc(params):
+    def fazer():
+        mod = carregar("gerador-prettierrc", "ptt_core")
+        out = mod.render(params["preset"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (.prettierrc)", f"Configuração Prettier '{params['preset']}' gerada.")
+    return _chamar(fazer)
+
+
+# 13. gerador-justfile
+def _extrair_justfile(texto):
+    if not combina(texto, [["gerar justfile", "justfile preset"]]):
+        return None
+    preset = _depois(texto, "gerar justfile") or _depois(texto, "justfile preset") or "Python"
+    return {"preset": preset.strip()}
+
+def _calcular_justfile(params):
+    def fazer():
+        mod = carregar("gerador-justfile", "jst_core")
+        out = mod.render(params["preset"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} receitas (justfile)", f"Justfile para {params['preset']} gerado.")
+    return _chamar(fazer)
+
+
+# 14. gerador-taskfile
+def _extrair_taskfile(texto):
+    if not combina(texto, [["gerar taskfile", "taskfile preset"]]):
+        return None
+    preset = _depois(texto, "gerar taskfile") or _depois(texto, "taskfile preset") or "Python"
+    return {"preset": preset.strip()}
+
+def _calcular_taskfile(params):
+    def fazer():
+        mod = carregar("gerador-taskfile", "tsk_core")
+        out = mod.render(params["preset"])
+        linhas = len(out.splitlines())
+        return pacote(f"{linhas} linhas (Taskfile.yml)", f"Taskfile para {params['preset']} gerado.")
+    return _chamar(fazer)
+
+
+# 15. gerador-python-version
+def _extrair_pyversion(texto):
+    if not combina(texto, [["gerar python-version", "gerar python version"]]):
+        return None
+    ver = _depois(texto, "gerar python-version") or _depois(texto, "gerar python version") or "3.13.0"
+    return {"ver": ver.strip()}
+
+def _calcular_pyversion(params):
+    def fazer():
+        mod = carregar("gerador-python-version", "pyv_core")
+        out = mod.render(params["ver"])
+        return pacote(out.strip(), f"Arquivo .python-version com versão {params['ver']}.")
+    return _chamar(fazer)
+
+
 _registrar("verificador-hash", ["hash"], _extrair_hash, _calcular_hash)
 _registrar("ferramentas-dev", ["base64"], _extrair_b64_enc, _calcular_b64_enc)
 _registrar("ferramentas-dev", ["decodificar base64"], _extrair_b64_dec, _calcular_b64_dec)
@@ -983,3 +1226,20 @@ _registrar("planejador-pausa-olhos-20-20-20", ["pausa olhos"], _extrair_olhos, _
 _registrar("controle-postura-timer", ["postura"], _extrair_postura, _calcular_postura)
 _registrar("planejador-cronograma-estudo-edital", ["edital"], _extrair_edital, _calcular_edital)
 _registrar("painel-docker", ["dockerfile"], _extrair_docker, _calcular_docker)
+
+# 15 novos adaptadores T03
+_registrar("calculadora-cientifica", ["calcular expressao", "calc cientifica"], _extrair_calc_cientifica, _calcular_calc_cientifica)
+_registrar("gerador-gitignore", ["gerar gitignore"], _extrair_gitignore, _calcular_gitignore)
+_registrar("gerador-gitattributes", ["gerar gitattributes"], _extrair_gitattributes, _calcular_gitattributes)
+_registrar("gerador-makefile", ["gerar makefile"], _extrair_makefile, _calcular_makefile)
+_registrar("gerador-dockerignore", ["gerar dockerignore"], _extrair_dockerignore, _calcular_dockerignore)
+_registrar("gerador-pre-commit", ["gerar pre-commit", "gerar pre commit"], _extrair_precommit, _calcular_precommit)
+_registrar("gerador-badges", ["gerar badge"], _extrair_badges, _calcular_badges)
+_registrar("gerador-codeowners", ["gerar codeowners"], _extrair_codeowners, _calcular_codeowners)
+_registrar("gerador-coveragerc", ["gerar coveragerc"], _extrair_coveragerc, _calcular_coveragerc)
+_registrar("gerador-eslintignore", ["gerar eslintignore"], _extrair_eslintignore, _calcular_eslintignore)
+_registrar("gerador-github-actions", ["gerar github actions"], _extrair_gha, _calcular_gha)
+_registrar("gerador-prettierrc", ["gerar prettierrc"], _extrair_prettierrc, _calcular_prettierrc)
+_registrar("gerador-justfile", ["gerar justfile"], _extrair_justfile, _calcular_justfile)
+_registrar("gerador-taskfile", ["gerar taskfile"], _extrair_taskfile, _calcular_taskfile)
+_registrar("gerador-python-version", ["gerar python-version", "gerar python version"], _extrair_pyversion, _calcular_pyversion)

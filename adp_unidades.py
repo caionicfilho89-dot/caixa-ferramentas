@@ -291,7 +291,7 @@ def _extrair_converter(texto):
     for con in re.finditer(r"(?<!\w)(?:em|para|pra)(?!\w)", t):
         esq = [u for u in uns if u[1] <= con.start()]
         dire = [u for u in uns if u[0] >= con.end()]
-        pares = [(a, b) for a in esq for b in dire if a[2] == b[2]]
+        pares = [(a, b) for a in esq for b in dire if a[2] == b[2] and a[3] != b[3]]
         if not pares:
             continue
         pares.sort(key=lambda ab: _PREF.index(ab[0][2]) if ab[0][2] in _PREF else 99)

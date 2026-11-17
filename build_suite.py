@@ -776,12 +776,60 @@ TOOLS = {
     "notas-de-voz": "nvz_gui.pyw",
     "tocando-agora": "npw_gui.pyw",
     "visor-fotos": "vft_gui.pyw",
+    "atas-reuniao": "atr_gui.pyw",
+    "canvas-agentes": "cag_gui.pyw",
+    "regra-50-30-20": "r50_gui.pyw",
+    "conversor-extrato-csv-ofx": "cxo_gui.pyw",
+    "escrita-sem-espaco": "nsp_gui.pyw",
+    "notas-adesivas-dock": "stk_gui.pyw",
+    "protetor-ocular": "eyg_gui.pyw",
+    "estudio-upscale-video": "vnr_gui.pyw",
+    "desinstalador": "uns_gui.pyw",
+    "player-video": "vpl_gui.pyw",
+    "editor-texto": "npp_gui.pyw",
+    "copiador-rapido": "cpr_gui.pyw",
+    "estudio-cena": "ecn_gui.pyw",
+    "motor-dialogos": "vtr_gui.pyw",
+    "copilot-candidaturas": "g3a_gui.pyw",
+    "canivete-tecnico-pc": "sak_gui.pyw",
 }
 
 # pacotes que precisam ser recolhidos inteiros (dados/submódulos) pro freeze funcionar
+# T212: removidos faster_whisper e ctranslate2 (173,8 MB com av.libs/onnxruntime/tokenizers/hf_xet;
+# são opcionais e podem ficar em user_mods).
 COLLECT_ALL = ["soundcard", "winrt", "winocr", "pillow_heif", "pikepdf", "segno",
-               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes", "mutagen", "bs4",
-               "faster_whisper", "ctranslate2"]  # Notas de Voz (fala→texto offline)
+               "send2trash", "piexif", "spellchecker", "pyzipper", "psutil", "openpyxl", "certifi", "tzdata", "pycaw", "comtypes", "mutagen", "bs4"]
+
+# T212: módulos pesados não usados pela vitrine (ou opcionais com fallback) excluídos do bundle:
+# - scipy (67,1 MB), pandas (16,1 MB), botocore/boto3 (16,0 MB), matplotlib (11,5 MB)
+# - faster_whisper / ctranslate2 / onnxruntime / av / tokenizers / hf_xet (173,8 MB)
+# - cv2 (111,3 MB — visor-fotos tem fallback em PIL puro)
+# - Pythonwin / win32ui / tkinter / pytest / IPython / lxml (~20 MB)
+EXCLUDE_MODULES = (
+    "torch", "transformers", "torchvision", "torchaudio", "tensorflow",
+    # scipy fica: laboratorio-audio (syn_core) usa scipy.signal/wavfile (selftest v1.5.9)
+    "pandas", "matplotlib", "botocore", "boto3", "s3transfer",
+    "faster_whisper", "ctranslate2", "onnxruntime", "av", "tokenizers", "hf_xet", "huggingface_hub",
+    "cv2", "Pythonwin", "win32ui", "tkinter", "_tkinter", "pytest", "IPython", "jedi",
+    "PyQt6.QtQml", "PyQt6.QtQuick", "PyQt6.QtQuickWidgets", "PyQt6.QtTest",  # QtPdf fica: Kit de PDF (vitrine)
+    "PyQt6.QtBluetooth", "PyQt6.QtNfc", "PyQt6.QtPositioning", "PyQt6.QtRemoteObjects",
+    "PyQt6.QtSensors", "PyQt6.QtSerialPort", "PyQt6.QtSpatialAudio", "PyQt6.QtWebChannel",
+    "PyQt6.QtWebSockets", "PyQt6.QtXml",
+)
+
+# DLLs do Qt6 não usadas pelas ferramentas QWidget 2D (economiza ~42 MB no _internal/PyQt6/Qt6/bin)
+QT_DLLS_REMOVER = (
+    "opengl32sw.dll",
+    "avcodec-61.dll",
+    "avformat-61.dll",
+    "avutil-59.dll",
+    "swscale-8.dll",
+    "swresample-5.dll",
+    "Qt6Quick.dll",
+    "Qt6Qml.dll",
+    "Qt6QmlModels.dll",
+    "Qt6Test.dll",
+)
 
 
 def stage():
@@ -840,11 +888,19 @@ def stage():
     cat = os.path.join(HERE, "catalogo.json")
     if os.path.isfile(cat):
         shutil.copyfile(cat, os.path.join(STAGED, "catalogo.json"))
+    vit = os.path.join(HERE, "vitrine.json")
+    if os.path.isfile(vit):
+        shutil.copyfile(vit, os.path.join(STAGED, "vitrine.json"))
     tdc = os.path.join(HERE, "tendencias_caixa.json")  # categoria 🔥 Tendências
     if os.path.isfile(tdc):
         shutil.copyfile(tdc, os.path.join(STAGED, "tendencias_caixa.json"))
     _write_entry(modmap)
-    return modmap, sorted(m[:-3] for m in copied)
+    # T212: não inclui arquivos test_* nos hiddenimports do PyInstaller (~759 arquivos de teste fora do exe)
+    runtime_modules = sorted(
+        m[:-3] for m in copied
+        if not m.startswith("test_") and not m[:-3].endswith("_tests")
+    )
+    return modmap, runtime_modules
 
 
 def _write_entry(modmap):
@@ -981,12 +1037,15 @@ def build(modmap, modules):
     vf = _escrever_version_file()
     if vf:
         cmd += ["--version-file", vf]
-    # torch/transformers entravam de carona com o faster_whisper (+360 MB) e nenhuma ferramenta usa
-    for pesado in ("torch", "transformers", "torchvision", "torchaudio", "tensorflow"):
+    # T212: exclui módulos pesados não usados pela vitrine (~415 MB a menos)
+    for pesado in EXCLUDE_MODULES:
         cmd += ["--exclude-module", pesado]
-    # empacota o ffmpeg (se estiver em vendor/) pras ferramentas de mídia funcionarem sozinhas
+    # T212: usa UPX automaticamente se disponível na máquina
+    if shutil.which("upx"):
+        cmd += ["--upx-dir", os.path.dirname(shutil.which("upx"))]
+    # T212: ffmpeg.exe (217 MB) só é embutido se pedido com --com-ffmpeg (no PC já fica no WinGet/PATH ou vendor/)
     ff = os.path.join(HERE, "vendor", "ffmpeg.exe")
-    if os.path.exists(ff):
+    if "--com-ffmpeg" in sys.argv and os.path.exists(ff):
         cmd += ["--add-binary", ff + os.pathsep + "."]
     # ajuda das ferramentas (sinopse + passo a passo), lida via sys._MEIPASS no exe
     aj = os.path.join(HERE, "AJUDA.json")
@@ -995,6 +1054,9 @@ def build(modmap, modules):
     cat = os.path.join(HERE, "catalogo.json")
     if os.path.exists(cat):
         cmd += ["--add-data", cat + os.pathsep + "."]
+    vit = os.path.join(HERE, "vitrine.json")
+    if os.path.exists(vit):
+        cmd += ["--add-data", vit + os.pathsep + "."]
     tdc = os.path.join(HERE, "tendencias_caixa.json")  # categoria 🔥 Tendências
     if os.path.exists(tdc):
         cmd += ["--add-data", tdc + os.pathsep + "."]
@@ -1037,7 +1099,28 @@ def build(modmap, modules):
     if faltou:
         print("ERRO: ferramentas nao entraram no exe:", ", ".join(faltou))
         return 1
+    _enxugar_dist(os.path.join(HERE, "dist", "Caixa"))
     return 0
+
+
+def _enxugar_dist(dist_caixa: str) -> int:
+    """T212: remove DLLs do Qt6 não usadas por QWidget 2D (opengl32sw, Qt6Pdf, avcodec-61, etc.).
+    Devolve total de bytes economizados."""
+    qt_bin = os.path.join(dist_caixa, "_internal", "PyQt6", "Qt6", "bin")
+    removidos = 0
+    if os.path.isdir(qt_bin):
+        for fn in QT_DLLS_REMOVER:
+            alvo = os.path.join(qt_bin, fn)
+            if os.path.isfile(alvo):
+                try:
+                    tam = os.path.getsize(alvo)
+                    os.remove(alvo)
+                    removidos += tam
+                except OSError:
+                    pass
+    if removidos:
+        print(f"T212: _enxugar_dist removeu {removidos / 1048576:.1f} MB de DLLs Qt6 não usadas.")
+    return removidos
 
 
 if __name__ == "__main__":
