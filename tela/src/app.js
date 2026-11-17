@@ -188,6 +188,7 @@ function desenharConteudo(animar = true) {
 function redesenhar(animar = true) {
   desenharLateral();
   desenharConteudo(animar);
+  aplicarQuimica();
 }
 
 // ── Hoje (atualiza a cada 60 s) ───────────────────────────
@@ -216,7 +217,7 @@ function aoDigitar(v) {
       const r = await ponte("responder", { texto: busca });
       if (meu !== pedidoResp) return;
       respostas = (r || []).filter((x) => x.resposta);
-      if (respostas.length) desenharConteudo(false);
+      if (respostas.length) { desenharConteudo(false); aplicarQuimica(); }
     } catch (_) {
       /* a barra continua buscando por nome */
     }
@@ -301,6 +302,63 @@ TAURI.event.listen("focar-busca", () => {
   $("#busca").select();
 });
 
+// ── Tabela periódica nos títulos (tema Viagem) ─────────────
+// símbolo → [número atômico, massa]; procura 2 letras no começo da palavra, depois 1
+const ELEMENTOS = (() => {
+  const s = ("H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr " +
+    "Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu " +
+    "Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg " +
+    "Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og").split(" ");
+  const m = [1.008, 4.003, 6.94, 9.012, 10.81, 12.01, 14.01, 16.00, 19.00, 20.18, 22.99, 24.31, 26.98, 28.09,
+    30.97, 32.06, 35.45, 39.95, 39.10, 40.08, 44.96, 47.87, 50.94, 52.00, 54.94, 55.85, 58.93, 58.69, 63.55,
+    65.38, 69.72, 72.63, 74.92, 78.97, 79.90, 83.80, 85.47, 87.62, 88.91, 91.22, 92.91, 95.95, 98, 101.1,
+    102.9, 106.4, 107.9, 112.4, 114.8, 118.7, 121.8, 127.6, 126.9, 131.3, 132.9, 137.3, 138.9, 140.1, 140.9,
+    144.2, 145, 150.4, 152.0, 157.3, 158.9, 162.5, 164.9, 167.3, 168.9, 173.0, 175.0, 178.5, 180.9, 183.8,
+    186.2, 190.2, 192.2, 195.1, 197.0, 200.6, 204.4, 207.2, 209.0, 209, 210, 222, 223, 226, 227, 232.0,
+    231.0, 238.0, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 266, 267, 268, 269, 270, 269, 278,
+    281, 282, 285, 286, 289, 290, 293, 294, 294];
+  const mapa = {};
+  s.forEach((sim, i) => (mapa[sim.toLowerCase()] = [sim, i + 1, m[i]]));
+  return mapa;
+})();
+
+const semAcento = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+function elementoDe(palavra) {
+  const base = semAcento(palavra).toLowerCase();
+  if (!/^[a-z]/.test(base)) return null;
+  for (const n of [2, 1]) {
+    const e = ELEMENTOS[base.slice(0, n)];
+    if (e && palavra.length >= n) return { e, n };
+  }
+  return null;
+}
+
+function quimicaHTML(texto) {
+  return texto
+    .split(/(\s+)/)
+    .map((pedaco) => {
+      if (/^\s+$/.test(pedaco) || !pedaco) return pedaco;
+      const achou = elementoDe(pedaco);
+      if (!achou) return esc(pedaco);
+      const [sim, num, massa] = achou.e;
+      const resto = pedaco.slice(achou.n);
+      return `<span class="elem"><i class="z">${num}</i>${esc(sim)}<i class="u">${massa}</i></span>${esc(resto)}`;
+    })
+    .join("");
+}
+
+function aplicarQuimica() {
+  const alvos = document.querySelectorAll(".marca-nome, .nav-titulo, #conteudo h1, #conteudo .secao");
+  const ligado = document.body.classList.contains("viagem");
+  alvos.forEach((el) => {
+    if (el.dataset.orig === undefined) el.dataset.orig = el.textContent;
+    const orig = el.dataset.orig;
+    if (ligado) el.innerHTML = quimicaHTML(orig);
+    else el.textContent = orig;
+  });
+}
+
 // ── Muro pichado: tags, throw-ups, respingos e escorridos (sorteio com semente fixa) ──
 function pintarMuro() {
   const muro = $("#muro");
@@ -361,6 +419,7 @@ function aplicarTema(tema) {
   try { localStorage.setItem("caixa_tema", tema); } catch (_) { /* sem memória, segue o padrão */ }
   pintarMuro();
   if (dados) redesenhar(false);
+  aplicarQuimica();
 }
 let temaAtual = "viagem";
 try { temaAtual = localStorage.getItem("caixa_tema") || "viagem"; } catch (_) { /* padrão */ }

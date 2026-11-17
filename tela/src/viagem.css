@@ -287,3 +287,31 @@ body.viagem .aviso::before { content: "💊 "; }
   font: 12.5px "Marcador", sans-serif; background: var(--amarelo); color: #000; box-shadow: 2px 2px 0 #000;
 }
 body.viagem .tema-btn { font-family: "Redondo", sans-serif; background: linear-gradient(90deg, var(--magenta), var(--roxo)); color: #fff; }
+
+/* ── Tabela periódica nos títulos ── */
+body.viagem .elem {
+  position: relative; display: inline-block;
+  font-family: "Redondo", sans-serif; font-size: .9em; line-height: 1;
+  padding: .26em .16em .3em; margin: 0 .04em 0 0; min-width: 1.15em; text-align: center;
+  color: #fff; -webkit-text-fill-color: #fff;
+  background: linear-gradient(160deg, rgba(57, 255, 20, .55), rgba(10, 90, 40, .85));
+  border: 2px solid var(--acido); border-radius: 4px;
+  box-shadow: 0 0 14px rgba(57, 255, 20, .55), inset 0 0 10px rgba(0, 0, 0, .35);
+  vertical-align: baseline; transform: translateY(-.04em);
+}
+body.viagem .elem i {
+  position: absolute; font-style: normal; font-size: .26em; line-height: 1;
+  color: #eaffdf; -webkit-text-fill-color: #eaffdf; font-family: "Segoe UI", sans-serif; font-weight: 600;
+}
+body.viagem .elem .z { top: .22em; left: .3em; }
+body.viagem .elem .u { bottom: .2em; right: .3em; opacity: .8; }
+/* cada título com um tom: seções em magenta, nome da Caixa em ciano */
+body.viagem .secao .elem {
+  background: linear-gradient(160deg, rgba(255, 31, 209, .55), rgba(80, 0, 70, .85));
+  border-color: var(--magenta); box-shadow: 0 0 12px rgba(255, 31, 209, .55);
+}
+body.viagem .marca-nome .elem, body.viagem .nav-titulo .elem {
+  background: linear-gradient(160deg, rgba(58, 208, 255, .55), rgba(0, 50, 90, .85));
+  border-color: var(--gelo); box-shadow: 0 0 12px rgba(58, 208, 255, .55);
+}
+body.viagem .marca-nome .elem i, body.viagem .nav-titulo .elem i { font-size: .3em; }
