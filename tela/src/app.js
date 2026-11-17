@@ -81,10 +81,18 @@ function desenharLateral() {
 }
 
 // ── Peças ─────────────────────────────────────────────────
+// desenho de grânulos da cápsula: sempre o mesmo pra cada ferramenta
+function variante(chave) {
+  let h = 0;
+  for (const c of chave) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return h % 6;
+}
+
 function bloco(f) {
   const fav = dados.favoritos.includes(f.chave);
   return `
   <div class="bloco" data-chave="${esc(f.chave)}" title="${esc(f.desc)}">
+    <div class="graos v${variante(f.chave)}"></div>
     <div class="ic">${f.emoji}</div>
     <div class="txt"><div class="n">${esc(f.nome)}</div><div class="ds">${esc(f.desc)}</div></div>
     <button class="estrela${fav ? " on" : ""}" data-fav="${esc(f.chave)}" title="${fav ? "Tirar dos favoritos" : "Favoritar"}">${fav ? "★" : "☆"}</button>
@@ -216,7 +224,8 @@ function aoDigitar(v) {
     try {
       const r = await ponte("responder", { texto: busca });
       if (meu !== pedidoResp) return;
-      respostas = (r || []).filter((x) => x.resposta);
+      // "Abrir ferramenta (X)" é só sugestão do motor: a grade logo abaixo já mostra essas ferramentas
+      respostas = (r || []).filter((x) => x.resposta && !/^Abrir ferramenta/i.test(x.resposta));
       if (respostas.length) { desenharConteudo(false); aplicarQuimica(); }
     } catch (_) {
       /* a barra continua buscando por nome */

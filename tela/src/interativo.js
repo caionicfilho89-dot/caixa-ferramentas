@@ -93,6 +93,8 @@
       ultimoBloco.style.removeProperty("--rx");
       ultimoBloco.style.removeProperty("--ry");
       ultimoBloco.style.removeProperty("--gx");
+      ultimoBloco.style.removeProperty("--gtx");
+      ultimoBloco.style.removeProperty("--gty");
     }
     ultimoBloco = b;
     if (!b) return;
@@ -101,6 +103,9 @@
     b.style.setProperty("--ry", ((x - 0.5) * 18).toFixed(1) + "deg");
     b.style.setProperty("--rx", ((0.5 - y) * 22).toFixed(1) + "deg");
     b.style.setProperty("--gx", ((x - 0.5) * 40).toFixed(1) + "%");
+    // os grânulos têm peso: escorregam pro lado que desceu
+    b.style.setProperty("--gtx", ((x - 0.5) * -9).toFixed(1) + "px");
+    b.style.setProperty("--gty", ((y - 0.5) * -6 + 2).toFixed(1) + "px");
   }
 
   // ── Fumacinha atrás do cursor ────────────────────────────
@@ -122,8 +127,30 @@
 
   // ── Clique: estouro de comprimidos e brilhos ─────────────
   const PECAS = ["💊", "✨", "💊", "✨"];
+  const CORES_GRAO = ["#fff4dc", "#ffd21f", "#e62e2d", "#ffb3a8"];
+  function derramar(b) {
+    b.classList.add("abrindo");
+    setTimeout(() => b.classList.remove("abrindo"), 650);
+    const r = b.getBoundingClientRect();
+    const bocaX = r.left + r.width * 0.36, bocaY = r.top + r.height * 0.5;
+    for (let i = 0; i < 16; i++) {
+      const g = document.createElement("i");
+      g.className = "grao-caindo";
+      const d = 5 + Math.random() * 4;
+      const cor = CORES_GRAO[i % CORES_GRAO.length];
+      g.style.cssText = `left:${(bocaX + Math.random() * 10 - 5).toFixed(0)}px;top:${(bocaY + Math.random() * 16 - 8).toFixed(0)}px;` +
+        `width:${d.toFixed(1)}px;height:${d.toFixed(1)}px;` +
+        `background:radial-gradient(circle at 35% 30%, #fff 0 18%, ${cor} 40%, rgba(0,0,0,.35) 100%);` +
+        `--x:${(Math.random() * 90 - 60).toFixed(0)}px;animation-delay:${(Math.random() * 0.15).toFixed(2)}s`;
+      document.body.appendChild(g);
+      g.addEventListener("animationend", () => g.remove());
+    }
+  }
+
   document.addEventListener("pointerdown", (e) => {
     if (!ligado() || e.button !== 0) return;
+    const capsula = e.target.closest(".bloco");
+    if (capsula) { derramar(capsula); return; }
     if (!e.target.closest(".bloco, .cartao-vitrine, .bloco-hoje, .r-btn, .nav-item, .letra")) return;
     for (let i = 0; i < 5; i++) {
       const p = document.createElement("i");
