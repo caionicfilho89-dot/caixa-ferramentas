@@ -1,9 +1,9 @@
 /* Caixa de Ferramentas — tema VIAGEM (padrão)
    Psicodélico caricato: fundo derretendo, cápsulas de duas cores, cartelas de doce,
    e os três mascotes em destaque (folha de óculos, espelho com pó, cristal azul).
-   Fontes: Shrikhand e Righteous (OFL), em ./fontes. Só vale com <body class="viagem">. */
+   Fontes: Luckiest Guy (Apache 2.0) e Righteous (OFL), em ./fontes. Só vale com <body class="viagem">. */
 
-@font-face { font-family: "Groovy"; src: url("fontes/Shrikhand-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Groovy"; src: url("fontes/LuckiestGuy-Regular.ttf") format("truetype"); font-display: swap; }
 @font-face { font-family: "Redondo"; src: url("fontes/Righteous-Regular.ttf") format("truetype"); font-display: swap; }
 
 body.viagem {
