@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-160 -170 320 300">
+  <!-- folha de maconha caricata: 7 folíolos, óculos escuros e sorrisão -->
+  <defs>
+    <linearGradient id="v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7dff4f"/>
+      <stop offset="1" stop-color="#1fa834"/>
+    </linearGradient>
+    <path id="f" d="M0,0 C 9,-14 16,-40 14,-62 L 18,-64 L 13,-72 L 17,-75 L 11,-86 L 14,-90 L 6,-104 L 8,-108 L 0,-124 L -8,-108 L -6,-104 L -14,-90 L -11,-86 L -17,-75 L -13,-72 L -18,-64 L -14,-62 C -16,-40 -9,-14 0,0 Z"/>
+  </defs>
+  <g fill="url(#v)" stroke="#0b4d17" stroke-width="3" stroke-linejoin="round">
+    <use href="#f" transform="rotate(-78) scale(.52)"/>
+    <use href="#f" transform="rotate(78) scale(.52)"/>
+    <use href="#f" transform="rotate(-52) scale(.78)"/>
+    <use href="#f" transform="rotate(52) scale(.78)"/>
+    <use href="#f" transform="rotate(-25) scale(.95)"/>
+    <use href="#f" transform="rotate(25) scale(.95)"/>
+    <use href="#f" transform="scale(1.12)"/>
+  </g>
+  <path d="M0,0 C 2,30 -4,60 -10,110" fill="none" stroke="#1fa834" stroke-width="7" stroke-linecap="round"/>
+  <path d="M0,-110 L 0,-8 M0,-60 L 0,0" stroke="#0b4d17" stroke-width="2" opacity=".5"/>
+  <!-- cara -->
+  <g transform="translate(0,-68)">
+    <rect x="-34" y="-12" width="30" height="20" rx="7" fill="#111"/>
+    <rect x="4" y="-12" width="30" height="20" rx="7" fill="#111"/>
+    <rect x="-6" y="-6" width="12" height="4" fill="#111"/>
+    <path d="M-28,-8 l 10,0" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    <path d="M10,-8 l 10,0" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    <path d="M-18,18 Q 0,36 18,18" fill="#5b1020" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-10,22 Q 0,28 10,22" fill="#ff7aa8"/>
+  </g>
+  <!-- fumacinha -->
+  <g fill="none" stroke="#e8e8e8" stroke-width="5" stroke-linecap="round" opacity=".55">
+    <path d="M70,-120 q 14,-14 0,-28 q -14,-14 0,-28"/>
+    <path d="M96,-96 q 10,-10 0,-20 q -10,-10 0,-20"/>
+  </g>
+</svg>

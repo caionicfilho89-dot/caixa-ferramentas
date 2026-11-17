@@ -1,0 +1,289 @@
+/* Caixa de Ferramentas — tema VIAGEM (padrão)
+   Psicodélico caricato: fundo derretendo, cápsulas de duas cores, cartelas de doce,
+   e os três mascotes em destaque (folha de óculos, espelho com pó, cristal azul).
+   Fontes: Shrikhand e Righteous (OFL), em ./fontes. Só vale com <body class="viagem">. */
+
+@font-face { font-family: "Groovy"; src: url("fontes/Shrikhand-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Redondo"; src: url("fontes/Righteous-Regular.ttf") format("truetype"); font-display: swap; }
+
+body.viagem {
+  --muro: #14051f;
+  --cartao: #1d0a2c;
+  --cartao-hover: #28103d;
+  --borda: #3d1a5c;
+  --texto: #fff6ff;
+  --fraco: #c7a8dd;
+  --acido: #39ff14;
+  --magenta: #ff1fd1;
+  --laranja: #ff8a00;
+  --roxo: #9d4dff;
+  --sol: #fff200;
+  --gelo: #3ad0ff;
+  --accent: var(--acido);
+  background: #14051f;
+}
+
+/* fundo derretendo: manchas grandes que giram e trocam de cor bem devagar */
+body.viagem::before {
+  content: ""; position: fixed; inset: -30%; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(closest-side at 22% 28%, rgba(255, 31, 209, .30), transparent),
+    radial-gradient(closest-side at 78% 22%, rgba(57, 255, 20, .20), transparent),
+    radial-gradient(closest-side at 70% 80%, rgba(58, 208, 255, .24), transparent),
+    radial-gradient(closest-side at 25% 82%, rgba(255, 138, 0, .22), transparent),
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(157, 77, 255, .07) 0 12deg, transparent 12deg 24deg);
+  filter: blur(8px);
+  animation: derrete 60s linear infinite;
+}
+@keyframes derrete {
+  from { transform: rotate(0deg) scale(1); filter: blur(8px) hue-rotate(0deg); }
+  50% { transform: rotate(180deg) scale(1.08); filter: blur(10px) hue-rotate(120deg); }
+  to { transform: rotate(360deg) scale(1); filter: blur(8px) hue-rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) { body.viagem::before, body.viagem .marca-nome, body.viagem h1 { animation: none !important; } }
+
+/* ── Lateral ── */
+body.viagem .lateral { background: rgba(16, 4, 26, .82); border-right: 3px solid var(--magenta); box-shadow: 4px 0 30px rgba(255, 31, 209, .25); }
+body.viagem .lateral::before { content: "420"; font-family: "Groovy", sans-serif; color: rgba(57, 255, 20, .06); }
+body.viagem .logo {
+  background: conic-gradient(var(--magenta), var(--sol), var(--acido), var(--gelo), var(--roxo), var(--magenta));
+  border-radius: 50%; transform: none; box-shadow: 0 0 22px rgba(255, 31, 209, .6);
+}
+body.viagem .marca-nome {
+  font: 32px/1 "Groovy", sans-serif; letter-spacing: 0;
+  background: linear-gradient(90deg, var(--acido), var(--sol), var(--laranja), var(--magenta), var(--gelo), var(--acido));
+  background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none; filter: drop-shadow(2px 2px 0 #000);
+  animation: arcoiris 8s linear infinite;
+}
+@keyframes arcoiris { to { background-position: 300% 0; } }
+body.viagem .marca-sub { font-family: "Redondo", sans-serif; color: var(--fraco); }
+body.viagem .nav-titulo { font: 15px "Groovy", sans-serif; color: var(--sol); text-shadow: 0 0 12px rgba(255, 242, 0, .5); }
+body.viagem .nav-item { color: #f1e4fb; font-weight: 600; }
+body.viagem .nav-item:hover { background: rgba(255, 31, 209, .12); }
+body.viagem .nav-item.ativo { color: #10001c; }
+body.viagem .nav-item.ativo::before {
+  background: linear-gradient(90deg, var(--acido), var(--sol));
+  border-radius: 999px; transform: none; inset: 3px -4px;
+  box-shadow: 0 0 18px rgba(57, 255, 20, .5);
+}
+body.viagem .nav-item .num { font-family: "Redondo", sans-serif; }
+body.viagem .rodape { border-top: 2px dotted var(--roxo); }
+body.viagem .link { font-family: "Redondo", sans-serif; color: var(--gelo); }
+body.viagem kbd { background: var(--sol); }
+
+/* ── Busca: anel arco-íris girando ── */
+body.viagem .busca {
+  background: #12041d; border: 0; border-radius: 999px; padding: 0 20px;
+  box-shadow: 0 0 0 3px transparent;
+  background-image: linear-gradient(#12041d, #12041d),
+    conic-gradient(from var(--giro, 0deg), var(--magenta), var(--sol), var(--acido), var(--gelo), var(--roxo), var(--magenta));
+  background-origin: border-box; background-clip: padding-box, border-box;
+  border: 3px solid transparent;
+}
+body.viagem .busca::after { display: none; }
+body.viagem .busca:focus-within { box-shadow: 0 0 30px rgba(255, 31, 209, .45); }
+body.viagem .busca svg { stroke: var(--sol); }
+
+/* ── Títulos ── */
+body.viagem h1 {
+  font: 44px/1.05 "Groovy", sans-serif; transform: rotate(-2deg);
+  background: linear-gradient(90deg, var(--sol), var(--laranja), var(--magenta), var(--roxo), var(--gelo), var(--acido), var(--sol));
+  background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none; filter: drop-shadow(3px 3px 0 #000) drop-shadow(0 0 14px rgba(255, 31, 209, .35));
+  animation: arcoiris 10s linear infinite;
+}
+body.viagem .sub, body.viagem .ola .data { font-family: "Redondo", sans-serif; color: var(--gelo); }
+body.viagem .secao {
+  font: 22px "Groovy", sans-serif; color: var(--acido);
+  text-shadow: 0 0 14px rgba(57, 255, 20, .55), 2px 2px 0 #000;
+}
+body.viagem .secao::after {
+  height: 6px; background: linear-gradient(90deg, var(--acido), var(--sol), var(--magenta), transparent);
+  border-radius: 6px;
+}
+
+/* ── Mascotes em destaque (Início) ── */
+.mascotes { display: none; }
+body.viagem .mascotes {
+  display: flex; gap: 18px; align-items: flex-end; margin: 6px 0 4px; flex-wrap: wrap;
+}
+body.viagem .mascote {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 14px 8px; border-radius: 24px;
+  background: rgba(255, 255, 255, .05); border: 2px solid rgba(255, 255, 255, .08);
+  animation: boia 4s ease-in-out infinite;
+}
+body.viagem .mascote:nth-child(2) { animation-delay: -1.3s; }
+body.viagem .mascote:nth-child(3) { animation-delay: -2.6s; }
+body.viagem .mascote img { height: 132px; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .5)); }
+body.viagem .mascote span { font: 16px "Groovy", sans-serif; }
+body.viagem .mascote.folha span { color: var(--acido); text-shadow: 0 0 10px rgba(57, 255, 20, .6); }
+body.viagem .mascote.po span { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, .6); }
+body.viagem .mascote.cristal span { color: var(--gelo); text-shadow: 0 0 10px rgba(58, 208, 255, .7); }
+@keyframes boia { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+
+/* ── Hoje: nuvens de fumaça ── */
+body.viagem .bloco-hoje {
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+  border: 2px solid rgba(255, 255, 255, .10); border-radius: 28px 34px 26px 38px;
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, .8);
+  backdrop-filter: blur(6px);
+}
+body.viagem .bloco-hoje::before { left: 22px; right: auto; width: 46px; height: 6px; top: -3px; border-radius: 6px; }
+body.viagem .bloco-hoje:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 0 26px rgba(255, 31, 209, .35); }
+body.viagem .bloco-hoje.sem-acao:hover { box-shadow: 0 10px 30px -14px rgba(0, 0, 0, .8); }
+body.viagem .bloco-hoje .t, body.viagem .bloco-hoje .acao { font-family: "Redondo", sans-serif; }
+body.viagem .bloco-hoje .acao { color: var(--sol); }
+
+/* ── Vitrine: cartelas de "doce" picotadas ── */
+body.viagem .cartao-vitrine {
+  color: #fff; border-radius: 4px; transform: rotate(-2deg);
+  background:
+    linear-gradient(rgba(10, 0, 20, .55), rgba(10, 0, 20, .70)),
+    repeating-conic-gradient(from 0deg at 30% 40%, #ff1fd1 0 15deg, #fff200 15deg 30deg, #39ff14 30deg 45deg, #3ad0ff 45deg 60deg, #9d4dff 60deg 75deg);
+  outline: 3px dashed rgba(255, 255, 255, .55); outline-offset: -8px;
+  box-shadow: 0 10px 22px -10px rgba(0, 0, 0, .9);
+}
+body.viagem .cartao-vitrine:nth-child(3n+2) { transform: rotate(1.6deg); background-color: transparent; }
+body.viagem .cartao-vitrine:nth-child(3n) { transform: rotate(-.8deg); background-color: transparent; }
+body.viagem .cartao-vitrine::before { /* carinha no doce */
+  content: "☺"; top: 8px; left: auto; right: 12px; width: auto; height: auto; transform: none;
+  background: none; box-shadow: none; font-size: 22px; color: var(--sol); text-shadow: 0 0 8px #000;
+}
+body.viagem .cartao-vitrine:hover { transform: rotate(0) scale(1.06); box-shadow: 0 0 30px rgba(255, 242, 0, .45); }
+body.viagem .cartao-vitrine .rot { font-family: "Redondo", sans-serif; color: var(--sol); }
+body.viagem .cartao-vitrine .alvo { font-family: "Redondo", sans-serif; color: #fff; text-decoration-color: var(--magenta); }
+
+/* ── Ferramentas: cápsulas de remédio de duas cores ── */
+body.viagem .bloco {
+  border: 0; border-radius: 999px; padding: 0 18px 0 8px;
+  background: linear-gradient(90deg, var(--c1, #ff1fd1) 0 50%, var(--c2, #fff6ff) 50% 100%);
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .18), inset 0 6px 0 rgba(255, 255, 255, .25), 0 8px 18px -10px rgba(0, 0, 0, .9);
+  color: #14051f;
+}
+body.viagem .grade .bloco:nth-child(5n+1) { --c1: #ff1fd1; --c2: #ffe9fb; }
+body.viagem .grade .bloco:nth-child(5n+2) { --c1: #39ff14; --c2: #f0ffe9; }
+body.viagem .grade .bloco:nth-child(5n+3) { --c1: #3ad0ff; --c2: #e8f9ff; }
+body.viagem .grade .bloco:nth-child(5n+4) { --c1: #ff8a00; --c2: #fff3e3; }
+body.viagem .grade .bloco:nth-child(5n) { --c1: #9d4dff; --c2: #f3eaff; }
+body.viagem .bloco .ic { background: rgba(255, 255, 255, .85); border-radius: 50%; box-shadow: 0 2px 0 rgba(0, 0, 0, .2); }
+body.viagem .bloco .n { color: #14051f; font-weight: 800; }
+body.viagem .bloco .ds { color: #4a2a5e; }
+body.viagem .bloco:hover {
+  transform: rotate(-1.5deg) scale(1.03);
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .18), inset 0 6px 0 rgba(255, 255, 255, .25), 0 0 26px var(--c1);
+}
+body.viagem .grade .bloco:nth-child(n):hover { /* anula as bordas de spray do tema pichação */
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .18), inset 0 6px 0 rgba(255, 255, 255, .25), 0 0 26px var(--c1);
+}
+body.viagem .estrela { color: #6a4a7e; }
+body.viagem .estrela.on, body.viagem .estrela:hover { color: #ff8a00; text-shadow: none; }
+
+body.viagem .vazio, body.viagem .carregando { font-family: "Redondo", sans-serif; }
+
+/* ── Respostas da barra ── */
+body.viagem .resposta {
+  background: rgba(20, 5, 31, .85); border: 3px solid var(--acido); border-radius: 26px;
+  box-shadow: 0 0 34px rgba(57, 255, 20, .3);
+}
+body.viagem .r-topo { font-family: "Redondo", sans-serif; color: var(--sol); }
+body.viagem .r-valor {
+  font: 50px/1.1 "Groovy", sans-serif;
+  background: linear-gradient(90deg, var(--acido), var(--sol), var(--magenta));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: none; filter: drop-shadow(3px 3px 0 #000);
+}
+body.viagem .r-btn { font-family: "Redondo", sans-serif; border-radius: 999px; border-color: #000; }
+body.viagem .r-btn.principal { background: var(--magenta); }
+
+body.viagem .aviso { background: var(--acido); font-family: "Redondo", sans-serif; border-radius: 999px; transform: none; }
+body.viagem .aviso::before { content: "🍄 "; }
+
+/* ── Muro do tema viagem ── */
+body.viagem #muro .tag.pingo, body.viagem #muro .tag.contorno { font-family: "Groovy", sans-serif; }
+body.viagem #muro .tag.marcador { font-family: "Redondo", sans-serif; }
+#muro .bicho { position: absolute; pointer-events: none; }
+
+body.viagem .conteudo::-webkit-scrollbar-thumb { background: linear-gradient(var(--magenta), var(--acido)); border-color: #14051f; border-radius: 10px; }
+body.viagem .vitrine::-webkit-scrollbar-thumb { background: var(--magenta); border-color: #14051f; border-radius: 10px; }
+
+/* ══ Tudo vira droga caricata (não só o fundo) ══════════════════════ */
+
+/* cursor: baseadinho aceso (ponta acesa = ponto do clique) */
+body.viagem, body.viagem * { cursor: url("arte/baseado.svg") 3 3, auto; }
+
+/* seta de ação = seringa */
+body.viagem .seta {
+  display: inline-block; width: 62px; height: 17px; vertical-align: middle; margin-left: 6px;
+  background: url("arte/seringa.svg") center / contain no-repeat;
+  transition: transform .15s;
+}
+body.viagem .seta::before { content: none; }
+body.viagem .bloco-hoje:hover .seta { transform: translateX(4px); }
+
+/* risco embaixo das seções = carreira de pó */
+body.viagem .secao::after {
+  height: 7px; margin-top: 4px; border-radius: 4px;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='8'><filter id='g'><feTurbulence baseFrequency='1.4' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.35'/></filter><rect width='60' height='8' filter='url(%23g)'/></svg>"),
+    linear-gradient(90deg, #fff, #f2f2f2 70%, rgba(255, 255, 255, 0));
+  box-shadow: 0 0 8px rgba(255, 255, 255, .35);
+}
+
+/* item escolhido no menu = carreira gorda */
+body.viagem .nav-item.ativo { color: #14051f; }
+body.viagem .nav-item.ativo::before {
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='30'><filter id='g'><feTurbulence baseFrequency='1.2' numOctaves='2'/><feColorMatrix values='0 0 0 0 .8  0 0 0 0 .8  0 0 0 0 .85  0 0 0 1.2 -.4'/></filter><rect width='60' height='30' filter='url(%23g)'/></svg>"),
+    #fbfbfb;
+  border-radius: 999px 40px 999px 60px; box-shadow: 0 0 16px rgba(255, 255, 255, .4);
+}
+
+/* barra de rolagem = baseado (ponta acesa em cima, filtro embaixo) */
+body.viagem .conteudo::-webkit-scrollbar { width: 14px; }
+body.viagem .conteudo::-webkit-scrollbar-thumb {
+  border: 3px solid #14051f; border-radius: 10px;
+  background: linear-gradient(180deg, #ff5a1f 0 10px, #ffd34d 10px 12px, #f4eee0 12px calc(100% - 22px), #c9a36b calc(100% - 22px));
+}
+
+/* busca: pílula no lugar da lupa */
+body.viagem .busca svg { display: none; }
+body.viagem .busca::before {
+  content: ""; width: 26px; height: 26px; flex-shrink: 0;
+  background: url("arte/pilula.svg") center / contain no-repeat;
+  animation: chacoalha 3s ease-in-out infinite;
+}
+@keyframes chacoalha { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(25deg); } }
+
+/* logo = folha de óculos */
+body.viagem .logo { font-size: 0; width: 46px; height: 46px; }
+body.viagem .logo::after {
+  content: ""; width: 40px; height: 40px;
+  background: url("arte/folha.svg") center / contain no-repeat;
+}
+
+/* favorito = folhinha */
+body.viagem .estrela { font-size: 0; }
+body.viagem .estrela::before { content: "🍃"; font-size: 16px; filter: grayscale(1) brightness(.7); }
+body.viagem .estrela.on::before, body.viagem .estrela:hover::before { content: "🌿"; filter: none; }
+
+/* carregando = folha girando */
+body.viagem .carregando::before {
+  content: "🌿"; display: inline-block; margin-right: 8px; animation: gira 1.2s linear infinite;
+}
+@keyframes gira { to { transform: rotate(360deg); } }
+
+/* teclas = pílulas */
+body.viagem kbd { border-radius: 999px; background: linear-gradient(90deg, #ff1fd1 50%, #fff6ff 50%); color: #14051f; font-weight: 700; }
+
+/* aviso no canto: comprimido */
+body.viagem .aviso::before { content: "💊 "; }
+
+/* botão de tema */
+.tema-btn {
+  margin-top: 10px; display: inline-flex; align-items: center; gap: 6px;
+  border: 2px solid #000; border-radius: 999px; padding: 4px 12px; cursor: pointer;
+  font: 12.5px "Marcador", sans-serif; background: var(--amarelo); color: #000; box-shadow: 2px 2px 0 #000;
+}
+body.viagem .tema-btn { font-family: "Redondo", sans-serif; background: linear-gradient(90deg, var(--magenta), var(--roxo)); color: #fff; }

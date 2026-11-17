@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <!-- cápsula de duas cores (ícone da busca e do botão de tema) -->
+  <g transform="rotate(-40 20 20)">
+    <path d="M8,13 h12 v14 h-12 a7,7 0 0 1 0,-14 Z" fill="#ff1fd1" stroke="#1a0026" stroke-width="2.2"/>
+    <path d="M20,13 h12 a7,7 0 0 1 0,14 h-12 Z" fill="#fff6ff" stroke="#1a0026" stroke-width="2.2"/>
+    <path d="M7,16.5 h9" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+  </g>
+</svg>

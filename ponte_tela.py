@@ -11,7 +11,7 @@ Operações:
     hoje                  cartões vivos do "Agora no seu PC" (sensores_core)
     responder  texto      respostas da barra (respostas_core)
     abrir      chave      abre a ferramenta (Caixa.exe --tool <chave>) e conta o uso
-    acao_hoje  id         executa o botão de um cartão do Hoje
+    acao_hoje  cartao     executa o botão de um cartão do Hoje
     favorito   chave      liga/desliga favorito
     classica              abre a Caixa clássica (PyQt)
 
@@ -190,7 +190,11 @@ def op_abrir(pedido):
 
 
 def op_acao_hoje(pedido):
-    acao = _acoes_hoje.get(str(pedido.get("id") or ""))
+    # "cartao" (não "id": o id é o número do pedido, que a tela preenche sozinha)
+    cid = str(pedido.get("cartao") or "")
+    if cid not in _acoes_hoje:
+        op_hoje(None)  # a ponte reiniciou ou o cartão é novo: lê os sensores de novo
+    acao = _acoes_hoje.get(cid)
     if not acao:
         raise ValueError("Esse cartão mudou, atualize o Hoje.")
     if acao.get("chave_ferramenta"):
