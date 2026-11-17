@@ -968,7 +968,17 @@ def main():
         for mod, err in bad:
             print("FALHOU", mod, err)
         sys.exit(1 if bad else 0)
+    elif "--ponte" in argv:
+        # canal da tela nova (CaixaTela.exe): JSON por stdin/stdout
+        import ponte_tela
+        ponte_tela.main()
     else:
+        # v1.6.0: a tela nova (Tauri) é a principal; --classico abre a antiga (PyQt)
+        tela = os.path.join(os.path.dirname(sys.executable), "CaixaTela.exe")
+        if "--classico" not in argv and getattr(sys, "frozen", False) and os.path.isfile(tela):
+            import subprocess
+            subprocess.Popen([tela] + [a for a in argv[1:] if a in ("--bandeja",)])
+            return
         import caixa_ui
         caixa_ui.main()
 
@@ -990,7 +1000,7 @@ def _modulos_rumo_extras():
                 nomes += list(ast.literal_eval(no.value))
     except (OSError, SyntaxError, ValueError) as e:
         print("aviso: não li adp_indice.MODULOS:", e)
-    nomes += ["caixa_bandeja"]
+    nomes += ["caixa_bandeja", "ponte_tela"]
     return [n for n in nomes if os.path.isfile(os.path.join(HERE, n + ".py"))]
 
 
@@ -1100,7 +1110,35 @@ def build(modmap, modules):
         print("ERRO: ferramentas nao entraram no exe:", ", ".join(faltou))
         return 1
     _enxugar_dist(os.path.join(HERE, "dist", "Caixa"))
+    _montar_tela(os.path.join(HERE, "dist", "Caixa"))
     return 0
+
+
+def _montar_tela(dist_caixa: str) -> bool:
+    """v1.6.0: compila a tela nova (Tauri, pasta tela/) e põe CaixaTela.exe ao lado do Caixa.exe.
+
+    Sem Rust/Node na máquina, usa o CaixaTela.exe já compilado; sem nenhum, a Caixa abre a
+    tela clássica (o Caixa.exe só chama a nova se ela existir).
+    """
+    pasta = os.path.join(HERE, "tela")
+    exe = os.path.join(pasta, "src-tauri", "target", "release", "CaixaTela.exe")
+    if not os.path.isdir(pasta):
+        return False
+    env = dict(os.environ)
+    cargo_bin = os.path.join(os.path.expanduser("~"), ".cargo", "bin")
+    env["PATH"] = cargo_bin + os.pathsep + env.get("PATH", "")
+    npx = shutil.which("npx", path=env["PATH"])
+    if npx and shutil.which("cargo", path=env["PATH"]):
+        print("Compilando a tela nova (Tauri)…")
+        rc = subprocess.call([npx, "tauri", "build", "--no-bundle"], cwd=pasta, env=env)
+        if rc != 0:
+            print("aviso: a tela nova não compilou (rc", rc, ")")
+    if not os.path.isfile(exe):
+        print("aviso: sem CaixaTela.exe — a Caixa vai abrir a tela clássica")
+        return False
+    shutil.copy2(exe, os.path.join(dist_caixa, "CaixaTela.exe"))
+    print("Tela nova copiada:", os.path.getsize(exe) // 1024, "KB")
+    return True
 
 
 def _enxugar_dist(dist_caixa: str) -> int:

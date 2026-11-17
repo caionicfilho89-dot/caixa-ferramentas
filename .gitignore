@@ -21,3 +21,8 @@ carteiro_entregues.json
 ECONOMIA.json
 economia_historico.json
 *.json.tmp
+
+# tela nova (Tauri): artefatos de build
+tela/node_modules/
+tela/src-tauri/target/
+tela/src-tauri/gen/

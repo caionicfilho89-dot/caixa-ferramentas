@@ -3,7 +3,7 @@
 ; Compilar com:  ISCC.exe instalador.iss   (depois de rodar build_suite.py)
 
 #define AppName "Caixa de Ferramentas"
-#define AppVer "1.5.9"
+#define AppVer "1.6.0"
 #define AppPublisher "caionicfilho89-dot"
 #define MainExe "Caixa.exe"
 
@@ -39,7 +39,7 @@ Source: "dist\Caixa\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs
 Name: "{group}\Caixa de Ferramentas"; Filename: "{app}\{#MainExe}"
 Name: "{group}\Desinstalar Caixa de Ferramentas"; Filename: "{uninstallexe}"
 Name: "{userdesktop}\Caixa de Ferramentas"; Filename: "{app}\{#MainExe}"; Tasks: desktopicon
-Name: "{userstartup}\Caixa de Ferramentas"; Filename: "{app}\{#MainExe}"; Tasks: startupicon
+Name: "{userstartup}\Caixa de Ferramentas"; Filename: "{app}\{#MainExe}"; Parameters: "--bandeja"; Tasks: startupicon
 
 [Run]
 Filename: "{app}\{#MainExe}"; Description: "Abrir a Caixa de Ferramentas agora"; Flags: nowait postinstall skipifsilent

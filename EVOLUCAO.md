@@ -3,6 +3,7 @@
 Uma linha por versão (mais nova em cima). O painel adesivo lê este arquivo.
 Formato: `- **vX.Y.Z** · DD/MM · N ferramentas · o que o Caio ganhou`. O Claude atualiza a cada versão.
 
+- **v1.6.0** · 16/11 · 769 ferramentas · TELA NOVA (Tauri): menu de categorias, ~30 ferramentas na 1ª tela, Hoje compacto, vitrine "substitui os famosos", respostas da barra em cartão com Copiar/Abrir, favoritos com ⭐, bandeja + Ctrl+Espaço; ícone novo; a antiga segue em "Caixa clássica"
 - **v1.5.9** · 16/11 · 769 ferramentas · 4 programas que substituem os famosos: Desinstalador (Revo), Player de Vídeo (VLC), Editor de Texto (Notepad++), Copiador Rápido (TeraCopy); 12 novas das Tendências: Atas de Reunião, Notas Adesivas, Protetor Ocular, Canivete do Técnico de PC, Super-Resolução de vídeo, Escrita sem Espaço, Regra 50/30/20 e mais; janela principal escura de novo
 - **v1.5.8** · 12/11 · 759 ferramentas · Rescisão/Seguro-Desemprego/IPVA/Troco/Botijão/Tinta revisados; Dias Úteis com 20/11 e calendário bancário; Validade de Remédios com alerta; Assinaturas salvam; Downloads com Desfazer; Visor de Fotos e conversor CSV→OFX (Tendências); ~350 ferramentas testadas
 - **v1.5.7** · 11/11 · 752 ferramentas · Tocando Agora entra no exe; abrir com --teste não conta como ferramenta mais usada; a Faxina aberta pela Hoje espera o clique em Varrer

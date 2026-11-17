@@ -217,18 +217,19 @@
    "fazendo": "",
    "feitos": 0,
    "msgs": [],
-   "texto": "🟢 Claude: 5h ███████░░░ 69% (renova em 1h24) · semana ███░░░░░░░ 28% (renova em 5d 8h)\n🟢 SuperGrok (Cursor·Grok CLI·Cocaino): semana █░░░░░░░░░ 10% (renova em 5d 20h)\n🟢 Google (Antigravity·Gemini·formação B): 5h ██████████ 100% (renova em 0h59) · semana ██████████ 100% (renova em 6d 22h)"
+   "texto": "🟢 Claude: 5h ███████░░░ 71% (renova em 1h20) · semana ███░░░░░░░ 28% (renova em 5d 8h)\n🟢 SuperGrok (Cursor·Grok CLI·Cocaino): semana █░░░░░░░░░ 10% (renova em 5d 20h)\n🟢 Google (Antigravity·Gemini·formação B): 5h ██████████ 100% (renova em 0h54) · semana ██████████ 100% (renova em 6d 23h)"
   },
   "faa36755-c2bf-5864-82d6-a65097c73940": {
    "fazendo": "",
    "feitos": 0,
    "msgs": [],
-   "texto": "⚪ Antigravity  🟢 Grok CLI [G]  🟡 Cocaino [G]  🟡 Gemini  🟡 Cursor [G]  🟢 Claude\n💬 conversas (1h): Antigravity ↔ Claude (1) · Claude ↔ Cocaino (1) · Claude ↔ Cursor (1)"
+   "texto": "⚪ Antigravity  🟢 Grok CLI [G]  🟡 Cocaino [G]  🟡 Gemini  🟡 Cursor [G]  🟡 Claude\n💬 conversas (1h): Antigravity ↔ Claude (1) · Claude ↔ Cocaino (1) · Claude ↔ Cursor (1)"
   }
  },
  "alertas": [
   "🔀 SuperGrok voltou ao normal: já dá pra voltar pra Formação A (python formacao.py A)",
-  "🔁 cadeira da formação B reaberta 3x na última hora (algo derrubando o agente?)",
+  "⚠️ carteiro falhou 4x com antigravity na última hora",
+  "🔁 cadeira da formação B reaberta 5x na última hora (algo derrubando o agente?)",
   "✨ Grok CLI: T342 ⭐ Paridade [desinstalador]: tão boa quanto Revo Uninstaller: Paridade com Revo Unins…"
  ],
  "msgs_vistas": [

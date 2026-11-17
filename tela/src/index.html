@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caixa de Ferramentas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="lateral">
+    <div class="marca">
+      <div class="logo">🧰</div>
+      <div>
+        <div class="marca-nome">Caixa</div>
+        <div class="marca-sub" id="total">carregando…</div>
+      </div>
+    </div>
+    <nav id="nav"></nav>
+    <div class="rodape">
+      <button class="link" id="classica">Abrir a Caixa clássica</button>
+      <div class="dica"><kbd>Ctrl</kbd> + <kbd>Espaço</kbd> chama a Caixa de qualquer lugar</div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topo">
+      <label class="busca">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="busca" type="search" autocomplete="off" spellcheck="false"
+               placeholder="Pergunte ou busque…  ex.: 20% de 350 · ipva de 60 mil em SP · pdf">
+        <kbd>Ctrl K</kbd>
+      </label>
+    </div>
+    <div id="conteudo" class="conteudo"><div class="carregando">Abrindo a Caixa…</div></div>
+  </main>
+
+  <div id="aviso" class="aviso" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

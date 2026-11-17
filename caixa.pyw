@@ -30,7 +30,7 @@ FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (insta
 if "--teste" in sys.argv:
     os.environ["CAIXA_TESTE"] = "1"
 MODO_TESTE = os.environ.get("CAIXA_TESTE") == "1"
-APP_VERSION = "1.5.9"
+APP_VERSION = "1.6.0"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
