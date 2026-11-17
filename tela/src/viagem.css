@@ -1,9 +1,9 @@
 /* Caixa de Ferramentas — tema VIAGEM (padrão)
    Psicodélico caricato: fundo derretendo, cápsulas de duas cores, cartelas de doce,
    e os três mascotes em destaque (folha de óculos, espelho com pó, cristal azul).
-   Fontes: Luckiest Guy (Apache 2.0) e Righteous (OFL), em ./fontes. Só vale com <body class="viagem">. */
+   Fontes: Lilita One e Righteous (OFL), em ./fontes. Só vale com <body class="viagem">. */
 
-@font-face { font-family: "Groovy"; src: url("fontes/LuckiestGuy-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Groovy"; src: url("fontes/LilitaOne-Regular.ttf") format("truetype"); font-display: swap; }
 @font-face { font-family: "Redondo"; src: url("fontes/Righteous-Regular.ttf") format("truetype"); font-display: swap; }
 
 body.viagem {
@@ -35,10 +35,9 @@ body.viagem::before {
     radial-gradient(closest-side at 22% 28%, rgba(230, 46, 45, .30), transparent),
     radial-gradient(closest-side at 78% 22%, rgba(255, 210, 31, .20), transparent),
     radial-gradient(closest-side at 70% 80%, rgba(255, 244, 220, .24), transparent),
-    radial-gradient(closest-side at 25% 82%, rgba(255, 138, 31, .22), transparent),
-    repeating-conic-gradient(from 0deg at 50% 50%, rgba(168, 22, 26, .07) 0 12deg, transparent 12deg 24deg);
+    radial-gradient(closest-side at 25% 82%, rgba(255, 138, 31, .22), transparent);
   filter: blur(8px);
-  animation: derrete 60s linear infinite;
+  animation: derrete 120s linear infinite; opacity: .55;
 }
 @keyframes derrete {
   from { transform: rotate(0deg) scale(1); filter: blur(8px); }
@@ -59,7 +58,7 @@ body.viagem .marca-nome {
   background: linear-gradient(90deg, var(--sol), var(--laranja), var(--magenta), var(--laranja), var(--sol));
   background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
   text-shadow: none; filter: drop-shadow(2px 2px 0 #000);
-  animation: arcoiris 8s linear infinite;
+  animation: none; -webkit-text-fill-color: var(--sol);
 }
 @keyframes arcoiris { to { background-position: 300% 0; } }
 body.viagem .marca-sub { font-family: "Redondo", sans-serif; color: var(--fraco); }
@@ -96,11 +95,11 @@ body.viagem h1 {
   background: linear-gradient(90deg, var(--sol), var(--laranja), var(--magenta), var(--laranja), var(--sol));
   background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
   text-shadow: none; filter: drop-shadow(3px 3px 0 #000) drop-shadow(0 0 14px rgba(230, 46, 45, .35));
-  animation: arcoiris 10s linear infinite;
+  animation: none; -webkit-text-fill-color: var(--sol);
 }
 body.viagem .sub, body.viagem .ola .data { font-family: "Redondo", sans-serif; color: var(--gelo); }
 body.viagem .secao {
-  font: 22px "Groovy", sans-serif; color: var(--acido);
+  font: 22px "Groovy", sans-serif; color: #fff4dc;
   text-shadow: 0 0 14px rgba(255, 210, 31, .55), 2px 2px 0 #000;
 }
 body.viagem .secao::after {
@@ -146,7 +145,7 @@ body.viagem .cartao-vitrine {
   color: #fff; border-radius: 4px; transform: rotate(-2deg);
   background:
     linear-gradient(rgba(10, 0, 20, .55), rgba(10, 0, 20, .70)),
-    repeating-conic-gradient(from 0deg at 30% 40%, #e62e2d 0 12deg, #ffd21f 12deg 24deg);
+    radial-gradient(circle at 50% 50%, rgba(255, 210, 31, .10) 0 2px, transparent 2.5px) 0 0 / 16px 16px, #2a1810;
   outline: 3px dashed rgba(255, 255, 255, .55); outline-offset: -8px;
   box-shadow: 0 10px 22px -10px rgba(0, 0, 0, .9);
 }
@@ -195,9 +194,7 @@ body.viagem .bloco::after {
   background: linear-gradient(180deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, 0));
   filter: blur(.6px);
 }
-body.viagem .grade .bloco:nth-child(3n+1) { --c1: #e62e2d; --c2: #fff4dc; }
-body.viagem .grade .bloco:nth-child(3n+2) { --c1: #ffd21f; --c2: #fff4dc; }
-body.viagem .grade .bloco:nth-child(3n) { --c1: #e62e2d; --c2: #ffd21f; }
+body.viagem .grade .bloco { --c1: #e62e2d; --c2: #fff4dc; }
 /* ícone no meio da tampa, texto no corpo */
 body.viagem .bloco .ic {
   width: 38%; height: 100%; flex-shrink: 0; border-radius: 0;
@@ -364,7 +361,7 @@ body.viagem .marca-nome .elem i, body.viagem .nav-titulo .elem i { font-size: .3
 /* ══ Interativo (interativo.js) ══════════════════════════════ */
 /* letras soltas dos títulos: o JS mexe nelas conforme o mouse chega perto */
 body.viagem .letra { display: inline-block; transition: transform .12s ease-out, color .12s; will-change: transform; }
-body.viagem .letra.perto:not(.elem) { -webkit-text-fill-color: var(--magenta); }
+body.viagem .letra.perto:not(.elem) { -webkit-text-fill-color: #fff4dc; }
 body.viagem .marca-nome, body.viagem .nav-titulo, body.viagem #conteudo h1, body.viagem #conteudo .secao { cursor: pointer; }
 @keyframes onda {
   0% { translate: 0 0; }
@@ -406,6 +403,14 @@ body.viagem .bloco::after { transform: translateX(var(--gx, 0%)); transition: tr
 
 /* títulos com degradê: com as letras soltas o degradê some, então cada letra ganha a sua cor */
 body.viagem h1 .letra:not(.elem), body.viagem .marca-nome .letra:not(.elem) { -webkit-text-fill-color: var(--sol); }
-body.viagem h1 .letra:not(.elem):nth-child(3n+2), body.viagem .marca-nome .letra:not(.elem):nth-child(3n+2) { -webkit-text-fill-color: var(--laranja); }
-body.viagem h1 .letra:not(.elem):nth-child(3n), body.viagem .marca-nome .letra:not(.elem):nth-child(3n) { -webkit-text-fill-color: var(--magenta); }
 body.viagem h1 .letra.perto:not(.elem), body.viagem .marca-nome .letra.perto:not(.elem) { -webkit-text-fill-color: #fff4dc; }
+
+/* sem listras alternadas: fitinha do Hoje sempre amarela */
+body.viagem .hoje .bloco-hoje::before,
+body.viagem .hoje .bloco-hoje:nth-child(n)::before { background: var(--sol); }
+/* contagens do menu numa cor só */
+body.viagem #nav .nav-item .num { color: var(--fraco) !important; }
+body.viagem #nav .nav-item.ativo .num { color: #1a0d06 !important; }
+
+/* muro mais apagado: a pichação é clima, não protagonista */
+body.viagem #muro { opacity: .5; }

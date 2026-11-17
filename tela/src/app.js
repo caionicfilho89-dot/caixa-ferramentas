@@ -368,7 +368,7 @@ function pintarMuro() {
   const pega = (l) => l[Math.floor(rnd() * l.length)];
   const viagem = document.body.classList.contains("viagem");
   const cores = viagem
-    ? ["#ffd21f", "#e62e2d", "#ff8a1f", "#fff4dc", "#ffd21f", "#e62e2d"]
+    ? ["#fff4dc", "#ffd21f", "#fff4dc", "#e62e2d"]
     : ["#ff2d95", "#c6ff00", "#00e5ff", "#ffe600", "#ff6a00", "#ffffff"];
   const palavras = viagem ? [
     "BRISA", "LARICA", "LOMBRA", "VIAJOU", "TÔ DE BOA", "SÓ NA PAZ", "420", "DE LEVE", "SUAVE",

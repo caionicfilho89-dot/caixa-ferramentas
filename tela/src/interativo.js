@@ -69,7 +69,7 @@
       const d = Math.hypot(r.left + r.width / 2 - mx, r.top + r.height / 2 - my);
       const f = Math.max(0, 1 - d / 110);
       if (f > 0) {
-        l.style.transform = `translateY(${(-9 * f).toFixed(1)}px) scale(${(1 + 0.38 * f).toFixed(3)}) rotate(${(-8 * f).toFixed(1)}deg)`;
+        l.style.transform = `translateY(${(-5 * f).toFixed(1)}px) scale(${(1 + 0.14 * f).toFixed(3)})`;
         l.classList.add("perto");
       } else if (l.style.transform) {
         l.style.transform = "";
@@ -121,15 +121,15 @@
   }
 
   // ── Clique: estouro de comprimidos e brilhos ─────────────
-  const PECAS = ["💊", "✨", "💊", "⭐", "💊", "✨", "🌿", "💥"];
+  const PECAS = ["💊", "✨", "💊", "✨"];
   document.addEventListener("pointerdown", (e) => {
     if (!ligado() || e.button !== 0) return;
     if (!e.target.closest(".bloco, .cartao-vitrine, .bloco-hoje, .r-btn, .nav-item, .letra")) return;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       const p = document.createElement("i");
       p.className = "estouro";
       p.textContent = PECAS[i % PECAS.length];
-      const ang = Math.random() * Math.PI * 2, dist = 50 + Math.random() * 70;
+      const ang = Math.random() * Math.PI * 2, dist = 30 + Math.random() * 40;
       p.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;` +
         `--x:${(Math.cos(ang) * dist).toFixed(0)}px;--y:${(Math.sin(ang) * dist - 30).toFixed(0)}px;` +
         `--r:${(Math.random() * 540 - 270).toFixed(0)}deg;font-size:${(14 + Math.random() * 12).toFixed(0)}px`;
