@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Caixa de Ferramentas",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "identifier": "br.caio.caixa-ferramentas",
   "build": {
     "frontendDist": "../src"

@@ -1,6 +1,6 @@
 [package]
 name = "caixa-tela"
-version = "1.6.0"
+version = "1.7.0"
 description = "Tela principal da Caixa de Ferramentas (Tauri)"
 edition = "2021"
 

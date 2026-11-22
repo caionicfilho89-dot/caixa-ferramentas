@@ -39,7 +39,7 @@ if _P and __name__ == "__main__":
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PASTA = os.path.join(AQUI, "painel")
-AGENTES = ["claude", "cursor", "antigravity", "grokbuild", "grok", "gemini"]
+AGENTES = ["claude", "cursor", "antigravity", "grokbuild", "grok", "gemini", "grokbuild2", "grokbuild3", "grokbuild4", "grokbuild5", "grokbuild6"]
 PARADO_MIN = 20   # sem atualizar há mais que isso = provavelmente parado
 FORMATO = "%Y-%m-%d %H:%M"
 

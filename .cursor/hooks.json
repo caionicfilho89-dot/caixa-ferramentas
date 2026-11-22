@@ -1,4 +1,4 @@
-﻿{
+{
   "version": 1,
   "hooks": {
     "stop": [
@@ -8,7 +8,7 @@
         "loop_limit": 0
       },
       {
-        "command": "C:\\Python313\\python.exe C:\\Users\\caion\\caixa-ferramentas\\carteiro.py --hook cursor",
+        "command": "C:\\Python313\\python.exe C:\\Users\\caion\\caixa-ferramentas\\orquestra.py --gancho cursor",
         "timeout": 30,
         "loop_limit": 8
       }

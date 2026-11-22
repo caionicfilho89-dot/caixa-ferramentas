@@ -224,13 +224,49 @@
    "feitos": 0,
    "msgs": [],
    "texto": "⚪ Antigravity  🟢 Grok CLI [G]  🟡 Cocaino [G]  🟡 Gemini  🟡 Cursor [G]  🟡 Claude\n💬 conversas (1h): Antigravity ↔ Claude (1) · Claude ↔ Cocaino (1) · Claude ↔ Cursor (1)"
+  },
+  "0192d2e7-269e-597b-ada6-1c9e15a10105": {
+   "fazendo": "aguardando proxima tarefa",
+   "feitos": 15,
+   "msgs": []
+  },
+  "b063ffc9-69e4-5a44-8d62-c3f8c0e1aeed": {
+   "fazendo": "T377: exemplo so no botao",
+   "feitos": 15,
+   "msgs": []
+  },
+  "b74a58b9-1347-5d6a-a150-d63740c68c36": {
+   "fazendo": "T364: ⭐ Paridade [player-musica]: tão boa quanto AIMP / foobar2000 / MusicBee / Winamp",
+   "feitos": 15,
+   "msgs": []
+  },
+  "9bf6fd0e-db73-5516-812d-4d8a77fe987a": {
+   "fazendo": "",
+   "feitos": 15,
+   "msgs": []
+  },
+  "d8fb401e-c9fd-5754-9d28-7026136d2693": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": []
+  },
+  "45ad438d-4011-5fe7-b305-b2d98c947fd0": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "🟡 Claude: 5h █░░░░░░░░░ 9% (renova em 4h36) · semana █████░░░░░ 46% (renova em 4d 11h)\n🔴 SuperGrok (Cursor·Grok CLI·Cocaino): semana ████░░░░░░ 45% (renova em 4d 23h)\n🔴 Google (Antigravity·Gemini·formação B): 5h █████████░ 86% (renova em 3d 2h) · semana ██████████ 100% (renova em 4d 6h)"
+  },
+  "30371aba-561a-5f73-bb88-d2ac0993bed9": {
+   "fazendo": "",
+   "feitos": 0,
+   "msgs": [],
+   "texto": "⚪ Antigravity  🟢 Grok CLI  ⚪ Cocaino  ⚪ Gemini  🟢 Cursor  🟡 Claude\n💬 conversas (1h): Antigravity ↔ Claude (2) · Claude ↔ Cursor (2) · Claude ↔ GrokCLI (1) · Claude ↔ Cocaino (1)"
   }
  },
  "alertas": [
-  "🔀 SuperGrok voltou ao normal: já dá pra voltar pra Formação A (python formacao.py A)",
-  "⚠️ carteiro falhou 4x com antigravity na última hora",
-  "🔁 cadeira da formação B reaberta 5x na última hora (algo derrubando o agente?)",
-  "✨ Grok CLI: T342 ⭐ Paridade [desinstalador]: tão boa quanto Revo Uninstaller: Paridade com Revo Unins…"
+  "🔴 cota SuperGrok CRÍTICA renova em 4d 23h",
+  "🔴 cota Google CRÍTICA renova em 3d 2h",
+  "🟡 cota Claude apertando renova em 4h36"
  ],
  "msgs_vistas": [
   1,
@@ -382,6 +418,33 @@
   149,
   150,
   151,
-  152
+  152,
+  153,
+  154,
+  155,
+  156,
+  157,
+  158,
+  159,
+  160,
+  161,
+  162,
+  163,
+  164,
+  165,
+  166,
+  167,
+  168,
+  169,
+  170,
+  171,
+  172,
+  173,
+  174,
+  175,
+  176,
+  177,
+  178,
+  179
  ]
 }

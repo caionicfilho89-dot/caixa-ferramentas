@@ -1,14 +1,14 @@
 {
  "antigravity": {
-  "lido": "16/11 21:45 (agy: quota reached)",
+  "lido": "17/11 01:22 (agy: quota reached, resets in 120h)",
   "plano": "Google AI Pro",
   "gemini_semana_usado": 100,
-  "gemini_5h_usado": 100,
+  "gemini_5h_usado": 0,
   "claude_gpt_semana_usado": 100,
-  "argon_semana_usado": 100,
-  "renova": "em 7 dias",
-  "gemini_5h_renova": "2026-11-17T01:44:25Z",
-  "lido_auto": "16/11 20:31",
-  "semana_lida_em": 1794876331.913822
+  "argon_semana_usado": 0,
+  "renova": "em 5 dias",
+  "gemini_5h_renova": "2026-11-19T01:36:38Z",
+  "lido_auto": "18/11 18:09",
+  "semana_lida_em": 1794889330.7757475
  }
 }

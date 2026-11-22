@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-11-16",
-  "total": 769,
+  "gerado_em": "2026-11-17",
+  "total": 770,
   "ferramentas": [
     {
       "emoji": "📄",
@@ -239,7 +239,7 @@
     {
       "emoji": "✅",
       "nome": "Tarefas",
-      "desc": "Tarefas e lembretes; entende \"pagar luz amanhã 18h\"",
+      "desc": "Tarefas e lembretes; entende \"pagar luz amanhã 18h\". Atenção, quadro, calendário, meta e valores. 🔥 Tendência do dia.",
       "chave": "tarefas",
       "script": "tarefas.pyw",
       "prefixo": "tarefas",
@@ -6780,6 +6780,15 @@
       "categoria": "🖼️ Imagem & Design"
     },
     {
+      "emoji": "🧾",
+      "nome": "Emissor de NFS-e (rascunho)",
+      "desc": "Monta a DPS do padrão nacional, confere CNPJ e calcula ISS, IBS e CBS. Não assina e não transmite. 🔥 Tendência do dia.",
+      "chave": "emissor-nfse",
+      "script": "nfs_gui.pyw",
+      "prefixo": "nfs",
+      "categoria": "💰 Finanças & Trabalho"
+    },
+    {
       "emoji": "📝",
       "nome": "Atas de Reunião & Decisões",
       "desc": "Anotações de reuniões com extração de resumo executivo, decisões e tarefas com responsáveis e prazos — offline e privado. 🔥 Tendência do dia.",
@@ -7400,6 +7409,7 @@
     "neg",
     "nfe",
     "nfn",
+    "nfs",
     "nix",
     "nln",
     "nmi",

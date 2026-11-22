@@ -2,7 +2,7 @@
 
 > **GERADO AUTOMATICAMENTE por `catalogo.py` — NÃO edite à mão.**  
 > Fonte da verdade: a lista `BUILTIN` em `caixa.pyw`. Rode `python catalogo.py` pra atualizar.
-> Última geração: **2026-11-16** · Total: **769 ferramentas** · **769 prefixos** usados.
+> Última geração: **2026-11-17** · Total: **770 ferramentas** · **770 prefixos** usados.
 
 ## ⚠️ Antes de criar QUALQUER ferramenta nova (todo agente)
 
@@ -15,7 +15,7 @@
 
 ## Índice por categoria
 
-- 💰 Finanças & Trabalho — 96
+- 💰 Finanças & Trabalho — 97
 - 🏠 Casa, Pet & Pessoal — 128
 - 🔬 Ciência & Engenharia — 41
 - 🌐 Rede & Segurança — 49
@@ -29,7 +29,7 @@
 
 ---
 
-## 💰 Finanças & Trabalho  ·  96
+## 💰 Finanças & Trabalho  ·  97
 
 | | Ferramenta | O que faz | chave | prefixo |
 |---|---|---|---|---|
@@ -79,6 +79,7 @@
 | 🧷 | **Custo Fralda Geriátrica** | Estima pacotes/mês, extras (creme/lenço) e gasto anual. | `custo-fralda-geriatrica` | `frg` |
 | 🌈 | **Código de Cores de Resistores** | Faixas 4/5/6, valor para cores, SMD/EIA-96, séries E e melhor par série/paralelo | `codigo-resistores` | `res` |
 | 🫧 | **Diluição Água Sanitária** | ml de hipoclorito para ppm de desinfecção. | `diluicao-agua-sanitaria` | `aws` |
+| 🧾 | **Emissor de NFS-e (rascunho)** | Monta a DPS do padrão nacional, confere CNPJ e calcula ISS, IBS e CBS. Não assina e não transmite. 🔥 Tendência do dia. | `emissor-nfse` | `nfs` |
 | 🏠 | **Entrada Financiamento** | Entrada %, saldo e prestação Price do imóvel. | `entrada-financiamento` | `ent` |
 | 🎲 | **Estatística & Inferência Bayesiana** | Teorema de Bayes, paradoxo do falso positivo em testes e modelo Beta-Binomial | `calculadora-estatistica-bayesiana` | `bys` |
 | 🖼️ | **Extrator de Icones** | Extrai icones de EXE/DLL/ICO, conta recursos e salva PNG ou ICO associado | `extrator-icones` | `ico` |
@@ -257,7 +258,7 @@
 | 🗓️ | **Simulador Cron & Agendador** | Tradutor Cron com próximas 10 execuções e agendador Windows schtasks | `agendador-tarefas` | `sch` |
 | 📏 | **Tamanho de Funcoes** | Ranking de defs Python por linhas (LOC) com filtro minimo. | `analisador-tamanho-funcoes` | `fsz` |
 | 📺 | **Tamanho Ideal de TV** | Diagonal ideal pela distância, resolução e altura de instalação | `tamanho-tv` | `tvd` |
-| ✅ | **Tarefas** | Tarefas e lembretes; entende "pagar luz amanhã 18h" | `tarefas` | `tarefas` |
+| ✅ | **Tarefas** | Tarefas e lembretes; entende "pagar luz amanhã 18h". Atenção, quadro, calendário, meta e valores. 🔥 Tendência do dia. | `tarefas` | `tarefas` |
 | 🧹 | **Tarefas da Casa e Mesada** | Divide tarefas domésticas por pontos e idade, rodízio semanal, checklist do feito e mesada por… | `tarefas-casa` | `tcs` |
 | 🏢 | **Taxa Extra Condomínio** | Rateio igualitário ou por fração ideal. | `taxa-extra-condominio` | `tcx` |
 | 🛞 | **Troca de Pneu do Carro** | Vida útil em km, meses restantes, status e custo do jogo de pneus. | `troca-pneu-carro` | `pne` |
@@ -855,7 +856,7 @@
 
 ---
 
-## 🔒 Prefixos reservados (769) — NÃO repetir
+## 🔒 Prefixos reservados (770) — NÃO repetir
 
 ```text
 abn  acd  aci  acl  acp  acu  ads  adt  aer  agd
@@ -905,34 +906,34 @@ mcl  mcr  mdc  mdh  mdl  mdv  mdx  med  met  metronomo
 mhr  mid  mkf  mkt  mkv  mlp  mm  mmt  mnc  mnt
 mol  monitor_sistema  mot  mpd  mqb  mrs  mse  msn  mtc  mte
 mtm  mtr  mtv  mtx  mvi  myp  nap  nav  nbd  nc
-nca  nce  neg  nfe  nfn  nix  nln  nmi  nmk  notas
-nox  npp  npw  nrc  nsi  nsp  ntl  ntr  nuv  nvm
-nvz  oas  obr  ocl  odt  ofx  olo  opt  orcamentos  orf
-organizador  orq  own  p20  p3d  pac  pad  pag  pai  pal
-paletas_cores  pao  pas  pat  pbn  pcc  pce  pcf  pcp  pcs
-pdl  pei  pem  pen  per  pes  pet  pev  pfl  phn
-phr  pia  pid  pix_boleto  player_musica  plc  pld  plk  plm  plr
-pls  plt  pm  pmr  pmt  pne  pnl  pnt  pnu  poe
-ppd  ppu  prc  print_anotador  prm  prs  prt  prx  psc  psi
-psq  pst  pth  pti  ptr  pts  ptt  pvs  pwb  pyc
-pyl  pyr  pyv  pzz  qb  qc  qol  qrcode_tool  qsm  qth
-qtn  quiz_geografia  qzf  r50  rastreador_tempo  rc  rct  rcz  rea  rec
-recupera  reg  relogio_mundial  rem  renomeador  reo  req  res  rev  rfc
-rfm  rfx  rgx  rlc  rle  rls  rlz  rmd  rml  rmp
-rms  rmx  rnv  rob  roi  rot  rpg  rps  rsg  rss
-rst  rsv  rtc  ruf  rvg  rvp  rwx  sab  sak  saude
-sb  sbb  sbo  sbp  sbv  scd  scf  sch  scm  scn
-sco  sdx  sec  sek  sem  seo  seq  sfa  sfl  sfr
-sgb  sgr  shb  shw  sir  skl  skn  slg  smt  smv
-snip  snl  sno  snw  som  sorteios  spa  spl  spm  sqf
-srt  ssc  ssk  stg  stk  stm  stp  stt  sudoku  svc
-svg  svj  syb  sym  syn  tag  tam  tarefas  tcr  tcs
-tcx  tdc  tdf  tdo  tempo  texto_fala  tfr  tg  th  thf
-thm  tip  tml  tmp  tnr  tnt  tok  tox  trc  trd
-tre  treino_digitacao  trf  trm  tro  trs  tru  trv  tsk  tun
-tvd  tvs  txp  uba  ubr  udi  uid  uni  uns  utl
-vag  variaveis_ambiente  vcp  vdc  vdw  vft  vin  visualizador_fontes  visualizador_planilhas  visualizador_sqlite
-vlm  vnh  vnr  vo2  volume_apps  vpl  vsc  vst  vth  vtr
-vva  wcg  wci  wdc  webcam_foto  wfi  wgm  whl  wlb  wsp
-wup  wxi  xtr  ylk  ylt  yml  yrn  zcd  zpf
+nca  nce  neg  nfe  nfn  nfs  nix  nln  nmi  nmk
+notas  nox  npp  npw  nrc  nsi  nsp  ntl  ntr  nuv
+nvm  nvz  oas  obr  ocl  odt  ofx  olo  opt  orcamentos
+orf  organizador  orq  own  p20  p3d  pac  pad  pag  pai
+pal  paletas_cores  pao  pas  pat  pbn  pcc  pce  pcf  pcp
+pcs  pdl  pei  pem  pen  per  pes  pet  pev  pfl
+phn  phr  pia  pid  pix_boleto  player_musica  plc  pld  plk  plm
+plr  pls  plt  pm  pmr  pmt  pne  pnl  pnt  pnu
+poe  ppd  ppu  prc  print_anotador  prm  prs  prt  prx  psc
+psi  psq  pst  pth  pti  ptr  pts  ptt  pvs  pwb
+pyc  pyl  pyr  pyv  pzz  qb  qc  qol  qrcode_tool  qsm
+qth  qtn  quiz_geografia  qzf  r50  rastreador_tempo  rc  rct  rcz  rea
+rec  recupera  reg  relogio_mundial  rem  renomeador  reo  req  res  rev
+rfc  rfm  rfx  rgx  rlc  rle  rls  rlz  rmd  rml
+rmp  rms  rmx  rnv  rob  roi  rot  rpg  rps  rsg
+rss  rst  rsv  rtc  ruf  rvg  rvp  rwx  sab  sak
+saude  sb  sbb  sbo  sbp  sbv  scd  scf  sch  scm
+scn  sco  sdx  sec  sek  sem  seo  seq  sfa  sfl
+sfr  sgb  sgr  shb  shw  sir  skl  skn  slg  smt
+smv  snip  snl  sno  snw  som  sorteios  spa  spl  spm
+sqf  srt  ssc  ssk  stg  stk  stm  stp  stt  sudoku
+svc  svg  svj  syb  sym  syn  tag  tam  tarefas  tcr
+tcs  tcx  tdc  tdf  tdo  tempo  texto_fala  tfr  tg  th
+thf  thm  tip  tml  tmp  tnr  tnt  tok  tox  trc
+trd  tre  treino_digitacao  trf  trm  tro  trs  tru  trv  tsk
+tun  tvd  tvs  txp  uba  ubr  udi  uid  uni  uns
+utl  vag  variaveis_ambiente  vcp  vdc  vdw  vft  vin  visualizador_fontes  visualizador_planilhas
+visualizador_sqlite  vlm  vnh  vnr  vo2  volume_apps  vpl  vsc  vst  vth
+vtr  vva  wcg  wci  wdc  webcam_foto  wfi  wgm  whl  wlb
+wsp  wup  wxi  xtr  ylk  ylt  yml  yrn  zcd  zpf
 ```

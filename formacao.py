@@ -10,6 +10,13 @@ mais na fábrica muda. Cota do Grok voltou → `python formacao.py A`.
     python formacao.py B          # liga a manobra (abre 3 abas do agy no Windows Terminal, janela "fabrica")
     python formacao.py A          # volta pro original (fecha as abas do agy, devolve as cadeiras)
 O carteiro chama garantir_b() a cada 2 min: na B, cadeira cujo agy fechou e tem trabalho → reabre.
+
+17/11/2026 — o Caio pediu pra fechar o carteiro: as janelas dos agentes abriam "toda hora". Causas e travas:
+- cadeira que fecha sozinha (cota, erro) era reaberta a cada 2 min, em loop → espera crescente
+  (5, 10, 20, 40, 80 min) quando fecha logo depois de aberta; depois de 5 fechamentos seguidos, desiste e avisa;
+  não reabre com a cota da conta crítica
+- "acordar" (matar e reabrir cadeira parada) não tinha teto → no máx. 3 vezes por cadeira a cada 2 h
+- cada aba nova trazia o Windows Terminal da fábrica pra frente → a janela é minimizada logo depois de abrir
 """
 import json
 import os
@@ -148,7 +155,82 @@ def abrir_cadeira(chave):
                       # o agy para a cada arquivo pedindo "outside workspace" (Caio assumiu o risco, 11/11)
                       "--add-dir", "C:/Users/caion"],
                      creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
-    return _achar_pid(f"cadeira_{chave}.md")
+    pid = _achar_pid(f"cadeira_{chave}.md")
+    _minimizar_fabrica()
+    return pid
+
+
+def _minimizar_fabrica():
+    """Minimiza (sem ativar) as janelas do Windows Terminal da fábrica — abas "B: ..." — pra não roubar a tela."""
+    if os.name != "nt":
+        return 0
+    try:
+        import ctypes
+        from ctypes import wintypes
+        user32 = ctypes.windll.user32
+        achadas = []
+
+        @ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+        def cada(h, _l):
+            if not user32.IsWindowVisible(h):
+                return True
+            classe = ctypes.create_unicode_buffer(128)
+            user32.GetClassNameW(h, classe, 128)
+            titulo = ctypes.create_unicode_buffer(256)
+            user32.GetWindowTextW(h, titulo, 256)
+            if classe.value == "CASCADIA_HOSTING_WINDOW_CLASS" and titulo.value.startswith("B: "):
+                achadas.append(h)
+            return True
+
+        for _ in range(6):  # a aba nova leva um instante pra virar o título da janela
+            time.sleep(0.5)
+            user32.EnumWindows(cada, 0)
+            if achadas:
+                break
+        for h in achadas:
+            user32.ShowWindow(h, 7)  # SW_SHOWMINNOACTIVE: minimiza sem pegar o foco
+        return len(achadas)
+    except Exception:  # noqa: BLE001 — sem minimizar a cadeira funciona igual
+        return 0
+
+
+def _abrir_registrando(e, chave):
+    """Abre a cadeira e guarda quando abriu (a espera crescente mede se ela fechou logo depois)."""
+    e.setdefault("cadeiras", {})[chave] = abrir_cadeira(chave)
+    e.setdefault("aberta", {})[chave] = time.time()
+
+
+ESPERA_MIN = [5, 10, 20, 40, 80]  # minutos antes de reabrir, conforme os fechamentos seguidos
+DESISTE_APOS = len(ESPERA_MIN)
+FECHOU_LOGO = 600  # cadeira que morre em menos de 10 min depois de aberta conta como "fechou logo"
+ACORDAR_MAX, ACORDAR_JANELA = 3, 7200  # no máx. 3 "acordar" por cadeira a cada 2 h
+
+
+def _pode_reabrir(e, chave, agora=None):
+    """Decide se a cadeira que fechou pode ser reaberta agora. Atualiza a contagem de fechamentos seguidos.
+
+    Devolve (pode, motivo)."""
+    agora = agora or time.time()
+    aberta = (e.get("aberta") or {}).get(chave, 0)
+    rep = e.setdefault("reabrir", {}).setdefault(chave, {"seguidos": 0, "visto": 0})
+    # conta este fechamento uma vez só (o carteiro olha a cada 2 min)
+    if rep.get("visto", 0) < aberta or not rep.get("visto"):
+        rep["seguidos"] = rep.get("seguidos", 0) + 1 if aberta and agora - aberta < FECHOU_LOGO else 0
+        rep["visto"] = agora
+    n = rep["seguidos"]
+    if n >= DESISTE_APOS:
+        return False, f"fechou {n} vezes seguidas logo depois de abrir — desisti; reabra com `python formacao.py B`"
+    espera = ESPERA_MIN[n - 1] * 60 if n else 0
+    if agora - aberta < espera:
+        return False, f"espera {ESPERA_MIN[n - 1]} min ({n} fechamento(s) seguido(s))"
+    return True, ""
+
+
+def _pode_acordar(e, chave, agora=None):
+    agora = agora or time.time()
+    lista = [t for t in (e.get("acordadas") or {}).get(chave, []) if agora - t < ACORDAR_JANELA]
+    e.setdefault("acordadas", {})[chave] = lista
+    return len(lista) < ACORDAR_MAX
 
 
 def _avisar(texto):
@@ -167,7 +249,7 @@ def ligar_b():
     e = {"formacao": "B", "desde": time.strftime("%Y-%m-%d %H:%M"), "pausados_antes": pausados, "cadeiras": {}}
     _salvar(PAUSADOS, {k: v for k, v in pausados.items() if k not in CADEIRAS})  # Cocaino volta (com motor Google)
     for chave in CADEIRAS:
-        e["cadeiras"][chave] = abrir_cadeira(chave)
+        _abrir_registrando(e, chave)
     _salvar(ARQ, e)
     _avisar(f"FORMAÇÃO B ligada: Google nas cadeiras {', '.join(CADEIRAS)} (pids {e['cadeiras']})")
     return e
@@ -216,6 +298,9 @@ def garantir_b():
             limite = 15 if ocioso else 40
             if parada < limite or time.time() - ultimo < 900 or economia.nivel_do_agente(chave) == "critico":
                 continue
+            if not _pode_acordar(e, chave):
+                _salvar(ARQ, e)
+                continue  # já acordou 3 vezes nas últimas 2 h: deixa quieta
             try:
                 import tarefas
                 if not tarefas.livres_para(chave):
@@ -225,11 +310,17 @@ def garantir_b():
             subprocess.run(["taskkill", "/PID", str(pid), "/T", "/F"], capture_output=True,
                            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
             e.setdefault("acordou", {})[chave] = time.time()
-            e["cadeiras"][chave] = abrir_cadeira(chave)
+            e["acordadas"][chave].append(time.time())
+            _abrir_registrando(e, chave)
             _salvar(ARQ, e)
-            _avisar(f"cadeira {chave} (Google) estava parada há {int(parada)} min com tarefa livre → reiniciei pra acordar")
+            _avisar(f"cadeira {chave} (Google) estava parada há {int(parada)} min com tarefa livre → reiniciei pra acordar"
+                    f" ({len(e['acordadas'][chave])}/{ACORDAR_MAX} nas últimas 2 h)")
             return
         if pid and _pid_vivo(pid):
+            # viva há 30+ min: zera a contagem de fechamentos seguidos
+            if time.time() - (e.get("aberta") or {}).get(chave, 0) > 1800 and (e.get("reabrir") or {}).get(chave):
+                e["reabrir"][chave] = {"seguidos": 0, "visto": 0}
+                _salvar(ARQ, e)
             continue
         try:
             import fabrica_mail
@@ -240,7 +331,21 @@ def garantir_b():
             tem = True
         if not tem:
             continue
-        e["cadeiras"][chave] = abrir_cadeira(chave)
+        try:
+            import economia
+            if economia.nivel_do_agente(chave) == "critico":
+                continue  # sem cota: reabrir só faria a cadeira fechar de novo
+        except Exception:  # noqa: BLE001
+            pass
+        pode, motivo = _pode_reabrir(e, chave)
+        if not pode:
+            rep = e["reabrir"][chave]
+            if rep.get("avisado") != motivo:  # avisa uma vez por situação, não a cada 2 min
+                rep["avisado"] = motivo
+                _avisar(f"cadeira {chave} (Google) fechou — não reabri: {motivo}")
+            _salvar(ARQ, e)
+            continue
+        _abrir_registrando(e, chave)
         _salvar(ARQ, e)
         _avisar(f"cadeira {chave} (Google) tinha fechado e tem trabalho → reabri")
         return
@@ -266,6 +371,7 @@ def auto():
         no_google = chave in cad
         if not no_google and grok == "critico" and google != "critico":
             cad[chave] = abrir_cadeira(chave)
+            e.setdefault("aberta", {})[chave] = time.time()
             mudou.append(f"{chave} → Google")
         elif no_google and google == "critico" and grok != "critico":
             pid = cad.pop(chave)
@@ -280,7 +386,8 @@ def auto():
         return []
     novo = {"formacao": "B" if cad else "A", "desde": e.get("desde") or time.strftime("%Y-%m-%d %H:%M"),
             "pausados_antes": e.get("pausados_antes", {}), "cadeiras": cad, "trocou": troca,
-            "acordou": e.get("acordou", {})}
+            "acordou": e.get("acordou", {}), "acordadas": e.get("acordadas", {}),
+            "aberta": e.get("aberta", {}), "reabrir": e.get("reabrir", {})}
     if not cad:  # todas de volta: devolve a reserva do Cocaino como era antes da manobra
         _salvar(PAUSADOS, e.get("pausados_antes", {}))
     _salvar(ARQ, novo)

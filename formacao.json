@@ -1,27 +1,5 @@
 {
- "formacao": "B",
- "desde": "2026-11-11 20:38",
- "pausados_antes": {
-  "grok": "antigravity"
- },
- "cadeiras": {
-  "cursor": 29868,
-  "grokbuild": 30176,
-  "grok": 10376
- },
- "trocou": {
-  "cursor": 1794719478.8871422,
-  "grokbuild": 1794719492.2264156,
-  "grok": 1794719505.1160045
- },
- "acordou": {
-  "cursor": 1794876016.0590384,
-  "grokbuild": 1794871578.7791119,
-  "grok": 1794871710.7113807
- },
- "cpu": {
-  "cursor": 3.1875,
-  "grokbuild": 12.09375,
-  "grok": 8.015625
- }
+ "formacao": "A",
+ "desde": "2026-11-17 01:22",
+ "b_durou_desde": "2026-11-11 20:38"
 }

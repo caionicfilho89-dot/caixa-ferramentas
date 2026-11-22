@@ -158,6 +158,12 @@ def _economia_permite(para):
     """Modo economia (economia.py): crítico = não entrega; econômico = 1 entrega a cada 10 min por agente."""
     try:
         import economia
+        # modo enxuto: ninguém mais atualiza o ECONOMIA.json; velho (60+ min) = não frear
+        # (o Grok devolve "usage exhausted" sozinho quando acaba)
+        est = os.path.join(HERE, "ECONOMIA.json")
+        if os.path.exists(os.path.join(HERE, "MODO_ENXUTO")) and (
+                not os.path.exists(est) or time.time() - os.path.getmtime(est) > 3600):
+            return True
         nv = economia.nivel_do_agente(para)
     except Exception:  # noqa: BLE001
         return True
@@ -345,7 +351,8 @@ def hook(para):
         sys.stdin.read()
     except Exception:  # noqa: BLE001
         pass
-    msgs, eu = correio_novo(para)
+    enxuto = os.path.exists(os.path.join(HERE, "MODO_ENXUTO"))
+    msgs, eu = ([], para) if enxuto else correio_novo(para)  # enxuto: sem Agent Mail
     if msgs and _economia_permite(para):
         de = ", ".join(sorted({m.get("from", "?") for m in msgs}))
         _continuar(para, f"📬 [automático · fábrica] Você ({eu} no Agent Mail) tem {len(msgs)} mensagem(ns) não lida(s) "

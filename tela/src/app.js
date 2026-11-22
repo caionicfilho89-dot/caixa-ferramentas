@@ -71,10 +71,17 @@ function itemNav(emoji, nome, alvo, num, cor) {
     ${num != null ? `<span class="num">${num}</span>` : ""}</button>`;
 }
 
+function chavesVitrine() {
+  return new Set((dados.vitrine || []).map((v) => v.chave));
+}
+
 function desenharLateral() {
   const fav = dados.favoritos.length;
+  const vit = (dados.vitrine || []).length;
+  const mais = Math.max(0, (dados.total || 0) - vit);
   $("#nav").innerHTML =
-    itemNav("🏠", "Início", "inicio") +
+    itemNav("🏠", "Início", "inicio", vit || null) +
+    itemNav("🧰", "Mais ferramentas", "mais", mais || null) +
     itemNav("⭐", "Favoritos", "favoritos", fav || null) +
     `<div class="nav-titulo">CATEGORIAS</div>` +
     dados.categorias.map((c) => itemNav(c.emoji, c.nome, c.id, c.total, c.cor)).join("");
@@ -136,31 +143,27 @@ function maisUsadas(n) {
     .slice(0, n);
 }
 
+function cartaoVitrine(v) {
+  return `<div class="cartao-vitrine" data-chave="${esc(v.chave)}" title="${esc(v.nome)} — substitui ${esc(v.substitui)}">
+    <div class="cab"><span class="em">${v.emoji || "🧰"}</span><span>${esc(v.nome)}</span></div>
+    <div><div class="rot">substitui</div><div class="alvo">${esc(v.substitui)}</div></div>
+  </div>`;
+}
+
 function paginaInicio() {
   const h = new Date().getHours();
   const saud = h < 5 ? "Boa madrugada" : h < 12 ? "Bom dia" : h < 18 ? "Boa tarde" : "Boa noite";
   const data = new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "2-digit" });
-  const vitrine = dados.vitrine
-    .map(
-      (v) => `<div class="cartao-vitrine" data-chave="${esc(v.chave)}">
-        <div class="cab"><span class="em">${v.emoji}</span><span>${esc(v.nome)}</span></div>
-        <div><div class="rot">substitui</div><div class="alvo">${esc(v.substitui)}</div></div>
-      </div>`
-    )
-    .join("");
-  const favs = dados.favoritos.map((c) => porChave[c]).filter(Boolean);
-  const tend = dados.ferramentas.filter((f) => f.categoria === dados.tendencia).reverse().slice(0, 8);
+  const vit = dados.vitrine || [];
+  const maisN = Math.max(0, (dados.total || 0) - vit.length);
   return `
     <div class="ola"><h1>${saud}, Caio</h1><span class="data">${esc(data)}</span></div>
-    <div class="secao">Agora no seu PC</div>
-    <div class="hoje" id="hoje">${hoje.length ? hoje.map(blocoHoje).join("") : `<div class="carregando">Olhando o PC…</div>`}</div>
-    ${favs.length ? `<div class="secao">⭐ Favoritos</div>${grade(favs)}` : ""}
     <div class="secao">Substitui os programas famosos</div>
-    <div class="vitrine">${vitrine}</div>
-    <div class="secao">Mais usadas</div>
-    ${grade(maisUsadas(12), "Abra algumas ferramentas e elas aparecem aqui.")}
-    <div class="secao">🔥 Novas das tendências</div>
-    ${grade(tend)}`;
+    <p class="sub">Os ${vit.length} que a pessoa baixaria — um clique. Lista ao vivo do vitrine.json.</p>
+    <div class="vitrine grade-vitrine">${vit.map(cartaoVitrine).join("") || `<div class="vazio">Vitrine vazia.</div>`}</div>
+    <button type="button" class="btn-mais" data-alvo="mais">Mais ferramentas (${maisN})</button>
+    <div class="secao">Agora no seu PC</div>
+    <div class="hoje" id="hoje">${hoje.length ? hoje.map(blocoHoje).join("") : `<div class="carregando">Olhando o PC…</div>`}</div>`;
 }
 
 function paginaBusca() {
@@ -179,6 +182,16 @@ function paginaCategoria() {
   if (secao === "favoritos") {
     const favs = dados.favoritos.map((c) => porChave[c]).filter(Boolean);
     return `<h1>⭐ Favoritos</h1><p class="sub">Clique na estrela de qualquer ferramenta para trazer ela pra cá</p>${grade(favs, "Nenhum favorito ainda.")}`;
+  }
+  if (secao === "mais") {
+    const vit = chavesVitrine();
+    const lista = dados.ferramentas
+      .filter((f) => !vit.has(f.chave))
+      .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+    return `<h1>🧰 Mais ferramentas</h1>
+      <p class="sub">${lista.length} ferramentas além da vitrine — as que a pessoa baixaria ficam no Início</p>
+      <button type="button" class="btn-mais secundario" data-alvo="inicio">← Voltar à vitrine</button>
+      ${grade(lista)}`;
   }
   const cat = dados.categorias.find((c) => c.id === secao);
   const lista = dados.ferramentas.filter((f) => f.categoria === secao).sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
@@ -246,8 +259,8 @@ document.addEventListener("click", (e) => {
     navigator.clipboard.writeText(copiar.dataset.copiar).then(() => aviso("Copiado ✔"));
     return;
   }
-  const nav = e.target.closest(".nav-item");
-  if (nav) {
+  const nav = e.target.closest(".nav-item, .btn-mais");
+  if (nav && nav.dataset.alvo) {
     secao = nav.dataset.alvo;
     busca = "";
     respostas = [];

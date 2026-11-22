@@ -776,6 +776,7 @@ TOOLS = {
     "notas-de-voz": "nvz_gui.pyw",
     "tocando-agora": "npw_gui.pyw",
     "visor-fotos": "vft_gui.pyw",
+    "emissor-nfse": "nfs_gui.pyw",
     "atas-reuniao": "atr_gui.pyw",
     "canvas-agentes": "cag_gui.pyw",
     "regra-50-30-20": "r50_gui.pyw",

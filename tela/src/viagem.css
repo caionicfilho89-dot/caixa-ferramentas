@@ -158,6 +158,12 @@ body.viagem .cartao-vitrine::before { /* carinha no doce */
 body.viagem .cartao-vitrine:hover { transform: rotate(0) scale(1.06); box-shadow: 0 0 30px rgba(255, 210, 31, .45); }
 body.viagem .cartao-vitrine .rot { font-family: "Redondo", sans-serif; color: var(--sol); }
 body.viagem .cartao-vitrine .alvo { font-family: "Redondo", sans-serif; color: #fff; text-decoration-color: var(--magenta); }
+body.viagem .btn-mais {
+  font-family: "Redondo", sans-serif; color: #120b07;
+  background: var(--sol); border-color: #120b07;
+  box-shadow: 0 0 18px rgba(255, 210, 31, .35);
+}
+body.viagem .btn-mais.secundario { background: rgba(255, 244, 220, .9); }
 
 /* ── Ferramentas: cápsula de remédio de verdade ──
    tampa colorida (com o ícone) encaixada por cima do corpo (com o texto);

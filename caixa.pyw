@@ -30,7 +30,7 @@ FROZEN = getattr(sys, "frozen", False)  # True quando empacotado num .exe (insta
 if "--teste" in sys.argv:
     os.environ["CAIXA_TESTE"] = "1"
 MODO_TESTE = os.environ.get("CAIXA_TESTE") == "1"
-APP_VERSION = "1.6.0"
+APP_VERSION = "1.7.0"
 REPO = "caionicfilho89-dot/caixa-ferramentas"
 ACCENT = "#7c5cff"
 
@@ -156,7 +156,7 @@ BUILTIN = [
     ("💵", "Finanças", "Juros, financiamento SAC/Price, CDB x poupança, dividir conta", "financas", "financas.pyw"),
     ("⏲️", "Tempo", "Pomodoro, cronômetro, timers, alarmes, desligar o PC agendado", "tempo", "tempo.pyw"),
     ("🗒️", "Notas", "Notas em Markdown com prévia, busca e exportar PDF", "notas-md", "notas.pyw"),
-    ("✅", "Tarefas", "Tarefas e lembretes; entende \"pagar luz amanhã 18h\"", "tarefas", "tarefas.pyw"),
+    ("✅", "Tarefas", "Tarefas e lembretes; entende \"pagar luz amanhã 18h\". Atenção, quadro, calendário, meta e valores. 🔥 Tendência do dia.", "tarefas", "tarefas.pyw"),
     ("📅", "Calendário BR", "Feriados, dias úteis, contagem regressiva", "calendario-br", "calendario_br.pyw"),
     ("📊", "Monitor do Sistema", "CPU, memória, disco e rede ao vivo + processos", "monitor-sistema", "monitor_sistema.pyw"),
     ("🖥️", "Info do PC", "Hardware, Windows, discos, vídeo, bateria — relatório", "info-pc", "info_pc.pyw"),
@@ -883,6 +883,7 @@ BUILTIN = [
     ("🎤", "Notas de Voz", "Grava, transcreve no PC (sem internet) e separa lembrete e assunto. 🔥 Tendência do dia.", "notas-de-voz", "nvz_gui.pyw"),
     ("🎵", "Tocando Agora", "Widget do que está tocando e papel de parede com o tile — offline, sem API.", "tocando-agora", "npw_gui.pyw"),
     ("🖼️", "Visor de Fotos & Duplicadas", "Abre pastas de fotos na hora (cache de miniaturas), acha duplicadas e rostos, otimiza imagens. 🔥 Tendência do dia.", "visor-fotos", "vft_gui.pyw"),
+    ("🧾", "Emissor de NFS-e (rascunho)", "Monta a DPS do padrão nacional, confere CNPJ e calcula ISS, IBS e CBS. Não assina e não transmite. 🔥 Tendência do dia.", "emissor-nfse", "nfs_gui.pyw"),
     ("📝", "Atas de Reunião & Decisões", "Anotações de reuniões com extração de resumo executivo, decisões e tarefas com responsáveis e prazos — offline e privado. 🔥 Tendência do dia.", "atas-reuniao", "atr_gui.pyw"),
     ("🤖", "Canvas de Agentes de IA", "Canvas 2D interativo e planejador de fluxo de agentes de IA com herança de contexto e compilação de prompts. 🔥 Tendência do dia.", "canvas-agentes", "cag_gui.pyw"),
     ("💰", "Regra 50/30/20", "Planejamento financeiro rápido: 50% necessidades, 30% desejos e 20% poupança. 🔥 Tendência do dia.", "regra-50-30-20", "r50_gui.pyw"),

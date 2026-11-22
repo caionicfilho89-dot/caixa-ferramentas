@@ -26,3 +26,18 @@ economia_historico.json
 tela/node_modules/
 tela/src-tauri/target/
 tela/src-tauri/gen/
+# saídas de robô/auditoria e prints de teste (19-20/11)
+_robo_*
+robo_total.json
+auditoria_total.json
+caca_fake.json
+orquestra.log
+tela/_*
+tela/print_*.png
+tela/print_*.webp
+# estado interno da fábrica (fica só no PC; histórico completo no branch local backup-local-22nov)
+tarefas.json
+tarefas.json.bak
+painel/*.json
+ponte_orquestra.json
+ponte_orquestra.py

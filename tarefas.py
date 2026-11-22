@@ -77,16 +77,32 @@ def salvar(ts):
     os.replace(tmp, ARQ)
 
 
+def _trava():
+    """Orquestra: trava entre processos pro ler-mexer-gravar do quadro (ninguém atropela ninguém)."""
+    import orquestra
+    return orquestra.trava(orquestra.TRAVA_QUADRO)
+
+
 def nova(titulo, detalhe, quem):
-    ts = ler()
-    n = 1 + max([int(t["id"][1:]) for t in ts] or [0])
-    ts.append({"id": f"T{n:02d}", "titulo": titulo, "detalhe": detalhe, "quem": quem,
-               "status": "livre", "por": "", "quando": time.strftime(FMT), "resultado": ""})
-    salvar(ts)
+    with _trava():
+        ts = ler()
+        n = 1 + max([int(t["id"][1:]) for t in ts] or [0])
+        ts.append({"id": f"T{n:02d}", "titulo": titulo, "detalhe": detalhe, "quem": quem,
+                   "status": "livre", "por": "", "quando": time.strftime(FMT), "resultado": ""})
+        salvar(ts)
     return f"T{n:02d}"
 
 
 def pegar(agente):
+    """Orquestra: atômico e respeitando as pastas que outro músico está mexendo (orquestra.pegar)."""
+    try:
+        import orquestra
+        return orquestra.pegar(agente)[0]
+    except ImportError:
+        return _pegar_antigo(agente)
+
+
+def _pegar_antigo(agente):
     """Já tem uma em andamento? devolve ela. Senão marca a próxima livre que combina."""
     ts = ler()
     for t in ts:
@@ -126,19 +142,22 @@ def concluir(agente, tid, resultado=""):
     """Marca como feita SE passar no portão de qualidade (portao.py). Recusado → {"recusado": motivo}."""
     try:
         import portao
-        titulo = next((t["titulo"] for t in ler() if t["id"] == tid), "")
-        motivo = portao.verificar(resultado, os.environ.get("CAIXA_WT") or HERE, titulo)
+        tarefa = next((t for t in ler() if t["id"] == tid), {})
+        # lote com "pastas": o portão confere TODAS, mesmo as que o agente não citou
+        motivo = portao.verificar(resultado, os.environ.get("CAIXA_WT") or HERE, tarefa.get("titulo", ""),
+                                  tarefa.get("pastas") or [])
     except Exception as e:  # noqa: BLE001 — portão quebrado não pode travar o quadro
         motivo = ""
         print(f"(portão de qualidade com erro, deixei passar: {e})")
     if motivo:
         return {"recusado": motivo, "id": tid}
-    ts = ler()
-    for t in ts:
-        if t["id"] == tid:
-            t.update(status="feito", por=agente, quando=time.strftime(FMT), resultado=resultado[:2000])
-            salvar(ts)
-            return t
+    with _trava():
+        ts = ler()
+        for t in ts:
+            if t["id"] == tid:
+                t.update(status="feito", por=agente, quando=time.strftime(FMT), resultado=resultado[:2000])
+                salvar(ts)
+                return t
     return None
 
 

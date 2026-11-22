@@ -29,6 +29,21 @@
    "data": "16/11/2026",
    "url": "https://www.reddit.com/r/software/comments/1xxis3e/sak_utility_a_free_portable_allinone_windows/",
    "titulo": "S.A.K. Utility: a free, portable all-in-one Windows toolkit for PC techs (profile backup/restore, partition manager, USB flasher, diagnostics, PST viewer, app deployment)"
+  },
+  {
+   "data": "17/11/2026",
+   "url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor",
+   "titulo": "krisgfx9/Wireless-Device-Battery-Monitor"
+  },
+  {
+   "data": "18/11/2026",
+   "url": "https://github.com/CzzzzzzJ/mdldm-maitian",
+   "titulo": "CzzzzzzJ/mdldm-maitian"
+  },
+  {
+   "data": "19/11/2026",
+   "url": "https://exitpath-ruddy.vercel.app/",
+   "titulo": "ExitPath – Open-source ways out of Slack, Notion and Microsoft 365"
   }
  ],
  "feitas": [
@@ -47,7 +62,9 @@
   "https://github.com/martin-olivier/airgorah",
   "https://www.tabnews.com.br/VetorGames/pitch-v-e-t-o-r-a-ruptura-motor-proprio-em-html5-canvas-video-sincronizado-e-dialogo-dinamico-em-7-idiomas",
   "https://www.tabnews.com.br/rodrigoaraujo990/pitch-achei-que-o-dificil-de-automatizar-candidatura-era-o-captcha-era-um-select",
-  "https://www.reddit.com/r/software/comments/1xxis3e/sak_utility_a_free_portable_allinone_windows/"
+  "https://www.reddit.com/r/software/comments/1xxis3e/sak_utility_a_free_portable_allinone_windows/",
+  "https://github.com/williamlala/baiacu-nfse",
+  "https://www.tabnews.com.br/johnsoon/pitch-tarefandos-um-organizador-de-tarefas-gratuito-que-comecou-com-localstorage-e-hoje-roda-em-spring-boot-na-minha-vps"
  ],
  "radar": {
   "https://github.com/we-promise/sure": {
@@ -257,21 +274,25 @@
   },
   "https://var0xyz.github.io/syrinx": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 20
   },
   "https://delightql.org": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 32
   },
@@ -283,11 +304,13 @@
   },
   "https://github.com/alurm/json2dir": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 26
   },
@@ -299,61 +322,73 @@
   },
   "https://brut.sh": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 208
   },
   "https://asmbots.io": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 42
   },
   "https://www.machtiani.chat/blogs/the-shell": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 68
   },
   "https://github.com/ataraxy-labs/weave": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 18
   },
   "https://levmiseri.com/nospace": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 90
   },
   "https://anishathalye.com/optimal-trace": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 28
   },
@@ -365,41 +400,49 @@
   },
   "https://d.erenrich.net/apple.avif": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 48
   },
   "https://codeberg.org/veqq/deforester": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 84
   },
   "https://www.v01.io/posts/2026/08/texttile": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 14
   },
   "https://github.com/runetes/maiao": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 22
   },
@@ -411,31 +454,37 @@
   },
   "https://codeberg.org/felixs/nss-userhosts": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 62
   },
   "https://capri.hexdocs.pm": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 38
   },
   "https://www.tsampi.com/tsampi-bft-1.1.pdf": {
    "dias": [
-    "2026-11-11",
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 4
   },
@@ -519,9 +568,10 @@
   },
   "https://github.com/nvm-sh/nvm": {
    "dias": [
-    "2026-11-12"
+    "2026-11-12",
+    "2026-11-18"
    ],
-   "pop": 107
+   "pop": 111
   },
   "https://github.com/alishahryar1/free-claude-code": {
    "dias": [
@@ -534,7 +584,9 @@
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
    ],
    "pop": 66
   },
@@ -543,7 +595,9 @@
     "2026-11-12",
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
    ],
    "pop": 132
   },
@@ -649,9 +703,12 @@
    "dias": [
     "2026-11-13",
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
-   "pop": 204
+   "pop": 228
   },
   "https://controlcloud.dev/pt/blog/service-principal-azure-solo-lectura-reader": {
    "dias": [
@@ -777,14 +834,20 @@
   "https://www.tabnews.com.br/rodrigoaraujo990/pitch-achei-que-o-dificil-de-automatizar-candidatura-era-o-captcha-era-um-select": {
    "dias": [
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 96
   },
   "https://www.tabnews.com.br/vetorgames/pitch-v-e-t-o-r-a-ruptura-motor-proprio-em-html5-canvas-video-sincronizado-e-dialogo-dinamico-em-7-idiomas": {
    "dias": [
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 96
   },
@@ -797,28 +860,40 @@
   "https://www.tabnews.com.br/johnsoon/pitch-tarefandos-um-organizador-de-tarefas-gratuito-que-comecou-com-localstorage-e-hoje-roda-em-spring-boot-na-minha-vps": {
    "dias": [
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 84
   },
   "https://github.com/williamlala/baiacu-nfse": {
    "dias": [
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
-   "pop": 216
+   "pop": 318
   },
   "https://www.tabnews.com.br/dream/criei-o-perguntez-uma-comunidade-de-perguntas-e-respostas-com-sistema-de-pontuacao": {
    "dias": [
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 114
   },
   "https://matthsanz.github.io/wlx/pt": {
    "dias": [
     "2026-11-15",
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 48
   },
@@ -896,13 +971,19 @@
   },
   "https://github.com/n4ze3m/tiny-voca": {
    "dias": [
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
-   "pop": 84
+   "pop": 109
   },
   "https://www.tabnews.com.br/carloslagos/pitch-testei-um-agente-de-ia-de-seguranca-contra-o-owasp-nodegoat-achou-4-de-5-falhas-conhecidas-e-mais-21": {
    "dias": [
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 54
   },
@@ -914,7 +995,10 @@
   },
   "https://tyruslang.org": {
    "dias": [
-    "2026-11-16"
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
    ],
    "pop": 108
   },
@@ -1049,6 +1133,111 @@
     "2026-11-16"
    ],
    "pop": 40
+  },
+  "https://github.com/krisgfx9/wireless-device-battery-monitor": {
+   "dias": [
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
+   ],
+   "pop": 642
+  },
+  "https://github.com/czzzzzzj/mdldm-maitian": {
+   "dias": [
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19"
+   ],
+   "pop": 226
+  },
+  "https://github.com/aryamandarda/tamserve": {
+   "dias": [
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "pop": 110
+  },
+  "https://www.tabnews.com.br/melvi/gastei-r-30-para-divulgar-meu-app-o-que-aprendi-com-108-visitas": {
+   "dias": [
+    "2026-11-17"
+   ],
+   "pop": 12
+  },
+  "https://anomalidle.com": {
+   "dias": [
+    "2026-11-17"
+   ],
+   "pop": 12
+  },
+  "https://github.com/astral-sh/uv": {
+   "dias": [
+    "2026-11-18"
+   ],
+   "pop": 260
+  },
+  "https://exitpath-ruddy.vercel.app": {
+   "dias": [
+    "2026-11-18",
+    "2026-11-19"
+   ],
+   "pop": 816
+  },
+  "https://news.ycombinator.com/item?id=50548660": {
+   "dias": [
+    "2026-11-18",
+    "2026-11-19"
+   ],
+   "pop": 408
+  },
+  "https://www.tabnews.com.br/zengkkj/pitch-transformei-meu-site-de-pdf-num-app-de-windows-que-converte-arrastando-o-arquivo-e-tocando-no-shift": {
+   "dias": [
+    "2026-11-18",
+    "2026-11-19"
+   ],
+   "pop": 144
+  },
+  "https://spmx.io": {
+   "dias": [
+    "2026-11-18",
+    "2026-11-19"
+   ],
+   "pop": 36
+  },
+  "https://investdex.com.br": {
+   "dias": [
+    "2026-11-18"
+   ],
+   "pop": 12
+  },
+  "https://github.com/toeverything/affine": {
+   "dias": [
+    "2026-11-19"
+   ],
+   "pop": 170
+  },
+  "https://github.com/xiaoyouchr/ghost-downloader-3": {
+   "dias": [
+    "2026-11-19"
+   ],
+   "pop": 449
+  },
+  "https://github.com/ybblab/jiumi": {
+   "dias": [
+    "2026-11-19"
+   ],
+   "pop": 77
+  },
+  "https://adeindex.com": {
+   "dias": [
+    "2026-11-19"
+   ],
+   "pop": 76
+  },
+  "https://github.com/henriquesakata/cerne": {
+   "dias": [
+    "2026-11-19"
+   ],
+   "pop": 90
   }
  }
 }

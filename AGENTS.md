@@ -1,3 +1,29 @@
+> 🎼 **ORQUESTRA (18/11/2026, Caio: "uma orquestra linda e afinada, não cada agent atrapalhando o outro").
+> Isto vale MAIS que qualquer regra abaixo sobre carteiro, correio, cadeiras ou estações.**
+> - **Maestro = Claude** (revisa, integra, fecha versão). Músicos: 🎻 Grok CLI (`grokbuild`, construtor),
+>   🎹 Cursor (`cursor`, visual), 🥁 Antigravity (`antigravity`, testador, quando tiver cota).
+> - **Ninguém cola texto em janela de ninguém.** O carteiro foi DESLIGADO. A próxima parte chega sozinha no
+>   fim do seu turno (gancho `orquestra.py --gancho <eu>`). Painel: `python orquestra.py`.
+> - **Nunca espere "/new", chat novo ou alguém mandar começar** (o Cursor ficou 1 h parado assim em 18/11): recebeu a
+>   tarefa no fim do turno = começa NA HORA, no mesmo chat.
+> - **Uma tarefa por vez.** `python painel.py <eu> --pegar` já é seguro (trava + não dá tarefa cuja pasta
+>   outro músico está mexendo). Mexa SÓ nas pastas da sua tarefa.
+> - **Arquivos centrais** (`caixa.pyw`, `build_suite.py`, `AGENTS*.md`, `RUMO.md`): antes
+>   `python orquestra.py --central pegar <eu>`, RELEIA, acrescente no fim das listas, e depois
+>   `python orquestra.py --central soltar <eu>`. Se estiver com outro, adiante sua parte e tente em 1–2 min.
+> - **Só é "feito" o que passa no portão**: `python painel.py <eu> --concluir Txx "o que ficou pronto"`.
+> - **Cota acabou = você descansa**, os outros seguem. Não force, não troque de conta.
+> - Agent Mail (correio) e formação B estão FORA da orquestra; não dependa deles.
+> - **FILA = VITRINE (18/11, Caio: "deu uma perdida").** Só os 27 programas do `vitrine.json` (os que a pessoa
+>   baixaria: 7-Zip, VLC, Notepad++, Everything…). Cada um tem `PARIDADE.md` (checklist ✅/⚠️/❌ testado USANDO
+>   o programa); quando tudo ✅ → "PRONTO PRA VITRINE" e sai da fila. Os 84 "🔧 Funcionar" de nicho estão
+>   CONGELADOS — não crie ferramenta nova nem lote de nicho. Exceção: 🔥 Tendência do dia.
+
+> 🔧 **PRIORIDADE MÁXIMA (17/11/2026, Caio): FAZER TODAS AS FERRAMENTAS FUNCIONAREM DE VERDADE.**
+> Leia [FUNCIONAR.md](FUNCIONAR.md). O quadro tem as tarefas "🔧 Funcionar lote N" (T377…T473) cobrindo as 769:
+> função REAL funcionando, nada de resultado inventado, exemplo só por botão, todo botão fazendo o que diz.
+> O portão agora roda `pyflakes` + `robo_botoes.py` (clica em todos os botões) em cada pasta citada.
+
 > 🚨 **RUMO NOVO (2026-11-09): leia [RUMO.md](RUMO.md) PRIMEIRO, ele manda mais que este arquivo.**
 > Calculadora nova está PAUSADA. Cada agente tem uma FILA no RUMO.md e um painel: rode `python painel.py`
 > antes e depois de cada tarefa. Terminou? Pega a próxima da fila na hora. Nunca fique parado esperando.
